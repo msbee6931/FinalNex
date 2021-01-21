@@ -13,7 +13,7 @@
                 <VFrameSet id="VFrameSet00" separatesize="30,*,0">
                   <Frames>
                     <ChildFrame id="ChildFrame00" formurl="Professor::Form_Mdi.xfdl" showtitlebar="false"/>
-                    <ChildFrame id="Mainform" formurl=""/>
+                    <ChildFrame id="Mainform" formurl="" showtitlebar="false"/>
                     <FrameSet id="FrameSet00">
                       <Frames/>
                     </FrameSet>
@@ -21,7 +21,7 @@
                 </VFrameSet>
               </Frames>
             </HFrameSet>
-            <ChildFrame id="BottomFrame" showtitlebar="false" showstatusbar="false" formurl="Admin::Form_Bottom.xfdl" height="60" width="1280"/>
+            <ChildFrame id="BottomFrame" showtitlebar="false" showstatusbar="false" formurl="Student::Form_Bottom.xfdl" height="60" width="1280"/>
           </Frames>
         </VFrameSet>
       </MainFrame>

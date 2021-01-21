@@ -6,6 +6,7 @@
         <Static id="Static00" taborder="0" text="로고위치" left="0" top="0" width="200" height="50" background="#c1c1c1"/>
         <Button id="Button00" taborder="1" text="홈" left="210" top="10" width="30" height="30"/>
         <Menu id="Menu00" taborder="2" left="240" top="10" width="730" height="30" innerdataset="ds_menu" captioncolumn="menu_name" idcolumn="menu_id" levelcolumn="menu_level" onmenuclick="Menu00_onmenuclick"/>
+        <Button id="btn_logout" taborder="3" text="로그아웃" left="1197" top="17" width="69" height="20" onclick="btn_logout_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -54,6 +55,11 @@ this.Menu00_onrbuttondown = function(obj:nexacro.Menu,e:nexacro.MenuMouseEventIn
 };
 
 
+
+this.btn_logout_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.objApp.mainframe.VFrameSet00.set_separatesize("*,0,0,0");
+};
 ]]></Script>
   </Form>
 </FDL>

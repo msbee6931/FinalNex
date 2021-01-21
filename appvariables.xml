@@ -59,6 +59,7 @@
           <Col id="menu_id">2010</Col>
           <Col id="menu_name">수강신청</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::classRegist.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">2020</Col>
@@ -138,11 +139,13 @@
           <Col id="menu_id">2010</Col>
           <Col id="menu_name">강좌 개설 요청</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">prfWork::classReq.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">2020</Col>
           <Col id="menu_name">전체 강좌 조회</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">prfWork::classList.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">2030</Col>
