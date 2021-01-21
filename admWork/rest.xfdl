@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="rest" width="1080" height="520" titletext="New Form">
+    <Layouts>
+      <Layout height="520" mobileorientation="landscape" width="1080">
+        <Static id="Static00" taborder="0" left="0" top="0" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00" taborder="2" left="1050" top="0" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Div id="Div00" taborder="4" text="Div00" left="30" top="39" width="1021" height="451" border="1px solid #c1c1c1">
+          <Layouts>
+            <Layout>
+              <Button id="btn_searchEtc" taborder="0" left="336" top="21" width="25" height="25" background=""/>
+              <Combo id="Combo00" taborder="1" text="Combo00" left="30" top="21" width="120" height="25" innerdataset="dept_ds" codecolumn="code" datacolumn="name"/>
+              <Edit id="Edit00" taborder="2" left="198" top="21" width="130" height="25"/>
+              <Grid id="Grid00" taborder="3" left="32" top="68" width="530" height="350" binddataset="rlist_ds" autofittype="col">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="34"/>
+                      <Column size="80"/>
+                      <Column size="75"/>
+                      <Column size="198"/>
+                      <Column size="80"/>
+                      <Column size="53"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="No"/>
+                      <Cell col="1" text="학번"/>
+                      <Cell col="2" text="이름"/>
+                      <Cell col="3" text="제목"/>
+                      <Cell col="4" text="작성날짜"/>
+                      <Cell col="5" text="처리여부"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:seq"/>
+                      <Cell col="1" text="bind:std_code"/>
+                      <Cell col="2" text="bind:writer"/>
+                      <Cell col="3" text="bind:title"/>
+                      <Cell col="4" text="bind:writeDate"/>
+                      <Cell col="5"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="btn_searchDept" taborder="4" left="154" top="21" width="25" height="25" background=""/>
+              <Div id="Div00" taborder="5" text="Div00" left="587" top="68" width="400" height="350" border="1px solid #c1c1c1">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static00" taborder="0" text="학번" left="13" top="41" width="48" height="30" background="#c1c1c1" border="1px solid #000000"/>
+                    <Edit id="Edit00" taborder="1" left="60" top="42" width="123" height="30" readonly="true"/>
+                    <Static id="Static00_00" taborder="2" text="이름" left="182" top="41" width="57" height="30" background="#c1c1c1" border="1px solid #000000"/>
+                    <Edit id="Edit00_00" taborder="3" left="238" top="42" width="138" height="30" readonly="true"/>
+                    <Static id="Static00_01" taborder="4" text="제목" left="13" top="70" width="48" height="30" background="#c1c1c1" border="1px solid #000000"/>
+                    <Edit id="Edit00_01" taborder="5" left="61" top="70" width="318" height="30" readonly="true"/>
+                    <Edit id="Edit00_01_00" taborder="6" left="13" top="99" width="366" height="211" readonly="true" onchanged="Div00_Div00_Edit00_01_00_onchanged"/>
+                    <Static id="Static00_00_00" taborder="7" text="작성날짜" left="182" top="12" width="57" height="30" background="#c1c1c1" border="1px solid #000000"/>
+                    <Edit id="Edit00_00_00" taborder="8" left="238" top="12" width="138" height="30" readonly="true"/>
+                    <Static id="Static00_02" taborder="9" text="No" left="13" top="12" width="48" height="30" background="#c1c1c1" border="1px solid #000000"/>
+                    <Edit id="Edit00_02" taborder="10" left="60" top="13" width="123" height="30" readonly="true"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Button id="btn_tuit00" taborder="6" text="승인" left="799" top="389" width="80" height="25" onclick="Div00_btn_tuit_onclick"/>
+              <Button id="btn_tuit00_00" taborder="7" text="반려" left="889" top="389" width="80" height="25" onclick="Div00_btn_tuit_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="5" text=" 휴학 신청서 관리" left="30" top="9" width="200" height="30" background="#c1c1c1"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.Combo00" propid="value" datasetid="tuit_ds" columnid="dept_code"/>
+    </Bind>
+    <Objects>
+      <Dataset id="rlist_ds">
+        <ColumnInfo>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="std_code" type="STRING" size="256"/>
+          <Column id="writer" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="writeDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[]]></Script>
+  </Form>
+</FDL>

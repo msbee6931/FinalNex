@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ADL version="2.0">
+  <Application id="Application_Desktop" screenid="Desktop_screen">
+    <Layout>
+      <MainFrame id="mainframe" showtitlebar="true" showstatusbar="true" width="1280" height="720" titletext="MidLeftFrame">
+        <VFrameSet id="VFrameSet00" separatesize="*,0,0,0">
+          <Frames>
+            <ChildFrame id="Loginform" formurl="Admin::Form_login.xfdl" showtitlebar="false"/>
+            <ChildFrame id="TopFrame" showtitlebar="false" showstatusbar="false" formurl="Professor::Form_Top.xfdl"/>
+            <HFrameSet id="HFrameSet00" separatesize="200,*">
+              <Frames>
+                <ChildFrame id="LeftFrame" showtitlebar="false" showstatusbar="false" formurl="Professor::Form_Left.xfdl"/>
+                <VFrameSet id="VFrameSet00" separatesize="30,*,0">
+                  <Frames>
+                    <ChildFrame id="ChildFrame00" formurl="Professor::Form_Mdi.xfdl" showtitlebar="false"/>
+                    <ChildFrame id="Mainform" formurl=""/>
+                    <FrameSet id="FrameSet00">
+                      <Frames/>
+                    </FrameSet>
+                  </Frames>
+                </VFrameSet>
+              </Frames>
+            </HFrameSet>
+            <ChildFrame id="BottomFrame" showtitlebar="false" showstatusbar="false" formurl="Admin::Form_Bottom.xfdl" height="60" width="1280"/>
+          </Frames>
+        </VFrameSet>
+      </MainFrame>
+    </Layout>
+  </Application>
+  <Script type="xscript5.1"><![CDATA[this.av_FrameSet = "";
+
+this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventInfo)
+{
+	this.av_FrameSet = this.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.FrameSet00;
+};]]></Script>
+</ADL>

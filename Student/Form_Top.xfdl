@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Top" width="1280" height="50" titletext="New Form" onload="Form_Top_onload">
+    <Layouts>
+      <Layout height="50" width="1280">
+        <Static id="Static00" taborder="0" text="로고위치" left="0" top="0" width="200" height="50" background="#c1c1c1"/>
+        <Button id="Button00" taborder="1" text="홈" left="210" top="10" width="30" height="30"/>
+        <Menu id="Menu00" taborder="2" left="240" top="10" width="730" height="30" innerdataset="ds_menu" captioncolumn="menu_name" idcolumn="menu_id" levelcolumn="menu_level" onmenuclick="Menu00_onmenuclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_menu">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="caption" type="STRING" size="256"/>
+          <Column id="level" type="STRING" size="256"/>
+          <Column id="url" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
+
+this.Form_Top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.fn_setTopMenu();
+};
+
+//innerDataSet은 ds_menu 나머지 바인딩 셋은 글로벌 셋으로 세팅
+this.fn_setTopMenu = function()
+{
+
+	this.objApp.std_menu.filter("menu_level == '0'"); 
+
+	this.ds_menu.copyData(this.objApp.std_menu, true);
+
+	var sMenuId = this.ds_menu.getColumn(0, "menu_id");
+	this.fn_setLeftMenu(sMenuId);
+}
+
+this.Menu00_onmenuclick = function(obj:nexacro.Menu,e:nexacro.MenuClickEventInfo)
+{
+	this.fn_setLeftMenu(e.id);
+};
+
+this.fn_setLeftMenu = function(pMenuId)
+{
+	this.objApp.std_menu.filter("menu_id.substring(0,2) == '" + pMenuId + "'");
+}
+
+
+this.Menu00_onrbuttondown = function(obj:nexacro.Menu,e:nexacro.MenuMouseEventInfo)
+{
+	this.fn_setFrameSize("Form");
+};
+
+
+]]></Script>
+  </Form>
+</FDL>

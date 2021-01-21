@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Mdi" width="1080" height="30" titletext="New Form" onload="Form_Mdi_onload">
+    <Layouts>
+      <Layout height="30" width="1080">
+        <Tab id="tab_menu" taborder="0" tabindex="0" left="0" top="0" width="1080" height="30" showextrabutton="true" tabbuttonheight="30" onchanged="tab_menu_onchanged" onextrabuttonclick="tab_menu_onextrabuttonclick">
+          <Tabpages>
+            <Tabpage id="Tabpage2" text="Tabpage2"/>
+          </Tabpages>
+        </Tab>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
+this.av_FrameSet = this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.FrameSet00;
+
+this.Form_Mdi_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.tab_menu.removeTabpage(0);
+};
+
+
+this.fn_addTab = function(pFormId, pMenuNm)
+{
+	this.tab_menu.insertTabpage(pFormId, -1, "", pMenuNm);
+	this.fn_setFrameSize("Form");
+}
+
+this.tab_menu_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
+{
+	var sFormId = obj.tabpages[e.postindex].name;
+
+	this.av_FrameSet[sFormId].form.setFocus();
+
+};
+
+this.tab_menu_onextrabuttonclick = function(obj:nexacro.Tab,e:nexacro.TabMouseEventInfo)
+{
+	var sFormId = obj.tabpages[e.index].name;
+	var objApp = nexacro.getApplication();
+	this.av_FrameSet[sFormId].form.close();
+	obj.removeTabpage(e.index);
+
+	var nRow = objApp.std_openForm.findRow("form_id", sFormId);
+	this.objApp.std_openForm.deleteRow(nRow);
+	
+//	trace(objApp.std_openForm.saveXML());
+};
+
+
+
+// pType : 화면이 종료될때("CLOSE", 화면이 활성화 될때:"FOCUS"(맨 앞으로 올때)
+this.fn_tabControl = function(pFormId, pType)
+{
+	var nCnt = this.tab_menu.getTabpageCount();
+	for(var i=0; i<nCnt; i++)
+	{
+		if(this.tab_menu.tabpages[i].name == pFormId)
+		{
+			if(pType == "CLOSE")
+			{
+				this.tab_menu.removeTabpage(i);
+			}
+			else if(pType == "FOCUS")
+			{
+				this.tab_menu.set_tabindex(i);
+			}		
+			return;
+		}
+	
+	}
+
+}
+
+//폼 바뀔때 탭 체인지 호출함수
+this.fn_tabChange = function (formId) {
+	var objTab = this.tab_menu;
+	var tabCount = objTab.getTabpageCount();
+	for(var i=0; i<tabCount; i++)
+	{
+		var sTabName = objTab.tabpages[i].name;
+		if( sTabName == formId)
+		{
+			objTab.set_tabindex(i);
+			return;
+		}
+	}
+	
+}
+
+
+//홈버튼 조작 보류
+// this.btn_home_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+// {
+// 	var objApp = nexacro.getApplication();
+// 	objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,*,0");
+// 	this.fn_setFrameSize("Home");
+// };
+
+this.fn_setFrameSize = function(pType)
+{
+	var objApp = nexacro.getApplication();
+	//pType : Home,Form
+	if(pType == "Home"){
+		objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,*,0");
+	}else{
+		objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
+	}
+}
+
+
+
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Mdi" width="1080" height="30" titletext="New Form" onload="Form_Mdi_onload">
+    <Layouts>
+      <Layout height="30" width="1080">
+        <Tab id="tab_menu" taborder="0" tabindex="0" left="0" top="0" width="1080" height="30" showextrabutton="true" tabbuttonheight="30" onchanged="tab_menu_onchanged" onextrabuttonclick="tab_menu_onextrabuttonclick">
+          <Tabpages>
+            <Tabpage id="Tabpage2" text="Tabpage2"/>
+          </Tabpages>
+        </Tab>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
+this.av_FrameSet="";
+
+this.Form_Mdi_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.tab_menu.removeTabpage(0);
+};
+
+
+this.fn_addTab = function(formId, menuName)
+{
+	this.tab_menu.insertTabpage(formId, -1,"",menuName);
+}
+
+
+this.tab_menu_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
+{
+	var formId = obj.tabpages[e.postindex].name;
+	
+	//화면 띄울 프레임 지정
+	av_FrameSet = this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.FrameSet00;
+	
+	av_FrameSet[formId].form.setFocus();
+	
+};
+
+//폼 바뀔때 탭 체인지 호출함수
+this.fn_tabChange = function (formId) {
+	var objTab = this.tab_menu;
+	var tabCount = objTab.getTabpageCount();
+	for(var i=0; i<tabCount; i++)
+	{
+		var sTabName = objTab.tabpages[i].name;
+		if( sTabName == formId)
+		{
+			objTab.set_tabindex(i);
+			return;
+		}
+	}
+	
+}
+
+
+this.tab_menu_onextrabuttonclick = function(obj:nexacro.Tab,e:nexacro.TabMouseEventInfo)
+{
+	var formId = obj.tabpages[e.index].name;
+	this.av_FrameSet = this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.FrameSet00;
+	this.av_FrameSet[formId].form.close();
+	this.tab_menu.removeTabpage(e.index);
+	//index 는 정해진 값이라서 index 사용
+	
+	var nRow = this.adm_form.findRow("form_id",formId);
+	this.adm_form.deleteRow(nRow);
+	/*trace(this.adm_form.saveXML());*/
+	// Left에서 추가시켰던 row를 다시 지워주는 행위
+	
+};
+
+]]></Script>
+    <Objects>
+      <Dataset id="adm_form">
+        <ColumnInfo>
+          <Column id="form_id" type="STRING" size="256"/>
+          <Column id="menu_id" type="STRING" size="256"/>
+          <Column id="menu_name" type="STRING" size="256"/>
+          <Column id="form_url" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

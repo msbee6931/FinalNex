@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_login" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Div id="Div00" taborder="1" text="Div00" left="385" top="155" width="580" height="350" border="1px solid #c1c1c1">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="ID" left="80" top="111" width="55" height="30"/>
+              <Static id="Static00_00" taborder="1" text="PW" left="79" top="172" width="55" height="30"/>
+              <Edit id="Edit00" taborder="2" left="160" top="115" width="300" height="30"/>
+              <Edit id="Edit00_00" taborder="3" left="160" top="174" width="300" height="30"/>
+              <Button id="Button00" taborder="4" text="로그인" left="481" top="116" width="85" height="90" onclick="Div00_Button00_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
+
+this.Div00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.objApp.mainframe.VFrameSet00.set_separatesize("0,50,*,60");
+};
+]]></Script>
+  </Form>
+</FDL>
