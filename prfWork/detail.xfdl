@@ -1,0 +1,696 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Detail" width="1000" height="680" onload="Detail_onload" titletext="수업계획서 작성">
+    <Layouts>
+      <Layout height="680" mobileorientation="landscape" width="1000" stepcount="0">
+        <Div id="Div00" taborder="0" text="Div00" left="0" top="0" width="1000" height="680">
+          <Layouts>
+            <Layout>
+              <Tab id="classPlanTab" taborder="0" tabindex="0" left="0" top="0" width="1000" height="680" border="1px solid black">
+                <Tabpages>
+                  <Tabpage id="classPlan" text="교과목 정보">
+                    <Layouts>
+                      <Layout>
+                        <MaskEdit id="mask_fin" taborder="43" left="641" top="472" width="155" height="30" textAlign="center" canchange="evaluation_canchange" format="+0"/>
+                        <MaskEdit id="mask_task" taborder="41" left="486" top="472" width="155" height="30" textAlign="center" canchange="evaluation_canchange" format="+0"/>
+                        <MaskEdit id="mask_otest" taborder="40" left="331" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
+                        <MaskEdit id="mask_argue" taborder="32" left="491" top="365" width="235" height="30" format="+990" textAlign="center" canchange="method_canchange"/>
+                        <MaskEdit id="mask_test" taborder="30" left="256" top="365" width="235" height="30" format="+990" textAlign="center" canchange="method_canchange"/>
+                        <Static id="Static00" taborder="0" text=" ▣ 이수구분" left="21" top="10" width="118" height="39" border="1px solid gray" background="lightgray"/>
+                        <Static id="Static00_00" taborder="4" text=" ▣ 과목명" left="21" top="49" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_00_onclick"/>
+                        <Static id="Static00_01" taborder="6" text=" ▣ 과목코드" left="351" top="49" width="118" height="39" border="1px solid gray" background="lightgray"/>
+                        <Static id="Static00_02" taborder="7" text=" ▣ 학점" left="681" top="49" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <Static id="Static00_02_00" taborder="9" text=" ▣ 담당교수명" left="21" top="88" width="118" height="39" border="1px solid gray" background="lightgray"/>
+                        <Static id="Static00_02_01" taborder="17" text=" ▣ 강의 시간" left="351" top="127" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <Static id="Static00_02_04" taborder="11" text=" ▣ 소속 학과" left="351" top="88" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <Combo id="co_part" taborder="1" left="139" top="10" width="212" height="39" innerdataset="ds_part" codecolumn="id" datacolumn="name"/>
+                        <Edit id="edt_className" taborder="5" left="139" top="49" width="212" height="39" textAlign="center"/>
+                        <Combo id="co_point" taborder="8" left="799" top="49" width="150" height="39" innerdataset="ds_point" codecolumn="id" datacolumn="name"/>
+                        <Static id="Static00_02_03" taborder="13" text=" ▣ 학년" left="681" top="88" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <Combo id="co_grade" taborder="14" left="799" top="88" width="150" height="39" innerdataset="ds_grade" codecolumn="id" datacolumn="name"/>
+                        <Static id="Static00_02_02_00" taborder="20" text=" ▣ 교과목 및 목표" left="21" top="176" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <Static id="Static00_02_02_00_00" taborder="22" text=" ▣ 수업운영 방법(비율)" left="21" top="296" width="138" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <Static id="Static00_02_02_00_00_00" taborder="23" text=" ▣ 교재 및 참고자료" left="22" top="511" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <TextArea id="ta_goal" taborder="21" left="21" top="215" width="930" height="75" onchanged="Div00_classPlanTab_classPlan_ta_goal_onchanged"/>
+                        <Button id="btnSave" taborder="24" text="저장" left="759" top="5" width="90" height="39" onclick="classPlanTab_classPlan_btnSave_onclick"/>
+                        <Static id="Static00_02_02_00_00_00_00" taborder="25" text=" ▣ 평가방법(비율)" left="21" top="403" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <Static id="Static03" taborder="46" text="주교재" left="21" top="550" width="118" height="43" border="1px solid" background="silver"/>
+                        <Static id="Static03_00" taborder="48" text="참고 자료" left="21" top="593" width="118" height="43" border="1px solid" background="silver"/>
+                        <Edit id="edt_mainBook" taborder="47" left="139" top="550" width="812" height="43"/>
+                        <Static id="sta_course" taborder="26" text="강의" left="21" top="335" width="235" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sta_test" taborder="27" text="실험/실습" left="256" top="335" width="235" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sta_argue" taborder="28" text="발표/토의/토론" left="491" top="335" width="235" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sum" taborder="29" text="합계" left="726" top="335" width="235" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sta_attend" taborder="34" text="출석" left="21" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sta_mid" taborder="35" text="중간고사" left="176" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sta_fin" taborder="38" text="기말고사" left="641" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sta_task" taborder="37" text="과제" left="486" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sta_otest" taborder="36" text="수시" left="331" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sum2" taborder="39" text="합계" left="796" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sta_sum2" taborder="45" left="796" top="472" width="155" height="30" border="1px solid gray" textAlign="center" text="0%"/>
+                        <Static id="sta_sum" taborder="33" left="726" top="365" width="235" height="30" textAlign="center" border="1px solid gray" text="0%"/>
+                        <Static id="sta_proName" taborder="10" text="" left="139" top="88" width="212" height="39" border="1px solid gray" textAlign="center"/>
+                        <Static id="sta_limit" taborder="2" text=" ▣ 인원" left="351" top="10" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <MaskEdit id="mask_limit" taborder="3" left="469" top="10" width="212" height="39" maskchar="###" textAlign="center" format="+##########"/>
+                        <Edit id="edt_classTime" taborder="18" left="469" top="127" width="455" height="40" textAlign="center"/>
+                        <Static id="Static00_02_02" taborder="15" text=" ▣ 강의실" left="21" top="127" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <Edit id="edt_classRoom" taborder="16" left="139" top="127" width="212" height="39" textAlign="center"/>
+                        <Button id="dropBtn" taborder="19" text="" left="924" top="127" width="25" height="40" onclick="Div00_classPlanTab_classPlan_Button00_onclick"/>
+                        <PopupDiv id="classTimeList" visible="false" left="351" top="167" width="340" height="315" oncloseup="Div00_classPlanTab_classPlan_classTimeList_oncloseup">
+                          <Layouts>
+                            <Layout>
+                              <Grid id="Grid00" taborder="0" left="0" top="0" width="340" height="315" binddataset="ds_classTimeList" onmouseleave="Div00_classPlanTab_classPlan_classTimeList_Grid00_onmouseleave">
+                                <Formats>
+                                  <Format id="default">
+                                    <Columns>
+                                      <Column size="48"/>
+                                      <Column size="48"/>
+                                      <Column size="48"/>
+                                      <Column size="48"/>
+                                      <Column size="48"/>
+                                      <Column size="48"/>
+                                      <Column size="48"/>
+                                    </Columns>
+                                    <Rows>
+                                      <Row size="24" band="head"/>
+                                      <Row size="24"/>
+                                    </Rows>
+                                    <Band id="head">
+                                      <Cell text="교시"/>
+                                      <Cell col="1" text="월"/>
+                                      <Cell col="2" text="화"/>
+                                      <Cell col="3" text="수"/>
+                                      <Cell col="4" text="목"/>
+                                      <Cell col="5" text="금"/>
+                                      <Cell col="6" text="토"/>
+                                    </Band>
+                                    <Band id="body">
+                                      <Cell text="bind:Time"/>
+                                      <Cell col="1" text="bind:Mon" displaytype="checkboxcontrol" edittype="checkbox"/>
+                                      <Cell col="2" text="bind:Tue" displaytype="checkboxcontrol" edittype="checkbox"/>
+                                      <Cell col="3" text="bind:Wed" displaytype="checkboxcontrol" edittype="checkbox"/>
+                                      <Cell col="4" text="bind:Thu" displaytype="checkboxcontrol" edittype="checkbox"/>
+                                      <Cell col="5" text="bind:Fri" displaytype="checkboxcontrol" edittype="checkbox"/>
+                                      <Cell col="6" text="bind:Sat" displaytype="checkboxcontrol" edittype="checkbox"/>
+                                    </Band>
+                                  </Format>
+                                </Formats>
+                              </Grid>
+                            </Layout>
+                          </Layouts>
+                        </PopupDiv>
+                        <Static id="sta_proCode" taborder="53" text="" left="686" top="10" width="65" height="34" border="1px solid black" visible="false"/>
+                        <Button id="btnClose" taborder="50" text="닫기" left="859" top="5" width="90" height="39" onclick="Div00_classPlanTab_classPlan_btnClose_onclick"/>
+                        <Static id="sta_reqState" taborder="51" text="" left="884" top="175" width="65" height="34" border="1px solid black" visible="false"/>
+                        <TextArea id="edt_subBook" taborder="49" left="139" top="593" width="812" height="43"/>
+                        <MaskEdit id="mask_course" taborder="31" left="21" top="365" width="235" height="30" format="+0" textAlign="center" canchange="method_canchange" onchanged="Div00_classPlanTab_classPlan_mask_course_onchanged"/>
+                        <MaskEdit id="edt_classSeq" taborder="52" left="469" top="49" width="212" height="39" maskchar="###" textAlign="center" format="+##########"/>
+                        <MaskEdit id="mask_attend" taborder="42" left="21" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
+                        <MaskEdit id="mask_mid" taborder="44" left="176" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
+                        <Combo id="co_dept" taborder="12" text="" left="469" top="88" width="212" height="39" innerdataset="ds_dept" codecolumn="id" datacolumn="name"/>
+                      </Layout>
+                    </Layouts>
+                    <InitValue/>
+                  </Tabpage>
+                  <Tabpage id="classSchedule" text="수업운영계획">
+                    <Layouts>
+                      <Layout>
+                        <Static id="Static00" taborder="0" text="주차" left="29" top="20" width="70" height="40" border="1px solid gray" background="lightsteelblue" textAlign="center"/>
+                        <Static id="Static00_00" taborder="1" text="강의주제" left="99" top="20" width="257" height="40" border="1px solid gray" background="lightsteelblue" textAlign="center"/>
+                        <Static id="Static00_01" taborder="2" text="준비물" left="751" top="20" width="205" height="40" border="1px solid gray" background="lightsteelblue" textAlign="center"/>
+                        <Static id="Static00_02" taborder="3" text="수업내용" left="356" top="20" width="200" height="40" border="1px solid gray" background="lightsteelblue" textAlign="center"/>
+                        <Static id="Static00_02_00" taborder="4" text="관련지식 및 유의사항" left="556" top="20" width="195" height="40" border="1px solid gray" background="lightsteelblue" textAlign="center"/>
+                        <Static id="Static00_03" taborder="5" text="1주차" left="29" top="60" width="70" height="35" border="1px solid gray" background="whitesmoke" textAlign="center"/>
+                        <Static id="Static00_03_00" taborder="6" text="2주차" left="29" top="95" width="70" height="35" border="1px solid gray" background="whitesmoke" textAlign="center"/>
+                        <Static id="Static00_03_01" taborder="7" text="3주차" left="29" top="130" width="70" height="35" border="1px solid gray" background="whitesmoke" textAlign="center"/>
+                        <Static id="Static00_03_02" taborder="8" text="11주차" left="29" top="410" width="70" height="35" border="1px solid gray" background="whitesmoke" textAlign="center"/>
+                        <Static id="Static00_03_03" taborder="9" text="10주차" left="29" top="375" width="70" height="35" border="1px solid gray" background="whitesmoke" textAlign="center"/>
+                        <Static id="Static00_03_04" taborder="10" text="9주차" left="29" top="340" width="70" height="35" border="1px solid gray" background="whitesmoke" textAlign="center"/>
+                        <Static id="Static00_03_05" taborder="11" text="8주차" left="29" top="305" width="70" height="35" border="1px solid gray" background="whitesmoke" textAlign="center"/>
+                        <Static id="Static00_03_06" taborder="12" text="7주차" left="29" top="270" width="70" height="35" border="1px solid gray" background="whitesmoke" textAlign="center"/>
+                        <Static id="Static00_03_07" taborder="13" text="6주차" left="29" top="235" width="70" height="35" border="1px solid gray" background="whitesmoke" textAlign="center"/>
+                        <Static id="Static00_03_08" taborder="14" text="4주차" left="29" top="165" width="70" height="35" border="1px solid gray" background="whitesmoke" textAlign="center"/>
+                        <Static id="Static00_03_09" taborder="15" text="5주차" left="29" top="200" width="70" height="35" border="1px solid gray" background="whitesmoke" textAlign="center"/>
+                        <Static id="Static00_03_02_00" taborder="16" text="12주차" left="29" top="445" width="70" height="35" border="1px solid gray" background="whitesmoke" textAlign="center"/>
+                        <Static id="Static00_03_02_01" taborder="17" text="13주차" left="29" top="480" width="70" height="35" border="1px solid gray" background="whitesmoke" textAlign="center"/>
+                        <Static id="Static00_03_02_02" taborder="18" text="14주차" left="29" top="515" width="70" height="35" border="1px solid gray" background="whitesmoke" textAlign="center"/>
+                        <Static id="Static00_03_02_03" taborder="19" text="15주차" left="29" top="550" width="70" height="35" border="1px solid gray" background="whitesmoke" textAlign="center"/>
+                        <Edit id="edt_subject1" taborder="20" left="99" top="60" width="257" height="35"/>
+                        <Edit id="edt_subject2" taborder="21" left="99" top="95" width="257" height="35"/>
+                        <Edit id="edt_subject3" taborder="22" left="99" top="130" width="257" height="35"/>
+                        <Edit id="edt_subject4" taborder="23" left="99" top="165" width="257" height="35"/>
+                        <Edit id="edt_subject5" taborder="24" left="99" top="200" width="257" height="35"/>
+                        <Edit id="edt_subject12" taborder="31" left="99" top="445" width="257" height="35"/>
+                        <Edit id="edt_subject6" taborder="25" left="99" top="235" width="257" height="35"/>
+                        <Edit id="edt_subject13" taborder="32" left="99" top="480" width="257" height="35"/>
+                        <Edit id="edt_subject7" taborder="26" left="99" top="270" width="257" height="35"/>
+                        <Edit id="edt_subject8" taborder="27" left="99" top="305" width="257" height="35"/>
+                        <Edit id="edt_subject9" taborder="28" left="99" top="340" width="257" height="35"/>
+                        <Edit id="edt_subject14" taborder="33" left="99" top="515" width="257" height="35"/>
+                        <Edit id="edt_subject15" taborder="34" left="99" top="550" width="257" height="35"/>
+                        <Edit id="edt_subject10" taborder="29" left="99" top="375" width="257" height="35"/>
+                        <Edit id="edt_subject11" taborder="30" left="99" top="410" width="257" height="35"/>
+                        <Edit id="edt_notice1" taborder="35" left="556" top="60" width="195" height="35" textAlign="center"/>
+                        <Edit id="edt_notice2" taborder="36" left="556" top="95" width="195" height="35" textAlign="center"/>
+                        <Edit id="edt_notice3" taborder="37" left="556" top="130" width="195" height="35" textAlign="center"/>
+                        <Edit id="edt_notice4" taborder="38" left="556" top="165" width="195" height="35" textAlign="center"/>
+                        <Edit id="edt_notice5" taborder="39" left="556" top="200" width="195" height="35" textAlign="center"/>
+                        <Edit id="edt_notice6" taborder="40" left="556" top="235" width="195" height="35" textAlign="center"/>
+                        <Edit id="edt_notice7" taborder="41" left="556" top="270" width="195" height="35" textAlign="center"/>
+                        <Edit id="edt_notice8" taborder="42" left="556" top="305" width="195" height="35" textAlign="center"/>
+                        <Edit id="edt_notice9" taborder="43" left="556" top="340" width="195" height="35" textAlign="center"/>
+                        <Edit id="edt_notice10" taborder="44" left="556" top="375" width="195" height="35" textAlign="center"/>
+                        <Edit id="edt_notice11" taborder="45" left="556" top="410" width="195" height="35" textAlign="center"/>
+                        <Edit id="edt_notice12" taborder="46" left="556" top="445" width="195" height="35" textAlign="center"/>
+                        <Edit id="edt_notice13" taborder="47" left="556" top="480" width="195" height="35" textAlign="center"/>
+                        <Edit id="edt_notice14" taborder="48" left="556" top="515" width="195" height="35" textAlign="center"/>
+                        <Edit id="edt_notice15" taborder="49" left="556" top="550" width="195" height="35" textAlign="center"/>
+                        <Edit id="edt_prepare1" taborder="50" left="751" top="60" width="205" height="35"/>
+                        <Edit id="edt_prepare2" taborder="51" left="751" top="95" width="205" height="35"/>
+                        <Edit id="edt_prepare3" taborder="52" left="751" top="130" width="205" height="35"/>
+                        <Edit id="edt_prepare4" taborder="53" left="751" top="165" width="205" height="35"/>
+                        <Edit id="edt_prepare5" taborder="54" left="751" top="200" width="205" height="35"/>
+                        <Edit id="edt_prepare6" taborder="55" left="751" top="235" width="205" height="35"/>
+                        <Edit id="edt_prepare7" taborder="56" left="751" top="270" width="205" height="35"/>
+                        <Edit id="edt_prepare8" taborder="57" left="751" top="305" width="205" height="35"/>
+                        <Edit id="edt_prepare9" taborder="58" left="751" top="340" width="205" height="35"/>
+                        <Edit id="edt_prepare10" taborder="59" left="751" top="375" width="205" height="35"/>
+                        <Edit id="edt_prepare11" taborder="60" left="751" top="410" width="205" height="35"/>
+                        <Edit id="edt_prepare12" taborder="61" left="751" top="445" width="205" height="35"/>
+                        <Edit id="edt_prepare13" taborder="62" left="751" top="480" width="205" height="35"/>
+                        <Edit id="edt_prepare14" taborder="63" left="751" top="515" width="205" height="35"/>
+                        <Edit id="edt_prepare15" taborder="64" left="751" top="550" width="205" height="35"/>
+                        <TextArea id="ta_content1" taborder="65" left="356" top="60" width="200" height="35"/>
+                        <TextArea id="ta_content6" taborder="70" left="356" top="235" width="200" height="35"/>
+                        <TextArea id="ta_content10" taborder="74" left="356" top="375" width="200" height="35"/>
+                        <TextArea id="ta_content11" taborder="75" left="356" top="410" width="200" height="35"/>
+                        <TextArea id="ta_content12" taborder="76" left="356" top="445" width="200" height="35"/>
+                        <TextArea id="ta_content2" taborder="66" left="356" top="95" width="200" height="35"/>
+                        <TextArea id="ta_content3" taborder="67" left="356" top="130" width="200" height="35"/>
+                        <TextArea id="ta_content4" taborder="68" left="356" top="165" width="200" height="35"/>
+                        <TextArea id="ta_content5" taborder="69" left="356" top="200" width="200" height="35"/>
+                        <TextArea id="ta_content7" taborder="71" left="356" top="270" width="200" height="35"/>
+                        <TextArea id="ta_content8" taborder="72" left="356" top="305" width="200" height="35"/>
+                        <TextArea id="ta_content9" taborder="73" left="356" top="340" width="200" height="35"/>
+                        <TextArea id="ta_content14" taborder="78" left="356" top="515" width="200" height="35"/>
+                        <TextArea id="ta_content15" taborder="79" left="356" top="550" width="200" height="35"/>
+                        <TextArea id="ta_content13" taborder="77" left="356" top="480" width="200" height="35"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                </Tabpages>
+              </Tab>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_class">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="classPart" type="STRING" size="256"/>
+          <Column id="className" type="STRING" size="256"/>
+          <Column id="classSeq" type="INT" size="256"/>
+          <Column id="classPoint" type="STRING" size="256"/>
+          <Column id="proCode" type="STRING" size="256"/>
+          <Column id="proName" type="STRING" size="256"/>
+          <Column id="dept" type="STRING" size="256"/>
+          <Column id="classTime" type="STRING" size="256"/>
+          <Column id="classRoom" type="STRING" size="256"/>
+          <Column id="limit" type="STRING" size="256"/>
+          <Column id="classGoal" type="STRING" size="256"/>
+          <Column id="classReferences" type="STRING" size="256"/>
+          <Column id="classMethod" type="STRING" size="256"/>
+          <Column id="classEvaluation" type="STRING" size="256"/>
+          <Column id="grade" type="STRING" size="256"/>
+          <Column id="reqState" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_classSchedule">
+        <ColumnInfo>
+          <Column id="classSeq" type="INT" size="256"/>
+          <Column id="proCode" type="STRING" size="256"/>
+          <Column id="week1" type="STRING" size="256"/>
+          <Column id="week2" type="STRING" size="256"/>
+          <Column id="week3" type="STRING" size="256"/>
+          <Column id="week4" type="STRING" size="256"/>
+          <Column id="week5" type="STRING" size="256"/>
+          <Column id="week6" type="STRING" size="256"/>
+          <Column id="week7" type="STRING" size="256"/>
+          <Column id="week8" type="STRING" size="256"/>
+          <Column id="week9" type="STRING" size="256"/>
+          <Column id="week10" type="STRING" size="256"/>
+          <Column id="week11" type="STRING" size="256"/>
+          <Column id="week12" type="STRING" size="256"/>
+          <Column id="week13" type="STRING" size="256"/>
+          <Column id="week14" type="STRING" size="256"/>
+          <Column id="week15" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_grade">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">1</Col>
+            <Col id="name">1학년</Col>
+          </Row>
+          <Row>
+            <Col id="id">2</Col>
+            <Col id="name">2학년</Col>
+          </Row>
+          <Row>
+            <Col id="id">3</Col>
+            <Col id="name">3학년</Col>
+          </Row>
+          <Row>
+            <Col id="id">4</Col>
+            <Col id="name">4학년</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_point">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">1</Col>
+            <Col id="name">1학점</Col>
+          </Row>
+          <Row>
+            <Col id="id">2</Col>
+            <Col id="name">2학점</Col>
+          </Row>
+          <Row>
+            <Col id="id">3</Col>
+            <Col id="name">3학점</Col>
+          </Row>
+          <Row>
+            <Col id="id">4</Col>
+            <Col id="name">Pass/Fail</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_part">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">A</Col>
+            <Col id="name">전공필수</Col>
+          </Row>
+          <Row>
+            <Col id="id">B</Col>
+            <Col id="name">전공선택</Col>
+          </Row>
+          <Row>
+            <Col id="id">C</Col>
+            <Col id="name">교양필수</Col>
+          </Row>
+          <Row>
+            <Col id="id">D</Col>
+            <Col id="name">교양선택</Col>
+          </Row>
+          <Row>
+            <Col id="id">E</Col>
+            <Col id="name">지정교양</Col>
+          </Row>
+          <Row>
+            <Col id="id">F</Col>
+            <Col id="name">계열기초</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_classTimeList">
+        <ColumnInfo>
+          <Column id="Time" type="STRING" size="256"/>
+          <Column id="Mon" type="STRING" size="256"/>
+          <Column id="Tue" type="STRING" size="256"/>
+          <Column id="Wed" type="STRING" size="256"/>
+          <Column id="Thu" type="STRING" size="256"/>
+          <Column id="Fri" type="STRING" size="256"/>
+          <Column id="Sat" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Time">1교시</Col>
+          </Row>
+          <Row>
+            <Col id="Time">2교시</Col>
+          </Row>
+          <Row>
+            <Col id="Time">3교시</Col>
+          </Row>
+          <Row>
+            <Col id="Time">4교시</Col>
+          </Row>
+          <Row>
+            <Col id="Time">5교시</Col>
+          </Row>
+          <Row>
+            <Col id="Time">6교시</Col>
+          </Row>
+          <Row>
+            <Col id="Time">7교시</Col>
+          </Row>
+          <Row>
+            <Col id="Time">8교시</Col>
+          </Row>
+          <Row>
+            <Col id="Time">9교시</Col>
+          </Row>
+          <Row>
+            <Col id="Time">10교시</Col>
+          </Row>
+          <Row>
+            <Col id="Time">11교시</Col>
+          </Row>
+          <Row>
+            <Col id="Time">12교시</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_dept">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">01</Col>
+            <Col id="name">정보통신학과</Col>
+          </Row>
+          <Row>
+            <Col id="id">02</Col>
+            <Col id="name">간호학과</Col>
+          </Row>
+          <Row>
+            <Col id="id">03</Col>
+            <Col id="name">경찰경호화과</Col>
+          </Row>
+          <Row>
+            <Col id="id">04</Col>
+            <Col id="name">산업디지인과</Col>
+          </Row>
+          <Row>
+            <Col id="id">05</Col>
+            <Col id="name">교양학부</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+var classForm = this.Div00.form.classPlanTab.classPlan.form;
+var planForm = this.Div00.form.classPlanTab.classSchedule.form;
+//-------------------------------------------수업계획서 작성-------------------------------------------
+this.classPlanTab_classPlan_btnSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sum = classForm.sta_sum.text;
+	var sum2 = classForm.sta_sum2.text
+	var part = classForm.co_part.text;
+	var limit = "0/"+classForm.mask_limit.text;
+	var className = classForm.edt_className.text;
+	var classSeq = classForm.edt_classSeq.text;
+	var point = classForm.co_point.text;
+	var proCode = classForm.sta_proCode.text;
+	var proName = classForm.sta_proName.text;
+	var dept =classForm.co_dept.text;
+	var grade = classForm.co_grade.text;
+	var classTime = classForm.edt_classTime.text;
+	var classRoom = classForm.edt_classRoom.text;
+// 	if(sum != "100%" || sum2 != "100%"){alert("합계가 100%가 아닙니다")}
+// 	else if(part ==""){alert("이수구분을 선택해주세요");}
+// 	else if(limit==""){alert("인원을 입력해주세요");}
+// 	else if(className==""){alert("교과명을 입력해주세요");}
+// 	else if(classSeq==""){alert("과목코드를 입력해주세요");}//과목 코드는 조합으로만들 예정
+// 	else if(point==""){alert("학점을 선택해주세요");}
+// 	else if(dept==""){alert("학과를 선택해주세요");}
+// 	else if(grade==""){alert("학년을 선택해주세요");}
+// 	else if(classTime==""){alert("강의시간을 선택해주세요");}
+// 	else if(classRoom==""){alert("강의실을 입력해주세요");}
+// 	else{
+		//ds_class에 값 넣기
+		var goal = classForm.ta_goal.text;
+		var method = classForm.mask_course.text +"|"+classForm.mask_test.text+"|"+classForm.mask_argue.text;
+		var evaluation = classForm.mask_attend.text +"|"+classForm.mask_mid.text+"|"+classForm.mask_fin.text+"|"+classForm.mask_task.text+"|"+classForm.mask_otest.text;
+		var references = classForm.edt_mainBook.text +"|" + classForm.edt_subBook.text;
+		var reqState = classForm.sta_reqState.text;
+		if(reqState == ""){
+			var nRow = this.ds_class.addRow();
+			var nRow2 = this.ds_classSchedule.addRow();
+		}else{
+			var Row = 0;
+			var Row2 = 0;
+		}
+		this.ds_class.setColumn(nRow,"classPart",part);
+		this.ds_class.setColumn(nRow,"className",className);
+		this.ds_class.setColumn(nRow,"classSeq",classSeq);
+		this.ds_class.setColumn(nRow,"classPoint",point);
+		this.ds_class.setColumn(nRow,"proCode",proCode);
+		this.ds_class.setColumn(nRow,"proName",proName);
+		this.ds_class.setColumn(nRow,"dept",dept);
+		this.ds_class.setColumn(nRow,"grade",grade);
+		this.ds_class.setColumn(nRow,"classTime",classTime);
+		this.ds_class.setColumn(nRow,"classRoom",classRoom);
+		this.ds_class.setColumn(nRow,"classGoal",goal);
+		this.ds_class.setColumn(nRow,"limit",limit);
+		this.ds_class.setColumn(nRow,"classMethod",method);
+		this.ds_class.setColumn(nRow,"classEvaluation",evaluation);
+		this.ds_class.setColumn(nRow,"classReferences",references);
+		//ds_classSchedule에 값 넣기
+		
+		var week1 =  planForm.edt_subject1.text +"|" + planForm.ta_content1.text + "|" + planForm.edt_notice1.text + "|" + planForm.edt_prepare1.text;
+		var week2 =  planForm.edt_subject2.text +"|" + planForm.ta_content2.text + "|" + planForm.edt_notice2.text + "|" + planForm.edt_prepare2.text;
+		var week3 =  planForm.edt_subject3.text +"|" + planForm.ta_content3.text + "|" + planForm.edt_notice3.text + "|" + planForm.edt_prepare3.text;
+		var week4 =  planForm.edt_subject4.text +"|" + planForm.ta_content4.text + "|" + planForm.edt_notice4.text + "|" + planForm.edt_prepare4.text;
+		var week5 =  planForm.edt_subject5.text +"|" + planForm.ta_content5.text + "|" + planForm.edt_notice5.text + "|" + planForm.edt_prepare5.text;
+		var week6 =  planForm.edt_subject6.text +"|" + planForm.ta_content6.text + "|" + planForm.edt_notice6.text + "|" + planForm.edt_prepare6.text;
+		var week7 =  planForm.edt_subject7.text +"|" + planForm.ta_content7.text + "|" + planForm.edt_notice7.text + "|" + planForm.edt_prepare7.text;
+		var week8 =  planForm.edt_subject8.text +"|" + planForm.ta_content8.text + "|" + planForm.edt_notice8.text + "|" + planForm.edt_prepare8.text;
+		var week9 =  planForm.edt_subject9.text +"|" + planForm.ta_content9.text + "|" + planForm.edt_notice9.text + "|" + planForm.edt_prepare9.text;
+		var week10 =  planForm.edt_subject10.text +"|" + planForm.ta_content10.text + "|" + planForm.edt_notice10.text + "|" + planForm.edt_prepare10.text;
+		var week11 =  planForm.edt_subject11.text +"|" + planForm.ta_content11.text + "|" + planForm.edt_notice11.text + "|" + planForm.edt_prepare11.text;
+		var week12 =  planForm.edt_subject12.text +"|" + planForm.ta_content12.text + "|" + planForm.edt_notice12.text + "|" + planForm.edt_prepare12.text;
+		var week13 =  planForm.edt_subject13.text +"|" + planForm.ta_content13.text + "|" + planForm.edt_notice13.text + "|" + planForm.edt_prepare13.text;
+		var week14 =  planForm.edt_subject14.text +"|" + planForm.ta_content14.text + "|" + planForm.edt_notice14.text + "|" + planForm.edt_prepare14.text;
+		var week15 =  planForm.edt_subject15.text +"|" + planForm.ta_content15.text + "|" + planForm.edt_notice15.text + "|" + planForm.edt_prepare15.text;
+		
+		this.ds_classSchedule.setColumn(nRow2,"classSeq",classSeq);
+		this.ds_classSchedule.setColumn(nRow2,"proCode",proCode);
+		this.ds_classSchedule.setColumn(nRow2,"week1",week1);
+		this.ds_classSchedule.setColumn(nRow2,"week2",week2);
+		this.ds_classSchedule.setColumn(nRow2,"week3",week3);
+		this.ds_classSchedule.setColumn(nRow2,"week4",week4);
+		this.ds_classSchedule.setColumn(nRow2,"week5",week5);
+		this.ds_classSchedule.setColumn(nRow2,"week6",week6);
+		this.ds_classSchedule.setColumn(nRow2,"week7",week7);
+		this.ds_classSchedule.setColumn(nRow2,"week8",week8);
+		this.ds_classSchedule.setColumn(nRow2,"week9",week9);
+		this.ds_classSchedule.setColumn(nRow2,"week10",week10);
+		this.ds_classSchedule.setColumn(nRow2,"week11",week11);
+		this.ds_classSchedule.setColumn(nRow2,"week12",week12);
+		this.ds_classSchedule.setColumn(nRow2,"week13",week13);
+		this.ds_classSchedule.setColumn(nRow2,"week14",week14);
+		this.ds_classSchedule.setColumn(nRow,"week15",week15);
+		
+		//reqState(요청사항이 없으면) insert
+		if(reqState == ""){
+			//ds_class db에 저장
+			this.transaction(
+				"classInfo_Save"
+				,"/classInfo.nex" 
+				,"in_ds1=ds_class:U in_ds2=ds_classSchedule:U" 
+				,"" 
+				,""
+				,"fn_callback" 
+			);
+		}else{		
+			this.transaction(
+				"classInfo_Update"
+				,"/classInfoUpd.nex" 
+				,"in_ds1=ds_class:U in_ds2=ds_classSchedule:U" 
+				,"" 
+				,""
+				,"fn_callback" 
+			);
+		}
+		this.close(proCode);
+/*	}*/
+};
+this.method_canchange = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+	var sum2 = classForm.sta_sum;
+	var course = classForm.mask_course;
+	var test = classForm.mask_test;
+	var argue =  classForm.mask_argue;
+	var sum =nexacro.toNumber(course.text) + nexacro.toNumber(test.text) + nexacro.toNumber(argue.text)+"%";
+	sum2.set_text(sum);	
+};
+this.evaluation_canchange = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo){
+	var sum2 = classForm.sta_sum2;
+	var attend = classForm.mask_attend;
+	var mid = classForm.mask_mid;
+	var fin = classForm.mask_fin;
+	var otest = classForm.mask_otest;
+	var task = classForm.mask_task;
+	var sum = nexacro.toNumber(attend.text)+nexacro.toNumber(mid.text)+nexacro.toNumber(fin.text)+nexacro.toNumber(otest.text)+nexacro.toNumber(task.text)+"%";
+	sum2.set_text(sum);
+}
+
+
+this.Detail_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.ds_class.clearData();
+	this.ds_classSchedule.clearData();
+	var classSeq = this.parent.classSeq;
+	var proCode = this.parent.proCode;	
+	var view = this.parent.view;
+	if(classSeq != ""){ 
+		//수업 정보 넣기 / 수업 일정 가져오기
+		this.transaction(
+			"classListSeq" 
+			,"/classListSeq.nex"
+			,""
+			,"ds_class=out_ds ds_classSchedule=out_ds2"
+			,"classSeq="+nexacro.wrapQuote(classSeq)
+			,"fn_class_callback"
+		);
+		classForm.edt_classSeq.set_readonly(true);
+		if(view == 'Y'){
+			classForm.btnSave.set_visible( false );
+		}
+	}else{		
+		//proCode로 proInfo가져옴
+		// 		this.transaction(
+		// 				"str_save"
+		// 				,"getProInfo.nex" 
+		// 				,""
+		// 				,""
+		// 				,"proCode="+nexacro.wrapQuote(proCode)
+		// 				,"fn_callback" // 6.strCallbackFunc
+		// 			);
+		//proInfo에서 proName을 가져와서 입력 예정	
+		classForm.sta_proName.set_text("박종혁");
+		classForm.sta_proCode.set_text(proCode);
+	}
+};
+this.Div00_classPlanTab_classPlan_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	nLeft = -classForm.edt_classTime.getOffsetWidth();
+	classForm.classTimeList.trackPopupByComponent(obj,nLeft, obj.getOffsetHeight(), 340, 315);
+};
+
+this.Div00_classPlanTab_classPlan_classTimeList_oncloseup = function(obj:nexacro.PopupDiv,e:nexacro.EventInfo)
+{
+	var classTime = classForm.edt_classTime;
+	var time = new Array();
+	var week = "";
+	var arr = new Array();
+	var weekTime = new Array();
+	var weekTimes = "";
+	arr[0] = this.ds_classTimeList.extractRows("Mon==1");
+	arr[1] = this.ds_classTimeList.extractRows("Tue==1");
+	arr[2] = this.ds_classTimeList.extractRows("Wed==1");
+	arr[3] = this.ds_classTimeList.extractRows("Thu==1");
+	arr[4] = this.ds_classTimeList.extractRows("Fri==1");
+	arr[5] = this.ds_classTimeList.extractRows("Sat==1");
+	for(var j=0; j<arr.length; j++){
+		weekTime[j]="";
+		var times="";
+		for(var i =0; i<arr[j].length; i++){
+			weekTime[j] ="";
+			weekTimes = "";		
+			time[i] = this.ds_classTimeList.getColumn(arr[j][i],"Time");
+			times += time[i]+" ";	
+			week = classForm.classTimeList.form.Grid00.getCellProperty("Head",[j+1],"text");		
+			weekTime[j] = week + "(" + times.substring(0,times.length-1) +")";
+			
+		}		
+	}	
+	weekTimes = weekTime[0]+ weekTime[1] + weekTime[2] + weekTime[3] + weekTime[4] + weekTime[5];
+	classTime.set_value(weekTimes);
+};
+
+
+this.Div00_classPlanTab_classPlan_btnClose_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var proCode = classForm.sta_proCode.text;
+	this.close(proCode)
+};
+
+this.fn_class_callback=function(id,ErrorCode,ErrorMsg){
+	//수업 정보 가져와서 띄우기
+	classForm.co_part.set_text(this.ds_class.getColumn(0,"classPart"));
+	classForm.edt_className.set_value(this.ds_class.getColumn(0,"className")); 
+	classForm.edt_classSeq.set_value(this.ds_class.getColumn(0,"classSeq"));
+	classForm.co_point.set_text(this.ds_class.getColumn(0,"classPoint"));
+	classForm.sta_proCode.set_text(this.ds_class.getColumn(0,"proCode"));
+	classForm.sta_proName.set_text(this.ds_class.getColumn(0,"proName"));
+	classForm.co_dept.set_value(this.ds_class.getColumn(0,"dept"));
+	classForm.co_grade.set_text(this.ds_class.getColumn(0,"grade"));
+	classForm.edt_classTime.set_value(this.ds_class.getColumn(0,"classTime"));
+	classForm.edt_classRoom.set_value(this.ds_class.getColumn(0,"classRoom"));
+	classForm.ta_goal.set_value(this.ds_class.getColumn(0,"classGoal"));
+	var limit = this.ds_class.getColumn(0,"limit").split("/");
+	classForm.mask_limit.set_value(limit[1]);
+	var classMethod = this.ds_class.getColumn(0,"classMethod").split("|");
+	classForm.mask_course.set_value(classMethod[0]);
+	classForm.mask_test.set_value(classMethod[1]);
+	classForm.mask_argue.set_value(classMethod[2]);
+	classForm.sta_sum.set_text(nexacro.toNumber(classMethod[0])+nexacro.toNumber(classMethod[1])+nexacro.toNumber(classMethod[2])+"%");
+	var classEv = this.ds_class.getColumn(0,"classEvaluation").split("|");
+	classForm.mask_attend.set_value(classEv[0]);
+	classForm.mask_mid.set_value(classEv[1]);
+	classForm.mask_fin.set_value(classEv[2]);
+	classForm.mask_task.set_value(classEv[3]);
+	classForm.mask_otest.set_value(classEv[4]); 
+	classForm.sta_sum2.set_text(nexacro.toNumber(classEv[0])+nexacro.toNumber(classEv[1])+nexacro.toNumber(classEv[2])+nexacro.toNumber(classEv[3])+nexacro.toNumber(classEv[4])+"%");
+	var classRefer = this.ds_class.getColumn(0,"classReferences").split("|");
+	classForm.edt_mainBook.set_value(classRefer[0]); 
+	classForm.edt_subBook.set_value(classRefer[1]);
+	classForm.sta_reqState.set_text(this.ds_class.getColumn(0,"reqState"));
+	//수업 일정 가져와서 띄우기
+	
+	var week1 = this.ds_classSchedule.getColumn(0,"week1").split("|");
+	planForm.edt_subject1.set_value(week1[0]);planForm.ta_content1.set_value(week1[1]);planForm.edt_notice1.set_value(week1[2]);planForm.edt_prepare1.set_value(week1[3]);
+	var week2 = this.ds_classSchedule.getColumn(0,"week2").split("|");
+	planForm.edt_subject2.set_value(week2[0]);planForm.ta_content2.set_value(week2[1]);planForm.edt_notice2.set_value(week2[2]);planForm.edt_prepare2.set_value(week2[3]);
+	var week3 = this.ds_classSchedule.getColumn(0,"week3").split("|");
+	planForm.edt_subject3.set_value(week3[0]);planForm.ta_content3.set_value(week3[1]);planForm.edt_notice3.set_value(week3[2]);planForm.edt_prepare3.set_value(week3[3]);
+	var week4 = this.ds_classSchedule.getColumn(0,"week4").split("|");
+	planForm.edt_subject4.set_value(week4[0]);planForm.ta_content4.set_value(week4[1]);planForm.edt_notice4.set_value(week4[2]);planForm.edt_prepare4.set_value(week4[3]);	
+	var week5 = this.ds_classSchedule.getColumn(0,"week5").split("|");
+	planForm.edt_subject5.set_value(week5[0]);planForm.ta_content5.set_value(week5[1]);planForm.edt_notice5.set_value(week5[2]);planForm.edt_prepare5.set_value(week5[3]);	
+	var week6 = this.ds_classSchedule.getColumn(0,"week6").split("|");
+	planForm.edt_subject6.set_value(week6[0]);planForm.ta_content6.set_value(week6[1]);planForm.edt_notice6.set_value(week6[2]);planForm.edt_prepare6.set_value(week6[3]);	
+	var week7 = this.ds_classSchedule.getColumn(0,"week7").split("|");
+	planForm.edt_subject7.set_value(week7[0]);planForm.ta_content7.set_value(week7[1]);planForm.edt_notice7.set_value(week7[2]);planForm.edt_prepare7.set_value(week7[3]);	
+	var week8 = this.ds_classSchedule.getColumn(0,"week8").split("|");
+	planForm.edt_subject8.set_value(week8[0]);planForm.ta_content8.set_value(week8[1]);planForm.edt_notice8.set_value(week8[2]);planForm.edt_prepare8.set_value(week8[3]);	
+	var week9 = this.ds_classSchedule.getColumn(0,"week9").split("|");
+	planForm.edt_subject9.set_value(week9[0]);planForm.ta_content9.set_value(week9[1]);planForm.edt_notice9.set_value(week9[2]);planForm.edt_prepare9.set_value(week9[3]);	
+	var week10 = this.ds_classSchedule.getColumn(0,"week10").split("|");
+	planForm.edt_subject10.set_value(week10[0]);planForm.ta_content10.set_value(week10[1]);planForm.edt_notice10.set_value(week10[2]);planForm.edt_prepare10.set_value(week10[3]);	
+	var week11 = this.ds_classSchedule.getColumn(0,"week11").split("|");
+	planForm.edt_subject11.set_value(week11[0]);planForm.ta_content11.set_value(week11[1]);planForm.edt_notice11.set_value(week11[2]);planForm.edt_prepare11.set_value(week11[3]);	
+	var week12 = this.ds_classSchedule.getColumn(0,"week12").split("|");
+	planForm.edt_subject12.set_value(week12[0]);planForm.ta_content12.set_value(week12[1]);planForm.edt_notice12.set_value(week12[2]);planForm.edt_prepare12.set_value(week12[3]);	
+	var week13 = this.ds_classSchedule.getColumn(0,"week13").split("|");
+	planForm.edt_subject13.set_value(week13[0]);planForm.ta_content13.set_value(week13[1]);planForm.edt_notice13.set_value(week13[2]);planForm.edt_prepare13.set_value(week13[3]);	
+	var week14 = this.ds_classSchedule.getColumn(0,"week14").split("|");
+	planForm.edt_subject14.set_value(week14[0]);planForm.ta_content14.set_value(week14[1]);planForm.edt_notice14.set_value(week14[2]);planForm.edt_prepare14.set_value(week14[3]);	
+	var week15 = this.ds_classSchedule.getColumn(0,"week15").split("|");
+	planForm.edt_subject15.set_value(week15[0]);planForm.ta_content15.set_value(week15[1]);planForm.edt_notice15.set_value(week15[2]);planForm.edt_prepare15.set_value(week15[3]);		
+}
+
+
+]]></Script>
+  </Form>
+</FDL>

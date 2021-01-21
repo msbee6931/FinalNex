@@ -58,11 +58,13 @@
             <Col id="menu_id">201010</Col>
             <Col id="menu_name">강좌 개설 요청 확인</Col>
             <Col id="menu_level">2</Col>
+            <Col id="form_url">admWork::classReq.xfdl</Col>
           </Row>
           <Row>
             <Col id="menu_id">201020</Col>
             <Col id="menu_name">개설된 강좌 조회</Col>
             <Col id="menu_level">2</Col>
+            <Col id="form_url">admWork::classList.xfdl</Col>
           </Row>
           <Row>
             <Col id="menu_id">30</Col>
