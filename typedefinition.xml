@@ -33,6 +33,7 @@
     <Component type="JavaScript" id="Dataset" classname="nexacro.NormalDataset"/>
     <Component type="JavaScript" id="ListView" classname="nexacro.ListView"/>
     <Component type="JavaScript" id="Graphics" classname="nexacro.Graphics"/>
+    <Component type="JavaScript" id="WebBrowser" classname="nexacro.WebBrowser"/>
   </Components>
   <Services>
     <Service prefixid="theme" type="resource" url="./_resource_/_theme_/" version="0" cachelevel="session" include_subdir="true"/>

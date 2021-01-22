@@ -85,11 +85,19 @@
           <Col id="menu_id">3010</Col>
           <Col id="menu_name">재학 증명서</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::enrollment.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">3020</Col>
           <Col id="menu_name">졸업 증명서</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::graduation.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="menu_id">3030</Col>
+          <Col id="menu_name">성적 증명서</Col>
+          <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::transcript.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">40</Col>
