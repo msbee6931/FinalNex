@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="rest" width="1080" height="520" titletext="New Form" onload="rest_onload">
+    <Layouts>
+      <Layout height="520" mobileorientation="landscape" width="1080">
+        <Static id="Static00" taborder="0" left="0" top="0" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00" taborder="2" left="1050" top="0" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Div id="Div00" taborder="4" text="" left="30" top="39" width="1021" height="451" border="1px solid #c1c1c1">
+          <Layouts>
+            <Layout>
+              <Grid id="Grid00" taborder="0" left="28" top="26" width="580" height="364" binddataset="pst" autofittype="col">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="57"/>
+                      <Column size="66"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="296"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="chk"/>
+                      <Cell col="1" text="confirm"/>
+                      <Cell col="2" text="sender"/>
+                      <Cell col="3" text="receiver"/>
+                      <Cell col="4" text="contents"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:chk" edittype="checkbox" displaytype="checkboxcontrol"/>
+                      <Cell col="1" text="bind:confirm"/>
+                      <Cell col="2" text="bind:sender"/>
+                      <Cell col="3" text="bind:receiver"/>
+                      <Cell col="4" text="bind:contents"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Div id="Div00" taborder="1" text="" left="621" top="30" width="386" height="391" border="1px solid black">
+                <Layouts>
+                  <Layout>
+                    <Edit id="Edit00" taborder="0" left="23" top="90" width="353" height="279"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div00_00" taborder="2" text="" left="666" top="39" width="310" height="61" border="1px solid black">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static00" taborder="0" text="Contents" left="31" top="9" width="253" height="43" textAlign="center" font="bold 26px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Button id="del_btn" taborder="3" text="삭제" left="499" top="392" width="109" height="33" onclick="Div00_del_btn_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="5" text="내가쓴 쪽지함" left="30" top="9" width="200" height="30" background="#c1c1c1"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="pst">
+        <ColumnInfo>
+          <Column id="chk" type="INT" size="256"/>
+          <Column id="confirm" type="STRING" size="256"/>
+          <Column id="sender" type="STRING" size="256"/>
+          <Column id="receiver" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.Div00.form.Edit00" propid="value" datasetid="pst" columnid="contents"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[this.fn_callback = function(id,ErrorCode,ErrorMsg){
+	trace(id);
+	trace(ErrorMsg);
+	trace(ErrorCode);
+}
+
+this.rest_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+			"PMWritten" //id
+			,"/PMWritten.nex"//url
+			,""// inData
+			,"pst=out_ds"// outData
+			,""//strArg
+			,"fn_callback"//callback
+		);
+};
+
+this.Div00_del_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+		let arr = this.pst.extractRows("chk==1");
+	
+	if(arr.length==0 || arr.length== -1){alert("선택된 항목이 없습니다.");return;}
+	
+	this.pst.deleteMultiRows(arr);
+
+		   this.transaction(
+            "PMDel"
+            ,"/PMDel.nex"
+            ,"in_ds=pst:U"
+            ,"" 
+            ,""
+            ,"fn_callback" 
+         )
+};
+]]></Script>
+  </Form>
+</FDL>

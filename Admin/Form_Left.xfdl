@@ -167,16 +167,19 @@
             <Col id="menu_id">6010</Col>
             <Col id="menu_name">쪽지 보내기</Col>
             <Col id="menu_level">1</Col>
+            <Col id="form_url">admWork::write_postmessage.xfdl</Col>
           </Row>
           <Row>
             <Col id="menu_id">6020</Col>
             <Col id="menu_name">받은 쪽지함</Col>
             <Col id="menu_level">1</Col>
+            <Col id="form_url">admWork::received_postmessage.xfdl</Col>
           </Row>
           <Row>
             <Col id="menu_id">6030</Col>
             <Col id="menu_name">보낸 쪽지함</Col>
             <Col id="menu_level">1</Col>
+            <Col id="form_url">admWork::writtenList_postmessage.xfdl</Col>
           </Row>
         </Rows>
       </Dataset>
