@@ -2,7 +2,7 @@
 <FDL version="2.1">
   <Form id="classList" width="1080" height="570" titletext="New Form" onload="classList_onload">
     <Layouts>
-      <Layout height="570" mobileorientation="landscape" width="1080">
+      <Layout height="570" mobileorientation="landscape" width="1080" stepcount="0">
         <Combo id="co_search" taborder="0" left="670" top="6" width="120" height="28" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" text="전체" value="All" index="0">
           <Dataset id="innerdataset">
             <ColumnInfo>
@@ -69,18 +69,54 @@
               <Band id="body">
                 <Cell text="expr:currow+1" textAlign="center"/>
                 <Cell col="1" text="bind:classPart" textAlign="center"/>
-                <Cell col="2" text="bind:className" tooltiptext="상세보기" textDecoration="underline" textAlign="center" cursor="pointer"/>
+                <Cell col="2" text="bind:className" tooltiptext="상세보기" textDecoration="underline" textAlign="center" cursor="pointer" wordWrap="english"/>
                 <Cell col="3" text="bind:grade" textAlign="center"/>
-                <Cell col="4" text="bind:classSeq" textAlign="center"/>
+                <Cell col="4" text="bind:classSeq" textAlign="center" displaytype="mask" maskeditformat="#########"/>
                 <Cell col="5" text="bind:classPoint" textAlign="center"/>
                 <Cell col="6" text="bind:proName" textAlign="center"/>
-                <Cell col="7" text="bind:classTime" textAlign="center"/>
+                <Cell col="7" text="bind:classTime" textAlign="center" wordWrap="english"/>
                 <Cell col="8" text="bind:classRoom" textAlign="center"/>
                 <Cell col="9" text="bind:limit" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
+        <Combo id="co_semester" taborder="4" text="" left="540" top="7" width="120" height="28" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">1학기</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">2학기</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Combo id="co_year" taborder="5" text="" left="410" top="7" width="120" height="28" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">2020</Col>
+                <Col id="datacolumn">2020년</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2021</Col>
+                <Col id="datacolumn">2021년</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
       </Layout>
     </Layouts>
     <Objects>
@@ -104,6 +140,7 @@
           <Column id="classReferences" type="STRING" size="256"/>
           <Column id="reqState" type="STRING" size="256"/>
           <Column id="rejectMsg" type="STRING" size="256"/>
+          <Column id="reg_date" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_req">
@@ -154,6 +191,7 @@
           <Column id="classReferences" type="STRING" size="256"/>
           <Column id="reqState" type="STRING" size="256"/>
           <Column id="rejectMsg" type="STRING" size="256"/>
+          <Column id="reg_date" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row/>
@@ -163,15 +201,42 @@
     <Script type="xscript5.1"><![CDATA[
 this.classList_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	var objDate= new Date();
+	if(objDate.getMonth()+1 && objDate.getMonth()+1 < 8){
+		this.co_year.set_text(objDate.getFullYear()+"년");
+		this.co_semester.set_text("1학기");
+	}else{
+		this.co_year.set_text(objDate.getFullYear()+"년");
+		this.co_semester.set_text("2학기");
+	}
 	this.transaction(
 		"classList"
 		,"/classList.nex" 
 		,""
 		,"ds_class=out_ds" 
 		,""
-		,"fn_callback" 
+		,"fn_callback_fliter" 
 	);
 };
+this.fn_callback_fliter=function(){
+	var date = new Array();
+	for(var i=0; i<this.ds_class.getRowCount(); i++){
+		date[i] = this.ds_class.getColumn(i,"reg_date")
+		date[i] = nexacro.replaceAll(date[i],"-","");
+		date[i] = date[i].substring(0,8);
+		this.ds_class.setColumn(i,"reg_date",date[i]);
+	}
+	var year = this.co_year.value
+	var startDate =  year+ "0101";
+	var semester = this.co_semester.value;
+	var mDate = year+ "0801";
+	var endDate = year+ "1231";
+	if(semester == "1"){
+		this.ds_class.filter("reg_date >='"+startDate+"'&& reg_date < '"+mDate+"'");
+	}else{
+		this.ds_class.filter("reg_date >='"+mDate+"'&& reg_date <= '"+endDate+"'")
+	}
+}
 
 //개설강좌 상세보기
 this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
@@ -235,12 +300,30 @@ this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let coValue = this.co_search.value;
 	let edtSearch = this.edt_search.text;
-	if(coValue == 'className' || coValue == 'proName' || coValue == 'classTime' || coValue == 'classRoom' ){
-		this.ds_class.filter(coValue +".indexOf('"+edtSearch+"')>=0");
+	var year = this.co_year.value;
+	var semester = this.co_semester.value;
+	var startDate = year+ "0101";
+	var mDate = year+ "0801";
+	var endDate = year+ "1231";
+	
+	if(coValue == 'className' || coValue == 'proName' || coValue == 'classTime' || coValue == 'classRoom'){
+		if(semester == "1"){
+			this.ds_class.filter(coValue+".indexOf('"+edtSearch+"')>=0 && reg_date >='"+startDate+"'&& reg_date <'"+mDate+"'");
+		}else{
+			this.ds_class.filter(coValue+".indexOf('"+edtSearch+"')>=0 && reg_date >='"+mDate+"'&& reg_date <='"+endDate+"'");
+		}
 	}else{
-		this.ds_class.filter("");
+		if(semester == "1"){
+			this.ds_class.filter("reg_date >='"+startDate+"'&& reg_date <= '"+mDate+"'");
+		}else{
+			this.ds_class.filter("reg_date >='"+mDate+"'&& reg_date <= '"+endDate+"''")
+		}
 	}
 };
+
+
+
+
 
 ]]></Script>
   </Form>

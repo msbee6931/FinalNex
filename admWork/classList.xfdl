@@ -7,6 +7,7 @@
           <Formats>
             <Format id="default">
               <Columns>
+                <Column size="33"/>
                 <Column size="41"/>
                 <Column size="73"/>
                 <Column size="193"/>
@@ -14,37 +15,39 @@
                 <Column size="103"/>
                 <Column size="57"/>
                 <Column size="85"/>
-                <Column size="257"/>
-                <Column size="114"/>
-                <Column size="66"/>
+                <Column size="248"/>
+                <Column size="94"/>
+                <Column size="61"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="번호"/>
-                <Cell col="1" text="이수구분"/>
-                <Cell col="2" text="과목명"/>
-                <Cell col="3" text="학년"/>
-                <Cell col="4" text="과목코드"/>
-                <Cell col="5" text="학점"/>
-                <Cell col="6" text="담당교수"/>
-                <Cell col="7" text="강의시간"/>
-                <Cell col="8" text="강의실"/>
-                <Cell col="9" text="인원수"/>
+                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="번호"/>
+                <Cell col="2" text="이수구분"/>
+                <Cell col="3" text="과목명"/>
+                <Cell col="4" text="학년"/>
+                <Cell col="5" text="과목코드"/>
+                <Cell col="6" text="학점"/>
+                <Cell col="7" text="담당교수"/>
+                <Cell col="8" text="강의시간"/>
+                <Cell col="9" text="강의실"/>
+                <Cell col="10" text="인원수"/>
               </Band>
               <Band id="body">
-                <Cell text="expr:currow+1" textAlign="center"/>
-                <Cell col="1" text="bind:classPart" textAlign="center"/>
-                <Cell col="2" text="bind:className" displaytype="normal" textDecoration="underline" cursor="pointer" textAlign="center"/>
-                <Cell col="3" text="bind:grade" textAlign="center"/>
-                <Cell col="4" text="bind:classSeq" textAlign="center" displaytype="mask" maskeditmaskchar="########"/>
-                <Cell col="5" text="bind:classPoint" textAlign="center"/>
-                <Cell col="6" text="bind:proName" textAlign="center"/>
-                <Cell col="7" text="bind:classTime" textAlign="center"/>
-                <Cell col="8" text="bind:classRoom" textAlign="center"/>
-                <Cell col="9" text="bind:limit" textAlign="center"/>
+                <Cell displaytype="checkboxcontrol" edittype="checkbox" text="bind:chk"/>
+                <Cell col="1" text="expr:currow+1" textAlign="center"/>
+                <Cell col="2" text="bind:classPart" textAlign="center"/>
+                <Cell col="3" text="bind:className" displaytype="normal" textDecoration="underline" cursor="pointer" textAlign="center" wordWrap="english"/>
+                <Cell col="4" text="bind:grade" textAlign="center"/>
+                <Cell col="5" text="bind:classSeq" textAlign="center" displaytype="mask" maskeditmaskchar="########"/>
+                <Cell col="6" text="bind:classPoint" textAlign="center"/>
+                <Cell col="7" text="bind:proName" textAlign="center"/>
+                <Cell col="8" text="bind:classTime" textAlign="center" wordWrap="english"/>
+                <Cell col="9" text="bind:classRoom" textAlign="center"/>
+                <Cell col="10" text="bind:limit" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
@@ -81,21 +84,84 @@
         </Combo>
         <Edit id="edt_search" taborder="2" left="795" top="6" width="170" height="28"/>
         <Button id="btnSearch" taborder="3" text="검색" left="970" top="4" width="90" height="33" onclick="btnSearch_onclick"/>
+        <Combo id="co_year" taborder="4" text="" left="410" top="7" width="120" height="28" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">2020</Col>
+                <Col id="datacolumn">2020년</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2021</Col>
+                <Col id="datacolumn">2021년</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Combo id="co_semester" taborder="5" text="" left="540" top="7" width="120" height="28" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">1학기</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">2학기</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Button id="Button00" taborder="6" text="삭제" left="930" top="480" width="120" height="50" onclick="Button00_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
 this.classList_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	var objDate= new Date();
+	if(objDate.getMonth()+1 && objDate.getMonth()+1 < 8){
+		this.co_year.set_text(objDate.getFullYear()+"년");
+		this.co_semester.set_text("1학기");
+	}else{
+		this.co_year.set_text(objDate.getFullYear()+"년");
+		this.co_semester.set_text("2학기");
+	}
 	this.transaction(
 		"classList"
 		,"/classList.nex" 
 		,""
 		,"ds_class=out_ds" 
 		,""
-		,"fn_callback" 
+		,"fn_callback_fliter" 
 	);
 };
-
+this.fn_callback_fliter=function(){
+	var date = new Array();
+	for(var i=0; i<this.ds_class.getRowCount(); i++){
+		date[i] = this.ds_class.getColumn(i,"reg_date")
+		date[i] = nexacro.replaceAll(date[i],"-","");
+		date[i] = date[i].substring(0,8);
+		this.ds_class.setColumn(i,"reg_date",date[i]);
+	}
+	var year = this.co_year.value
+	var startDate =  year+ "0101";
+	var semester = this.co_semester.value;
+	var mDate = year+ "0801";
+	var endDate = year+ "1231";
+	if(semester == "1"){
+		this.ds_class.filter("reg_date >='"+startDate+"'&& reg_date < '"+mDate+"'");
+	}else{
+		this.ds_class.filter("reg_date >='"+mDate+"'&& reg_date <= '"+endDate+"'")
+	}
+}
 
 //개설강좌 상세보기
 this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
@@ -122,17 +188,38 @@ this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let coValue = this.co_search.value;
 	let edtSearch = this.edt_search.text;
+	var year = this.co_year.value;
+	var semester = this.co_semester.value;
+	var startDate = year+ "0101";
+	var mDate = year+ "0801";
+	var endDate = year+ "1231";
 	
-	if(coValue == "className" || coValue == "proName" || coValue == "classTime" || coValue == "classRoom" ){
-		this.ds_class.filter(coValue +".indexOf('"+edtSearch+"')>=0");
+	if(coValue == "className" || coValue == "proName" || coValue == "classTime" || coValue == "classRoom"){
+		if(semester == "1"){	
+			this.ds_class.filter(coValue+".indexOf('"+edtSearch+"')>=0 && reg_date >='"+startDate+"'&& reg_date <'"+mDate+"'");
+		}else{
+			this.ds_class.filter(coValue+".indexOf('"+edtSearch+"')>=0 && reg_date >='"+mDate+"'&& reg_date <='"+endDate+"'");
+		}
 	}else{
-		this.ds_class.filter("");
+		if(semester == "1"){
+			this.ds_class.filter("reg_date >='"+startDate+"'&& reg_date <'"+mDate+"'");
+		}else{
+			this.ds_class.filter("reg_date >='"+mDate+"'&& reg_date <= '"+endDate+"'");
+		}
 	}
 };
 
 //개설강좌 정렬
 this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
+	let flag = obj.getCellProperty("Head",0,"text");
+	let check = flag==0?1:0;
+	if(e.cell==0){
+		obj.setCellProperty("Head",0,"text",check);
+		for(let i = 0;i<this.ds_class.getRowCount();i++){
+			this.ds_class.setColumn(i,"chk",check);
+		}
+	}
 	var objDs = this.objects[obj.binddataset];          
 	for (var i = 1; i < obj.getCellCount("head"); i++)
 	{ 
@@ -166,6 +253,69 @@ this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 		}
 	} 
 };
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+	var arr = this.ds_class.extractRows("chk==1");
+	var code ="";
+	if(arr.length == 0 || arr==-1){
+		alert("선택된 항목이 없습니다");
+	}else{
+		for(var i=0; i< arr.length; i++){
+			var classSeq = this.ds_class.getColumn(arr[i],"classSeq");
+			code += classSeq+","
+		}
+			code=code.substring(0,code.length-1);
+			let x = this.width/2-150; 
+			let y = this.height/2-200;
+			let objCF = new ChildFrame();
+			objCF.init("popMsg",x,y,300,400,0,0,"admWork::rejectMsg.xfdl");
+			objCF.set_showtitlebar(false);
+			objCF.showModal(this.getOwnerFrame(),{classSeq:code},this,"fn_msg_callback");
+	}
+	//pop 후 삭제 rejectMsg에 입력 후 reqState = 거절로 변경
+	//관련 학생 table에서 삭제 stdTimeTable stdClass
+};
+this.fn_msg_callback=function(sId,send)
+{
+	if(send == ""){return;}
+	else{
+	var arr = send.split("|")
+	var classSeqs = arr[0];
+	var reason = arr[1];
+	
+	var classSeq = classSeqs.split(",");
+	this.ds_class_copy.clearData();
+	for(var i=0; i<classSeq.length; i++){
+		var nRow = this.ds_class.findRow("classSeq",classSeq[i]);
+		this.ds_class.setColumn(nRow,"rejectMsg",reason);
+		this.ds_class.setColumn(nRow,"reqState","C");
+		var addRow = this.ds_class_copy.addRow();
+		this.ds_class_copy.setColumn(addRow,"classSeq",classSeq[i]);
+		var stdRow = this.ds_stdClass.addRow();
+		this.ds_stdClass.setColumn(stdRow,"classCode",classSeq[i])
+		this.ds_class.deleteRow(nRow)
+	}
+		this.transaction(
+					"rejectMsgInset" 
+					,"/rejectMsgInsert.nex" 
+					,"in_ds=ds_class_copy:U"
+					,"" 
+					,"msg="+nexacro.wrapQuote(reason)
+					,"fn_callback" 
+				);
+		//해당 학과코드로 관련 table에서 삭제 stdTimeTable stdClass
+		this.transaction(
+			"deleteStdClass"
+			,"/deleteStdClass.nex"
+			,"in_ds=ds_stdClass"
+			,""
+			,""
+			,"fn_callback"
+		)
+	}
+}
 ]]></Script>
     <Objects>
       <Dataset id="ds_class">
@@ -188,6 +338,7 @@ this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
           <Column id="classReferences" type="STRING" size="256"/>
           <Column id="reqState" type="STRING" size="256"/>
           <Column id="rejectMsg" type="STRING" size="256"/>
+          <Column id="reg_date" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_req">
@@ -238,10 +389,18 @@ this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
           <Column id="classReferences" type="STRING" size="256"/>
           <Column id="reqState" type="STRING" size="256"/>
           <Column id="rejectMsg" type="STRING" size="256"/>
+          <Column id="reg_date" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row/>
         </Rows>
+      </Dataset>
+      <Dataset id="ds_stdClass" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="sCode" type="INT" size="256"/>
+          <Column id="classCode" type="INT" size="256"/>
+          <Column id="basket" type="STRING" size="256"/>
+        </ColumnInfo>
       </Dataset>
     </Objects>
   </Form>
