@@ -7,14 +7,38 @@
         <Button id="Button00" taborder="1" text="홈" left="210" top="10" width="30" height="30"/>
         <Menu id="Menu00" taborder="2" left="241" top="10" width="849" height="30" innerdataset="ds_menu" onmenuclick="Menu00_onmenuclick" onrbuttondown="Menu00_onrbuttondown" captioncolumn="menu_name" idcolumn="menu_id" levelcolumn="menu_level"/>
         <Button id="btn_logout" taborder="3" text="로그아웃" left="1197" top="17" width="69" height="20" onclick="btn_logout_onclick"/>
+        <Button id="alarm_btn" taborder="4" text="알람" left="1126" top="14" width="61" height="27" onclick="alarm_btn_onclick"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
+    <Script type="xscript5.1"><![CDATA[this.fn_callback = function(id,ErrorCode,ErrorMsg){
+	trace(id);
+	trace(ErrorMsg);
+	trace(ErrorCode);
+}
+
+
+
+
+this.objApp = nexacro.getApplication();
 
 this.Form_Top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.fn_setTopMenu();
+		
+		this.transaction(
+			"alarm" //id
+			,"/alarm.nex"//url
+			,""// inData
+			,"pf_alarm=out_ds"// outData
+			,""//strArg
+			,"fn_callback"//callback
+		);
+		
+
 };
+
+
+
 
 //innerDataSet은 ds_menu 나머지 바인딩 셋은 글로벌 셋으로 세팅
 this.fn_setTopMenu = function()
@@ -50,9 +74,38 @@ this.btn_logout_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.objApp.mainframe.VFrameSet00.set_separatesize("*,0,0,0");
 };
-]]></Script>
+
+this.alarm_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+
+	
+	var ObjCF = new ChildFrame();
+	ObjCF.init("pop_CorpDept", 0, 0, 800, 600);
+	ObjCF.set_formurl("prfWork::alarm_professor.xfdl");
+	
+	ObjCF.showModal(this.getOwnerFrame(), {}, this, "fn_callback_pop");
+};
+
+this.fn_callback_pop= function(){
+	this.transaction(
+			"alarm" //id
+			,"/alarm.nex"//url
+			,""// inData
+			,"pf_alarm=out_ds"// outData
+			,""//strArg
+			,"fn_callback"//callback
+		);
+}]]></Script>
     <Objects>
       <Dataset id="ds_menu"/>
+      <Dataset id="pf_alarm">
+        <ColumnInfo>
+          <Column id="confirm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
+    <Bind>
+      <BindItem id="item1" compid="alarm_btn" propid="text" datasetid="pf_alarm" columnid="confirm"/>
+    </Bind>
   </Form>
 </FDL>

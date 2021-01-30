@@ -33,6 +33,7 @@
     <Component type="JavaScript" id="Dataset" classname="nexacro.NormalDataset"/>
     <Component type="JavaScript" id="ListView" classname="nexacro.ListView"/>
     <Component type="JavaScript" id="Graphics" classname="nexacro.Graphics"/>
+    <Component type="JavaScript" id="WebBrowser" classname="nexacro.WebBrowser"/>
   </Components>
   <Services>
     <Service prefixid="theme" type="resource" url="./_resource_/_theme_/" version="0" cachelevel="session" include_subdir="true"/>
@@ -49,6 +50,10 @@
   </Services>
   <Protocols/>
   <DeviceAdaptors/>
-  <Update/>
-  <Deploy/>
+  <Update>
+    <Os name="Windows" url="./" timeout="30" retry="3" autoupdate="auto" updatetype="server"/>
+  </Update>
+  <Deploy>
+    <Os name="Windows"/>
+  </Deploy>
 </TypeDefinition>

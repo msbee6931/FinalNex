@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="absence" width="1080" height="520" titletext="New Form" onload="absence_onload">
+    <Layouts>
+      <Layout height="520" mobileorientation="landscape" width="1080">
+        <Static id="Static00" taborder="0" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00" taborder="1" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Div id="Div00" taborder="4" text="" left="30" top="38" width="1021" height="452" border="1px solid #c1c1c1">
+          <Layouts>
+            <Layout>
+              <MaskEdit id="MaskEdit00_01" taborder="0" left="379" top="223" width="150" height="37" border="1px solid white"/>
+              <MaskEdit id="MaskEdit00_02" taborder="1" left="379" top="181" width="150" height="37" border="1px solid white"/>
+              <MaskEdit id="MaskEdit00_03" taborder="2" left="393" top="256" width="150" height="37" border="1px solid white"/>
+              <WebBrowser id="WebBrowser00" taborder="3" left="112" top="1" width="736" height="440"/>
+              <Button id="Button00" taborder="4" text="pdf 저장" left="24" top="19" width="71" height="31" onclick="Div00_Button00_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="5" text="재학 증명서" left="30" top="9" width="200" height="30"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="enrollment">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="code" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">name</Col>
+            <Col id="code">name</Col>
+          </Row>
+          <Row>
+            <Col id="id">birth</Col>
+            <Col id="code">birth</Col>
+          </Row>
+          <Row/>
+          <Row>
+            <Col id="id">s_seq</Col>
+            <Col id="code">s_seq</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.absence_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.Div00.form.WebBrowser00.set_url("http://localhost/certification/enrollment")
+};
+
+this.Div00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	location.href="https://pdfmyurl.com/api?license=eVNJ64pvSbol&url=http://localhost/certification/enrollment";
+};
+]]></Script>
+  </Form>
+</FDL>
