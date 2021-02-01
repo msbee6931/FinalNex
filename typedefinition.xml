@@ -7,6 +7,7 @@
     <Module url="ListView.json"/>
     <Module url="DeviceAPI.json"/>
     <Module url="Graphics.json"/>
+    <Module url="extlib::Chart.json"/>
   </Modules>
   <Components>
     <Component type="JavaScript" id="Button" classname="nexacro.Button"/>
@@ -33,6 +34,17 @@
     <Component type="JavaScript" id="Dataset" classname="nexacro.NormalDataset"/>
     <Component type="JavaScript" id="ListView" classname="nexacro.ListView"/>
     <Component type="JavaScript" id="Graphics" classname="nexacro.Graphics"/>
+    <Component type="JavaScript" id="FileDialog" classname="nexacro.FileDialog"/>
+    <Component type="JavaScript" id="FileUpTransfer" classname="nexacro.FileUpTransfer"/>
+    <Component type="JavaScript" id="FileDownTransfer" classname="nexacro.FileDownTransfer"/>
+    <Component type="JavaScript" id="BasicChart" classname="nexacro.BasicChart" iconindex="400" iconextra="true"/>
+    <Component type="JavaScript" id="PyramidChart" classname="nexacro.PyramidChart" iconindex="407" iconextra="true"/>
+    <Component type="JavaScript" id="FloatChart" classname="nexacro.FloatChart" iconindex="406" iconextra="true"/>
+    <Component type="JavaScript" id="RoseChart" classname="nexacro.RoseChart" iconindex="405" iconextra="true"/>
+    <Component type="JavaScript" id="RadarChart" classname="nexacro.RadarChart" iconindex="404" iconextra="true"/>
+    <Component type="JavaScript" id="GaugeChart" classname="nexacro.GaugeChart" iconindex="403" iconextra="true"/>
+    <Component type="JavaScript" id="PieChart" classname="nexacro.PieChart" iconindex="402" iconextra="true"/>
+    <Component type="JavaScript" id="BubbleChart" classname="nexacro.BubbleChart" iconindex="401" iconextra="true"/>
   </Components>
   <Services>
     <Service prefixid="theme" type="resource" url="./_resource_/_theme_/" version="0" cachelevel="session" include_subdir="true"/>
@@ -46,6 +58,8 @@
     <Service prefixid="stdWork" type="form" url="./stdWork/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="Professor" type="form" url="./Professor/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="prfWork" type="form" url="./prfWork/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="lib" type="form" url="./lib/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="lib_techtip" type="form" url="./lib_techtip/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
   </Services>
   <Protocols/>
   <DeviceAdaptors/>

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="requestScholar" width="1080" height="520" titletext="New Form" onload="requestScholar_onload">
+    <Layouts>
+      <Layout height="520" mobileorientation="landscape" width="1080">
+        <Static id="Static00" taborder="0" left="0" top="0" visible="false" background="RGBA(236,135,135,0.71)" width="29" bottom="0"/>
+        <Static id="Static00_00" taborder="1" left="1051" top="0" visible="false" background="RGBA(236,135,135,0.71)" right="0" bottom="0"/>
+        <Static id="Static00_01" taborder="2" left="80" top="0" visible="false" background="RGBA(236,135,135,0.71)" height="10" width="800"/>
+        <Static id="Static00_01_00" taborder="3" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="0"/>
+        <Static id="Static01" taborder="4" text="장학금 신청 관리" left="30" top="9" width="200" height="30"/>
+        <Div id="Div00" taborder="5" text="Div00" left="30" top="38" border="1px solid #c1c1c1" right="29" bottom="30">
+          <Layouts>
+            <Layout>
+              <Grid id="Grid00" taborder="1" left="25" top="51" binddataset="reqScholar_ds" autofittype="col" onheadclick="Div00_Grid00_onheadclick" oncelldblclick="Div00_Grid00_oncelldblclick" right="24" bottom="59">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="31"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="0" displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="1" text="seq"/>
+                      <Cell col="2" text="std_code"/>
+                      <Cell col="3" text="title"/>
+                      <Cell col="4" text="contents"/>
+                      <Cell col="5" text="writeDate"/>
+                      <Cell col="6" text="checkRead"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:chk" edittype="checkbox" displaytype="checkboxcontrol"/>
+                      <Cell col="1" text="bind:seq"/>
+                      <Cell col="2" text="bind:std_code"/>
+                      <Cell col="3" text="bind:title"/>
+                      <Cell col="4" text="bind:contents"/>
+                      <Cell col="5" text="bind:writeDate"/>
+                      <Cell col="6" text="bind:checkRead"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="reqScholar_ds">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="seq" type="INT" size="256"/>
+          <Column id="std_code" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="writeDate" type="STRING" size="256"/>
+          <Column id="checkRead" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.requestScholar_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"selectReqScholar.", // 1. strSvcID
+		"/scholarship/selectReqScholar.scholarship", // 2. strURL(절대경로로 입력해주어야함. 로컬호스트 뒤에는 이클립스 서버파일에 있는 path값)
+		"", // 3. strInDatasets - Sds=Fds:U, :A, :N
+		"reqScholar_ds=out_ds", // 4. strOutDatasets - select Fds = Sds
+		"", // 5. strArgument
+		"fn_callback" // 6. strCallbackFunc
+	);
+};
+
+this.fn_callback = function(id,ErrorCode,ErrorMsg){
+	trace(id);
+	trace(ErrorCode);
+	trace(ErrorMsg);
+};
+
+this.Div00_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+		var seq = this.reqScholar_ds.getColumn(e.row, "seq");
+	
+	//내용 확인을 위한 모달 창
+	var objCF = new ChildFrame();
+	objCF.init("requestScholar_read_pop",400,100,900,600);
+	objCF.set_titletext("장학금 신청 자세히 보기");
+	objCF.set_formurl("admWork::requestScholar_read_pop.xfdl");
+	objCF.showModal(
+		this.getOwnerFrame(),
+		{seq:seq}, // 모달창에 seq 값 넘기기
+		this,
+		"fn_callback_pop_s"
+	);
+};
+
+this.fn_callback_pop_s = function(seq){
+	this.alert(seq);
+	var nRow = this.reqScholar_ds.findRow( "seq", seq );
+	this.alert(nRow);
+	this.reqScholar_ds.setColumn(nRow,"checkRead","확인완료");
+
+}
+
+//헤더 전체  클릭 적용
+this.Div00_Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if(e.cell == 0)
+    {
+        this.gf_setCheckAll(obj, e);
+    }
+};
+
+
+this.gv_isCheckAll = 0;
+this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
+{
+    var sColID = obj.getCellProperty("body", e.cell, "text").replace("bind:", "");
+	
+	var sheadValue = obj.getCellProperty("head",e.cell,"text");
+	
+    if(sColID == "chk")
+    {
+		sheadValue = (sheadValue =="1"? "0":"1");
+		obj.setCellProperty("head",e.cell,"text",sheadValue);
+		
+		this.reqScholar_ds.set_enableevent(false);
+		for(var i=0; i< this.reqScholar_ds.getRowCount(); i++)
+		{
+			this.reqScholar_ds.setColumn(i, "chk",sheadValue);
+		}
+		this.reqScholar_ds.set_enableevent(true);
+    }
+	
+}
+
+
+]]></Script>
+  </Form>
+</FDL>

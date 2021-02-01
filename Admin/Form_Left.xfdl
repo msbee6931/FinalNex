@@ -3,7 +3,7 @@
   <Form id="Form_Left" width="200" height="550" titletext="Form_Left">
     <Layouts>
       <Layout width="200" height="550" screenid="Desktop_screen">
-        <Grid id="Grid00" taborder="0" left="0" top="30" width="200" height="520" binddataset="adm_menu" autofittype="col" treeinitstatus="collapse,all" treeusecheckbox="false" treeuseimage="false" treeuseline="false" onheaddblclick="Grid00_onheaddblclick" oncelldblclick="Grid00_oncelldblclick">
+        <Grid id="Grid00" taborder="0" left="0" top="0" width="200" binddataset="adm_menu" autofittype="col" treeinitstatus="collapse,all" treeusecheckbox="false" treeuseimage="false" treeuseline="false" onheaddblclick="Grid00_onheaddblclick" oncelldblclick="Grid00_oncelldblclick" bottom="0">
           <Formats>
             <Format id="default">
               <Columns>
@@ -136,6 +136,7 @@
             <Col id="menu_id">502010</Col>
             <Col id="menu_name">장학금 관리</Col>
             <Col id="menu_level">2</Col>
+            <Col id="form_url">admWork::requestScholar.xfdl</Col>
           </Row>
           <Row>
             <Col id="menu_id">502020</Col>

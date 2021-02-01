@@ -3,7 +3,7 @@
   <Form id="Form_login" width="1280" height="720" titletext="New Form">
     <Layouts>
       <Layout height="720" width="1280">
-        <Div id="Div00" taborder="1" text="Div00" left="385" top="155" width="580" height="350" border="1px solid #c1c1c1">
+        <Div id="Div00" taborder="0" text="Div00" left="385" top="155" width="580" height="350" border="1px solid #c1c1c1">
           <Layouts>
             <Layout>
               <Static id="Static00" taborder="0" text="ID" left="80" top="111" width="55" height="30"/>
@@ -14,9 +14,9 @@
             </Layout>
           </Layouts>
         </Div>
-        <Button id="Button00" taborder="1" text="학생" left="390" top="60" width="120" height="50" onclick="Button00_onclick"/>
-        <Button id="Button00_00" taborder="2" text="교수" left="531" top="60" width="120" height="50" onclick="Button00_00_onclick"/>
-        <Button id="Button00_01" taborder="3" text="관리자" left="670" top="60" width="120" height="50" onclick="Button00_01_onclick"/>
+        <Button id="btn_std" taborder="1" text="학생" left="382" top="65" width="145" height="33" onclick="btn_std_onclick"/>
+        <Button id="btn_prf" taborder="2" text="교수" left="601" top="65" width="145" height="33" onclick="btn_prf_onclick"/>
+        <Button id="btn_adm" taborder="3" text="관리자" left="820" top="65" width="145" height="33" onclick="btn_adm_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
@@ -26,16 +26,18 @@ this.Div00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 	this.objApp.mainframe.VFrameSet00.set_separatesize("0,50,*,60");
 };
 
-this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.btn_std_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	
 	this.objApp.mainframe.VFrameSet00.TopFrame.set_formurl("Student::Form_Top.xfdl");
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_formurl("Student::Form_Left.xfdl");
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.set_formurl("Student::Form_Mdi.xfdl");
 	this.objApp.mainframe.VFrameSet00.BottomFrame.set_formurl("Student::Form_Bottom.xfdl");
 	this.objApp.mainframe.VFrameSet00.set_separatesize("0,50,*,60");
+	
 };
 
-this.Button00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.btn_prf_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.objApp.mainframe.VFrameSet00.TopFrame.set_formurl("Professor::Form_Top.xfdl");
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_formurl("Professor::Form_Left.xfdl");
@@ -43,7 +45,7 @@ this.Button00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.objApp.mainframe.VFrameSet00.set_separatesize("0,50,*,60");
 };
 
-this.Button00_01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.btn_adm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.objApp.mainframe.VFrameSet00.TopFrame.set_formurl("Admin::Form_Top.xfdl");
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_formurl("Admin::Form_Left.xfdl");

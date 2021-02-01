@@ -3,7 +3,7 @@
   <Form id="Form_Bottom" width="1280" height="60" titletext="Form_Bottom">
     <Layouts>
       <Layout width="1280" height="60" screenid="Desktop_screen">
-        <Static id="Static00" taborder="0" text="Footer" left="0" top="0" width="1280" height="60" background="#c1c1c1"/>
+        <Static id="Static00" taborder="0" text="Footer" left="0" top="0" height="60" background="#c1c1c1" right="0"/>
       </Layout>
     </Layouts>
   </Form>
