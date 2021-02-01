@@ -79,7 +79,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="edt_search" taborder="2" left="795" top="6" width="170" height="28"/>
+        <Edit id="edt_search" taborder="2" left="795" top="6" width="170" height="28" onchanged="edt_search_onchanged"/>
         <Button id="btnSearch" taborder="3" text="검색" left="970" top="4" width="90" height="33" onclick="btnSearch_onclick"/>
       </Layout>
     </Layouts>
@@ -166,6 +166,7 @@ this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 		}
 	} 
 };
+
 ]]></Script>
     <Objects>
       <Dataset id="ds_class">

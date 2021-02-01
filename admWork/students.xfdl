@@ -137,7 +137,7 @@ this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	let x = this.width/2;
 	let y = this.height/2;
 	let objCF = new ChildFrame();
-	objCF.init("insertpop",0,0,300,500,0,0,"FrameBase::insertStudent.xfdl");
+	objCF.init("insertpop",0,0,300,500,0,0,"admWork::insertStudent.xfdl");
 	objCF.set_showtitlebar(false);
 	objCF.showModal(this.getOwnerFrame(),{},this,"fn_callback");
 };
