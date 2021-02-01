@@ -59,22 +59,25 @@
           <Col id="menu_id">2010</Col>
           <Col id="menu_name">수강신청</Col>
           <Col id="menu_level">1</Col>
-          <Col id="form_url">stdWork::classRegist.xfdl</Col>
+          <Col id="form_url">stdWork::regist.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">2020</Col>
-          <Col id="menu_name">개설 강좌 조회</Col>
+          <Col id="menu_name">예비수강신청</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::testRegist.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">2030</Col>
           <Col id="menu_name">수강신청 내역</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::myClassList.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">2040</Col>
-          <Col id="menu_name">관심 수강 과목</Col>
+          <Col id="menu_name">개설강좌 조회</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">prfWork::classList.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">30</Col>

@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="myClassList" width="1080" height="570" titletext="New Form" onload="myClassList_onload">
+    <Layouts>
+      <Layout height="570" mobileorientation="landscape" width="1080">
+        <Grid id="Grid00" taborder="0" left="40" top="60" width="970" height="440" binddataset="ds_class" autofittype="col" oncellclick="Grid00_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="104"/>
+                <Column size="233"/>
+                <Column size="90"/>
+                <Column size="151"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="이수구분"/>
+                <Cell col="1" text="과목코드"/>
+                <Cell col="2" text="과목명"/>
+                <Cell col="3" text="학점"/>
+                <Cell col="4" text="담당교수"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:classPart" textAlign="center"/>
+                <Cell col="1" text="bind:classSeq" displaytype="mask" maskeditformat="########" textAlign="center"/>
+                <Cell col="2" text="bind:className" textAlign="center" cursor="pointer" textDecoration="underline"/>
+                <Cell col="3" text="bind:classPoint" textAlign="center"/>
+                <Cell col="4" text="bind:proName" textAlign="center"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="3" text="신청학점"/>
+                <Cell col="3" text="expr:dataset.getSum('parseInt(classPoint.replace(&quot;학점&quot;,&quot;&quot;))')+&quot;학점&quot;"/>
+                <Cell col="4"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Combo id="co_year" taborder="1" text="" left="40" top="16" width="120" height="28" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">2020</Col>
+                <Col id="datacolumn">2020년</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2021</Col>
+                <Col id="datacolumn">2021년</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Combo id="co_semester" taborder="2" text="" left="170" top="16" width="120" height="28" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">1학기</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">2학기</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Button id="btnSearch" taborder="3" text="검색" left="310" top="14" width="90" height="33" onclick="btnSearch_onclick"/>
+        <Button id="btnTimeTable" taborder="4" text="시간표 조회" left="900" top="15" width="110" height="35" onclick="btnTimeTable_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_class">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="classPart" type="STRING" size="256"/>
+          <Column id="className" type="STRING" size="256"/>
+          <Column id="classSeq" type="INT" size="256"/>
+          <Column id="classPoint" type="STRING" size="256"/>
+          <Column id="proCode" type="STRING" size="256"/>
+          <Column id="proName" type="STRING" size="256"/>
+          <Column id="dept" type="STRING" size="256"/>
+          <Column id="classTime" type="STRING" size="256"/>
+          <Column id="classRoom" type="STRING" size="256"/>
+          <Column id="limit" type="STRING" size="256"/>
+          <Column id="grade" type="STRING" size="256"/>
+          <Column id="classGoal" type="STRING" size="256"/>
+          <Column id="classMethod" type="STRING" size="256"/>
+          <Column id="classEvaluation" type="STRING" size="256"/>
+          <Column id="classReferences" type="STRING" size="256"/>
+          <Column id="reqState" type="STRING" size="256"/>
+          <Column id="rejectMsg" type="STRING" size="256"/>
+          <Column id="reg_date" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.myClassList_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	sCode = "12345"; // 학번
+	var objDate= new Date();
+	if(objDate.getMonth()+1 && objDate.getMonth()+1 < 8){
+		this.co_year.set_text(objDate.getFullYear()+"년");
+		this.co_semester.set_text("1학기");
+		var startTime = objDate.getFullYear()+"0101";
+		var endTime = objDate.getFullYear()+"0731";
+	}else{
+		this.co_year.set_text(objDate.getFullYear()+"년");
+		this.co_semester.set_text("2학기");
+		var startTime = objDate.getFullYear()+"0801";
+		var endTime = objDate.getFullYear()+"1231";
+	}
+	this.transaction(
+		"myClassList"
+		,"/myClassList.nex" 
+		,""
+		,"ds_class=out_ds" 
+		,"sCode="+sCode + " startTime="+startTime+" endTime="+endTime
+		,"fn_callback_myClass" 
+	);
+};
+this.fn_callback_myClass=function(){
+	this.Grid00
+}
+this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if(e.col == 2){
+		var classSeq = this.ds_class.getColumn(e.row,"classSeq");
+		var proCode = this.ds_class.getColumn(e.row,"proCode");
+		var x = this.width/2-500; 
+		var y = this.height/2-340;
+		var objCF = new ChildFrame();
+		objCF.init("popAdd",x,y,1000,680,0,0,"prfWork::detail.xfdl");
+		objCF.set_showtitlebar(false);
+		objCF.showModal(this.getOwnerFrame(),{classSeq:classSeq, proCode : proCode, view : 'Y'},this,"fn_callback");
+ 	}
+};
+
+this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sCode ="12345"; //학번
+	var year = this.co_year.text;
+	year = year.substring(0,year.length-1)
+	if(this.co_semester.text == "1학기"){
+		var startTime = year+"0101";
+		var endTime = year+"0731";
+	}else{
+		var startTime = year+"0801";
+		var endTime = year+"1231";
+	}
+	this.transaction(
+		"myClassList"
+		,"/myClassList.nex" 
+		,""
+		,"ds_class=out_ds" 
+		,"sCode="+sCode + " startTime="+startTime+" endTime="+endTime
+		,"fn_callback" 
+	);
+};
+
+this.btnTimeTable_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var date = this.ds_class.getColumn(0,"reg_date");
+	if(this.ds_class.getRowCount() >0){
+	var year = date.substring(0,4);
+	var month = date.substring(5,7);
+	if(nexacro.toNumber(month) >= 1 && nexacro.toNumber(month) <8){
+		var startTime = year +"0101";
+		var endTime = year + "0731";
+	}else{
+		var startTime = year +"0801";
+		var endTime = year + "1231";
+	}
+	trace(startTime +":"+endTime);
+	var sCode = "12345";//학번
+	var x = this.width/2-360; 
+	var y = this.height/2-220;
+	var objCF = new ChildFrame();
+	objCF.init("popTimeTable",x,y,720,440,0,0,"stdWork::studentSchedule.xfdl");
+	objCF.set_showtitlebar(false);
+	
+	objCF.showModal(this.getOwnerFrame(),{sCode:sCode,myClass:"Y",startTime : startTime, endTime:endTime},this,"fn_callback");
+	}else{
+		this.alert("수강내역이 존재하지 않습니다");
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

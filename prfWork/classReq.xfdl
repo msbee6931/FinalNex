@@ -41,16 +41,16 @@
               <Band id="body">
                 <Cell text="bind:chk" edittype="checkbox" displaytype="checkboxcontrol" textAlign="center" checkboxtruevalue="1" checkboxfalsevalue="0"/>
                 <Cell col="1" text="bind:classPart" textAlign="center"/>
-                <Cell col="2" text="bind:className" tooltiptext="상세보기" cursor="pointer" textDecoration="underline" textAlign="center"/>
+                <Cell col="2" text="bind:className" tooltiptext="상세보기" cursor="pointer" textDecoration="underline" textAlign="center" wordWrap="english"/>
                 <Cell col="3" text="bind:classSeq" textAlign="center" displaytype="mask" maskeditmaskchar="#######"/>
                 <Cell col="4" text="bind:classPoint" textAlign="center"/>
                 <Cell col="5" text="bind:proName" textAlign="center"/>
                 <Cell col="6" text="bind:dept" textAlign="center"/>
-                <Cell col="7" text="bind:classTime" textAlign="center"/>
+                <Cell col="7" text="bind:classTime" textAlign="center" wordWrap="english"/>
                 <Cell col="8" text="bind:classRoom" textAlign="center"/>
                 <Cell col="9" text="bind:limit" textAlign="center"/>
                 <Cell col="10" text="bind:grade" textAlign="center"/>
-                <Cell col="11" text="bind:reqState" combodataset="ds_req" combocodecol="id" combodatacol="name" displaytype="combocontrol" textAlign="center" expandshow="show"/>
+                <Cell col="11" text="bind:reqState" combodataset="ds_req" combocodecol="id" combodatacol="name" displaytype="combocontrol" textAlign="center" expandshow="show" wordWrap="english"/>
               </Band>
             </Format>
           </Formats>
@@ -68,12 +68,14 @@
           <Column id="className" type="STRING" size="256"/>
           <Column id="classSeq" type="INT" size="256"/>
           <Column id="classPoint" type="STRING" size="256"/>
+          <Column id="passFail" type="STRING" size="256"/>
           <Column id="proCode" type="STRING" size="256"/>
           <Column id="proName" type="STRING" size="256"/>
           <Column id="dept" type="STRING" size="256"/>
           <Column id="classTime" type="STRING" size="256"/>
           <Column id="classRoom" type="STRING" size="256"/>
           <Column id="limit" type="STRING" size="256"/>
+          <Column id="basketLimit" type="STRING" size="256"/>
           <Column id="grade" type="STRING" size="256"/>
           <Column id="classGoal" type="STRING" size="256"/>
           <Column id="classMethod" type="STRING" size="256"/>
@@ -81,6 +83,7 @@
           <Column id="classReferences" type="STRING" size="256"/>
           <Column id="reqState" type="STRING" size="256"/>
           <Column id="rejectMsg" type="STRING" size="256"/>
+          <Column id="reg_date" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_req">
@@ -118,12 +121,14 @@
           <Column id="className" type="STRING" size="256"/>
           <Column id="classSeq" type="INT" size="256"/>
           <Column id="classPoint" type="STRING" size="256"/>
+          <Column id="passFail" type="STRING" size="256"/>
           <Column id="proCode" type="STRING" size="256"/>
           <Column id="proName" type="STRING" size="256"/>
           <Column id="dept" type="STRING" size="256"/>
           <Column id="classTime" type="STRING" size="256"/>
           <Column id="classRoom" type="STRING" size="256"/>
           <Column id="limit" type="INT" size="256"/>
+          <Column id="basketLimit" type="STRING" size="256"/>
           <Column id="grade" type="STRING" size="256"/>
           <Column id="classGoal" type="STRING" size="256"/>
           <Column id="classMethod" type="STRING" size="256"/>
@@ -131,10 +136,8 @@
           <Column id="classReferences" type="STRING" size="256"/>
           <Column id="reqState" type="STRING" size="256"/>
           <Column id="rejectMsg" type="STRING" size="256"/>
+          <Column id="reg_date" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row/>
-        </Rows>
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[
@@ -187,8 +190,8 @@ this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 	let check = flag==0?1:0;
 	if(e.cell==0){
 		obj.setCellProperty("Head",0,"text",check);
-		for(let i = 0;i<this.ds_class.rowcount;i++){
-			this.ds_class.setColumn(i,0,check);
+		for(let i = 0;i<this.ds_class.getRowCount();i++){
+			this.ds_class.setColumn(i,"chk",check);
 		}
 	}
 };

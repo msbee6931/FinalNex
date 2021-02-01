@@ -25,7 +25,7 @@
                         <Static id="Static00_02_04" taborder="11" text=" ▣ 소속 학과" left="351" top="88" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
                         <Combo id="co_part" taborder="1" left="139" top="10" width="212" height="39" innerdataset="ds_part" codecolumn="id" datacolumn="name"/>
                         <Edit id="edt_className" taborder="5" left="139" top="49" width="212" height="39" textAlign="center"/>
-                        <Combo id="co_point" taborder="8" left="799" top="49" width="150" height="39" innerdataset="ds_point" codecolumn="id" datacolumn="name"/>
+                        <Combo id="co_point" taborder="8" left="799" top="49" width="90" height="39" innerdataset="ds_point" codecolumn="id" datacolumn="name"/>
                         <Static id="Static00_02_03" taborder="13" text=" ▣ 학년" left="681" top="88" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
                         <Combo id="co_grade" taborder="14" left="799" top="88" width="150" height="39" innerdataset="ds_grade" codecolumn="id" datacolumn="name"/>
                         <Static id="Static00_02_02_00" taborder="20" text=" ▣ 교과목 및 목표" left="21" top="176" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
@@ -108,6 +108,7 @@
                         <MaskEdit id="mask_attend" taborder="42" left="21" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
                         <MaskEdit id="mask_mid" taborder="44" left="176" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
                         <Combo id="co_dept" taborder="12" text="" left="469" top="88" width="212" height="39" innerdataset="ds_dept" codecolumn="id" datacolumn="name"/>
+                        <CheckBox id="chk_pf" taborder="54" text="Pass/Fail" left="894" top="58" width="85" height="20" falsevalue="F" truevalue="P" value="F"/>
                       </Layout>
                     </Layouts>
                     <InitValue/>
@@ -213,18 +214,21 @@
           <Column id="className" type="STRING" size="256"/>
           <Column id="classSeq" type="INT" size="256"/>
           <Column id="classPoint" type="STRING" size="256"/>
+          <Column id="passFail" type="STRING" size="256"/>
           <Column id="proCode" type="STRING" size="256"/>
           <Column id="proName" type="STRING" size="256"/>
           <Column id="dept" type="STRING" size="256"/>
           <Column id="classTime" type="STRING" size="256"/>
           <Column id="classRoom" type="STRING" size="256"/>
           <Column id="limit" type="STRING" size="256"/>
+          <Column id="basketLimit" type="STRING" size="256"/>
           <Column id="classGoal" type="STRING" size="256"/>
           <Column id="classReferences" type="STRING" size="256"/>
           <Column id="classMethod" type="STRING" size="256"/>
           <Column id="classEvaluation" type="STRING" size="256"/>
           <Column id="grade" type="STRING" size="256"/>
           <Column id="reqState" type="STRING" size="256"/>
+          <Column id="reg_date" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_classSchedule">
@@ -289,10 +293,6 @@
           <Row>
             <Col id="id">3</Col>
             <Col id="name">3학점</Col>
-          </Row>
-          <Row>
-            <Col id="id">4</Col>
-            <Col id="name">Pass/Fail</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -393,11 +393,11 @@
           </Row>
           <Row>
             <Col id="id">03</Col>
-            <Col id="name">경찰경호화과</Col>
+            <Col id="name">경찰경호학과</Col>
           </Row>
           <Row>
             <Col id="id">04</Col>
-            <Col id="name">산업디지인과</Col>
+            <Col id="name">산업디자인과</Col>
           </Row>
           <Row>
             <Col id="id">05</Col>
@@ -412,6 +412,7 @@ var planForm = this.Div00.form.classPlanTab.classSchedule.form;
 //-------------------------------------------수업계획서 작성-------------------------------------------
 this.classPlanTab_classPlan_btnSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	
 	var sum = classForm.sta_sum.text;
 	var sum2 = classForm.sta_sum2.text
 	var part = classForm.co_part.text;
@@ -419,6 +420,7 @@ this.classPlanTab_classPlan_btnSave_onclick = function(obj:nexacro.Button,e:nexa
 	var className = classForm.edt_className.text;
 	var classSeq = classForm.edt_classSeq.text;
 	var point = classForm.co_point.text;
+	var passFail = classForm.chk_pf.value;
 	var proCode = classForm.sta_proCode.text;
 	var proName = classForm.sta_proName.text;
 	var dept =classForm.co_dept.text;
@@ -453,6 +455,7 @@ this.classPlanTab_classPlan_btnSave_onclick = function(obj:nexacro.Button,e:nexa
 		this.ds_class.setColumn(nRow,"className",className);
 		this.ds_class.setColumn(nRow,"classSeq",classSeq);
 		this.ds_class.setColumn(nRow,"classPoint",point);
+		this.ds_class.setColumn(nRow,"passFail",passFail);
 		this.ds_class.setColumn(nRow,"proCode",proCode);
 		this.ds_class.setColumn(nRow,"proName",proName);
 		this.ds_class.setColumn(nRow,"dept",dept);
@@ -461,6 +464,7 @@ this.classPlanTab_classPlan_btnSave_onclick = function(obj:nexacro.Button,e:nexa
 		this.ds_class.setColumn(nRow,"classRoom",classRoom);
 		this.ds_class.setColumn(nRow,"classGoal",goal);
 		this.ds_class.setColumn(nRow,"limit",limit);
+		this.ds_class.setColumn(nRow,"basketLimit",limit);
 		this.ds_class.setColumn(nRow,"classMethod",method);
 		this.ds_class.setColumn(nRow,"classEvaluation",evaluation);
 		this.ds_class.setColumn(nRow,"classReferences",references);
@@ -562,7 +566,7 @@ this.Detail_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 			,"classSeq="+nexacro.wrapQuote(classSeq)
 			,"fn_class_callback"
 		);
-		classForm.edt_classSeq.set_readonly(true);
+			classForm.edt_classSeq.set_readonly(true);
 		if(view == 'Y'){
 			classForm.btnSave.set_visible( false );
 		}
@@ -611,7 +615,6 @@ this.Div00_classPlanTab_classPlan_classTimeList_oncloseup = function(obj:nexacro
 			times += time[i]+" ";	
 			week = classForm.classTimeList.form.Grid00.getCellProperty("Head",[j+1],"text");		
 			weekTime[j] = week + "(" + times.substring(0,times.length-1) +")";
-			
 		}		
 	}	
 	weekTimes = weekTime[0]+ weekTime[1] + weekTime[2] + weekTime[3] + weekTime[4] + weekTime[5];
@@ -631,9 +634,10 @@ this.fn_class_callback=function(id,ErrorCode,ErrorMsg){
 	classForm.edt_className.set_value(this.ds_class.getColumn(0,"className")); 
 	classForm.edt_classSeq.set_value(this.ds_class.getColumn(0,"classSeq"));
 	classForm.co_point.set_text(this.ds_class.getColumn(0,"classPoint"));
+	classForm.chk_pf.set_value(this.ds_class.getColumn(0,"passFail"));
 	classForm.sta_proCode.set_text(this.ds_class.getColumn(0,"proCode"));
 	classForm.sta_proName.set_text(this.ds_class.getColumn(0,"proName"));
-	classForm.co_dept.set_value(this.ds_class.getColumn(0,"dept"));
+	classForm.co_dept.set_text(this.ds_class.getColumn(0,"dept"));
 	classForm.co_grade.set_text(this.ds_class.getColumn(0,"grade"));
 	classForm.edt_classTime.set_value(this.ds_class.getColumn(0,"classTime"));
 	classForm.edt_classRoom.set_value(this.ds_class.getColumn(0,"classRoom"));
