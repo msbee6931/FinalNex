@@ -87,7 +87,6 @@ this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialog
 		return;
 	}else{
 		if(e.reason == 3) {    //FileDialog.MULTILOAD 옵션의 파일선택
-			
 			this.addFileList(e.virtualfiles);
 			
 		}
