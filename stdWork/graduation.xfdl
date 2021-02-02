@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="absence" width="1080" height="520" titletext="New Form" onload="absence_onload">
+    <Layouts>
+      <Layout height="520" mobileorientation="landscape" width="1080">
+        <Static id="Static00" taborder="0" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00" taborder="1" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Div id="Div00" taborder="4" text="" left="30" top="38" width="1021" height="452" border="1px solid #c1c1c1">
+          <Layouts>
+            <Layout>
+              <WebBrowser id="WebBrowser00" taborder="0" left="147" top="10" width="721" height="436"/>
+              <Button id="Button00" taborder="1" text="pdf 저장" left="62" top="24" width="73" height="30" onclick="Div00_Button00_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="5" text="졸업 증명서" left="30" top="9" width="200" height="30"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Div00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	location.href="https://pdfmyurl.com/api?license=eVNJ64pvSbol&url=http://localhost/certification/graduate";
+};
+
+
+this.absence_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.Div00.form.WebBrowser00.set_url("http://localhost/certification/graduate");
+};
+
+]]></Script>
+  </Form>
+</FDL>

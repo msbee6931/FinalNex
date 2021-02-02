@@ -60,22 +60,25 @@
           <Col id="menu_id">2010</Col>
           <Col id="menu_name">수강신청</Col>
           <Col id="menu_level">1</Col>
-          <Col id="form_url">stdWork::classRegist.xfdl</Col>
+          <Col id="form_url">stdWork::regist.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">2020</Col>
-          <Col id="menu_name">개설 강좌 조회</Col>
+          <Col id="menu_name">예비수강신청</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::testRegist.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">2030</Col>
           <Col id="menu_name">수강신청 내역</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::myClassList.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">2040</Col>
-          <Col id="menu_name">관심 수강 과목</Col>
+          <Col id="menu_name">개설강좌 조회</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">prfWork::classList.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">30</Col>
@@ -86,11 +89,19 @@
           <Col id="menu_id">3010</Col>
           <Col id="menu_name">재학 증명서</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::enrollment.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">3020</Col>
           <Col id="menu_name">졸업 증명서</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::graduation.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="menu_id">3030</Col>
+          <Col id="menu_name">성적 증명서</Col>
+          <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::transcript.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">40</Col>
@@ -189,16 +200,19 @@
           <Col id="menu_id">4010</Col>
           <Col id="menu_name">쪽지 보내기</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">admWork::write_postmessage.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">4020</Col>
           <Col id="menu_name">받은 쪽지함</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">admWork::received_postmessage.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">4030</Col>
           <Col id="menu_name">보낸 쪽지함</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">admWork::writtenList_postmessage.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">50</Col>
