@@ -59,22 +59,25 @@
           <Col id="menu_id">2010</Col>
           <Col id="menu_name">수강신청</Col>
           <Col id="menu_level">1</Col>
-          <Col id="form_url">stdWork::classRegist.xfdl</Col>
+          <Col id="form_url">stdWork::regist.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">2020</Col>
-          <Col id="menu_name">개설 강좌 조회</Col>
+          <Col id="menu_name">예비수강신청</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::testRegist.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">2030</Col>
           <Col id="menu_name">수강신청 내역</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::myClassList.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">2040</Col>
-          <Col id="menu_name">관심 수강 과목</Col>
+          <Col id="menu_name">개설강좌 조회</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">prfWork::classList.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">30</Col>
@@ -108,6 +111,7 @@
           <Col id="menu_id">4010</Col>
           <Col id="menu_name">나의 정보 수정</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">myInfoModify.xfdl</Col>
         </Row>
       </Rows>
     </Dataset>
@@ -136,7 +140,7 @@
           <Col id="menu_id">1010</Col>
           <Col id="menu_name">교직원 조회</Col>
           <Col id="menu_level">1</Col>
-          <Col id="form_url">prfWork::employee.xfdl</Col>
+          <Col id="form_url">admWork::faculty.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">20</Col>
@@ -218,6 +222,7 @@
           <Col id="menu_id">5010</Col>
           <Col id="menu_name">나의 정보 수정</Col>
           <Col id="menu_level">1</Col>
+          <Col id="form_url">prfWork::myInfoModifyPro.xfdl</Col>
         </Row>
       </Rows>
     </Dataset>
