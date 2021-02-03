@@ -398,6 +398,7 @@ this.fn_msg_callback=function(sId,send)
       <Dataset id="ds_stdClass" useclientlayout="true">
         <ColumnInfo>
           <Column id="sCode" type="INT" size="256"/>
+          <Column id="sName" type="STRING" size="256"/>
           <Column id="classCode" type="INT" size="256"/>
           <Column id="basket" type="STRING" size="256"/>
         </ColumnInfo>

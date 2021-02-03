@@ -28,9 +28,7 @@ this.fn_addTab = function(pFormId, pMenuNm)
 this.tab_menu_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
 {
 	var sFormId = obj.tabpages[e.postindex].name;
-
 	this.av_FrameSet[sFormId].form.setFocus();
-
 };
 
 this.tab_menu_onextrabuttonclick = function(obj:nexacro.Tab,e:nexacro.TabMouseEventInfo)

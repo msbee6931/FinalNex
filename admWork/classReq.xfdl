@@ -50,7 +50,7 @@
                 <Cell col="8" text="bind:classRoom" textAlign="center"/>
                 <Cell col="9" text="bind:limit" textAlign="center"/>
                 <Cell col="10" text="bind:grade" textAlign="center"/>
-                <Cell col="11" text="bind:reqState" displaytype="combocontrol" textAlign="center" combodataset="ds_req" combocodecol="id" combodatacol="name" expandshow="show" wordWrap="english"/>
+                <Cell col="11" text="bind:reqState" displaytype="combotext" textAlign="center" combodataset="ds_req" combocodecol="id" combodatacol="name" expandshow="show" wordWrap="english"/>
               </Band>
             </Format>
           </Formats>

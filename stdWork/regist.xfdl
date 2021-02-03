@@ -2,7 +2,7 @@
 <FDL version="2.1">
   <Form id="ClassRegist" width="1080" height="570" titletext="New Form" onload="ClassRegist_onload">
     <Layouts>
-      <Layout height="570" mobileorientation="landscape" width="1080" stepcount="3">
+      <Layout height="570" mobileorientation="landscape" width="1080" stepcount="0">
         <Div id="Div00" taborder="0" text="Info" left="0" top="0" width="200" height="570" border="1px solid black">
           <Layouts>
             <Layout>
@@ -16,7 +16,7 @@
               <Static id="Static00_04" taborder="7" text="학과" left="9" top="269" width="60" height="30" border="1px solid black" textAlign="center"/>
               <Static id="Static00_04_00" taborder="8" text="이수구분" left="9" top="299" width="60" height="30" border="1px solid black" textAlign="center"/>
               <Static id="Static00_04_00_00" taborder="9" text="과목명" left="9" top="329" width="60" height="30" border="1px solid black" textAlign="center"/>
-              <Static id="sta_name" taborder="10" text="" left="89" top="129" width="100" height="30" border="1px solid black" padding="0px 0px 0px 5px"/>
+              <Static id="sta_name" taborder="10" text="박종혁" left="89" top="129" width="100" height="30" border="1px solid black" padding="0px 0px 0px 5px"/>
               <Static id="sta_grade" taborder="11" text="" left="89" top="159" width="100" height="30" border="1px solid black" padding="0px 0px 0px 5px"/>
               <Static id="sta_point" taborder="12" text="20" left="89" top="189" width="100" height="30" border="1px solid black" padding="0px 0px 0px 5px"/>
               <Static id="sta_sSeq" taborder="13" text="12345" left="89" top="99" width="100" height="30" border="1px solid black" padding="0px 0px 0px 5px"/>
@@ -123,92 +123,6 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid01" taborder="5" left="53" top="25" width="777" height="315" positionstep="1" binddataset="ds_stdTimeTable">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="sCode"/>
-                <Cell col="1" text="classCode"/>
-                <Cell col="2" text="time"/>
-                <Cell col="3" text="mon"/>
-                <Cell col="4" text="tue"/>
-                <Cell col="5" text="wed"/>
-                <Cell col="6" text="thu"/>
-                <Cell col="7" text="fri"/>
-                <Cell col="8" text="sat"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:sCode"/>
-                <Cell col="1" text="bind:classCode"/>
-                <Cell col="2" text="bind:time"/>
-                <Cell col="3" text="bind:mon"/>
-                <Cell col="4" text="bind:tue"/>
-                <Cell col="5" text="bind:wed"/>
-                <Cell col="6" text="bind:thu"/>
-                <Cell col="7" text="bind:fri"/>
-                <Cell col="8" text="bind:sat"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
-        <Grid id="Grid02" taborder="6" left="40" top="18" width="640" height="445" positionstep="2" binddataset="ds_stdTimeTableCopy">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="sCode"/>
-                <Cell col="1" text="classCode"/>
-                <Cell col="2" text="time"/>
-                <Cell col="3" text="mon"/>
-                <Cell col="4" text="tue"/>
-                <Cell col="5" text="wed"/>
-                <Cell col="6" text="thu"/>
-                <Cell col="7" text="fri"/>
-                <Cell col="8" text="sat"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:sCode"/>
-                <Cell col="1" text="bind:classCode"/>
-                <Cell col="2" text="bind:time"/>
-                <Cell col="3" text="bind:mon"/>
-                <Cell col="4" text="bind:tue"/>
-                <Cell col="5" text="bind:wed"/>
-                <Cell col="6" text="bind:thu"/>
-                <Cell col="7" text="bind:fri"/>
-                <Cell col="8" text="bind:sat"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
       </Layout>
     </Layouts>
     <Objects>
@@ -304,7 +218,7 @@
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="ds_myClass">
+      <Dataset id="ds_myClass" useclientlayout="true">
         <ColumnInfo>
           <Column id="chk" type="STRING" size="256"/>
           <Column id="classPart" type="STRING" size="256"/>
@@ -339,6 +253,7 @@
           <Column id="thu" type="STRING" size="256"/>
           <Column id="fri" type="STRING" size="256"/>
           <Column id="sat" type="STRING" size="256"/>
+          <Column id="sun" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
@@ -390,11 +305,13 @@
           <Column id="thu" type="STRING" size="256"/>
           <Column id="fri" type="STRING" size="256"/>
           <Column id="sat" type="STRING" size="256"/>
+          <Column id="sun" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_stdClass" useclientlayout="true">
         <ColumnInfo>
           <Column id="sCode" type="INT" size="256"/>
+          <Column id="sName" type="STRING" size="256"/>
           <Column id="classCode" type="INT" size="256"/>
           <Column id="basket" type="STRING" size="256"/>
         </ColumnInfo>
@@ -448,10 +365,9 @@ this.fn_callback=function(sId,errorCode,errorMsg){
 	trace(sId +":"+ errorCode +":"+errorMsg);
 }
 this.fn_callback_myClass=function(){	
-	
-	for(var i=0; i<this.ds_myClass.getRowCount(); i++){
+	for(var i=0; i<this.ds_myClass.getRowCountNF(); i++){
 		var classSeq = this.ds_myClass.getColumn(i,"classSeq");
-		var nRow = this.ds_class.findRow("classSeq",classSeq);	
+		var nRow = this.ds_class.findRowNF("classSeq",classSeq);	
 		this.ds_class.deleteRow(nRow)
 	}
  	trace(this.ds_myClass.saveXML());
@@ -464,6 +380,8 @@ this.fn_callback_TimeTable=function(){
 	var Thu = new Array();
 	var Fri = new Array();
 	var Sat = new Array();
+	var Sun = new Array();
+	
 	for(var i=this.ds_stdTimeTableCopy.getRowCount()-1; i >=0; i--){
 		Time[i] = this.ds_stdTimeTableCopy.getColumn(i,"time");
 		Time[i] = Time[i].replace("교시","")-1;
@@ -473,12 +391,15 @@ this.fn_callback_TimeTable=function(){
 		Thu[i] = this.ds_stdTimeTableCopy.getColumn(i,"thu");
 		Fri[i] = this.ds_stdTimeTableCopy.getColumn(i,"fri");
 		Sat[i] = this.ds_stdTimeTableCopy.getColumn(i,"sat");
+		Sun[i] = this.ds_stdTimeTableCopy.getColumn(i,"sat");
+		Sun[i] = this.ds_stdTimeTableCopy.getColumn(i,"sun");
 		var mon = this.ds_stdTimeTable.getColumn(Time[i],"mon");
 		var tue = this.ds_stdTimeTable.getColumn(Time[i],"tue");
 		var wed = this.ds_stdTimeTable.getColumn(Time[i],"wed");
 		var thu = this.ds_stdTimeTable.getColumn(Time[i],"thu");
 		var fri = this.ds_stdTimeTable.getColumn(Time[i],"fri");
 		var sat = this.ds_stdTimeTable.getColumn(Time[i],"sat");
+		var sun = this.ds_stdTimeTable.getColumn(Time[i],"sun");
 		
 		if(mon == null || mon == ""){this.ds_stdTimeTable.setColumn(Time[i],"mon",Mon[i]);}
 		if(tue == null || tue == ""){this.ds_stdTimeTable.setColumn(Time[i],"tue",Tue[i]);}
@@ -486,6 +407,7 @@ this.fn_callback_TimeTable=function(){
 		if(thu == null || thu == ""){this.ds_stdTimeTable.setColumn(Time[i],"thu",Thu[i]);}
 		if(fri == null || fri == ""){this.ds_stdTimeTable.setColumn(Time[i],"fri",Fri[i]);}
 		if(sat == null || sat == ""){this.ds_stdTimeTable.setColumn(Time[i],"sat",Sat[i]);}	
+		if(sun == null || sun == ""){this.ds_stdTimeTable.setColumn(Time[i],"sun",Sun[i]);}
 	}
 	//화면 로드시 해당 학과 과목이 보여짐 
 	var dept = this.Div00.form.sta_dept.text;
@@ -530,6 +452,8 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 		var myPoint = this.Div00.form.sta_point.text;
 		var point = this.ds_class.getColumn(nRow,"classPoint").replace("학점","");
 		var type ="";
+		trace(person[0]);
+		trace(person[1]);
 		if(person[0] < person[1]){
 			if(nexacro.toNumber(myPoint)-nexacro.toNumber(point) < 0){
 				alert("학점이 부족합니다");
@@ -554,6 +478,7 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 					else if(weeks[0] =="목"){col="thu"}
 					else if(weeks[0] =="금"){col="fri"}
 					else if(weeks[0] =="토"){col="sat"}	
+					else if(weeks[0] =="일"){col="sun"}
 					for(var j=0; j<week.length; j++){
 						var cName = this.ds_stdTimeTable.getColumn(week[j]-1,col);
 						if(cName=="" || cName == null){
@@ -595,10 +520,13 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 				var addRow = this.ds_myClass.addRow();
 				this.ds_myClass.copyRow(addRow,this.ds_class,nRow);
 				//insert studentClass 추가
+				var sName = this.Div00.form.sta_name.text;
 				var addRow2 = this.ds_stdClass.addRow();
 				this.ds_stdClass.setColumn(addRow2,"sCode",sCode);
+				this.ds_stdClass.setColumn(addRow2,"sName",sName);
 				this.ds_stdClass.setColumn(addRow2,"classCode",classCode);
 				this.ds_stdClass.setColumn(addRow2,"basket",'N');
+				trace( "type :"+type);
 				if(type =="insert"){
 					//insert 시간표			
 					this.transaction(
@@ -786,10 +714,10 @@ this.Grid00_00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
 this.Div00_classTime_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {	
 	var sCode = this.Div00.form.sta_sSeq.text;
-	var x = this.width/2-360; 
+	var x = this.width/2-410; 
 	var y = this.height/2-220;
 	var objCF = new ChildFrame();
-	objCF.init("popTimeTable",x,y,720,440,0,0,"stdWork::studentSchedule.xfdl");
+	objCF.init("popTimeTable",x,y,820,440,0,0,"stdWork::studentSchedule.xfdl");
 	objCF.set_showtitlebar(false);
 	
 	objCF.showModal(this.getOwnerFrame(),{sCode:sCode},this,"fn_callback");
@@ -800,13 +728,14 @@ this.Div00_basket_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo
 {
 	var sCode = this.Div00.form.sta_sSeq.text;
 	var point = this.Div00.form.sta_point.text;
+	var sName = this.Div00.form.sta_name.text;
 	var x = this.width/2-450; 
 	var y = this.height/2-240;
 	var objCF = new ChildFrame();
 	objCF.init("popTimeTable",x,y,900,480,0,0,"stdWork::basketList.xfdl");
 	objCF.set_showtitlebar(false);
 	
-	objCF.showModal(this.getOwnerFrame(),{sCode : sCode,point : point},this,"fn_callback_basket");
+	objCF.showModal(this.getOwnerFrame(),{sCode : sCode,point : point,sName : sName},this,"fn_callback_basket");
 };
 
 this.fn_callback_basket=function(sId,code){
