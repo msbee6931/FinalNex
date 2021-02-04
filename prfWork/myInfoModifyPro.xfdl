@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="myInfoModifyPro" width="1080" height="520" titletext="New Form">
+    <Layouts>
+      <Layout height="520" mobileorientation="landscape" width="1080">
+        <Static id="Static00" taborder="0" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="2" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00" taborder="3" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static01" taborder="4" text="나의 정보 수정" left="30" top="9" width="200" height="30"/>
+        <Div id="Div00" taborder="5" text="" left="0" top="38" width="1021" height="452" border="1px solid #c1c1c1">
+          <Layouts>
+            <Layout>
+              <Edit id="edt_p_seq" taborder="0" left="449" top="86" width="150" height="30" onchanged="Div00_edt_s_seq_onchanged" readonly="true"/>
+              <Edit id="edt_name" taborder="1" left="449" top="121" width="150" height="30"/>
+              <Edit id="edt_age" taborder="2" left="449" top="156" width="150" height="30" onchanged="Div00_edt_age_onchanged"/>
+              <Edit id="edt_email" taborder="3" left="449" top="191" width="150" height="30"/>
+              <Edit id="edt_contact" taborder="4" left="449" top="226" width="150" height="30"/>
+              <Edit id="edt_address" taborder="5" left="449" top="261" width="150" height="30"/>
+              <Button id="btn_modify" taborder="6" text="수정" left="424" top="356" width="50" height="40" onclick="Div00_btn_modify_onclick"/>
+              <Button id="btn_cancel" taborder="7" text="취소" left="574" top="357" width="50" height="40" onclick="Div00_btn_cancel_onclick"/>
+              <Static id="Static01_00" taborder="8" text="교수번호" left="349" width="100" height="30" top="86"/>
+              <Static id="Static01_00_00" taborder="9" text="이름" left="349" width="100" height="30" top="121"/>
+              <Static id="Static01_00_01" taborder="10" text="나이" left="349" width="100" height="30" top="156"/>
+              <Static id="Static01_00_02" taborder="11" text="이메일" left="349" width="100" height="30" top="191"/>
+              <Static id="Static01_00_03" taborder="12" text="전화번호" left="349" width="100" height="30" top="226"/>
+              <Static id="Static01_00_04" taborder="13" text="주소" left="349" width="100" height="30" top="261"/>
+              <Edit id="edt_pw" taborder="14" left="449" top="296" width="150" height="30"/>
+              <Static id="Static01_00_04_00" taborder="15" text="수정할비밀번호" left="349" width="100" height="30" top="296"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.edt_p_seq" propid="value" datasetid="ds_professor_copy" columnid="p_seq"/>
+      <BindItem id="item1" compid="Div00.form.edt_name" propid="value" datasetid="ds_professor_copy" columnid="name"/>
+      <BindItem id="item2" compid="Div00.form.edt_age" propid="value" datasetid="ds_professor_copy" columnid="age"/>
+      <BindItem id="item3" compid="Div00.form.edt_email" propid="value" datasetid="ds_professor_copy" columnid="email"/>
+      <BindItem id="item4" compid="Div00.form.edt_contact" propid="value" datasetid="ds_professor_copy" columnid="contact"/>
+      <BindItem id="item5" compid="Div00.form.edt_address" propid="value" datasetid="ds_professor_copy" columnid="address"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_professor_copy">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="p_seq" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="contact" type="STRING" size="256"/>
+          <Column id="address" type="STRING" size="256"/>
+          <Column id="lecture" type="STRING" size="256"/>
+          <Column id="pw" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.fn_callback = function(id,ErrorCode,ErrorMsg){	//콜백함수
+	trace(id);
+	trace(ErrorMsg);
+	trace(ErrorCode);
+}
+
+
+this.Div00_btn_modify_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var cpw = this.Div00.form.edt_pw.value;
+	if(cpw == null){alert("수정할비밀번호입력하세요")
+	return;
+	}
+	
+	var p_seq = this.ds_professor_copy.getColumn(e.row,"p_seq");
+	var pw = this.ds_professor_copy.getColumn(e.row,"pw");
+	
+	let x = this.width/2-100;
+	let y = this.height/2-100;
+	let objCF = new ChildFrame();
+	objCF.init("passpop",x,y,200,200,0,0,"stdWork::passwordPop.xfdl");
+	objCF.set_showtitlebar(false);
+	objCF.showModal(this.getOwnerFrame(),{p_seq:p_seq, pw:pw},this,"fn_passcallback");
+	
+};
+
+this.myInfoModifyPro_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+
+				"ds_myInfoPro" //1. strSvcID
+				,"/myInfoPro.nex" //2. strURL
+				,"" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
+				,"ds_professor_copy=out_ds" //4.strOutDatasets -select Fds=Sds
+				,"" //5.strArgument text값
+				,"fn_callback" //6.strCallbackFunc
+			);
+			//this.ds_professor_copy.filter("");
+};
+this.fn_passcallback = function(id,hash){
+	if(hash == ""){return;}
+	else{
+	
+	var p_seq = this.Div00.form.edt_p_seq.value;
+	var name = this.Div00.form.edt_name.value;
+	trace(name);
+	var age = this.Div00.form.edt_age.value;
+	var email = this.Div00.form.edt_email.value;
+	var contact = this.Div00.form.edt_contact.value;
+	var address = this.Div00.form.edt_address.value;
+	var pw = this.Div00.form.edt_pw.value;
+	
+	var shaObj = new jsSHA("SHA-256","TEXT");
+	shaObj.update(pw);
+	var hash = shaObj.getHash("HEX");
+	trace(hash);
+	
+	var addRow = this.ds_professor_copy.addRow();
+	this.ds_professor_copy.setColumn(addRow,"p_seq",p_seq);
+	this.ds_professor_copy.setColumn(addRow,"name",name);
+	this.ds_professor_copy.setColumn(addRow,"age",age);
+	this.ds_professor_copy.setColumn(addRow,"email",email);
+	this.ds_professor_copy.setColumn(addRow,"contact",contact);
+	this.ds_professor_copy.setColumn(addRow,"address",address);
+	this.ds_professor_copy.setColumn(addRow,"pw",hash);
+	
+	this.transaction(
+
+				"ds_myInfoPro" //1. strSvcID
+				,"/updateMyInfoPro.nex" //2. strURL 
+				,"in_ds=ds_professor_copy:U" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
+				,"" //4.strOutDatasets -select Fds=Sds
+				,"" //5.strArgument text값
+				,"fn_callback" //6.strCallbackFunc
+			);
+			
+	}
+}
+
+this.Div00_btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close("");
+};
+]]></Script>
+  </Form>
+</FDL>

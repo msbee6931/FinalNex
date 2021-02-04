@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="faculty" width="1080" height="570" titletext="New Form">
+    <Layouts>
+      <Layout height="570" mobileorientation="landscape" width="1080">
+        <Grid id="Grid00" taborder="0" left="20" top="40" width="1040" height="425" binddataset="ds_faculty" autofittype="col" onheadclick="Grid00_onheadclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="52"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="교직원번호"/>
+                <Cell col="2" text="이름"/>
+                <Cell col="3" text="나이"/>
+                <Cell col="4" text="email"/>
+                <Cell col="5" text="전화번호"/>
+                <Cell col="6" text="주소"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="bind:f_seq" edittype="none"/>
+                <Cell col="2" text="bind:name" edittype="normal"/>
+                <Cell col="3" text="bind:age" edittype="normal"/>
+                <Cell col="4" text="bind:email" edittype="normal"/>
+                <Cell col="5" text="bind:contact" edittype="normal"/>
+                <Cell col="6" text="bind:address" edittype="normal"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_retrive" taborder="1" text="조회" left="1020" top="10" width="40" height="30" onclick="btn_retrive_onclick"/>
+        <Button id="btn_save" taborder="2" text="저장" left="1020" top="465" width="40" height="30" onclick="btn_save_onclick"/>
+        <Button id="btn_del" taborder="3" text="삭제" left="960" top="465" width="40" height="30" onclick="btn_del_onclick"/>
+        <Button id="btn_add" taborder="4" text="입력" left="20" top="10" width="40" height="30" onclick="btn_add_onclick"/>
+        <Combo id="cb_search" taborder="5" text="전체" left="100" top="10" width="100" height="30" value="All" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="cb_search_onitemchanged">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">All</Col>
+                <Col id="datacolumn">전체</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">f_seq</Col>
+                <Col id="datacolumn">교직원번호</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Edit id="edt_search" taborder="6" left="220" top="10" width="100" height="30"/>
+        <Button id="btn_search" taborder="7" text="검색" left="330" top="10" width="40" height="30" onclick="btn_search_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_faculty">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="f_seq" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="contact" type="STRING" size="256"/>
+          <Column id="address" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.fn_callback = function(id,ErrorCode,ErrorMsg){	//콜백함수
+	trace(id);
+	trace(ErrorMsg);
+	trace(ErrorCode);
+}
+
+this.fn_update_faculty = function(id,url){	//업데이트 따로 뺀것
+  this.transaction(
+            id 
+            ,url 
+            ,"in_ds=ds_faculty:U"
+            ,"" 
+            ,""
+            ,"fn_callback" 
+         )
+}
+
+
+this.btn_retrive_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.transaction(
+
+				"ds_facultylist" //1. strSvcID
+				,"/facultylist.nex" //2. strURL
+				,"" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
+				,"ds_faculty=out_ds" //4.strOutDatasets -select Fds=Sds
+				,"" //5.strArgument text값
+				,"fn_callback" //6.strCallbackFunc
+			);
+};
+
+this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let arr = this.ds_faculty.extractRows("chk==1");
+	
+	if(arr.length == 0 || arr.length == -1){
+		alert("선택된 항목이 없습니다");return;}
+		
+	if(this.confirm("삭제하시겠습니까?")){
+		this.ds_faculty.deleteMultiRows(arr);
+		this.fn_update_faculty("dsdeleteFac","/deleteFaculty.nex");
+	}
+};
+
+this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.confirm("저장하시겠습니까?")){
+		this.fn_update_faculty("dsUpdateFac","/updateFaculty.nex");
+	}
+};
+
+this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let objCF = new ChildFrame();
+	objCF.init("insertpop",0,0,300,310,0,0,"admWork::insertFaculty.xfdl");
+	objCF.set_showtitlebar(false);
+	objCF.showModal(this.getOwnerFrame(),{},this,"fn_callback");	
+};
+
+
+this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let cbValue = this.cb_search.value;
+	let edtValue = this.edt_search.value;
+	
+	if(cbValue == "f_seq"){
+		this.ds_faculty.filter(cbValue +"=='"+edtValue+"'");
+	}else{
+		this.ds_faculty.filter("");
+	}
+};
+
+this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	let flag = obj.getCellProperty("Head",0,"text");
+	let check = flag==0?1:0;
+	if(e.cell==0){
+		obj.setCellProperty("Head",0,"text",check);
+		for(let i = 0; i<this.ds_faculty.rowcount;i++){
+			this.ds_faculty.setColumn(i,"chk",check);
+		}
+	}
+	
+	var objDs = this.objects[obj.binddataset];
+	for(var i = 1; i<obj.getCellCount("head"); i++)
+	{
+		var sHeadText = obj.getCellText(-1,i);
+		var nLen = sHeadText.length - 1;
+		if(i== e.cell)
+		{
+		  var sColId = (obj.getCellProperty("body",e.col,"text")).toString().split(":");
+		  if(sHeadText.substr(nLen) == "▲")
+		  {
+			obj.setCellProperty("head",i,"text",sHeadText.substr(0,nLen)+ "▼");
+			objDs.set_keystring("S:-"+sColId[1]);
+		  }
+		  else if (sHeadText.substr(nLen) == "▼")
+		  {
+			obj.setCellProperty("head",i,"text",sHeadText.substr(0,nLen)+"▲");
+			objDs.set_keystring("S:+"+sColId[1]);
+		  }
+		  else
+		  {
+		   obj.setCellProperty("head",i,"text", sHeadText+"▲");
+		   objDs.set_keystring("S:+"+sColId[1]);
+		  }
+		}
+		else
+		{
+			if(sHeadText.substr(nLen) == "▲" || sHeadText.substr(nLen) == "▼")
+			{
+				obj.setCellProperty("head",i,"text",sHeadText.substr(0,nLen));
+			}
+		}
+	
+	}
+};]]></Script>
+  </Form>
+</FDL>
