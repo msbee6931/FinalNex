@@ -50,7 +50,7 @@
                 <Cell col="8" text="bind:classRoom" textAlign="center"/>
                 <Cell col="9" text="bind:limit" textAlign="center"/>
                 <Cell col="10" text="bind:grade" textAlign="center"/>
-                <Cell col="11" text="bind:reqState" combodataset="ds_req" combocodecol="id" combodatacol="name" displaytype="combocontrol" textAlign="center" expandshow="show" wordWrap="english"/>
+                <Cell col="11" text="bind:reqState" displaytype="combotext" textAlign="center" expandshow="show" wordWrap="english" combodataset="ds_req" combocodecol="id" combodatacol="name"/>
               </Band>
             </Format>
           </Formats>
@@ -75,6 +75,31 @@
           <Column id="classTime" type="STRING" size="256"/>
           <Column id="classRoom" type="STRING" size="256"/>
           <Column id="limit" type="STRING" size="256"/>
+          <Column id="basketLimit" type="STRING" size="256"/>
+          <Column id="grade" type="STRING" size="256"/>
+          <Column id="classGoal" type="STRING" size="256"/>
+          <Column id="classMethod" type="STRING" size="256"/>
+          <Column id="classEvaluation" type="STRING" size="256"/>
+          <Column id="classReferences" type="STRING" size="256"/>
+          <Column id="reqState" type="STRING" size="256"/>
+          <Column id="rejectMsg" type="STRING" size="256"/>
+          <Column id="reg_date" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_class_copy">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="classPart" type="STRING" size="256"/>
+          <Column id="className" type="STRING" size="256"/>
+          <Column id="classSeq" type="INT" size="256"/>
+          <Column id="classPoint" type="STRING" size="256"/>
+          <Column id="passFail" type="STRING" size="256"/>
+          <Column id="proCode" type="STRING" size="256"/>
+          <Column id="proName" type="STRING" size="256"/>
+          <Column id="dept" type="STRING" size="256"/>
+          <Column id="classTime" type="STRING" size="256"/>
+          <Column id="classRoom" type="STRING" size="256"/>
+          <Column id="limit" type="INT" size="256"/>
           <Column id="basketLimit" type="STRING" size="256"/>
           <Column id="grade" type="STRING" size="256"/>
           <Column id="classGoal" type="STRING" size="256"/>
@@ -114,45 +139,28 @@
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="ds_class_copy">
-        <ColumnInfo>
-          <Column id="chk" type="STRING" size="256"/>
-          <Column id="classPart" type="STRING" size="256"/>
-          <Column id="className" type="STRING" size="256"/>
-          <Column id="classSeq" type="INT" size="256"/>
-          <Column id="classPoint" type="STRING" size="256"/>
-          <Column id="passFail" type="STRING" size="256"/>
-          <Column id="proCode" type="STRING" size="256"/>
-          <Column id="proName" type="STRING" size="256"/>
-          <Column id="dept" type="STRING" size="256"/>
-          <Column id="classTime" type="STRING" size="256"/>
-          <Column id="classRoom" type="STRING" size="256"/>
-          <Column id="limit" type="INT" size="256"/>
-          <Column id="basketLimit" type="STRING" size="256"/>
-          <Column id="grade" type="STRING" size="256"/>
-          <Column id="classGoal" type="STRING" size="256"/>
-          <Column id="classMethod" type="STRING" size="256"/>
-          <Column id="classEvaluation" type="STRING" size="256"/>
-          <Column id="classReferences" type="STRING" size="256"/>
-          <Column id="reqState" type="STRING" size="256"/>
-          <Column id="rejectMsg" type="STRING" size="256"/>
-          <Column id="reg_date" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[
 this.classReq_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	var objDate= new Date();
+	if(objDate.getMonth()+1 && objDate.getMonth()+1 < 8){
+		var startTime = objDate.getFullYear()+"0101";
+		var endTime = objDate.getFullYear()+"0731";
+	}else{
+		var startTime = objDate.getFullYear()+"0801";
+		var endTime = objDate.getFullYear()+"1231";
+	}
 	this.Grid00.setCellProperty("Head",0,"text",0);
-		var proCode = "91515073"; // 로그인 되는 교수 번호
-		this.transaction(
-			"classReqList"
-			,"/classListProCode.nex" 
-			,""
-			,"ds_class=out_ds" 
-			,"proCode="+nexacro.wrapQuote(proCode)
-			,"fn_callback" 
-		);
+	var proCode = "91515073"; // 로그인 되는 교수 번호
+	this.transaction(
+		"classReqList"
+		,"/classListProCode.nex" 
+		,""
+		,"ds_class=out_ds" 
+		,"proCode="+nexacro.wrapQuote(proCode) +" startTime="+startTime + " endTime="+endTime
+		,"fn_callback" 
+	);
 };
 
 
@@ -172,15 +180,7 @@ this.btnWrite_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 //작성 popup창 닫았을 때
 this.fn_pop_callback=function(sId){
-	var proCode = "91515073";
-	this.transaction(
-		"classReqList"
-		,"/classListProCode.nex" 
-		,""
-		,"ds_class=out_ds" 
-		,"proCode="+nexacro.wrapQuote(proCode)
-		,"fn_callback" 
-	);
+	this.classReq_onload();
 }
 
 //전체선택
@@ -253,13 +253,13 @@ this.btnDel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 				this.ds_class.deleteMultiRows(cArr);				
 			}	
 			this.transaction(
-					"classDelete"
-					,"/classDel.nex" 
-					,"in_ds=ds_class_copy:U"
-					,"" 
-					,""
-					,"fn_callback"
-				);	
+				"classDelete"
+				,"/classDel.nex" 
+				,"in_ds=ds_class_copy:U"
+				,"" 
+				,""
+				,"fn_callback"
+			);	
 		}
 	}
 };
@@ -292,29 +292,33 @@ this.classTab_classReq_btnUpd_onclick = function(obj:nexacro.Button,e:nexacro.Cl
 	if(arr.length == 0 || arr == -1){
 		alert("선택된 항목이 없습니다");
 	}else if(arr.length == 1){
-		if(this.ds_class.getColumn(nRow,"reqState")=='A'){
-			alert("이미 승인된 수업입니다.\n수정하시면 다시 승인 요청됩니다.")
-			let classSeq = this.ds_class.getColumn(nRow,"classSeq");
-			let proCode = this.ds_class.getColumn(nRow,"proCode");
-			let x = this.width/2-500; 
-			let y = this.height/2-340;
-			let objCF = new ChildFrame();
-			objCF.init("popAdd",x,y,1000,680,0,0,"prfWork::detail.xfdl");
-			objCF.set_showtitlebar(false);
-			objCF.showModal(this.getOwnerFrame(),{classSeq:classSeq, proCode : proCode},this,"fn_pop_callback");
-		}else if(this.ds_class.getColumn(nRow,"reqState")=='DR'){
-			alert("승인 취소 요청중인 수업입니다\n행정팀으로 문의해주시기 바랍니다");
+		var person = this.ds_class.getColumn(nRow,"limit").split("/");
+		if(person[0] == 0){
+			if(this.ds_class.getColumn(nRow,"reqState")=='A'){
+				alert("이미 승인된 수업입니다.\n수정하시면 다시 승인 요청됩니다.")
+				let classSeq = this.ds_class.getColumn(nRow,"classSeq");
+				let proCode = this.ds_class.getColumn(nRow,"proCode");
+				let x = this.width/2-500; 
+				let y = this.height/2-340;
+				let objCF = new ChildFrame();
+				objCF.init("popAdd",x,y,1000,680,0,0,"prfWork::detail.xfdl");
+				objCF.set_showtitlebar(false);
+				objCF.showModal(this.getOwnerFrame(),{classSeq:classSeq, proCode : proCode},this,"fn_pop_callback");
+			}else if(this.ds_class.getColumn(nRow,"reqState")=='DR'){
+				alert("승인 취소 요청중인 수업입니다\n행정팀으로 문의해주시기 바랍니다");
+			}else{
+				let classSeq = this.ds_class.getColumn(nRow,"classSeq");
+				let proCode = this.ds_class.getColumn(nRow,"proCode");
+				let x = this.width/2-500; 
+				let y = this.height/2-340;
+				let objCF = new ChildFrame();
+				objCF.init("popAdd",x,y,1000,680,0,0,"prfWork::detail.xfdl");
+				objCF.set_showtitlebar(false);
+				objCF.showModal(this.getOwnerFrame(),{classSeq:classSeq, proCode : proCode},this,"fn_pop_callback");
+			}
 		}else{
-			let classSeq = this.ds_class.getColumn(nRow,"classSeq");
-			let proCode = this.ds_class.getColumn(nRow,"proCode");
-			let x = this.width/2-500; 
-			let y = this.height/2-340;
-			let objCF = new ChildFrame();
-			objCF.init("popAdd",x,y,1000,680,0,0,"prfWork::detail.xfdl");
-			objCF.set_showtitlebar(false);
-			objCF.showModal(this.getOwnerFrame(),{classSeq:classSeq, proCode : proCode},this,"fn_pop_callback");
+			alert("수정이 불가능한 과목입니다");
 		}
-		
 	}else{
 		alert("하나의 항목만 선택 가능합니다");
 	}

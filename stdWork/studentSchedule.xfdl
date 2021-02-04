@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="studentSchedule" width="720" height="500" titletext="New Form" onload="studentSchedule_onload">
+  <Form id="studentSchedule" width="820" height="500" titletext="New Form" onload="studentSchedule_onload">
     <Layouts>
-      <Layout height="500" mobileorientation="landscape" width="720" stepcount="0">
-        <Grid id="Grid00" taborder="1" left="10" top="40" width="700" height="400" autofittype="col" binddataset="ds_stdTimeTable">
+      <Layout height="500" mobileorientation="landscape" width="820" stepcount="0">
+        <Grid id="Grid00" taborder="1" left="10" top="40" width="800" height="400" autofittype="col" binddataset="ds_stdTimeTable">
           <Formats>
             <Format id="default">
               <Columns>
                 <Column size="60"/>
+                <Column size="105"/>
                 <Column size="105"/>
                 <Column size="105"/>
                 <Column size="105"/>
@@ -27,6 +28,7 @@
                 <Cell col="4" text="목요일"/>
                 <Cell col="5" text="금요일"/>
                 <Cell col="6" text="토요일"/>
+                <Cell col="7" text="일요일" wordWrap="english"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:time" textAlign="center"/>
@@ -36,11 +38,12 @@
                 <Cell col="4" text="bind:thu" textAlign="center" wordWrap="english"/>
                 <Cell col="5" text="bind:fri" textAlign="center" wordWrap="english"/>
                 <Cell col="6" text="bind:sat" textAlign="center" wordWrap="english"/>
+                <Cell col="7" text="bind:sun" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="btnCancel" taborder="0" text="닫기" left="612" top="455" width="98" height="30" onclick="btnCancel_onclick"/>
+        <Button id="btnCancel" taborder="0" text="닫기" left="710" top="455" width="98" height="30" onclick="btnCancel_onclick"/>
         <Static id="sta_title" taborder="2" text="수강 시간표" left="10" top="0" width="210" height="40"/>
       </Layout>
     </Layouts>
@@ -56,6 +59,7 @@
           <Column id="thu" type="STRING" size="256"/>
           <Column id="fri" type="STRING" size="256"/>
           <Column id="sat" type="STRING" size="256"/>
+          <Column id="sun" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_stdTimeTable">
@@ -69,6 +73,7 @@
           <Column id="thu" type="STRING" size="256"/>
           <Column id="fri" type="STRING" size="256"/>
           <Column id="sat" type="STRING" size="256"/>
+          <Column id="sun" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
@@ -146,6 +151,7 @@ this.fn_callback_TimeTable=function(){
 	var Thu = new Array();
 	var Fri = new Array();
 	var Sat = new Array();
+	var Sun = new Array();
 	for(var i=this.ds_stdTimeTableCopy.getRowCount()-1; i >=0; i--){
 		Time[i] = this.ds_stdTimeTableCopy.getColumn(i,"time");
 		Time[i] = Time[i].replace("교시","")-1;
@@ -155,6 +161,7 @@ this.fn_callback_TimeTable=function(){
 		Thu[i] = this.ds_stdTimeTableCopy.getColumn(i,"thu");
 		Fri[i] = this.ds_stdTimeTableCopy.getColumn(i,"fri");
 		Sat[i] = this.ds_stdTimeTableCopy.getColumn(i,"sat");
+		Sun[i] = this.ds_stdTimeTableCopy.getColumn(i,"sun");
 		
 		var mon = this.ds_stdTimeTable.getColumn(Time[i],"mon");
 		var tue = this.ds_stdTimeTable.getColumn(Time[i],"tue");
@@ -162,6 +169,7 @@ this.fn_callback_TimeTable=function(){
 		var thu = this.ds_stdTimeTable.getColumn(Time[i],"thu");
 		var fri = this.ds_stdTimeTable.getColumn(Time[i],"fri");
 		var sat = this.ds_stdTimeTable.getColumn(Time[i],"sat");
+		var sun = this.ds_stdTimeTable.getColumn(Time[i],"sun");
 		
 		if(mon == null || mon == ""){this.ds_stdTimeTable.setColumn(Time[i],"mon",Mon[i]);}
 		if(tue == null || tue == ""){this.ds_stdTimeTable.setColumn(Time[i],"tue",Tue[i]);}
@@ -169,6 +177,7 @@ this.fn_callback_TimeTable=function(){
 		if(thu == null || thu == ""){this.ds_stdTimeTable.setColumn(Time[i],"thu",Thu[i]);}
 		if(fri == null || fri == ""){this.ds_stdTimeTable.setColumn(Time[i],"fri",Fri[i]);}
 		if(sat == null || sat == ""){this.ds_stdTimeTable.setColumn(Time[i],"sat",Sat[i]);}	
+		if(sun == null || sun == ""){this.ds_stdTimeTable.setColumn(Time[i],"sun",Sun[i]);}
 	}
 }
 

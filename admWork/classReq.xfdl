@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="classReq" width="1080" height="570" titletext="New Form" onload="classReq_onload">
+  <Form id="classReq" width="1080" height="520" titletext="New Form" onload="classReq_onload">
     <Layouts>
-      <Layout height="570" mobileorientation="landscape" width="1080">
+      <Layout height="520" mobileorientation="landscape" width="1080">
         <Grid id="Grid00" taborder="0" left="10" top="6" width="1040" height="425" autofittype="col" binddataset="ds_class" onheadclick="Grid00_onheadclick" oncellclick="Grid00_oncellclick" onexpanddown="Grid00_onexpanddown">
           <Formats>
             <Format id="default">
@@ -50,7 +50,7 @@
                 <Cell col="8" text="bind:classRoom" textAlign="center"/>
                 <Cell col="9" text="bind:limit" textAlign="center"/>
                 <Cell col="10" text="bind:grade" textAlign="center"/>
-                <Cell col="11" text="bind:reqState" displaytype="combocontrol" textAlign="center" combodataset="ds_req" combocodecol="id" combodatacol="name" expandshow="show" wordWrap="english"/>
+                <Cell col="11" text="bind:reqState" displaytype="combotext" textAlign="center" combodataset="ds_req" combocodecol="id" combodatacol="name" expandshow="show" wordWrap="english"/>
               </Band>
             </Format>
           </Formats>

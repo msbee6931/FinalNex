@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="classList" width="1080" height="570" titletext="New Form" onload="classList_onload">
+  <Form id="classList" width="1080" height="520" titletext="New Form" onload="classList_onload">
     <Layouts>
-      <Layout height="570" mobileorientation="landscape" width="1080">
+      <Layout height="520" mobileorientation="landscape" width="1080">
         <Grid id="Grid00" taborder="0" left="20" top="41" width="1040" height="425" binddataset="ds_class" autofittype="col" oncellclick="Grid00_oncellclick" onheadclick="Grid00_onheadclick">
           <Formats>
             <Format id="default">
@@ -400,6 +400,7 @@ this.fn_msg_callback=function(sId,send)
       <Dataset id="ds_stdClass" useclientlayout="true">
         <ColumnInfo>
           <Column id="sCode" type="INT" size="256"/>
+          <Column id="sName" type="STRING" size="256"/>
           <Column id="classCode" type="INT" size="256"/>
           <Column id="basket" type="STRING" size="256"/>
         </ColumnInfo>
