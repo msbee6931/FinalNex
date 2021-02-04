@@ -198,8 +198,7 @@ this.scheduler_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.fn_callback_insert = function() {
 	//데이터셋 정보로 일정 그리기
 	this.gfnLoadScheduler(this.grpScheduler);
-	
-
+	alert("데이터셋 일정 불러오기 성공")
 }
 
 /**************************************************************************
@@ -393,7 +392,7 @@ this.grpScheduler_ondblclick = function(obj:nexacro.Graphics,e:nexacro.MouseEven
 * @param sContent    	: 일정 내용
 * @return             	: 없음
 */
-this.fnOpenSchedulePop = function(sPopupType, sSeq,sId, sSDate, sEDate, sType, sTitle, sContent)
+this.fnOpenSchedulePop = function(sPopupType, sSeq, sId, sSDate, sEDate, sType, sTitle, sContent)
 {
 	var oArg = { "popuptype" : sPopupType, "seq":sSeq, "scheduleid" : "", "sdate" : "", "edate" : "", "type" : "", "title" : "", "content" : "" };
 	

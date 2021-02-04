@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="deptSchedule" width="1080" height="520" titletext="New Form" onload="deptSchedule_onload">
+    <Layouts>
+      <Layout height="520" mobileorientation="landscape" width="1080">
+        <Static id="Static00" taborder="0" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00" taborder="1" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Div id="Div00" taborder="4" text="Div00" left="30" top="38" width="1021" height="452" border="1px solid #c1c1c1">
+          <Layouts>
+            <Layout>
+              <Calendar id="cal_dept" taborder="0" left="29" top="76" width="350" height="350" type="monthonly" ondayclick="Div00_cal_dept_ondayclick" onrbuttonup="Div00_cal_dept_onrbuttonup"/>
+              <Button id="btn_insert" taborder="1" text="일정 등록" left="29" top="31" width="100" height="30" onclick="Div00_btn_insert_onclick"/>
+              <Grid id="Grid00" taborder="2" left="433" top="76" width="500" height="350" binddataset="deptSchedule_ds" autofittype="col" oncelldblclick="Div00_Grid00_oncelldblclick">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="48"/>
+                      <Column size="418"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="40"/>
+                    </Rows>
+                    <Band id="body">
+                      <Cell text="bind:schDay"/>
+                      <Cell col="1" text="bind:title"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="5" text="학과 스케줄" left="30" top="9" width="200" height="30"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.deptSchedule_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"selectDeptSchedule",//id
+		"/schedule/selectDeptSchedule",//url (절대경로)
+		"",//in_ds:U
+		"deptSchedule_ds=out_ds",//()_out_ds
+		"",//argument
+		"fn_callback"
+	)
+	
+	//오늘 날짜 계산하기
+	var currDate = new Date();
+    var year = currDate.getFullYear().toString().padLeft(4, "0");
+    var month = (currDate.getMonth()+1).toString().padLeft(2, "0");
+    var day = currDate.getDate().toString().padLeft(2, "0");
+	
+    currDate = year+month+day; // 오늘 날짜
+	
+	//오늘 날짜 데이터셋 세팅
+	this.deptSchedule_ds.filter("schDate=='"+currDate+"'");
+};
+
+//클릭 시 Grid 에 일정 띄우기
+this.Div00_cal_dept_ondayclick = function(obj:nexacro.Calendar,e:nexacro.CalendarDayClickEventInfo)
+{
+	var clickedDate = e.date; // 클릭한 날짜
+	
+	this.deptSchedule_ds.filter("schDate=='"+clickedDate+"'"); // 날짜로 필터
+};
+
+
+//일정 등록 시 모달 창 띄우기
+this.Div00_btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//모달창 
+	var objCF = new ChildFrame();
+	objCF.init("deptSchedule_insert_pop",200,100,400,300);
+	objCF.set_titletext("일정 등록 하기");
+	objCF.set_formurl("prfWork::deptSchedule_insert_pop.xfdl");
+	objCF.showModal(
+		this.getOwnerFrame(),
+		{},
+		this,
+		"fn_callback_deptSchedule"
+	);
+};
+
+//콜백 성공하면 데이터셋 불러오기
+this.fn_callback_deptSchedule = function(suc) {
+	alert(suc)
+	this.transaction(
+		"selectDeptSchedule",//id
+		"/schedule/selectDeptSchedule",//url (절대경로)
+		"",//in_ds:U
+		"deptSchedule_ds=out_ds",//()_out_ds
+		"",//argument
+		"fn_callback"
+	)
+};
+
+//일정 상세보기 모달창 띄우기
+this.Div00_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+/*	var login = "user"; // session.login 받아올 아이디*/
+	var seq = this.deptSchedule_ds.getColumn(e.row,"seq");
+	var schDate = this.deptSchedule_ds.getColumn(e.row,"schDate");
+/*	var id = this.deptSchedule_ds.getColumn(e.row,"id"); // 등록한 id*/
+	
+// 	id 일치하면 
+// 	if(id == login)
+// 	{
+		var objCF = new ChildFrame();
+		objCF.init("deptSchedule_update_pop",200,100,400,350);
+		objCF.set_titletext("일정 상세보기");
+		objCF.set_formurl("prfWork::deptSchedule_update_pop.xfdl");
+		objCF.showModal(
+			this.getOwnerFrame(),
+			{seq:seq,schDate:schDate},
+			this,
+			"fn_callback_deptSchedule"
+		);
+// 		
+//  	} else {
+// 		var objCF = new ChildFrame();
+// 		objCF.init("deptSchedule_read_pop",200,100,400,350);
+// 		objCF.set_titletext("일정 상세보기");
+// 		objCF.set_formurl("prfWork::deptSchedule_read_pop.xfdl");
+// 		objCF.showModal(
+// 			this.getOwnerFrame(),
+// 			{seq:seq,schDate:schDate},
+// 			this,
+// 			"fn_callback_deptSchedule"
+// 		);
+//  	}
+	
+	
+};
+]]></Script>
+    <Objects>
+      <Dataset id="deptSchedule_ds">
+        <ColumnInfo>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="writer" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="sDate" type="STRING" size="256"/>
+          <Column id="eDate" type="STRING" size="256"/>
+          <Column id="schDate" type="STRING" size="256"/>
+          <Column id="schDay" type="STRING" size="256"/>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="content" type="STRING" size="256"/>
+          <Column id="writeDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

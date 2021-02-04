@@ -183,13 +183,13 @@
           <Col id="menu_id">3010</Col>
           <Col id="menu_name">학과 스케줄</Col>
           <Col id="menu_level">1</Col>
-          <Col id="form_url">prfWork::schedulerv2.xfdl</Col>
+          <Col id="form_url">prfWork::deptSchedule.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">3020</Col>
           <Col id="menu_name">나의 스케줄</Col>
           <Col id="menu_level">1</Col>
-          <Col id="form_url">prfWork::myschedule.xfdl</Col>
+          <Col id="form_url">prfWork::schedulerv2.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">40</Col>
