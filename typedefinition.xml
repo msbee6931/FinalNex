@@ -7,6 +7,7 @@
     <Module url="ListView.json"/>
     <Module url="DeviceAPI.json"/>
     <Module url="Graphics.json"/>
+    <Module url="Sha256.json"/>
   </Modules>
   <Components>
     <Component type="JavaScript" id="Button" classname="nexacro.Button"/>
