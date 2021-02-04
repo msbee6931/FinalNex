@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="requestScholar_read_pop" width="900" height="600" titletext="New Form" onload="requestScholar_read_pop_onload">
+    <Layouts>
+      <Layout height="600" mobileorientation="landscape" width="900">
+        <Static id="Static00" taborder="0" left="870" top="40" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00" taborder="1" left="0" top="40" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00_00_00" taborder="2" left="160" top="580" width="600" height="20" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00_00_00_00" taborder="3" left="150" top="0" width="600" height="20" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Div id="Div00" taborder="4" text="Div00" left="30" top="20" width="840" height="560" border="1px solid #c1c1c1">
+          <Layouts>
+            <Layout>
+              <Edit id="Edit00" taborder="1" left="168" top="39" width="600" height="30" readonly="true"/>
+              <Static id="Static00" taborder="0" text="제목" left="69" top="39" width="100" height="30" background="#c1c1c1" border="1px solid #000000"/>
+              <Edit id="Edit01" taborder="4" left="70" top="139" width="700" height="271" readonly="true"/>
+              <Static id="Static00_00" taborder="2" text="첨부파일" left="69" top="69" width="100" height="30" background="#c1c1c1" border="1px solid #000000"/>
+              <Button id="btn_down" taborder="3" text="파일 다운로드" left="668" top="69" width="100" height="30" onclick="Div00_btn_down_onclick"/>
+              <Grid id="Grid00" taborder="5" left="170" top="70" width="498" height="70" binddataset="schFileList_ds" autofittype="col" onheadclick="Div00_Grid00_onheadclick">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="45"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="0" displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="1" text="seq"/>
+                      <Cell col="2" text="parentSeq"/>
+                      <Cell col="3" text="fileName"/>
+                      <Cell col="4" text="savedFileName"/>
+                      <Cell col="5" text="fileSize"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:chk" edittype="checkbox" displaytype="checkboxcontrol"/>
+                      <Cell col="1" text="bind:seq"/>
+                      <Cell col="2" text="bind:parentSeq"/>
+                      <Cell col="3" text="bind:fileName"/>
+                      <Cell col="4" text="bind:savedFileName"/>
+                      <Cell col="5" text="bind:fileSize"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="btn_cancle" taborder="6" text="닫기" left="669" top="444" width="100" height="30" onclick="Div00_btn_cancle_onclick"/>
+              <Button id="btn_check" taborder="7" text="확인 완료" left="549" top="444" width="100" height="30" onclick="Div00_btn_check_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <FileDownTransfer id="FileDownTransfer00"/>
+      <Dataset id="reqScholar_ds">
+        <ColumnInfo>
+          <Column id="seq" type="INT" size="256"/>
+          <Column id="std_code" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="writeDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="schFileList_ds">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="seq" type="INT" size="256"/>
+          <Column id="parentSeq" type="INT" size="256"/>
+          <Column id="fileName" type="STRING" size="256"/>
+          <Column id="savedFileName" type="STRING" size="256"/>
+          <Column id="fileSize" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="seq">1</Col>
+            <Col id="parentSeq">12334</Col>
+          </Row>
+          <Row>
+            <Col id="parentSeq">653</Col>
+            <Col id="savedFileName">6534</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.seq="";
+
+//----------------------  온로드
+this.requestScholar_read_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//부모창에서 받아온 seq 값 - 해당 seq의 내용 가져오기
+	this.seq = this.parent.seq;
+	
+	this.transaction(
+		"selectSeqReqScholar.", // 1. strSvcID
+		"/scholarship/selectSeqReqScholar.scholarship", // 2. strURL(절대경로로 입력해주어야함. 로컬호스트 뒤에는 이클립스 서버파일에 있는 path값)
+		"", // 3. strInDatasets - Sds=Fds:U, :A, :N
+		"reqScholar_ds=out_ds schFileList_ds=out_fDs", // 4. strOutDatasets - select Fds = Sds
+		"seq='"+this.seq+"'", // 5. strArgument
+		"fn_callback" // 6. strCallbackFunc
+	);
+
+};
+
+
+//------------------------------------ 파일다운로드 버튼
+this.Div00_btn_down_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+
+	var objDs = this.schFileList_ds;
+
+	this.FileDownTransfer00.setPostData("seq",this.seq); // 현재 게시물의seq를 넘김
+	//총 첨부파일 중 체크 된 파일만 이벤트 발생
+	
+
+	for(var i=0; i< objDs.getRowCount(); i++){
+	
+			if(objDs.getColumn(i,"chk") == "1"){
+			// 체크된 파일만 서버로 변수를 보냄
+
+			var savedFileName = objDs.getColumn(i,"savedFileName");
+			this.FileDownTransfer00.setPostData("savedFileName'"+i+"'",savedFileName);
+				
+			var fileName = objDs.getColumn(i,"fileName");
+			this.FileDownTransfer00.setPostData("fileName'"+i+"'",fileName);
+
+		}
+	}
+  
+  //파일다운로드 실행
+  this.FileDownTransfer00.download("/scholarship/downReqSchFile.scholarship");
+  
+  //검색 후 지정 체크박스 해제
+	this.Div00.form.Grid00.setCellProperty("head",0,"text",0);
+	for(let i =0; i<this.schFileList_ds.getRowCount();i++){
+		if(this.schFileList_ds.getColumn(i,"chk") == 1){
+			this.schFileList_ds.setColumn(i,"chk",0);
+		}
+	}
+};
+
+//파일다운로드 성공시 (NRE 에서만 지원)
+this.FileDownTransfer00_onsuccess = function(obj:nexacro.FileDownTransfer,e:nexacro.FileDownTransferEventInfo)
+{
+  var sMsg = e.targetfullpath +"\n"+  e.url;
+  
+  alert(sMsg);
+};
+
+//파일다운로드 실패시 (NRE 에서만 지원)
+this.FileDownTransfer00_onerror = function(obj:nexacro.FileDownTransfer,e:nexacro.FileDownTransferErrorEventInfo)
+{
+  var sMsg = ">>>>>>>>>>>>>>>>>>>>>>>>>>  ERROR >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
+  sMsg += "statuscode: "+e.statuscode+"\n";
+  sMsg += "requesturi: "+e.requesturi+"\n";
+  sMsg += "locationuri: "+e.locationuri+"\n" ;
+  sMsg += "errormsg: "+e.errormsg+"\n";
+  
+  alert(sMsg);
+};
+
+
+//-------------등록금 신청 내역 관리자 확인여부 체크하기
+this.chkValue="";
+this.Div00_btn_check_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.Div00.form.btn_check.set_text("처리 완료");
+	this.chkValue="check";
+};
+
+
+
+this.Div00_btn_cancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.alert(this.chkValue);
+	if (this.chkValue == "check")
+	{
+		alert(this.seq);
+		this.close(this.seq);
+	} else {
+		this.close();
+	}
+};
+
+//헤더 전체  클릭 적용
+this.Div00_Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if(e.cell == 0)
+    {
+        this.gf_setCheckAll(obj, e);
+    }
+};
+
+
+this.gv_isCheckAll = 0;
+this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
+{
+    var sColID = obj.getCellProperty("body", e.cell, "text").replace("bind:", "");
+	
+	var sheadValue = obj.getCellProperty("head",e.cell,"text");
+	
+    if(sColID == "chk")
+    {
+		sheadValue = (sheadValue =="1"? "0":"1");
+		obj.setCellProperty("head",e.cell,"text",sheadValue);
+		
+		this.schFileList_ds.set_enableevent(false);
+		for(var i=0; i< this.schFileList_ds.getRowCount(); i++)
+		{
+			this.schFileList_ds.setColumn(i, "chk",sheadValue);
+		}
+		this.schFileList_ds.set_enableevent(true);
+    }
+	
+}
+
+
+]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.Edit00" propid="value" datasetid="reqScholar_ds" columnid="title"/>
+      <BindItem id="item1" compid="Div00.form.Edit01" propid="value" datasetid="reqScholar_ds" columnid="contents"/>
+    </Bind>
+  </Form>
+</FDL>

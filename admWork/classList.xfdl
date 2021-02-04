@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="classList" width="1080" height="570" titletext="New Form" onload="classList_onload">
+  <Form id="classList" width="1080" height="520" titletext="New Form" onload="classList_onload">
     <Layouts>
-      <Layout height="570" mobileorientation="landscape" width="1080">
+      <Layout height="520" mobileorientation="landscape" width="1080">
         <Grid id="Grid00" taborder="0" left="20" top="41" width="1040" height="425" binddataset="ds_class" autofittype="col" oncellclick="Grid00_oncellclick" onheadclick="Grid00_onheadclick">
           <Formats>
             <Format id="default">
@@ -82,7 +82,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="edt_search" taborder="2" left="795" top="6" width="170" height="28"/>
+        <Edit id="edt_search" taborder="2" left="795" top="6" width="170" height="28" onchanged="edt_search_onchanged"/>
         <Button id="btnSearch" taborder="3" text="검색" left="970" top="4" width="90" height="33" onclick="btnSearch_onclick"/>
         <Combo id="co_year" taborder="4" text="" left="410" top="7" width="120" height="28" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
@@ -254,6 +254,7 @@ this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 	} 
 };
 
+
 this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	
@@ -316,6 +317,7 @@ this.fn_msg_callback=function(sId,send)
 		)
 	}
 }
+
 ]]></Script>
     <Objects>
       <Dataset id="ds_class">

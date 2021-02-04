@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MetaInfo version="2.0">
+  <EnumInfo id="ChartPie_gradient" composit="false" description="none | center | dark">
+    <Enum name="none"/>
+    <Enum name="center"/>
+    <Enum name="dark"/>
+  </EnumInfo>
+  <EnumInfo id="ChartSeries_Pyramidtype" composit="false" description="pyramid | funnel">
+    <Enum name="pyramid" description="pyramid"/>
+    <Enum name="funnel" description="funnel"/>
+  </EnumInfo>
+</MetaInfo>
