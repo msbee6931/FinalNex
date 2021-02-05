@@ -16,7 +16,7 @@
               <Static id="Static00_04" taborder="7" text="학과" left="9" top="269" width="60" height="30" border="1px solid black" textAlign="center"/>
               <Static id="Static00_04_00" taborder="8" text="이수구분" left="9" top="299" width="60" height="30" border="1px solid black" textAlign="center"/>
               <Static id="Static00_04_00_00" taborder="9" text="과목명" left="9" top="329" width="60" height="30" border="1px solid black" textAlign="center"/>
-              <Static id="sta_name" taborder="10" text="" left="89" top="129" width="100" height="30" border="1px solid black" padding="0px 0px 0px 5px"/>
+              <Static id="sta_name" taborder="10" text="박종혁" left="89" top="129" width="100" height="30" border="1px solid black" padding="0px 0px 0px 5px"/>
               <Static id="sta_grade" taborder="11" text="" left="89" top="159" width="100" height="30" border="1px solid black" padding="0px 0px 0px 5px"/>
               <Static id="sta_point" taborder="12" text="20" left="89" top="189" width="100" height="30" border="1px solid black" padding="0px 0px 0px 5px"/>
               <Static id="sta_sSeq" taborder="13" text="12345" left="89" top="99" width="100" height="30" border="1px solid black" padding="0px 0px 0px 5px"/>
@@ -251,6 +251,7 @@
           <Column id="thu" type="STRING" size="256"/>
           <Column id="fri" type="STRING" size="256"/>
           <Column id="sat" type="STRING" size="256"/>
+          <Column id="sun" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
@@ -302,11 +303,13 @@
           <Column id="thu" type="STRING" size="256"/>
           <Column id="fri" type="STRING" size="256"/>
           <Column id="sat" type="STRING" size="256"/>
+          <Column id="sun" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_stdClass" useclientlayout="true">
         <ColumnInfo>
           <Column id="sCode" type="INT" size="256"/>
+          <Column id="sName" type="STRING" size="256"/>
           <Column id="classCode" type="INT" size="256"/>
           <Column id="basket" type="STRING" size="256"/>
         </ColumnInfo>
@@ -415,6 +418,7 @@ this.fn_callback_TimeTable=function(){
 	var Thu = new Array();
 	var Fri = new Array();
 	var Sat = new Array();
+	var Sun = new Array();
 	for(var i=this.ds_stdTimeTableCopy.getRowCount()-1; i >=0; i--){
 		Time[i] = this.ds_stdTimeTableCopy.getColumn(i,"time");
 		Time[i] = Time[i].replace("교시","")-1;
@@ -424,12 +428,15 @@ this.fn_callback_TimeTable=function(){
 		Thu[i] = this.ds_stdTimeTableCopy.getColumn(i,"thu");
 		Fri[i] = this.ds_stdTimeTableCopy.getColumn(i,"fri");
 		Sat[i] = this.ds_stdTimeTableCopy.getColumn(i,"sat");
+		Sun[i] = this.ds_stdTimeTableCopy.getColumn(i,"sun");
+		
 		var mon = this.ds_stdTimeTable.getColumn(Time[i],"mon");
 		var tue = this.ds_stdTimeTable.getColumn(Time[i],"tue");
 		var wed = this.ds_stdTimeTable.getColumn(Time[i],"wed");
 		var thu = this.ds_stdTimeTable.getColumn(Time[i],"thu");
 		var fri = this.ds_stdTimeTable.getColumn(Time[i],"fri");
 		var sat = this.ds_stdTimeTable.getColumn(Time[i],"sat");
+		var sun = this.ds_stdTimeTable.getColumn(Time[i],"sun");
 		
 		if(mon == null || mon == ""){this.ds_stdTimeTable.setColumn(Time[i],"mon",Mon[i]);}
 		if(tue == null || tue == ""){this.ds_stdTimeTable.setColumn(Time[i],"tue",Tue[i]);}
@@ -437,6 +444,7 @@ this.fn_callback_TimeTable=function(){
 		if(thu == null || thu == ""){this.ds_stdTimeTable.setColumn(Time[i],"thu",Thu[i]);}
 		if(fri == null || fri == ""){this.ds_stdTimeTable.setColumn(Time[i],"fri",Fri[i]);}
 		if(sat == null || sat == ""){this.ds_stdTimeTable.setColumn(Time[i],"sat",Sat[i]);}	
+		if(sun == null || sun == ""){this.ds_stdTimeTable.setColumn(Time[i],"sun",Sun[i]);}
 	}
 	//화면 로드시 해당 학과 과목이 보여짐 
 	var dept = this.Div00.form.sta_dept.text;
@@ -502,6 +510,7 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 					else if(weeks[0] =="목"){col="thu"}
 					else if(weeks[0] =="금"){col="fri"}
 					else if(weeks[0] =="토"){col="sat"}	
+					else if(weeks[0] =="일"){col="sun"}
 					for(var j=0; j<week.length; j++){
 						var cName = this.ds_stdTimeTable.getColumn(week[j]-1,col);
 						if(cName=="" || cName == null){
@@ -526,8 +535,10 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 				this.ds_myBasket.copyRow(addRow,this.ds_class,nRow);
 				
 				//insert studentClass 추가
+				var sName = this.Div00.form.sta_name.text;
 				var addRow2 = this.ds_stdClass.addRow();
 				this.ds_stdClass.setColumn(addRow2,"sCode",sCode);
+				this.ds_stdClass.setColumn(addRow2,"sName",sName);
 				this.ds_stdClass.setColumn(addRow2,"classCode",classCode);
 				this.ds_stdClass.setColumn(addRow2,"basket",'Y');
 				this.transaction(
@@ -631,10 +642,10 @@ this.Grid00_00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
 this.Div00_classTime_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {	
 	var sCode = this.Div00.form.sta_sSeq.text;
-	var x = this.width/2-360; 
+	var x = this.width/2-410; 
 	var y = this.height/2-220;
 	var objCF = new ChildFrame();
-	objCF.init("popTimeTable",x,y,720,440,0,0,"stdWork::studentSchedule.xfdl");
+	objCF.init("popTimeTable",x,y,820,440,0,0,"stdWork::studentSchedule.xfdl");
 	objCF.set_showtitlebar(false);
 	
 	objCF.showModal(this.getOwnerFrame(),{sCode:sCode},this,"fn_callback");

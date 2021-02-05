@@ -174,6 +174,7 @@
           <Col id="menu_id">203020</Col>
           <Col id="menu_name">학생 출결 관리</Col>
           <Col id="menu_level">2</Col>
+          <Col id="form_url">prfWork::attendManage.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">30</Col>

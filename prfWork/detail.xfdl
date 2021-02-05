@@ -56,10 +56,10 @@
                         <Static id="Static00_02_02" taborder="15" text=" ▣ 강의실" left="21" top="127" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
                         <Edit id="edt_classRoom" taborder="16" left="139" top="127" width="212" height="39" textAlign="center"/>
                         <Button id="dropBtn" taborder="19" text="" left="924" top="127" width="25" height="40" onclick="Div00_classPlanTab_classPlan_Button00_onclick"/>
-                        <PopupDiv id="classTimeList" visible="false" left="351" top="167" width="340" height="315" oncloseup="Div00_classPlanTab_classPlan_classTimeList_oncloseup">
+                        <PopupDiv id="classTimeList" visible="false" left="351" top="167" width="382" height="315" oncloseup="Div00_classPlanTab_classPlan_classTimeList_oncloseup">
                           <Layouts>
                             <Layout>
-                              <Grid id="Grid00" taborder="0" left="0" top="0" width="340" height="315" binddataset="ds_classTimeList" onmouseleave="Div00_classPlanTab_classPlan_classTimeList_Grid00_onmouseleave">
+                              <Grid id="Grid00" taborder="0" left="0" top="0" width="382" height="315" binddataset="ds_classTimeList" onmouseleave="Div00_classPlanTab_classPlan_classTimeList_Grid00_onmouseleave">
                                 <Formats>
                                   <Format id="default">
                                     <Columns>
@@ -70,6 +70,7 @@
                                       <Column size="48"/>
                                       <Column size="48"/>
                                       <Column size="48"/>
+                                      <Column size="44"/>
                                     </Columns>
                                     <Rows>
                                       <Row size="24" band="head"/>
@@ -82,7 +83,8 @@
                                       <Cell col="3" text="수"/>
                                       <Cell col="4" text="목"/>
                                       <Cell col="5" text="금"/>
-                                      <Cell col="6" text="토"/>
+                                      <Cell col="6" text="토" color="blue"/>
+                                      <Cell col="7" text="일" color="red"/>
                                     </Band>
                                     <Band id="body">
                                       <Cell text="bind:Time"/>
@@ -92,6 +94,7 @@
                                       <Cell col="4" text="bind:Thu" displaytype="checkboxcontrol" edittype="checkbox"/>
                                       <Cell col="5" text="bind:Fri" displaytype="checkboxcontrol" edittype="checkbox"/>
                                       <Cell col="6" text="bind:Sat" displaytype="checkboxcontrol" edittype="checkbox"/>
+                                      <Cell col="7" text="bind:Sun" displaytype="checkboxcontrol" edittype="checkbox"/>
                                     </Band>
                                   </Format>
                                 </Formats>
@@ -337,6 +340,7 @@
           <Column id="Thu" type="STRING" size="256"/>
           <Column id="Fri" type="STRING" size="256"/>
           <Column id="Sat" type="STRING" size="256"/>
+          <Column id="Sun" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
@@ -588,7 +592,7 @@ this.Detail_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.Div00_classPlanTab_classPlan_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	nLeft = -classForm.edt_classTime.getOffsetWidth();
-	classForm.classTimeList.trackPopupByComponent(obj,nLeft, obj.getOffsetHeight(), 340, 315);
+	classForm.classTimeList.trackPopupByComponent(obj,nLeft, obj.getOffsetHeight(), 382, 315);
 };
 
 this.Div00_classPlanTab_classPlan_classTimeList_oncloseup = function(obj:nexacro.PopupDiv,e:nexacro.EventInfo)
@@ -605,6 +609,7 @@ this.Div00_classPlanTab_classPlan_classTimeList_oncloseup = function(obj:nexacro
 	arr[3] = this.ds_classTimeList.extractRows("Thu==1");
 	arr[4] = this.ds_classTimeList.extractRows("Fri==1");
 	arr[5] = this.ds_classTimeList.extractRows("Sat==1");
+	arr[6] = this.ds_classTimeList.extractRows("Sun==1");
 	for(var j=0; j<arr.length; j++){
 		weekTime[j]="";
 		var times="";
@@ -617,7 +622,7 @@ this.Div00_classPlanTab_classPlan_classTimeList_oncloseup = function(obj:nexacro
 			weekTime[j] = week + "(" + times.substring(0,times.length-1) +")";
 		}		
 	}	
-	weekTimes = weekTime[0]+ weekTime[1] + weekTime[2] + weekTime[3] + weekTime[4] + weekTime[5];
+	weekTimes = weekTime[0]+ weekTime[1] + weekTime[2] + weekTime[3] + weekTime[4] + weekTime[5] + weekTime[6];
 	classTime.set_value(weekTimes);
 };
 
