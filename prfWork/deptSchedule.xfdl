@@ -23,7 +23,7 @@
                       <Row size="40"/>
                     </Rows>
                     <Band id="body">
-                      <Cell text="bind:schDay"/>
+                      <Cell text="bind:schDay" textAlign="center"/>
                       <Cell col="1" text="bind:title"/>
                     </Band>
                   </Format>
@@ -45,6 +45,12 @@
 		"",//argument
 		"fn_callback"
 	)
+	
+	var cnt= this.deptSchedule_ds.getRowCount();
+	for(var i=0; i<cnt; i++){
+	if(this.deptSchedule_ds.getColumn(i,"code") == 01)
+	this.Div00.form.Grid00.setCellProperty("body",0,"background","blue"); // 색 바뀌는지 확인
+	}
 	
 	//오늘 날짜 계산하기
 	var currDate = new Date();
@@ -99,43 +105,47 @@ this.fn_callback_deptSchedule = function(suc) {
 //일정 상세보기 모달창 띄우기
 this.Div00_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-/*	var login = "user"; // session.login 받아올 아이디*/
+	/*	var login = "user"; // session.login 받아올 아이디*/
 	var seq = this.deptSchedule_ds.getColumn(e.row,"seq");
 	var schDate = this.deptSchedule_ds.getColumn(e.row,"schDate");
-/*	var id = this.deptSchedule_ds.getColumn(e.row,"id"); // 등록한 id*/
+	/*	var id = this.deptSchedule_ds.getColumn(e.row,"id"); // 등록한 id*/
 	
-// 	id 일치하면 
-// 	if(id == login)
-// 	{
-		var objCF = new ChildFrame();
-		objCF.init("deptSchedule_update_pop",200,100,400,350);
-		objCF.set_titletext("일정 상세보기");
-		objCF.set_formurl("prfWork::deptSchedule_update_pop.xfdl");
-		objCF.showModal(
-			this.getOwnerFrame(),
-			{seq:seq,schDate:schDate},
-			this,
-			"fn_callback_deptSchedule"
-		);
-// 		
-//  	} else {
-// 		var objCF = new ChildFrame();
-// 		objCF.init("deptSchedule_read_pop",200,100,400,350);
-// 		objCF.set_titletext("일정 상세보기");
-// 		objCF.set_formurl("prfWork::deptSchedule_read_pop.xfdl");
-// 		objCF.showModal(
-// 			this.getOwnerFrame(),
-// 			{seq:seq,schDate:schDate},
-// 			this,
-// 			"fn_callback_deptSchedule"
-// 		);
-//  	}
+	// 	id 일치하면 
+	// 	if(id == login)
+	// 	{
+	var objCF = new ChildFrame();
+	objCF.init("deptSchedule_update_pop",200,100,400,350);
+	objCF.set_titletext("일정 상세보기");
+	objCF.set_formurl("prfWork::deptSchedule_update_pop.xfdl");
+	objCF.showModal(
+		this.getOwnerFrame(),
+		{seq:seq,schDate:schDate},
+		this,
+		"fn_callback_deptSchedule"
+	);
+	// 		
+	//  	} else {
+	// 		var objCF = new ChildFrame();
+	// 		objCF.init("deptSchedule_read_pop",200,100,400,350);
+	// 		objCF.set_titletext("일정 상세보기");
+	// 		objCF.set_formurl("prfWork::deptSchedule_read_pop.xfdl");
+	// 		objCF.showModal(
+	// 			this.getOwnerFrame(),
+	// 			{seq:seq,schDate:schDate},
+	// 			this,
+	// 			"fn_callback_deptSchedule"
+	// 		);
+	//  	}
 	
 	
 };
+
+
+			
+
 ]]></Script>
     <Objects>
-      <Dataset id="deptSchedule_ds">
+      <Dataset id="deptSchedule_ds" onrowsetchanged="deptSchedule_ds_onrowsetchanged">
         <ColumnInfo>
           <Column id="seq" type="STRING" size="256"/>
           <Column id="id" type="STRING" size="256"/>
