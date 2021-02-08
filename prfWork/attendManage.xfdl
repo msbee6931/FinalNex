@@ -3,7 +3,7 @@
   <Form id="attendManage" width="1080" height="570" titletext="New Form" onload="attendManage_onload">
     <Layouts>
       <Layout height="570" mobileorientation="landscape" width="1080" stepcount="0">
-        <Grid id="Grid00" taborder="0" left="75" top="67" width="930" height="155" binddataset="ds_class" oncellclick="Grid00_oncellclick" autofittype="col">
+        <Grid id="Grid00" taborder="0" left="75" top="67" width="930" height="143" binddataset="ds_class" oncellclick="Grid00_oncellclick" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
@@ -207,7 +207,7 @@
     <Script type="xscript5.1"><![CDATA[
 this.attendManage_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-
+	
 	var objDate= new Date();
 	if(objDate.getMonth()+1 && objDate.getMonth()+1 < 8){
 		this.co_year.set_text(objDate.getFullYear()+"년");
@@ -232,9 +232,8 @@ this.attendManage_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 };
 this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	var nRow = this.ds_class.rowposition
-	var classCode = this.ds_class.getColumn(nRow,"classSeq");
-	var className = this.ds_class.getColumn(nRow,"className");
+	var classCode = this.ds_class.getColumn(e.row,"classSeq");
+	var className = this.ds_class.getColumn(e.row,"className");
 	this.sta_label.set_text("학생리스트(" +className+")");	
 	this.transaction(
 		"stdListSeq"
@@ -387,6 +386,10 @@ this.cal_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
 {
 	var cal = this.cal.text;
 	var week = cal.substring(cal.length-1,cal.length);
+	var val = this.cal.value;
+	var start = val - this.cal.getDayOfWeek();
+	var end = start + 6;
+	var vArr = this.ds_cal.extractRows("datecolumn>='"+start+"'&&datecolumn<='"+end+"'");
 	var nRow = this.ds_class.rowposition;
 	var classCode = this.ds_class.getColumn(nRow,"classSeq");
 	var time = this.ds_class.getColumn(nRow,"classTime").split(")");
@@ -395,10 +398,36 @@ this.cal_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
 		var weeks = time[i].split("(");
 		weekTime += weeks[0];
 	}
-	if(weekTime.indexOf(week) < 0){
-		var arr = this.ds_cal.extractRows("datecolumn=="+this.cal.value);	
-		if(arr.length == 0){
-			if(this.confirm("수업이 없습니다.\n수업을 추가하시겠습니까?")){
+	if(this.ds_attend.getRowCount() > 0 ){
+		var arr = this.ds_cal.extractRows("datecolumn=="+this.cal.value);
+		if(weekTime.length <= vArr.length && arr.length == 0){ //이미 등록한 요일 제외하고 요일 개수만큼만 한 주에 등록 가능
+			alert("이번주차 수업을 더이상 등록할 수 없습니다");
+		}else{
+			if(weekTime.indexOf(week) < 0){ // 수업하는 요일 체크			
+				if(arr.length == 0){
+					if(this.confirm("수업이 없습니다.\n수업을 추가하시겠습니까?")){
+						this.transaction(
+							"stdList"
+							,"/stdListSeq.nex"
+							,"" 
+							,"ds_stdClass=out_ds" 
+							,"classCode="+classCode
+							,"fn_callback_stdList" 
+						);
+					}else{
+						this.ds_attend.deleteAll();
+					}
+				}else{
+					this.transaction(
+						"stdList"
+						,"/stdListSeq.nex"
+						,"" 
+						,"ds_stdClass=out_ds" 
+						,"classCode="+classCode
+						,"fn_callback_stdList" 
+					);
+				}
+			}else{
 				this.transaction(
 					"stdList"
 					,"/stdListSeq.nex"
@@ -407,28 +436,10 @@ this.cal_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
 					,"classCode="+classCode
 					,"fn_callback_stdList" 
 				);
-			}else{
-				this.ds_attend.deleteAll();
 			}
-		}else{
-			this.transaction(
-				"stdList"
-				,"/stdListSeq.nex"
-				,"" 
-				,"ds_stdClass=out_ds" 
-				,"classCode="+classCode
-				,"fn_callback_stdList" 
-			);
 		}
 	}else{
-		this.transaction(
-			"stdList"
-			,"/stdListSeq.nex"
-			,"" 
-			,"ds_stdClass=out_ds" 
-			,"classCode="+classCode
-			,"fn_callback_stdList" 
-		);
+		alert("수업을 선택해주세요");
 	}
 };
 
