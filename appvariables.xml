@@ -112,7 +112,7 @@
           <Col id="menu_id">4010</Col>
           <Col id="menu_name">나의 정보 수정</Col>
           <Col id="menu_level">1</Col>
-          <Col id="form_url">myInfoModify.xfdl</Col>
+          <Col id="form_url">stdWork::myInfoModify.xfdl</Col>
         </Row>
       </Rows>
     </Dataset>
