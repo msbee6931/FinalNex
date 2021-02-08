@@ -15,9 +15,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Button id="Button00" taborder="1" text="학생" left="390" top="60" width="120" height="50" onclick="Button00_onclick"/>
-        <Button id="Button00_00" taborder="2" text="교수" left="531" top="60" width="120" height="50" onclick="Button00_00_onclick"/>
-        <Button id="Button00_01" taborder="3" text="관리자" left="670" top="60" width="120" height="50" onclick="Button00_01_onclick"/>
+        <Static id="Static00" taborder="1" text="2//qwer" left="387" top="107" width="180" height="50" font="20px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
@@ -172,10 +170,10 @@ this.loginForm_btn_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
 				trace(this.ds_login);
 	}else{
 		trace("관리잡니다");
-		//var shaObj = new jsSHA("SHA-256","TEXT");
-		//shaObj.update(pw);
-		//var hash = shaObj.getHash("HEX");
-		//trace(hash);
+		var shaObj = new jsSHA("SHA-256","TEXT");
+		shaObj.update(pw);
+		var hash = shaObj.getHash("HEX");
+		trace(hash);
 		
 		var addRow = this.ds_login.addRow();
 		this.ds_login.setColumn(addRow,"a_seq",id);
@@ -183,7 +181,7 @@ this.loginForm_btn_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
 		
 		this.transaction(
 
-					"ds_loginPro" //1. strSvcID
+					"ds_loginAdm" //1. strSvcID
 					,"/loginAdm.login" //2. strURL
 					,"in_ds=ds_login:U" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
 					,"ds_admin=out_ds" //4.strOutDatasets -select Fds=Sds
