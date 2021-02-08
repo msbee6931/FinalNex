@@ -108,11 +108,13 @@
             <Col id="menu_id">4010</Col>
             <Col id="menu_name">자유게시판 관리</Col>
             <Col id="menu_level">1</Col>
+            <Col id="form_url">admWork::freeboard.xfdl</Col>
           </Row>
           <Row>
             <Col id="menu_id">4020</Col>
             <Col id="menu_name">건의게시판 관리</Col>
             <Col id="menu_level">1</Col>
+            <Col id="form_url">admWork::requestboard.xfdl</Col>
           </Row>
           <Row>
             <Col id="menu_id">4030</Col>
