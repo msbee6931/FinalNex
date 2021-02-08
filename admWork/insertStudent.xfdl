@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="insertStudent" width="300" height="500" titletext="New Form">
+    <Layouts>
+      <Layout height="500" mobileorientation="landscape" width="300">
+        <Edit id="edt_s_seq" taborder="0" top="20" width="175" height="30" left="85"/>
+        <Static id="Static00" taborder="1" text="학번" top="20" width="50" height="30" left="10"/>
+        <Static id="Static00_00" taborder="2" text="이름" top="55" width="50" height="30" left="10"/>
+        <Static id="Static00_01" taborder="3" text="나이" top="90" width="50" height="30" left="10"/>
+        <Static id="Static00_02" taborder="4" text="이메일" top="125" width="50" height="30" left="10"/>
+        <Static id="Static00_03" taborder="5" text="전화번호" top="160" width="50" height="30" left="10"/>
+        <Static id="Static00_04" taborder="6" text="주소" top="195" width="50" height="30" left="10"/>
+        <Static id="Static00_05" taborder="7" text="장학금" top="230" width="50" height="30" left="10"/>
+        <Static id="Static00_06" taborder="8" text="휴학" top="265" width="50" height="30" left="10"/>
+        <Static id="Static00_07" taborder="9" text="성적" top="300" width="50" height="30" left="10"/>
+        <Static id="Static00_08" taborder="10" text="생일" top="335" width="50" height="30" left="10"/>
+        <Static id="Static00_09" taborder="11" text="초기비밀번호" top="370" width="75" height="30" onclick="Static00_09_onclick" left="10"/>
+        <Static id="Static00_10" taborder="12" text="성별" top="405" width="50" height="30" left="10"/>
+        <Edit id="edt_name" taborder="13" top="55" width="175" height="30" left="85"/>
+        <Edit id="edt_age" taborder="14" top="90" width="175" height="30" left="85"/>
+        <Edit id="edt_email" taborder="15" top="125" width="175" height="30" left="85"/>
+        <Edit id="edt_contact" taborder="16" top="160" width="175" height="30" left="85"/>
+        <Edit id="edt_address" taborder="17" top="195" width="175" height="30" left="85"/>
+        <Edit id="edt_scholarship" taborder="18" top="230" width="175" height="30" left="85"/>
+        <Edit id="edt_rest" taborder="19" top="265" width="175" height="30" left="85"/>
+        <Edit id="edt_grade" taborder="20" top="300" width="175" height="30" left="85"/>
+        <Edit id="edt_pw" taborder="21" top="370" width="175" height="30" left="85"/>
+        <Edit id="edt_gender" taborder="22" top="405" width="175" height="30" left="85"/>
+        <Button id="btn_insert" taborder="23" text="입력" top="455" width="50" height="30" left="85" onclick="btn_insert_onclick"/>
+        <Button id="btn_cancel" taborder="24" text="취소" top="455" width="50" height="30" left="210" onclick="btn_cancel_onclick"/>
+        <Calendar id="cal_birth" taborder="25" left="85" top="335" width="175" height="30" dateformat="yyyy-MM-dd"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_students_copy">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="s_seq" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="contact" type="STRING" size="256"/>
+          <Column id="address" type="STRING" size="256"/>
+          <Column id="scholarship" type="STRING" size="256"/>
+          <Column id="rest" type="STRING" size="256"/>
+          <Column id="grade" type="STRING" size="256"/>
+          <Column id="birth" type="DATE" size="256"/>
+          <Column id="pw" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.fn_update_students = function(id,url){	//업데이트 따로 뺀것
+  this.transaction(
+            id 
+            ,url 
+            ,"in_ds=ds_students:U"
+            ,"" 
+            ,""
+            ,"fn_callback" 
+         )
+}
+this.fn_callback = function(id,ErrorCode,ErrorMsg){	//콜백함수
+	trace(id);
+	trace(ErrorMsg);
+	trace(ErrorCode);
+}
+
+
+
+this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var s_seq = this.edt_s_seq.value;
+	var name = this.edt_name.value;
+	var age = this.edt_age.value;
+	var email = this.edt_email.value;
+	var contact = this.edt_contact.value;
+	var address = this.edt_address.value;
+	var scholarship = this.edt_scholarship.value;
+	var rest = this.edt_rest.value;
+	var grade = this.edt_grade.value;
+	var birth = this.cal_birth.value;
+	var pw = this.edt_pw.value;
+	var gender = this.edt_gender.value;
+	
+	var addRow = this.ds_students_copy.addRow();
+	this.ds_students_copy.setColumn(addRow,"s_seq",s_seq);
+	this.ds_students_copy.setColumn(addRow,"name",name);
+	this.ds_students_copy.setColumn(addRow,"age",age);
+	this.ds_students_copy.setColumn(addRow,"email",email);
+	this.ds_students_copy.setColumn(addRow,"contact",contact);
+	this.ds_students_copy.setColumn(addRow,"address",address);
+	this.ds_students_copy.setColumn(addRow,"scholarship",scholarship);
+	this.ds_students_copy.setColumn(addRow,"rest",rest);
+	this.ds_students_copy.setColumn(addRow,"grade",grade);
+	this.ds_students_copy.setColumn(addRow,"birth",birth);
+	this.ds_students_copy.setColumn(addRow,"pw",pw);
+	this.ds_students_copy.setColumn(addRow,"gender",gender);
+
+	this.transaction(
+
+				"ds_insert" //1. strSvcID
+				,"/insertStudent.nex" //2. strURL
+				,"in_ds=ds_students_copy:U" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
+				,"" //4.strOutDatasets -select Fds=Sds
+				,"" //5.strArgument text값
+				,"fn_callback" //6.strCallbackFunc
+			);
+			this.close("");
+	
+};
+
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close("");
+};]]></Script>
+  </Form>
+</FDL>

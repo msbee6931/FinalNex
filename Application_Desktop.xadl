@@ -2,11 +2,11 @@
 <ADL version="2.0">
   <Application id="Application_Desktop" screenid="Desktop_screen">
     <Layout>
-      <MainFrame id="mainframe" showtitlebar="true" showstatusbar="true" width="1280" height="720" titletext="MidLeftFrame">
+      <MainFrame id="mainframe" showtitlebar="true" showstatusbar="true" width="1280" height="738" titletext="MidLeftFrame">
         <VFrameSet id="VFrameSet00" separatesize="*,0,0,0">
           <Frames>
             <ChildFrame id="Loginform" formurl="Admin::Form_login.xfdl" showtitlebar="false"/>
-            <ChildFrame id="TopFrame" showtitlebar="false" showstatusbar="false" formurl="Professor::Form_Top.xfdl"/>
+            <ChildFrame id="TopFrame" showtitlebar="false" showstatusbar="false" formurl="Professor::Form_Top.xfdl" left="0" top="0"/>
             <HFrameSet id="HFrameSet00" separatesize="200,*">
               <Frames>
                 <ChildFrame id="LeftFrame" showtitlebar="false" showstatusbar="false" formurl="Professor::Form_Left.xfdl"/>
@@ -32,5 +32,6 @@
 this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventInfo)
 {
 	this.av_FrameSet = this.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.FrameSet00;
+
 };]]></Script>
 </ADL>

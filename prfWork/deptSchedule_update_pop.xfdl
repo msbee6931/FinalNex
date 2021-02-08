@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="deptSchedule_update_pop" width="400" height="300" titletext="New Form" onload="deptSchedule_update_pop_onload">
+    <Layouts>
+      <Layout height="300" mobileorientation="landscape" width="400">
+        <Static id="Static00" taborder="0" text="제목" left="10" top="10" width="40" height="20"/>
+        <Edit id="edt_title" taborder="1" left="70" top="10" width="320" height="20"/>
+        <Static id="Static00_00" taborder="2" text="일자" left="10" top="40" width="40" height="20"/>
+        <Calendar id="cal_sDate" taborder="3" left="70" top="40" width="130" height="20"/>
+        <Static id="Static00_00_00" taborder="4" text="일정구분" left="10" top="70" width="60" height="20"/>
+        <Combo id="cmb_code" taborder="5" text="공지" left="70" top="70" width="130" height="20" innerdataset="ScheduleCode_ds" codecolumn="code" datacolumn="name" index="0" value="01"/>
+        <Static id="Static00_01" taborder="6" text="내용" left="10" top="100" width="40" height="20"/>
+        <TextArea id="tea_content" taborder="7" left="10" top="130" height="120" width="380"/>
+        <Calendar id="cal_eDate" taborder="8" left="230" top="40" width="130" height="20"/>
+        <Static id="Static00_00_01" taborder="9" text="~" left="210" top="40" width="10" height="20"/>
+        <Button id="btn_ok" taborder="10" text="확인" left="113" top="259" width="80" height="30" onclick="btn_ok_onclick"/>
+        <Button id="btn_del" taborder="11" text="삭제" left="203" top="259" width="80" height="30" onclick="btn_del_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.seq = this.parent.seq;
+this.schDate = this.parent.schDate;
+	
+this.deptSchedule_update_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	
+	
+	this.transaction(
+		"selectOneDeptSchedule",//id
+		"/schedule/selectOneDeptSchedule",//url (절대경로)
+		"",//in_ds:U
+		"deptSchedule_ds=out_ds",//()_out_ds
+		"seq='"+this.seq+"'"+" schDate='"+this.schDate+"'",//argument
+		"fn_callback"
+		)
+};
+
+this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var cFirm = this.confirm("정말 삭제하시겠습니까?","일정 삭제하기");
+	
+	if(cFirm){
+	this.alert("삭제완료");
+	} else {
+		return;
+	}
+};
+
+this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var title = this.edt_title.value;
+	var sDate = nexacro.toNumber(this.cal_sDate.value);
+	var eDate = this.cal_eDate.value;
+	var code = this.cmb_code.value;
+	var content = this.tea_content.value;	
+	
+	
+	// 날짜간 차이 계산하기하기
+	var fromDate = new Date();
+    var toDate = new Date();
+    var calDate;
+    var day = 1000*60*60*24;
+    
+    fromDate.setFullYear(this.cal_sDate.getYear());
+    fromDate.setMonth(this.cal_sDate.getMonth()-1);
+    fromDate.setDate(this.cal_sDate.getDay());
+    
+    toDate.setFullYear(this.cal_eDate.getYear());
+    toDate.setMonth(this.cal_eDate.getMonth()-1);
+    toDate.setDate(this.cal_eDate.getDay());
+    
+    calDate = fromDate.getTime() - toDate.getTime();
+    
+    var leng = Math.abs(calDate/day); // 실제 날짜 간 차이
+	var changedSeq  = nexacro.round(Math.random()*10000, 0); // 랜덤으로 seq 숫자 부여
+
+	
+	for(var i=0; i<(leng+1);i++){
+	
+	var nRow = this.deptSchedule_ds.addRow();
+	var schDate = (sDate+i);
+
+	this.deptSchedule_ds.setColumn(nRow,"seq",changedSeq);
+	this.deptSchedule_ds.setColumn(nRow,"title",title);
+	this.deptSchedule_ds.setColumn(nRow,"sDate",sDate);
+	this.deptSchedule_ds.setColumn(nRow,"eDate",eDate);
+	this.deptSchedule_ds.setColumn(nRow,"schDate",schDate);
+	this.deptSchedule_ds.setColumn(nRow,"schDay",schDate.toString().substr(6,2));
+	this.deptSchedule_ds.setColumn(nRow,"code",code);
+	this.deptSchedule_ds.setColumn(nRow,"content",content);
+	}
+	
+	this.transaction(
+		"updateDeptSchedule",//id
+		"/schedule/updateDeptSchedule",//url (절대경로)
+		"in_ds=deptSchedule_ds:U",//in_ds:U
+		"",//()_out_ds
+		"oriSeq='"+this.seq+"'",//argument
+		"fn_callback"
+		)
+		
+		this.close();
+	
+};
+
+
+
+]]></Script>
+    <Objects>
+      <Dataset id="deptSchedule_ds">
+        <ColumnInfo>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="writer" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="sDate" type="STRING" size="256"/>
+          <Column id="eDate" type="STRING" size="256"/>
+          <Column id="schDate" type="STRING" size="256"/>
+          <Column id="schDay" type="STRING" size="256"/>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="content" type="STRING" size="256"/>
+          <Column id="writeDate" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="seq">1234</Col>
+            <Col id="title">test</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ScheduleCode_ds">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">01</Col>
+            <Col id="name">공지사항</Col>
+          </Row>
+          <Row>
+            <Col id="code">02</Col>
+            <Col id="name">단체일정</Col>
+          </Row>
+          <Row>
+            <Col id="code">03</Col>
+            <Col id="name">개인일정</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="edt_title" propid="value" datasetid="deptSchedule_ds" columnid="title"/>
+      <BindItem id="item1" compid="cal_sDate" propid="value" datasetid="deptSchedule_ds" columnid="sDate"/>
+      <BindItem id="item2" compid="cal_eDate" propid="value" datasetid="deptSchedule_ds" columnid="eDate"/>
+      <BindItem id="item3" compid="cmb_code" propid="value" datasetid="deptSchedule_ds" columnid="code"/>
+      <BindItem id="item4" compid="tea_content" propid="value" datasetid="deptSchedule_ds" columnid="content"/>
+    </Bind>
+  </Form>
+</FDL>
