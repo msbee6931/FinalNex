@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="EvaluationMethod" width="680" height="170" titletext="New Form" onload="EvaluationMethod_onload">
+    <Layouts>
+      <Layout height="170" width="680">
+        <Static id="sta_sum" taborder="0" left="575" top="40" width="100" height="30" border="1px solid gray" textAlign="center"/>
+        <Static id="sum2" taborder="1" text="합계" left="575" top="10" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+        <Static id="label_fin" taborder="2" text="기말고사" left="475" top="10" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+        <Static id="label_task" taborder="3" text="과제" left="375" top="10" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+        <Static id="label_otest" taborder="4" text="수시" left="275" top="10" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+        <Static id="label_mid" taborder="5" text="중간고사" left="175" top="10" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+        <Static id="label_attend" taborder="6" text="출석" left="75" top="10" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+        <MaskEdit id="mask_attend" taborder="7" left="75" top="70" width="100" height="30" maskchar="###" textAlign="center" format="+0" canchange="grade_canchange"/>
+        <MaskEdit id="mask_mid" taborder="8" left="175" top="70" width="100" height="30" maskchar="###" textAlign="center" canchange="grade_canchange" format="+0"/>
+        <MaskEdit id="mask_otest" taborder="9" left="275" top="70" width="100" height="30" maskchar="###" textAlign="center" canchange="grade_canchange" format="+0"/>
+        <MaskEdit id="mask_task" taborder="10" left="375" top="70" width="100" height="30" textAlign="center" canchange="grade_canchange" format="+0"/>
+        <MaskEdit id="mask_fin" taborder="11" left="475" top="70" width="100" height="30" textAlign="center" canchange="grade_canchange" format="+0"/>
+        <Static id="sta_sumAll" taborder="12" left="575" top="70" width="100" height="30" border="1px solid gray" textAlign="center" text="0"/>
+        <Static id="Static02_02" taborder="13" text="기존 방식" left="5" top="40" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
+        <Static id="Static02_02_00" taborder="14" text="변경 방식" left="5" top="70" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
+        <Static id="Static02_02_01" taborder="15" text="" left="5" top="10" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
+        <Static id="sta_fin" taborder="16" left="475" top="40" width="100" height="30" border="1px solid gray" textAlign="center"/>
+        <Static id="sta_task" taborder="17" left="375" top="40" width="100" height="30" border="1px solid gray" textAlign="center"/>
+        <Static id="sta_otest" taborder="18" left="275" top="40" width="100" height="30" border="1px solid gray" textAlign="center"/>
+        <Static id="sta_mid" taborder="19" left="175" top="40" width="100" height="30" border="1px solid gray" textAlign="center"/>
+        <Static id="sta_attend" taborder="20" left="75" top="40" width="100" height="30" border="1px solid gray" textAlign="center"/>
+        <Button id="btnSave" taborder="21" text="저장" left="485" top="115" width="90" height="35" onclick="btnSave_onclick"/>
+        <Button id="btnClose" taborder="22" text="닫기" left="580" top="115" width="90" height="35" onclick="btnClose_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.EvaluationMethod_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+				"classListSeq"
+				,"/classListSeq.nex"
+				,""
+				,"ds_class=out_ds" 
+				,"classSeq="+this.parent.classCode
+				,"fn_callback_classInfo" 
+			);
+};
+this.fn_callback_classInfo=function(){
+	var eval = this.ds_class.getColumn(0,"classEvaluation").split("|");
+	this.sta_attend.set_text(eval[0]);
+	this.sta_mid.set_text(eval[1]);
+	this.sta_otest.set_text(eval[2]);
+	this.sta_task.set_text(eval[3]);
+	this.sta_fin.set_text(eval[4]);
+	this.sta_sum.set_text(parseInt(eval[0])+parseInt(eval[1])+parseInt(eval[2])+parseInt(eval[3])+parseInt(eval[4])+"%");
+}
+this.btnClose_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+
+this.btnSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.sta_sumAll.text != "100%"){
+		alert("합계가 100%가 아닙니다");
+	}else{
+		this.ds_class.clearData();
+		var attend = this.mask_attend.text;
+		var mid = this.mask_mid.text;
+		var otest = this.mask_otest.text;
+		var task = this.mask_task.text;
+		var fin = this.mask_fin.text;
+		var eval = attend +"|"+mid+"|"+otest+"|"+task+"|"+fin+"|"+this.parent.classCode;
+		var addRow = this.ds_class.addRow();
+		this.ds_class.setColumn(addRow,"classEvaluation",eval);
+		this.ds_class.setColumn(addRow,"classSeq",this.parent.classCode);
+		
+		this.transaction(
+					"classEvalUpd" 
+					,"/classEvalUpd.nex" 
+					,"in_ds=ds_class:U" 
+					,"" 
+					,""
+					,"fn_callback"
+				);
+				
+		this.close(eval);
+	}
+};
+
+this.grade_canchange = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
+{
+	var attend = this.mask_attend.text;
+	var mid = this.mask_mid.text;
+	var otest = this.mask_otest.text;
+	var task = this.mask_task.text;
+	var fin = this.mask_fin.text;
+	
+	if(attend == ""){attend = 0;}else if(attend >100){alert("0~100까지 입력이 가능합니다");this.mask_attend.set_value(100);}
+	if(mid == ""){mid = 0;}else if(mid >100){alert("0~100까지 입력이 가능합니다");this.mask_mid.set_value(100);}
+	if(otest == ""){otest = 0;}else if(otest >100){alert("0~100까지 입력이 가능합니다");this.mask_otest.set_value(100);}
+	if(task == ""){task = 0;}else if(task >100){alert("0~100까지 입력이 가능합니다");this.mask_task.set_value(100);}
+	if(fin == ""){fin = 0;}else if(fin >100){alert("0~100까지 입력이 가능합니다");this.mask_fin.set_value(100);}
+	
+	this.sta_sumAll.set_text(parseInt(attend) + parseInt(mid) + parseInt(otest) + parseInt(task) + parseInt(fin) +"%");
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_class" useclientlayout="false">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="classPart" type="STRING" size="256"/>
+          <Column id="className" type="STRING" size="256"/>
+          <Column id="classSeq" type="INT" size="256"/>
+          <Column id="classPoint" type="STRING" size="256"/>
+          <Column id="proCode" type="STRING" size="256"/>
+          <Column id="proName" type="STRING" size="256"/>
+          <Column id="dept" type="STRING" size="256"/>
+          <Column id="classTime" type="STRING" size="256"/>
+          <Column id="classRoom" type="STRING" size="256"/>
+          <Column id="limit" type="STRING" size="256"/>
+          <Column id="grade" type="STRING" size="256"/>
+          <Column id="classGoal" type="STRING" size="256"/>
+          <Column id="classMethod" type="STRING" size="256"/>
+          <Column id="classEvaluation" type="STRING" size="256"/>
+          <Column id="classReferences" type="STRING" size="256"/>
+          <Column id="reqState" type="STRING" size="256"/>
+          <Column id="rejectMsg" type="STRING" size="256"/>
+          <Column id="reg_date" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>
