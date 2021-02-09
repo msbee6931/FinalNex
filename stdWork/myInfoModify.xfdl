@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="myInfoModify" width="1080" height="520" titletext="New Form">
+  <Form id="myInfoModify" width="1080" height="520" titletext="New Form" onload="myInfoModify_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
         <Static id="Static00" taborder="0" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
@@ -11,7 +11,7 @@
         <Div id="Div00" taborder="5" text="" left="30" top="38" width="1021" height="452" border="1px solid #c1c1c1">
           <Layouts>
             <Layout>
-              <Edit id="edt_s_seq" taborder="0" left="417" top="42" width="150" height="30" onchanged="Div00_edt_s_seq_onchanged" readonly="true"/>
+              <Edit id="edt_s_seq" taborder="0" left="417" top="42" width="150" height="30" readonly="true"/>
               <Edit id="edt_name" taborder="1" left="417" top="77" width="150" height="30"/>
               <Edit id="edt_age" taborder="2" left="417" top="112" width="150" height="30"/>
               <Edit id="edt_email" taborder="3" left="417" top="147" width="150" height="30"/>
@@ -69,20 +69,6 @@
 }
 
 
-this.myinfoModify_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
-{
-	this.transaction(
-
-				"ds_myInfoStu" //1. strSvcID
-				,"/myInfoStu.nex" //2. strURL
-				,"" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
-				,"ds_students_copy=out_ds" //4.strOutDatasets -select Fds=Sds
-				,"" //5.strArgument text값
-				,"fn_callback" //6.strCallbackFunc
-			);
-			//this.ds_students_copy.filter("");
-};
-
 this.Div00_btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.close("");
@@ -98,8 +84,8 @@ this.Div00_btn_modify_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 	var s_seq = this.ds_students_copy.getColumn(e.row,"s_seq");
 	var pw = this.ds_students_copy.getColumn(e.row,"pw");
 	
-	let x = this.width/2-100;
-	let y = this.height/2-100;
+	let x = this.width/2-50;
+	let y = this.height/2-50;
 	let objCF = new ChildFrame();
 	objCF.init("passpop",x,y,200,200,0,0,"stdWork::passwordPop.xfdl");
 	objCF.set_showtitlebar(false);
@@ -147,6 +133,20 @@ this.fn_passcallback = function(id,hash){
 			
 	}
 }
+
+this.myInfoModify_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+
+				"ds_myInfoStu" //1. strSvcID
+				,"/myInfoStu.nex" //2. strURL
+				,"" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
+				,"ds_students_copy=out_ds" //4.strOutDatasets -select Fds=Sds
+				,"" //5.strArgument text값
+				,"fn_callback" //6.strCallbackFunc
+			);
+			//this.ds_students_copy.filter("");
+};
 ]]></Script>
   </Form>
 </FDL>

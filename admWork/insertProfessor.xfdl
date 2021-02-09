@@ -70,5 +70,20 @@ this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.close("");
 };
 ]]></Script>
+    <Objects>
+      <Dataset id="ds_professor_copy">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="p_seq" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="contact" type="STRING" size="256"/>
+          <Column id="address" type="STRING" size="256"/>
+          <Column id="lecture" type="STRING" size="256"/>
+          <Column id="pw" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>
