@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="prfAttend" width="1080" height="520" titletext="New Form" onload="prfAttend_onload">
+    <Layouts>
+      <Layout height="520" mobileorientation="landscape" width="1080">
+        <Div id="Div00" taborder="0" text="Div00" left="30" top="38" width="1021" height="452" border="1px solid #c1c1c1">
+          <Layouts>
+            <Layout>
+              <Grid id="Grid00" taborder="0" left="74" top="51" width="275" height="240" binddataset="ds_class" autofittype="col" oncellclick="Div00_Grid00_oncellclick">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="88"/>
+                      <Column size="233"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="과목코드"/>
+                      <Cell col="1" text="과목명"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:classSeq" displaytype="mask" maskeditformat="########" textAlign="center"/>
+                      <Cell col="1" text="bind:className" textAlign="center"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static00" taborder="1" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static01" taborder="2" text="출결조회" left="30" top="9" width="200" height="30"/>
+        <Static id="Static00_01" taborder="3" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00" taborder="4" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="5" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Grid id="Grid00" taborder="6" left="420" top="90" width="545" height="290" binddataset="ds_stdClass" autofittype="col" oncelldblclick="Grid00_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="162"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="학번"/>
+                <Cell col="1" text="이름"/>
+                <Cell col="2" text="출석률"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:sCode"/>
+                <Cell col="1" text="bind:sName"/>
+                <Cell col="2" text="bind:basket" displaytype="progressbarcontrol" progressbarsmooth="true" progressbarblockgap="1" progressbarblocksize="1"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00_00_00" taborder="7" text="내 관리 강좌" left="108" top="60" width="112" height="30"/>
+        <Static id="sta_title" taborder="8" text="" left="475" top="60" width="140" height="30"/>
+        <Static id="Static00_00_00_00" taborder="9" text="과목명 :" left="430" top="60" width="45" height="30"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_class">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="classPart" type="STRING" size="256"/>
+          <Column id="className" type="STRING" size="256"/>
+          <Column id="classSeq" type="INT" size="256"/>
+          <Column id="classPoint" type="STRING" size="256"/>
+          <Column id="proCode" type="STRING" size="256"/>
+          <Column id="proName" type="STRING" size="256"/>
+          <Column id="dept" type="STRING" size="256"/>
+          <Column id="classTime" type="STRING" size="256"/>
+          <Column id="classRoom" type="STRING" size="256"/>
+          <Column id="limit" type="STRING" size="256"/>
+          <Column id="grade" type="STRING" size="256"/>
+          <Column id="classGoal" type="STRING" size="256"/>
+          <Column id="classMethod" type="STRING" size="256"/>
+          <Column id="classEvaluation" type="STRING" size="256"/>
+          <Column id="classReferences" type="STRING" size="256"/>
+          <Column id="reqState" type="STRING" size="256"/>
+          <Column id="rejectMsg" type="STRING" size="256"/>
+          <Column id="reg_date" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_attend" oncolumnchanged="ds_attend_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="classCode" type="STRING" size="256"/>
+          <Column id="sCode" type="STRING" size="256"/>
+          <Column id="sName" type="STRING" size="256"/>
+          <Column id="attendDay" type="STRING" size="256"/>
+          <Column id="attendState" type="STRING" size="256"/>
+          <Column id="absenceReason" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stdClass" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="sCode" type="INT" size="256"/>
+          <Column id="sName" type="STRING" size="256"/>
+          <Column id="classCode" type="INT" size="256"/>
+          <Column id="basket" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.classSeq="";
+this.prfAttend_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var proCode = "91515073"; // 교수 코드 로그인 후 받아올 예정
+	
+	var objDate = new Date();
+	if(objDate.getMonth()+1 && objDate.getMonth()+1 < 8){
+		var startTime = objDate.getFullYear()+"0101";
+		var endTime = objDate.getFullYear()+"0731";
+	} else{
+		var startTime = objDate.getFullYear()+"0801";
+		var endTime = objDate.getFullYear()+"1231";
+	}
+	
+	this.transaction(
+		"proClassList"
+		,"/proClassList.nex" 
+		,""
+		,"ds_class=out_ds" 
+		,"proCode="+proCode +" startTime="+startTime + " endTime="+endTime
+		,"fn_callback_proClass" 
+	);
+};
+
+
+this.Div00_Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.classSeq = this.ds_class.getColumn(e.row,"classSeq");
+	var className = this.ds_class.getColumn(e.row,"className");
+	
+	this.sta_title.set_text(className);
+	
+	this.transaction(
+		"stdList"
+		,"/stdListSeq.nex"
+		,"" 
+		,"ds_stdClass=out_ds" 
+		,"classCode="+this.classSeq
+		,"fn_callback_stdList" 
+	);
+};
+
+this.fn_callback_stdList = function()
+{
+	
+	// 해당 수업을 듣는 학생들의 모든 출석을 불러옴
+	this.transaction(
+		"selectAttend",//id
+		"/selectAttend.nex",//url (절대경로)
+		"",//in_ds:U
+		"ds_attend=out_ds",//()_out_ds
+		"cCode="+this.classSeq,//argument
+		"fn_callback_attend"
+	);
+	
+};
+
+
+this.fn_callback_attend =function()
+{
+	
+	var entireCount=""; // 전체 출석해야할 일 수
+	var objDs = this.ds_class;
+	for(var i=0; i< objDs.getRowCount(); i++)
+	{
+		var cSeq = objDs.getColumn(i,"classSeq");
+		
+		if (cSeq == this.classSeq)
+		{
+			var cTime = objDs.getColumn(i,"classTime").split(")"); // ) 로 구분
+			entireCount = (cTime.length-1)*15; // 총 수업 일수
+		}
+	}
+
+	
+	
+	for(var i=0; i<this.ds_stdClass.getRowCount();i++)
+	{
+		var codeS = this.ds_stdClass.getColumn(i,"sCode"); // std데이터셋의 i번째 학번
+		this.ds_stdClass.setColumn(i,"basket","test");//값 비워두기
+		
+		this.ds_attend.filter("sCode=='"+codeS+"'"); // 학번으로 필터 attend 데이터셋 돌리기
+		var countStateA =0; //출석일 수 
+		var countStateB =0; // 지각일 수
+		var countStateC =0; // 조퇴일 수
+		var countStateD=0; //결석일 수
+		var notAttend=0; // 지각+조퇴
+		//attend 데이터셋 돌림
+		for(var j=0; j<this.ds_attend.getRowCount();j++)
+		{	
+			var aState = this.ds_attend.getColumn(j,"attendState") ; //ABCD 구분값
+			if(aState == 01)
+			{
+				countStateA += 1;
+			}
+			else if(aState == 02)
+			{
+				countStateB += 1;
+				countStateA += 1;
+			}
+			else if(aState == 03)
+			{
+				countStateC += 1;
+				countStateA += 1;
+			}
+			else if(aState == 04)
+			{
+				countStateD += 1;
+			}
+		}
+		
+		var bc = countStateB+countStateC; //지각+ 조퇴
+		if(bc != 0)
+		{
+			for(var k=1;k<=bc;k++)
+			{
+			//3회 이상이면 결석으로 처리하기
+				if(k%3 == 0)
+				{
+					countStateD += 1;
+					countStateA -= countStateD;
+				}
+			}	
+		}
+		
+		
+		var avg = nexacro.round(countStateA/entireCount*100,2);
+	
+		this.ds_stdClass.setColumn(i,"basket",avg);
+		this.ds_attend.filter("");// 필터 초기화	
+	}
+};
+
+
+
+
+this.Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var sCode = this.ds_stdClass.getColumn(e.row,"sCode");
+	var sName = this.ds_stdClass.getColumn(e.row,"sName");
+	
+	
+	//출결 조회 위한 모달창
+	var objCF = new ChildFrame();
+	var x = this.width/2-300; 
+	var y = this.height/2-300;
+	objCF.init("attend_pop",x,y,600,600);
+	objCF.set_titletext(sName+" 학생 출결 조회 하기");
+	objCF.set_formurl("prfWork::prfAttend_std_pop.xfdl");
+	objCF.showModal(
+		this.getOwnerFrame(),
+		{sCode:sCode, sName:sName, cCode:this.classSeq}, // 모달창에 수업번호 값 넘기기
+		this,
+		"fn_callback_attendStd"
+	)
+};
+
+
+]]></Script>
+  </Form>
+</FDL>

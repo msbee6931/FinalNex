@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="attend_state_pop" width="300" height="200" titletext="New Form" onload="attend_state_pop_onload">
+    <Layouts>
+      <Layout height="200" mobileorientation="landscape" width="300">
+        <Button id="btn_ok" taborder="1" text="확인" left="210" top="163" width="80" height="25" onclick="btn_ok_onclick"/>
+        <Edit id="edt_state" taborder="1" left="10" top="9" width="280" height="147" readonly="true"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.attend_state_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{	//교수가 입력한 결석에 대한 메모
+	var aState = this.parent.aState;
+	//값을 입력했을때
+	if(aState != null && aState != "")
+	{
+		this.edt_state.set_value(aState);
+	} else
+	{
+		//입력하지 않았을 경우
+		this.edt_state.set_value("교수님께 문의하세요");
+	}
+
+};
+
+this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+  </Form>
+</FDL>

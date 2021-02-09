@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XCSS version="1.0"><![CDATA[.Grid .body .row .cell.Expr_red
+{
+	background : #e82639;
+	-nexa-background-odd : #e82639;
+	color : whitesmoke;
+	
+	
+	
+}
+.Grid .body .row .cell.Expr_blue
+{
+	background : #3c76e0;
+	-nexa-background-odd : #3c76e0;
+	color : whitesmoke;
+	
+	
+	
+}
+]]></XCSS>
