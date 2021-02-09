@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="attend_pop" width="600" height="600" titletext="New Form" onload="attend_pop_onload">
+    <Layouts>
+      <Layout height="600" width="600">
+        <Grid id="Grid00" taborder="0" left="33" top="110" width="527" height="430" binddataset="ds_attend" autofittype="col" oncellclick="Grid00_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="63"/>
+                <Column size="55"/>
+                <Column size="19"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="날짜"/>
+                <Cell col="1" text="출석 여부"/>
+                <Cell col="2" text="비고"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:attendDay" displaytype="date" edittype="none"/>
+                <Cell col="1" text="bind:attendState" displaytype="combotext" edittype="none" combodatacol="name" combodataset="ds_attendState" combocodecol="id"/>
+                <Cell col="2" edittype="none" expandshow="expr:attendState == &quot;04&quot; ? &quot;show&quot;  : &quot;hide&quot;" textAlign="center" text="expr:attendState == &quot;04&quot; ? &quot;기타 &quot;  : &quot;&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="sta_title" taborder="1" text="" left="74" top="15" width="140" height="30"/>
+        <Static id="Static00" taborder="2" text="지각 :" left="41" top="76" width="30" height="30"/>
+        <Static id="sta_countStateB" taborder="3" text="" left="82" top="76" width="30" height="30"/>
+        <Static id="Static00_00_00" taborder="4" text="조퇴 :" left="123" top="76" width="30" height="30"/>
+        <Static id="sta_countStateC" taborder="5" text="" left="164" top="76" width="30" height="30"/>
+        <Static id="sta_countStateD" taborder="6" text="" left="246" top="76" width="30" height="30"/>
+        <Static id="Static00_00_00_00" taborder="7" text="결석 :" left="205" top="76" width="30" height="30"/>
+        <ProgressBar id="ProgressBar00" taborder="8" max="100" min="0" text="ProgressBar00" left="30" top="50" width="530" height="25" smooth="true"/>
+        <Static id="Static00_00_00_00_00" taborder="9" text="*지각·조퇴 3회는 결석 1회로 산정" left="390" top="76" width="170" height="30"/>
+        <Static id="Static00_00" taborder="10" text="과목명 :" left="30" top="15" width="45" height="30"/>
+        <Button id="Button00" taborder="11" text="닫기" left="234" top="556" width="132" height="30" onclick="Button00_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_attend" oncolumnchanged="ds_attend_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="classCode" type="STRING" size="256"/>
+          <Column id="sCode" type="STRING" size="256"/>
+          <Column id="sName" type="STRING" size="256"/>
+          <Column id="attendDay" type="STRING" size="256"/>
+          <Column id="attendState" type="STRING" size="256"/>
+          <Column id="absenceReason" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_attendState">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="name">출석</Col>
+            <Col id="id">01</Col>
+          </Row>
+          <Row>
+            <Col id="name">지각</Col>
+            <Col id="id">02</Col>
+          </Row>
+          <Row>
+            <Col id="id">03</Col>
+            <Col id="name">조퇴</Col>
+          </Row>
+          <Row>
+            <Col id="name">결석</Col>
+            <Col id="id">04</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_class">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="classPart" type="STRING" size="256"/>
+          <Column id="className" type="STRING" size="256"/>
+          <Column id="classSeq" type="INT" size="256"/>
+          <Column id="classPoint" type="STRING" size="256"/>
+          <Column id="proCode" type="STRING" size="256"/>
+          <Column id="proName" type="STRING" size="256"/>
+          <Column id="dept" type="STRING" size="256"/>
+          <Column id="classTime" type="STRING" size="256"/>
+          <Column id="classRoom" type="STRING" size="256"/>
+          <Column id="limit" type="STRING" size="256"/>
+          <Column id="grade" type="STRING" size="256"/>
+          <Column id="classGoal" type="STRING" size="256"/>
+          <Column id="classMethod" type="STRING" size="256"/>
+          <Column id="classEvaluation" type="STRING" size="256"/>
+          <Column id="classReferences" type="STRING" size="256"/>
+          <Column id="reqState" type="STRING" size="256"/>
+          <Column id="rejectMsg" type="STRING" size="256"/>
+          <Column id="reg_date" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.sCode="";
+this.cCode="";
+this.attend_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.sCode = this.parent.sCode;
+	this.cCode = this.parent.cSeq;
+	var cName = this.parent.cName;
+	
+	this.sta_title.set_text(cName);
+	
+	this.transaction(
+		"selectAttend",//id
+		"/selectOneAttend.nex",//url (절대경로)
+		"",//in_ds:U
+		"ds_attend=out_ds",//()_out_ds
+		"sCode="+this.sCode+" cCode="+this.cCode,//argument
+		"fn_callback_attend"
+	);
+	
+	
+};
+
+
+this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var cValue = this.Grid00.getCellText(e.row,1);
+	if(e.cell == 2 && cValue == "결석")
+	{
+		var aState = this.ds_attend.getColumn(e.cell,"attendState");
+		
+		var objCF = new ChildFrame();
+		var x = this.width/2-150;
+		var y = this.height/2-100;
+		objCF.init("attend_state_pop",x,y,300,200);
+		objCF.set_titletext("기타 상세보기");
+		objCF.set_formurl("stdWork::attend_state_pop.xfdl");
+		objCF.showModal(
+			this.getOwnerFrame(),
+			{aState:aState}, // 모달창에 결석 메모 넘기기
+			this,
+			"fn_callback_attendS"
+		);
+	}
+};
+
+//출석 받아오면 ----- 수업 트랜잭션 날리기
+this.fn_callback_attend = function()
+{
+	this.transaction(
+		"classList",//id
+		"/classList.nex",//url (절대경로)
+		"",//in_ds:U
+		"ds_class=out_ds",//()_out_ds
+		"",//argument
+		"fn_callback_class"
+	)
+}
+
+//수업 리스트 받아오면 콜백
+this.fn_callback_class = function()
+{
+	var entireCount=""; // 전체 출석해야할 일 수
+	var objDs = this.ds_class;
+	for(var i=0; i< objDs.getRowCount(); i++)
+	{
+		var cSeq = objDs.getColumn(i,"classSeq");
+		if (cSeq == this.cCode)
+		{
+			var cTime = objDs.getColumn(i,"classTime").split(")"); // ) 로 구분
+			entireCount = (cTime.length-1)*15; // 총 수업 일수
+		}
+		
+	}
+	
+	//출석 일 수
+	this.ds_attend.filter("attendState==01");
+	var countStateA = this.ds_attend.getRowCount();
+	//지각 일 수
+	this.ds_attend.filter("attendState==02");
+	var countStateB = this.ds_attend.getRowCount();
+	//조퇴 일 수
+	this.ds_attend.filter("attendState==03");
+	var countStateC = this.ds_attend.getRowCount();
+	//지각 일 수
+	this.ds_attend.filter("attendState==04");
+	var countStateD = this.ds_attend.getRowCount();
+	
+	this.ds_attend.filter("");
+	
+	//지각 or 조퇴 가 합해서 3회 이상 되면 결석 처리
+	var notAttend = countStateB+countStateC;
+	for(var i=1; i<=notAttend; i++)
+	{
+		if(i%3 == 0)
+		{
+			countStateD = countStateD+1;
+		} else 
+		{
+			countStateA = countStateA+1;
+		}
+		
+		this.sta_countStateB.set_text(countStateB+"회"); // 지각 #회
+		this.sta_countStateC.set_text(countStateC+"회"); // 조퇴 #회
+		this.sta_countStateD.set_text(countStateD+"회"); // 결석 #회
+		
+		this.ProgressBar00.set_text("나의 출석률 "+nexacro.round((countStateA/entireCount*100),2)+" % ("+countStateA+"일 / "+entireCount+"일)");
+		this.ProgressBar00.set_pos(nexacro.round((countStateA/entireCount*100),2));	
+	}
+	
+}
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+  </Form>
+</FDL>

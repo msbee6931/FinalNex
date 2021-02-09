@@ -16,15 +16,23 @@
                 <Formats>
                   <Format id="default">
                     <Columns>
-                      <Column size="48"/>
-                      <Column size="418"/>
+                      <Column size="41"/>
+                      <Column size="80"/>
+                      <Column size="295"/>
                     </Columns>
                     <Rows>
-                      <Row size="40"/>
+                      <Row size="24" band="head"/>
+                      <Row size="30"/>
                     </Rows>
+                    <Band id="head">
+                      <Cell text="Day"/>
+                      <Cell col="1" text="Category"/>
+                      <Cell col="2" text="Schedule"/>
+                    </Band>
                     <Band id="body">
-                      <Cell text="bind:schDay" textAlign="center"/>
-                      <Cell col="1" text="bind:title"/>
+                      <Cell text="bind:schDay" cssclass="expr:Category=='01'?'Expr_red':'Expr_blue'"/>
+                      <Cell col="1" text="bind:code" cssclass="expr:Category=='01'?'Expr_red':'Expr_blue'"/>
+                      <Cell col="2" text="bind:title" cssclass="expr:Category=='01'?'Expr_red':'Expr_blue'"/>
                     </Band>
                   </Format>
                 </Formats>

@@ -6,7 +6,7 @@
         <Div id="Div00" taborder="0" text="Div00" left="30" top="38" width="1021" height="452" border="1px solid #c1c1c1">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="74" top="51" width="275" height="240" binddataset="ds_class" autofittype="col" oncelldblclick="Div00_Grid00_oncelldblclick" oncellclick="Div00_Grid00_oncellclick">
+              <Grid id="Grid00" taborder="0" left="74" top="51" width="275" height="240" binddataset="ds_class" autofittype="col" oncellclick="Div00_Grid00_oncellclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -42,7 +42,7 @@
               <Columns>
                 <Column size="80"/>
                 <Column size="80"/>
-                <Column size="194"/>
+                <Column size="162"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -56,13 +56,13 @@
               <Band id="body">
                 <Cell text="bind:sCode"/>
                 <Cell col="1" text="bind:sName"/>
-                <Cell col="2" text="bind:basket"/>
+                <Cell col="2" text="bind:basket" displaytype="progressbarcontrol" progressbarsmooth="true" progressbarblockgap="1" progressbarblocksize="1"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
         <Static id="Static00_00_00" taborder="7" text="내 관리 강좌" left="108" top="60" width="112" height="30"/>
-        <Static id="sta_title" taborder="8" text="" left="460" top="50" width="140" height="30"/>
+        <Static id="sta_title" taborder="8" text="" left="475" top="60" width="140" height="30"/>
         <Static id="Static00_00_00_00" taborder="9" text="과목명 :" left="430" top="60" width="45" height="30"/>
       </Layout>
     </Layouts>
@@ -109,7 +109,7 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[this.classSeq="";
 this.prfAttend_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	var proCode = "91515073"; // 교수 코드 로그인 후 받아올 예정
@@ -133,30 +133,140 @@ this.prfAttend_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	);
 };
 
-this.Div00_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
-{
-	var classSeq = this.ds_class.getColumn(e.row,"classSeq");
-	var className = this.ds_class.getColumn(e.row,"className");
-	
-	//해당 수업 학생 조회 위한 모달창
-	var objCF = new ChildFrame();
-	var x = this.width/2-300; 
-	var y = this.height/2-300;
-	objCF.init("prfAttend_pop",x,y,600,600);
-	objCF.set_titletext(className+" 학생 조회 하기");
-	objCF.set_formurl("prfWork::prfAttend_pop.xfdl");
-	objCF.showModal(
-		this.getOwnerFrame(),
-		{classSeq:classSeq, className:className}, // 모달창에 수업번호 값 넘기기
-		this,
-		"fn_callback_prfattend"
-	);
-};
 
 this.Div00_Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
+	this.classSeq = this.ds_class.getColumn(e.row,"classSeq");
+	var className = this.ds_class.getColumn(e.row,"className");
+	
+	this.sta_title.set_text(className);
+	
+	this.transaction(
+		"stdList"
+		,"/stdListSeq.nex"
+		,"" 
+		,"ds_stdClass=out_ds" 
+		,"classCode="+this.classSeq
+		,"fn_callback_stdList" 
+	);
+};
+
+this.fn_callback_stdList = function()
+{
+	
+	// 해당 수업을 듣는 학생들의 모든 출석을 불러옴
+	this.transaction(
+		"selectAttend",//id
+		"/selectAttend.nex",//url (절대경로)
+		"",//in_ds:U
+		"ds_attend=out_ds",//()_out_ds
+		"cCode="+this.classSeq,//argument
+		"fn_callback_attend"
+	);
 	
 };
+
+
+this.fn_callback_attend =function()
+{
+	
+	var entireCount=""; // 전체 출석해야할 일 수
+	var objDs = this.ds_class;
+	for(var i=0; i< objDs.getRowCount(); i++)
+	{
+		var cSeq = objDs.getColumn(i,"classSeq");
+		
+		if (cSeq == this.classSeq)
+		{
+			var cTime = objDs.getColumn(i,"classTime").split(")"); // ) 로 구분
+			entireCount = (cTime.length-1)*15; // 총 수업 일수
+		}
+	}
+
+	
+	
+	for(var i=0; i<this.ds_stdClass.getRowCount();i++)
+	{
+		var codeS = this.ds_stdClass.getColumn(i,"sCode"); // std데이터셋의 i번째 학번
+		this.ds_stdClass.setColumn(i,"basket","test");//값 비워두기
+		
+		this.ds_attend.filter("sCode=='"+codeS+"'"); // 학번으로 필터 attend 데이터셋 돌리기
+		var countStateA =0; //출석일 수 
+		var countStateB =0; // 지각일 수
+		var countStateC =0; // 조퇴일 수
+		var countStateD=0; //결석일 수
+		var notAttend=0; // 지각+조퇴
+		//attend 데이터셋 돌림
+		for(var j=0; j<this.ds_attend.getRowCount();j++)
+		{	
+			var aState = this.ds_attend.getColumn(j,"attendState") ; //ABCD 구분값
+			if(aState == 01)
+			{
+				countStateA += 1;
+			}
+			else if(aState == 02)
+			{
+				countStateB += 1;
+				countStateA += 1;
+			}
+			else if(aState == 03)
+			{
+				countStateC += 1;
+				countStateA += 1;
+			}
+			else if(aState == 04)
+			{
+				countStateD += 1;
+			}
+		}
+		
+		var bc = countStateB+countStateC; //지각+ 조퇴
+		if(bc != 0)
+		{
+			for(var k=1;k<=bc;k++)
+			{
+			//3회 이상이면 결석으로 처리하기
+				if(k%3 == 0)
+				{
+					countStateD += 1;
+					countStateA -= countStateD;
+				}
+			}	
+		}
+		
+		
+		var avg = nexacro.round(countStateA/entireCount*100,2);
+	
+		this.ds_stdClass.setColumn(i,"basket",avg);
+		this.ds_attend.filter("");// 필터 초기화	
+	}
+};
+
+
+
+
+this.Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var sCode = this.ds_stdClass.getColumn(e.row,"sCode");
+	var sName = this.ds_stdClass.getColumn(e.row,"sName");
+	
+	
+	//출결 조회 위한 모달창
+	var objCF = new ChildFrame();
+	var x = this.width/2-300; 
+	var y = this.height/2-300;
+	objCF.init("attend_pop",x,y,600,600);
+	objCF.set_titletext(sName+" 학생 출결 조회 하기");
+	objCF.set_formurl("prfWork::prfAttend_std_pop.xfdl");
+	objCF.showModal(
+		this.getOwnerFrame(),
+		{sCode:sCode, sName:sName, cCode:this.classSeq}, // 모달창에 수업번호 값 넘기기
+		this,
+		"fn_callback_attendStd"
+	)
+};
+
+
 ]]></Script>
   </Form>
 </FDL>
