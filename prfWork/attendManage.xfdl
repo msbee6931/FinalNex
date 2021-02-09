@@ -306,8 +306,8 @@ this.fn_callback_stdList=function(sId){
 			this.ds_attend.setColumn(addRow,"attendDay",this.cal.value);
 		}
 		this.transaction(
-			"attendList"
-			,"/attendList.nex"
+			"attendInsert"
+			,"/attendInsert.nex"
 			,"in_ds=ds_attend:U"
 			,"ds_attend=out_ds"
 			,""
@@ -338,7 +338,7 @@ this.fn_callback_attend=function(sId){
 				this.ds_cal.setColumn(calRow,"classCode",classCode);
 			}
 		}
-	}else if(sId == "attendList"){
+	}else if(sId == "attendInsert"){
 		this.ds_attend.set_keystring("S:+sName");
 	}
 }
@@ -487,6 +487,7 @@ this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		,"fn_callback" 
 	);
 };
+
 ]]></Script>
   </Form>
 </FDL>
