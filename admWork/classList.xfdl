@@ -121,6 +121,7 @@
           </Dataset>
         </Combo>
         <Button id="Button00" taborder="6" text="삭제" left="950" top="470" width="110" height="40" onclick="Button00_onclick"/>
+        <Button id="btnExport" taborder="7" text="Export" left="830" top="470" width="110" height="40" onclick="btnExport_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
@@ -317,6 +318,45 @@ this.fn_msg_callback=function(sId,send)
 		)
 	}
 }
+
+
+this.btnExport_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.ds_class.getRowCount() > 0){
+		var date = this.ds_class.getColumn(0,"reg_date");
+		var year = date.substring(0,4);
+		var month = date.substring(5,6);
+		if(month < 8 ){
+			var semester = year+"년" + " 1학기"
+		}else{
+			var semester = year+"년" + " 2학기"
+		}
+	}
+		this.exportObj = new ExcelExportObject("Export00", this);
+		
+		this.exportObj.set_exportfilename(semester + " 개설과목");
+		this.exportObj.set_exporturl("http://localhost/nexacro-xeni/XExportImport");
+		
+		this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.Grid00, "Sheet1!A1");
+		
+		this.addEventHandler("onsuccess", this.Export00_onsuccess, this);
+		this.addEventHandler("onerror", this.Export00_onerror, this);
+		
+		var intExportedItem = this.exportObj.exportData();
+		
+		trace("Number of Exported Item: " + intExportedItem);
+};
+this.Export00_onsuccess = function(obj:ExcelExportObject, e:nexacro.ExcelExportEventInfo)
+{
+	trace("Export00_onsuccess");	
+	
+}
+
+this.Export00_onerror = function(obj:ExcelExportObject, e:nexacro.ExcelExportEventInfo)
+{
+	trace("Export00_onerror");
+}
+
 
 ]]></Script>
     <Objects>
