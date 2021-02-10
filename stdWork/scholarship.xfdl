@@ -12,7 +12,34 @@
           <Layouts>
             <Layout>
               <Button id="btn_insert" taborder="0" text="신청하기" left="879" top="11" width="80" height="25" onclick="Div00_btn_insert_onclick"/>
-              <Grid id="Grid00" taborder="1" left="60" top="51" width="900" height="330"/>
+              <Grid id="Grid00" taborder="1" left="60" top="51" width="900" height="330" binddataset="reqScholar_ds" autofittype="col">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="33"/>
+                      <Column size="49"/>
+                      <Column size="378"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="chk"/>
+                      <Cell col="1" text="seq"/>
+                      <Cell col="2" text="title"/>
+                      <Cell col="3" text="writeDate"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:chk"/>
+                      <Cell col="1" text="bind:seq"/>
+                      <Cell col="2" text="bind:title"/>
+                      <Cell col="3" text="bind:writeDate"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
             </Layout>
           </Layouts>
         </Div>
@@ -36,5 +63,18 @@ this.Div00_btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 	);
 };
 ]]></Script>
+    <Objects>
+      <Dataset id="reqScholar_ds">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="seq" type="INT" size="256"/>
+          <Column id="std_code" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="writeDate" type="STRING" size="256"/>
+          <Column id="checkRead" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>

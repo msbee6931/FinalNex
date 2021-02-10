@@ -26,6 +26,7 @@
         </VFrameSet>
       </MainFrame>
     </Layout>
+    <Style url="xcssrc::exprColor.xcss"/>
   </Application>
   <Script type="xscript5.1"><![CDATA[this.av_FrameSet = "";
 

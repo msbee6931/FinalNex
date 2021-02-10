@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="readGrade" width="1080" height="520" titletext="New Form">
+    <Layouts>
+      <Layout height="520" mobileorientation="landscape" width="1080">
+        <Static id="Static00" taborder="0" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static01" taborder="1" text="성적 조회" left="30" top="9" width="200" height="30"/>
+        <Div id="Div00" taborder="2" text="Div00" left="30" top="38" width="1021" height="452" border="1px solid #c1c1c1">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Static id="Static00_01" taborder="3" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="4" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00" taborder="5" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

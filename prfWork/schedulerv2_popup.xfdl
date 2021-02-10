@@ -7,12 +7,12 @@
         <Edit id="edtTitle" taborder="1" left="70" top="10" width="320" height="20"/>
         <Static id="Static00_00" taborder="2" text="일자" left="10" top="40" width="40" height="20"/>
         <Calendar id="calSDate" taborder="3" left="70" top="40" width="130" height="20"/>
-        <Static id="Static00_00_00" taborder="4" text="일정구분" left="10" top="70" width="60" height="20"/>
+        <Static id="Static00_00_00" taborder="4" text="우선순위" left="10" top="70" width="60" height="20"/>
         <Combo id="cmbType" taborder="5" text="공지" left="70" top="70" width="130" height="20" innerdataset="dsType" codecolumn="code" datacolumn="value" index="0" value="01"/>
         <Static id="Static00_01" taborder="6" text="내용" left="10" top="100" width="40" height="20"/>
         <TextArea id="teaContent" taborder="7" left="10" top="130" height="120" width="380"/>
         <Button id="btnOk" taborder="8" text="확인" left="113" top="259" width="80" height="30" onclick="btnOk_onclick"/>
-        <Button id="btnCancle" taborder="9" text="취소" left="203" top="259" width="80" height="30" onclick="btnCancle_onclick"/>
+        <Button id="btnDel" taborder="9" text="삭제" left="203" top="259" width="80" height="30" onclick="btnDel_onclick"/>
         <Calendar id="calEDate" taborder="10" left="230" top="40" width="130" height="20"/>
         <Static id="Static00_00_01" taborder="11" text="~" left="210" top="40" width="10" height="20"/>
       </Layout>
@@ -55,12 +55,31 @@ this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			"title" : this.edtTitle.value,
 			"content" : this.teaContent.value
 			};
-	this.close(JSON.stringify(objReturn, null, "\t")); // json 형식 오브젝트 전송
+			
+	this.close(JSON.stringify(objReturn, null, "\t"));
 };
 
-this.btnCancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+
+this.btnDel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.close();
+	var objFrame = this.getOwnerFrame();
+	this.scheduleId = objFrame.scheduleid;
+	
+	var objReturn;
+	
+	objReturn = {
+			"popuptype" : "delete",
+			"id" : this.scheduleId
+			};
+			
+			var check = this.confirm("정말로 삭제하시겠습니까?","삭제하기")
+			if(check){
+					this.close(JSON.stringify(objReturn, null, "\t"));
+			} else {
+				return;
+			}
+			
+
 };
 ]]></Script>
     <Objects>
@@ -72,21 +91,31 @@ this.btnCancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
         <Rows>
           <Row>
             <Col id="code">01</Col>
-            <Col id="value">공지</Col>
+            <Col id="value">중간</Col>
           </Row>
           <Row>
             <Col id="code">02</Col>
-            <Col id="value">보고</Col>
+            <Col id="value">낮음</Col>
           </Row>
           <Row>
             <Col id="code">03</Col>
-            <Col id="value">팀일정</Col>
+            <Col id="value">높음</Col>
           </Row>
           <Row>
             <Col id="code">04</Col>
-            <Col id="value">개인일정</Col>
+            <Col id="value">긴급</Col>
           </Row>
         </Rows>
+      </Dataset>
+      <Dataset id="dsSchedule">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="sdate" type="STRING" size="256"/>
+          <Column id="edate" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="content" type="STRING" size="256"/>
+          <Column id="type" type="STRING" size="256"/>
+        </ColumnInfo>
       </Dataset>
     </Objects>
   </Form>
