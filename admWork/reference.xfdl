@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sample_fileuptransfer_01" left="0" top="0" width="1024" height="768" titletext="New Form" border="" background="">
+    <Layouts>
+      <Layout height="768" width="1024" stepcount="0">
+        <Static id="Static00" taborder="2" text="Drop Files Here" left="90" top="115" width="870" height="150" visible="true" background="aliceblue" color="dodgerblue" font="normal 30pt/normal &quot;Arial&quot;" textAlign="center" verticalAlign="middle"/>
+        <Button id="Button00" taborder="0" text="파일찾기" left="783" top="85" width="92" height="31" onclick="Button00_onclick"/>
+        <Grid id="Grid00" taborder="1" left="90" top="115" width="875" height="150" binddataset="Dataset00" ondragenter="Grid00_ondragenter" ondragleave="Grid00_ondragleave" ondrop="Grid00_ondrop" autofittype="col" onheadclick="Grid00_onheadclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="57"/>
+                <Column size="318"/>
+                <Column size="108"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="name"/>
+                <Cell col="2" text="size"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:chk" edittype="checkbox" displaytype="checkboxcontrol"/>
+                <Cell col="1" text="bind:name"/>
+                <Cell col="2" text="bind:size"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button02" taborder="3" text="제거" left="875" top="85" width="90" height="30" onclick="Button02_onclick"/>
+        <Button id="Button03" taborder="4" text="글쓰기" left="887" top="676" width="87" height="48" onclick="Button03_onclick"/>
+        <Static id="Static01" taborder="5" text="Title : " left="88" top="28" width="72" height="36" font="italic 18pt &quot;Arial&quot;"/>
+        <Edit id="title" taborder="6" left="168" top="30" width="522" height="33" border="0px none, 0px none, 1px solid"/>
+        <Static id="Static01_00" taborder="7" text="File :" left="90" top="80" width="72" height="36" font="italic 18pt &quot;Arial&quot;"/>
+        <Edit id="contents" taborder="8" left="90" top="284" width="886" height="374"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <FileDialog id="FileDialog00" onclose="FileDialog00_onclose"/>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="chk" type="INT" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="size" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileUpTransfer id="FileUpTransfer00" onprogress="FileUpTransfer00_onprogress" onsuccess="FileUpTransfer00_onsuccess" onerror="FileUpTransfer00_onerror"/>
+      <Dataset id="reference">
+        <ColumnInfo>
+          <Column id="seq" type="INT" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="write_date" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.FileDialog00.open('파일선택', FileDialog.MULTILOAD);
+};
+
+this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
+{
+	if(e.reason == 0 ) {  //파일선택 취소
+		return;
+	}else{
+		if(e.reason == 3) {    //FileDialog.MULTILOAD 옵션의 파일선택
+			this.addFileList(e.virtualfiles);
+			
+		}
+	}
+};
+
+this.addFileList = function(filelist)
+{
+	for (var i = 0, len = filelist.length, vFile; i < len; i++)
+	{
+		vFile = filelist[i];
+		vFile.addEventHandler("onsuccess", this.FileList_onsuccess, this);
+		vFile.addEventHandler("onerror", this.FileList_onerror , this);
+		
+		vFile.open(null, 1);
+	}
+}
+
+this.FileList_onsuccess = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileEventInfo)
+{
+	switch (e.reason)
+	{
+		case 1:
+			obj.getFileSize();
+			break;
+		case 9:
+			var nRowIdx = this.Dataset00.addRow();
+			this.Dataset00.setColumn(nRowIdx, 1, obj.filename);
+			this.Dataset00.setColumn(nRowIdx, 2, this.cutFileSize(e.filesize));
+			this.FileUpTransfer00.addFile(obj.filename, obj);
+			break;
+	}
+}
+
+this.FileList_onerror = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileErrorEventInfo)
+{
+	trace("errortype: "+e.errortype);
+	trace("errormsg: "+e.errormsg);
+	trace("statuscode: "+e.statuscode);
+}
+
+// https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications#Example_Showing_file(s)_size
+this.cutFileSize = function(filesize)
+{
+	var sOutput = filesize + " bytes";
+	for (var aMultiples = ["KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"], nMultiple = 0, nApprox = filesize / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) 
+	{
+		sOutput = nApprox.toFixed(3) + " " + aMultiples[nMultiple];
+	}
+	return sOutput;
+};
+this.Grid00_ondragenter = function(obj:nexacro.Grid,e:nexacro.DragEventInfo)
+{
+	if(e.datatype == "file")
+	{
+		this.Grid00.set_opacity(0.5);
+	}
+};
+
+this.Grid00_ondragleave = function(obj:nexacro.Grid,e:nexacro.DragEventInfo)
+{
+	this.Grid00.set_opacity(1);
+};
+
+this.Grid00_ondrop = function(obj:nexacro.Grid,e:nexacro.GridDragEventInfo)
+{
+	this.Grid00.set_opacity(1);
+	if(e.datatype == "file")
+	{
+		this.addFileList(e.filelist);
+	}
+};
+
+
+this.FileUpTransfer00_onprogress = function(obj:nexacro.FileUploadTransfer,e:nexacro.FileUploadTransferProgressEventInfo)
+{
+	this.fn_addlog(e.loaded+"/"+e.total);
+};
+
+this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUploadTransfer,e:nexacro.FileUploadTransferEventinfo)
+{
+	this.fn_addlog(e.code);
+	this.fn_addlog(e.message);
+};
+
+this.FileUpTransfer00_onerror = function(obj:nexacro.FileUploadTransfer,e:nexacro.FileUploadTransferErrorEventInfo)
+{
+	this.fn_addlog(e.errormsg);
+	this.fn_addlog(e.statuscode);
+};
+
+this.fn_addlog = function(strMessage)
+{
+	this.TextArea00.insertText(strMessage + '\n');
+	
+}
+
+this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if(e.cell == 0)
+    {
+        this.gf_setCheckAll(obj, e);
+    }
+};
+
+this.gv_isCheckAll = 0;
+this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
+{
+    var sColID = obj.getCellProperty("body", e.cell, "text").replace("bind:", "");
+	
+	var sheadValue = obj.getCellProperty("head",e.cell,"text");
+	
+    if(sColID == "chk")
+    {
+		sheadValue = (sheadValue =="1"? "0":"1");
+		obj.setCellProperty("head",e.cell,"text",sheadValue);
+		
+		this.Dataset00.set_enableevent(false);
+		for(var i=0; i< this.Dataset00.getRowCount(); i++)
+		{
+			this.Dataset00.setColumn(i, "chk",sheadValue);
+		}
+		this.Dataset00.set_enableevent(true);
+    }
+	
+}
+this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let arr = this.Dataset00.extractRows("chk==1");
+	
+	if(arr.length==0 || arr.length== -1){alert("선택된 항목이 없습니다.");return;}
+	
+	this.Dataset00.deleteMultiRows(arr);
+};
+
+this.Button03_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let title = this.title.value;
+	let contents = this.contents.value;
+	let nRow = this.reference.addRow();
+	
+	this.reference.setColumn(nRow,"title",title);
+	this.reference.setColumn(nRow,"contents",contents);
+
+	this.transaction(
+		"uploadDTO",//id
+		"/reference/uploadDTO",//url (절대경로)
+		"in_ds=reference:U",//in_ds:U
+		"",//()_out_ds
+		"",//argument
+		"fn_callback"
+	)
+
+	//파일전송
+	this.FileUpTransfer00.upload("/reference/uploadFile"); //file up url
+	
+};
+]]></Script>
+  </Form>
+</FDL>
