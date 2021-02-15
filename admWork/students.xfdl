@@ -50,7 +50,7 @@
                 <Cell col="8" text="bind:scholarship" edittype="normal"/>
                 <Cell col="9" text="bind:rest" edittype="normal"/>
                 <Cell col="10" text="bind:grade" edittype="normal"/>
-                <Cell col="11" text="bind:birth" edittype="date" calendarautoselect="true" calendardateformat="yyyy-MM-dd" maskedittype="string" maskeditmaskchar="yyyy-MM-dd" maskeditautoselect="true" displaytype="date"/>
+                <Cell col="11" text="bind:birth" edittype="date" calendarautoselect="true" calendardateformat="yyyy-MM-dd" maskedittype="string" maskeditmaskchar="yyyy-MM-dd" maskeditautoselect="false" displaytype="date"/>
               </Band>
             </Format>
           </Formats>
@@ -116,6 +116,7 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	if(this.confirm("저장하시겠습니까?")){
 	this.fn_update_students("dsUpdate","/updateStudent.nex");
+	trace(this.ds_students.getColumnInfo("birth"));
 	}
 	
 };
