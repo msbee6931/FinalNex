@@ -35,7 +35,7 @@
         <Static id="Static01" taborder="5" text="Title : " left="88" top="28" width="72" height="36" font="italic 18pt &quot;Arial&quot;"/>
         <Edit id="title" taborder="6" left="168" top="30" width="522" height="33" border="0px none, 0px none, 1px solid"/>
         <Static id="Static01_00" taborder="7" text="File :" left="90" top="80" width="72" height="36" font="italic 18pt &quot;Arial&quot;"/>
-        <Edit id="contents" taborder="8" left="90" top="284" width="886" height="374"/>
+        <TextArea id="contents" taborder="8" left="92" top="284" width="882" height="380"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -224,7 +224,11 @@ this.Button03_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 	//파일전송
 	this.FileUpTransfer00.upload("/reference/uploadFile"); //file up url
-	
+	alert("등록되었습니다.")
+	this.title.set_value("");
+	this.contents.set_value("");
+	this.Dataset00.reset();
+	this.FileUpTransfer00.clearFileList();
 };
 ]]></Script>
   </Form>
