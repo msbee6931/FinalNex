@@ -186,8 +186,6 @@ this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
     }
 	
 }
-
-
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="Div00.form.Edit00" propid="value" datasetid="reqScholar_ds" columnid="title"/>

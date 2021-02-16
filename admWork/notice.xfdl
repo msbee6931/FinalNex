@@ -1,0 +1,539 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="notice" width="1080" height="520" titletext="New Form" onload="notice_onload">
+    <Layouts>
+      <Layout height="520" width="1080">
+        <Static id="Static00" taborder="0" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00" taborder="1" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static01" taborder="4" text="공지사항 입력" left="30" top="9" width="200" height="30"/>
+        <Tab id="Tab00" taborder="5" tabindex="0" left="30" top="40" width="1022" height="452">
+          <Tabpages>
+            <Tabpage id="Tabpage1" text="일반공지">
+              <Layouts>
+                <Layout>
+                  <Static id="Static00" taborder="0" text="제목" left="215" top="30" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" textAlign="center" background="lightgray"/>
+                  <Edit id="edt_title" taborder="1" left="315" top="30" width="200" height="50"/>
+                  <Static id="Static00_00" taborder="2" text="내용" left="215" top="80" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" textAlign="center" background="lightgray"/>
+                  <TextArea id="text_contents" taborder="3" left="315" top="80" width="500" height="200"/>
+                  <Static id="Static00_01" taborder="4" text="작성일시" left="515" top="30" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" textAlign="center" background="lightgray"/>
+                  <Calendar id="cal_writedate" taborder="5" left="615" top="30" width="200" height="50"/>
+                  <Button id="btn_cancel" taborder="6" text="취소" left="755" top="380" width="60" height="35" onclick="Tab00_Tabpage1_btn_cancel_onclick"/>
+                  <Button id="btn_save" taborder="7" text="저장" left="670" top="380" width="60" height="35" onclick="Tab00_Tabpage1_btn_save_onclick"/>
+                  <Static id="Static00_00_00" taborder="8" text="첨부파일" left="215" top="280" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" textAlign="center" background="lightgray"/>
+                  <Grid id="Grid00" taborder="9" left="315" top="280" width="500" height="100" binddataset="ds_NoticeFiles" autofittype="col" onheadclick="Tab00_Tabpage1_Grid00_onheadclick">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="50"/>
+                          <Column size="30"/>
+                          <Column size="120"/>
+                          <Column size="30"/>
+                          <Column size="100"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                          <Cell col="1" text="번호"/>
+                          <Cell col="2"/>
+                          <Cell col="3" text="파일이름"/>
+                          <Cell col="4"/>
+                          <Cell col="5" text="파일크기"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
+                          <Cell col="1" text="bind:n_seq"/>
+                          <Cell col="2" text="bind:parentSeq"/>
+                          <Cell col="3" text="bind:fileName"/>
+                          <Cell col="4" text="bind:savedFileName"/>
+                          <Cell col="5" text="bind:fileSize"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="btn_insert" taborder="10" text="파일찾기" left="815" top="280" width="60" height="35" onclick="Tab00_Tabpage1_btn_insert_onclick"/>
+                  <Button id="btn_delete" taborder="11" text="파일삭제" left="815" top="314" width="60" height="35" onclick="Tab00_Tabpage1_btn_delete_onclick"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage2" text="장학공지">
+              <Layouts>
+                <Layout>
+                  <Static id="Static00" taborder="0" text="제목" left="215" top="30" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" textAlign="center" background="lightgray"/>
+                  <Edit id="edt_title" taborder="1" left="315" top="30" width="200" height="50"/>
+                  <Static id="Static00_00" taborder="2" text="내용" left="215" top="80" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" textAlign="center" background="lightgray"/>
+                  <TextArea id="text_contents" taborder="3" left="315" top="80" width="500" height="200"/>
+                  <Static id="Static00_01" taborder="4" text="작성일시" left="515" top="30" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" textAlign="center" background="lightgray"/>
+                  <Calendar id="cal_writedate" taborder="5" left="615" top="30" width="200" height="50"/>
+                  <Button id="btn_cancel" taborder="6" text="취소" left="755" top="380" width="60" height="35" onclick="Tab00_Tabpage2_btn_cancel_onclick"/>
+                  <Button id="btn_save" taborder="7" text="입력" left="670" top="380" width="60" height="35" onclick="Tab00_Tabpage2_btn_save_onclick"/>
+                  <Static id="Static00_00_00" taborder="8" text="첨부파일" left="215" top="280" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" textAlign="center" background="lightgray"/>
+                  <Grid id="Grid00" taborder="9" left="315" top="280" width="500" height="100" binddataset="ds_ScolarFiles" autofittype="col">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row band="head" size="24"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="chk"/>
+                          <Cell col="1" text="n_seq"/>
+                          <Cell col="2" text="parentSeq"/>
+                          <Cell col="3" text="fileName"/>
+                          <Cell col="4" text="savedFileName"/>
+                          <Cell col="5" text="fileSize"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:chk"/>
+                          <Cell col="1" text="bind:n_seq"/>
+                          <Cell col="2" text="bind:parentSeq"/>
+                          <Cell col="3" text="bind:fileName"/>
+                          <Cell col="4" text="bind:savedFileName"/>
+                          <Cell col="5" text="bind:fileSize"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="btn_insert" taborder="10" text="파일찾기" left="815" top="280" width="60" height="35" onclick="Tab00_Tabpage2_btn_insert_onclick"/>
+                  <Button id="btn_delete" taborder="11" text="파일삭제" left="815" top="314" width="60" height="35" onclick="Tab00_Tabpage2_btn_delete_onclick"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_NoticeFiles">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="n_seq" type="INT" size="256"/>
+          <Column id="parentSeq" type="INT" size="256"/>
+          <Column id="fileName" type="STRING" size="256"/>
+          <Column id="savedFileName" type="STRING" size="256"/>
+          <Column id="fileSize" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileUpTransfer id="FileUpTransfer00" onerror="FileUpTransfer00_onerror" onprogress="FileUpTransfer00_onprogress" onsuccess="FileUpTransfer00_onsuccess"/>
+      <FileDialog id="FileDialog00" onclose="FileDialog00_onclose"/>
+      <Dataset id="ds_Notice">
+        <ColumnInfo>
+          <Column id="n_seq" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="writedate" type="DATE" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileUpTransfer id="FileUpTransfer01"/>
+      <FileDialog id="FileDialog01" onclose="FileDialog01_onclose"/>
+      <Dataset id="ds_ScolarFiles">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="n_seq" type="INT" size="256"/>
+          <Column id="parentSeq" type="INT" size="256"/>
+          <Column id="fileName" type="STRING" size="256"/>
+          <Column id="savedFileName" type="STRING" size="256"/>
+          <Column id="fileSize" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[//1.Environment filesecurelevel property all로 변경하기
+this.reqSchSeq="";
+
+this.nMaxFileSize = 2000000;  //각 파일 최대사이즈 (2 Mbyte)
+
+this.fileName = "";
+this.fileSize = "";
+
+
+
+this.Tab00_Tabpage1_btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+this.fn_callback = function(id,ErrorCode,ErrorMsg){
+	trace(id);
+	trace(ErrorCode);
+	trace(ErrorMsg);
+	alert("ErrorCode : "+ErrorCode);
+};
+
+this.notice_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//파일업로드시 파일저장 폴더경로 PostData 셋팅
+	this.FileUpTransfer00.setPostData("filepath","nomalNotice");
+};
+
+
+this.Tab00_Tabpage1_btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.FileDialog00.open( "파일선택", FileDialog.MULTILOAD );
+};
+
+this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
+{
+	if(e.reason == 0 ) {  //파일선택 취소
+		return;
+	}else{
+		if(e.reason == 3) {    //FileDialog.MULTILOAD 옵션의 파일선택
+			this.addFileList(e.virtualfiles);
+			
+		}
+	}
+};
+
+this.addFileList = function(filelist)
+{
+    for (var i = 0, len = filelist.length, vFile; i < len; i++)
+    {
+        vFile = filelist[i];
+		var isExist = this.FileUpTransfer00.existFile(vFile);
+		
+		//파일중복체크
+		if(isExist){
+			alert("이미추가된 파일이 있습니다.");
+			return;
+		}
+		
+		//VirtualFile 이벤트 생성
+        vFile.addEventHandler("onsuccess", this.Upload_VirtualFile_onsuccess, this);
+        vFile.addEventHandler("onerror", this.Upload_VirtualFile_onerror , this);
+        
+        //File 사이즈 체크를 위해
+		vFile.open(null,VirtualFile.openRead);
+		
+    }
+}
+this.addScolarFileList = function(filelist)
+{
+    for (var i = 0, len = filelist.length, vFile; i < len; i++)
+    {
+        vFile = filelist[i];
+		var isExist = this.FileUpTransfer00.existFile(vFile);
+		
+		//파일중복체크
+		if(isExist){
+			alert("이미추가된 파일이 있습니다.");
+			return;
+		}
+		
+		//VirtualFile 이벤트 생성
+        vFile.addEventHandler("onsuccess", this.Upload_ScolarFile_onsuccess, this);
+        vFile.addEventHandler("onerror", this.Upload_VirtualFile_onerror , this);
+        
+        //File 사이즈 체크를 위해
+		vFile.open(null,VirtualFile.openRead);
+		
+    }
+}
+
+//업로드용 Virtual 파일 onsuccess 이벤트
+this.Upload_VirtualFile_onsuccess = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileEventInfo)
+{
+	if (e.reason == 1)  //open() callback
+	{
+		//파일사이즈 체크
+		obj.getFileSize();
+	}
+	if (e.reason == 9) //getFileSize() callback
+	{
+		obj.close();
+		
+		
+		this.fileName = obj.filename;
+		this.fileSize = e.filesize;
+		
+		
+		if(this.fileSize > this.nMaxFileSize){
+			alert("첨부파일 최대용량은 2 MByte 입니다.");
+			return;
+		}
+		
+		//FileUpTransfer 해당 파일추가
+		var nIdx = this.FileUpTransfer00.addFile(this.fileName,obj);
+		
+		//화면 파일정보 셋팅
+		var nRow = this.ds_NoticeFiles.insertRow(nIdx);
+		this.ds_NoticeFiles.setColumn(nRow, "fileName", this.fileName);
+		this.ds_NoticeFiles.setColumn(nRow, "fileSize", this.fileSize);
+		
+	}
+}
+this.Upload_ScolarFile_onsuccess = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileEventInfo)
+{
+	if (e.reason == 1)  //open() callback
+	{
+		//파일사이즈 체크
+		obj.getFileSize();
+	}
+	if (e.reason == 9) //getFileSize() callback
+	{
+		obj.close();
+		
+		
+		this.fileName = obj.filename;
+		this.fileSize = e.filesize;
+		
+		
+		if(this.fileSize > this.nMaxFileSize){
+			alert("첨부파일 최대용량은 2 MByte 입니다.");
+			return;
+		}
+		
+		//FileUpTransfer 해당 파일추가
+		var nIdx = this.FileUpTransfer00.addFile(this.fileName,obj);
+		
+		//화면 파일정보 셋팅
+		var nRow = this.ds_ScolarFiles.insertRow(nIdx);
+		this.ds_ScolarFiles.setColumn(nRow, "fileName", this.fileName);
+		this.ds_ScolarFiles.setColumn(nRow, "fileSize", this.fileSize);
+		
+	}
+}
+
+//업로드용 Virtual 파일 oneroor 이벤트
+this.Upload_VirtualFile_onerror = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileErrorEventInfo)
+{
+	var msg = ">>>>>>>>> VirtualFile event ERROR >>>>>>>>\n";
+	msg += "errortype : "+e.errortype+"\n";
+	msg += "errormsg : "+e.errormsg+"\n";
+	msg += "statuscode : "+e.statuscode;
+	
+	alert(msg);
+}
+
+this.Tab00_Tabpage1_btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	for(let i =0; i<this.ds_NoticeFiles.getRowCount();i++){
+		if(this.ds_NoticeFiles.getColumn(i,"chk") == 1){
+		//FileUpTransfer 해당 파일삭제
+			var nIdx = this.FileUpTransfer00.removeFileByIndex(i);
+			//정상삭제 시 해당 데이터 삭제
+			if(nIdx > -1) {  
+				this.ds_NoticeFiles.deleteRow(i);
+			}
+		}
+	}
+};
+
+this.FileUpTransfer00_onerror = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferErrorEventInfo)
+{
+	var msg = ">>>>>>>>>>>>>>>>>>>>>>>>>>  ERROR >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
+	msg += "statuscode: "+e.statuscode+"\n";
+	msg += "requesturi: "+e.requesturi+"\n";
+	msg += "locationuri: "+e.locationuri+"\n" ;
+	msg += "errormsg: "+e.errormsg+"\n";
+	trace(msg)
+};
+
+this.FileUpTransfer00_onprogress = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferProgressEventInfo)
+{
+	trace(e.loaded +" / "+e.total +" Byte Uploading...");
+};
+
+this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferEventInfo)
+{
+	var msg = ">>>>>>>>>>>>>>>>>>>>>>>>>>  SUCCESS >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
+	msg += "code :"+e.code+"\n";
+	msg += "message :"+e.message+"\n";
+	msg += "url :"+e.url+"\n";
+	msg += "datasets[0].saveXML() :"+e.datasets[0].saveXML()+"\n";
+	
+	alert(msg);
+	
+	//파일정보 초기화
+	this.fn_FileClear();
+};
+
+this.Tab00_Tabpage1_btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+	var nRow = this.ds_Notice.addRow();
+	var title = this.Tab00.Tabpage1.form.edt_title.value;
+	var writedate = this.Tab00.Tabpage1.form.cal_writedate.value;
+	var contents = this.Tab00.Tabpage1.form.text_contents.value;
+	if(title == null){
+		alert("제목을 입력해주세요")
+		return;
+	}else if(contents == null){
+		alert("내용을 입력해주세요")
+		return;
+	}else if(writedate == null || writedate == 'undefined'){
+		alert("작성일시 입력해주세요");
+		return;
+	}
+	
+	//파일전송
+	if(this.FileUpTransfer00.filelist.length > 0){
+	this.FileUpTransfer00.upload("/uploadNoticeFile.notice"); //file up url
+	
+	}
+	trace(title);
+	trace(writedate);
+	trace(contents);
+	this.ds_Notice.setColumn(nRow,"title",title);
+	this.ds_Notice.setColumn(nRow,"writedate",writedate);
+	this.ds_Notice.setColumn(nRow,"contents",contents);
+	
+	this.transaction(
+		"nomalNotice",//id
+		"/uploadNomalNotice.notice",//url (절대경로)
+		"in_ds=ds_Notice:U",//in_ds:U
+		"",//()_out_ds
+		"",//argument
+		"fn_callback"
+	)
+	this.close();
+};
+this.fn_FileClear = function (){
+	//FileUpTransfer 파일 모두삭제
+	this.FileUpTransfer00.clearFileList();
+	//파일정보 모두삭제
+	this.schFileList_ds.clearData();  
+}
+this.fn_callback = function(id,ErrorCode,ErrorMsg){
+	trace(id);
+	trace(ErrorCode);
+	trace(ErrorMsg);
+};
+
+this.Tab00_Tabpage1_Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	let flag = obj.getCellProperty("Head",0,"text");
+	let check = flag==0?1:0;
+	if(e.cell==0){
+		obj.setCellProperty("Head",0,"text",check);
+		for(let i = 0; i<this.ds_NoticeFiles.rowcount;i++){
+			this.ds_NoticeFiles.setColumn(i,"chk",check);
+		}
+	}
+	
+	var objDs = this.objects[obj.binddataset];
+	for(var i = 1; i<obj.getCellCount("head"); i++)
+	{
+		var sHeadText = obj.getCellText(-1,i);
+		var nLen = sHeadText.length - 1;
+		if(i== e.cell)
+		{
+		  var sColId = (obj.getCellProperty("body",e.col,"text")).toString().split(":");
+		  if(sHeadText.substr(nLen) == "▲")
+		  {
+			obj.setCellProperty("head",i,"text",sHeadText.substr(0,nLen)+ "▼");
+			objDs.set_keystring("S:-"+sColId[1]);
+		  }
+		  else if (sHeadText.substr(nLen) == "▼")
+		  {
+			obj.setCellProperty("head",i,"text",sHeadText.substr(0,nLen)+"▲");
+			objDs.set_keystring("S:+"+sColId[1]);
+		  }
+		  else
+		  {
+		   obj.setCellProperty("head",i,"text", sHeadText+"▲");
+		   objDs.set_keystring("S:+"+sColId[1]);
+		  }
+		}
+		else
+		{
+			if(sHeadText.substr(nLen) == "▲" || sHeadText.substr(nLen) == "▼")
+			{
+				obj.setCellProperty("head",i,"text",sHeadText.substr(0,nLen));
+			}
+		}
+	
+	}
+	
+}
+
+
+
+this.Tab00_Tabpage2_btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.FileDialog01.open( "파일선택", FileDialog.MULTILOAD );
+};
+
+this.Tab00_Tabpage2_btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	for(let i =0; i<this.ds_ScolarFiles.getRowCount();i++){
+		if(this.ds_ScolarFiles.getColumn(i,"chk") == 1){
+		//FileUpTransfer 해당 파일삭제
+			var nIdx = this.FileUpTransfer00.removeFileByIndex(i);
+			//정상삭제 시 해당 데이터 삭제
+			if(nIdx > -1) {  
+				this.ds_ScolarFiles.deleteRow(i);
+			}
+		}
+	}
+};
+
+this.Tab00_Tabpage2_btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+
+this.Tab00_Tabpage2_btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var nRow = this.ds_Notice.addRow();
+	var title = this.Tab00.Tabpage2.form.edt_title.value;
+	var writedate = this.Tab00.Tabpage2.form.cal_writedate.value;
+	var contents = this.Tab00.Tabpage2.form.text_contents.value;
+	if(title == null){
+		alert("제목을 입력해주세요")
+		return;
+	}else if(contents == null){
+		alert("내용을 입력해주세요")
+		return;
+	}else if(writedate == null || writedate == 'undefined'){
+		alert("작성일시 입력해주세요");
+		return;
+	}
+	
+	//파일전송
+	if(this.FileUpTransfer00.filelist.length > 0){
+	this.FileUpTransfer00.upload("/uploadNoticeFile.notice"); //file up url
+	
+	}
+	trace(title);
+	trace(writedate);
+	trace(contents);
+	this.ds_Notice.setColumn(nRow,"title",title);
+	this.ds_Notice.setColumn(nRow,"writedate",writedate);
+	this.ds_Notice.setColumn(nRow,"contents",contents);
+	
+	this.transaction(
+		"nomalNotice",//id
+		"/uploadScolarNotice.notice",//url (절대경로)
+		"in_ds=ds_Notice:U",//in_ds:U
+		"",//()_out_ds
+		"",//argument
+		"fn_callback"
+	)
+	this.close();
+};
+
+this.FileDialog01_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
+{
+	if(e.reason == 0 ) {  //파일선택 취소
+		return;
+	}else{
+		if(e.reason == 3) {    //FileDialog.MULTILOAD 옵션의 파일선택
+			this.addScolarFileList(e.virtualfiles);
+			
+		}
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

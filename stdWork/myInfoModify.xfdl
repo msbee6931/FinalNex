@@ -31,7 +31,7 @@
         <Static id="Static01_00_04" taborder="11" text="주소" left="348" width="100" height="30" top="256"/>
         <Static id="Static01_00_05" taborder="12" text="생일" left="348" width="100" height="30" top="291"/>
         <Static id="Static01_00_06" taborder="13" text="수정할비밀번호" left="348" width="100" height="30" top="326"/>
-        <Calendar id="cal_birth" taborder="14" left="449" top="291" width="150" height="30" dateformat="yyyy-MM-dd"/>
+        <Calendar id="cal_birth" taborder="14" left="449" top="291" width="150" height="30" dateformat="yyyy-MM-dd" onchanged="cal_birth_onchanged"/>
       </Layout>
     </Layouts>
     <Bind>
@@ -109,7 +109,8 @@ this.fn_passcallback = function(id,hash){
 	var shaObj = new jsSHA("SHA-256","TEXT");
 	shaObj.update(pw);
 	var hash = shaObj.getHash("HEX");
-	trace(hash);
+	
+	trace(birth);
 	
 	var addRow = this.ds_students_copy.addRow();
 	this.ds_students_copy.setColumn(addRow,"s_seq",s_seq);
@@ -124,13 +125,12 @@ this.fn_passcallback = function(id,hash){
 	this.transaction(
 
 				"ds_myInfoStu" //1. strSvcID
-				,"/updateMyInfoStu.nex" //2. strURL 
+				,"/updateMyInfoStu.nex" //2. strURL
 				,"in_ds=ds_students_copy:U" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
 				,"" //4.strOutDatasets -select Fds=Sds
 				,"" //5.strArgument text값
 				,"fn_callback" //6.strCallbackFunc
 			);
-			
 	}
 }
 
@@ -147,6 +147,7 @@ this.myInfoModify_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 			);
 			//this.ds_students_copy.filter("");
 };
+
 ]]></Script>
   </Form>
 </FDL>

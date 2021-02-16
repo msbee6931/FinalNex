@@ -16,6 +16,9 @@
           </Layouts>
         </Div>
         <Static id="Static00" taborder="1" text="2//qwer" left="387" top="107" width="180" height="50" font="20px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;"/>
+        <Button id="Button00" taborder="2" text="관리자" left="800" top="70" width="120" height="50" onclick="Button00_onclick"/>
+        <Button id="Button01" taborder="3" text="학생" left="500" top="70" width="120" height="50" onclick="Button01_onclick"/>
+        <Button id="Button02" taborder="4" text="교수" left="650" top="70" width="120" height="50" onclick="Button02_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
@@ -160,6 +163,34 @@ this.loginForm_btn_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
 	}
 	
 	}
+};
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.objApp.mainframe.VFrameSet00.TopFrame.set_formurl("Admin::Form_Top.xfdl");
+	this.objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_formurl("Admin::Form_Left.xfdl");
+	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.set_formurl("Admin::Form_Mdi.xfdl");
+	this.objApp.mainframe.VFrameSet00.BottomFrame.set_formurl("Admin::Form_Bottom.xfdl");
+	this.objApp.mainframe.VFrameSet00.set_separatesize("0,50,*,60");
+	
+};
+
+this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.objApp.mainframe.VFrameSet00.TopFrame.set_formurl("Student::Form_Top.xfdl");
+	this.objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_formurl("Student::Form_Left.xfdl");
+	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.set_formurl("Student::Form_Mdi.xfdl");
+	this.objApp.mainframe.VFrameSet00.BottomFrame.set_formurl("Student::Form_Bottom.xfdl");
+	this.objApp.mainframe.VFrameSet00.set_separatesize("0,50,*,60");
+};
+
+this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.objApp.mainframe.VFrameSet00.TopFrame.set_formurl("Professor::Form_Top.xfdl");
+	this.objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_formurl("Professor::Form_Left.xfdl");
+	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.set_formurl("Professor::Form_Mdi.xfdl");
+	this.objApp.mainframe.VFrameSet00.BottomFrame.set_formurl("Professor::Form_Bottom.xfdl");
+	this.objApp.mainframe.VFrameSet00.set_separatesize("0,50,*,60");
 };
 ]]></Script>
     <Objects>

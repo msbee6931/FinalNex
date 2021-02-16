@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="noticeModify" width="1080" height="520" titletext="New Form" onload="noticeModify_onload">
+    <Layouts>
+      <Layout height="520" mobileorientation="landscape" width="1080">
+        <Static id="Static00" taborder="0" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00" taborder="1" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static01" taborder="4" text="공지사항 수정" left="30" top="9" width="200" height="30"/>
+        <Tab id="Tab00" taborder="5" tabindex="0" left="30" top="40" width="1022" height="452">
+          <Tabpages>
+            <Tabpage id="Tabpage1" text="일반공지">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" left="140" top="2" width="730" height="421" binddataset="ds_Notice" autofittype="col" oncelldblclick="Tab00_Tabpage1_Grid00_oncelldblclick" onheadclick="Tab00_Tabpage1_Grid00_onheadclick">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                          <Cell col="1" text="번호"/>
+                          <Cell col="2" text="제목"/>
+                          <Cell col="3" text="작성일시"/>
+                          <Cell col="4" text="내용"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
+                          <Cell col="1" text="bind:n_seq"/>
+                          <Cell col="2" text="bind:title"/>
+                          <Cell col="3" text="bind:writedate" displaytype="date" calendardateformat="yyyy-MM-dd" calendareditformat="yyyy-MM-dd" calendarautoselect="true" calendardisplayinvalidtype="invalidtext" calendardisplayinvalidtext="yyyy-MM-dd"/>
+                          <Cell col="4" text="bind:contents"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage2" text="장학공지">
+              <Layouts>
+                <Layout>
+                  <Div id="Div00" taborder="0" text="Div00" left="141" top="1" width="729" height="423"/>
+                  <Grid id="Grid00" taborder="1" left="138" top="2" width="731" height="419" binddataset="ds_ScolarNotice" autofittype="col" oncelldblclick="Tab00_Tabpage2_Grid00_oncelldblclick">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="chk"/>
+                          <Cell col="1" text="n_seq"/>
+                          <Cell col="2" text="title"/>
+                          <Cell col="3" text="writedate"/>
+                          <Cell col="4" text="contents"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:chk"/>
+                          <Cell col="1" text="bind:n_seq"/>
+                          <Cell col="2" text="bind:title"/>
+                          <Cell col="3" text="bind:writedate" displaytype="date" calendardateformat="yyyy-MM-dd" calendarautoselect="true"/>
+                          <Cell col="4" text="bind:contents"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_Notice">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="n_seq" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="writedate" type="DATE" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="n_seq">1</Col>
+            <Col id="title">1</Col>
+            <Col id="writedate">1</Col>
+            <Col id="contents">1</Col>
+          </Row>
+          <Row>
+            <Col id="n_seq">2</Col>
+            <Col id="title">2</Col>
+            <Col id="writedate">2</Col>
+            <Col id="contents">2</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_ScolarNotice">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="n_seq" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="writedate" type="DATE" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="n_seq">1</Col>
+            <Col id="title">1</Col>
+            <Col id="writedate">1</Col>
+            <Col id="contents">1</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.fn_callback = function(id,ErrorCode,ErrorMsg){
+	trace(id);
+	trace(ErrorCode);
+	trace(ErrorMsg);
+};
+
+
+this.noticeModify_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+
+				"selectNotice" //1. strSvcID
+				,"/selectNomalNotice.notice" //2. strURL
+				,"" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
+				,"ds_Notice=out_ds" //4.strOutDatasets -select Fds=Sds
+				,"" //5.strArgument text값
+				,"fn_callback" //6.strCallbackFunc
+			);
+		this.transaction(
+
+					"selectScolarNotice" //1. strSvcID
+					,"/selectScolarNotice.notice" //2. strURL
+					,"" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
+					,"ds_ScolarNotice=out_ds" //4.strOutDatasets -select Fds=Sds
+					,"" //5.strArgument text값
+					,"fn_callback" //6.strCallbackFunc
+				);
+};
+
+this.Tab00_Tabpage1_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var n_seq = this.ds_Notice.getColumn(e.row,"n_seq");
+	
+	var objCF = new ChildFrame();
+	objCF.init("NomalNotice_Info",400,100,900,600);
+	objCF.set_titletext(false);
+	objCF.set_formurl("admWork::nomalNotice_Info.xfdl");
+	objCF.showModal(
+		this.getOwnerFrame(),
+		{n_seq:n_seq},
+		this,
+		"fn_callback"
+	);
+};
+
+
+this.Tab00_Tabpage1_Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	let flag = obj.getCellProperty("Head",0,"text");
+	let check = flag==0?1:0;
+	if(e.cell==0){
+		obj.setCellProperty("Head",0,"text",check);
+		for(let i = 0; i<this.ds_Notice.rowcount;i++){
+			this.ds_Notice.setColumn(i,"chk",check);
+		}
+	}
+	
+	var objDs = this.objects[obj.binddataset];
+	for(var i = 1; i<obj.getCellCount("head"); i++)
+	{
+		var sHeadText = obj.getCellText(-1,i);
+		var nLen = sHeadText.length - 1;
+		if(i== e.cell)
+		{
+		  var sColId = (obj.getCellProperty("body",e.col,"text")).toString().split(":");
+		  if(sHeadText.substr(nLen) == "▲")
+		  {
+			obj.setCellProperty("head",i,"text",sHeadText.substr(0,nLen)+ "▼");
+			objDs.set_keystring("S:-"+sColId[1]);
+		  }
+		  else if (sHeadText.substr(nLen) == "▼")
+		  {
+			obj.setCellProperty("head",i,"text",sHeadText.substr(0,nLen)+"▲");
+			objDs.set_keystring("S:+"+sColId[1]);
+		  }
+		  else
+		  {
+		   obj.setCellProperty("head",i,"text", sHeadText+"▲");
+		   objDs.set_keystring("S:+"+sColId[1]);
+		  }
+		}
+		else
+		{
+			if(sHeadText.substr(nLen) == "▲" || sHeadText.substr(nLen) == "▼")
+			{
+				obj.setCellProperty("head",i,"text",sHeadText.substr(0,nLen));
+			}
+		}
+	
+	}
+	
+}
+
+this.Tab00_Tabpage2_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var n_seq = this.ds_ScolarNotice.getColumn(e.row,"n_seq");
+	
+	var objCF = new ChildFrame();
+	objCF.init("ScolarNotice_Info",400,100,900,600);
+	objCF.set_titletext(false);
+	objCF.set_formurl("admWork::scolarNotice_Info.xfdl");
+	objCF.showModal(
+		this.getOwnerFrame(),
+		{n_seq:n_seq},
+		this,
+		"fn_callback"
+	);
+};
+]]></Script>
+  </Form>
+</FDL>
