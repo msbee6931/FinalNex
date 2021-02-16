@@ -31,7 +31,7 @@
                     </Band>
                     <Band id="body">
                       <Cell text="bind:schDay" cssclass="expr:Category=='01'?'Expr_red':'Expr_blue'"/>
-                      <Cell col="1" text="bind:code" cssclass="expr:Category=='01'?'Expr_red':'Expr_blue'"/>
+                      <Cell col="1" text="bind:code" cssclass="expr:code=='01'?'Expr_red':''"/>
                       <Cell col="2" text="bind:title" cssclass="expr:Category=='01'?'Expr_red':'Expr_blue'"/>
                     </Band>
                   </Format>
