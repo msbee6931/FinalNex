@@ -10,8 +10,8 @@
             <Format id="default">
               <Columns>
                 <Column size="80"/>
-                <Column size="201"/>
-                <Column size="95"/>
+                <Column size="214"/>
+                <Column size="80"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -19,8 +19,8 @@
               </Rows>
               <Band id="head">
                 <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
-                <Cell col="1" text="name"/>
-                <Cell col="2" text="size"/>
+                <Cell col="1" text="fileName"/>
+                <Cell col="2" text="fileSize"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
@@ -91,11 +91,12 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[this.parentSeq=0;
+
 this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.FileDialog00.open('파일선택', FileDialog.MULTILOAD);
-	this.Dataset00.clearData();
+
 };
 
 this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
@@ -232,11 +233,23 @@ this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
 }
 this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	
 	let arr = this.Dataset00.extractRows("chk==1");
 	
 	if(arr.length==0 || arr.length== -1){alert("선택된 항목이 없습니다.");return;}
 	
 	this.Dataset00.deleteMultiRows(arr);
+	
+	
+	 this.transaction(
+            "ReferenceFileDel"
+            ,"/reference/deleteFile"
+            ,"in_ds=Dataset00:U"
+            ,"" 
+            ,""
+            ,"fn_callback" 
+         )
+		 this.alert("파일이 제거 되었습니다.");
 };
 
 
@@ -267,7 +280,7 @@ this.Button03_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.update_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-
+	this.contents.set_value(this.contents.value+" ");
 	this.transaction(
             "ReferenceUpd"
             ,"/reference/update"
@@ -288,6 +301,15 @@ this.update_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.sample_fileuptransfer_01_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 		this.transaction(
+			"garbageDelte" //id
+			,"/reference/garbageDelete"//url
+			,""// inData
+			,""// outData
+			,""//strArg
+			,"fn_callback"//callback
+		);
+
+		this.transaction(
 			"ReferenceLoad" //id
 			,"/reference/load"//url
 			,""// inData
@@ -295,6 +317,7 @@ this.sample_fileuptransfer_01_onload = function(obj:nexacro.Form,e:nexacro.LoadE
 			,""//strArg
 			,"fn_callback"//callback
 		);
+		
 		
 };
 
@@ -311,6 +334,7 @@ this.Grid01_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEve
 			,"seq="+seq//strArg
 			,"fn_callback"//callback
 		);
+		
 };
 
 this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
