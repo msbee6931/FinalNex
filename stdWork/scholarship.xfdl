@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="scholarship" width="1080" height="520" titletext="New Form">
+  <Form id="scholarship" width="1080" height="520" titletext="New Form" onload="scholarship_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
         <Static id="Static00" taborder="0" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
@@ -11,31 +11,25 @@
         <Div id="Div00" taborder="5" text="Div00" left="30" top="38" width="1021" height="452" border="1px solid #c1c1c1">
           <Layouts>
             <Layout>
-              <Button id="btn_insert" taborder="0" text="신청하기" left="879" top="11" width="80" height="25" onclick="Div00_btn_insert_onclick"/>
-              <Grid id="Grid00" taborder="1" left="60" top="51" width="900" height="330" binddataset="reqScholar_ds" autofittype="col">
+              <Button id="btn_insert" taborder="0" text="작성하기" left="29" top="16" width="80" height="25" onclick="Div00_btn_insert_onclick"/>
+              <Grid id="Grid00" taborder="1" left="30" top="61" width="429" height="360" binddataset="reqScholar_ds" autofittype="col" oncelldblclick="Div00_Grid00_oncelldblclick" oncellclick="Div00_Grid00_oncellclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
-                      <Column size="33"/>
-                      <Column size="49"/>
-                      <Column size="378"/>
-                      <Column size="80"/>
+                      <Column size="335"/>
+                      <Column size="64"/>
                     </Columns>
                     <Rows>
                       <Row size="24" band="head"/>
                       <Row size="24"/>
                     </Rows>
                     <Band id="head">
-                      <Cell text="chk"/>
-                      <Cell col="1" text="seq"/>
-                      <Cell col="2" text="title"/>
-                      <Cell col="3" text="writeDate"/>
+                      <Cell text="제목"/>
+                      <Cell col="1" text="작성날짜"/>
                     </Band>
                     <Band id="body">
-                      <Cell text="bind:chk"/>
-                      <Cell col="1" text="bind:seq"/>
-                      <Cell col="2" text="bind:title"/>
-                      <Cell col="3" text="bind:writeDate"/>
+                      <Cell text="bind:title"/>
+                      <Cell col="1" text="bind:writeDate" displaytype="date"/>
                     </Band>
                   </Format>
                 </Formats>
@@ -43,13 +37,57 @@
             </Layout>
           </Layouts>
         </Div>
+        <Static id="Static00_02" taborder="6" text="제목" left="511" top="100" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+        <Edit id="Edit00" taborder="7" left="610" top="100" width="420" height="30" readonly="true"/>
+        <Static id="Static00_00_00" taborder="8" text="첨부파일" left="511" top="130" width="100" height="140" background="#c1c1c1" border="1px solid #c1c1c1"/>
+        <Grid id="Grid00" taborder="9" left="612" top="131" width="348" height="140" binddataset="schFileList_ds" autofittype="col" onheadclick="Grid00_onheadclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="26"/>
+                <Column size="239"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="20" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="파일이름"/>
+                <Cell col="2" text="파일크기"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="bind:fileName"/>
+                <Cell col="2" text="bind:fileSize"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_down" taborder="10" text="파일&#13;&#10;다운로드" left="960" top="130" width="70" height="140" onclick="btn_down_onclick"/>
+        <Static id="Static00_00_00_00" taborder="11" text="신청사유" left="511" top="270" width="100" height="190" background="#c1c1c1" border="1px solid #c1c1c1"/>
+        <Edit id="Edit01" taborder="12" left="610" top="271" width="420" height="189" readonly="true"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[this.code="201102159";
+this.scholarship_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"selectOneReqScholar.scholarship",//id
+		"/scholarship/selectOneReqScholar.scholarship",//url (절대경로)
+		"",//in_ds:U
+		"reqScholar_ds=out_ds",//()_out_ds
+		"code="+this.code,//argument
+		"fn_callback"
+		)
+};
+
+
 
 this.Div00_btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var code="201102159";
+
 	//장학금 신청서 입력을 위한 모달창
 	var objCF = new ChildFrame();
 	objCF.init("scholarship_insert_pop",200,100,900,600);
@@ -57,11 +95,138 @@ this.Div00_btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 	objCF.set_formurl("stdWork::scholar_insert_pop.xfdl");
 	objCF.showModal(
 		this.getOwnerFrame(),
-		{code:code}, // 배열값 넘기기
+		{code:this.code}, // 학번 넘기기
 		this,
 		"fn_callback_pop_t"
 	);
 };
+
+this.fn_callback_pop_t = function()
+{
+		this.transaction(
+		"selectOneReqScholar.scholarship",//id
+		"/scholarship/selectOneReqScholar.scholarship",//url (절대경로)
+		"",//in_ds:U
+		"reqScholar_ds=out_ds",//()_out_ds
+		"code="+this.code,//argument
+		"fn_callback"
+		)
+}
+
+
+
+
+this.seq="";
+this.Div00_Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.seq = this.reqScholar_ds.getColumn(e.row, "seq");
+	this.transaction(
+		"selectSeqReqScholar",//id
+		"/scholarship/selectSeqReqScholar.scholarship",//url (절대경로)
+		"",//in_ds:U
+		"reqScholarCopy_ds=out_ds schFileList_ds=out_fDs",//()_out_ds
+		"seq="+this.seq,//argument
+		"fn_callback"
+		)
+};
+
+
+
+
+this.btn_down_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objDs = this.schFileList_ds;
+
+	this.FileDownTransfer00.setPostData("seq",this.seq); // 현재 게시물의seq를 넘김
+	//총 첨부파일 중 체크 된 파일만 이벤트 발생
+	
+
+	for(var i=0; i< objDs.getRowCount(); i++){
+	
+			if(objDs.getColumn(i,"chk") == "1"){
+			// 체크된 파일만 서버로 변수를 보냄
+
+			var savedFileName = objDs.getColumn(i,"savedFileName");
+			this.FileDownTransfer00.setPostData("savedFileName'"+i+"'",savedFileName);
+				
+			var fileName = objDs.getColumn(i,"fileName");
+			this.FileDownTransfer00.setPostData("fileName'"+i+"'",fileName);
+
+		}
+	}
+  
+  //파일다운로드 실행
+  this.FileDownTransfer00.download("/scholarship/downReqSchFile.scholarship");
+  
+  //검색 후 지정 체크박스 해제
+	this.Div00.form.Grid00.setCellProperty("head",0,"text",0);
+	for(let i =0; i<this.schFileList_ds.getRowCount();i++){
+		if(this.schFileList_ds.getColumn(i,"chk") == 1){
+			this.schFileList_ds.setColumn(i,"chk",0);
+		}
+	}
+};
+
+//파일다운로드 성공시 (NRE 에서만 지원)
+this.FileDownTransfer00_onsuccess = function(obj:nexacro.FileDownTransfer,e:nexacro.FileDownTransferEventInfo)
+{
+  var sMsg = e.targetfullpath +"\n"+  e.url;
+  
+  alert(sMsg);
+};
+
+//파일다운로드 실패시 (NRE 에서만 지원)
+this.FileDownTransfer00_onerror = function(obj:nexacro.FileDownTransfer,e:nexacro.FileDownTransferErrorEventInfo)
+{
+  var sMsg = ">>>>>>>>>>>>>>>>>>>>>>>>>>  ERROR >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
+  sMsg += "statuscode: "+e.statuscode+"\n";
+  sMsg += "requesturi: "+e.requesturi+"\n";
+  sMsg += "locationuri: "+e.locationuri+"\n" ;
+  sMsg += "errormsg: "+e.errormsg+"\n";
+  
+  alert(sMsg);
+};
+
+
+this.chkValue="";
+
+// 닫기 버튼
+this.Div00_btn_cancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+		this.close(this.seq);
+};
+
+
+
+this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if(e.cell == 0)
+    {
+        this.gf_setCheckAll(obj, e);
+    }
+};
+
+this.gv_isCheckAll = 0;
+this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
+{
+    var sColID = obj.getCellProperty("body", e.cell, "text").replace("bind:", "");
+	
+	var sheadValue = obj.getCellProperty("head",e.cell,"text");
+	
+    if(sColID == "chk")
+    {
+		sheadValue = (sheadValue =="1"? "0":"1");
+		obj.setCellProperty("head",e.cell,"text",sheadValue);
+		
+		this.schFileList_ds.set_enableevent(false);
+		for(var i=0; i< this.schFileList_ds.getRowCount(); i++)
+		{
+			this.schFileList_ds.setColumn(i, "chk",sheadValue);
+		}
+		this.schFileList_ds.set_enableevent(true);
+    }
+	
+}
 ]]></Script>
     <Objects>
       <Dataset id="reqScholar_ds">
@@ -75,6 +240,34 @@ this.Div00_btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
           <Column id="checkRead" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="schFileList_ds">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="seq" type="INT" size="256"/>
+          <Column id="parentSeq" type="INT" size="256"/>
+          <Column id="fileName" type="STRING" size="256"/>
+          <Column id="savedFileName" type="STRING" size="256"/>
+          <Column id="fileSize" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="reqScholarCopy_ds">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="seq" type="INT" size="256"/>
+          <Column id="std_code" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="writeDate" type="STRING" size="256"/>
+          <Column id="checkRead" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileDownTransfer id="FileDownTransfer00"/>
     </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Edit00" propid="value" datasetid="reqScholar_ds" columnid="title"/>
+      <BindItem id="item1" compid="Edit01" propid="value" datasetid="reqScholar_ds" columnid="contents"/>
+      <BindItem id="item2" compid="Edit00" propid="accessibilityaction" datasetid="reqScholarCopy_ds" columnid="title"/>
+      <BindItem id="item3" compid="Edit01" propid="accessibilityaction" datasetid="reqScholarCopy_ds" columnid="contents"/>
+    </Bind>
   </Form>
 </FDL>
