@@ -11,7 +11,7 @@
         <Div id="Div00" taborder="5" text="Div00" left="30" top="38" border="1px solid #c1c1c1" right="29" bottom="30">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="25" top="51" binddataset="absence_ds" autofittype="col" right="24" bottom="59" oncelldblclick="Div00_Grid00_oncelldblclick">
+              <Grid id="Grid00" taborder="0" left="25" top="51" binddataset="absence_ds" autofittype="col" right="24" bottom="59" oncelldblclick="Div00_Grid00_oncelldblclick" oncellclick="Div00_Grid00_oncellclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -48,6 +48,7 @@
                   </Format>
                 </Formats>
               </Grid>
+              <Button id="btn_del" taborder="1" text="삭제" onclick="Div00_btn_del_onclick" right="23" bottom="12" width="100" height="25"/>
             </Layout>
           </Layouts>
         </Div>
@@ -129,6 +130,26 @@ this.Div00_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClick
 
 
 
+this.seq="";
+
+this.Div00_Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+		this.seq = this.absence_ds.getColumn(e.row,"seq");
+};
+
+this.Div00_btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var nRow = this.absence_ds.findRow("seq",this.seq);
+	this.absence_ds.deleteRow(nRow);
+	this.transaction(
+		"deleteReqAbs.absence",//id
+		"/absence/deleteReqAbs.absence",//url (절대경로)
+		"",//in_ds:U
+		"",//()_out_ds
+		"seq="+this.seq,//argument
+		"fn_callback"
+		)
+};
 ]]></Script>
   </Form>
 </FDL>

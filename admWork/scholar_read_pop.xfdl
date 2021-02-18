@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="scholar_read_pop" width="400" height="400" titletext="New Form" onload="scholar_insert_pop_onload">
+  <Form id="scholar_read_pop" width="400" height="400" titletext="New Form" onload="scholar_read_pop_onload">
     <Layouts>
       <Layout height="400" width="400">
         <Button id="btn_ok" taborder="0" text="확인" left="86" top="355" width="110" height="30" onclick="btn_ok_onclick"/>
@@ -63,11 +63,25 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.std_code = this.parent.std_code;
+    <Script type="xscript5.1"><![CDATA[this.seq = this.parent.seq;
 
-//모달창 온로드
-this.scholar_insert_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+this.scholar_read_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+
+			this.transaction(
+			"selectOne.scholarship",//id
+			"/scholarship/selectOne.scholarship",//url (절대경로)
+			"",//in_ds:U
+			"scholar_ds=out_ds",//()_out_ds
+			"seq="+this.seq,//argument
+			"fn_callback_scholar"
+			)
+	
+};
+
+this.fn_callback_scholar = function()
+{
+	this.std_code = this.scholar_ds.getColumn(0,"std_code");
 	this.transaction(
 		"selectOneStd.students",//id
 		"/students/selectOneStd.students",//url (절대경로)
@@ -76,15 +90,8 @@ this.scholar_insert_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventIn
 		"sCode="+this.std_code,//argument
 		"fn_callback_stdInfo"
 		)
+}
 
-	
-	//maskEdit 기본값 0처리 하기
-	this.Div00.form.medt_a.set_value(0);
-	this.Div00.form.medt_b.set_value(0);
-	this.Div00.form.medt_c.set_value(0);
-	this.Div00.form.medt_d.set_value(0);
-	this.Div00.form.medt_e.set_value(0);
-};
 
 
 //확인버튼
@@ -111,8 +118,8 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		
 		
 		this.transaction(
-		"insert.scholarship",//id
-		"/scholarship/insert.scholarship",//url (절대경로)
+		"updateOne.scholarship",//id
+		"/scholarship/updateOne.scholarship",//url (절대경로)
 		"in_ds=scholar_ds:U",//in_ds:U
 		"",//()_out_ds
 		"",//argument
@@ -155,11 +162,19 @@ this.fn_callback = function(id,ErrorCode,ErrorMsg){
 
 
 
+
+
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="Div00.form.edt_code" propid="value" datasetid="students_ds" columnid="s_seq"/>
       <BindItem id="item1" compid="Div00.form.edt_code00_00" propid="value" datasetid="students_ds" columnid="name"/>
       <BindItem id="item2" compid="Div00.form.Combo00" propid="value" datasetid="students_ds" columnid="deptCode"/>
+      <BindItem id="item3" compid="Div00.form.medt_a" propid="value" datasetid="scholar_ds" columnid="s_kind"/>
+      <BindItem id="item4" compid="Div00.form.medt_b" propid="value" datasetid="scholar_ds" columnid="s_rec"/>
+      <BindItem id="item5" compid="Div00.form.medt_c" propid="value" datasetid="scholar_ds" columnid="s_smt"/>
+      <BindItem id="item6" compid="Div00.form.medt_d" propid="value" datasetid="scholar_ds" columnid="s_spt"/>
+      <BindItem id="item7" compid="Div00.form.medt_e" propid="value" datasetid="scholar_ds" columnid="s_etc"/>
+      <BindItem id="item8" compid="Div00.form.medt_sum" propid="value" datasetid="scholar_ds" columnid="sSum"/>
     </Bind>
   </Form>
 </FDL>

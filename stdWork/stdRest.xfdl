@@ -33,19 +33,19 @@
                 </Formats>
               </Grid>
               <Button id="btn_insert" taborder="1" text="작성하기" left="886" top="26" width="100" height="25" onclick="Div00_btn_insert_onclick"/>
-              <Static id="Static00" taborder="2" text="" left="577" top="71" width="399" height="346" border="1px solid #c1c1c1"/>
+              <Static id="Static00" taborder="2" text="" left="577" top="71" width="422" height="346" border="1px solid #c1c1c1"/>
             </Layout>
           </Layouts>
         </Div>
         <Static id="Static01" taborder="5" text=" 복학 신청서 관리" left="30" top="9" width="200" height="30" background="#c1c1c1"/>
-        <Edit id="edt_title01_00" taborder="9" left="684" top="236" width="298" height="37"/>
-        <Edit id="edt_title01" taborder="10" left="862" top="164" width="120" height="37"/>
-        <Combo id="Combo00" taborder="11" text="Combo00" left="684" top="128" width="120" height="36" readonly="true" innerdataset="deptCode" codecolumn="code" datacolumn="name"/>
-        <Edit id="edt_title00_01" taborder="14" left="684" top="200" width="120" height="37"/>
-        <Edit id="edt_title00" taborder="15" left="862" top="128" width="120" height="37"/>
-        <Edit id="edt_title00_00_00" taborder="18" left="862" top="200" width="120" height="37"/>
-        <Edit id="edt_title00_00" taborder="19" left="684" top="164" width="120" height="37"/>
-        <Static id="Static02" taborder="20" text="" left="625" top="272" width="357" height="150" border="1px solid #c1c1c1"/>
+        <Edit id="edt_title01_00" taborder="9" left="684" top="236" width="326" height="37"/>
+        <Edit id="edt_title01" taborder="10" left="862" top="164" width="150" height="37"/>
+        <Combo id="Combo00" taborder="11" text="Combo00" left="684" top="128" width="150" height="36" readonly="true" innerdataset="deptCode" codecolumn="code" datacolumn="name"/>
+        <Edit id="edt_title00_01" taborder="14" left="684" top="200" width="150" height="37"/>
+        <Edit id="edt_title00" taborder="15" left="862" top="128" width="150" height="37"/>
+        <Edit id="edt_title00_00_00" taborder="18" left="862" top="200" width="150" height="37"/>
+        <Edit id="edt_title00_00" taborder="19" left="684" top="164" width="150" height="37"/>
+        <Static id="Static02" taborder="20" text="" left="625" top="272" width="385" height="150" border="1px solid #c1c1c1"/>
         <Static id="Static00_02" taborder="6" text="학 과" left="625" top="128" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
         <Static id="Static00_00_01" taborder="13" text="연락처" left="625" top="200" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
         <Static id="Static00_00_00_00" taborder="16" text="생년월일" left="625" top="164" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
@@ -71,14 +71,17 @@
     <Script type="xscript5.1"><![CDATA[this.std_code="215051001";
 this.Div00_btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+
 	//복학신청서 입력을 위한 모달창
 	var objCF = new ChildFrame();
-	objCF.init("stdRest_pop",200,100,900,600);
+	var x = this.width/2-500;
+	var y = this.height/2-300;
+	objCF.init("stdRest_pop",x,y,900,600);
 	objCF.set_titletext("복학신청서 작성하기");
 	objCF.set_formurl("stdWork::stdRest_pop.xfdl");
 	objCF.showModal(
 		this.getOwnerFrame(),
-		{std_code:std_code}, // seq 넘기기
+		{sCode:this.std_code}, // seq 넘기기
 		this,
 		"fn_callback_stdRest"
 	);
@@ -151,6 +154,14 @@ this.fn_callback_std = function()
           <Column id="gender" type="STRING" size="256"/>
           <Column id="deptCode" type="STRING" size="256"/>
           <Column id="colCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="rlistCopy_ds">
+        <ColumnInfo>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="std_code" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="writeDate" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>

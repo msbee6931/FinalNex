@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="tuition" width="1080" height="520" titletext="New Form" onload="tuition_onload">
+  <Form id="scholarship" width="1080" height="520" titletext="New Form" onload="scholarship_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
         <Static id="Static00" taborder="0" left="0" top="0" width="29" visible="false" background="RGBA(236,135,135,0.71)" bottom="0"/>
@@ -10,7 +10,7 @@
             <Layout>
               <Button id="btn_searchEtc" taborder="0" left="258" top="36" width="25" height="25" background="" onclick="Div00_btn_searchEtc_onclick"/>
               <Edit id="edt_etcSearch" taborder="1" left="120" top="36" width="130" height="25" displaynulltext="학번 또는 이름 검색"/>
-              <Grid id="grd_std" taborder="2" left="32" top="71" width="377" height="330" binddataset="students_ds" autofittype="col" oncellclick="Div00_grd_std_oncellclick">
+              <Grid id="grd_std" taborder="2" left="32" top="71" width="377" height="330" binddataset="students_ds" autofittype="col" oncellclick="Div00_grd_std_oncellclick" oncelldblclick="Div00_grd_std_oncelldblclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -35,8 +35,8 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="btn_tuit" taborder="3" text="등록금 입력" left="329" top="36" width="80" height="25" onclick="Div00_btn_tuit_onclick"/>
-              <Grid id="grd_tuition" taborder="4" left="439" top="71" width="550" height="330" binddataset="tuition_ds" autofittype="col" oncelldblclick="Div00_grd_tuition_oncelldblclick" oncellclick="Div00_grd_tuition_oncellclick">
+              <Button id="btn_scholar" taborder="3" text="장학금 입력" left="329" top="36" width="80" height="25" onclick="Div00_btn_scholar_onclick"/>
+              <Grid id="grd_scholar" taborder="4" left="439" top="71" width="550" height="330" autofittype="col" binddataset="scholorship_ds" oncelldblclick="Div00_grd_scholar_oncelldblclick" oncellclick="Div00_grd_scholar_oncellclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -55,23 +55,23 @@
                     </Rows>
                     <Band id="head">
                       <Cell text="학번"/>
-                      <Cell col="1" text="입학금"/>
-                      <Cell col="2" text="수업료"/>
-                      <Cell col="3" text="학생회비"/>
-                      <Cell col="4" text="졸업앨범비"/>
-                      <Cell col="5" text="오리엔테이션비"/>
+                      <Cell col="1" text="선행"/>
+                      <Cell col="2" text="추천"/>
+                      <Cell col="3" text="성적우수"/>
+                      <Cell col="4" text="생활지원"/>
+                      <Cell col="5" text="기타"/>
                       <Cell col="6" text="합계"/>
                       <Cell col="7" text="작성날짜"/>
                     </Band>
                     <Band id="body">
-                      <Cell text="bind:std_code" displaytype="text" textAlign="center"/>
-                      <Cell col="1" text="bind:t_enter" textAlign="center"/>
-                      <Cell col="2" text="bind:t_class" textAlign="center"/>
-                      <Cell col="3" text="bind:t_std" textAlign="center"/>
-                      <Cell col="4" text="bind:t_grd" textAlign="center"/>
-                      <Cell col="5" text="bind:t_ore" textAlign="center"/>
-                      <Cell col="6" text="bind:tSum" textAlign="center"/>
-                      <Cell col="7" text="bind:t_date" displaytype="date" textAlign="center"/>
+                      <Cell text="bind:std_code" displaytype="text"/>
+                      <Cell col="1" text="bind:s_kind" textAlign="center"/>
+                      <Cell col="2" text="bind:s_rec" textAlign="center"/>
+                      <Cell col="3" text="bind:s_smt" textAlign="center"/>
+                      <Cell col="4" text="bind:s_spt" textAlign="center"/>
+                      <Cell col="5" text="bind:s_etc" textAlign="center"/>
+                      <Cell col="6" text="bind:sSum" textAlign="center"/>
+                      <Cell col="7" text="bind:t_date" textAlign="center" displaytype="date"/>
                     </Band>
                   </Format>
                 </Formats>
@@ -103,14 +103,13 @@
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static01" taborder="3" text=" 등록금  관리" left="30" top="9" width="200" height="30"/>
+        <Static id="Static01" taborder="3" text="장학금 관리" left="30" top="9" width="200" height="30"/>
         <Static id="Static00_00" taborder="4" left="1050" top="0" width="30" visible="false" background="RGBA(236,135,135,0.71)" bottom="0"/>
         <Static id="Static00_01_00" taborder="5" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[this.tuition_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+    <Script type="xscript5.1"><![CDATA[this.scholarship_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-
 	this.transaction(
 		"selectAllStd.students",//id
 		"/students/selectAllStd.students",//url (절대경로)
@@ -121,14 +120,16 @@
 		)
 		
 		this.transaction(
-		"selectAll.tuition",//id
-		"/tuition/selectAll.tuition",//url (절대경로)
+		"selectAll.scholarship",//id
+		"/scholarship/selectAll.scholarship",//url (절대경로)
 		"",//in_ds:U
-		"tuition_ds=out_ds",//()_out_ds
+		"scholorship_ds=out_ds",//()_out_ds
 		"",//argument
 		"fn_callback"
 		)
 		
+
+
 };
 
 
@@ -136,63 +137,63 @@ this.std_code="";
 this.Div00_grd_std_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	this.std_code = this.students_ds.getColumn(e.row,"s_seq");
-	this.tuition_ds.filter("std_code=='"+this.std_code+"'");
+	this.scholorship_ds.filter("std_code=='"+this.std_code+"'");
 };
 
-this.Div00_btn_tuit_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.Div00_btn_scholar_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-
 	//등록금 입력을 위한 모달창
 	var objCF = new ChildFrame();
-	objCF.init("tuition_insert_pop",400,100,400,400);
-	objCF.set_titletext(this.std_code+"등록금 입력");
-	objCF.set_formurl("admWork::tuition_insert_pop.xfdl");
+	objCF.init("scholar_insert_pop",400,100,400,400);
+	objCF.set_titletext(this.std_code+"장학금 입력");
+	objCF.set_formurl("admWork::scholar_insert_pop.xfdl");
 	objCF.showModal(
 		this.getOwnerFrame(),
 		{std_code:this.std_code}, // 학번
 		this,
-		"fn_callback_insertTuition"
+		"fn_callback_insertScholar"
 	);
 };
 
-this.fn_callback_insertTuition = function()
-{
 
+this.fn_callback_insertScholar = function()
+{
 		this.transaction(
-		"selectAll.tuition",//id
-		"/tuition/selectAll.tuition",//url (절대경로)
+		"selectAll.scholarship",//id
+		"/scholarship/selectAll.scholarship",//url (절대경로)
 		"",//in_ds:U
-		"tuition_ds=out_ds",//()_out_ds
+		"scholorship_ds=out_ds",//()_out_ds
 		"",//argument
 		"fn_callback"
 		)
 }
 
-
-
-this.Div00_grd_tuition_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.Div00_grd_scholar_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	var seq = this.tuition_ds.getColumn(e.row,"seq");
+	var seq = this.scholorship_ds.getColumn(e.row,"seq");
 	//등록금 수정을 위한 모달창
 	var objCF = new ChildFrame();
-	objCF.init("tuition_read_pop",400,100,400,400);
-	objCF.set_titletext("등록금 확인하기");
-	objCF.set_formurl("admWork::tuition_read_pop.xfdl");
+	objCF.init("scholar_read_pop",400,100,400,400);
+	objCF.set_titletext("장학금 확인하기");
+	objCF.set_formurl("admWork::scholar_read_pop.xfdl");
 	objCF.showModal(
 		this.getOwnerFrame(),
 		{seq:seq}, // 학번+작성날짜
 		this,
-		"fn_callback_updateTuition"
+		"fn_callback_updateScholar"
 	);
 };
 
-this.fn_callback_updateTuition=function()
+
+
+
+this.fn_callback_updateScholar=function()
 {
-	this.transaction(
-		"selectAll.tuition",//id
-		"/tuition/selectAll.tuition",//url (절대경로)
+		this.transaction(
+		"selectAll.scholarship",//id
+		"/scholarship/selectAll.scholarship",//url (절대경로)
 		"",//in_ds:U
-		"tuition_ds=out_ds",//()_out_ds
+		"scholorship_ds=out_ds",//()_out_ds
 		"",//argument
 		"fn_callback"
 		)
@@ -200,21 +201,22 @@ this.fn_callback_updateTuition=function()
 
 
 this.seq="";
-this.Div00_grd_tuition_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.Div00_grd_scholar_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	this.seq=this.tuition_ds.getColumn(e.row,"seq");
+	this.seq=this.scholorship_ds.getColumn(e.row,"seq");
 };
+
 
 this.Div00_btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	alert(this.seq)
-	var nRow = this.tuition_ds.findRow("seq",this.seq);
-	this.tuition_ds.deleteRow(nRow);
+	var nRow = this.scholorship_ds.findRow("seq",this.seq);
+	this.scholorship_ds.deleteRow(nRow);
 	this.transaction(
-		"deleteOne.tuition",//id
-		"/tuition/deleteOne.tuition",//url (절대경로)
+		"deleteOne.scholarship",//id
+		"/scholarship/deleteOne.scholarship",//url (절대경로)
 		"",//in_ds:U
-		"out_ds=tuition_ds",//()_out_ds
+		"out_ds=scholorship_ds",//()_out_ds
 		"seq="+this.seq,//argument
 		"fn_callback"
 		)
@@ -242,23 +244,20 @@ this.Div00_btn_searchEtc_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
 
 this.Div00_btn_entire_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.tuition_ds.filter("");
+	this.scholorship_ds.filter("");
 };
+
+
+
+
+
+
+
+
+
+
 ]]></Script>
     <Objects>
-      <Dataset id="tuition_ds">
-        <ColumnInfo>
-          <Column id="seq" type="INT" size="256"/>
-          <Column id="std_code" type="INT" size="256"/>
-          <Column id="t_enter" type="INT" size="256"/>
-          <Column id="t_class" type="INT" size="256"/>
-          <Column id="t_std" type="INT" size="256"/>
-          <Column id="t_grd" type="INT" size="256"/>
-          <Column id="t_ore" type="INT" size="256"/>
-          <Column id="tSum" type="INT" size="256"/>
-          <Column id="t_date" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
       <Dataset id="scholar_ds">
         <ColumnInfo>
           <Column id="code" type="STRING" size="256"/>
@@ -313,13 +312,14 @@ this.Div00_btn_entire_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
       </Dataset>
       <Dataset id="scholorship_ds">
         <ColumnInfo>
-          <Column id="std_code" type="STRING" size="256"/>
-          <Column id="s_kind" type="STRING" size="256"/>
-          <Column id="s_rec" type="STRING" size="256"/>
-          <Column id="s_smt" type="STRING" size="256"/>
-          <Column id="s_spt" type="STRING" size="256"/>
-          <Column id="s_etc" type="STRING" size="256"/>
-          <Column id="sSum" type="STRING" size="256"/>
+          <Column id="std_code" type="INT" size="256"/>
+          <Column id="s_kind" type="INT" size="256"/>
+          <Column id="s_rec" type="INT" size="256"/>
+          <Column id="s_smt" type="INT" size="256"/>
+          <Column id="s_spt" type="INT" size="256"/>
+          <Column id="s_etc" type="INT" size="256"/>
+          <Column id="sSum" type="INT" size="256"/>
+          <Column id="t_date" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>

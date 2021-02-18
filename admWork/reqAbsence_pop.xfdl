@@ -61,7 +61,7 @@
               <Calendar id="cal_eDate" taborder="24" left="299" top="153" width="150" height="20" onchanged="Div00_Calendar00_onchanged"/>
               <Static id="Static05" taborder="25" text="~" left="277" top="154" width="19" height="19"/>
               <Radio id="Radio00" taborder="26" left="106" top="186" width="674" height="18" innerdataset="absenceCode_ds" codecolumn="code" datacolumn="name" rowcount="1"/>
-              <Button id="btn_commit" taborder="27" text="승인" left="469" top="514" width="80" height="30" onclick="Div00_btn_commit_onclick"/>
+              <Button id="btn_commit" taborder="27" text="승인" left="559" top="514" width="80" height="30" onclick="Div00_btn_commit_onclick"/>
               <Combo id="Combo00" taborder="28" text="Combo00" left="102" top="61" width="184" height="31" readonly="true" innerdataset="deptCode" codecolumn="code" datacolumn="name"/>
             </Layout>
           </Layouts>
@@ -273,7 +273,7 @@ this.Div00_btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo
       <BindItem id="item7" compid="Div00.form.cal_sDate" propid="value" datasetid="absence_ds" columnid="sDate"/>
       <BindItem id="item8" compid="Div00.form.cal_eDate" propid="value" datasetid="absence_ds" columnid="eDate"/>
       <BindItem id="item9" compid="Div00.form.Radio00" propid="value" datasetid="absence_ds" columnid="code"/>
-      <BindItem id="item10" compid="Div00.form.edt_title01_00" propid="value" datasetid="students_ds" columnid="adress"/>
+      <BindItem id="item6" compid="Div00.form.edt_title01_00" propid="value" datasetid="students_ds" columnid="adress"/>
     </Bind>
   </Form>
 </FDL>

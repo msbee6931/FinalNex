@@ -123,7 +123,7 @@
       <FileDialog id="FileDialog00" onclose="FileDialog00_onclose"/>
       <Dataset id="students_ds">
         <ColumnInfo>
-          <Column id="s_seq" type="STRING" size="256"/>
+          <Column id="s_seq" type="INT" size="256"/>
           <Column id="name" type="STRING" size="256"/>
           <Column id="age" type="STRING" size="256"/>
           <Column id="email" type="STRING" size="256"/>
