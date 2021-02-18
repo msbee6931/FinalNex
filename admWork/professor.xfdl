@@ -7,13 +7,15 @@
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="65"/>
-                <Column size="104"/>
                 <Column size="80"/>
                 <Column size="80"/>
-                <Column size="113"/>
                 <Column size="80"/>
-                <Column size="126"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
                 <Column size="80"/>
               </Columns>
               <Rows>
@@ -22,23 +24,27 @@
               </Rows>
               <Band id="head">
                 <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
-                <Cell col="1" text="교수번호"/>
-                <Cell col="2" text="이름"/>
-                <Cell col="3" text="나이"/>
+                <Cell col="1" text="p_seq"/>
+                <Cell col="2" text="name"/>
+                <Cell col="3" text="secNumber"/>
                 <Cell col="4" text="email"/>
-                <Cell col="5" text="전화번호" edittype="none"/>
-                <Cell col="6" text="주소"/>
-                <Cell col="7" text="강사"/>
+                <Cell col="5" text="contact"/>
+                <Cell col="6" text="address"/>
+                <Cell col="7" text="lecture"/>
+                <Cell col="8" text="colCode"/>
+                <Cell col="9" text="deptCode"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
-                <Cell col="1" text="bind:p_seq" edittype="normal"/>
-                <Cell col="2" text="bind:name" edittype="normal"/>
-                <Cell col="3" text="bind:age" edittype="normal"/>
-                <Cell col="4" text="bind:email" edittype="normal"/>
-                <Cell col="5" text="bind:contact" edittype="normal"/>
-                <Cell col="6" text="bind:address" edittype="normal"/>
-                <Cell col="7" text="bind:lecture" edittype="normal"/>
+                <Cell col="1" text="bind:p_seq"/>
+                <Cell col="2" text="bind:name"/>
+                <Cell col="3" text="bind:secNumber"/>
+                <Cell col="4" text="bind:email"/>
+                <Cell col="5" text="bind:contact"/>
+                <Cell col="6" text="bind:address"/>
+                <Cell col="7" text="bind:lecture"/>
+                <Cell col="8" text="bind:colCode"/>
+                <Cell col="9" text="bind:deptCode"/>
               </Band>
             </Format>
           </Formats>
@@ -75,11 +81,13 @@
           <Column id="chk" type="STRING" size="256"/>
           <Column id="p_seq" type="STRING" size="256"/>
           <Column id="name" type="STRING" size="256"/>
-          <Column id="age" type="STRING" size="256"/>
+          <Column id="secNumber" type="STRING" size="256"/>
           <Column id="email" type="STRING" size="256"/>
           <Column id="contact" type="STRING" size="256"/>
           <Column id="address" type="STRING" size="256"/>
           <Column id="lecture" type="STRING" size="256"/>
+          <Column id="colCode" type="STRING" size="256"/>
+          <Column id="deptCode" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
