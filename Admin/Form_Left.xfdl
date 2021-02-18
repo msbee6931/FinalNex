@@ -89,7 +89,7 @@
             <Col id="menu_id">301010</Col>
             <Col id="menu_name">공지사항 입력</Col>
             <Col id="menu_level">2</Col>
-            <Col id="form_url">admWork::notice.xfdl</Col>
+            <Col id="form_url">admWork::renotice.xfdl</Col>
           </Row>
           <Row>
             <Col id="menu_id">301020</Col>

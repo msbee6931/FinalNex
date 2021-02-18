@@ -3,7 +3,7 @@
   <Form id="Form_Mdi" width="1080" height="30" titletext="New Form" onload="Form_Mdi_onload">
     <Layouts>
       <Layout height="30" width="1080">
-        <Tab id="tab_menu" taborder="0" tabindex="0" left="0" top="0" height="30" showextrabutton="true" tabbuttonheight="30" onchanged="tab_menu_onchanged" onextrabuttonclick="tab_menu_onextrabuttonclick" right="0">
+        <Tab id="tab_menu" taborder="0" tabindex="0" left="0" top="0" height="30" showextrabutton="true" tabbuttonheight="30" onchanged="tab_menu_onchanged" onextrabuttonclick="tab_menu_onextrabuttonclick" right="0" canchange="tab_menu_canchange">
           <Tabpages>
             <Tabpage id="Tabpage2" text="Tabpage2"/>
           </Tabpages>
@@ -28,9 +28,12 @@ this.fn_addTab = function(pFormId, pMenuNm)
 this.tab_menu_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
 {
 	var sFormId = obj.tabpages[e.postindex].name;
-
 	this.av_FrameSet[sFormId].form.setFocus();
-
+};
+this.tab_menu_canchange = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
+{
+	var sFormId = obj.tabpages[e.postindex].name;
+	this.av_FrameSet[sFormId].form.reload();
 };
 
 this.tab_menu_onextrabuttonclick = function(obj:nexacro.Tab,e:nexacro.TabMouseEventInfo)
@@ -107,6 +110,8 @@ this.fn_setFrameSize = function(pType)
 		objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
 	}
 }
+
+
 
 
 

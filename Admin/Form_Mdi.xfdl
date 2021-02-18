@@ -3,7 +3,7 @@
   <Form id="Form_Mdi" width="1080" height="30" titletext="New Form" onload="Form_Mdi_onload">
     <Layouts>
       <Layout height="30" width="1080">
-        <Tab id="tab_menu" taborder="0" tabindex="0" left="0" top="0" height="30" showextrabutton="true" tabbuttonheight="30" onchanged="tab_menu_onchanged" onextrabuttonclick="tab_menu_onextrabuttonclick" right="0">
+        <Tab id="tab_menu" taborder="0" tabindex="0" left="0" top="0" height="30" showextrabutton="true" tabbuttonheight="30" onchanged="tab_menu_onchanged" onextrabuttonclick="tab_menu_onextrabuttonclick" right="0" canchange="tab_menu_canchange">
           <Tabpages>
             <Tabpage id="Tabpage2" text="Tabpage2"/>
           </Tabpages>
@@ -32,7 +32,14 @@ this.tab_menu_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEvent
 	//화면 띄울 프레임 지정
 	av_FrameSet = this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.FrameSet00;
 	av_FrameSet[formId].form.setFocus();
+};
+this.tab_menu_canchange = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
+{
+	var formId = obj.tabpages[e.postindex].name;
 	
+	//화면 띄울 프레임 지정
+	av_FrameSet = this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.FrameSet00;
+	av_FrameSet[formId].form.reload();
 };
 
 //폼 바뀔때 탭 체인지 호출함수
@@ -66,6 +73,8 @@ this.tab_menu_onextrabuttonclick = function(obj:nexacro.Tab,e:nexacro.TabMouseEv
 	// Left에서 추가시켰던 row를 다시 지워주는 행위
 	
 };
+
+
 
 ]]></Script>
     <Objects>
