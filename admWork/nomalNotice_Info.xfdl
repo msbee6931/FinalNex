@@ -7,7 +7,7 @@
         <Static id="Static00_00" taborder="1" left="0" top="40" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00_00_00" taborder="2" left="159" top="583" width="600" height="20" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00_00_00_00" taborder="3" left="150" top="0" width="600" height="20" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Tab id="Tab00" taborder="4" tabindex="0" left="30" top="40" width="840" height="500">
+        <Tab id="Tab00" taborder="4" tabindex="0" left="30" top="40" width="840" height="500" onchanged="Tab00_onchanged">
           <Tabpages>
             <Tabpage id="Tabpage1" text="공지사항">
               <Layouts>
@@ -262,9 +262,17 @@ this.Tab00_Tabpage1_btn_save_onclick = function(obj:nexacro.Button,e:nexacro.Cli
 {
 	var title = this.Tab00.Tabpage1.form.edt_title.value;
 	var contents = this.Tab00.Tabpage1.form.text_contents.value;
+
+	var nRow = this.ds_Notice.addRow();
+	var rtitle = su
+	trace(title);
+	trace(writedate)
+	trace(contents);
+
 	var list = this.Tab00.Tabpage1.form.com_list.value;
 	var dept = this.Tab00.Tabpage1.form.com_list.text;
 	var nRow = this.ds_Notice.addRow();
+
 	
 	
 	
@@ -302,6 +310,14 @@ this.Tab00_Tabpage1_btn_save_onclick = function(obj:nexacro.Button,e:nexacro.Cli
 	this.close();
 };
 
+this.fn_FileClear = function (){
+	//FileUpTransfer 파일 모두삭제
+	this.FileUpTransfer00.clearFileList();
+	//파일정보 모두삭제
+	this.ds_NoticeFiles.clearData();  
+}
+
+
 this.Tab00_Tabpage1_btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	if(this.confirm("삭제하시겟습니까?")){
@@ -319,6 +335,7 @@ this.Tab00_Tabpage1_btn_del_onclick = function(obj:nexacro.Button,e:nexacro.Clic
 			this.close();
 			}
 };
+
 ]]></Script>
     <Objects>
       <Dataset id="ds_Notice">

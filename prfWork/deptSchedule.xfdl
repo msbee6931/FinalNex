@@ -23,8 +23,10 @@
                       <Row size="30"/>
                     </Rows>
                     <Band id="body">
+
                       <Cell text="bind:code" cssclass="expr:code=='01'?'Expr_red':code=='02'?'Expr_blue':'Expr_yellow'" displaytype="combotext" combocodecol="code" combodatacol="name" textAlign="center" combodataset="ScheduleCode_ds"/>
                       <Cell col="1" text="bind:title" cssclass="expr:code=='01'?'Expr_red':code=='02'?'Expr_blue':'Expr_yellow'" textAlign="center"/>
+
                     </Band>
                   </Format>
                 </Formats>
