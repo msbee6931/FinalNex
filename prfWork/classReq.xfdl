@@ -140,7 +140,7 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
 this.classReq_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	var objDate= new Date();
@@ -152,7 +152,7 @@ this.classReq_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		var endTime = objDate.getFullYear()+"1231";
 	}
 	this.Grid00.setCellProperty("Head",0,"text",0);
-	var proCode = "91515073"; // 로그인 되는 교수 번호
+	var proCode = this.objApp.gds_professor.getColumn(0,"p_seq");// 로그인 되는 교수 번호
 	this.transaction(
 		"classReqList"
 		,"/classListProCode.nex" 
@@ -167,7 +167,7 @@ this.classReq_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 //작성
 this.btnWrite_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var proCode = "91515073"; //로그인 되는 교수 번호
+	var proCode = this.objApp.gds_professor.getColumn(0,"p_seq"); //로그인 되는 교수 번호
 	let x = this.width/2-500; 
 	let y = this.height/2-340;
 	let objCF = new ChildFrame();
