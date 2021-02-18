@@ -12,7 +12,7 @@ this.Form_login_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 				"LoginInfo" 
 				,"/reqLogigInfo.log" 
 				,""
-				,"ds_students=std_ds ds_professor=pro_ds ds_admin=amd_ds"
+				,"ds_students=std_ds ds_professor=pro_ds ds_admin=adm_ds"
 				,""
 				,"fn_callback_login"
 			);
