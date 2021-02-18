@@ -7,7 +7,7 @@
         <Static id="Static00_00" taborder="1" left="0" top="40" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00_00_00" taborder="2" left="160" top="580" width="600" height="20" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00_00_00_00" taborder="3" left="150" top="0" width="600" height="20" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Tab id="Tab00" taborder="4" tabindex="0" left="30" top="40" width="840" height="500">
+        <Tab id="Tab00" taborder="4" tabindex="0" left="30" top="40" width="840" height="500" onchanged="Tab00_onchanged">
           <Tabpages>
             <Tabpage id="Tabpage1" text="일반공지">
               <Layouts>

@@ -1,253 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Form_login" width="1280" height="720" titletext="New Form">
+  <Form id="Form_login" width="1280" height="720" titletext="New Form" onload="Form_login_onload">
     <Layouts>
-      <Layout height="720" width="1280">
-        <Div id="loginForm" taborder="1" text="Div00" left="385" top="155" width="580" height="350" border="1px solid #c1c1c1">
-          <Layouts>
-            <Layout>
-              <Static id="Static00" taborder="0" text="ID" left="80" top="111" width="55" height="30"/>
-              <Static id="Static00_00" taborder="1" text="PW" left="79" top="172" width="55" height="30"/>
-              <Edit id="edt_id" taborder="2" left="160" top="115" width="300" height="30"/>
-              <Edit id="edt_pw" taborder="3" left="160" top="174" width="300" height="30"/>
-              <Button id="btn_login" taborder="4" text="로그인" left="481" top="116" width="85" height="90" onclick="loginForm_btn_login_onclick"/>
-              <Radio id="rad_chk" taborder="5" left="85" top="240" width="400" height="30" onitemchanged="Div00_Radio00_onitemchanged" innerdataset="ds_radio" codecolumn="code" datacolumn="date" rowcount="1"/>
-            </Layout>
-          </Layouts>
-        </Div>
-        <Static id="Static00" taborder="1" text="2//qwer" left="387" top="107" width="180" height="50" font="20px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;"/>
-        <Button id="Button00" taborder="2" text="관리자" left="800" top="70" width="120" height="50" onclick="Button00_onclick"/>
-        <Button id="Button01" taborder="3" text="학생" left="500" top="70" width="120" height="50" onclick="Button01_onclick"/>
-        <Button id="Button02" taborder="4" text="교수" left="650" top="70" width="120" height="50" onclick="Button02_onclick"/>
-      </Layout>
+      <Layout height="720" width="1280"/>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
 
-this.fn_callbackStu = function(id,ErrorCode,ErrorMsg,out_ds,nr){	//콜백함수
-	trace(id);
-	trace(ErrorMsg);
-	trace(ErrorCode);
-	
-	
-	
-	trace(this.ds_students.getCount("s_seq"));
-	
-	
-	
-	if(this.ds_students.getCount("s_seq") > 0){
-	this.objApp.mainframe.VFrameSet00.TopFrame.set_formurl("Student::Form_Top.xfdl");
-	this.objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_formurl("Student::Form_Left.xfdl");
-	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.set_formurl("Student::Form_Mdi.xfdl");
-	this.objApp.mainframe.VFrameSet00.BottomFrame.set_formurl("Student::Form_Bottom.xfdl");
-	this.objApp.mainframe.VFrameSet00.set_separatesize("0,50,*,60");
-	}else{
-	this.alert("아이디,비밀번호를 확인하세요.")
-	return;
-	}
-}
-this.fn_callbackPro=function(id,ErrorCode,ErrorMsg){
-	trace(id);
-	trace(ErrorMsg);
-	trace(ErrorCode);
-	
-	trace(this,this.ds_professor.getCount("p_seq"));
-	if(this.ds_professor.getCount("p_seq") > 0){
-	this.objApp.mainframe.VFrameSet00.TopFrame.set_formurl("Professor::Form_Top.xfdl");
-	this.objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_formurl("Professor::Form_Left.xfdl");
-	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.set_formurl("Professor::Form_Mdi.xfdl");
-	this.objApp.mainframe.VFrameSet00.BottomFrame.set_formurl("Professor::Form_Bottom.xfdl");
-	this.objApp.mainframe.VFrameSet00.set_separatesize("0,50,*,60");
-	}else{
-	this.alert("아이디,비밀번호를 확인하세요.")
-	return;
-	}
-}
-this.fn_callbackAdm=function(id,ErrorCode,ErrorMsg){
-	trace(id);
-	trace(ErrorMsg);
-	trace(ErrorCode);
-	trace(this.ds_admin.getCount("a_seq"));
-	if(this.ds_admin.getCount("a_seq") > 0){
-	this.objApp.mainframe.VFrameSet00.TopFrame.set_formurl("Admin::Form_Top.xfdl");
-	this.objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_formurl("Admin::Form_Left.xfdl");
-	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.set_formurl("Admin::Form_Mdi.xfdl");
-	this.objApp.mainframe.VFrameSet00.BottomFrame.set_formurl("Admin::Form_Bottom.xfdl");
-	this.objApp.mainframe.VFrameSet00.set_separatesize("0,50,*,60");
-	}else{
-	this.alert("아이디,비밀번호를 확인하세요.");
-	return;
-	}
-}
-
-this.loginForm_btn_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.Form_login_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	var id = this.loginForm.form.edt_id.value;
-	var pw = this.loginForm.form.edt_pw.value;
-	trace(id);
-	trace(pw);
-	trace(this.loginForm.form.rad_chk.value);
-	
-	
-	if(this.loginForm.form.rad_chk.value == null){
-	alert("셋중 하나 선택해 주세요.")
-	return;
-	}
-	if(id == undefined || id == ""){
-		this.alert("아이디 입력해주세요.")
-	}else if(pw == undefined || pw == ""){
-		this.alert("비밀번호를 입력해주세요");
-	}
-	else{
-	if(this.loginForm.form.rad_chk.value == 1){
-		var shaObj = new jsSHA("SHA-256","TEXT");
-		shaObj.update(pw);
-		var hash = shaObj.getHash("HEX");
-		trace(hash);
-		
-		var addRow = this.ds_login.addRow();
-		this.ds_login.setColumn(addRow,"s_seq",id);
-		this.ds_login.setColumn(addRow,"pw",hash);
-		
-		this.transaction(
-
-					"ds_loginStu" //1. strSvcID
-					,"/loginStu.login" //2. strURL
-					,"in_ds=ds_login:U" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
-					,"ds_students=out_ds" //4.strOutDatasets -select Fds=Sds
-					,"" //5.strArgument text값
-					,"fn_callbackStu" //6.strCallbackFunc
-				);
-				trace(this.ds_login);
-	}else if(this.loginForm.form.rad_chk.value == 2){
-		trace("교수입니다");
-		var shaObj = new jsSHA("SHA-256","TEXT");
-		shaObj.update(pw);
-		var hash = shaObj.getHash("HEX");
-		trace(hash);
-		
-		var addRow = this.ds_login.addRow();
-		this.ds_login.setColumn(addRow,"p_seq",id);
-		this.ds_login.setColumn(addRow,"pw",hash);
-		
-		this.transaction(
-
-					"ds_loginPro" //1. strSvcID
-					,"/loginPro.login" //2. strURL
-					,"in_ds=ds_login:U" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
-					,"ds_professor=out_ds" //4.strOutDatasets -select Fds=Sds
-					,"" //5.strArgument text값
-					,"fn_callbackPro" //6.strCallbackFunc
-				);
-				trace(this.ds_login);
-	}else{
-		trace("관리잡니다");
-		var shaObj = new jsSHA("SHA-256","TEXT");
-		shaObj.update(pw);
-		var hash = shaObj.getHash("HEX");
-		trace(hash);
-		
-		var addRow = this.ds_login.addRow();
-		this.ds_login.setColumn(addRow,"a_seq",id);
-		this.ds_login.setColumn(addRow,"pw",hash);
-		
-		this.transaction(
-
-					"ds_loginAdm" //1. strSvcID
-					,"/loginAdm.login" //2. strURL
-					,"in_ds=ds_login:U" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
-					,"ds_admin=out_ds" //4.strOutDatasets -select Fds=Sds
-					,"" //5.strArgument text값
-					,"fn_callbackAdm" //6.strCallbackFunc
-				);
-				trace(this.ds_login);
-	}
-	
-	}
+	this.transaction(
+				"LoginInfo" 
+				,"/reqLogigInfo.log" 
+				,""
+				,"ds_students=std_ds ds_professor=pro_ds ds_admin=amd_ds"
+				,""
+				,"fn_callback_login"
+			);
 };
-
-this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	this.objApp.mainframe.VFrameSet00.TopFrame.set_formurl("Admin::Form_Top.xfdl");
-	this.objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_formurl("Admin::Form_Left.xfdl");
-	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.set_formurl("Admin::Form_Mdi.xfdl");
-	this.objApp.mainframe.VFrameSet00.BottomFrame.set_formurl("Admin::Form_Bottom.xfdl");
-	this.objApp.mainframe.VFrameSet00.set_separatesize("0,50,*,60");
-	
-};
-
-this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	this.objApp.mainframe.VFrameSet00.TopFrame.set_formurl("Student::Form_Top.xfdl");
-	this.objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_formurl("Student::Form_Left.xfdl");
-	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.set_formurl("Student::Form_Mdi.xfdl");
-	this.objApp.mainframe.VFrameSet00.BottomFrame.set_formurl("Student::Form_Bottom.xfdl");
-	this.objApp.mainframe.VFrameSet00.set_separatesize("0,50,*,60");
-};
-
-this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	this.objApp.mainframe.VFrameSet00.TopFrame.set_formurl("Professor::Form_Top.xfdl");
-	this.objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_formurl("Professor::Form_Left.xfdl");
-	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.set_formurl("Professor::Form_Mdi.xfdl");
-	this.objApp.mainframe.VFrameSet00.BottomFrame.set_formurl("Professor::Form_Bottom.xfdl");
-	this.objApp.mainframe.VFrameSet00.set_separatesize("0,50,*,60");
-};
-]]></Script>
+this.fn_callback_login=function(sId){
+	if(this.ds_students.getRowCount() > 0 ){
+		this.objApp.gds_students.copyData(this.ds_students);
+		this.objApp.mainframe.VFrameSet00.TopFrame.set_formurl("Student::Form_Top.xfdl");
+		this.objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_formurl("Student::Form_Left.xfdl");
+		this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.set_formurl("Student::Form_Mdi.xfdl");
+		this.objApp.mainframe.VFrameSet00.BottomFrame.set_formurl("Student::Form_Bottom.xfdl");
+		this.objApp.mainframe.VFrameSet00.set_separatesize("0,50,*,60");
+	}else if(this.ds_professor.getRowCount() >0 ){
+		this.objApp.gds_students.copyData(this.ds_professor);
+		this.objApp.mainframe.VFrameSet00.TopFrame.set_formurl("Professor::Form_Top.xfdl");
+		this.objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_formurl("Professor::Form_Left.xfdl");
+		this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.set_formurl("Professor::Form_Mdi.xfdl");
+		this.objApp.mainframe.VFrameSet00.BottomFrame.set_formurl("Professor::Form_Bottom.xfdl");
+		this.objApp.mainframe.VFrameSet00.set_separatesize("0,50,*,60");
+	}else if(this.ds_admin.getRowCount() > 0 ){
+		this.objApp.gds_students.copyData(this.ds_admin);
+		this.objApp.mainframe.VFrameSet00.TopFrame.set_formurl("Admin::Form_Top.xfdl");
+		this.objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_formurl("Admin::Form_Left.xfdl");
+		this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.set_formurl("Admin::Form_Mdi.xfdl");
+		this.objApp.mainframe.VFrameSet00.BottomFrame.set_formurl("Admin::Form_Bottom.xfdl");
+		this.objApp.mainframe.VFrameSet00.set_separatesize("0,50,*,60");
+	}
+}]]></Script>
     <Objects>
-      <Dataset id="ds_radio">
-        <ColumnInfo>
-          <Column id="code" type="STRING" size="256"/>
-          <Column id="date" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="code">1</Col>
-            <Col id="date">학생</Col>
-          </Row>
-          <Row>
-            <Col id="code">2</Col>
-            <Col id="date">교수</Col>
-          </Row>
-          <Row>
-            <Col id="code">3</Col>
-            <Col id="date">관리자</Col>
-          </Row>
-        </Rows>
-      </Dataset>
-      <Dataset id="ds_login">
-        <ColumnInfo>
-          <Column id="s_seq" type="STRING" size="256"/>
-          <Column id="p_seq" type="STRING" size="256"/>
-          <Column id="a_seq" type="STRING" size="256"/>
-          <Column id="pw" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
       <Dataset id="ds_students">
         <ColumnInfo>
-          <Column id="chk" type="STRING" size="256"/>
-          <Column id="s_seq" type="STRING" size="256"/>
-          <Column id="gender" type="STRING" size="256"/>
+          <Column id="s_seq" type="INT" size="256"/>
           <Column id="name" type="STRING" size="256"/>
           <Column id="age" type="STRING" size="256"/>
           <Column id="email" type="STRING" size="256"/>
           <Column id="contact" type="STRING" size="256"/>
-          <Column id="address" type="STRING" size="256"/>
+          <Column id="adress" type="STRING" size="256"/>
           <Column id="scholarship" type="STRING" size="256"/>
           <Column id="rest" type="STRING" size="256"/>
           <Column id="grade" type="STRING" size="256"/>
-          <Column id="birth" type="DATE" size="256"/>
+          <Column id="birth" type="STRING" size="256"/>
+          <Column id="pw" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="deptCode" type="STRING" size="256"/>
+          <Column id="colCode" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_professor">
         <ColumnInfo>
-          <Column id="chk" type="STRING" size="256"/>
-          <Column id="p_seq" type="STRING" size="256"/>
+          <Column id="p_seq" type="INT" size="256"/>
           <Column id="name" type="STRING" size="256"/>
           <Column id="age" type="STRING" size="256"/>
           <Column id="email" type="STRING" size="256"/>
           <Column id="contact" type="STRING" size="256"/>
           <Column id="address" type="STRING" size="256"/>
           <Column id="lecture" type="STRING" size="256"/>
+          <Column id="pw" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_admin">
