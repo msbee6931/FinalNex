@@ -110,7 +110,7 @@
                         <MaskEdit id="edt_classSeq" taborder="52" left="469" top="49" width="212" height="39" maskchar="###" textAlign="center" format="+##########"/>
                         <MaskEdit id="mask_attend" taborder="42" left="21" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
                         <MaskEdit id="mask_mid" taborder="44" left="176" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
-                        <Combo id="co_dept" taborder="12" text="" left="469" top="88" width="212" height="39" innerdataset="ds_dept" codecolumn="id" datacolumn="name"/>
+                        <Combo id="co_dept" taborder="12" text="" left="469" top="88" width="212" height="39" innerdataset="deptCode" codecolumn="id" datacolumn="name"/>
                         <CheckBox id="chk_pf" taborder="54" text="Pass/Fail" left="894" top="58" width="85" height="20" falsevalue="F" truevalue="P" value="F"/>
                       </Layout>
                     </Layouts>
@@ -410,7 +410,7 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
 var classForm = this.Div00.form.classPlanTab.classPlan.form;
 var planForm = this.Div00.form.classPlanTab.classSchedule.form;
 //-------------------------------------------수업계획서 작성-------------------------------------------
@@ -560,6 +560,8 @@ this.Detail_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	var classSeq = this.parent.classSeq;
 	var proCode = this.parent.proCode;	
 	var view = this.parent.view;
+	var proName = this.objApp.gds_professor.getColumn(0,"name")
+	alert(proCode +":"+ proName);
 	if(classSeq != ""){ 
 		//수업 정보 넣기 / 수업 일정 가져오기
 		this.transaction(
@@ -574,18 +576,8 @@ this.Detail_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		if(view == 'Y'){
 			classForm.btnSave.set_visible( false );
 		}
-	}else{		
-		//proCode로 proInfo가져옴
-		// 		this.transaction(
-		// 				"str_save"
-		// 				,"getProInfo.nex" 
-		// 				,""
-		// 				,""
-		// 				,"proCode="+nexacro.wrapQuote(proCode)
-		// 				,"fn_callback" // 6.strCallbackFunc
-		// 			);
-		//proInfo에서 proName을 가져와서 입력 예정	
-		classForm.sta_proName.set_text("박종혁");
+	}else{			
+		classForm.sta_proName.set_text(proName);
 		classForm.sta_proCode.set_text(proCode);
 	}
 };
