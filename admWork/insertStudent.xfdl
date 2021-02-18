@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="insertStudent" width="300" height="500" titletext="New Form">
+  <Form id="insertStudent" width="300" height="550" titletext="New Form">
     <Layouts>
-      <Layout height="500" mobileorientation="landscape" width="300">
+      <Layout height="550" mobileorientation="landscape" width="300">
         <Edit id="edt_s_seq" taborder="0" top="20" width="175" height="30" left="85"/>
         <Static id="Static00" taborder="1" text="학번" top="20" width="50" height="30" left="10"/>
         <Static id="Static00_00" taborder="2" text="이름" top="55" width="50" height="30" left="10"/>
@@ -26,9 +26,13 @@
         <Edit id="edt_grade" taborder="20" top="300" width="175" height="30" left="85"/>
         <Edit id="edt_pw" taborder="21" top="370" width="175" height="30" left="85"/>
         <Edit id="edt_gender" taborder="22" top="405" width="175" height="30" left="85"/>
-        <Button id="btn_insert" taborder="23" text="입력" top="455" width="50" height="30" left="85" onclick="btn_insert_onclick"/>
-        <Button id="btn_cancel" taborder="24" text="취소" top="455" width="50" height="30" left="210" onclick="btn_cancel_onclick"/>
+        <Button id="btn_insert" taborder="23" text="입력" top="515" width="50" height="30" left="95" onclick="btn_insert_onclick"/>
+        <Button id="btn_cancel" taborder="24" text="취소" top="515" width="50" height="30" left="210" onclick="btn_cancel_onclick"/>
         <Calendar id="cal_birth" taborder="25" left="85" top="335" width="175" height="30" dateformat="yyyy-MM-dd"/>
+        <Static id="Static00_10_00" taborder="26" text="학과" top="440" width="50" height="30" left="10"/>
+        <Static id="Static00_10_01" taborder="27" text="colcode" top="475" width="50" height="30" left="10"/>
+        <Edit id="edt_deptcode" taborder="28" top="440" width="175" height="30" left="85"/>
+        <Edit id="edt_colcode" taborder="29" top="475" width="175" height="30" left="85"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -47,6 +51,8 @@
           <Column id="grade" type="STRING" size="256"/>
           <Column id="birth" type="DATE" size="256"/>
           <Column id="pw" type="STRING" size="256"/>
+          <Column id="deptcode" type="STRING" size="256"/>
+          <Column id="colcode" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -82,6 +88,8 @@ this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var birth = this.cal_birth.value;
 	var pw = this.edt_pw.value;
 	var gender = this.edt_gender.value;
+	var deptcode = this.edt_deptcode.value;
+	var colcode = this.edt_colcode.value;
 	
 	var addRow = this.ds_students_copy.addRow();
 	this.ds_students_copy.setColumn(addRow,"s_seq",s_seq);
@@ -96,6 +104,8 @@ this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.ds_students_copy.setColumn(addRow,"birth",birth);
 	this.ds_students_copy.setColumn(addRow,"pw",pw);
 	this.ds_students_copy.setColumn(addRow,"gender",gender);
+	this.ds_students_copy.setColumn(addRow,"deptcode",deptcode);
+	this.ds_students_copy.setColumn(addRow,"colcode",colcode);
 
 	this.transaction(
 

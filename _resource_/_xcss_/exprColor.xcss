@@ -1,20 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <XCSS version="1.0"><![CDATA[.Grid .body .row .cell.Expr_red
 {
-	background : #e82639;
-	-nexa-background-odd : #e82639;
-	color : whitesmoke;
+	background : #d23636;
+	-nexa-background-odd : #d23636;
+	color : #ffffff;
 	
 	
 	
 }
 .Grid .body .row .cell.Expr_blue
 {
-	background : #3c76e0;
-	-nexa-background-odd : #3c76e0;
-	color : whitesmoke;
+	background : #78a2dd;
+	-nexa-background-odd : #78a2dd;
+	color : #ffffff;
 	
 	
 	
+}
+.Grid .body .row .cell.Expr_red[status=mouseover]
+{
+	color : #d23636;
+	background : #ffffff;
+	-nexa-background-odd : #ffffff;
+}
+.Grid .body .row .cell.Expr_blue[status=mouseover]
+{
+	color : #78a2dd;
+	background : #ffffff;
+	-nexa-color-odd : #ffffff;
+}
+.Grid .body .row .cell.Expr_yellow
+{
+	background : #ab9f1b;
+	-nexa-color-odd : #ab9f1b;
+	color : #ffffff;
+
+}
+.Grid .body .row .cell.Expr_yellow[status=mouseover]
+{
+	-nexa-color-odd : #ffffff;
+	color : #ab9f1b;
+	background : #ffffff;
+
 }
 ]]></XCSS>

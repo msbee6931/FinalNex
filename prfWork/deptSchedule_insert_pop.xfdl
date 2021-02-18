@@ -41,15 +41,15 @@
         <Rows>
           <Row>
             <Col id="code">01</Col>
-            <Col id="name">공지사항</Col>
+            <Col id="name">[공지]</Col>
           </Row>
           <Row>
             <Col id="code">02</Col>
-            <Col id="name">단체일정</Col>
+            <Col id="name">[학과]</Col>
           </Row>
           <Row>
             <Col id="code">03</Col>
-            <Col id="name">개인일정</Col>
+            <Col id="name">[개인]</Col>
           </Row>
         </Rows>
       </Dataset>

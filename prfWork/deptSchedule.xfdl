@@ -11,28 +11,22 @@
           <Layouts>
             <Layout>
               <Calendar id="cal_dept" taborder="0" left="29" top="76" width="350" height="350" type="monthonly" ondayclick="Div00_cal_dept_ondayclick" onrbuttonup="Div00_cal_dept_onrbuttonup"/>
-              <Button id="btn_insert" taborder="1" text="일정 등록" left="29" top="31" width="100" height="30" onclick="Div00_btn_insert_onclick"/>
-              <Grid id="Grid00" taborder="2" left="433" top="76" width="500" height="350" binddataset="deptSchedule_ds" autofittype="col" oncelldblclick="Div00_Grid00_oncelldblclick">
+              <Button id="btn_insert" taborder="1" text="일정 등록" left="839" top="36" width="90" height="25" onclick="Div00_btn_insert_onclick"/>
+              <Grid id="Grid00" taborder="2" left="429" top="76" width="500" height="350" binddataset="deptSchedule_ds" autofittype="col" oncelldblclick="Div00_Grid00_oncelldblclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
-                      <Column size="41"/>
                       <Column size="80"/>
                       <Column size="295"/>
                     </Columns>
                     <Rows>
-                      <Row size="24" band="head"/>
                       <Row size="30"/>
                     </Rows>
-                    <Band id="head">
-                      <Cell text="Day"/>
-                      <Cell col="1" text="Category"/>
-                      <Cell col="2" text="Schedule"/>
-                    </Band>
                     <Band id="body">
-                      <Cell text="bind:schDay" cssclass="expr:Category=='01'?'Expr_red':'Expr_blue'"/>
-                      <Cell col="1" text="bind:code" cssclass="expr:code=='01'?'Expr_red':''"/>
-                      <Cell col="2" text="bind:title" cssclass="expr:Category=='01'?'Expr_red':'Expr_blue'"/>
+
+                      <Cell text="bind:code" cssclass="expr:code=='01'?'Expr_red':code=='02'?'Expr_blue':'Expr_yellow'" displaytype="combotext" combocodecol="code" combodatacol="name" textAlign="center" combodataset="ScheduleCode_ds"/>
+                      <Cell col="1" text="bind:title" cssclass="expr:code=='01'?'Expr_red':code=='02'?'Expr_blue':'Expr_yellow'" textAlign="center"/>
+
                     </Band>
                   </Format>
                 </Formats>
@@ -41,6 +35,12 @@
           </Layouts>
         </Div>
         <Static id="Static01" taborder="5" text="학과 스케줄" left="30" top="9" width="200" height="30"/>
+        <Static id="Static02_00_00_00" taborder="6" text="" left="464" top="87" width="10" height="10" background="#d23636"/>
+        <Static id="Static03_00_00_00" taborder="7" text="공지사항" left="475" top="85" width="65" height="15"/>
+        <Static id="Static02" taborder="8" text="" left="541" top="87" width="10" height="10" background="#78a2dd"/>
+        <Static id="Static03" taborder="9" text="학과일정" left="552" top="85" width="65" height="15"/>
+        <Static id="Static02_00" taborder="10" text="" left="618" top="87" width="10" height="10" background="#ab9f1b"/>
+        <Static id="Static03_00" taborder="11" text="개인일정" left="629" top="85" width="65" height="15"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.deptSchedule_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
@@ -167,6 +167,26 @@ this.Div00_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClick
           <Column id="content" type="STRING" size="256"/>
           <Column id="writeDate" type="STRING" size="256"/>
         </ColumnInfo>
+      </Dataset>
+      <Dataset id="ScheduleCode_ds">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">01</Col>
+            <Col id="name">[공지]</Col>
+          </Row>
+          <Row>
+            <Col id="code">02</Col>
+            <Col id="name">[학과]</Col>
+          </Row>
+          <Row>
+            <Col id="code">03</Col>
+            <Col id="name">[개인]</Col>
+          </Row>
+        </Rows>
       </Dataset>
     </Objects>
   </Form>

@@ -30,10 +30,6 @@ this.fn_setFrameSize = function(type)
 	}
 }
 
-
-
-
-
 this.btn_logout_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.transaction(
@@ -77,15 +73,18 @@ this.Form_Top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 			,""//strArg
 			,"fn_callback"//callback
 		);
-		
+			
 		this.transaction(
-			"sessionA" //id
-			,"/sessionA.nex"//url
+			"garbageInsert" //id
+			,"/reference/garbageInsert"//url
 			,""// inData
-			,"session=out_ds"// outData
+			,""// outData
 			,""//strArg
 			,"fn_callback"//callback
 		);
+		
+		this.FileUpTransfer00.upload("/reference/uploadFile");
+
 };
 
 
@@ -102,6 +101,7 @@ this.Form_Top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
           <Column id="name" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <FileUpTransfer id="FileUpTransfer00"/>
     </Objects>
     <Bind>
       <BindItem id="item0" compid="alarm_btn" propid="text" datasetid="admin_alarm" columnid="confirm"/>
