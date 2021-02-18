@@ -268,7 +268,6 @@
         <Column id="grade" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
-
     <Dataset id="gds_students">
       <ColumnInfo>
         <Column id="s_seq" type="INT" size="256"/>
@@ -304,8 +303,7 @@
         <Column id="a_seq" type="STRING" size="256"/>
         <Column id="pw" type="STRING" size="256"/>
       </ColumnInfo>
-	</Dataset>
-	
+    </Dataset>
     <Dataset id="deptCode">
       <ColumnInfo>
         <Column id="code" type="STRING" size="256"/>
@@ -435,5 +433,5 @@
       </Rows>
     </Dataset>
   </Datasets>
-<Variables/>
+  <Variables/>
 </AppVariables>
