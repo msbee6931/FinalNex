@@ -272,18 +272,18 @@
       <ColumnInfo>
         <Column id="s_seq" type="INT" size="256"/>
         <Column id="name" type="STRING" size="256"/>
-        <Column id="age" type="STRING" size="256"/>
+        <Column id="secNumber" type="STRING" size="256"/>
         <Column id="email" type="STRING" size="256"/>
         <Column id="contact" type="STRING" size="256"/>
         <Column id="adress" type="STRING" size="256"/>
         <Column id="scholarship" type="STRING" size="256"/>
         <Column id="rest" type="STRING" size="256"/>
         <Column id="grade" type="STRING" size="256"/>
-        <Column id="birth" type="STRING" size="256"/>
         <Column id="pw" type="STRING" size="256"/>
         <Column id="gender" type="STRING" size="256"/>
         <Column id="deptCode" type="STRING" size="256"/>
         <Column id="colCode" type="STRING" size="256"/>
+        <Column id="colGrade" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
     <Dataset id="gds_professor">
