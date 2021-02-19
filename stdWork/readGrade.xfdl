@@ -61,8 +61,8 @@
               <Combo id="cmb_grade" taborder="2" text="Combo00" left="100" top="32" width="140" height="25" innerdataset="gradeCode_ds" codecolumn="code" datacolumn="name" onitemchanged="Div00_cmb_grade_onitemchanged"/>
               <Static id="Static00_00" taborder="3" text="이수 구분 :" left="309" top="32" width="60" height="25"/>
               <Combo id="cmb_part" taborder="4" text="Combo00" left="369" top="32" width="140" height="25" innerdataset="partCode_ds" codecolumn="code" datacolumn="name" onitemchanged="Div00_cmb_part_onitemchanged"/>
-              <Button id="btn_grade" taborder="5" left="247" top="32" width="25" height="25" onclick="Div00_btn_grade_onclick"/>
-              <Button id="btn_part" taborder="6" left="519" top="32" width="25" height="25" onclick="Div00_btn_part_onclick"/>
+              <Button id="btn_grade" taborder="5" left="247" top="32" width="25" height="25" onclick="Div00_btn_grade_onclick" cssclass="btn_search"/>
+              <Button id="btn_part" taborder="6" left="519" top="32" width="25" height="25" onclick="Div00_btn_part_onclick" cssclass="btn_search"/>
             </Layout>
           </Layouts>
         </Div>

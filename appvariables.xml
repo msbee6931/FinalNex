@@ -53,6 +53,7 @@
           <Col id="menu_id">105020</Col>
           <Col id="menu_name">복학 신청</Col>
           <Col id="menu_level">2</Col>
+          <Col id="form_url">stdWork::stdRest.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">20</Col>

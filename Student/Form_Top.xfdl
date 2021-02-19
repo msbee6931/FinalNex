@@ -3,10 +3,11 @@
   <Form id="Form_Top" width="1280" height="50" titletext="New Form" onload="Form_Top_onload">
     <Layouts>
       <Layout height="50" width="1280">
-        <Static id="Static00" taborder="0" text="로고위치" left="0" top="0" width="200" height="50" background="#c1c1c1"/>
-        <Button id="Button00" taborder="1" text="홈" left="210" top="10" width="30" height="30"/>
-        <Menu id="Menu00" taborder="2" left="240" top="10" width="730" height="30" innerdataset="ds_menu" captioncolumn="menu_name" idcolumn="menu_id" levelcolumn="menu_level" onmenuclick="Menu00_onmenuclick"/>
-        <Button id="btn_logout" taborder="3" text="로그아웃" left="1197" top="10" width="69" height="34" onclick="btn_logout_onclick"/>
+        <Static id="Static00" taborder="0" left="0" top="0" width="200" height="50" background="url('theme::default/images/khLogo.png')"/>
+        <Static id="Static01" taborder="4" left="200" top="0" height="50" background="#0d6efd" color="whitesmoke" right="0"/>
+        <Menu id="Menu00" taborder="2" left="250" top="10" width="870" height="30" innerdataset="ds_menu" captioncolumn="menu_name" idcolumn="menu_id" levelcolumn="menu_level" onmenuclick="Menu00_onmenuclick"/>
+        <Button id="Button00" taborder="1" left="210" top="10" width="30" height="30" cssclass="btn_home"/>
+        <Button id="btn_logout" taborder="3" text="로그아웃" height="30" onclick="btn_logout_onclick" cssclass="btn_logout" width="100" top="10" right="30"/>
       </Layout>
     </Layouts>
     <Objects>

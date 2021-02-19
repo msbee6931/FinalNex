@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="768" width="1024" stepcount="0">
         <Static id="Static00" taborder="2" text="Drop Files Here" left="90" top="115" width="870" height="150" visible="true" background="aliceblue" color="dodgerblue" font="normal 30pt/normal &quot;Arial&quot;" textAlign="center" verticalAlign="middle"/>
-        <Button id="Button00" taborder="0" text="파일찾기" left="783" top="85" width="92" height="31" onclick="Button00_onclick"/>
+        <Button id="Button00" taborder="0" text="파일찾기" left="760" top="85" width="100" height="30" onclick="Button00_onclick" cssclass="btn_default"/>
         <Grid id="Grid00" taborder="1" left="90" top="115" width="875" height="150" binddataset="Dataset00" ondragenter="Grid00_ondragenter" ondragleave="Grid00_ondragleave" ondrop="Grid00_ondrop" autofittype="col" onheadclick="Grid00_onheadclick">
           <Formats>
             <Format id="default">
@@ -30,12 +30,11 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="Button02" taborder="3" text="제거" left="875" top="85" width="90" height="30" onclick="Button02_onclick"/>
-        <Button id="Button03" taborder="4" text="글쓰기" left="887" top="676" width="87" height="48" onclick="Button03_onclick"/>
-        <Static id="Static01" taborder="5" text="Title : " left="88" top="28" width="72" height="36" font="italic 18pt &quot;Arial&quot;"/>
-        <Edit id="title" taborder="6" left="168" top="30" width="522" height="33" border="0px none, 0px none, 1px solid"/>
-        <Static id="Static01_00" taborder="7" text="File :" left="90" top="80" width="72" height="36" font="italic 18pt &quot;Arial&quot;"/>
-        <TextArea id="contents" taborder="8" left="92" top="284" width="882" height="380"/>
+        <Button id="Button02" taborder="3" text="삭제" left="865" top="85" width="100" height="30" onclick="Button02_onclick" cssclass="btn_del"/>
+        <Button id="Button03" taborder="4" text="글쓰기" left="874" top="676" width="100" height="30" onclick="Button03_onclick" cssclass="btn_insert"/>
+        <Static id="Static01" taborder="5" text="Title : " left="88" top="28" width="72" height="36" cssclass="sta_title"/>
+        <Edit id="title" taborder="6" left="168" top="30" width="400" height="30" border="0px none, 0px none, 1px solid" cssclass="edt_default"/>
+        <TextArea id="contents" taborder="7" left="92" top="284" width="882" height="380"/>
       </Layout>
     </Layouts>
     <Objects>
