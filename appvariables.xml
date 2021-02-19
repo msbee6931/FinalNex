@@ -432,6 +432,22 @@
         </Row>
       </Rows>
     </Dataset>
+    <Dataset id="ds_YN">
+      <ColumnInfo>
+        <Column id="code" type="STRING" size="256"/>
+        <Column id="name" type="STRING" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row>
+          <Col id="code">Y</Col>
+          <Col id="name">Y</Col>
+        </Row>
+        <Row>
+          <Col id="code">N</Col>
+          <Col id="name">N</Col>
+        </Row>
+      </Rows>
+    </Dataset>
   </Datasets>
   <Variables/>
 </AppVariables>

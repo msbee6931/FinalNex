@@ -277,7 +277,7 @@ this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var gender = this.com_gender.value;
 	var colCode = this.com_colCode.value;
 	var deptCode = this.com_deptCode.value;
-	var colGrade = this.com_colGrade.value;
+	var colGrade = this.com_colGrade.text;
 	
 	if(s_seq == null || s_seq == "undefined"){
 		this.alert("학번 입력해주세요");

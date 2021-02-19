@@ -10,8 +10,8 @@
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
+                <Column size="77"/>
                 <Column size="84"/>
-                <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
@@ -28,32 +28,32 @@
               <Band id="head">
                 <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
                 <Cell col="1" text="학번"/>
-                <Cell col="2" text="gender"/>
-                <Cell col="3" text="colCode"/>
-                <Cell col="4" text="deptCode"/>
-                <Cell col="5" text="name"/>
-                <Cell col="6" text="secNumber"/>
-                <Cell col="7" text="email"/>
-                <Cell col="8" text="contact"/>
-                <Cell col="9" text="address"/>
-                <Cell col="10" text="scholarship"/>
-                <Cell col="11" text="rest"/>
-                <Cell col="12" text="grade"/>
+                <Cell col="2" text="성별"/>
+                <Cell col="3" text="학년"/>
+                <Cell col="4" text="학과분류"/>
+                <Cell col="5" text="학과"/>
+                <Cell col="6" text="이름"/>
+                <Cell col="7" text="주민번호"/>
+                <Cell col="8" text="email"/>
+                <Cell col="9" text="전화번호"/>
+                <Cell col="10" text="주소"/>
+                <Cell col="11" text="장학금"/>
+                <Cell col="12" text="휴학여부"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
                 <Cell col="1" text="bind:s_seq"/>
                 <Cell col="2" text="bind:gender" edittype="combo" combodataset="ds_gender" combocodecol="code" combodatacol="name"/>
-                <Cell col="3" text="bind:colCode" edittype="combo" combodataset="colCode" combocodecol="code" combodatacol="name"/>
-                <Cell col="4" text="bind:deptCode" edittype="combo" combodataset="deptCode" combocodecol="code" combodatacol="name"/>
-                <Cell col="5" text="bind:name" edittype="normal"/>
-                <Cell col="6" text="bind:secNumber" displaytype="mask" edittype="mask" maskedittype="string" maskeditformat="###### - #######"/>
-                <Cell col="7" text="bind:email" edittype="normal"/>
-                <Cell col="8" text="bind:contact" edittype="normal"/>
-                <Cell col="9" text="bind:address" edittype="normal"/>
-                <Cell col="10" text="bind:scholarship" edittype="normal"/>
-                <Cell col="11" text="bind:rest" edittype="combo" combodataset="ds_rest" combocodecol="code" combodatacol="name"/>
-                <Cell col="12" text="bind:grade"/>
+                <Cell col="3" text="bind:colGrade" edittype="combo" combodataset="ds_colGrade" combocodecol="code" combodatacol="name"/>
+                <Cell col="4" text="bind:colCode" edittype="combo" combodataset="colCode" combocodecol="code" combodatacol="name"/>
+                <Cell col="5" text="bind:deptCode" edittype="combo" combodataset="deptCode" combocodecol="code" combodatacol="name"/>
+                <Cell col="6" text="bind:name" edittype="normal"/>
+                <Cell col="7" text="bind:secNumber" displaytype="mask" edittype="mask" maskedittype="string" maskeditformat="###### - #######"/>
+                <Cell col="8" text="bind:email" edittype="normal"/>
+                <Cell col="9" text="bind:contact" edittype="normal"/>
+                <Cell col="10" text="bind:address" edittype="normal"/>
+                <Cell col="11" text="bind:scholarship" edittype="normal"/>
+                <Cell col="12" text="bind:rest" edittype="combo" combodataset="ds_rest" combocodecol="code" combodatacol="name"/>
               </Band>
             </Format>
           </Formats>
@@ -215,6 +215,8 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="chk" type="STRING" size="256"/>
           <Column id="s_seq" type="STRING" size="256"/>
           <Column id="gender" type="STRING" size="256"/>
+          <Column id="colGrade" type="STRING" size="256"/>
+          <Column id="colCode" type="STRING" size="256"/>
           <Column id="deptCode" type="STRING" size="256"/>
           <Column id="name" type="STRING" size="256"/>
           <Column id="secNumber" type="STRING" size="256"/>
@@ -223,8 +225,6 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="address" type="STRING" size="256"/>
           <Column id="scholarship" type="STRING" size="256"/>
           <Column id="rest" type="STRING" size="256"/>
-          <Column id="colCode" type="STRING" size="256"/>
-          <Column id="grade" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_gender">
@@ -256,6 +256,30 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Row>
             <Col id="code">N</Col>
             <Col id="name">재학</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_colGrade">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="name">1학년</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="name">2학년</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="name">3학년</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="name">4학년</Col>
           </Row>
         </Rows>
       </Dataset>
