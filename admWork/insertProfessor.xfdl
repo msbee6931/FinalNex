@@ -24,7 +24,7 @@
         <Combo id="com_colCode" taborder="18" left="85" top="300" width="175" height="30" innerdataset="colCode_Copy" codecolumn="code" datacolumn="name"/>
         <Combo id="com_deptCode" taborder="19" left="85" top="335" width="175" height="30" innerdataset="deptCode_copy" codecolumn="code" datacolumn="name"/>
         <MaskEdit id="mas_secNumber" taborder="20" left="85" top="90" width="175" height="30" type="string" format="###### - #{######}"/>
-        <Combo id="com_lecture" taborder="21" left="85" top="230" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Combo id="com_lecture" taborder="21" left="85" top="230" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="com_lecture_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
