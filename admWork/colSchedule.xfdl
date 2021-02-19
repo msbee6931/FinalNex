@@ -7,12 +7,12 @@
         <Static id="Static00_00" taborder="1" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Div id="Div00" taborder="4" text="Div00" left="30" top="38" width="1021" height="452" border="1px solid #c1c1c1">
+        <Div id="Div00" taborder="4" text="Div00" left="30" top="38" width="1021" height="452" cssclass="div_line">
           <Layouts>
             <Layout>
-              <Calendar id="cal_dept" taborder="0" left="29" top="46" width="350" height="350" type="monthonly" ondayclick="Div00_cal_dept_ondayclick"/>
-              <Button id="btn_insert" taborder="1" text="일정 등록" left="889" top="16" width="90" height="25" onclick="Div00_btn_insert_onclick"/>
-              <Grid id="Grid00" taborder="2" left="429" top="46" width="550" height="350" binddataset="colSchedule_ds" autofittype="col" oncelldblclick="Div00_Grid00_oncelldblclick" oncellclick="Div00_Grid00_oncellclick">
+              <Calendar id="cal_dept" taborder="0" left="29" top="56" width="350" height="350" type="monthonly" ondayclick="Div00_cal_dept_ondayclick"/>
+              <Button id="btn_insert" taborder="1" text="일정 등록" left="889" top="16" width="100" height="30" onclick="Div00_btn_insert_onclick" cssclass="btn_insert"/>
+              <Grid id="Grid00" taborder="2" left="429" top="56" width="550" height="350" binddataset="colSchedule_ds" autofittype="col" oncelldblclick="Div00_Grid00_oncelldblclick" oncellclick="Div00_Grid00_oncellclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -37,11 +37,11 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="btn_del" taborder="3" text="일정삭제" left="889" top="406" width="90" height="25" onclick="Div00_btn_del_onclick"/>
+              <Button id="btn_del" taborder="3" text="삭제" left="889" top="416" width="100" height="30" onclick="Div00_btn_del_onclick" cssclass="btn_del"/>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static01" taborder="5" text="학사 스케줄" left="30" top="9" width="200" height="30"/>
+        <Static id="Static01" taborder="5" text="학사 스케줄" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.colSchedule_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)

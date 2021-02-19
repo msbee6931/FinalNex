@@ -7,8 +7,8 @@
         <Static id="Static00_00" taborder="1" left="1051" top="0" visible="false" background="RGBA(236,135,135,0.71)" right="0" bottom="0"/>
         <Static id="Static00_01" taborder="2" left="80" top="0" visible="false" background="RGBA(236,135,135,0.71)" height="10" width="800"/>
         <Static id="Static00_01_00" taborder="3" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="0"/>
-        <Static id="Static01" taborder="4" text="휴학신청서 관리" left="30" top="9" width="200" height="30"/>
-        <Div id="Div00" taborder="5" text="Div00" left="30" top="38" border="1px solid #c1c1c1" right="29" bottom="30">
+        <Static id="Static01" taborder="4" text="휴학신청서 관리" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
+        <Div id="Div00" taborder="5" text="Div00" left="30" top="38" right="29" bottom="30" cssclass="div_line">
           <Layouts>
             <Layout>
               <Grid id="Grid00" taborder="0" left="25" top="51" binddataset="absence_ds" autofittype="col" right="24" bottom="59" oncelldblclick="Div00_Grid00_oncelldblclick" oncellclick="Div00_Grid00_oncellclick">
@@ -48,7 +48,7 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="btn_del" taborder="1" text="삭제" onclick="Div00_btn_del_onclick" right="23" bottom="12" width="100" height="25"/>
+              <Button id="btn_del" taborder="1" text="삭제" onclick="Div00_btn_del_onclick" right="23" bottom="12" width="100" height="30" cssclass="btn_del"/>
             </Layout>
           </Layouts>
         </Div>

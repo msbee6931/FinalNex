@@ -3,7 +3,7 @@
   <Form id="classReq" width="1080" height="520" titletext="New Form" onload="classReq_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
-        <Grid id="Grid00" taborder="0" left="10" top="6" width="1040" height="425" autofittype="col" binddataset="ds_class" onheadclick="Grid00_onheadclick" oncellclick="Grid00_oncellclick" onexpanddown="Grid00_onexpanddown">
+        <Grid id="Grid00" taborder="0" left="30" top="49" width="1020" height="401" autofittype="col" binddataset="ds_class" onheadclick="Grid00_onheadclick" oncellclick="Grid00_oncellclick" onexpanddown="Grid00_onexpanddown">
           <Formats>
             <Format id="default">
               <Columns>
@@ -55,8 +55,13 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_ok" taborder="1" text="승인" left="780" top="441" width="120" height="50" onclick="btn_ok_onclick"/>
-        <Button id="btn_reject" taborder="2" text="거절" left="920" top="441" width="120" height="50" onclick="btn_reject_onclick"/>
+        <Button id="btn_ok" taborder="1" text="승인" left="830" top="460" width="100" height="30" onclick="btn_ok_onclick" cssclass="btn_default"/>
+        <Button id="btn_reject" taborder="2" text="거절" left="950" top="460" width="100" height="30" onclick="btn_reject_onclick" cssclass="btn_can"/>
+        <Static id="Static00_01_00" taborder="3" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="0"/>
+        <Static id="Static00" taborder="4" left="0" top="0" visible="false" background="RGBA(236,135,135,0.71)" width="29" bottom="0"/>
+        <Static id="Static00_01" taborder="5" left="80" top="0" visible="false" background="RGBA(236,135,135,0.71)" height="10" width="800"/>
+        <Static id="Static01" taborder="6" text="개설강의 요청관리" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
+        <Static id="Static00_00" taborder="7" left="1051" top="0" visible="false" background="RGBA(236,135,135,0.71)" right="0" bottom="0"/>
       </Layout>
     </Layouts>
     <Objects>
