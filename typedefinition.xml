@@ -8,6 +8,7 @@
     <Module url="DeviceAPI.json"/>
     <Module url="Graphics.json"/>
     <Module url="Sha256.json"/>
+    <Module url="extlib::Chart.json"/>
   </Modules>
   <Components>
     <Component type="JavaScript" id="Button" classname="nexacro.Button"/>
@@ -40,6 +41,14 @@
     <Component type="JavaScript" id="FileUpTransfer" classname="nexacro.FileUpTransfer"/>
     <Component type="JavaScript" id="ExcelImportObject" classname="nexacro.ExcelImportObject"/>
     <Component type="JavaScript" id="ExcelExportObject" classname="nexacro.ExcelExportObject"/>
+    <Component type="JavaScript" id="BasicChart" classname="nexacro.BasicChart" iconindex="400" iconextra="true"/>
+    <Component type="JavaScript" id="PyramidChart" classname="nexacro.PyramidChart" iconindex="407" iconextra="true" prefixid=""/>
+    <Component type="JavaScript" id="FloatChart" classname="nexacro.FloatChart" iconindex="406" iconextra="true" prefixid=""/>
+    <Component type="JavaScript" id="RoseChart" classname="nexacro.RoseChart" iconindex="405" iconextra="true" prefixid=""/>
+    <Component type="JavaScript" id="RadarChart" classname="nexacro.RadarChart" iconindex="404" iconextra="true" prefixid=""/>
+    <Component type="JavaScript" id="GaugeChart" classname="nexacro.GaugeChart" iconindex="403" iconextra="true"/>
+    <Component type="JavaScript" id="PieChart" classname="nexacro.PieChart" iconindex="402" iconextra="true"/>
+    <Component type="JavaScript" id="BubbleChart" classname="nexacro.BubbleChart" iconindex="401" iconextra="true"/>
   </Components>
   <Services>
     <Service prefixid="theme" type="resource" url="./_resource_/_theme_/" version="0" cachelevel="session" include_subdir="true"/>

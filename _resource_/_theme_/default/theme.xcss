@@ -565,23 +565,25 @@ last-modified : 2020-03-23
 /* celltreeitem: */
 .GridCellControl .celltreeitem .treeitemtext
 {
-	font : 12px Gulim;
-	color : #666666;
+
+	color : #ffffff;
 }
 
 .GridCellControl .celltreeitem .treeitemtext[status=disabled]
 {
-	color : #999999;
+	color : #ffffff;
+	font : 12px "-윤고딕330";
+	
 }
 
 .GridCellControl .celltreeitem .treeitembutton[userstatus=expand]
 {
-	-nexa-icon : URL('theme://images/btn_WF_Treeexpand.png');
+	-nexa-icon : url('theme://images/btn_tree_col.png');
 }
 
 .GridCellControl .celltreeitem .treeitembutton[userstatus=collapse]
 {
-	-nexa-icon : URL('theme://images/btn_WF_Treecollapse.png');
+	-nexa-icon : url('theme://images/btn_tree_ce.png');
 }
 
 .GridCellControl .celltreeitem .treeitemimage
@@ -739,12 +741,12 @@ last-modified : 2020-03-23
 /* Menu */
 .Menu
 {
-	background : linear-gradient(to top, #1059a8, #125dae);
+font : 13px/normal "-윤고딕340";
 }
 
 .Menu[status=disabled]
 {
-	background : #94a9bf;
+font : 13px/normal "-윤고딕340";
 }
 
 .Menu .prevbutton
@@ -783,9 +785,9 @@ last-modified : 2020-03-23
 
 .Menu .menuitem
 {
-	font : bold 13px Gulim;
+	font : 13px/normal "-윤고딕340";
 	color : #ffffff;
-	-nexa-padding : 0px 30px 0px 30px;
+	-nexa-padding : 0px 15px 0px 15px;
 	cursor : pointer;
 }
 
@@ -796,7 +798,10 @@ last-modified : 2020-03-23
 
 .Menu .menuitem[status=mouseover]
 {
-	background : #00438b;
+	background : #1c0c7c;
+	color : #ffffff;
+	font : 12px "-윤고딕330";
+	
 }
 .Menu .menuitem[userstatus=selected]
 {
@@ -1170,7 +1175,7 @@ last-modified : 2020-03-23
 /* Static */
 .Static,.StaticControl
 {
-	font : 12px "Arial","-윤고딕320";
+	font : 12px "-윤고딕330";
 	/* No style applied */
 }
 
@@ -1235,7 +1240,7 @@ last-modified : 2020-03-23
 .Tab .tabbuttonitem
 {
 	color : #333333;
-	background : linear-gradient(to top, #fcfcfc, #fafafa);
+	background : #435a7c;
 	-nexa-border : 1px solid #c7c7c7;
 	-nexa-padding : 6px 10px 6px 10px;
 }
@@ -1243,7 +1248,8 @@ last-modified : 2020-03-23
 .Tab .tabbuttonitem[status=mouseover]
 {
 	-nexa-border : 1px solid #b1b1b1;
-	background : linear-gradient(to top, #dddcdc, #fefefe);
+	background : #c1c049;
+	color : #7f7f7f;
 }
 
 .Tab .tabbuttonitem[status=focused]
@@ -1272,7 +1278,9 @@ last-modified : 2020-03-23
 
 .Tab .tabbuttonitem .tabbuttonitemtext[status=disabled]
 {
-	color : #c8c8c8;
+	color : #ffffff;
+	font : 11px "-윤고딕330";
+	
 }
 
 .Tab .tabbuttonitem .extrabutton
@@ -1560,9 +1568,9 @@ last-modified : 2020-03-23
 /* ScrollBar */
 .VScrollBarControl
 {
-	background : linear-gradient(to left,#ffffff,#f7f7f7);
 	-nexa-border : 1px solid #b1b1b1;
 	-nexa-padding : 2px 2px 2px 2px;
+	background : #0d6efd;
 }
 
 .HScrollBarControl
@@ -1634,7 +1642,7 @@ last-modified : 2020-03-23
 
 .VScrollBarControl .trackbar,.HScrollBarControl .trackbar
 {
-	background : #dddddd;
+	background : #0d6efd;
 	-nexa-border : 1px solid #c8c8c8;
 }
 
@@ -1997,4 +2005,233 @@ last-modified : 2020-03-23
 .ListView .body .expandbar[userstatus=expand]
 {
 	-nexa-icon : URL('theme://images/btn_expand.png');
-}]]></XCSS>
+}.GridCellControl .celltreeitem[status=disabled]
+{
+}
+.GridCellControl .celltreeitem
+{
+	
+}
+.GridCellControl
+{
+	background : #0d6efd;
+
+}
+.Grid .body .row .cell .celltreeitem .treeitembutton
+{
+}
+.Button.btn_home
+{
+	background : url('theme://images/btn_home_30_30.png') no-repeat;
+	border-radius : 4px;
+}
+.Button.btn_search
+{
+	border-radius : 2px;
+	background : url('theme://images/btn_search.png') no-repeat #0d6efd;
+}
+.Button.btn_message
+{
+	-nexa-icon : url('theme://images/btn_message.png');
+	border-radius : 6px;
+	color : #ffffff;
+	font : 12px/normal "-윤고딕330";
+	background : #0d6efd;
+	-nexa-text-padding : 2px;
+	-nexa-padding : 1px;
+}
+.Button.btn_insert
+{
+	-nexa-icon : url('theme://images/btn_insert.png');
+	background : #0d6efd;
+	-nexa-text-padding : 4px;
+	-nexa-vertical-align : middle;
+	-nexa-text-align : center;
+	color : #ffffff;
+	font : 12px "-윤고딕330";
+	border-radius : 8px;
+}
+.Button.btn_del
+{
+	background : #1c0c7c;
+	-nexa-text-padding : 4px;
+	-nexa-vertical-align : middle;
+	-nexa-text-align : center;
+	color : #ffffff;
+	font : 12px "-윤고딕330";
+	border-radius : 8px;
+	-nexa-icon : url('theme://images/btn_delete.png');
+}
+.Button.btn_default
+{
+	background : #0d6efd;
+	-nexa-text-padding : 4px;
+	-nexa-vertical-align : middle;
+	-nexa-text-align : center;
+	color : #ffffff;
+	font : 12px "-윤고딕330";
+	border-radius : 8px;
+}
+.Edit.edt_default
+{
+	background : #ffffff;
+	-nexa-border : 1px solid #0d6efd;
+	color : #0d6efd;
+	font : 12px "-윤고딕330";
+}
+.Static.sta_default
+{
+	background : #0d6efd;
+	color : #ffffff;
+	font : 12px "-윤고딕330";
+	-nexa-text-align : center;
+}
+.Combo.cmb_dept
+{
+	-nexa-border : 1px solid #0d6efd;
+	color : #0d6efd;
+	font : 12px "-윤고딕330";
+}
+.Button.btn_small
+{
+	background : #0d6efd;
+	border-radius : 2px;
+	color : #ffffff;
+}
+.Combo.cmb_default
+{
+}
+.Combo.cmb_default .comboedit
+{
+	-nexa-border : 1px solid #0d6efd;
+	background : #ffffff;
+	color : #0d6efd;
+	font : 12px "-윤고딕330";
+}
+.Combo.cmb_default .dropbutton
+{
+	background : #0d6efd;
+
+}
+.Combo.cmb_default .combolist .listboxitem[status=mouseover]
+{
+	background : #0d6efd;
+	color : #ffffff;
+	font : 12px "-윤고딕330";
+}
+.Combo.cmb_default .combolist .listboxitem
+{
+	color : #1c0c7c;
+	font : 12px "-윤고딕330";
+}
+.Static.sta_title
+{
+	color : #0d6efd;
+	font : 16px "-윤고딕350";
+}
+.Static.sta_line
+{
+	-nexa-border : 1px solid #0d6efd;
+	border-radius : 2px;
+}
+.Div.div_line
+{
+	-nexa-border : 1px solid #0d6efd;
+	border-radius : 2px;
+}
+.Button.btn_can
+{
+	background : #1c0c7c;
+	-nexa-text-padding : 4px;
+	-nexa-vertical-align : middle;
+	-nexa-text-align : center;
+	color : #ffffff;
+	font : 12px "-윤고딕330";
+	border-radius : 8px;
+}
+.Button.btn_home[status=disabled]
+{
+	background : url('theme://images/btn_home_30_30.png') no-repeat;
+	border-radius : 4px;
+}
+.Button.btn_home[status=mouseover]
+{
+	border-radius : 4px;
+	background : url('theme://images/btn_home_wh_30_30.png') no-repeat #0d6efd;
+}
+.Button.btn_message[status=disabled]
+{
+	-nexa-icon : url('theme://images/btn_message.png');
+	border-radius : 6px;
+	color : #ffffff;
+	font : 12px/normal "-윤고딕330";
+	background : #0d6efd;
+	-nexa-text-padding : 2px;
+	-nexa-padding : 1px;
+}
+.Button.btn_logout
+{
+	-nexa-icon : url('theme://images/btn_logout.png');
+	border-radius : 6px;
+	color : #ffffff;
+	font : 12px/normal "-윤고딕330";
+	background : #0d6efd;
+	-nexa-text-padding : 5px;
+	-nexa-padding : 1px;
+}
+.Button.btn_logout[status=disabled]
+{
+	-nexa-icon : url('theme://images/btn_logout.png');
+	border-radius : 6px;
+	color : #ffffff;
+	font : 12px/normal "-윤고딕330";
+	background : #0d6efd;
+	-nexa-text-padding : 5px;
+	-nexa-padding : 1px;
+}
+.Button.btn_logout[status=mouseover]
+{
+	-nexa-icon : url('theme://images/btn_logout.png');
+	border-radius : 6px;
+	color : #ffffff;
+	font : 12px/normal "-윤고딕330";
+	background : #1c0c7c;
+	-nexa-text-padding : 5px;
+	-nexa-padding : 1px;
+}
+.Button.btn_logout[status=focused]
+{
+	-nexa-icon : url('theme://images/btn_logout.png');
+	border-radius : 6px;
+	color : #ffffff;
+	font : 12px/normal "-윤고딕330";
+	background : #0d6efd;
+	-nexa-text-padding : 5px;
+	-nexa-padding : 1px;
+}
+.Button.btn_logout[userstatus=pushed]
+{
+	-nexa-icon : url('theme://images/btn_logout.png');
+	border-radius : 6px;
+	color : #ffffff;
+	font : 12px/normal "-윤고딕330";
+	background : #0d6efd;
+	-nexa-text-padding : 5px;
+	-nexa-padding : 1px;
+}
+.Button.btn_logout[userstatus=selected]
+{
+	-nexa-icon : url('theme://images/btn_logout.png');
+	border-radius : 6px;
+	color : #ffffff;
+	font : 12px/normal "-윤고딕330";
+	background : #0d6efd;
+	-nexa-text-padding : 5px;
+	-nexa-padding : 1px;
+}
+.GridCellControl[status=mouseover]
+{
+	background : #1c0c7c;
+
+}
+]]></XCSS>

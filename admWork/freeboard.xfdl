@@ -7,10 +7,10 @@
         <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="2" left="1050" top="0" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Div id="Div00" taborder="4" text="Div00" left="49" top="35" width="1021" height="451" border="1px solid #c1c1c1">
+        <Div id="Div00" taborder="4" text="Div00" left="30" top="44" width="1020" height="446" cssclass="div_line">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="24" top="45" width="376" height="359" binddataset="free" autofittype="col" oncellposchanged="Div00_Grid00_oncellposchanged">
+              <Grid id="Grid00" taborder="0" left="24" top="55" width="376" height="349" binddataset="free" autofittype="col" oncellposchanged="Div00_Grid00_oncellposchanged">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -41,23 +41,23 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Div id="Div00" taborder="1" text="" left="414" top="13" width="568" height="391" border="1px solid black">
+              <Div id="Div00" taborder="1" text="" left="414" top="13" width="568" height="391" cssclass="div_line">
                 <Layouts>
                   <Layout>
-                    <Static id="Static00" taborder="1" text="Contents" left="15" top="7" width="542" height="28" border="1px solid black" textAlign="center" font="bold 14px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;"/>
+                    <Static id="Static00" taborder="1" text="Contents" left="15" top="7" width="542" height="28" textAlign="center" cssclass="sta_default"/>
                     <WebBrowser id="WebBrowser00" taborder="1" left="14" top="45" width="543" height="335"/>
                   </Layout>
                 </Layouts>
               </Div>
-              <Static id="Static00" taborder="2" text="FreeBoard" left="32" top="8" width="348" height="33" font="bold italic 16px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;"/>
-              <Button id="del_btn" taborder="3" text="삭제" left="885" top="408" width="97" height="32" onclick="Div00_del_btn_onclick"/>
-              <Combo id="Combo00" taborder="4" text="Combo00" left="150" top="16" width="86" height="24" innerdataset="search" codecolumn="id" datacolumn="column"/>
-              <Edit id="Edit00" taborder="5" left="248" top="16" width="83" height="22"/>
-              <Button id="Button00" taborder="6" text="검색" left="342" top="16" width="44" height="21" onclick="Div00_Button00_onclick"/>
+              <Static id="Static00" taborder="2" text="FreeBoard" left="32" top="15" width="87" height="33"/>
+              <Button id="del_btn" taborder="3" text="삭제" left="885" top="408" width="100" height="30" onclick="Div00_del_btn_onclick" cssclass="btn_del"/>
+              <Combo id="Combo00" taborder="4" text="Combo00" left="129" top="26" width="107" height="25" innerdataset="search" codecolumn="id" datacolumn="column" cssclass="cmb_default"/>
+              <Edit id="Edit00" taborder="5" left="246" top="26" width="115" height="25" cssclass="edt_default"/>
+              <Button id="Button00" taborder="6" left="370" top="26" width="25" height="25" onclick="Div00_Button00_onclick" cssclass="btn_search"/>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static01" taborder="5" text=" 자유 게시판 관리" left="30" top="9" width="200" height="30" background="#c1c1c1" onclick="Static01_onclick"/>
+        <Static id="Static01" taborder="5" text=" 자유 게시판 관리" left="30" top="9" width="200" height="30" onclick="Static01_onclick" cssclass="sta_title"/>
       </Layout>
     </Layouts>
     <Objects>

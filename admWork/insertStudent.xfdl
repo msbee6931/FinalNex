@@ -6,33 +6,92 @@
         <Edit id="edt_s_seq" taborder="0" top="20" width="175" height="30" left="85"/>
         <Static id="Static00" taborder="1" text="학번" top="20" width="50" height="30" left="10"/>
         <Static id="Static00_00" taborder="2" text="이름" top="55" width="50" height="30" left="10"/>
-        <Static id="Static00_01" taborder="3" text="나이" top="90" width="50" height="30" left="10"/>
+        <Static id="Static00_01" taborder="3" text="주민번호" top="90" width="50" height="30" left="10"/>
         <Static id="Static00_02" taborder="4" text="이메일" top="125" width="50" height="30" left="10"/>
         <Static id="Static00_03" taborder="5" text="전화번호" top="160" width="50" height="30" left="10"/>
         <Static id="Static00_04" taborder="6" text="주소" top="195" width="50" height="30" left="10"/>
         <Static id="Static00_05" taborder="7" text="장학금" top="230" width="50" height="30" left="10"/>
         <Static id="Static00_06" taborder="8" text="휴학" top="265" width="50" height="30" left="10"/>
         <Static id="Static00_07" taborder="9" text="성적" top="300" width="50" height="30" left="10"/>
-        <Static id="Static00_08" taborder="10" text="생일" top="335" width="50" height="30" left="10"/>
-        <Static id="Static00_09" taborder="11" text="초기비밀번호" top="370" width="75" height="30" onclick="Static00_09_onclick" left="10"/>
-        <Static id="Static00_10" taborder="12" text="성별" top="405" width="50" height="30" left="10"/>
-        <Edit id="edt_name" taborder="13" top="55" width="175" height="30" left="85"/>
-        <Edit id="edt_age" taborder="14" top="90" width="175" height="30" left="85"/>
-        <Edit id="edt_email" taborder="15" top="125" width="175" height="30" left="85"/>
-        <Edit id="edt_contact" taborder="16" top="160" width="175" height="30" left="85"/>
-        <Edit id="edt_address" taborder="17" top="195" width="175" height="30" left="85"/>
-        <Edit id="edt_scholarship" taborder="18" top="230" width="175" height="30" left="85"/>
-        <Edit id="edt_rest" taborder="19" top="265" width="175" height="30" left="85"/>
-        <Edit id="edt_grade" taborder="20" top="300" width="175" height="30" left="85"/>
-        <Edit id="edt_pw" taborder="21" top="370" width="175" height="30" left="85"/>
-        <Edit id="edt_gender" taborder="22" top="405" width="175" height="30" left="85"/>
-        <Button id="btn_insert" taborder="23" text="입력" top="515" width="50" height="30" left="95" onclick="btn_insert_onclick"/>
-        <Button id="btn_cancel" taborder="24" text="취소" top="515" width="50" height="30" left="210" onclick="btn_cancel_onclick"/>
-        <Calendar id="cal_birth" taborder="25" left="85" top="335" width="175" height="30" dateformat="yyyy-MM-dd"/>
-        <Static id="Static00_10_00" taborder="26" text="학과" top="440" width="50" height="30" left="10"/>
-        <Static id="Static00_10_01" taborder="27" text="colcode" top="475" width="50" height="30" left="10"/>
-        <Edit id="edt_deptcode" taborder="28" top="440" width="175" height="30" left="85"/>
-        <Edit id="edt_colcode" taborder="29" top="475" width="175" height="30" left="85"/>
+        <Static id="Static00_09" taborder="10" text="초기비밀번호" top="335" width="75" height="30" onclick="Static00_09_onclick" left="10"/>
+        <Static id="Static00_10" taborder="11" text="성별" top="370" width="50" height="30" left="10"/>
+        <Edit id="edt_name" taborder="12" top="55" width="175" height="30" left="85"/>
+        <Edit id="edt_email" taborder="13" top="125" width="175" height="30" left="85"/>
+        <Edit id="edt_contact" taborder="14" top="160" width="175" height="30" left="85"/>
+        <Edit id="edt_address" taborder="15" top="195" width="175" height="30" left="85"/>
+        <Edit id="edt_scholarship" taborder="16" top="230" width="175" height="30" left="85"/>
+        <Edit id="edt_grade" taborder="17" top="300" width="175" height="30" left="85"/>
+        <Edit id="edt_pw" taborder="18" top="335" width="175" height="30" left="85"/>
+        <Button id="btn_insert" taborder="19" text="입력" top="515" width="50" height="30" left="95" onclick="btn_insert_onclick"/>
+        <Button id="btn_cancel" taborder="20" text="취소" top="515" width="50" height="30" left="210" onclick="btn_cancel_onclick"/>
+        <Static id="Static00_10_00" taborder="21" text="학과분류" top="405" width="50" height="30" left="10"/>
+        <Static id="Static00_10_01" taborder="22" text="학과" top="440" width="50" height="30" left="10"/>
+        <Combo id="com_colCode" taborder="23" left="85" top="405" width="175" height="30" innerdataset="colCode_Copy" codecolumn="code" datacolumn="name"/>
+        <Combo id="com_deptCode" taborder="24" left="85" top="440" width="175" height="30" innerdataset="deptCode_copy" codecolumn="code" datacolumn="name"/>
+        <Combo id="com_rest" taborder="25" left="85" top="265" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">Y</Col>
+                <Col id="datacolumn">휴학</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">N</Col>
+                <Col id="datacolumn">재학</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Combo id="com_gender" taborder="26" left="85" top="370" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">남자</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">여자</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Static id="Static00_10_01_00" taborder="27" text="학년" top="475" width="50" height="30" left="10"/>
+        <Combo id="com_colGrade" taborder="28" left="85" top="475" width="175" height="30" codecolumn="codecolumn" datacolumn="datacolumn" innerdataset="innerdataset">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">1학년</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">2학년</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">3</Col>
+                <Col id="datacolumn">3학년</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">4</Col>
+                <Col id="datacolumn">4학년</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <MaskEdit id="mas_secNumber" taborder="29" left="85" top="90" width="175" height="30" format="###### - #{######}" type="string"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -42,18 +101,146 @@
           <Column id="s_seq" type="STRING" size="256"/>
           <Column id="gender" type="STRING" size="256"/>
           <Column id="name" type="STRING" size="256"/>
-          <Column id="age" type="STRING" size="256"/>
           <Column id="email" type="STRING" size="256"/>
           <Column id="contact" type="STRING" size="256"/>
           <Column id="address" type="STRING" size="256"/>
           <Column id="scholarship" type="STRING" size="256"/>
           <Column id="rest" type="STRING" size="256"/>
           <Column id="grade" type="STRING" size="256"/>
-          <Column id="birth" type="DATE" size="256"/>
           <Column id="pw" type="STRING" size="256"/>
-          <Column id="deptcode" type="STRING" size="256"/>
-          <Column id="colcode" type="STRING" size="256"/>
+          <Column id="deptCode" type="STRING" size="256"/>
+          <Column id="colCode" type="STRING" size="256"/>
+          <Column id="colGrade" type="STRING" size="256"/>
+          <Column id="secNumber" type="STRING" size="256"/>
         </ColumnInfo>
+      </Dataset>
+      <Dataset id="deptCode_copy">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">11</Col>
+            <Col id="name">국어국문학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">12</Col>
+            <Col id="name">영어영문학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">13</Col>
+            <Col id="name">국사학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">14</Col>
+            <Col id="name">철학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">21</Col>
+            <Col id="name">사회복지학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">22</Col>
+            <Col id="name">경제학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">23</Col>
+            <Col id="name">사회학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">24</Col>
+            <Col id="name">심리학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">31</Col>
+            <Col id="name">통계학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">32</Col>
+            <Col id="name">화학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">33</Col>
+            <Col id="name">생명과학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">41</Col>
+            <Col id="name">간호학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">51</Col>
+            <Col id="name">전기공학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">52</Col>
+            <Col id="name">컴퓨터공학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">53</Col>
+            <Col id="name">화학생물공학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">54</Col>
+            <Col id="name">건축학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">55</Col>
+            <Col id="name">산업공학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">61</Col>
+            <Col id="name">교육학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">62</Col>
+            <Col id="name">국어교육과</Col>
+          </Row>
+          <Row>
+            <Col id="code">63</Col>
+            <Col id="name">영어교육과</Col>
+          </Row>
+          <Row>
+            <Col id="code">64</Col>
+            <Col id="name">수학교육과</Col>
+          </Row>
+          <Row>
+            <Col id="code">65</Col>
+            <Col id="name">체육교육과</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="colCode_Copy">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">10</Col>
+            <Col id="name">인문대학</Col>
+          </Row>
+          <Row>
+            <Col id="code">20</Col>
+            <Col id="name">사회과학대학</Col>
+          </Row>
+          <Row>
+            <Col id="code">30</Col>
+            <Col id="name">자연과학대학</Col>
+          </Row>
+          <Row>
+            <Col id="code">40</Col>
+            <Col id="name">간호대학</Col>
+          </Row>
+          <Row>
+            <Col id="code">50</Col>
+            <Col id="name">공과대학</Col>
+          </Row>
+          <Row>
+            <Col id="code">60</Col>
+            <Col id="name">사범대학</Col>
+          </Row>
+        </Rows>
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.fn_update_students = function(id,url){	//업데이트 따로 뺀것
@@ -70,6 +257,7 @@ this.fn_callback = function(id,ErrorCode,ErrorMsg){	//콜백함수
 	trace(id);
 	trace(ErrorMsg);
 	trace(ErrorCode);
+	
 }
 
 
@@ -78,34 +266,78 @@ this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var s_seq = this.edt_s_seq.value;
 	var name = this.edt_name.value;
-	var age = this.edt_age.value;
+	var secNumber = this.mas_secNumber.value;
 	var email = this.edt_email.value;
 	var contact = this.edt_contact.value;
 	var address = this.edt_address.value;
 	var scholarship = this.edt_scholarship.value;
-	var rest = this.edt_rest.value;
+	var rest = this.com_rest.value;
 	var grade = this.edt_grade.value;
-	var birth = this.cal_birth.value;
 	var pw = this.edt_pw.value;
-	var gender = this.edt_gender.value;
-	var deptcode = this.edt_deptcode.value;
-	var colcode = this.edt_colcode.value;
+	var gender = this.com_gender.value;
+	var colCode = this.com_colCode.value;
+	var deptCode = this.com_deptCode.value;
+	var colGrade = this.com_colGrade.value;
+	
+	if(s_seq == null || s_seq == "undefined"){
+		this.alert("학번 입력해주세요");
+		return;
+	}else if(name == null || name == "undefined"){
+		this.alert("이름 입력해주세요");
+		return;
+	}else if(secNumber == null || secNumber == "undefined"){
+		this.alert("주민번호 입력해주세요.");
+		return;
+	}else if(email == null || email == "undefined"){
+		this.alert("이메일 입력해주세요");
+		return;
+	}else if(contact == null || contact == "undefined"){
+		this.alert("전화번호 입력해주세요");
+		return;
+	}else if(address == null || address == "undefined"){
+		this.alert("주소 입력해주세요");
+		return;
+	}else if(scholarship == null || scholarship == "undefined"){
+		this.alert("장학금 입력해주세요");
+		return;
+	}else if(rest == null || rest == "undefined"){
+		this.alert("휴학여부 입력해주세요");
+		return;
+	}else if(grade == null || grade == "undefined"){
+		this.alert("성적 입력해주세요");
+		return;
+	}else if(pw == null || pw == "undefined"){
+		this.alert("비밀번호 입력해주세요");
+		return;
+	}else if(gender == null || gender == "undefined"){
+		this.alert("성별 입력해주세요");
+		return;
+	}else if(colCode == null || colCode == "undefined"){
+		this.alert("학과분류 입력해주세요");
+		return;
+	}else if(deptCode == null || deptCode == "undefined"){
+		this.alert("학과 입력해주세요");
+		return;
+	}else if(colGrade == null || colGrade == "undefined"){
+		this.alert("학년 입력해주세요");
+		return;
+	}
 	
 	var addRow = this.ds_students_copy.addRow();
 	this.ds_students_copy.setColumn(addRow,"s_seq",s_seq);
 	this.ds_students_copy.setColumn(addRow,"name",name);
-	this.ds_students_copy.setColumn(addRow,"age",age);
+	this.ds_students_copy.setColumn(addRow,"secNumber",secNumber);
 	this.ds_students_copy.setColumn(addRow,"email",email);
 	this.ds_students_copy.setColumn(addRow,"contact",contact);
 	this.ds_students_copy.setColumn(addRow,"address",address);
 	this.ds_students_copy.setColumn(addRow,"scholarship",scholarship);
 	this.ds_students_copy.setColumn(addRow,"rest",rest);
 	this.ds_students_copy.setColumn(addRow,"grade",grade);
-	this.ds_students_copy.setColumn(addRow,"birth",birth);
 	this.ds_students_copy.setColumn(addRow,"pw",pw);
 	this.ds_students_copy.setColumn(addRow,"gender",gender);
-	this.ds_students_copy.setColumn(addRow,"deptcode",deptcode);
-	this.ds_students_copy.setColumn(addRow,"colcode",colcode);
+	this.ds_students_copy.setColumn(addRow,"deptCode",deptCode);
+	this.ds_students_copy.setColumn(addRow,"colCode",colCode);
+	this.ds_students_copy.setColumn(addRow,"colGrade",colGrade);
 
 	this.transaction(
 
@@ -124,5 +356,9 @@ this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.close("");
 };]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="cmb_colCode" propid="value" datasetid="ds_students_copy" columnid="colcode"/>
+      <BindItem id="item1" compid="cmb_deptCode" propid="value" datasetid="ds_students_copy" columnid="deptcode"/>
+    </Bind>
   </Form>
 </FDL>

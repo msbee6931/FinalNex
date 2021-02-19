@@ -3,12 +3,12 @@
   <Form id="RejectMsg" width="300" height="400" titletext="New Form" onload="rejectMsg_onload">
     <Layouts>
       <Layout height="400" mobileorientation="landscape" width="300">
-        <Static id="Static00" taborder="0" text="과목코드" left="6" top="20" width="49" height="40" textAlign="center"/>
+        <Static id="Static00" taborder="0" text="과목코드" left="20" top="20" width="49" height="40" textAlign="center"/>
         <TextArea id="reason" taborder="1" left="20" top="90" width="260" height="258"/>
-        <Static id="Static00_00" taborder="2" text="거절 사유" left="20" top="70" width="60" height="20" textAlign="center"/>
-        <Static id="sta_classSeq" taborder="3" text="" left="55" top="10" width="235" height="55" border="1px solid black" padding="0px 0px 0px 5px" onclick="sta_classSeq_onclick" wordWrap="char"/>
-        <Button id="btn_send" taborder="4" text="보내기" left="35" top="358" width="90" height="25" onclick="btn_send_onclick"/>
-        <Button id="btn_cancel" taborder="5" text="취소" left="175" top="358" width="90" height="25" onclick="btn_cancel_onclick"/>
+        <Static id="Static00_00" taborder="2" text="거절 사유" left="20" top="70" width="60" height="20"/>
+        <Static id="sta_classSeq" taborder="3" text="" left="79" top="28" width="201" height="25" padding="0px 0px 0px 5px" onclick="sta_classSeq_onclick" wordWrap="char" cssclass="sta_line"/>
+        <Button id="btn_send" taborder="4" text="보내기" left="45" top="358" width="100" height="30" onclick="btn_send_onclick" cssclass="btn_default"/>
+        <Button id="btn_cancel" taborder="5" text="취소" left="155" top="358" width="100" height="30" onclick="btn_cancel_onclick" cssclass="btn_can"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
