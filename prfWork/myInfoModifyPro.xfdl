@@ -11,22 +11,22 @@
         <Div id="Div00" taborder="5" text="" left="0" top="38" width="1021" height="452" border="1px solid #c1c1c1">
           <Layouts>
             <Layout>
-              <Edit id="edt_p_seq" taborder="0" left="449" top="86" width="150" height="30" readonly="true"/>
-              <Edit id="edt_name" taborder="1" left="449" top="121" width="150" height="30"/>
-              <Edit id="edt_age" taborder="2" left="449" top="156" width="150" height="30" onchanged="Div00_edt_age_onchanged"/>
-              <Edit id="edt_email" taborder="3" left="449" top="191" width="150" height="30"/>
-              <Edit id="edt_contact" taborder="4" left="449" top="226" width="150" height="30"/>
-              <Edit id="edt_address" taborder="5" left="449" top="261" width="150" height="30"/>
-              <Button id="btn_modify" taborder="6" text="수정" left="424" top="356" width="50" height="40" onclick="Div00_btn_modify_onclick"/>
-              <Button id="btn_cancel" taborder="7" text="취소" left="574" top="357" width="50" height="40" onclick="Div00_btn_cancel_onclick"/>
-              <Static id="Static01_00" taborder="8" text="교수번호" left="349" width="100" height="30" top="86"/>
-              <Static id="Static01_00_00" taborder="9" text="이름" left="349" width="100" height="30" top="121"/>
-              <Static id="Static01_00_01" taborder="10" text="나이" left="349" width="100" height="30" top="156"/>
-              <Static id="Static01_00_02" taborder="11" text="이메일" left="349" width="100" height="30" top="191"/>
-              <Static id="Static01_00_03" taborder="12" text="전화번호" left="349" width="100" height="30" top="226"/>
-              <Static id="Static01_00_04" taborder="13" text="주소" left="349" width="100" height="30" top="261"/>
-              <Edit id="edt_pw" taborder="14" left="449" top="296" width="150" height="30"/>
-              <Static id="Static01_00_04_00" taborder="15" text="수정할비밀번호" left="349" width="100" height="30" top="296"/>
+              <Edit id="edt_p_seq" taborder="0" left="450" top="80" width="150" height="30" readonly="true"/>
+              <Edit id="edt_name" taborder="1" left="450" top="115" width="150" height="30"/>
+              <Edit id="edt_email" taborder="2" left="450" top="185" width="150" height="30"/>
+              <Edit id="edt_contact" taborder="3" left="450" top="220" width="150" height="30"/>
+              <Edit id="edt_address" taborder="4" left="450" top="255" width="150" height="30"/>
+              <Button id="btn_modify" taborder="5" text="수정" left="424" top="356" width="50" height="40" onclick="Div00_btn_modify_onclick"/>
+              <Button id="btn_cancel" taborder="6" text="취소" left="574" top="357" width="50" height="40" onclick="Div00_btn_cancel_onclick"/>
+              <Static id="Static01_00" taborder="7" text="교수번호" left="350" width="100" height="30" top="80"/>
+              <Static id="Static01_00_00" taborder="8" text="이름" left="350" width="100" height="30" top="115"/>
+              <Static id="Static01_00_01" taborder="9" text="주민번호" left="350" width="100" height="30" top="150"/>
+              <Static id="Static01_00_02" taborder="10" text="이메일" left="350" width="100" height="30" top="185"/>
+              <Static id="Static01_00_03" taborder="11" text="전화번호" left="350" width="100" height="30" top="220"/>
+              <Static id="Static01_00_04" taborder="12" text="주소" left="350" width="100" height="30" top="255"/>
+              <Edit id="edt_pw" taborder="13" left="450" top="290" width="150" height="30"/>
+              <Static id="Static01_00_04_00" taborder="14" text="수정할비밀번호" left="350" width="100" height="30" top="290"/>
+              <MaskEdit id="mas_secNumber" taborder="15" left="450" top="150" width="150" height="30" format="###### - #{######}" type="string"/>
             </Layout>
           </Layouts>
         </Div>
@@ -35,10 +35,10 @@
     <Bind>
       <BindItem id="item0" compid="Div00.form.edt_p_seq" propid="value" datasetid="ds_professor_copy" columnid="p_seq"/>
       <BindItem id="item1" compid="Div00.form.edt_name" propid="value" datasetid="ds_professor_copy" columnid="name"/>
-      <BindItem id="item2" compid="Div00.form.edt_age" propid="value" datasetid="ds_professor_copy" columnid="age"/>
       <BindItem id="item3" compid="Div00.form.edt_email" propid="value" datasetid="ds_professor_copy" columnid="email"/>
       <BindItem id="item4" compid="Div00.form.edt_contact" propid="value" datasetid="ds_professor_copy" columnid="contact"/>
       <BindItem id="item5" compid="Div00.form.edt_address" propid="value" datasetid="ds_professor_copy" columnid="address"/>
+      <BindItem id="item2" compid="Div00.form.mas_secNumber" propid="value" datasetid="ds_professor_copy" columnid="secNumber"/>
     </Bind>
     <Objects>
       <Dataset id="ds_professor_copy">
@@ -46,12 +46,12 @@
           <Column id="chk" type="STRING" size="256"/>
           <Column id="p_seq" type="STRING" size="256"/>
           <Column id="name" type="STRING" size="256"/>
-          <Column id="age" type="STRING" size="256"/>
           <Column id="email" type="STRING" size="256"/>
           <Column id="contact" type="STRING" size="256"/>
           <Column id="address" type="STRING" size="256"/>
           <Column id="lecture" type="STRING" size="256"/>
           <Column id="pw" type="STRING" size="256"/>
+          <Column id="secNumber" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -100,12 +100,27 @@ this.fn_passcallback = function(id,hash){
 	
 	var p_seq = this.Div00.form.edt_p_seq.value;
 	var name = this.Div00.form.edt_name.value;
-	trace(name);
-	var age = this.Div00.form.edt_age.value;
+	var secNumber = this.Div00.form.mas_secNumber.value;
 	var email = this.Div00.form.edt_email.value;
 	var contact = this.Div00.form.edt_contact.value;
 	var address = this.Div00.form.edt_address.value;
 	var pw = this.Div00.form.edt_pw.value;
+	if(p_seq == null || p_seq == "undefined"){
+		this.alert("교수번호 입력해주세요");
+		return;
+	}else if(name == null || name == "undefined"){
+		alert("이름 입력해주세요");
+		return;
+	}else if(secNumber == null || secNumber == "undefined"){
+		alert("주민번호 입력해주세요");
+		return;
+	}else if(contact == null || contact == "undefined"){
+		alert("전화번호 입력해주세요");
+		return;
+	}else if(address == null || address == "undefined"){
+		alert("주소 입력해주세요");
+		return;
+	}
 	
 	var shaObj = new jsSHA("SHA-256","TEXT");
 	shaObj.update(pw);
@@ -115,7 +130,7 @@ this.fn_passcallback = function(id,hash){
 	var addRow = this.ds_professor_copy.addRow();
 	this.ds_professor_copy.setColumn(addRow,"p_seq",p_seq);
 	this.ds_professor_copy.setColumn(addRow,"name",name);
-	this.ds_professor_copy.setColumn(addRow,"age",age);
+	this.ds_professor_copy.setColumn(addRow,"secNumber",secNumber);
 	this.ds_professor_copy.setColumn(addRow,"email",email);
 	this.ds_professor_copy.setColumn(addRow,"contact",contact);
 	this.ds_professor_copy.setColumn(addRow,"address",address);
