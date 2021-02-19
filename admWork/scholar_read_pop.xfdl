@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="scholar_read_pop" width="400" height="400" titletext="New Form" onload="scholar_read_pop_onload">
+    <Layouts>
+      <Layout height="400" width="400">
+        <Button id="btn_ok" taborder="0" text="확인" left="86" top="355" width="110" height="30" onclick="btn_ok_onclick"/>
+        <Button id="btn_cancle" taborder="1" text="취소" left="205" top="355" width="110" height="30" onclick="btn_cancle_onclick"/>
+        <Div id="Div00" taborder="2" text="Div00" left="21" top="20" width="358" height="325" border="1px solid #c1c1c1">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="선행" left="28" top="125" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Static id="Static00_00" taborder="1" text="추천" left="28" top="154" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Static id="Static00_01" taborder="2" text="성적 우수" left="28" top="183" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Static id="Static00_01_00" taborder="3" text="생활 지원" left="28" top="212" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Static id="Static00_01_00_00" taborder="4" text="기타" left="28" top="241" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Static id="Static00_01_00_00_00" taborder="5" text="총 합계" left="28" top="270" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <MaskEdit id="medt_a" taborder="6" left="128" top="125" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
+              <MaskEdit id="medt_b" taborder="7" left="128" top="154" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
+              <MaskEdit id="medt_c" taborder="8" left="128" top="183" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
+              <MaskEdit id="medt_d" taborder="9" left="128" top="212" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
+              <MaskEdit id="medt_e" taborder="10" left="128" top="241" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
+              <MaskEdit id="medt_sum" taborder="11" left="128" top="270" width="200" height="30" format="+999,999,999" readonly="true"/>
+              <Static id="Static00_02" taborder="12" text="학번" left="28" top="18" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Edit id="edt_code" taborder="13" left="129" top="18" width="199" height="30" readonly="true"/>
+              <Static id="Static00_02_00" taborder="14" text="학과" left="28" top="47" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Combo id="Combo00" taborder="15" text="Combo00" left="129" top="47" width="199" height="31" innerdataset="deptCode" codecolumn="code" datacolumn="name" readonly="true"/>
+              <Edit id="edt_code00_00" taborder="16" left="129" top="76" width="199" height="30" readonly="true"/>
+              <Static id="Static00_02_00_00" taborder="17" text="이름" left="28" top="76" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="scholar_ds">
+        <ColumnInfo>
+          <Column id="std_code" type="STRING" size="256"/>
+          <Column id="s_kind" type="INT" size="256"/>
+          <Column id="s_rec" type="INT" size="256"/>
+          <Column id="s_smt" type="INT" size="256"/>
+          <Column id="s_spt" type="INT" size="256"/>
+          <Column id="s_etc" type="INT" size="256"/>
+          <Column id="sSum" type="INT" size="256"/>
+          <Column id="s_date" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="students_ds">
+        <ColumnInfo>
+          <Column id="s_seq" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="contact" type="STRING" size="256"/>
+          <Column id="adress" type="STRING" size="256"/>
+          <Column id="scholarship" type="STRING" size="256"/>
+          <Column id="rest" type="STRING" size="256"/>
+          <Column id="grade" type="STRING" size="256"/>
+          <Column id="birth" type="STRING" size="256"/>
+          <Column id="pw" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="deptCode" type="STRING" size="256"/>
+          <Column id="colCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.seq = this.parent.seq;
+
+this.scholar_read_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+
+			this.transaction(
+			"selectOne.scholarship",//id
+			"/scholarship/selectOne.scholarship",//url (절대경로)
+			"",//in_ds:U
+			"scholar_ds=out_ds",//()_out_ds
+			"seq="+this.seq,//argument
+			"fn_callback_scholar"
+			)
+	
+};
+
+this.fn_callback_scholar = function()
+{
+	this.std_code = this.scholar_ds.getColumn(0,"std_code");
+	this.transaction(
+		"selectOneStd.students",//id
+		"/students/selectOneStd.students",//url (절대경로)
+		"",//in_ds:U
+		"students_ds=out_ds",//()_out_ds
+		"sCode="+this.std_code,//argument
+		"fn_callback_stdInfo"
+		)
+}
+
+
+
+//확인버튼
+this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var inputa = nexacro.toNumber(this.Div00.form.medt_a.value);
+	var inputb = nexacro.toNumber(this.Div00.form.medt_b.value);
+	var inputc = nexacro.toNumber(this.Div00.form.medt_c.value);
+	var inputd = nexacro.toNumber(this.Div00.form.medt_d.value);
+	var inpute = nexacro.toNumber(this.Div00.form.medt_e.value);
+	var sSum = this.Div00.form.medt_sum.value;
+	
+	//fee_ds 장학금 db에 학번 및 등록금 금액 넣기
+
+		var nRow = this.scholar_ds.addRow();
+		this.scholar_ds.setColumn(nRow,"std_code",this.std_code);
+		this.scholar_ds.setColumn(nRow,"s_kind",inputa);
+		this.scholar_ds.setColumn(nRow,"s_rec",inputb);
+		this.scholar_ds.setColumn(nRow,"s_smt",inputc);
+		this.scholar_ds.setColumn(nRow,"s_spt",inputd);
+		this.scholar_ds.setColumn(nRow,"s_etc",inpute);
+		this.scholar_ds.setColumn(nRow,"sSum",sSum);
+
+		
+		
+		this.transaction(
+		"updateOne.scholarship",//id
+		"/scholarship/updateOne.scholarship",//url (절대경로)
+		"in_ds=scholar_ds:U",//in_ds:U
+		"",//()_out_ds
+		"",//argument
+		"fn_callback"
+		)
+
+	
+	//확인
+	this.close();
+};
+
+//닫기 버튼
+this.btn_cancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+
+//자동으로 최종 합계 구하는 함수
+this.fn_tSum = function()
+{
+	var inputa = nexacro.toNumber(this.Div00.form.medt_a.value);
+	var inputb = nexacro.toNumber(this.Div00.form.medt_b.value);
+	var inputc = nexacro.toNumber(this.Div00.form.medt_c.value);
+	var inputd = nexacro.toNumber(this.Div00.form.medt_d.value);
+	var inpute = nexacro.toNumber(this.Div00.form.medt_e.value);
+	sSum = inputa + inputb + inputc + inputd+ inpute;
+	this.Div00.form.medt_sum.set_value(sSum);	
+}
+
+this.fn_callback = function(id,ErrorCode,ErrorMsg){
+	trace(id);
+	trace(ErrorCode);
+	trace(ErrorMsg);
+};
+
+
+
+
+
+
+
+
+
+
+]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.edt_code" propid="value" datasetid="students_ds" columnid="s_seq"/>
+      <BindItem id="item1" compid="Div00.form.edt_code00_00" propid="value" datasetid="students_ds" columnid="name"/>
+      <BindItem id="item2" compid="Div00.form.Combo00" propid="value" datasetid="students_ds" columnid="deptCode"/>
+      <BindItem id="item3" compid="Div00.form.medt_a" propid="value" datasetid="scholar_ds" columnid="s_kind"/>
+      <BindItem id="item4" compid="Div00.form.medt_b" propid="value" datasetid="scholar_ds" columnid="s_rec"/>
+      <BindItem id="item5" compid="Div00.form.medt_c" propid="value" datasetid="scholar_ds" columnid="s_smt"/>
+      <BindItem id="item6" compid="Div00.form.medt_d" propid="value" datasetid="scholar_ds" columnid="s_spt"/>
+      <BindItem id="item7" compid="Div00.form.medt_e" propid="value" datasetid="scholar_ds" columnid="s_etc"/>
+      <BindItem id="item8" compid="Div00.form.medt_sum" propid="value" datasetid="scholar_ds" columnid="sSum"/>
+    </Bind>
+  </Form>
+</FDL>

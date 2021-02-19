@@ -7,7 +7,7 @@
         <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="2" left="1050" top="0" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Div id="Div00" taborder="4" text="" left="30" top="39" width="1021" height="451" border="1px solid #c1c1c1">
+        <Div id="Div00" taborder="4" text="" left="30" top="39" width="1021" height="451" cssclass="div_line">
           <Layouts>
             <Layout>
               <Grid id="Grid00" taborder="1" left="0" top="25" width="296" height="391" binddataset="pst" autofittype="col">
@@ -38,29 +38,29 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Div id="Div00" taborder="1" text="" left="320" top="240" width="679" height="172" border="1px solid black">
+              <Div id="Div00" taborder="1" text="" left="320" top="240" width="679" height="172" cssclass="div_line">
                 <Layouts>
                   <Layout>
-                    <Edit id="Edit00" taborder="0" left="8" top="10" width="665" height="152"/>
+                    <Edit id="Edit00" taborder="0" left="8" top="10" width="665" height="152" cssclass="edt_default"/>
                   </Layout>
                 </Layouts>
               </Div>
-              <Div id="Div00_00" taborder="2" text="" left="320" top="40" width="679" height="163" border="1px solid black">
+              <Div id="Div00_00" taborder="2" text="" left="320" top="40" width="679" height="163" cssclass="div_line">
                 <Layouts>
                   <Layout>
-                    <Edit id="Edit00" taborder="0" left="6" top="8" width="668" height="147"/>
+                    <Edit id="Edit00" taborder="0" left="6" top="8" width="668" height="147" cssclass="edt_default"/>
                   </Layout>
                 </Layouts>
               </Div>
-              <Static id="Static00" taborder="3" text="contents" left="320" top="8" width="152" height="25" border="1px solid black" textAlign="center" font="bold italic 20px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;"/>
-              <Static id="Static00_00" taborder="4" text="reply" left="319" top="209" width="152" height="25" border="1px solid black" textAlign="center" font="bold italic 20px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;"/>
-              <Button id="confirm_btn" taborder="5" text="확인" left="83" top="420" width="96" height="28" onclick="Div00_confirm_btn_onclick"/>
-              <Button id="del_btn" taborder="6" text="삭제" left="200" top="420" width="96" height="28" onclick="Div00_del_btn_onclick"/>
-              <Button id="send_btn" taborder="7" text="전송" left="889" top="417" width="109" height="31" onclick="Div00_send_btn_onclick"/>
+              <Static id="Static00" taborder="3" text="contents" left="320" top="8" width="152" height="25" textAlign="center" cssclass="sta_default"/>
+              <Static id="Static00_00" taborder="4" text="reply" left="319" top="209" width="152" height="25" textAlign="center" cssclass="sta_default"/>
+              <Button id="confirm_btn" taborder="5" text="확인" left="93" top="418" width="100" height="28" onclick="Div00_confirm_btn_onclick" cssclass="btn_default"/>
+              <Button id="del_btn" taborder="6" text="삭제" left="198" top="418" width="100" height="28" onclick="Div00_del_btn_onclick" cssclass="btn_del"/>
+              <Button id="send_btn" taborder="7" text="전송" left="889" top="417" width="100" height="30" onclick="Div00_send_btn_onclick" cssclass="btn_default"/>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static01" taborder="5" text="받은 쪽지함" left="30" top="9" width="200" height="30" background="#c1c1c1"/>
+        <Static id="Static01" taborder="5" text="받은 쪽지함" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
       </Layout>
     </Layouts>
     <Objects>

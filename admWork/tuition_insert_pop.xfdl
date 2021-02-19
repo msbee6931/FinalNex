@@ -3,37 +3,48 @@
   <Form id="tuition_insert_pop" width="400" height="400" titletext="New Form" onload="tuition_insert_pop_onload">
     <Layouts>
       <Layout height="400" width="400">
-        <Button id="btn_ok" taborder="0" text="확인" left="86" top="330" width="110" height="30" onclick="btn_ok_onclick"/>
-        <Button id="btn_cancle" taborder="1" text="취소" left="205" top="330" width="110" height="30" onclick="btn_cancle_onclick"/>
-        <Static id="Static00" taborder="2" text="등록금 입력" left="20" top="16" width="130" height="30"/>
-        <Div id="Div00" taborder="3" text="Div00" left="17" top="51" width="358" height="249" border="1px solid #c1c1c1">
+        <Button id="btn_ok" taborder="0" text="확인" left="86" top="360" width="110" height="30" onclick="btn_ok_onclick"/>
+        <Button id="btn_cancle" taborder="1" text="취소" left="205" top="360" width="110" height="30" onclick="btn_cancle_onclick"/>
+        <Div id="Div00" taborder="2" text="Div00" left="21" top="26" width="358" height="320" border="1px solid #c1c1c1">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="입학금" left="17" top="40" width="100" height="30" background="#c1c1c1" border="1px solid #000000"/>
-              <Static id="Static00_00" taborder="1" text="수업료" left="17" top="69" width="100" height="30" background="#c1c1c1" border="1px solid #000000"/>
-              <Static id="Static00_01" taborder="2" text="학생회비" left="17" top="98" width="100" height="30" background="#c1c1c1" border="1px solid #000000"/>
-              <Static id="Static00_01_00" taborder="3" text="졸업앨범비" left="17" top="127" width="100" height="30" background="#c1c1c1" border="1px solid #000000"/>
-              <Static id="Static00_01_00_00" taborder="4" text="오리엔테이션비" left="17" top="156" width="100" height="30" background="#c1c1c1" border="1px solid #000000"/>
-              <Static id="Static00_01_00_00_00" taborder="5" text="총 합계" left="17" top="185" width="100" height="30" background="#c1c1c1" border="1px solid #000000"/>
-              <MaskEdit id="medt_a" taborder="6" left="117" top="40" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
-              <MaskEdit id="medt_b" taborder="7" left="117" top="69" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
-              <MaskEdit id="medt_c" taborder="8" left="117" top="98" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
-              <MaskEdit id="medt_d" taborder="9" left="117" top="127" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
-              <MaskEdit id="medt_e" taborder="10" left="117" top="156" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
-              <MaskEdit id="medt_sum" taborder="11" left="117" top="185" width="200" height="30" format="+999,999,999" readonly="true"/>
+              <Static id="Static00" taborder="0" text="입학금" left="18" top="115" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Static id="Static00_00" taborder="1" text="수업료" left="18" top="144" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Static id="Static00_01" taborder="2" text="학생회비" left="18" top="173" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Static id="Static00_01_00" taborder="3" text="졸업앨범비" left="18" top="202" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Static id="Static00_01_00_00" taborder="4" text="오리엔테이션비" left="18" top="231" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Static id="Static00_01_00_00_00" taborder="5" text="총 합계" left="18" top="260" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <MaskEdit id="medt_a" taborder="6" left="118" top="115" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
+              <MaskEdit id="medt_b" taborder="7" left="118" top="144" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
+              <MaskEdit id="medt_c" taborder="8" left="118" top="173" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
+              <MaskEdit id="medt_d" taborder="9" left="118" top="202" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
+              <MaskEdit id="medt_e" taborder="10" left="118" top="231" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
+              <MaskEdit id="medt_sum" taborder="11" left="118" top="260" width="200" height="30" format="+999,999,999" readonly="true"/>
+              <Static id="Static00_02" taborder="12" text="학번" left="18" top="18" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Edit id="edt_code" taborder="13" left="119" top="18" width="199" height="30" readonly="true"/>
+              <Static id="Static00_02_00" taborder="14" text="학과" left="18" top="47" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Static id="Static00_02_00_00" taborder="15" text="이름" left="18" top="76" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Edit id="edt_code00_00" taborder="16" left="119" top="76" width="199" height="30" readonly="true"/>
+              <Combo id="Combo00" taborder="17" text="Combo00" left="119" top="47" width="199" height="31" innerdataset="deptCode" codecolumn="code" datacolumn="name" readonly="true"/>
             </Layout>
           </Layouts>
         </Div>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[this.code = "";
+    <Script type="xscript5.1"><![CDATA[this.std_code = this.parent.std_code;
 
 //모달창 온로드
 this.tuition_insert_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	//부모창에서 받아온 학번 값(배열)
-	code = this.parent.code;
-	
+
+	this.transaction(
+		"selectOneStd.students",//id
+		"/students/selectOneStd.students",//url (절대경로)
+		"",//in_ds:U
+		"students_ds=out_ds",//()_out_ds
+		"sCode="+this.std_code,//argument
+		"fn_callback_stdInfo"
+		)
 	
 	//maskEdit 기본값 0처리 하기
 	this.Div00.form.medt_a.set_value(0);
@@ -56,16 +67,16 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 	//tuition_ds 장학금 db에 학번 및 등록금 금액 넣기
 	
-	for(var i=0; i<code.length;i++){
+
 		var nRow = this.tuition_ds.addRow();
-		this.tuition_ds.setColumn(nRow,"std_code",code[i]);
+		this.tuition_ds.setColumn(nRow,"std_code",this.std_code);
 		this.tuition_ds.setColumn(nRow,"t_enter",inputa);
 		this.tuition_ds.setColumn(nRow,"t_class",inputb);
 		this.tuition_ds.setColumn(nRow,"t_std",inputc);
 		this.tuition_ds.setColumn(nRow,"t_grd",inputd);
 		this.tuition_ds.setColumn(nRow,"t_ore",inpute);
 		this.tuition_ds.setColumn(nRow,"tSum",tSum);	
-	}
+
 
 	this.transaction(
 		"insertTution",//id
@@ -77,7 +88,7 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		)
 
 	//확인
-	this.close(tSum);
+	this.close();
 	
 };
 
@@ -112,6 +123,7 @@ this.fn_callback = function(id,ErrorCode,ErrorMsg){
     <Objects>
       <Dataset id="tuition_ds">
         <ColumnInfo>
+          <Column id="seq" type="INT" size="256"/>
           <Column id="std_code" type="INT" size="256"/>
           <Column id="t_enter" type="INT" size="256"/>
           <Column id="t_class" type="INT" size="256"/>
@@ -119,12 +131,35 @@ this.fn_callback = function(id,ErrorCode,ErrorMsg){
           <Column id="t_grd" type="INT" size="256"/>
           <Column id="t_ore" type="INT" size="256"/>
           <Column id="tSum" type="INT" size="256"/>
-          <Column id="t_date" type="DATE" size="256"/>
+          <Column id="t_date" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row/>
         </Rows>
       </Dataset>
+      <Dataset id="students_ds">
+        <ColumnInfo>
+          <Column id="s_seq" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="contact" type="STRING" size="256"/>
+          <Column id="adress" type="STRING" size="256"/>
+          <Column id="scholarship" type="STRING" size="256"/>
+          <Column id="rest" type="STRING" size="256"/>
+          <Column id="grade" type="STRING" size="256"/>
+          <Column id="birth" type="STRING" size="256"/>
+          <Column id="pw" type="STRING" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="deptCode" type="STRING" size="256"/>
+          <Column id="colCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.edt_code" propid="value" datasetid="students_ds" columnid="s_seq"/>
+      <BindItem id="item1" compid="Div00.form.Combo00" propid="value" datasetid="students_ds" columnid="deptCode"/>
+      <BindItem id="item2" compid="Div00.form.edt_code00_00" propid="value" datasetid="students_ds" columnid="name"/>
+    </Bind>
   </Form>
 </FDL>

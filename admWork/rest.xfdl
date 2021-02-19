@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="rest" width="1080" height="520" titletext="New Form">
+  <Form id="rest" width="1080" height="520" titletext="New Form" onload="rest_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
         <Static id="Static00" taborder="0" left="0" top="0" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
@@ -10,11 +10,13 @@
         <Div id="Div00" taborder="4" text="Div00" left="30" top="39" width="1021" height="451" border="1px solid #c1c1c1">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="32" top="68" width="530" height="350" binddataset="rlist_ds" autofittype="col" oncellclick="Div00_Grid00_oncellclick">
+              <Grid id="Grid00" taborder="0" left="32" top="68" width="927" height="322" autofittype="col" binddataset="rlist_ds" oncellclick="Div00_Grid00_oncellclick" oncelldblclick="Div00_Grid00_oncelldblclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
-                      <Column size="384"/>
+                      <Column size="55"/>
+                      <Column size="80"/>
+                      <Column size="146"/>
                       <Column size="80"/>
                     </Columns>
                     <Rows>
@@ -22,37 +24,25 @@
                       <Row size="24"/>
                     </Rows>
                     <Band id="head">
-                      <Cell text="제목"/>
-                      <Cell col="1" text="작성날짜"/>
+                      <Cell text="No"/>
+                      <Cell col="1" text="학번"/>
+                      <Cell col="2" text="제목"/>
+                      <Cell col="3" text="작성날짜"/>
                     </Band>
                     <Band id="body">
-                      <Cell text="bind:title" textAlign="center"/>
-                      <Cell col="1" text="bind:writeDate" displaytype="date" textAlign="center"/>
+                      <Cell text="bind:seq" textAlign="center"/>
+                      <Cell col="1" text="bind:std_code" textAlign="center" displaytype="text"/>
+                      <Cell col="2" text="bind:title" textAlign="center"/>
+                      <Cell col="3" text="bind:writeDate" textAlign="center" displaytype="date"/>
                     </Band>
                   </Format>
                 </Formats>
               </Grid>
-              <Static id="Static00" taborder="1" text="" left="577" top="71" width="399" height="346" border="1px solid #c1c1c1"/>
-              <Button id="btn_commit" taborder="2" text="승인" left="842" top="375" width="100" height="25"/>
             </Layout>
           </Layouts>
         </Div>
         <Static id="Static01" taborder="5" text=" 복학 신청서 관리" left="30" top="9" width="200" height="30" background="#c1c1c1"/>
-        <Edit id="edt_title01_00" taborder="6" left="684" top="236" width="298" height="37"/>
-        <Edit id="edt_title01" taborder="7" left="862" top="164" width="120" height="37"/>
-        <Combo id="Combo00" taborder="8" text="Combo00" left="684" top="128" width="120" height="36" readonly="true" innerdataset="deptCode" codecolumn="code" datacolumn="name"/>
-        <Edit id="edt_title00_01" taborder="9" left="684" top="200" width="120" height="37"/>
-        <Edit id="edt_title00" taborder="10" left="862" top="128" width="120" height="37"/>
-        <Edit id="edt_title00_00_00" taborder="11" left="862" top="200" width="120" height="37"/>
-        <Edit id="edt_title00_00" taborder="12" left="684" top="164" width="120" height="37"/>
-        <Static id="Static02" taborder="13" text="" left="625" top="272" width="357" height="128" border="1px solid #c1c1c1"/>
-        <Static id="Static00_02" taborder="14" text="학 과" left="625" top="128" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Static id="Static00_00_01" taborder="15" text="연락처" left="625" top="200" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Static id="Static00_00_00_00" taborder="16" text="생년월일" left="625" top="164" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Static id="Static00_01_01" taborder="17" text="학 년" left="803" top="164" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Static id="Static00_00_00" taborder="18" text="학 번" left="803" top="128" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Static id="Static00_00_00_00_00" taborder="19" text="성 명" left="803" top="200" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Static id="Static00_01_00_00" taborder="20" text="주 소" left="625" top="236" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
+        <Button id="btn_del" taborder="6" text="삭제" onclick="Div00_btn_del_onclick" right="90" bottom="55" width="100" height="25"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -60,26 +50,53 @@
         <ColumnInfo>
           <Column id="seq" type="STRING" size="256"/>
           <Column id="std_code" type="STRING" size="256"/>
-          <Column id="writer" type="STRING" size="256"/>
           <Column id="title" type="STRING" size="256"/>
-          <Column id="contents" type="STRING" size="256"/>
           <Column id="writeDate" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[]]></Script>
+    <Script type="xscript5.1"><![CDATA[
+this.rest_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"selectAllRest",//id
+		"/absence/selectAllRest.absence",//url (절대경로)
+		"",//in_ds:U
+		"rlist_ds=out_ds",//()_out_ds
+		"",//argument
+		"fn_callback"
+		)
+};
+
+
+
+this.Div00_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+		var seq = this.rlist_ds.getColumn(e.row,"seq");
+	var std_code = this.rlist_ds.getColumn(e.row,"std_code");
+
+		//내용 확인을 위한 모달 창
+	var objCF = new ChildFrame();
+	var x = this.width/2-500;
+	var y = this.height/2-300
+	objCF.init("rest_pop",x,y,400,400);
+	objCF.set_titletext("복학신청 자세히 보기");
+	objCF.set_formurl("admWork::rest_pop.xfdl");
+	objCF.showModal(
+		this.getOwnerFrame(),
+		{seq:seq, std_code:std_code}, // 모달창에 seq 값 넘기기
+		this,
+		"fn_callback_pop_s"
+	);
+};
+
+
+]]></Script>
     <Bind>
       <BindItem id="item0" compid="Div00.form.edt_title01_00" propid="value" datasetid="students_ds" columnid="adress"/>
       <BindItem id="item1" compid="Div00.form.edt_title00_00" propid="value" datasetid="students_ds" columnid="birth"/>
       <BindItem id="item2" compid="Div00.form.edt_title00_01" propid="value" datasetid="students_ds" columnid="contact"/>
       <BindItem id="item3" compid="Div00.form.edt_title00_00_00" propid="value" datasetid="students_ds" columnid="name"/>
-      <BindItem id="item4" compid="edt_title01_00" propid="value" datasetid="students_ds" columnid="adress"/>
-      <BindItem id="item5" compid="edt_title01" propid="value" datasetid="students_ds" columnid="grade"/>
-      <BindItem id="item6" compid="Combo00" propid="value" datasetid="students_ds" columnid="deptCode"/>
-      <BindItem id="item7" compid="edt_title00_01" propid="value" datasetid="students_ds" columnid="contact"/>
-      <BindItem id="item8" compid="edt_title00" propid="value" datasetid="students_ds" columnid="s_seq"/>
-      <BindItem id="item9" compid="edt_title00_00_00" propid="value" datasetid="students_ds" columnid="name"/>
-      <BindItem id="item10" compid="edt_title00_00" propid="value" datasetid="students_ds" columnid="birth"/>
     </Bind>
   </Form>
 </FDL>

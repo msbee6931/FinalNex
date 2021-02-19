@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="sample_fileuptransfer_01" left="0" top="0" width="1024" height="768" titletext="New Form" border="" background="" onload="sample_fileuptransfer_01_onload">
+  <Form id="sample_fileuptransfer_01" left="0" top="0" width="1080" height="520" titletext="New Form" border="" background="" onload="sample_fileuptransfer_01_onload">
     <Layouts>
-      <Layout height="768" width="1024" stepcount="0">
+      <Layout height="520" width="1080" stepcount="0">
         <Static id="Static00" taborder="2" text="Drop Files Here" left="610" top="115" width="366" height="150" visible="true" background="aliceblue" color="dodgerblue" font="normal 30pt/normal &quot;Arial&quot;" textAlign="center" verticalAlign="middle"/>
-        <Button id="Button00" taborder="0" text="파일찾기" left="795" top="85" width="92" height="31" onclick="Button00_onclick"/>
-        <Grid id="Grid00" taborder="1" left="600" top="115" width="376" height="150" binddataset="Dataset00" ondragenter="Grid00_ondragenter" ondragleave="Grid00_ondragleave" ondrop="Grid00_ondrop" autofittype="col" onheadclick="Grid00_onheadclick">
+        <Button id="Button00" taborder="0" text="파일찾기" left="815" top="85" width="100" height="30" onclick="Button00_onclick" cssclass="btn_default"/>
+        <Grid id="Grid00" taborder="1" left="600" top="115" width="430" height="125" binddataset="Dataset00" ondragenter="Grid00_ondragenter" ondragleave="Grid00_ondragleave" ondrop="Grid00_ondrop" autofittype="col" onheadclick="Grid00_onheadclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -30,13 +30,13 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="Button02" taborder="3" text="제거" left="887" top="85" width="90" height="30" onclick="Button02_onclick"/>
-        <Button id="update" taborder="4" text="수정" left="887" top="676" width="87" height="48" onclick="update_onclick"/>
-        <Static id="Static01" taborder="5" text="Title : " left="600" top="36" width="72" height="36" font="italic 18pt &quot;Arial&quot;"/>
-        <Edit id="title" taborder="6" left="660" top="37" width="316" height="33" border="0px none, 0px none, 1px solid"/>
-        <Static id="Static01_00" taborder="7" text="File :" left="600" top="72" width="72" height="36" font="italic 18pt &quot;Arial&quot;"/>
-        <Edit id="contents" taborder="8" left="600" top="284" width="376" height="374"/>
-        <Grid id="Grid01" taborder="9" left="32" top="80" width="536" height="581" binddataset="reference" autofittype="col" oncellclick="Grid01_oncellclick" oncellposchanged="Grid01_oncellposchanged">
+        <Button id="Button02" taborder="3" text="제거" left="930" top="85" width="100" height="30" onclick="Button02_onclick" cssclass="btn_del"/>
+        <Button id="update" taborder="4" text="수정" left="930" top="480" width="100" height="30" onclick="update_onclick" cssclass="btn_default"/>
+        <Static id="Static01" taborder="5" text="Title : " left="600" top="36" width="72" height="36" cssclass="sta_title"/>
+        <Edit id="title" taborder="6" left="660" top="42" width="360" height="28" cssclass="edt_default"/>
+        <Static id="Static01_00" taborder="7" text="File :" left="600" top="72" width="72" height="36" cssclass="sta_title"/>
+        <Edit id="contents" taborder="8" left="602" top="260" width="428" height="210" cssclass="edt_default"/>
+        <Grid id="Grid01" taborder="9" left="32" top="80" width="536" height="390" binddataset="reference" autofittype="col" oncellclick="Grid01_oncellclick" oncellposchanged="Grid01_oncellposchanged">
           <Formats>
             <Format id="default">
               <Columns>
@@ -64,9 +64,9 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static01_01" taborder="10" text="자료실 수정" left="37" top="26" width="186" height="36" font="24pt/normal &quot;Arial&quot;" onclick="Static01_01_onclick"/>
-        <Button id="Button03_00" taborder="11" text="삭제" left="481" top="676" width="87" height="48" onclick="Button03_onclick"/>
-        <Button id="Button01" taborder="12" text="갱신" left="479" top="36" width="89" height="33" onclick="Button01_onclick"/>
+        <Static id="Static01_01" taborder="10" text="자료실 수정" left="37" top="26" width="186" height="36" onclick="Static01_01_onclick" cssclass="sta_title"/>
+        <Button id="Button03_00" taborder="11" text="삭제" left="468" top="480" width="100" height="30" onclick="Button03_onclick" cssclass="btn_del"/>
+        <Button id="Button01" taborder="12" text="갱신" left="468" top="46" width="100" height="30" onclick="Button01_onclick" cssclass="btn_default"/>
       </Layout>
     </Layouts>
     <Objects>

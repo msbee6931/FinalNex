@@ -42,7 +42,7 @@
         </Grid>
         <Static id="Static00" taborder="1" text="나의 강좌" left="80" top="20" width="120" height="50"/>
         <Static id="sta_label" taborder="2" text="학생 리스트" left="455" top="220" width="190" height="50"/>
-        <Combo id="co_year" taborder="3" text="" left="650" top="27" width="120" height="28" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Combo id="co_year" taborder="3" text="" left="715" top="27" width="120" height="25" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -60,7 +60,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="co_semester" taborder="4" text="" left="780" top="27" width="120" height="28" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Combo id="co_semester" taborder="4" text="" left="845" top="27" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -78,7 +78,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Button id="btnSearch" taborder="5" text="검색" left="910" top="24" width="90" height="33" onclick="btnSearch_onclick"/>
+        <Button id="btnSearch" taborder="5" left="975" top="27" width="25" height="25" onclick="btnSearch_onclick" cssclass="btn_search"/>
         <Grid id="Grid02" taborder="6" left="455" top="260" width="535" height="260" binddataset="ds_attend" autofittype="col" oncellclick="Grid02_oncellclick">
           <Formats>
             <Format id="default">
@@ -111,7 +111,7 @@
           </Formats>
         </Grid>
         <Calendar id="cal" taborder="7" left="70" top="260" width="300" height="260" type="monthonly" onchanged="cal_onchanged" usetrailingday="true" innerdataset="ds_cal" backgroundcolumn="backgroundcolumn" bordercolumn="bordercolumn" datecolumn="datecolumn" textcolorcolumn="textcolorcolumn"/>
-        <Button id="btnSave" taborder="8" text="저장" left="890" top="525" width="100" height="35" onclick="btnSave_onclick"/>
+        <Button id="btnSave" taborder="8" text="저장" left="890" top="525" width="100" height="30" onclick="btnSave_onclick" cssclass="btn_default"/>
         <PopupDiv id="PopupDiv00" text="PopupDiv00" visible="false" left="910" top="310" width="200" height="120" oncloseup="PopupDiv00_oncloseup">
           <Layouts>
             <Layout>
@@ -119,7 +119,7 @@
             </Layout>
           </Layouts>
         </PopupDiv>
-        <Button id="btnDel" taborder="9" text="삭제" left="780" top="525" width="100" height="35" onclick="btnDel_onclick"/>
+        <Button id="btnDel" taborder="9" text="삭제" left="780" top="525" width="100" height="30" onclick="btnDel_onclick" cssclass="btn_del"/>
       </Layout>
     </Layouts>
     <Objects>
