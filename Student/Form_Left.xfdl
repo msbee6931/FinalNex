@@ -134,7 +134,7 @@ this.fn_openForm2 = function(obj, e)
 	var sFormUrl = objDs.getColumn(e.row, "form_url");	
 	var sTrPath  = obj.getTreePath(e.row); 	//풀 메뉴 트리구조 가져올 때 쓸것
 	sTrPath = nexacro.replaceAll(sTrPath, ".", ">");
-	
+
 	var rest = this.objApp.gds_students.getColumn(0,"rest");
 	if(sMenuId == '2020' || sMenuId == '2010'){
 		if(rest == 'Y'){
