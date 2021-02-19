@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="420" mobileorientation="landscape" width="300">
         <Static id="Static00" taborder="0" text="교수번호" top="20" width="50" height="30" left="10"/>
-        <Edit id="edt_p_seq" taborder="1" top="20" width="175" height="30" left="85"/>
+        <Edit id="edt_p_seq" taborder="1" top="20" width="175" height="30" left="85" cssclass="edt_default"/>
         <Static id="Static00_00" taborder="2" text="이름" top="55" width="50" height="30" left="10"/>
         <Static id="Static00_01" taborder="3" text="주민번호" top="90" width="50" height="30" left="10"/>
         <Static id="Static00_02" taborder="4" text="이메일" top="125" width="50" height="30" left="10"/>

@@ -313,5 +313,9 @@ this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.close("");
 };]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="cmb_colCode" propid="value" datasetid="ds_students_copy" columnid="colcode"/>
+      <BindItem id="item1" compid="cmb_deptCode" propid="value" datasetid="ds_students_copy" columnid="deptcode"/>
+    </Bind>
   </Form>
 </FDL>

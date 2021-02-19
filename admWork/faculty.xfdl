@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="faculty" width="1080" height="570" titletext="New Form">
+  <Form id="faculty" width="1080" height="520" titletext="New Form">
     <Layouts>
-      <Layout height="570" mobileorientation="landscape" width="1080">
-        <Grid id="Grid00" taborder="0" left="20" top="40" width="1040" height="425" binddataset="ds_faculty" autofittype="col" onheadclick="Grid00_onheadclick">
+      <Layout height="520" mobileorientation="landscape" width="1080">
+        <Grid id="Grid00" taborder="0" left="29" top="80" width="1021" height="360" binddataset="ds_faculty" autofittype="col" onheadclick="Grid00_onheadclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -46,11 +46,11 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_retrive" taborder="1" text="조회" left="1020" top="10" width="40" height="30" onclick="btn_retrive_onclick"/>
-        <Button id="btn_save" taborder="2" text="저장" left="1020" top="465" width="40" height="30" onclick="btn_save_onclick"/>
-        <Button id="btn_del" taborder="3" text="삭제" left="960" top="465" width="40" height="30" onclick="btn_del_onclick"/>
-        <Button id="btn_add" taborder="4" text="입력" left="20" top="10" width="40" height="30" onclick="btn_add_onclick"/>
-        <Combo id="cb_search" taborder="5" text="전체" left="100" top="10" width="100" height="30" value="All" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="cb_search_onitemchanged">
+        <Button id="btn_retrive" taborder="1" left="950" top="40" width="100" height="30" onclick="btn_retrive_onclick" cssclass="btn_default" text="전체조회"/>
+        <Button id="btn_save" taborder="2" text="저장" left="840" top="450" width="100" height="30" onclick="btn_save_onclick" cssclass="btn_default"/>
+        <Button id="btn_del" taborder="3" text="삭제" left="950" top="450" width="100" height="30" onclick="btn_del_onclick" cssclass="btn_del"/>
+        <Button id="btn_add" taborder="4" text="입력" left="840" top="40" width="100" height="30" onclick="btn_add_onclick" cssclass="btn_insert"/>
+        <Combo id="cb_search" taborder="5" text="전체" left="30" top="40" width="100" height="25" value="All" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="cb_search_onitemchanged" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -68,8 +68,12 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="edt_search" taborder="6" left="220" top="10" width="100" height="30"/>
-        <Button id="btn_search" taborder="7" text="검색" left="330" top="10" width="40" height="30" onclick="btn_search_onclick"/>
+        <Edit id="edt_search" taborder="6" left="140" top="40" width="150" height="25" cssclass="edt_default"/>
+        <Button id="btn_search" taborder="7" left="295" top="40" width="25" height="25" onclick="btn_search_onclick" cssclass="btn_search"/>
+        <Static id="Static00" taborder="8" left="0" top="0" visible="false" background="RGBA(236,135,135,0.71)" width="29" bottom="0"/>
+        <Static id="Static00_01" taborder="9" left="80" top="0" visible="false" background="RGBA(236,135,135,0.71)" height="10" width="800"/>
+        <Static id="Static00_00" taborder="10" left="1051" top="0" visible="false" background="RGBA(236,135,135,0.71)" right="0" bottom="0"/>
+        <Static id="Static00_01_00" taborder="11" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="0"/>
       </Layout>
     </Layouts>
     <Objects>

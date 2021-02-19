@@ -4,13 +4,14 @@
     <Layouts>
       <Layout height="370" mobileorientation="landscape" width="300">
         <Static id="Static00" taborder="0" text="교직원번호" top="20" width="75" height="30" left="10"/>
-        <Edit id="edt_f_seq" taborder="1" top="20" width="175" height="30" left="85"/>
+        <Edit id="edt_f_seq" taborder="1" top="20" width="175" height="30" left="85" cssclass="edt_default"/>
         <Static id="Static00_00" taborder="2" text="이름" top="55" width="50" height="30" left="10"/>
         <Static id="Static00_01" taborder="3" text="주민번호" top="90" width="50" height="30" left="10"/>
         <Static id="Static00_02" taborder="4" text="이메일" top="125" width="50" height="30" left="10"/>
         <Static id="Static00_03" taborder="5" text="전화번호" top="160" width="50" height="30" left="10"/>
         <Static id="Static00_04" taborder="6" text="주소" top="195" width="50" height="30" left="10"/>
         <Static id="Static00_06" taborder="7" text="초기비밀번호" top="230" width="75" height="30" left="10"/>
+
         <Edit id="edt_name" taborder="8" top="55" width="175" height="30" left="85"/>
         <Edit id="edt_email" taborder="9" top="125" width="175" height="30" left="85"/>
         <Edit id="edt_contact" taborder="10" top="160" width="175" height="30" left="85"/>
@@ -23,6 +24,7 @@
         <Combo id="com_colCode" taborder="17" left="85" top="265" width="175" height="30" innerdataset="colCode_Copy" codecolumn="code" datacolumn="name"/>
         <Static id="Static00_06_00_00" taborder="18" text="학과" top="300" width="75" height="30" left="10"/>
         <Combo id="com_deptCode" taborder="19" left="85" top="300" width="175" height="30" innerdataset="deptCode_copy" codecolumn="code" datacolumn="name"/>
+
       </Layout>
     </Layouts>
     <Objects>
@@ -185,10 +187,12 @@ this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var pw = this.edt_pw.value;
 	var colCode = this.com_colCode.value;
 	var deptCode = this.com_deptCode.value;
+
 	
 	var addRow = this.ds_faculty_copy.addRow();
 	this.ds_faculty_copy.setColumn(addRow,"f_seq",f_seq);
 	this.ds_faculty_copy.setColumn(addRow,"name",name);
+
 	this.ds_faculty_copy.setColumn(addRow,"secNumber",secNumber);
 	this.ds_faculty_copy.setColumn(addRow,"email",email);
 	this.ds_faculty_copy.setColumn(addRow,"contact",contact);
@@ -196,6 +200,7 @@ this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.ds_faculty_copy.setColumn(addRow,"pw",pw);
 	this.ds_faculty_copy.setColumn(addRow,"colCode",colCode);
 	this.ds_faculty_copy.setColumn(addRow,"deptCode",deptCode);
+
 	
 	this.transaction(
 

@@ -27,6 +27,7 @@
       </MainFrame>
     </Layout>
     <Style url="xcssrc::exprColor.xcss"/>
+    <Style url="xcssrc::Chart.xcss"/>
   </Application>
   <Script type="xscript5.1"><![CDATA[this.av_FrameSet = "";
 
