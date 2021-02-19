@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Work" width="1080" height="520" titletext="New Form" onload="Form_Work_onload">
+    <Layouts>
+      <Layout height="520" width="1080">
+        <Button id="btnGrade" taborder="0" text="성적 조회" left="50" top="370" width="120" height="50" onclick="btnGrade_onclick"/>
+        <Button id="btnCertification" taborder="1" text="증명서 발급" left="170" top="370" width="120" height="50" onclick="btnCertification_onclick"/>
+        <Button id="btnClassList" taborder="2" text="개설강좌 조회" left="50" top="420" width="120" height="50" onclick="btnClassList_onclick"/>
+        <Button id="Button03" taborder="3" text="장학금 관리" left="170" top="420" width="120" height="50"/>
+        <Button id="btnMypage" taborder="4" text="개인정보 조회" left="50" top="320" width="120" height="50" onclick="btnMypage_onclick"/>
+        <Button id="btnClassTime" taborder="5" text="시간표 조회" left="170" top="320" width="120" height="50" onclick="btnClassTime_onclick"/>
+        <Calendar id="Calendar00" taborder="6" left="765" top="30" width="270" height="209" type="monthonly"/>
+        <Grid id="Grid00" taborder="7" left="760" top="255" width="290" height="235"/>
+        <Static id="Static00" taborder="8" text="즐겨찾기" left="50" top="276" width="100" height="44"/>
+        <Static id="Static01" taborder="9" text="공지사항" left="318" top="10" width="92" height="44"/>
+        <Grid id="Grid00_00" taborder="10" left="310" top="80" width="420" height="306" binddataset="ds_Notice" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="227"/>
+                <Column size="112"/>
+              </Columns>
+              <Rows>
+                <Row size="30"/>
+              </Rows>
+              <Band id="body">
+                <Cell text="bind:deptcode" textAlign="center" displaytype="combotext" combodataset="ds_deptcode" combocodecol="code" combodatacol="name"/>
+                <Cell col="1" text="bind:title" cursor="pointer"/>
+                <Cell col="2" text="bind:writedate" textAlign="center" calendardateformat="yyyy-MM-dd " displaytype="calendarcontrol"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btnAll" taborder="11" text="전체" left="310" top="51" width="60" height="30" onclick="btnAll_onclick"/>
+        <Button id="btnNormal" taborder="12" text="일반" left="370" top="51" width="60" height="30" onclick="btnNormal_onclick"/>
+        <Button id="btnAcademic" taborder="13" text="학사" left="430" top="51" width="60" height="30" onclick="btnAcademic_onclick"/>
+        <Button id="btnScholar" taborder="14" text="장학" left="490" top="51" width="60" height="30" onclick="btnScholar_onclick"/>
+        <Button id="btnEmployment" taborder="15" text="취업" left="550" top="51" width="60" height="30" onclick="btnEmployment_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
+
+this.fn_openForm = function(sMenuId,sMenuNm,sFormUrl)
+{
+	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.form.fn_setFrameSize("Form");
+
+	//화면 오픈 스크립트
+	if(sFormUrl.length <= 0)	return;
+	var av_FrameSet = this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.FrameSet00;
+	var nWidth  = av_FrameSet.getOffsetWidth();
+	var nHeight = av_FrameSet.getOffsetHeight();
+
+	var sFormId = "form_" + sMenuId;	// FORM_1010...
+	var arrObj = av_FrameSet.all;
+	for(var i=0; i<arrObj.length; i++)
+	{
+		if(arrObj[i].name == sFormId)
+		{
+			arrObj[i].setFocus();
+			//mid 탭 일치시키기
+			this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.form.fn_tabChange(sFormId);
+			return;
+		}	
+	}
+
+	var objChildFrame = new ChildFrame();
+	objChildFrame.init(sFormId, 0, 0, nWidth, nHeight);
+
+	av_FrameSet.addChild(sFormId, objChildFrame);
+	objChildFrame.set_resizable(true);
+	objChildFrame.set_openstatus("maximize");
+	objChildFrame.set_showtitlebar(false);	
+	objChildFrame.set_titletext(sMenuNm);
+	
+	var oParam = {form_id : sFormId,
+				  menu_id : sMenuId,
+				  menu_name : sMenuNm,
+				  form_url : sFormUrl}
+
+	objChildFrame.khParam = oParam;
+	objChildFrame.set_formurl(sFormUrl);
+	objChildFrame.show();
+	
+	//새로 생성
+	var nRow = this.objApp.std_openForm.addRow();
+	this.objApp.std_openForm.setColumn(nRow, "form_id"  , sFormId);
+	this.objApp.std_openForm.setColumn(nRow, "menu_id"  , sMenuId);
+	this.objApp.std_openForm.setColumn(nRow, "menu_name", sMenuNm);
+	this.objApp.std_openForm.setColumn(nRow, "form_url" , sFormUrl);
+	trace(this.objApp.std_openForm.saveXML());	
+
+	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.form.fn_addTab(sFormId, sMenuNm);	
+}
+this.btnMypage_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+this.btnClassTime_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{	
+	this.objApp.std_menu.filter("menu_id.substring(0,2) == '" + 10 + "'");
+	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
+	this.fn_openForm("1030","시간표 조회","stdWork::timeSchedule.xfdl"); //form 오픈 함수
+};
+
+
+this.btnClassList_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.objApp.std_menu.filter("menu_id.substring(0,2) == '" + 20 + "'");
+	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
+	this.fn_openForm("2040","개설강좌 조회","prfWork::classList.xfdl"); //form 오픈 함수
+};
+
+this.btnGrade_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.objApp.std_menu.filter("menu_id.substring(0,2) == '" + 10 + "'");
+	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
+	this.fn_openForm("1020","성적 조회","stdWork::readGrade.xfdl"); //form 오픈 함수
+};
+
+this.btnCertification_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.objApp.std_menu.filter("menu_id.substring(0,2) == '" + 30 + "'");
+	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
+	this.fn_openForm("3010","재학 증명서","stdWork::enrollment.xfdl"); //form 오픈 함수
+};
+
+
+
+
+
+
+this.Form_Work_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+				"notice"
+				,"/noticeList.notice"
+				,""
+				,"ds_Notice=out_ds"
+				,""
+				,"fn_callback_notice"
+			);
+};
+this.fn_callback_notice=function(){
+	this.ds_Notice.filter("currow < 10");
+}
+
+
+this.btnAll_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_Notice.filter("currow < 10");
+};
+
+this.btnNormal_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_Notice.filter("deptcode == 'A'&&currow < 10");
+};
+
+this.btnAcademic_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_Notice.filter("deptcode == 'B'&&currow < 10");
+};
+
+this.btnScholar_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_Notice.filter("deptcode == 'C'&&currow < 10");
+};
+
+this.btnEmployment_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_Notice.filter("deptcode == 'D'&&currow < 10");
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_Notice">
+        <ColumnInfo>
+          <Column id="n_seq" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="writedate" type="DATE" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="deptcode" type="STRING" size="256"/>
+          <Column id="view_count" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_deptcode">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">A</Col>
+            <Col id="name">일반</Col>
+          </Row>
+          <Row>
+            <Col id="code">B</Col>
+            <Col id="name">장학</Col>
+          </Row>
+          <Row>
+            <Col id="code">C</Col>
+            <Col id="name">학사</Col>
+          </Row>
+          <Row>
+            <Col id="code">D</Col>
+            <Col id="name">취업</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>
