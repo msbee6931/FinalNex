@@ -10,7 +10,7 @@
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
-                <Column size="80"/>
+                <Column size="84"/>
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
@@ -27,32 +27,32 @@
               </Rows>
               <Band id="head">
                 <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
-                <Cell col="1" text="s_seq"/>
+                <Cell col="1" text="학번"/>
                 <Cell col="2" text="gender"/>
-                <Cell col="3" text="deptCode"/>
-                <Cell col="4" text="name"/>
-                <Cell col="5" text="secNumber"/>
-                <Cell col="6" text="email"/>
-                <Cell col="7" text="contact"/>
-                <Cell col="8" text="address"/>
-                <Cell col="9" text="scholarship"/>
-                <Cell col="10" text="rest"/>
-                <Cell col="11" text="colCode"/>
+                <Cell col="3" text="colCode"/>
+                <Cell col="4" text="deptCode"/>
+                <Cell col="5" text="name"/>
+                <Cell col="6" text="secNumber"/>
+                <Cell col="7" text="email"/>
+                <Cell col="8" text="contact"/>
+                <Cell col="9" text="address"/>
+                <Cell col="10" text="scholarship"/>
+                <Cell col="11" text="rest"/>
                 <Cell col="12" text="grade"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
                 <Cell col="1" text="bind:s_seq"/>
-                <Cell col="2" text="bind:gender"/>
-                <Cell col="3" text="bind:deptCode"/>
-                <Cell col="4" text="bind:name" edittype="normal"/>
-                <Cell col="5" text="bind:secNumber"/>
-                <Cell col="6" text="bind:email" edittype="normal"/>
-                <Cell col="7" text="bind:contact"/>
-                <Cell col="8" text="bind:address"/>
-                <Cell col="9" text="bind:scholarship"/>
-                <Cell col="10" text="bind:rest"/>
-                <Cell col="11" text="bind:colCode"/>
+                <Cell col="2" text="bind:gender" edittype="combo" combodataset="ds_gender" combocodecol="code" combodatacol="name"/>
+                <Cell col="3" text="bind:colCode" edittype="combo" combodataset="colCode" combocodecol="code" combodatacol="name"/>
+                <Cell col="4" text="bind:deptCode" edittype="combo" combodataset="deptCode" combocodecol="code" combodatacol="name"/>
+                <Cell col="5" text="bind:name" edittype="normal"/>
+                <Cell col="6" text="bind:secNumber" displaytype="mask" edittype="mask" maskedittype="string" maskeditformat="###### - #######"/>
+                <Cell col="7" text="bind:email" edittype="normal"/>
+                <Cell col="8" text="bind:contact" edittype="normal"/>
+                <Cell col="9" text="bind:address" edittype="normal"/>
+                <Cell col="10" text="bind:scholarship" edittype="normal"/>
+                <Cell col="11" text="bind:rest" edittype="combo" combodataset="ds_rest" combocodecol="code" combodatacol="name"/>
                 <Cell col="12" text="bind:grade"/>
               </Band>
             </Format>
@@ -62,7 +62,7 @@
         <Button id="btn_save" taborder="2" text="저장" left="1020" top="465" width="40" height="30" onclick="btn_save_onclick"/>
         <Button id="btn_del" taborder="3" text="삭제" left="960" top="465" width="40" height="30" onclick="btn_del_onclick"/>
         <Button id="btn_add" taborder="4" text="입력" left="20" top="10" width="40" height="30" onclick="btn_add_onclick"/>
-        <Combo id="cb_search" taborder="5" text="전체" left="100" top="10" width="100" height="30" value="All" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Combo id="cb_search" taborder="5" text="전체" left="100" top="10" width="100" height="30" value="All" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="cb_search_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -207,7 +207,8 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}else{
 		this.ds_students.filter("");
 	}
-};]]></Script>
+};
+]]></Script>
     <Objects>
       <Dataset id="ds_students">
         <ColumnInfo>
@@ -225,6 +226,38 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="colCode" type="STRING" size="256"/>
           <Column id="grade" type="STRING" size="256"/>
         </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_gender">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">M</Col>
+            <Col id="name">남자</Col>
+          </Row>
+          <Row>
+            <Col id="code">W</Col>
+            <Col id="name">여자</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_rest">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">Y</Col>
+            <Col id="name">휴학</Col>
+          </Row>
+          <Row>
+            <Col id="code">N</Col>
+            <Col id="name">재학</Col>
+          </Row>
+        </Rows>
       </Dataset>
     </Objects>
   </Form>
