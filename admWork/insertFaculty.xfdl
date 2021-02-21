@@ -11,7 +11,6 @@
         <Static id="Static00_03" taborder="5" text="전화번호" top="160" width="50" height="30" left="10"/>
         <Static id="Static00_04" taborder="6" text="주소" top="195" width="50" height="30" left="10"/>
         <Static id="Static00_06" taborder="7" text="초기비밀번호" top="230" width="75" height="30" left="10"/>
-
         <Edit id="edt_name" taborder="8" top="55" width="175" height="30" left="85"/>
         <Edit id="edt_email" taborder="9" top="125" width="175" height="30" left="85"/>
         <Edit id="edt_contact" taborder="10" top="160" width="175" height="30" left="85"/>
@@ -24,7 +23,6 @@
         <Combo id="com_colCode" taborder="17" left="85" top="265" width="175" height="30" innerdataset="colCode_Copy" codecolumn="code" datacolumn="name"/>
         <Static id="Static00_06_00_00" taborder="18" text="학과" top="300" width="75" height="30" left="10"/>
         <Combo id="com_deptCode" taborder="19" left="85" top="300" width="175" height="30" innerdataset="deptCode_copy" codecolumn="code" datacolumn="name"/>
-
       </Layout>
     </Layouts>
     <Objects>
@@ -184,7 +182,6 @@ this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var email = this.edt_email.value;
 	var contact = this.edt_contact.value;
 	var address = this.edt_address.value;
-
 	var pw = this.edt_pw.value;
 	var colCode = this.com_colCode.value;
 	var deptCode = this.com_deptCode.value;

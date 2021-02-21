@@ -46,7 +46,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="com_gender" taborder="26" left="85" top="370" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Combo id="com_gender" taborder="26" left="85" top="370" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="com_gender_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -54,11 +54,11 @@
             </ColumnInfo>
             <Rows>
               <Row>
-                <Col id="codecolumn">1</Col>
+                <Col id="codecolumn">M</Col>
                 <Col id="datacolumn">남자</Col>
               </Row>
               <Row>
-                <Col id="codecolumn">2</Col>
+                <Col id="codecolumn">W</Col>
                 <Col id="datacolumn">여자</Col>
               </Row>
             </Rows>
@@ -277,7 +277,7 @@ this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var gender = this.com_gender.value;
 	var colCode = this.com_colCode.value;
 	var deptCode = this.com_deptCode.value;
-	var colGrade = this.com_colGrade.value;
+	var colGrade = this.com_colGrade.text;
 	
 	if(s_seq == null || s_seq == "undefined"){
 		this.alert("학번 입력해주세요");
@@ -355,7 +355,8 @@ this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.close("");
-};]]></Script>
+};
+]]></Script>
     <Bind>
       <BindItem id="item0" compid="cmb_colCode" propid="value" datasetid="ds_students_copy" columnid="colcode"/>
       <BindItem id="item1" compid="cmb_deptCode" propid="value" datasetid="ds_students_copy" columnid="deptcode"/>
