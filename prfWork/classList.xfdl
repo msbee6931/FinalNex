@@ -35,7 +35,7 @@
         </Combo>
         <Edit id="edt_search" taborder="1" left="795" top="6" width="170" height="28"/>
         <Button id="btnSearch" taborder="2" text="검색" left="970" top="4" width="90" height="33" onclick="btnSearch_onclick"/>
-        <Grid id="Grid00" taborder="3" left="20" top="44" width="1040" height="415" binddataset="ds_class" autofittype="col" oncellclick="Grid00_oncellclick" onheadclick="Grid00_onheadclick">
+        <Grid id="gt_classList" taborder="3" left="20" top="44" width="1040" height="415" binddataset="ds_class" autofittype="col" oncellclick="gr_classList_oncellclick" onheadclick="gr_classList_onheadclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -68,7 +68,7 @@
               </Band>
               <Band id="body">
                 <Cell text="expr:currow+1" textAlign="center"/>
-                <Cell col="1" text="bind:classPart" textAlign="center"/>
+                <Cell col="1" text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
                 <Cell col="2" text="bind:className" tooltiptext="상세보기" textDecoration="underline" textAlign="center" cursor="pointer" wordWrap="english"/>
                 <Cell col="3" text="bind:grade" textAlign="center"/>
                 <Cell col="4" text="bind:classSeq" textAlign="center" displaytype="mask" maskeditformat="#########"/>
@@ -219,7 +219,10 @@ this.classList_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		,"fn_callback_fliter" 
 	);
 };
-this.fn_callback_fliter=function(){
+this.fn_callback_fliter=function(sId,errCd,errMsg){
+	if (errCd < 0) {
+		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
+	} 
 	var date = new Array();
 	for(var i=0; i<this.ds_class.getRowCount(); i++){
 		date[i] = this.ds_class.getColumn(i,"reg_date")
@@ -240,7 +243,7 @@ this.fn_callback_fliter=function(){
 }
 
 //개설강좌 상세보기
-this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.gr_classList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	if(e.col == 0){
 		if(this.ds_class.getColumn(e.row,"chk")==0){
@@ -255,12 +258,12 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 		let objCF = new ChildFrame();
 		objCF.init("popAdd",x,y,1000,680,0,0,"prfWork::detail.xfdl");
 		objCF.set_showtitlebar(false);
-		objCF.showModal(this.getOwnerFrame(),{classSeq:classSeq, proCode : proCode, view : 'Y'},this,"fn_callback");
+		objCF.showModal(this.getOwnerFrame(),{classSeq:classSeq, proCode : proCode, view : 'Y'},this,"fn_pop_callback");
  	}
 };
 
 //정렬
-this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.gr_classList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	var objDs = this.objects[obj.binddataset];          
 	for (var i = 1; i < obj.getCellCount("head"); i++)
@@ -340,7 +343,7 @@ this.btnExport_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		this.exportObj.set_exportfilename(semester + " 개설과목");
 		this.exportObj.set_exporturl("http://localhost/nexacro-xeni/XExportImport");
 		
-		this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.Grid00, "Sheet1!A1");
+		this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.gr_classList, "Sheet1!A1");
 		
 		this.addEventHandler("onsuccess", this.Export00_onsuccess, this);
 		this.addEventHandler("onerror", this.Export00_onerror, this);
@@ -358,6 +361,7 @@ this.Export00_onerror = function(obj:ExcelExportObject, e:nexacro.ExcelExportEve
 {
 	trace("Export00_onerror");
 }
+
 
 
 ]]></Script>

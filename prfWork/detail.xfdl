@@ -23,7 +23,7 @@
                         <Static id="Static00_02_00" taborder="9" text=" ▣ 담당교수명" left="21" top="88" width="118" height="39" border="1px solid gray" background="lightgray"/>
                         <Static id="Static00_02_01" taborder="17" text=" ▣ 강의 시간" left="351" top="127" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
                         <Static id="Static00_02_04" taborder="11" text=" ▣ 소속 학과" left="351" top="88" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
-                        <Combo id="co_part" taborder="1" left="139" top="10" width="212" height="39" innerdataset="ds_part" codecolumn="id" datacolumn="name"/>
+                        <Combo id="co_part" taborder="1" left="139" top="10" width="212" height="39" codecolumn="id" datacolumn="name" innerdataset="gds_part"/>
                         <Edit id="edt_className" taborder="5" left="139" top="49" width="212" height="39" textAlign="center"/>
                         <Combo id="co_point" taborder="8" left="799" top="49" width="90" height="39" innerdataset="ds_point" codecolumn="id" datacolumn="name"/>
                         <Static id="Static00_02_03" taborder="13" text=" ▣ 학년" left="681" top="88" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
@@ -110,7 +110,7 @@
                         <MaskEdit id="edt_classSeq" taborder="52" left="469" top="49" width="212" height="39" maskchar="###" textAlign="center" format="+##########"/>
                         <MaskEdit id="mask_attend" taborder="42" left="21" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
                         <MaskEdit id="mask_mid" taborder="44" left="176" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
-                        <Combo id="co_dept" taborder="12" text="" left="469" top="88" width="212" height="39" innerdataset="deptCode" codecolumn="id" datacolumn="name"/>
+                        <Combo id="co_dept" taborder="12" text="" left="469" top="88" width="212" height="39" innerdataset="deptCode" codecolumn="code" datacolumn="name"/>
                         <CheckBox id="chk_pf" taborder="54" text="Pass/Fail" left="894" top="58" width="85" height="20" falsevalue="F" truevalue="P" value="F"/>
                       </Layout>
                     </Layouts>
@@ -299,38 +299,6 @@
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="ds_part">
-        <ColumnInfo>
-          <Column id="id" type="STRING" size="256"/>
-          <Column id="name" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="id">A</Col>
-            <Col id="name">전공필수</Col>
-          </Row>
-          <Row>
-            <Col id="id">B</Col>
-            <Col id="name">전공선택</Col>
-          </Row>
-          <Row>
-            <Col id="id">C</Col>
-            <Col id="name">교양필수</Col>
-          </Row>
-          <Row>
-            <Col id="id">D</Col>
-            <Col id="name">교양선택</Col>
-          </Row>
-          <Row>
-            <Col id="id">E</Col>
-            <Col id="name">지정교양</Col>
-          </Row>
-          <Row>
-            <Col id="id">F</Col>
-            <Col id="name">계열기초</Col>
-          </Row>
-        </Rows>
-      </Dataset>
       <Dataset id="ds_classTimeList">
         <ColumnInfo>
           <Column id="Time" type="STRING" size="256"/>
@@ -381,34 +349,6 @@
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="ds_dept">
-        <ColumnInfo>
-          <Column id="id" type="STRING" size="256"/>
-          <Column id="name" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="id">01</Col>
-            <Col id="name">정보통신학과</Col>
-          </Row>
-          <Row>
-            <Col id="id">02</Col>
-            <Col id="name">간호학과</Col>
-          </Row>
-          <Row>
-            <Col id="id">03</Col>
-            <Col id="name">경찰경호학과</Col>
-          </Row>
-          <Row>
-            <Col id="id">04</Col>
-            <Col id="name">산업디자인과</Col>
-          </Row>
-          <Row>
-            <Col id="id">05</Col>
-            <Col id="name">교양학부</Col>
-          </Row>
-        </Rows>
-      </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
 var classForm = this.Div00.form.classPlanTab.classPlan.form;
@@ -416,10 +356,9 @@ var planForm = this.Div00.form.classPlanTab.classSchedule.form;
 //-------------------------------------------수업계획서 작성-------------------------------------------
 this.classPlanTab_classPlan_btnSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	
 	var sum = classForm.sta_sum.text;
 	var sum2 = classForm.sta_sum2.text
-	var part = classForm.co_part.text;
+	var part = classForm.co_part.value;
 	var limit = "0/"+classForm.mask_limit.text;
 	var className = classForm.edt_className.text;
 	var classSeq = classForm.edt_classSeq.text;
@@ -427,7 +366,7 @@ this.classPlanTab_classPlan_btnSave_onclick = function(obj:nexacro.Button,e:nexa
 	var passFail = classForm.chk_pf.value;
 	var proCode = classForm.sta_proCode.text;
 	var proName = classForm.sta_proName.text;
-	var dept =classForm.co_dept.text;
+	var dept = classForm.co_dept.value;
 	var grade = classForm.co_grade.text;
 	var classTime = classForm.edt_classTime.text;
 	var classRoom = classForm.edt_classRoom.text;
@@ -569,7 +508,7 @@ this.Detail_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 			,""
 			,"ds_class=out_ds ds_classSchedule=out_ds2"
 			,"classSeq="+nexacro.wrapQuote(classSeq)
-			,"fn_class_callback"
+			,"fn_callback"
 		);
 			classForm.edt_classSeq.set_readonly(true);
 		if(view == 'Y'){
@@ -624,16 +563,20 @@ this.Div00_classPlanTab_classPlan_btnClose_onclick = function(obj:nexacro.Button
 	this.close(proCode)
 };
 
-this.fn_class_callback=function(id,ErrorCode,ErrorMsg){
+this.fn_callback=function(sId,errCd,errMsg){
+	if (errCd < 0) {
+		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
+	} 
+	if(sId == "classListSeq"){
 	//수업 정보 가져와서 띄우기
-	classForm.co_part.set_text(this.ds_class.getColumn(0,"classPart"));
+	classForm.co_part.set_value(this.ds_class.getColumn(0,"classPart"));
 	classForm.edt_className.set_value(this.ds_class.getColumn(0,"className")); 
 	classForm.edt_classSeq.set_value(this.ds_class.getColumn(0,"classSeq"));
 	classForm.co_point.set_text(this.ds_class.getColumn(0,"classPoint"));
 	classForm.chk_pf.set_value(this.ds_class.getColumn(0,"passFail"));
 	classForm.sta_proCode.set_text(this.ds_class.getColumn(0,"proCode"));
 	classForm.sta_proName.set_text(this.ds_class.getColumn(0,"proName"));
-	classForm.co_dept.set_text(this.ds_class.getColumn(0,"dept"));
+	classForm.co_dept.set_value(this.ds_class.getColumn(0,"dept"));
 	classForm.co_grade.set_text(this.ds_class.getColumn(0,"grade"));
 	classForm.edt_classTime.set_value(this.ds_class.getColumn(0,"classTime"));
 	classForm.edt_classRoom.set_value(this.ds_class.getColumn(0,"classRoom"));
@@ -688,6 +631,7 @@ this.fn_class_callback=function(id,ErrorCode,ErrorMsg){
 	planForm.edt_subject14.set_value(week14[0]);planForm.ta_content14.set_value(week14[1]);planForm.edt_notice14.set_value(week14[2]);planForm.edt_prepare14.set_value(week14[3]);	
 	var week15 = this.ds_classSchedule.getColumn(0,"week15").split("|");
 	planForm.edt_subject15.set_value(week15[0]);planForm.ta_content15.set_value(week15[1]);planForm.edt_notice15.set_value(week15[2]);planForm.edt_prepare15.set_value(week15[3]);		
+	}
 }
 
 

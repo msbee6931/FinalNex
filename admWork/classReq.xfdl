@@ -3,7 +3,7 @@
   <Form id="classReq" width="1080" height="520" titletext="New Form" onload="classReq_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
-        <Grid id="Grid00" taborder="0" left="30" top="49" width="1020" height="401" autofittype="col" binddataset="ds_class" onheadclick="Grid00_onheadclick" oncellclick="Grid00_oncellclick" onexpanddown="Grid00_onexpanddown">
+        <Grid id="gr_classList" taborder="0" left="30" top="49" width="1020" height="401" autofittype="col" binddataset="ds_class" onheadclick="gr_classList_onheadclick" oncellclick="gr_classList_oncellclick" onexpanddown="gr_classList_onexpanddown">
           <Formats>
             <Format id="default">
               <Columns>
@@ -40,12 +40,12 @@
               </Band>
               <Band id="body">
                 <Cell text="bind:chk" edittype="checkbox" displaytype="checkboxcontrol" textAlign="center"/>
-                <Cell col="1" text="bind:classPart" textAlign="center"/>
+                <Cell col="1" text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
                 <Cell col="2" text="bind:className" tooltiptext="상세보기" textDecoration="underline" cursor="pointer" textAlign="center" wordWrap="english"/>
                 <Cell col="3" text="bind:classSeq" textAlign="center" displaytype="mask" maskeditmaskchar="########"/>
                 <Cell col="4" text="bind:classPoint" textAlign="center"/>
                 <Cell col="5" text="bind:proName" textAlign="center"/>
-                <Cell col="6" text="bind:dept" textAlign="center"/>
+                <Cell col="6" text="bind:dept" textAlign="center" displaytype="combotext" combodataset="deptCode" combocodecol="code" combodatacol="name"/>
                 <Cell col="7" text="bind:classTime" textAlign="center" wordWrap="english"/>
                 <Cell col="8" text="bind:classRoom" textAlign="center"/>
                 <Cell col="9" text="bind:limit" textAlign="center"/>
@@ -146,7 +146,7 @@
     <Script type="xscript5.1"><![CDATA[
 this.classReq_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-		this.Grid00.setCellProperty("Head",0,"text",0);
+		this.gr_classList.setCellProperty("Head",0,"text",0);
 		this.transaction(
 			"classReqListA"
 			,"/classReqListA.nex" 
@@ -156,9 +156,13 @@ this.classReq_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 			,"fn_callback" 
 		);
 };
-
+this.fn_callback = function(sId, errCd, errMsg){
+	if (errCd < 0) {
+		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
+	} 
+}
 //수업 요청 상세보기
-this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.gr_classList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	if(e.col == 0){
 		if(this.ds_class.getColumn(e.row,"chk")==0){
@@ -173,11 +177,11 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 		let objCF = new ChildFrame();
 		objCF.init("popAdd",x,y,1000,680,0,0,"prfWork::detail.xfdl");
 		objCF.set_showtitlebar(false);
-		objCF.showModal(this.getOwnerFrame(),{classSeq:classSeq, proCode : proCode, view : 'Y'},this,"fn_callback");
+		objCF.showModal(this.getOwnerFrame(),{classSeq:classSeq, proCode : proCode, view : 'Y'},this,"fn_msg_callback");
  	}
 };
 // 수업요청 전체선택 & 정렬 
-this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.gr_classList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	let flag = obj.getCellProperty("Head",0,"text");
 	let check = flag==0?1:0;
@@ -293,8 +297,9 @@ this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}
 };
 
-this.fn_msg_callback=function(sId,send)
+this.fn_msg_callback=function(sId, send)
 {
+	trace(send)
 	if(send == ""){return;}
 	else{
 	var arr = send.split("|")
@@ -321,7 +326,7 @@ this.fn_msg_callback=function(sId,send)
 	}
 }
 
-this.Grid00_onexpanddown = function(obj:nexacro.Grid,e:nexacro.GridMouseEventInfo)
+this.gr_classList_onexpanddown = function(obj:nexacro.Grid,e:nexacro.GridMouseEventInfo)
 {
 	var msg = this.ds_class.getColumn(e.row,"rejectMsg");
 	var classSeq = this.ds_class.getColumn(e.row,"classSeq");

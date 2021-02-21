@@ -3,7 +3,7 @@
   <Form id="classList" width="1080" height="520" titletext="New Form" onload="classList_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
-        <Grid id="Grid00" taborder="0" left="30" top="60" width="1021" height="390" binddataset="ds_class" autofittype="col" oncellclick="Grid00_oncellclick" onheadclick="Grid00_onheadclick">
+        <Grid id="gr_classList" taborder="0" left="30" top="60" width="1021" height="390" binddataset="ds_class" autofittype="col" oncellclick="gr_classList_oncellclick" onheadclick="gr_classList_onheadclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -39,7 +39,7 @@
               <Band id="body">
                 <Cell displaytype="checkboxcontrol" edittype="checkbox" text="bind:chk"/>
                 <Cell col="1" text="expr:currow+1" textAlign="center"/>
-                <Cell col="2" text="bind:classPart" textAlign="center"/>
+                <Cell col="2" text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
                 <Cell col="3" text="bind:className" displaytype="normal" textDecoration="underline" cursor="pointer" textAlign="center" wordWrap="english"/>
                 <Cell col="4" text="bind:grade" textAlign="center"/>
                 <Cell col="5" text="bind:classSeq" textAlign="center" displaytype="mask" maskeditmaskchar="########"/>
@@ -120,7 +120,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Button id="Button00" taborder="6" text="삭제" left="950" top="460" width="100" height="30" onclick="Button00_onclick" cssclass="btn_del"/>
+        <Button id="btnDel" taborder="6" text="삭제" left="950" top="460" width="100" height="30" onclick="btnDel_onclick" cssclass="btn_del"/>
         <Button id="btnExport" taborder="7" text="Export" left="830" top="460" width="100" height="30" onclick="btnExport_onclick" cssclass="btn_default"/>
         <Static id="Static00" taborder="8" left="0" top="0" visible="false" background="RGBA(236,135,135,0.71)" width="29" bottom="0"/>
         <Static id="Static00_01_00" taborder="9" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="0"/>
@@ -145,38 +145,43 @@ this.classList_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		,""
 		,"ds_class=out_ds" 
 		,""
-		,"fn_callback_fliter" 
+		,"fn_callback" 
 	);
 };
-this.fn_callback_fliter=function(){
-	var date = new Array();
-	for(var i=0; i<this.ds_class.getRowCount(); i++){
-		date[i] = this.ds_class.getColumn(i,"reg_date")
-		date[i] = nexacro.replaceAll(date[i],"-","");
-		date[i] = date[i].substring(0,8);
-		this.ds_class.setColumn(i,"reg_date",date[i]);
-	}
-	var year = this.co_year.value
-	var startDate =  year+ "0101";
-	var semester = this.co_semester.value;
-	var mDate = year+ "0801";
-	var endDate = year+ "1231";
-	if(semester == "1"){
-		this.ds_class.filter("reg_date >='"+startDate+"'&& reg_date < '"+mDate+"'");
-	}else{
-		this.ds_class.filter("reg_date >='"+mDate+"'&& reg_date <= '"+endDate+"'")
+this.fn_callback=function(sId,errCd,errMsg){
+	if (errCd < 0) {
+		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
+	} 
+	if(sId == "classList"){
+		var date = new Array();
+		for(var i=0; i<this.ds_class.getRowCount(); i++){
+			date[i] = this.ds_class.getColumn(i,"reg_date")
+			date[i] = nexacro.replaceAll(date[i],"-","");
+			date[i] = date[i].substring(0,8);
+			this.ds_class.setColumn(i,"reg_date",date[i]);
+		}
+		var year = this.co_year.value
+		var startDate =  year+ "0101";
+		var semester = this.co_semester.value;
+		var mDate = year+ "0801";
+		var endDate = year+ "1231";
+		if(semester == "1"){
+			this.ds_class.filter("reg_date >='"+startDate+"'&& reg_date < '"+mDate+"'");
+		}else{
+			this.ds_class.filter("reg_date >='"+mDate+"'&& reg_date <= '"+endDate+"'")
+		}
 	}
 }
 
 //개설강좌 상세보기
-this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.gr_classList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	if(e.col == 0){
 		if(this.ds_class.getColumn(e.row,"chk")==0){
 			obj.setCellProperty("Head",0,"text",0);
 		}
 	}
-	if(e.col == 2){
+	if(e.col == 3){
 		var classSeq = this.ds_class.getColumn(e.row,"classSeq");
 		var proCode = this.ds_class.getColumn(e.row,"proCode");
 		let x = this.width/2-500; 
@@ -184,9 +189,10 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 		let objCF = new ChildFrame();
 		objCF.init("popAdd",x,y,1000,680,0,0,"prfWork::detail.xfdl");
 		objCF.set_showtitlebar(false);
-		objCF.showModal(this.getOwnerFrame(),{classSeq:classSeq, proCode : proCode, view : 'Y'},this,"fn_callback");
+		objCF.showModal(this.getOwnerFrame(),{classSeq:classSeq, proCode : proCode, view : 'Y'},this,"fn_pop_callback");
  	}
 };
+
 
 //검색
 this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -215,7 +221,7 @@ this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 };
 
 //개설강좌 정렬
-this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.gr_classList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	let flag = obj.getCellProperty("Head",0,"text");
 	let check = flag==0?1:0;
@@ -260,9 +266,8 @@ this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 };
 
 
-this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.btnDel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	
 	var arr = this.ds_class.extractRows("chk==1");
 	var code ="";
 	if(arr.length == 0 || arr==-1){
@@ -272,13 +277,13 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			var classSeq = this.ds_class.getColumn(arr[i],"classSeq");
 			code += classSeq+","
 		}
-			code=code.substring(0,code.length-1);
-			let x = this.width/2-150; 
-			let y = this.height/2-200;
-			let objCF = new ChildFrame();
-			objCF.init("popMsg",x,y,300,400,0,0,"admWork::rejectMsg.xfdl");
-			objCF.set_showtitlebar(false);
-			objCF.showModal(this.getOwnerFrame(),{classSeq:code},this,"fn_msg_callback");
+		code=code.substring(0,code.length-1);
+		let x = this.width/2-150; 
+		let y = this.height/2-200;
+		let objCF = new ChildFrame();
+		objCF.init("popMsg",x,y,300,400,0,0,"admWork::rejectMsg.xfdl");
+		objCF.set_showtitlebar(false);
+		objCF.showModal(this.getOwnerFrame(),{classSeq:code},this,"fn_msg_callback");
 	}
 	//pop 후 삭제 rejectMsg에 입력 후 reqState = 거절로 변경
 	//관련 학생 table에서 삭제 stdTimeTable stdClass
@@ -287,30 +292,30 @@ this.fn_msg_callback=function(sId,send)
 {
 	if(send == ""){return;}
 	else{
-	var arr = send.split("|")
-	var classSeqs = arr[0];
-	var reason = arr[1];
-	
-	var classSeq = classSeqs.split(",");
-	this.ds_class_copy.clearData();
-	for(var i=0; i<classSeq.length; i++){
-		var nRow = this.ds_class.findRow("classSeq",classSeq[i]);
-		this.ds_class.setColumn(nRow,"rejectMsg",reason);
-		this.ds_class.setColumn(nRow,"reqState","C");
-		var addRow = this.ds_class_copy.addRow();
-		this.ds_class_copy.setColumn(addRow,"classSeq",classSeq[i]);
-		var stdRow = this.ds_stdClass.addRow();
-		this.ds_stdClass.setColumn(stdRow,"classCode",classSeq[i])
-		this.ds_class.deleteRow(nRow)
-	}
+		var arr = send.split("|")
+		var classSeqs = arr[0];
+		var reason = arr[1];
+		
+		var classSeq = classSeqs.split(",");
+		this.ds_class_copy.clearData();
+		for(var i=0; i<classSeq.length; i++){
+			var nRow = this.ds_class.findRow("classSeq",classSeq[i]);
+			this.ds_class.setColumn(nRow,"rejectMsg",reason);
+			this.ds_class.setColumn(nRow,"reqState","C");
+			var addRow = this.ds_class_copy.addRow();
+			this.ds_class_copy.setColumn(addRow,"classSeq",classSeq[i]);
+			var stdRow = this.ds_stdClass.addRow();
+			this.ds_stdClass.setColumn(stdRow,"classCode",classSeq[i])
+			this.ds_class.deleteRow(nRow)
+		}
 		this.transaction(
-					"rejectMsgInset" 
-					,"/rejectMsgInsert.nex" 
-					,"in_ds=ds_class_copy:U"
-					,"" 
-					,"msg="+nexacro.wrapQuote(reason)
-					,"fn_callback" 
-				);
+			"rejectMsgInset" 
+			,"/rejectMsgInsert.nex" 
+			,"in_ds=ds_class_copy:U"
+			,"" 
+			,"msg="+nexacro.wrapQuote(reason)
+			,"fn_callback" 
+		);
 		//해당 학과코드로 관련 table에서 삭제 stdTimeTable stdClass
 		this.transaction(
 			"deleteStdClass"
@@ -336,24 +341,23 @@ this.btnExport_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			var semester = year+"년" + " 2학기"
 		}
 	}
-		this.exportObj = new ExcelExportObject("Export00", this);
-		
-		this.exportObj.set_exportfilename(semester + " 개설과목");
-		this.exportObj.set_exporturl("http://localhost/nexacro-xeni/XExportImport");
-		
-		this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.Grid00, "Sheet1!A1");
-		
-		this.addEventHandler("onsuccess", this.Export00_onsuccess, this);
-		this.addEventHandler("onerror", this.Export00_onerror, this);
-		
-		var intExportedItem = this.exportObj.exportData();
-		
-		trace("Number of Exported Item: " + intExportedItem);
+	this.exportObj = new ExcelExportObject("Export00", this);
+	
+	this.exportObj.set_exportfilename(semester + " 개설과목");
+	this.exportObj.set_exporturl("http://localhost/nexacro-xeni/XExportImport");
+	
+	this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.gr_classList, "Sheet1!A1");
+	
+	this.addEventHandler("onsuccess", this.Export00_onsuccess, this);
+	this.addEventHandler("onerror", this.Export00_onerror, this);
+	
+	var intExportedItem = this.exportObj.exportData();
+	
+	trace("Number of Exported Item: " + intExportedItem);
 };
 this.Export00_onsuccess = function(obj:ExcelExportObject, e:nexacro.ExcelExportEventInfo)
 {
-	trace("Export00_onsuccess");	
-	
+	trace("Export00_onsuccess");		
 }
 
 this.Export00_onerror = function(obj:ExcelExportObject, e:nexacro.ExcelExportEventInfo)

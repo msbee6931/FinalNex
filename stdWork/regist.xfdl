@@ -3,7 +3,7 @@
   <Form id="ClassRegist" width="1080" height="570" titletext="New Form" onload="ClassRegist_onload">
     <Layouts>
       <Layout height="570" mobileorientation="landscape" width="1080" stepcount="0">
-        <Div id="Div00" taborder="0" text="Info" left="0" top="0" width="200" height="570" border="1px solid black">
+        <Div id="div_Info" taborder="0" text="Info" left="0" top="0" width="200" height="570" border="1px solid black">
           <Layouts>
             <Layout>
               <Static id="Static00" taborder="0" text="학과" left="9" top="69" width="80" height="30" textAlign="center" cssclass="sta_default"/>
@@ -19,21 +19,21 @@
               <Static id="sta_grade" taborder="10" text="" left="89" top="159" width="100" height="30" padding="0px 0px 0px 5px" cssclass="sta_line"/>
               <Static id="sta_point" taborder="11" text="" left="89" top="189" width="100" height="30" padding="0px 0px 0px 5px" cssclass="sta_line"/>
               <Static id="sta_sSeq" taborder="12" text="" left="89" top="100" width="100" height="30" padding="0px 0px 0px 5px" cssclass="sta_line"/>
-              <Combo id="co_dept" taborder="13" text="전체" left="69" top="269" width="120" height="30" value="" index="-1" innerdataset="deptCode" codecolumn="id" datacolumn="name" onitemchanged="Div00_co_dept_onitemchanged" cssclass="cmb_default"/>
-              <Combo id="co_part" taborder="14" text="전체" left="69" top="299" width="120" height="30" value="All" index="0" innerdataset="ds_part" codecolumn="id" datacolumn="name" cssclass="cmb_default"/>
+              <Combo id="co_dept" taborder="13" text="전체" left="69" top="269" width="120" height="30" value="" index="-1" innerdataset="ds_deptCode" codecolumn="code" datacolumn="name" onitemchanged="div_Info_co_dept_onitemchanged" cssclass="cmb_default"/>
+              <Combo id="co_part" taborder="14" left="69" top="299" width="120" height="30" value="" index="0" codecolumn="id" datacolumn="name" cssclass="cmb_default" innerdataset="ds_part" displaynulltext="전체" text="전체"/>
               <Edit id="edt_className" taborder="15" left="69" top="329" width="120" height="30" onchanged="Div00_Edit00_onchanged"/>
-              <Button id="btnClassSearch" taborder="16" left="164" top="364" width="25" height="25" onclick="Div00_btnClassSearch_onclick" cssclass="btn_search"/>
+              <Button id="btnClassSearch" taborder="16" left="164" top="364" width="25" height="25" onclick="div_Info_btnClassSearch_onclick" cssclass="btn_search"/>
               <Static id="sta_basket" taborder="17" text="장바구니" left="9" top="434" width="110" height="30" textAlign="center" cssclass="sta_line"/>
               <Static id="sta_timeTable" taborder="18" text="시간표 조회" left="9" top="469" width="110" height="30" textAlign="center" cssclass="sta_line"/>
-              <Button id="basket" taborder="19" text="조회" left="129" top="434" width="60" height="30" onclick="Div00_basket_onclick" cssclass="btn_default"/>
-              <Button id="classTime" taborder="20" text="조회" left="129" top="469" width="60" height="30" onclick="Div00_classTime_onclick" cssclass="btn_default"/>
+              <Button id="basket" taborder="19" text="조회" left="129" top="434" width="60" height="30" onclick="div_Info_basket_onclick" cssclass="btn_default"/>
+              <Button id="classTime" taborder="20" text="조회" left="129" top="469" width="60" height="30" onclick="div_Info_classTime_onclick" cssclass="btn_default"/>
               <Static id="sta_semester" taborder="21" text="" left="9" top="19" width="180" height="40"/>
-              <Combo id="sta_dept" taborder="22" left="89" top="70" width="100" height="30" innerdataset="deptCode" codecolumn="code" datacolumn="name" readonly="true" onitemchanged="Div00_sta_dept_onitemchanged" cssclass="cmb_dept"/>
+              <Combo id="co_myDept" taborder="22" left="89" top="70" width="100" height="30" innerdataset="deptCode" codecolumn="code" datacolumn="name" readonly="true" cssclass="cmb_dept"/>
             </Layout>
           </Layouts>
         </Div>
         <Static id="Static01_00" taborder="1" text="▷ 개설강좌 리스트" left="210" top="10" width="120" height="30" onclick="Div00_Static01_onclick"/>
-        <Grid id="Grid00" taborder="2" left="210" top="35" width="860" height="260" binddataset="ds_class" oncellclick="Grid00_oncellclick">
+        <Grid id="gr_classList" taborder="2" left="210" top="35" width="860" height="260" binddataset="ds_class" oncellclick="gr_classList_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -65,7 +65,7 @@
                 <Cell col="9" text="신청/제한인원"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:classPart" textAlign="center"/>
+                <Cell text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
                 <Cell col="1" text="bind:grade" textAlign="center"/>
                 <Cell col="2" text="bind:classSeq" textAlign="center" displaytype="mask" maskeditformat="########"/>
                 <Cell col="3" text="bind:className" textDecoration="underline" tooltiptext="수업계획서 보기" textAlign="center" cursor="pointer" wordWrap="english"/>
@@ -80,7 +80,7 @@
           </Formats>
         </Grid>
         <Static id="Static01_00_00" taborder="3" text="▷ 수강신청내역 리스트" left="210" top="300" width="140" height="30" onclick="Div00_Static01_onclick"/>
-        <Grid id="Grid00_00" taborder="4" left="210" top="325" width="860" height="220" binddataset="ds_myClass" autofittype="col" oncellclick="Grid00_00_oncellclick">
+        <Grid id="Grid00_00" taborder="4" left="210" top="325" width="860" height="220" binddataset="ds_myClass" autofittype="col" oncellclick="gr_myClassList_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -111,7 +111,7 @@
               </Band>
               <Band id="body">
                 <Cell displaytype="buttoncontrol" text="취소" cursor="pointer" textAlign="center"/>
-                <Cell col="1" text="bind:classPart" textAlign="center"/>
+                <Cell col="1" text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
                 <Cell col="2" text="bind:grade" textAlign="center"/>
                 <Cell col="3" text="bind:classSeq" textAlign="center" displaytype="mask" maskeditformat="########"/>
                 <Cell col="4" text="bind:className" cursor="pointer" textDecoration="underline" textAlign="center" wordWrap="english"/>
@@ -150,38 +150,6 @@
           <Column id="reg_date" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_dept">
-        <ColumnInfo>
-          <Column id="id" type="STRING" size="256"/>
-          <Column id="name" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="id">00</Col>
-            <Col id="name">전체</Col>
-          </Row>
-          <Row>
-            <Col id="id">01</Col>
-            <Col id="name">정보통신학과</Col>
-          </Row>
-          <Row>
-            <Col id="id">02</Col>
-            <Col id="name">간호학과</Col>
-          </Row>
-          <Row>
-            <Col id="id">03</Col>
-            <Col id="name">경찰경호학과</Col>
-          </Row>
-          <Row>
-            <Col id="id">04</Col>
-            <Col id="name">산업디자인과</Col>
-          </Row>
-          <Row>
-            <Col id="id">05</Col>
-            <Col id="name">교양학부</Col>
-          </Row>
-        </Rows>
-      </Dataset>
       <Dataset id="ds_part">
         <ColumnInfo>
           <Column id="id" type="STRING" size="256"/>
@@ -189,7 +157,7 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="id">All</Col>
+            <Col id="id"></Col>
             <Col id="name">전체</Col>
           </Row>
           <Row>
@@ -316,6 +284,106 @@
           <Column id="basket" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="ds_deptCode">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code"></Col>
+            <Col id="name">전체</Col>
+          </Row>
+          <Row>
+            <Col id="code">11</Col>
+            <Col id="name">국어국문학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">12</Col>
+            <Col id="name">영어영문학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">13</Col>
+            <Col id="name">국사학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">14</Col>
+            <Col id="name">철학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">21</Col>
+            <Col id="name">사회복지학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">22</Col>
+            <Col id="name">경제학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">23</Col>
+            <Col id="name">사회학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">24</Col>
+            <Col id="name">심리학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">31</Col>
+            <Col id="name">통계학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">32</Col>
+            <Col id="name">화학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">33</Col>
+            <Col id="name">생명과학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">41</Col>
+            <Col id="name">간호학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">51</Col>
+            <Col id="name">전기공학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">52</Col>
+            <Col id="name">컴퓨터공학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">53</Col>
+            <Col id="name">화학생물공학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">54</Col>
+            <Col id="name">건축학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">55</Col>
+            <Col id="name">산업공학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">61</Col>
+            <Col id="name">교육학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">62</Col>
+            <Col id="name">국어교육과</Col>
+          </Row>
+          <Row>
+            <Col id="code">63</Col>
+            <Col id="name">영어교육과</Col>
+          </Row>
+          <Row>
+            <Col id="code">64</Col>
+            <Col id="name">수학교육과</Col>
+          </Row>
+          <Row>
+            <Col id="code">65</Col>
+            <Col id="name">체육교육과</Col>
+          </Row>
+        </Rows>
+      </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
 this.ClassRegist_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
@@ -324,18 +392,18 @@ this.ClassRegist_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	var sName = this.objApp.gds_students.getColumn(0,"name");
 	var deptCode = this.objApp.gds_students.getColumn(0,"deptCode");
 	var grade = this.objApp.gds_students.getColumn(0,"grade");
-	this.Div00.form.sta_sSeq.set_text(sCode);
-	this.Div00.form.sta_name.set_text(sName);
-	this.Div00.form.sta_dept.set_value(deptCode);
-	this.Div00.form.sta_grade.set_text(grade+"학년");
+	this.div_Info.form.sta_sSeq.set_text(sCode);
+	this.div_Info.form.sta_name.set_text(sName);
+	this.div_Info.form.co_myDept.set_value(deptCode);
+	this.div_Info.form.sta_grade.set_text(grade+"학년");
 	
 	var objDate= new Date();
 	if(objDate.getMonth()+1 && objDate.getMonth()+1 < 8){
-		this.Div00.form.sta_semester.set_text(objDate.getFullYear()+"년 1학기");	
+		this.div_Info.form.sta_semester.set_text(objDate.getFullYear()+"년 1학기");	
 		var startTime = objDate.getFullYear()+"0101";
 		var endTime = objDate.getFullYear()+"0731";
 	}else{
-		this.Div00.form.sta_semester.set_text(objDate.getFullYear()+"년 2학기");
+		this.div_Info.form.sta_semester.set_text(objDate.getFullYear()+"년 2학기");
 		var startTime = objDate.getFullYear()+"0801";
 		var endTime = objDate.getFullYear()+"1231";
 	}
@@ -351,14 +419,14 @@ this.ClassRegist_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	//로그인정보로 학생정보 가져와서 callback으로 값을 가져와서 두 개의 transaction callback함수에서 실행
 	//지금은 과목 명과 코드만 임시로 입력해둠
 	//수강신청 항목 가져옴(아직 테이블 수정) - 해당 과목 ds_class에서 filter후 myClass로 Copy
-	var sCode = this.Div00.form.sta_sSeq.text; 
+	var sCode = this.div_Info.form.sta_sSeq.text; 
 	this.transaction(
 		"myClassList"
 		,"/myClassList.nex"
 		,""
 		,"ds_myClass=out_ds"
 		,"sCode="+sCode + " startTime="+startTime+" endTime="+endTime
-		,"fn_callback_myClass"
+		,"fn_callback"
 	);
 	//시간표 가져옴(신청 시 시간표와 비교하기 위해)
 	this.transaction(
@@ -367,86 +435,82 @@ this.ClassRegist_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		,""
 		,"ds_stdTimeTableCopy=out_ds"
 		,"sCode="+sCode  + " startTime="+startTime+" endTime="+endTime
-		,"fn_callback_TimeTable"
+		,"fn_callback"
 	);
 };
-this.fn_callback=function(sId,errorCode,errorMsg){
-	trace(sId +":"+ errorCode +":"+errorMsg);
-}
-this.fn_callback_myClass=function(){	
-	var nPoint = 0;
-	for(var i=0; i<this.ds_myClass.getRowCountNF(); i++){
-		var classSeq = this.ds_myClass.getColumn(i,"classSeq");
-		var nRow = this.ds_class.findRowNF("classSeq",classSeq);
-		this.ds_class.deleteRow(nRow)
-		var point = this.ds_myClass.getColumn(i,"classPoint");
-		nPoint += parseInt(point);
+this.fn_callback = function(sId,errCd,errMsg){
+	if (errCd < 0) {
+		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
 	}
-	this.Div00.form.sta_point.set_text(20-nPoint);
-	trace(this.ds_class.saveXML());
-}
-this.fn_callback_TimeTable=function(){
-	var Time = new Array();
-	var Mon = new Array();
-	var Tue = new Array();
-	var Wed = new Array();
-	var Thu = new Array();
-	var Fri = new Array();
-	var Sat = new Array();
-	var Sun = new Array();
-	
-	for(var i=this.ds_stdTimeTableCopy.getRowCount()-1; i >=0; i--){
-		Time[i] = this.ds_stdTimeTableCopy.getColumn(i,"time");
-		Time[i] = Time[i].replace("교시","")-1;
-		Mon[i] = this.ds_stdTimeTableCopy.getColumn(i,"mon");
-		Tue[i] = this.ds_stdTimeTableCopy.getColumn(i,"tue");
-		Wed[i] = this.ds_stdTimeTableCopy.getColumn(i,"wed");
-		Thu[i] = this.ds_stdTimeTableCopy.getColumn(i,"thu");
-		Fri[i] = this.ds_stdTimeTableCopy.getColumn(i,"fri");
-		Sat[i] = this.ds_stdTimeTableCopy.getColumn(i,"sat");
-		Sun[i] = this.ds_stdTimeTableCopy.getColumn(i,"sat");
-		Sun[i] = this.ds_stdTimeTableCopy.getColumn(i,"sun");
-		var mon = this.ds_stdTimeTable.getColumn(Time[i],"mon");
-		var tue = this.ds_stdTimeTable.getColumn(Time[i],"tue");
-		var wed = this.ds_stdTimeTable.getColumn(Time[i],"wed");
-		var thu = this.ds_stdTimeTable.getColumn(Time[i],"thu");
-		var fri = this.ds_stdTimeTable.getColumn(Time[i],"fri");
-		var sat = this.ds_stdTimeTable.getColumn(Time[i],"sat");
-		var sun = this.ds_stdTimeTable.getColumn(Time[i],"sun");
+	if(sId == "myClassList"){
+		var nPoint = 0;
+		for(var i=0; i<this.ds_myClass.getRowCountNF(); i++){
+			var classSeq = this.ds_myClass.getColumn(i,"classSeq");
+			var nRow = this.ds_class.findRowNF("classSeq",classSeq);
+			this.ds_class.deleteRow(nRow)
+			var point = this.ds_myClass.getColumn(i,"classPoint");
+			nPoint += parseInt(point);
+		}
+		this.div_Info.form.sta_point.set_text(20-nPoint);
+	}else if(sId == "stdTimeTableList"){
+		var Time = new Array();
+		var Mon = new Array();
+		var Tue = new Array();
+		var Wed = new Array();
+		var Thu = new Array();
+		var Fri = new Array();
+		var Sat = new Array();
+		var Sun = new Array();
 		
-		if(mon == null || mon == ""){this.ds_stdTimeTable.setColumn(Time[i],"mon",Mon[i]);}
-		if(tue == null || tue == ""){this.ds_stdTimeTable.setColumn(Time[i],"tue",Tue[i]);}
-		if(wed == null || wed == ""){this.ds_stdTimeTable.setColumn(Time[i],"wed",Wed[i]);}
-		if(thu == null || thu == ""){this.ds_stdTimeTable.setColumn(Time[i],"thu",Thu[i]);}
-		if(fri == null || fri == ""){this.ds_stdTimeTable.setColumn(Time[i],"fri",Fri[i]);}
-		if(sat == null || sat == ""){this.ds_stdTimeTable.setColumn(Time[i],"sat",Sat[i]);}	
-		if(sun == null || sun == ""){this.ds_stdTimeTable.setColumn(Time[i],"sun",Sun[i]);}
+		for(var i=this.ds_stdTimeTableCopy.getRowCount()-1; i >=0; i--){
+			Time[i] = this.ds_stdTimeTableCopy.getColumn(i,"time");
+			Time[i] = Time[i].replace("교시","")-1;
+			Mon[i] = this.ds_stdTimeTableCopy.getColumn(i,"mon");
+			Tue[i] = this.ds_stdTimeTableCopy.getColumn(i,"tue");
+			Wed[i] = this.ds_stdTimeTableCopy.getColumn(i,"wed");
+			Thu[i] = this.ds_stdTimeTableCopy.getColumn(i,"thu");
+			Fri[i] = this.ds_stdTimeTableCopy.getColumn(i,"fri");
+			Sat[i] = this.ds_stdTimeTableCopy.getColumn(i,"sat");
+			Sun[i] = this.ds_stdTimeTableCopy.getColumn(i,"sat");
+			Sun[i] = this.ds_stdTimeTableCopy.getColumn(i,"sun");
+			var mon = this.ds_stdTimeTable.getColumn(Time[i],"mon");
+			var tue = this.ds_stdTimeTable.getColumn(Time[i],"tue");
+			var wed = this.ds_stdTimeTable.getColumn(Time[i],"wed");
+			var thu = this.ds_stdTimeTable.getColumn(Time[i],"thu");
+			var fri = this.ds_stdTimeTable.getColumn(Time[i],"fri");
+			var sat = this.ds_stdTimeTable.getColumn(Time[i],"sat");
+			var sun = this.ds_stdTimeTable.getColumn(Time[i],"sun");
+			
+			if(mon == null || mon == ""){this.ds_stdTimeTable.setColumn(Time[i],"mon",Mon[i]);}
+			if(tue == null || tue == ""){this.ds_stdTimeTable.setColumn(Time[i],"tue",Tue[i]);}
+			if(wed == null || wed == ""){this.ds_stdTimeTable.setColumn(Time[i],"wed",Wed[i]);}
+			if(thu == null || thu == ""){this.ds_stdTimeTable.setColumn(Time[i],"thu",Thu[i]);}
+			if(fri == null || fri == ""){this.ds_stdTimeTable.setColumn(Time[i],"fri",Fri[i]);}
+			if(sat == null || sat == ""){this.ds_stdTimeTable.setColumn(Time[i],"sat",Sat[i]);}	
+			if(sun == null || sun == ""){this.ds_stdTimeTable.setColumn(Time[i],"sun",Sun[i]);}
+		}
+		//화면 로드시 해당 학과 과목이 보여짐 
+		var dept = this.div_Info.form.co_myDept.value;
+		this.div_Info.form.co_dept.set_value(dept);
+		dept = this.div_Info.form.co_dept.value;
+		this.ds_class.filter("dept=='"+dept+"'");
 	}
-	//화면 로드시 해당 학과 과목이 보여짐 
-	var dept = this.Div00.form.sta_dept.text;
-	this.Div00.form.co_dept.set_text(dept);
-	dept = this.Div00.form.co_dept.text;
-	this.ds_class.filter("dept=='"+dept+"'");
 }
+
 //검색
-this.Div00_btnClassSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.div_Info_btnClassSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var dept = this.Div00.form.co_dept.text;
-	var part = this.Div00.form.co_part.text;
-	
-	var className = this.Div00.form.edt_className.text;
-	if(dept == "전체"){dept = ""}
-	if(part == "전체"){part = ""}
+	var dept = this.div_Info.form.co_dept.value;
+	var part = this.div_Info.form.co_part.value;
+	var className = this.div_Info.form.edt_className.text;
 	this.ds_class.filter("dept.indexOf('"+dept+"')>=0 && classPart.indexOf('"+part+"')>=0 && className.indexOf('"+className+"')>=0");
 };
-this.Div00_co_dept_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+this.div_Info_co_dept_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
 {
-	var dept = this.Div00.form.co_dept.text;
-	if(dept == "전체"){dept = ""}
-	this.ds_class.filter("dept.indexOf('"+dept+"')>=0");
+	this.ds_class.filter("dept.indexOf('"+e.postvalue+"')>=0");
 };
 
-this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.gr_classList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {	
 	if(e.col == 3){
 		var classSeq = this.ds_class.getColumn(e.row,"classSeq");
@@ -462,13 +526,13 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 		var nRow = this.ds_class.rowposition;
 		var limit = this.ds_class.getColumn(nRow,"limit");
 		var person =limit.split("/");
-		var myPoint = this.Div00.form.sta_point.text;
+		var myPoint = this.div_Info.form.sta_point.text;
 		var point = this.ds_class.getColumn(nRow,"classPoint").replace("학점","");
 		var grade = this.ds_class.getColumn(nRow,"grade")
-		var myGrade = this.Div00.form.sta_grade.text;
+		var myGrade = this.div_Info.form.sta_grade.text;
 		var part = this.ds_class.getColumn(nRow,"classPart");
 		var dept = this.ds_class.getColumn(nRow,"dept");
-		var myDept = this.Div00.form.sta_dept.text;
+		var myDept = this.div_Info.form.co_myDept.value;
 		var type ="";
 		if(person[0] < person[1]){
 			if(nexacro.toNumber(myPoint)-nexacro.toNumber(point) < 0){
@@ -480,7 +544,7 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 					return;
 				}else{
 					if(dept != myDept){
-						if(part == "전공필수" || "전공선택"){
+						if(part == "A" || "B"){
 							alert("다른 학과 전공은 신청이 불가능합니다");
 							return;
 						}
@@ -488,7 +552,7 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 						var classTime = this.ds_class.getColumn(nRow,"classTime");
 						var className = this.ds_class.getColumn(nRow,"className");
 						var classCode = this.ds_class.getColumn(nRow,"classSeq");
-						var sCode = this.Div00.form.sta_sSeq.text;
+						var sCode = this.div_Info.form.sta_sSeq.text;
 						classTime = nexacro.replaceAll(classTime,"교시","");
 						var time = classTime.split(")"); //요일(교시
 						this.ds_stdTimeTableCopy.clearData();
@@ -542,11 +606,11 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 							}
 						}
 						//학점 갱신		
-						this.Div00.form.sta_point.set_text(nexacro.toNumber(myPoint)-nexacro.toNumber(point));
+						this.div_Info.form.sta_point.set_text(nexacro.toNumber(myPoint)-nexacro.toNumber(point));
 						var addRow = this.ds_myClass.addRow();
 						this.ds_myClass.copyRow(addRow,this.ds_class,nRow);
 						//insert studentClass 추가
-						var sName = this.Div00.form.sta_name.text;
+						var sName = this.div_Info.form.sta_name.text;
 						var addRow2 = this.ds_stdClass.addRow();
 						this.ds_stdClass.setColumn(addRow2,"sCode",sCode);
 						this.ds_stdClass.setColumn(addRow2,"sName",sName);
@@ -596,8 +660,10 @@ this.row= "";
 this.count = "";
 this.count2 = "";
 this.msg ="";
-this.fn_callback_stdClass=function(sId){
-	trace(sId);
+this.fn_callback_stdClass=function(sId,errCd,errMsg){
+	if (errCd < 0) {
+		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
+	}
 	if(sId == "stdClassInsert"){
 		if(this.msg == "Y"){
 			var limit = this.ds_class.getColumn(this.row,"limit").split("/");
@@ -641,8 +707,7 @@ this.fn_callback_stdClass=function(sId){
 		var addRow = this.ds_class.addRow();
 		this.ds_class.copyRow(addRow,this.ds_myClass,this.row);
 		this.ds_myClass.deleteRow(this.row);
-		var dept = this.Div00.form.co_dept.text;
-		if(dept == "전체"){dept = ""}
+		var dept = this.div_Info.form.co_dept.value;
 		this.ds_class.filter("dept.indexOf('"+dept+"')>=0");
 	}else if(sId == "stdClassUpdate"){
 		var basketLimit = this.ds_class.getColumn(this.row,"basketLimit").split("/");
@@ -695,17 +760,17 @@ this.fn_callback_stdClass=function(sId){
 		);
 	}
 }
-this.Grid00_00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.gr_myClassList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	if(e.col==0){
 		var nRow = this.ds_myClass.rowposition;	
 		var className = this.ds_myClass.getColumn(nRow,"className");
 		var classCode =this.ds_myClass.getColumn(nRow,"classSeq");
-		var sCode = this.Div00.form.sta_sSeq.text;
-		var myPoint = this.Div00.form.sta_point.text;
+		var sCode = this.div_Info.form.sta_sSeq.text;
+		var myPoint = this.div_Info.form.sta_point.text;
 		var point = this.ds_myClass.getColumn(nRow,"classPoint").replace("학점","");
 		//학점 갱신
-		this.Div00.form.sta_point.set_text(nexacro.toNumber(myPoint)+nexacro.toNumber(point));
+		this.div_Info.form.sta_point.set_text(nexacro.toNumber(myPoint)+nexacro.toNumber(point));
 		//DB에서 해당 시간표 삭제 
 		for(var i=0; i<this.ds_stdTimeTable.getRowCount();i++){
 			for(var j=0; j<this.ds_stdTimeTable.getColCount(); j++){
@@ -735,42 +800,46 @@ this.Grid00_00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
 		var objCF = new ChildFrame();
 		objCF.init("popAdd",x,y,1000,680,0,0,"prfWork::detail.xfdl");
 		objCF.set_showtitlebar(false);
-		objCF.showModal(this.getOwnerFrame(),{classSeq:classSeq, proCode : proCode, view : 'Y'},this,"fn_callback");
+		objCF.showModal(this.getOwnerFrame(),{classSeq:classSeq, proCode : proCode, view : 'Y'},this,"fn_pop_callback");
 	}
 };
 
-this.Div00_classTime_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.div_Info_classTime_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {	
-	var sCode = this.Div00.form.sta_sSeq.text;
+	var sCode = this.div_Info.form.sta_sSeq.text;
 	var x = this.width/2-410; 
 	var y = this.height/2-220;
 	var objCF = new ChildFrame();
 	objCF.init("popTimeTable",x,y,820,440,0,0,"stdWork::studentSchedule.xfdl");
 	objCF.set_showtitlebar(false);
 	
-	objCF.showModal(this.getOwnerFrame(),{sCode:sCode},this,"fn_callback");
+	objCF.showModal(this.getOwnerFrame(),{sCode:sCode},this,"fn_pop_callback");
 	
 };
 
-this.Div00_basket_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.div_Info_basket_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var sCode = this.Div00.form.sta_sSeq.text;
-	var point = this.Div00.form.sta_point.text;
-	var sName = this.Div00.form.sta_name.text;
+	var sCode = this.div_Info.form.sta_sSeq.text;
+	var point = this.div_Info.form.sta_point.text;
+	var sName = this.div_Info.form.sta_name.text;
 	var x = this.width/2-450; 
 	var y = this.height/2-240;
 	var objCF = new ChildFrame();
-	objCF.init("popTimeTable",x,y,900,480,0,0,"stdWork::basketList.xfdl");
+	objCF.init("popBasket",x,y,900,480,0,0,"stdWork::basketList.xfdl");
 	objCF.set_showtitlebar(false);
 	
-	objCF.showModal(this.getOwnerFrame(),{sCode : sCode,point : point,sName : sName},this,"fn_callback_basket");
+	objCF.showModal(this.getOwnerFrame(),{sCode : sCode,point : point,sName : sName},this,"fn_pop_callback");
 };
 
-this.fn_callback_basket=function(sId,code){
-	if(code != ""){
-		this.reload();
+this.fn_pop_callback=function(sId,code){
+	if(sId == "popBasket"){
+		if(code != ""){
+			this.reload();
+		}
 	}
 }
+
+
 
 
 ]]></Script>
