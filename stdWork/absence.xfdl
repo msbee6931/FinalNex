@@ -75,8 +75,8 @@
         <Static id="Static00_01_00_00" taborder="14" text="기 간" left="469" top="157" width="101" height="30" cssclass="sta_default"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[this.std_code="215051001";
-
+    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
+this.std_code=this.objApp.gds_students.getColumn(0,'s_seq');
 this.absence_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.transaction(
@@ -98,7 +98,7 @@ this.Div00_btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 	objCF.set_formurl("stdWork::absence_pop.xfdl");
 	objCF.showModal(
 		this.getOwnerFrame(),
-		{code:this.code}, // 학번 넘기기
+		{code:this.std_code}, // 학번 넘기기
 		this,
 		"fn_callback_pop_abs"
 	);
