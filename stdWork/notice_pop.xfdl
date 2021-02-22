@@ -8,10 +8,10 @@
         <Static id="label_date" taborder="2" text="작성일자" left="110" top="170" width="120" height="60" textAlign="center" border="1px solid black"/>
         <Static id="label_viewCount" taborder="3" text="조회수" left="460" top="170" width="120" height="60" textAlign="center" border="1px solid black"/>
         <TextArea id="ta_content" taborder="4" left="30" top="230" width="741" height="230" readonly="true"/>
-        <Static id="sta_file" taborder="5" text="첨부파일" left="30" top="460" width="120" height="60" border="1px solid black" textAlign="center"/>
-        <Button id="btn_close" taborder="6" text="닫기" left="670" top="535" width="100" height="30" onclick="btn_close_onclick"/>
+        <Static id="sta_file" taborder="5" text="첨부파일" left="30" top="460" width="120" height="75" border="1px solid black" textAlign="center"/>
+        <Button id="btn_close" taborder="6" text="닫기" left="670" top="545" width="100" height="30" onclick="btn_close_onclick"/>
         <Static id="sta_view_count" taborder="7" text="조회수" left="580" top="170" width="120" height="60" textAlign="center"/>
-        <Grid id="gr_fileList" taborder="8" left="150" top="460" width="520" height="60" binddataset="ds_NoticeFiles" autofittype="col" onheadclick="gr_fileList_onheadclick">
+        <Grid id="gr_fileList" taborder="8" left="150" top="460" width="520" height="75" binddataset="ds_NoticeFiles" autofittype="col" onheadclick="gr_fileList_onheadclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -36,7 +36,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btnDownload" taborder="9" text="다운로드" left="670" top="460" width="100" height="60" onclick="btnDownload_onclick"/>
+        <Button id="btnDownload" taborder="9" text="다운로드" left="670" top="460" width="100" height="75" onclick="btnDownload_onclick"/>
         <Calendar id="cal_date" taborder="10" left="230" top="170" width="170" height="60" dateformat="yyyy-MM-dd"/>
       </Layout>
     </Layouts>
