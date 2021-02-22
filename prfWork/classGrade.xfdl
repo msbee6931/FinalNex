@@ -3,7 +3,7 @@
   <Form id="classGrade" width="1080" height="570" titletext="New Form" onload="classGrade_onload">
     <Layouts>
       <Layout height="570" mobileorientation="landscape" width="1080" stepcount="2">
-        <Combo id="co_year" taborder="0" text="" left="650" top="27" width="120" height="28" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Combo id="co_year" taborder="0" text="" left="650" top="27" width="120" height="28" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -40,7 +40,7 @@
           </Dataset>
         </Combo>
         <Button id="btnSearch" taborder="2" text="검색" left="910" top="24" width="90" height="33" onclick="btnSearch_onclick"/>
-        <Grid id="Grid00" taborder="3" left="75" top="67" width="930" height="143" binddataset="ds_class" oncellclick="Grid00_oncellclick" autofittype="col">
+        <Grid id="gr_classList" taborder="3" left="75" top="67" width="930" height="143" binddataset="ds_class" oncellclick="gr_classList_oncellclick" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
@@ -66,19 +66,19 @@
                 <Cell col="6" text="인원 수"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:classPart" textAlign="center"/>
+                <Cell text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
                 <Cell col="1" text="bind:classSeq" textAlign="center" displaytype="mask" maskeditformat="########"/>
                 <Cell col="2" text="bind:className" textAlign="center" cursor="pointer" textDecoration="underline"/>
                 <Cell col="3" text="bind:classPoint" textAlign="center"/>
-                <Cell col="4" text="bind:dept" textAlign="center"/>
+                <Cell col="4" text="bind:dept" textAlign="center" displaytype="combotext" combodataset="deptCode" combocodecol="code" combodatacol="name"/>
                 <Cell col="5" text="bind:classTime" textAlign="center"/>
                 <Cell col="6" text="bind:limit" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static00" taborder="4" text="나의 강좌" left="80" top="20" width="120" height="50"/>
-        <Grid id="Grid01" taborder="5" left="75" top="250" width="228" height="285" binddataset="ds_stdClass" autofittype="col" oncellclick="Grid01_oncellclick">
+        <Static id="label_myClass" taborder="4" text="나의 강좌" left="80" top="20" width="120" height="50"/>
+        <Grid id="gr_stdList" taborder="5" left="75" top="250" width="228" height="285" binddataset="ds_stdClass" autofittype="col" oncellclick="gr_stdList_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -100,9 +100,9 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static02" taborder="6" text="이름" left="330" top="250" width="100" height="30" padding="0px 0px 0px 5px" border="1px solid black"/>
+        <Static id="label_name" taborder="6" text="이름" left="330" top="250" width="100" height="30" padding="0px 0px 0px 5px" border="1px solid black"/>
         <Static id="sta_name" taborder="7" text="" left="430" top="250" width="110" height="30" padding="0px 0px 0px 5px" border="1px solid black"/>
-        <Static id="Static02_01" taborder="8" text="학번" left="560" top="250" width="100" height="30" padding="0px 0px 0px 5px" border="1px solid black"/>
+        <Static id="label_code" taborder="8" text="학번" left="560" top="250" width="100" height="30" padding="0px 0px 0px 5px" border="1px solid black"/>
         <Static id="sta_code" taborder="9" text="" left="660" top="250" width="120" height="30" padding="0px 0px 0px 5px" border="1px solid black"/>
         <Static id="sta_sum" taborder="10" left="900" top="350" width="100" height="30" border="1px solid gray" textAlign="center"/>
         <Static id="sum2" taborder="11" text="합계" left="900" top="320" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
@@ -117,14 +117,14 @@
         <MaskEdit id="mask_task" taborder="20" left="700" top="380" width="100" height="30" textAlign="center" canchange="grade_canchange" format="+0" onchanged="mask_task_onchanged" oninput="mask_task_oninput"/>
         <MaskEdit id="mask_fin" taborder="21" left="800" top="380" width="100" height="30" textAlign="center" canchange="grade_canchange" format="+0" oninput="mask_fin_oninput" onchanged="mask_fin_onchanged"/>
         <Static id="sta_sumAll" taborder="22" left="900" top="380" width="100" height="30" border="1px solid gray" textAlign="center" text="0"/>
-        <Static id="Static02_02" taborder="23" text="평가방법" left="330" top="350" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
-        <Static id="Static02_02_00" taborder="24" text="점수" left="330" top="380" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
+        <Static id="labelEval" taborder="23" text="평가방법" left="330" top="350" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
+        <Static id="labelGrade" taborder="24" text="점수" left="330" top="380" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
         <Static id="sta_bin" taborder="25" text="" left="330" top="320" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
-        <Button id="Button00" taborder="26" text="출석현황 보기" left="910" top="280" width="90" height="35"/>
-        <Static id="Static02_01_00" taborder="27" text="총점" left="800" top="450" width="100" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
+        <Button id="btnAttend" taborder="26" text="출석현황 보기" left="910" top="280" width="90" height="35" onclick="btnAttend_onclick"/>
+        <Static id="labelTotal" taborder="27" text="총점" left="800" top="450" width="100" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
         <Static id="sta_total" taborder="28" text="" left="900" top="450" width="100" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
         <Button id="btnSave" taborder="29" text="저장" left="910" top="490" width="90" height="40" onclick="btnSave_onclick"/>
-        <Grid id="Grid02" taborder="30" left="40" top="42" width="210" height="268" positionstep="1" binddataset="ds_class" autofittype="col" oncellclick="Grid02_oncellclick">
+        <Grid id="gr_classList2" taborder="30" left="40" top="42" width="210" height="268" positionstep="1" binddataset="ds_class" autofittype="col" oncellclick="gr_classList2_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -151,17 +151,17 @@
         <Static id="sta_otest" taborder="33" left="600" top="350" width="100" height="30" border="1px solid gray" textAlign="center"/>
         <Static id="sta_mid" taborder="34" left="500" top="350" width="100" height="30" border="1px solid gray" textAlign="center"/>
         <Static id="sta_attend" taborder="35" left="400" top="350" width="100" height="30" border="1px solid gray" textAlign="center"/>
-        <Static id="sta_label" taborder="36" text="학생리스트" left="75" top="210" width="190" height="50" onclick="sta_label_onclick"/>
+        <Static id="sta_label" taborder="36" text="학생 리스트" left="75" top="210" width="190" height="50" onclick="sta_label_onclick"/>
         <Static id="sta_sumR" taborder="37" left="900" top="410" width="100" height="30" border="1px solid gray" textAlign="center" text="0"/>
-        <Static id="Static02_02_02" taborder="38" text="결과" left="330" top="410" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
+        <Static id="labelResult" taborder="38" text="결과" left="330" top="410" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
         <Static id="sta_finR" taborder="39" left="800" top="410" width="100" height="30" border="1px solid gray" textAlign="center" text="0"/>
         <Static id="sta_taskR" taborder="40" left="700" top="410" width="100" height="30" border="1px solid gray" textAlign="center" text="0"/>
         <Static id="sta_otestR" taborder="41" left="600" top="410" width="100" height="30" border="1px solid gray" textAlign="center" text="0"/>
         <Static id="sta_midR" taborder="42" left="500" top="410" width="100" height="30" border="1px solid gray" textAlign="center" text="0"/>
         <Static id="sta_attendR" taborder="43" left="400" top="410" width="100" height="30" border="1px solid gray" textAlign="center" text="0"/>
         <Button id="btnChangeEval" taborder="44" text="평가방법 변경하기" left="790" top="280" width="115" height="35" tooltiptext="평가시작 전에만 가능합니다" onclick="btnChangeEval_onclick"/>
-        <Static id="Static01" taborder="45" text="-주의 사항- &#13;&#10;&#13;&#10;평가방법은 평가시작 전에만 변경이 가능합니다.&#13;&#10;평가 후 수정을 원하시면 관리자에게 문의해주세요." left="330" top="450" width="320" height="85" onclick="Static01_onclick" padding="0px 0px 0px 5px" background="linen" borderRadius="5px"/>
-        <Grid id="Grid03" taborder="46" left="270" top="42" width="760" height="438" positionstep="1" binddataset="ds_grades" autofittype="col" onheadclick="Grid03_onheadclick">
+        <Static id="label_caution" taborder="45" text="-주의 사항- &#13;&#10;&#13;&#10;평가방법은 평가시작 전에만 변경이 가능합니다.&#13;&#10;평가 후 수정을 원하시면 관리자에게 문의해주세요." left="330" top="450" width="320" height="85" onclick="Static01_onclick" padding="0px 0px 0px 5px" background="linen" borderRadius="5px"/>
+        <Grid id="gr_rank" taborder="46" left="270" top="42" width="760" height="438" positionstep="1" binddataset="gds_grade" autofittype="col" onheadclick="gr_rank_onheadclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -284,35 +284,6 @@
           <Column id="basket" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_grade">
-        <ColumnInfo>
-          <Column id="sCode" type="INT" size="256"/>
-          <Column id="sName" type="STRING" size="256"/>
-          <Column id="classCode" type="INT" size="256"/>
-          <Column id="attend" type="INT" size="256"/>
-          <Column id="mid" type="INT" size="256"/>
-          <Column id="otest" type="INT" size="256"/>
-          <Column id="task" type="INT" size="256"/>
-          <Column id="fin" type="INT" size="256"/>
-          <Column id="total" type="INT" size="256"/>
-          <Column id="rank" type="STRING" size="256"/>
-          <Column id="grade" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
-      <Dataset id="ds_grade_copy" useclientlayout="true">
-        <ColumnInfo>
-          <Column id="sCode" type="INT" size="256"/>
-          <Column id="sName" type="STRING" size="256"/>
-          <Column id="classCode" type="INT" size="256"/>
-          <Column id="attend" type="INT" size="256"/>
-          <Column id="mid" type="INT" size="256"/>
-          <Column id="otest" type="INT" size="256"/>
-          <Column id="task" type="INT" size="256"/>
-          <Column id="fin" type="INT" size="256"/>
-          <Column id="total" type="INT" size="256"/>
-          <Column id="grade" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
       <Dataset id="ds_rank">
         <ColumnInfo>
           <Column id="id" type="STRING" size="256"/>
@@ -374,7 +345,7 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[var objApp = nexacro.getApplication();
+    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
 this.classGrade_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	var objDate= new Date();
@@ -422,7 +393,7 @@ this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	);
 };
 
-this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.gr_classList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	var classCode = this.ds_class.getColumn(e.row,"classSeq");
 	var className = this.ds_class.getColumn(e.row,"className");
@@ -433,7 +404,7 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 		let objCF = new ChildFrame();
 		objCF.init("popAdd",x,y,1000,680,0,0,"prfWork::detail.xfdl");
 		objCF.set_showtitlebar(false);
-		objCF.showModal(this.getOwnerFrame(),{classSeq:classCode, proCode : proCode, view : 'Y'},this,"fn_callback");
+		objCF.showModal(this.getOwnerFrame(),{classSeq:classCode, proCode : proCode, view : 'Y'},this,"fn_pop_callback");
 	}else{
 		this.sta_label.set_text("학생리스트(" +className+")");	
 		var eval = this.ds_class.getColumn(e.row,"classEvaluation").split("|");
@@ -449,7 +420,7 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 			,"" 
 			,"ds_stdClass=out_ds" 
 			,"classCode="+classCode
-			,"fn_callback_stdList" 
+			,"fn_callback" 
 		);
 		this.sta_name.set_text(""); 
 		this.sta_code.set_text("");
@@ -469,38 +440,44 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 	}
 	
 };
-this.fn_callback_stdList=function(){
-	this.ds_stdClass.set_keystring("S:+sName");
+
+this.fn_callbackt=function(sId,errCd,errMsg){
+	if (errCd < 0) {
+		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
+	} 
+	if(sId == "stdListSeq"){
+		this.ds_stdClass.set_keystring("S:+sName");
+	}
 }
 
-this.Grid01_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.gr_stdList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {	
 	var sCode = this.ds_stdClass.getColumn(e.row,"sCode");
 	var sName = this.ds_stdClass.getColumn(e.row,"sName");
 	var classCode =this.ds_stdClass.getColumn(e.row,"classCode");
 	this.sta_code.set_text(sCode);
 	this.sta_name.set_text(sName);
-	this.ds_grade_copy.clearData();
-	var addRow = this.ds_grade_copy.addRow();
-	this.ds_grade_copy.setColumn(addRow,"sCode",sCode);
-	this.ds_grade_copy.setColumn(addRow,"classCode",classCode);
+	this.objApp.gds_grade.clearData();
+	var addRow = this.objApp.gds_grade.addRow();
+	this.objApp.gds_grade.setColumn(addRow,"sCode",sCode);
+	this.objApp.gds_grade.setColumn(addRow,"classCode",classCode);
 	this.transaction(
 		"stdGrade"
 		,"/stdGrade.nex" 
-		,"in_ds=ds_grade_copy"
-		,"ds_grade_copy=out_ds" 
+		,"in_ds=gds_grade"
+		,"gds_grade=out_ds" 
 		,""
 		,"fn_callback_grade"
 	);
 };
-this.fn_callback_grade=function(sId){
+this.fn_callback_grade=function(sId,errCd,errMsg){
 	if(sId == "stdGrade"){
-		if(this.ds_grade_copy.getRowCount() > 0){
-			var attend = this.ds_grade_copy.getColumn(0,"attend");
-			var mid = this.ds_grade_copy.getColumn(0,"mid");
-			var otest = this.ds_grade_copy.getColumn(0,"otest");
-			var task = this.ds_grade_copy.getColumn(0,"task");
-			var fin = this.ds_grade_copy.getColumn(0,"fin");
+		if(this.objApp.gds_grade.getRowCount() > 0){
+			var attend = this.objApp.gds_grade.getColumn(0,"attend");
+			var mid = this.objApp.gds_grade.getColumn(0,"mid");
+			var otest = this.objApp.gds_grade.getColumn(0,"otest");
+			var task = this.objApp.gds_grade.getColumn(0,"task");
+			var fin = this.objApp.gds_grade.getColumn(0,"fin");
 			trace("attend" + attend);
 			var count = 0;
 			this.mask_attend.set_value(attend)
@@ -522,7 +499,7 @@ this.fn_callback_grade=function(sId){
 			this.fn_gradeTotal();
 		}
 	}else if(sId =="stdGradeList"){
-		if(this.ds_grade_copy.getRowCount() > 0){
+		if(this.objApp.gds_grade.getRowCount() > 0){
 			alert("이미 평가중입니다\n수정이 불가능합니다");
 		}else{
 			var nRow = this.ds_class.rowposition;
@@ -535,14 +512,13 @@ this.fn_callback_grade=function(sId){
 			objCF.showModal(this.getOwnerFrame(),{classCode:classCode},this,"fn_callback_evalUpd");
 		}
 	}else if(sId=="stdGradeRank"){
-		objApp.ds_grades.copyData(this.ds_grade)
-		if(objApp.ds_grades.getRowCount()> 0){
+		if(this.objApp.gds_grade.getRowCount()> 0){
 			var nRow = this.ds_class.rowposition;
 			if(this.ds_class.getColumn(nRow,"passFail") =="P"){
 				this.div_rank.set_url("prfWork::passFailStandard.xfdl");
 			}else{
 				this.div_rank.set_url("prfWork::rankStandard.xfdl");
-				var nCount = objApp.ds_grades.getRowCount();
+				var nCount = this.objApp.gds_grade.getRowCount();
 				var A = nexacro.ceil(nCount * 0.3);
 				var B = nexacro.ceil(nCount * 0.7);
 				var C =	nCount;
@@ -551,24 +527,24 @@ this.fn_callback_grade=function(sId){
 				this.div_rank.form.sta_C.set_text(C);
 				var total = new Array();
 				var total2 = new Array();	
-				for(var i=0; i<objApp.ds_grades.getRowCount(); i++){
-					total[i] = objApp.ds_grades.getColumn(i,"total");
+				for(var i=0; i<this.objApp.gds_grade.getRowCount(); i++){
+					total[i] = this.objApp.gds_grade.getColumn(i,"total");
 					var rank = 1;
-					for(var j=0; j<objApp.ds_grades.getRowCount(); j++){
-						total2[j] = objApp.ds_grades.getColumn(j,"total");
+					for(var j=0; j<this.objApp.gds_grade.getRowCount(); j++){
+						total2[j] = this.objApp.gds_grade.getColumn(j,"total");
 						if(total[i] < total2[j]){
 							rank +=1;
 						}
-						objApp.ds_grades.setColumn(i,"rank",rank);
-						var nRank = objApp.ds_grades.getColumn(i,"rank");
-						var grade =  objApp.ds_grades.getColumn(i,"grade");
+						this.objApp.gds_grade.setColumn(i,"rank",rank);
+						var nRank = this.objApp.gds_grade.getColumn(i,"rank");
+						var grade =  this.objApp.gds_grade.getColumn(i,"grade");
 						if(grade == null){
 							if(nRank <= nCount){
-								objApp.ds_grades.setColumn(i,"grade","C+");
+								this.objApp.gds_grade.setColumn(i,"grade","C+");
 								if(nRank <= A+B){
-									objApp.ds_grades.setColumn(i,"grade","B+");
+									this.objApp.gds_grade.setColumn(i,"grade","B+");
 									if(nRank <= A){
-										objApp.ds_grades.setColumn(i,"grade","A+");
+										this.objApp.gds_grade.setColumn(i,"grade","A+");
 									}
 								}
 							}
@@ -579,7 +555,10 @@ this.fn_callback_grade=function(sId){
 		}
 	}
 }
-this.fn_callback_evalUpd=function(sId,eval){
+this.fn_callback_evalUpd=function(sId,errCd,errMsg,eval){
+	if (errCd < 0) {
+		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
+	} 
 	var ev = eval.split("|");
 	this.sta_attend.set_text(ev[0]);
 	this.sta_mid.set_text(ev[1]);
@@ -593,23 +572,48 @@ this.fn_callback_evalUpd=function(sId,eval){
 
 this.grade_canchange = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
 {
-	var attend = this.mask_attend.text;
-	var mid = this.mask_mid.text;
-	var otest = this.mask_otest.text;
-	var task = this.mask_task.text;
-	var fin = this.mask_fin.text;
+	var attend = this.mask_attend.value;
+	var mid = this.mask_mid.value;
+	var otest = this.mask_otest.value;
+	var task = this.mask_task.value;
+	var fin = this.mask_fin.value;
 	var count = 0;
-	if(this.sta_attend.text != 0){count +=1}
-	if(this.sta_mid.text != 0){count +=1}
-	if(this.sta_otest.text != 0){count +=1}
-	if(this.sta_task.text != 0){count +=1}
-	if(this.sta_fin.text != 0){count +=1}
+	var sAttend = this.sta_attend.text;
+	var sMid = this.sta_mid.text;
+	var sOtest = this.sta_otest.text;
+	var sTask = this.sta_task.text;
+	var sFin = this.sta_fin.text;
+	if(sAttend != 0){count +=1}
+	if(sMid != 0){count +=1}
+	if(sOtest != 0){count +=1}
+	if(sTask != 0){count +=1}
+	if(sFin != 0){count +=1}
 	
-	if(attend == ""){attend = 0;}else if(attend >100){alert("0~100까지 입력이 가능합니다");this.mask_attend.set_value(100);}
-	if(mid == ""){mid = 0;}else if(mid >100){alert("0~100까지 입력이 가능합니다");this.mask_mid.set_value(100);}
-	if(otest == ""){otest = 0;}else if(otest >100){alert("0~100까지 입력이 가능합니다");this.mask_otest.set_value(100);}
-	if(task == ""){task = 0;}else if(task >100){alert("0~100까지 입력이 가능합니다");this.mask_task.set_value(100);}
-	if(fin == ""){fin = 0;}else if(fin >100){alert("0~100까지 입력이 가능합니다");this.mask_fin.set_value(100);}
+	if(attend == ""){attend = 0;}else if(attend >100){
+		alert("0~100까지 입력이 가능합니다");this.mask_attend.set_value(100);
+		attend = 100;
+		this.sta_attendR.set_text(sAttend);
+	}
+	if(mid == ""){mid = 0;}else if(mid >100){
+		alert("0~100까지 입력이 가능합니다");this.mask_mid.set_value(100);
+		mid = 100;
+		this.sta_midR.set_text(sMid);
+	}
+	if(otest == ""){otest = 0;}else if(otest >100){
+		alert("0~100까지 입력이 가능합니다");this.mask_otest.set_value(100);
+		otest = 100;
+		this.sta_otestR.set_text(sOtest);
+	}
+	if(task == ""){task = 0;}else if(task >100){
+		alert("0~100까지 입력이 가능합니다");this.mask_task.set_value(100);
+		task = 100;
+		this.sta_taskR.set_text(sTask);
+	}
+	if(fin == ""){fin = 0;}else if(fin >100){
+		alert("0~100까지 입력이 가능합니다");this.mask_fin.set_value(100);
+		fin = 100;
+		this.sta_finR.set_text(sFin);
+	}
 	
 	this.sta_sumAll.set_text(parseInt(attend) + parseInt(mid) + parseInt(otest) + parseInt(task) + parseInt(fin) +"/"+ count*100);
 	
@@ -653,6 +657,7 @@ this.mask_fin_oninput = function(obj:nexacro.MaskEdit,e:nexacro.InputEventInfo)
 	}
 };
 
+//자동으로 값 넣어주는 함수
 this.fn_gradeTotal=function(){
 	var attend = this.sta_attendR.text;
 	var mid = this.sta_midR.text;
@@ -664,35 +669,50 @@ this.fn_gradeTotal=function(){
 }
 this.mask_attend_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
 {
-	var multi = this.sta_attend.text * this.mask_attend.text *0.01;
+	if(e.posttext > 100 ){
+		e.posttext = 100;
+	}
+	var multi = this.sta_attend.text * e.posttext *0.01;
 	this.sta_attendR.set_text(multi);
 	this.fn_gradeTotal();
 	
 };
 this.mask_mid_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
 {
-	var multi = this.sta_mid.text * this.mask_mid.text *0.01;
+	if(e.posttext > 100 ){
+		e.posttext = 100;
+	}
+	var multi = this.sta_mid.text * e.posttext *0.01;
 	this.sta_midR.set_text(multi);
 	this.fn_gradeTotal();
 };
 
 this.mask_otest_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
 {
-	var multi = this.sta_otest.text * this.mask_otest.text *0.01;
+	if(e.posttext > 100 ){
+		e.posttext = 100;
+	}
+	var multi = this.sta_otest.text * e.posttext *0.01;
 	this.sta_otestR.set_text(multi);
 	this.fn_gradeTotal();
 };
 
 this.mask_task_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
 {
-	var multi = this.sta_task.text * this.mask_task.text *0.01;
+	if(e.posttext > 100 ){
+		e.posttext = 100;
+	}
+	var multi = this.sta_task.text * e.posttext *0.01;
 	this.sta_taskR.set_text(multi);
 	this.fn_gradeTotal();
 };
 
 this.mask_fin_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
 {
-	var multi = this.sta_fin.text * this.mask_fin.text *0.01;
+	if(e.posttext > 100 ){
+		e.posttext = 100;
+	}
+	var multi = this.sta_fin.text * e.posttext *0.01;
 	this.sta_finR.set_text(multi);
 	this.fn_gradeTotal();
 };
@@ -711,24 +731,24 @@ this.btnSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var fin = this.mask_fin.text;
 	var total = this.sta_total.text;
 	total = total.substring(0,total.length-1);
-	var addRow = this.ds_grade_copy.addRow();
-	this.ds_grade_copy.setColumn(addRow,"sCode",sCode);
-	this.ds_grade_copy.setColumn(addRow,"sName",sName);
-	this.ds_grade_copy.setColumn(addRow,"classCode",classCode);
-	this.ds_grade_copy.setColumn(addRow,"attend",attend);
-	this.ds_grade_copy.setColumn(addRow,"mid",mid);
-	this.ds_grade_copy.setColumn(addRow,"otest",otest);
-	this.ds_grade_copy.setColumn(addRow,"task",task);
-	this.ds_grade_copy.setColumn(addRow,"fin",fin);
-	this.ds_grade_copy.setColumn(addRow,"total",total);
+	var addRow = this.objApp.gds_grade.addRow();
+	this.objApp.gds_grade.setColumn(addRow,"sCode",sCode);
+	this.objApp.gds_grade.setColumn(addRow,"sName",sName);
+	this.objApp.gds_grade.setColumn(addRow,"classCode",classCode);
+	this.objApp.gds_grade.setColumn(addRow,"attend",attend);
+	this.objApp.gds_grade.setColumn(addRow,"mid",mid);
+	this.objApp.gds_grade.setColumn(addRow,"otest",otest);
+	this.objApp.gds_grade.setColumn(addRow,"task",task);
+	this.objApp.gds_grade.setColumn(addRow,"fin",fin);
+	this.objApp.gds_grade.setColumn(addRow,"total",total);
 	if(sCode == null || sCode ==""){
 		this.alert("학생을 선택해주세요");
 	}else{
 		this.transaction(
 			"stdGradeSave"
 			,"/stdGradeInsert.nex"
-			,"in_ds=ds_grade_copy:U"
-			,"ds_grade=out_ds" 
+			,"in_ds=gds_grade:U"
+			,"gds_grade=out_ds" 
 			,""
 			,"fn_callback"
 		);
@@ -749,7 +769,7 @@ this.btnChangeEval_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
 			"stdGradeList"
 			,"/stdGradeList.nex"
 			,""
-			,"ds_grade_copy=out_ds"
+			,"gds_grade=out_ds"
 			,"classCode="+classCode
 			,"fn_callback_grade"
 		);
@@ -757,29 +777,26 @@ this.btnChangeEval_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
 };
 
 
-
-
-
-this.Grid02_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.gr_classList2_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	if(this.ds_class.getColumn(e.row,"passFail")=="P"){
-		this.Grid03.set_formatid("PassFail");
+		this.gr_rank.set_formatid("PassFail");
 	}else{
-		this.Grid03.set_formatid("default");
+		this.gr_rank.set_formatid("default");
 	}
 	var classCode = this.ds_class.getColumn(e.row,"classSeq");
 	this.transaction(
 		"stdGradeRank"
 		,"/stdGradeList.nex"
 		,""
-		,"ds_grade=out_ds"
+		,"gds_grade=out_ds"
 		,"classCode="+classCode
 		,"fn_callback_grade"
 	);
 	
 };
 
-this.Grid03_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.gr_rank_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	var objDs = this.objects[obj.binddataset];          
 	for (var i = 1; i < obj.getCellCount("head"); i++)
@@ -818,8 +835,8 @@ this.Grid03_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 this.btnSave2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {	var A = 0;
 	var B = 0;
-	for(var i=0; i<objApp.ds_grades.getRowCount(); i++){
-		var grade = objApp.ds_grades.getColumn(i,"grade");
+	for(var i=0; i<this.objApp.gds_grade.getRowCount(); i++){
+		var grade = this.objApp.gds_grade.getColumn(i,"grade");
 		if(grade == "A"||  grade == "A+"){
 			A +=1;
 		}  
@@ -827,18 +844,17 @@ this.btnSave2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			B +=1;
 		}
 	}
-	if(this.Grid03.formatid == "default"){
+	if(this.gr_rank.formatid == "default"){
 		var RankA = this.div_rank.form.sta_A.text;
 		var RankB = this.div_rank.form.sta_B.text;
 		if(A > RankA || A+B > RankB ){
 			this.alert("등급별 최대인원을 초과했습니다")
 		}else{
-			if(objApp.ds_grades.getRowCount() > 0){
-				var nCount = this.ds_grade.copyData(objApp.ds_grades);
+			if(this.objApp.gds_grade.getRowCount() > 0){
 				this.transaction(
 					"stdGradeUpd" 
 					,"/stdGradeUpd.nex"
-					,"in_ds=ds_grade:A"
+					,"in_ds=gds_grade:A"
 					,""
 					,""
 					,"fn_callback"
@@ -846,12 +862,11 @@ this.btnSave2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			}
 		}
 	}else{
-		if(objApp.ds_grades.getRowCount() > 0){
-			var nCount = this.ds_grade.copyData(objApp.ds_grades);
+		if(this.objApp.gds_grade.getRowCount() > 0){
 			this.transaction(
 				"stdGradeUpd" 
 				,"/stdGradeUpd.nex"
-				,"in_ds=ds_grade:A"
+				,"in_ds=gds_grade:A"
 				,""
 				,""
 				,"fn_callback"
@@ -871,7 +886,7 @@ this.btnExport_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.exportObj.set_exportfilename(className + " 성적 집계");
 	this.exportObj.set_exporturl("http://localhost/nexacro-xeni/XExportImport");
 	
-	this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.Grid03, "Sheet1!A1");
+	this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.gr_rank, "Sheet1!A1");
 	
 	this.addEventHandler("onsuccess", this.Export00_onsuccess, this);
 	this.addEventHandler("onerror", this.Export00_onerror, this);
@@ -888,6 +903,35 @@ this.Export00_onsuccess = function(obj:ExcelExportObject, e:nexacro.ExcelExportE
 this.Export00_onerror = function(obj:ExcelExportObject, e:nexacro.ExcelExportEventInfo)
 {
 	trace("Export00_onerror");
-}]]></Script>
+}
+
+this.btnAttend_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var stdRow = this.ds_stdClass.rowposition;
+	var sCode = this.ds_stdClass.getColumn(stdRow,"sCode");
+	var sName= this.ds_stdClass.getColumn(stdRow,"sName");
+	var cCode = this.ds_stdClass.getColumn(stdRow,"classCode");
+	if(this.sta_label.text.length != 6){
+	if(this.sta_name.text != ""){
+		trace(this.width/2 + ":"+ this.height/2);
+		var objCF = new ChildFrame();
+		var x = this.width/2-300; 
+		var y = this.height/2-300;
+		objCF.init("attend_pop",x,y,600,600,0,0,"prfWork::prfAttend_std_pop.xfdl");
+		objCF.set_titletext(sName+" 학생 출결 조회 하기");
+		objCF.showModal(
+			this.getOwnerFrame(),
+			{sCode:sCode, sName:sName, cCode:cCode}, // 모달창에 수업번호 값 넘기기
+			this,
+			"fn_pop_callback"
+		)
+	}else{
+		alert("학생을 선택해주세요");
+	}
+	}else{
+		alert("수업을 선택해주세요");
+	}
+};
+]]></Script>
   </Form>
 </FDL>

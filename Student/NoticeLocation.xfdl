@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="NoticeLocation" width="800" height="600" titletext="New Form" onload="NoticeLocation_onload">
+    <Layouts>
+      <Layout height="600" mobileorientation="landscape" width="800">
+        <WebBrowser id="web_notice" taborder="0" left="0" top="0" width="800" height="600"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.NoticeLocation_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var part = this.parent.part;
+	trace(part);
+	if(part == "A"){
+		this.web_notice.set_url("http://localhost/normalList.notice?page=1");
+	}else if(part =="B"){
+		this.web_notice.set_url("http://localhost/academicList.notice?page=1");
+	}else if(part =="C"){
+		this.web_notice.set_url("http://localhost/scholarList.notice?page=1");
+	}else if(part =="D"){
+		this.web_notice.set_url("http://localhost/employmentList.notice?page=1");
+	}else{
+		alert("에러!! 지속적인 에러 발생시 관리자에게 문의해주세요");
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

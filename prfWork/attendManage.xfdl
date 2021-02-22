@@ -3,7 +3,7 @@
   <Form id="attendManage" width="1080" height="570" titletext="New Form" onload="attendManage_onload">
     <Layouts>
       <Layout height="570" mobileorientation="landscape" width="1080" stepcount="0">
-        <Grid id="Grid00" taborder="0" left="75" top="67" width="930" height="143" binddataset="ds_class" oncellclick="Grid00_oncellclick" autofittype="col">
+        <Grid id="gr_classList" taborder="0" left="75" top="67" width="930" height="143" binddataset="ds_class" oncellclick="gr_classList_oncellclick" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
@@ -29,11 +29,11 @@
                 <Cell col="6" text="인원 수"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:classPart" textAlign="center"/>
+                <Cell text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
                 <Cell col="1" text="bind:classSeq" textAlign="center" displaytype="mask" maskeditformat="########"/>
                 <Cell col="2" text="bind:className" textAlign="center"/>
                 <Cell col="3" text="bind:classPoint" textAlign="center"/>
-                <Cell col="4" text="bind:dept" textAlign="center"/>
+                <Cell col="4" text="bind:dept" textAlign="center" displaytype="combotext" combodataset="deptCode" combocodecol="code" combodatacol="name"/>
                 <Cell col="5" text="bind:classTime" textAlign="center"/>
                 <Cell col="6" text="bind:limit" textAlign="center"/>
               </Band>
@@ -79,7 +79,7 @@
           </Dataset>
         </Combo>
         <Button id="btnSearch" taborder="5" left="975" top="27" width="25" height="25" onclick="btnSearch_onclick" cssclass="btn_search"/>
-        <Grid id="Grid02" taborder="6" left="455" top="260" width="535" height="260" binddataset="ds_attend" autofittype="col" oncellclick="Grid02_oncellclick">
+        <Grid id="gr_stdList" taborder="6" left="455" top="260" width="535" height="260" binddataset="ds_attend" autofittype="col" oncellclick="gr_stdList_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -112,10 +112,10 @@
         </Grid>
         <Calendar id="cal" taborder="7" left="70" top="260" width="300" height="260" type="monthonly" onchanged="cal_onchanged" usetrailingday="true" innerdataset="ds_cal" backgroundcolumn="backgroundcolumn" bordercolumn="bordercolumn" datecolumn="datecolumn" textcolorcolumn="textcolorcolumn"/>
         <Button id="btnSave" taborder="8" text="저장" left="890" top="525" width="100" height="30" onclick="btnSave_onclick" cssclass="btn_default"/>
-        <PopupDiv id="PopupDiv00" text="PopupDiv00" visible="false" left="910" top="310" width="200" height="120" oncloseup="PopupDiv00_oncloseup">
+        <PopupDiv id="pop_reason" text="PopupDiv00" visible="false" left="910" top="310" width="200" height="120" oncloseup="pop_reason_oncloseup">
           <Layouts>
             <Layout>
-              <TextArea id="TextArea00" taborder="0" left="0" top="0" width="200" height="120"/>
+              <TextArea id="ta_reason" taborder="0" left="0" top="0" width="200" height="120"/>
             </Layout>
           </Layouts>
         </PopupDiv>
@@ -204,10 +204,9 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
 this.attendManage_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	
 	var objDate= new Date();
 	if(objDate.getMonth()+1 && objDate.getMonth()+1 < 8){
 		this.co_year.set_text(objDate.getFullYear()+"년");
@@ -220,7 +219,7 @@ this.attendManage_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		var startTime = objDate.getFullYear()+"0801";
 		var endTime = objDate.getFullYear()+"1231";
 	}
-	var proCode ="91515073" // 교수코드(로그인)
+	var proCode = this.objApp.gds_professor.getColumn(0,"p_seq"); // 교수코드(로그인)
 	this.transaction(
 		"proClassList" 
 		,"/proClassList.nex" 
@@ -230,7 +229,7 @@ this.attendManage_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		,"fn_callback" 
 	);
 };
-this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.gr_classList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	var classCode = this.ds_class.getColumn(e.row,"classSeq");
 	var className = this.ds_class.getColumn(e.row,"className");
@@ -253,7 +252,15 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 	);
 	
 };
-this.fn_callback_stdList=function(sId){
+this.fn_callback = function(sId,errCd,errMsg){
+	if (errCd < 0) {
+		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
+	} 
+}
+this.fn_callback_stdList=function(sId,errCd,errMsg){
+	if (errCd < 0) {
+		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
+	} 
 	if(sId == "stdListSeq"){
 		var nRow = this.ds_class.rowposition
 		var classTime = this.ds_class.getColumn(nRow,"classTime");
@@ -306,7 +313,7 @@ this.fn_callback_stdList=function(sId){
 			this.ds_attend.setColumn(addRow,"attendDay",this.cal.value);
 		}
 		this.transaction(
-			"attendInsert"
+			"attendInsertUpdate"
 			,"/attendInsert.nex"
 			,"in_ds=ds_attend:U"
 			,"ds_attend=out_ds"
@@ -324,7 +331,10 @@ this.fn_callback_stdList=function(sId){
 	}
 }
 
-this.fn_callback_attend=function(sId){
+this.fn_callback_attend=function(sId,errCd,errMsg){
+	if (errCd < 0) {
+		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
+	} 
 	if(sId == "attendDayList"){
 		this.ds_cal.clearData();
 		if(this.ds_attendDayList.getRowCount() > 0 ){
@@ -340,6 +350,9 @@ this.fn_callback_attend=function(sId){
 		}
 	}else if(sId == "attendInsert"){
 		this.ds_attend.set_keystring("S:+sName");
+	}else if(sId == "attendDel"){
+		var nRow= this.ds_cal.findRow("datecolumn",this.cal.value);
+		this.ds_cal.deleteRow(nRow);
 	}
 }
 
@@ -355,18 +368,18 @@ this.btnSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	);
 };
 
-this.Grid02_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.gr_stdList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	if(e.col == 4){
 		var attendState = this.ds_attend.getColumn(e.row,"attendState");
 		if(attendState == 03){
 			var reason = this.ds_attend.getColumn(e.row,"absenceReason");
-			this.PopupDiv00.form.TextArea00.set_value(reason);
+			this.pop_reason.form.ta_reason.set_value(reason);
 			this.col = e.cell;
 			this.row = e.row;
 			var nX = system.screenToClientX(this, e.screenx);
 			var nY = system.screenToClientY(this, e.screeny);		
-			this.PopupDiv00.trackPopupByComponent(this, nX, nY, null, null, "call_back");  //grid 클릭한 col, cell 에 popup창 띄우기
+			this.pop_reason.trackPopupByComponent(this, nX, nY, null, null, "fn_pop_callback");  //grid 클릭한 col, cell 에 popup창 띄우기
 		}else{
 			alert("출석 상태를 확인해주세요");
 		}
@@ -374,12 +387,12 @@ this.Grid02_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 };
 
 
-this.PopupDiv00_oncloseup = function(obj:nexacro.PopupDiv,e:nexacro.EventInfo)
+this.pop_reason_oncloseup = function(obj:nexacro.PopupDiv,e:nexacro.EventInfo)
 {
 	var nRow = this.ds_attend.rowposition;
-	var reason = this.PopupDiv00.form.TextArea00.text;
+	var reason = this.pop_reason.form.ta_reason.text;
 	this.ds_attend.setColumn(nRow,"absenceReason",reason);
-	this.PopupDiv00.form.TextArea00.set_value("");
+	this.pop_reason.form.ta_reason.set_value("");
 };
 
 this.cal_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
@@ -398,13 +411,16 @@ this.cal_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
 		var weeks = time[i].split("(");
 		weekTime += weeks[0];
 	}
-	if(this.ds_attend.getRowCount() > 0 ){
-		var arr = this.ds_cal.extractRows("datecolumn=="+this.cal.value);
+	var label = this.sta_label.text;
+	if(label.length == 6){ //수업선택안했을 경우
+		alert("수업을 선택해주세요");
+	}else{
+		var arr = this.ds_cal.extractRows("datecolumn=="+this.cal.value); 
 		if(weekTime.length <= vArr.length && arr.length == 0){ //이미 등록한 요일 제외하고 요일 개수만큼만 한 주에 등록 가능
 			alert("이번주차 수업을 더이상 등록할 수 없습니다");
 		}else{
-			if(weekTime.indexOf(week) < 0){ // 수업하는 요일 체크			
-				if(arr.length == 0){
+			if(weekTime.indexOf(week) < 0){ // 수업하는 요일이 아닐 경우		
+				if(arr.length == 0){ //수업이 없을 경우
 					if(this.confirm("수업이 없습니다.\n수업을 추가하시겠습니까?")){
 						this.transaction(
 							"stdList"
@@ -414,10 +430,8 @@ this.cal_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
 							,"classCode="+classCode
 							,"fn_callback_stdList" 
 						);
-					}else{
-						this.ds_attend.deleteAll();
 					}
-				}else{
+				}else{ //이미 수업이 있을경우
 					this.transaction(
 						"stdList"
 						,"/stdListSeq.nex"
@@ -427,7 +441,7 @@ this.cal_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
 						,"fn_callback_stdList" 
 					);
 				}
-			}else{
+			}else{ //수업하는 요일 경우
 				this.transaction(
 					"stdList"
 					,"/stdListSeq.nex"
@@ -438,8 +452,6 @@ this.cal_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
 				);
 			}
 		}
-	}else{
-		alert("수업을 선택해주세요");
 	}
 };
 
@@ -454,7 +466,7 @@ this.btnDel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 				,"in_ds=ds_attend:A"
 				,"" 
 				,""
-				,"fn_callback_del"
+				,"fn_callback_attend"
 			);
 		}else{
 			alert("수업이 없습니다");
@@ -462,10 +474,7 @@ this.btnDel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		this.ds_attend.deleteAll();
 	}
 };
-this.fn_callback_del=function(){
-	var nRow= this.ds_cal.findRow("datecolumn",this.cal.value);
-	this.ds_cal.deleteRow(nRow);
-}
+
 this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var year = this.co_year.text;
@@ -477,7 +486,7 @@ this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		var startTime = year+"0801";
 		var endTime = year+"1231";
 	}
-	var proCode ="91515073" // 교수코드(로그인)
+	var proCode = this.objApp.gds_professor.getColumn(0,"p_seq"); // 교수코드(로그인)
 	this.transaction(
 		"proClassList" 
 		,"/proClassList.nex" 
@@ -487,6 +496,9 @@ this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		,"fn_callback" 
 	);
 };
+
+
+
 
 ]]></Script>
   </Form>

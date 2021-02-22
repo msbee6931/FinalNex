@@ -26,7 +26,7 @@
                 <Cell col="4" text="담당교수"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:classPart" textAlign="center"/>
+                <Cell text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
                 <Cell col="1" text="bind:classSeq" displaytype="mask" maskeditformat="########" textAlign="center"/>
                 <Cell col="2" text="bind:className" textAlign="center" cursor="pointer" textDecoration="underline"/>
                 <Cell col="3" text="bind:classPoint" textAlign="center"/>
