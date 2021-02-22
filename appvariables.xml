@@ -253,7 +253,7 @@
         <Column id="form_url" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
-    <Dataset id="ds_grades">
+    <Dataset id="gds_grade">
       <ColumnInfo>
         <Column id="sCode" type="INT" size="256"/>
         <Column id="sName" type="STRING" size="256"/>
@@ -271,6 +271,7 @@
     <Dataset id="gds_students">
       <ColumnInfo>
         <Column id="s_seq" type="INT" size="256"/>
+        <Column id="pw" type="STRING" size="256"/>
         <Column id="name" type="STRING" size="256"/>
         <Column id="secNumber" type="STRING" size="256"/>
         <Column id="email" type="STRING" size="256"/>
@@ -279,7 +280,6 @@
         <Column id="scholarship" type="STRING" size="256"/>
         <Column id="rest" type="STRING" size="256"/>
         <Column id="grade" type="STRING" size="256"/>
-        <Column id="pw" type="STRING" size="256"/>
         <Column id="gender" type="STRING" size="256"/>
         <Column id="deptCode" type="STRING" size="256"/>
         <Column id="colCode" type="STRING" size="256"/>
@@ -290,12 +290,14 @@
       <ColumnInfo>
         <Column id="p_seq" type="INT" size="256"/>
         <Column id="name" type="STRING" size="256"/>
-        <Column id="age" type="STRING" size="256"/>
+        <Column id="secNumber" type="STRING" size="256"/>
         <Column id="email" type="STRING" size="256"/>
         <Column id="contact" type="STRING" size="256"/>
         <Column id="address" type="STRING" size="256"/>
         <Column id="lecture" type="STRING" size="256"/>
         <Column id="pw" type="STRING" size="256"/>
+        <Column id="colCode" type="STRING" size="256"/>
+        <Column id="deptCode" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
     <Dataset id="gds_admin">
@@ -432,19 +434,35 @@
         </Row>
       </Rows>
     </Dataset>
-    <Dataset id="ds_YN">
+    <Dataset id="gds_part">
       <ColumnInfo>
-        <Column id="code" type="STRING" size="256"/>
+        <Column id="id" type="STRING" size="256"/>
         <Column id="name" type="STRING" size="256"/>
       </ColumnInfo>
       <Rows>
         <Row>
-          <Col id="code">Y</Col>
-          <Col id="name">Y</Col>
+          <Col id="id">A</Col>
+          <Col id="name">전공필수</Col>
         </Row>
         <Row>
-          <Col id="code">N</Col>
-          <Col id="name">N</Col>
+          <Col id="id">B</Col>
+          <Col id="name">전공선택</Col>
+        </Row>
+        <Row>
+          <Col id="id">C</Col>
+          <Col id="name">교양필수</Col>
+        </Row>
+        <Row>
+          <Col id="id">D</Col>
+          <Col id="name">교양선택</Col>
+        </Row>
+        <Row>
+          <Col id="id">E</Col>
+          <Col id="name">지정교양</Col>
+        </Row>
+        <Row>
+          <Col id="id">F</Col>
+          <Col id="name">계열기초</Col>
         </Row>
       </Rows>
     </Dataset>

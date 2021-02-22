@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="notice_pop" width="800" height="600" titletext="New Form" onload="notice_pop_onload">
+    <Layouts>
+      <Layout height="600" mobileorientation="landscape" width="800">
+        <Static id="label_notice" taborder="0" text="공지(분류)" left="30" top="30" width="120" height="60" border="1px solid black" textAlign="center"/>
+        <Static id="sta_title" taborder="1" text="TItle" left="30" top="100" width="741" height="70" border="1px solid black" textAlign="center"/>
+        <Static id="label_date" taborder="2" text="작성일자" left="110" top="170" width="120" height="60" textAlign="center" border="1px solid black"/>
+        <Static id="label_viewCount" taborder="3" text="조회수" left="460" top="170" width="120" height="60" textAlign="center" border="1px solid black"/>
+        <TextArea id="ta_content" taborder="4" left="30" top="230" width="741" height="230" readonly="true"/>
+        <Static id="sta_file" taborder="5" text="첨부파일" left="30" top="460" width="120" height="60" border="1px solid black" textAlign="center"/>
+        <Button id="btn_close" taborder="6" text="닫기" left="670" top="535" width="100" height="30" onclick="btn_close_onclick"/>
+        <Static id="sta_view_count" taborder="7" text="조회수" left="580" top="170" width="120" height="60" textAlign="center"/>
+        <Grid id="gr_fileList" taborder="8" left="150" top="460" width="520" height="60" binddataset="ds_NoticeFiles" autofittype="col" onheadclick="gr_fileList_onheadclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="33"/>
+                <Column size="360"/>
+                <Column size="127"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="파일 이름"/>
+                <Cell col="2" text="파일크기"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="bind:fileName"/>
+                <Cell col="2" text="bind:fileSize"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btnDownload" taborder="9" text="다운로드" left="670" top="460" width="100" height="60" onclick="btnDownload_onclick"/>
+        <Calendar id="cal_date" taborder="10" left="230" top="170" width="170" height="60" dateformat="yyyy-MM-dd"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.notice_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var nCode = this.parent.nCode;
+	
+	this.transaction(
+		"noticeOnload"
+		,"/noticeOnload.notice" 
+		,"" 
+		,"ds_Notice=out_ds ds_NoticeFiles=out_ds2" 
+		,"nCode="+nCode 
+		,"fn_callback" 
+	);
+};
+this.fn_callback = function(sId,errCd,errMsg){
+	if (errCd < 0) {
+		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
+	}
+	if(sId == "noticeOnload"){
+		var title = this.ds_Notice.getColumn(0,"title");
+		var date = this.ds_Notice.getColumn(0,"writedate");
+		var contents = this.ds_Notice.getColumn(0,"contents");
+		var part = this.ds_Notice.getColumn(0,"deptcode");
+		var count = this.ds_Notice.getColumn(0,"view_count");
+		
+		this.sta_title.set_text(title);
+		this.cal_date.set_value(date)
+		this.ta_content.set_value(contents);
+		if(part == "A"){
+			part = "일반공지";
+		}else if(part =="B"){
+			part = "학사공지";
+		}else if(part =="C"){
+			part = "장학공지";
+		}else if(part =="D"){
+			part = "취업공지";
+		}
+		this.label_notice.set_text(part);
+		this.sta_view_count.set_text(count);
+	}
+}
+this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+
+this.btnDownload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objDs = this.ds_NoticeFiles;
+	var seq = this.parent.nCode;
+	var title = this.sta_title.text;
+	this.FileDownTransfer00.setPostData("seq",seq); // 현재 게시물의seq를 넘김
+	//총 첨부파일 중 체크 된 파일만 이벤트 발생
+	this.FileDownTransfer00.setPostData("title",title);
+	
+	var arr = this.ds_NoticeFiles.extractRows("chk==1");
+	if(arr.length > 0){
+		for(var i=0; i< arr.length; i++){
+			// 체크된 파일만 서버로 변수를 보냄	
+			var savedFileName = objDs.getColumn(i,"savedFileName");
+			this.FileDownTransfer00.setPostData("savedFileName'"+i+"'",savedFileName);
+				
+			var fileName = objDs.getColumn(i,"fileName");
+			this.FileDownTransfer00.setPostData("fileName'"+i+"'",fileName);
+			trace(fileName);
+		}
+	this.FileDownTransfer00.download("/downloadNotice.notice");
+	}else{
+		alert("파일을 선택해주세요");
+	}
+  
+  
+  
+};
+
+this.gr_fileList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	let flag = obj.getCellProperty("Head",0,"text");
+	let check = flag==0?1:0;
+	if(e.cell==0){
+		obj.setCellProperty("Head",0,"text",check);
+		for(let i = 0;i<this.ds_NoticeFiles.getRowCount();i++){
+			this.ds_NoticeFiles.setColumn(i,"chk",check);
+		}
+	}
+};
+
+
+//파일다운로드 성공시 (NRE 에서만 지원)
+this.FileDownTransfer00_onsuccess = function(obj:nexacro.FileDownTransfer,e:nexacro.FileDownTransferEventInfo)
+{
+  var sMsg = e.targetfullpath +"\n"+  e.url;
+  
+  alert(sMsg);
+};
+
+//파일다운로드 실패시 (NRE 에서만 지원)
+this.FileDownTransfer00_onerror = function(obj:nexacro.FileDownTransfer,e:nexacro.FileDownTransferErrorEventInfo)
+{
+  var sMsg = ">>>>>>>>>>>>>>>>>>>>>>>>>>  ERROR >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
+  sMsg += "statuscode: "+e.statuscode+"\n";
+  sMsg += "requesturi: "+e.requesturi+"\n";
+  sMsg += "locationuri: "+e.locationuri+"\n" ;
+  sMsg += "errormsg: "+e.errormsg+"\n";
+  
+  alert(sMsg);
+};]]></Script>
+    <Objects>
+      <Dataset id="ds_NoticeFiles">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="n_seq" type="INT" size="256"/>
+          <Column id="parentSeq" type="INT" size="256"/>
+          <Column id="fileName" type="STRING" size="256"/>
+          <Column id="savedFileName" type="STRING" size="256"/>
+          <Column id="fileSize" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_Notice">
+        <ColumnInfo>
+          <Column id="n_seq" type="INT" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="writedate" type="DATE" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="deptcode" type="STRING" size="256"/>
+          <Column id="view_count" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileDownTransfer id="FileDownTransfer00" onerror="FileDownTransfer00_onerror" onsuccess="FileDownTransfer00_onsuccess"/>
+    </Objects>
+  </Form>
+</FDL>
