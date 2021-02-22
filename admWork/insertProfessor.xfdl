@@ -4,27 +4,26 @@
     <Layouts>
       <Layout height="420" mobileorientation="landscape" width="300">
         <Static id="Static00" taborder="0" text="교수번호" top="20" width="50" height="30" left="10"/>
-        <Edit id="edt_p_seq" taborder="1" top="20" width="175" height="30" left="85" cssclass="edt_default"/>
-        <Static id="Static00_00" taborder="2" text="이름" top="55" width="50" height="30" left="10"/>
-        <Static id="Static00_01" taborder="3" text="주민번호" top="90" width="50" height="30" left="10"/>
-        <Static id="Static00_02" taborder="4" text="이메일" top="125" width="50" height="30" left="10"/>
-        <Static id="Static00_03" taborder="5" text="전화번호" top="160" width="50" height="30" left="10"/>
-        <Static id="Static00_04" taborder="6" text="주소" top="195" width="50" height="30" left="10"/>
-        <Static id="Static00_05" taborder="7" text="강사" top="230" width="50" height="30" left="10"/>
-        <Static id="Static00_06" taborder="8" text="초기비밀번호" top="265" width="75" height="30" left="10"/>
-        <Edit id="edt_name" taborder="9" top="55" width="175" height="30" left="85"/>
-        <Edit id="edt_email" taborder="10" top="125" width="175" height="30" left="85"/>
-        <Edit id="edt_contact" taborder="11" top="160" width="175" height="30" left="85"/>
-        <Edit id="edt_address" taborder="12" top="195" width="175" height="30" left="85"/>
-        <Edit id="edt_pw" taborder="13" top="265" width="175" height="30" left="85"/>
-        <Button id="btn_insert" taborder="14" text="입력" top="390" width="50" height="30" left="85" onclick="btn_insert_onclick"/>
-        <Button id="btn_cancel" taborder="15" text="취소" top="390" width="50" height="30" left="210" onclick="btn_cancel_onclick"/>
-        <Static id="Static00_06_00" taborder="16" text="학과분류" top="300" width="75" height="30" left="10"/>
-        <Static id="Static00_06_00_00" taborder="17" text="학과" top="335" width="75" height="30" left="10"/>
-        <Combo id="com_colCode" taborder="18" left="85" top="300" width="175" height="30" innerdataset="colCode_Copy" codecolumn="code" datacolumn="name"/>
-        <Combo id="com_deptCode" taborder="19" left="85" top="335" width="175" height="30" innerdataset="deptCode_copy" codecolumn="code" datacolumn="name"/>
-        <MaskEdit id="mas_secNumber" taborder="20" left="85" top="90" width="175" height="30" type="string" format="###### - #{######}"/>
-        <Combo id="com_lecture" taborder="21" left="85" top="230" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="com_lecture_onitemchanged">
+        <Static id="Static00_00" taborder="1" text="이름" top="55" width="50" height="30" left="10"/>
+        <Static id="Static00_01" taborder="2" text="주민번호" top="90" width="50" height="30" left="10"/>
+        <Static id="Static00_02" taborder="3" text="이메일" top="125" width="50" height="30" left="10"/>
+        <Static id="Static00_03" taborder="4" text="전화번호" top="160" width="50" height="30" left="10"/>
+        <Static id="Static00_04" taborder="5" text="주소" top="195" width="50" height="30" left="10"/>
+        <Static id="Static00_05" taborder="6" text="강사" top="230" width="50" height="30" left="10"/>
+        <Static id="Static00_06" taborder="7" text="초기비밀번호" top="265" width="75" height="30" left="10"/>
+        <Edit id="edt_name" taborder="8" top="55" width="175" height="30" left="85"/>
+        <Edit id="edt_email" taborder="9" top="125" width="175" height="30" left="85"/>
+        <Edit id="edt_contact" taborder="10" top="160" width="175" height="30" left="85"/>
+        <Edit id="edt_address" taborder="11" top="195" width="175" height="30" left="85"/>
+        <Edit id="edt_pw" taborder="12" top="265" width="175" height="30" left="85"/>
+        <Button id="btn_insert" taborder="13" text="입력" top="390" width="50" height="30" left="85" onclick="btn_insert_onclick"/>
+        <Button id="btn_cancel" taborder="14" text="취소" top="390" width="50" height="30" left="210" onclick="btn_cancel_onclick"/>
+        <Static id="Static00_06_00" taborder="15" text="학과분류" top="300" width="75" height="30" left="10"/>
+        <Static id="Static00_06_00_00" taborder="16" text="학과" top="335" width="75" height="30" left="10"/>
+        <Combo id="com_colCode" taborder="17" left="85" top="300" width="175" height="30" innerdataset="colCode_Copy" codecolumn="code" datacolumn="name"/>
+        <Combo id="com_deptCode" taborder="18" left="85" top="335" width="175" height="30" innerdataset="deptCode_copy" codecolumn="code" datacolumn="name"/>
+        <MaskEdit id="mas_secNumber" taborder="19" left="85" top="90" width="175" height="30" type="string" format="###### - #{######}"/>
+        <Combo id="com_lecture" taborder="20" left="85" top="230" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="com_lecture_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -42,6 +41,7 @@
             </Rows>
           </Dataset>
         </Combo>
+        <MaskEdit id="mas_p_seq" taborder="21" left="85" top="20" width="175" height="30" type="string" format="#########"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fn_callback = function(id,ErrorCode,ErrorMsg){	//콜백함수
@@ -53,7 +53,7 @@
 
 this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var p_seq = this.edt_p_seq.value;
+	var p_seq = this.mas_p_seq.value;
 	var name = this.edt_name.value;
 	var secNumber = this.mas_secNumber.value;
 	var email = this.edt_email.value;
@@ -63,6 +63,44 @@ this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var pw = this.edt_pw.value;
 	var colCode = this.com_colCode.value;
 	var deptCode = this.com_deptCode.value;
+	
+	var rp_seq = this.mas_p_seq.text.length;
+	
+	var test = this.mas_p_seq.text.substring(rp_seq,rp_seq-1);
+	trace(test);
+	
+	
+	if(p_seq == null || p_seq == "undefined" || test == '_'){
+		this.alert("교수번호 입력해주세요(9자리)");
+		return;
+	}else if(name == null || name == "undefined"){
+		this.alert("이름 입력해주세요");
+		return;
+	}else if(secNumber == null || secNumber == "undefined"){
+		this.alert("주민번호 입력해주세요.");
+		return;
+	}else if(email == null || email == "undefined"){
+		this.alert("이메일 입력해주세요");
+		return;
+	}else if(contact == null || contact == "undefined"){
+		this.alert("전화번호 입력해주세요");
+		return;
+	}else if(address == null || address == "undefined"){
+		this.alert("주소 입력해주세요");
+		return;
+	}else if(pw == null || pw == "undefined"){
+		this.alert("비밀번호 입력해주세요");
+		return;
+	}else if(lecture == null || lecture == "undefined"){
+		this.alert("강사여부 입력해주세요");
+		return;
+	}else if(colCode == null || colCode == "undefined"){
+		this.alert("학과분류 입력해주세요");
+		return;
+	}else if(deptCode == null || deptCode == "undefined"){
+		this.alert("학과 입력해주세요");
+		return;
+	}
 	
 	var addRow = this.ds_professor_copy.addRow();
 	this.ds_professor_copy.setColumn(addRow,"p_seq",p_seq);
