@@ -70,7 +70,9 @@
         <Edit id="Edit01" taborder="12" left="610" top="271" width="420" height="189" readonly="true"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[this.code="201102159";
+    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
+this.code=this.objApp.gds_students.getColumn(0,'s_seq');
+
 this.scholarship_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.transaction(
