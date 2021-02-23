@@ -8,9 +8,7 @@
         <Div id="Div00" taborder="2" text="Div00" left="30" top="38" width="1021" height="452" border="1px solid #c1c1c1">
           <Layouts>
             <Layout>
-              <Button id="btn_searchEtc" taborder="0" left="258" top="36" width="25" height="25" background="" onclick="Div00_btn_searchEtc_onclick"/>
-              <Edit id="edt_etcSearch" taborder="1" left="120" top="36" width="130" height="25" displaynulltext="학번 또는 이름 검색"/>
-              <Grid id="grd_std" taborder="2" left="32" top="71" width="377" height="330" binddataset="students_ds" autofittype="col" oncellclick="Div00_grd_std_oncellclick" oncelldblclick="Div00_grd_std_oncelldblclick">
+              <Grid id="grd_std" taborder="0" left="8" top="71" width="420" height="330" binddataset="students_ds" autofittype="col" oncellclick="Div00_grd_std_oncellclick" oncelldblclick="Div00_grd_std_oncelldblclick" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -35,8 +33,7 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="btn_scholar" taborder="3" text="장학금 입력" left="329" top="36" width="80" height="25" onclick="Div00_btn_scholar_onclick"/>
-              <Grid id="grd_scholar" taborder="4" left="439" top="71" width="550" height="330" autofittype="col" binddataset="scholorship_ds" oncelldblclick="Div00_grd_scholar_oncelldblclick" oncellclick="Div00_grd_scholar_oncellclick">
+              <Grid id="grd_scholar" taborder="1" left="439" top="71" width="570" height="330" autofittype="col" binddataset="scholorship_ds" oncelldblclick="Div00_grd_scholar_oncelldblclick" oncellclick="Div00_grd_scholar_oncellclick" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -64,34 +61,43 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="btn_del" taborder="5" text="삭제" left="909" top="411" width="80" height="25" onclick="Div00_btn_del_onclick"/>
-              <Button id="btn_entire" taborder="6" text="전체 보기" left="909" top="36" width="80" height="25" onclick="Div00_btn_entire_onclick"/>
-              <Combo id="cmb_cate" taborder="7" text="Combo00" left="30" top="36" width="80" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
-                <Dataset id="innerdataset">
-                  <ColumnInfo>
-                    <Column id="codecolumn" size="256"/>
-                    <Column id="datacolumn" size="256"/>
-                  </ColumnInfo>
-                  <Rows>
-                    <Row>
-                      <Col id="codecolumn">01</Col>
-                      <Col id="datacolumn">전체</Col>
-                    </Row>
-                    <Row>
-                      <Col id="codecolumn">02</Col>
-                      <Col id="datacolumn">학번</Col>
-                    </Row>
-                    <Row>
-                      <Col id="codecolumn">03</Col>
-                      <Col id="datacolumn">이름</Col>
-                    </Row>
-                  </Rows>
-                </Dataset>
-              </Combo>
+              <Button id="btn_del" taborder="2" text="삭제" left="909" top="411" width="100" height="25" onclick="Div00_btn_del_onclick" cssclass="btn_del"/>
+              <Button id="btn_entire" taborder="3" text="전체 보기" left="909" top="20" width="100" height="25" onclick="Div00_btn_entire_onclick" cssclass="btn_default"/>
+              <Div id="Div00" taborder="4" left="8" top="12" width="420" height="40" cssclass="div_line" text="">
+                <Layouts>
+                  <Layout>
+                    <Combo id="cmb_cate" taborder="0" text="" left="13" top="7" width="80" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
+                      <Dataset id="innerdataset">
+                        <ColumnInfo>
+                          <Column id="codecolumn" size="256"/>
+                          <Column id="datacolumn" size="256"/>
+                        </ColumnInfo>
+                        <Rows>
+                          <Row>
+                            <Col id="codecolumn">01</Col>
+                            <Col id="datacolumn">전체</Col>
+                          </Row>
+                          <Row>
+                            <Col id="codecolumn">02</Col>
+                            <Col id="datacolumn">학번</Col>
+                          </Row>
+                          <Row>
+                            <Col id="codecolumn">03</Col>
+                            <Col id="datacolumn">이름</Col>
+                          </Row>
+                        </Rows>
+                      </Dataset>
+                    </Combo>
+                    <Edit id="edt_etcSearch" taborder="1" left="103" top="7" width="130" height="25" displaynulltext="학번 또는 이름 검색" cssclass="edt_default"/>
+                    <Button id="btn_searchEtc" taborder="2" left="241" top="7" width="60" height="25" background="" onclick="Div00_btn_searchEtc_onclick" cssclass="btn_search" text="조회"/>
+                    <Button id="btn_scholar" taborder="3" text="입력" left="312" top="7" width="100" height="25" onclick="Div00_btn_scholar_onclick" cssclass="btn_insert"/>
+                  </Layout>
+                </Layouts>
+              </Div>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static01" taborder="3" text="장학금 관리" left="30" top="9" width="200" height="30"/>
+        <Static id="Static01" taborder="3" text="장학금 관리" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
         <Static id="Static00_00" taborder="4" left="1050" top="0" width="30" visible="false" background="RGBA(236,135,135,0.71)" bottom="0"/>
         <Static id="Static00_01_00" taborder="5" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
       </Layout>

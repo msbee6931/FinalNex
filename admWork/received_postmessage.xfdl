@@ -10,7 +10,7 @@
         <Div id="Div00" taborder="4" text="" left="30" top="39" width="1021" height="451" cssclass="div_line">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="1" left="0" top="25" width="296" height="391" binddataset="pst" autofittype="col">
+              <Grid id="Grid00" taborder="1" left="0" top="25" width="319" height="391" binddataset="pst" autofittype="col" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>

@@ -7,10 +7,10 @@
         <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="2" left="1050" top="0" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Div id="Div00" taborder="4" text="Div00" left="30" top="44" width="1020" height="446" cssclass="div_line">
+        <Div id="Div00" taborder="4" text="Div00" left="30" top="44" cssclass="div_line" right="30" bottom="30">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="24" top="55" width="376" height="349" binddataset="free" autofittype="col" oncellposchanged="Div00_Grid00_oncellposchanged">
+              <Grid id="Grid00" taborder="0" left="24" top="55" binddataset="free" autofittype="col" oncellposchanged="Div00_Grid00_oncellposchanged" cssclass="grd_default" right="618" bottom="40">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -41,7 +41,7 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Div id="Div00" taborder="1" text="" left="414" top="13" width="568" height="391" cssclass="div_line">
+              <Div id="Div00" taborder="1" text="" left="414" top="13" cssclass="div_line" right="36" bottom="40">
                 <Layouts>
                   <Layout>
                     <Static id="Static00" taborder="1" text="Contents" left="15" top="7" width="542" height="28" textAlign="center" cssclass="sta_default"/>
@@ -50,10 +50,10 @@
                 </Layouts>
               </Div>
               <Static id="Static00" taborder="2" text="FreeBoard" left="32" top="15" width="87" height="33"/>
-              <Button id="del_btn" taborder="3" text="삭제" left="885" top="408" width="100" height="30" onclick="Div00_del_btn_onclick" cssclass="btn_del"/>
-              <Combo id="Combo00" taborder="4" text="Combo00" left="129" top="26" width="107" height="25" innerdataset="search" codecolumn="id" datacolumn="column" cssclass="cmb_default"/>
-              <Edit id="Edit00" taborder="5" left="246" top="26" width="115" height="25" cssclass="edt_default"/>
-              <Button id="Button00" taborder="6" left="370" top="26" width="25" height="25" onclick="Div00_Button00_onclick" cssclass="btn_search"/>
+              <Button id="del_btn" taborder="3" text="삭제" width="100" height="25" onclick="Div00_del_btn_onclick" cssclass="btn_del" right="33" bottom="11"/>
+              <Combo id="Combo00" taborder="4" text="Combo00" left="99" top="26" width="107" height="25" innerdataset="search" codecolumn="id" datacolumn="column" cssclass="cmb_default"/>
+              <Edit id="Edit00" taborder="5" left="216" top="26" width="115" height="25" cssclass="edt_default"/>
+              <Button id="Button00" taborder="6" width="60" height="25" onclick="Div00_Button00_onclick" cssclass="btn_search" text="조회" left="340" top="26"/>
             </Layout>
           </Layouts>
         </Div>
