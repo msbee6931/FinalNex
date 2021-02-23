@@ -9,9 +9,8 @@
             <Format id="default">
               <Columns>
                 <Column size="41"/>
-                <Column size="42"/>
-                <Column size="68"/>
-                <Column size="77"/>
+                <Column size="92"/>
+                <Column size="99"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -19,38 +18,35 @@
               </Rows>
               <Band id="head">
                 <Cell/>
-                <Cell col="1" text="확인"/>
-                <Cell col="2" text="보낸이"/>
-                <Cell col="3" text="받는이"/>
+                <Cell col="1" text="보낸이"/>
+                <Cell col="2" text="받는이"/>
               </Band>
               <Band id="body">
                 <Cell displaytype="checkboxcontrol" edittype="checkbox" text="bind:chk"/>
-                <Cell col="1" text="bind:confirm"/>
-                <Cell col="2" text="bind:sender"/>
-                <Cell col="3" text="bind:receiver"/>
+                <Cell col="1" text="bind:sender" edittype="mask" maskeditformat="#########" textAlign="center"/>
+                <Cell col="2" text="bind:receiver" edittype="mask" maskeditformat="#########" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
         <Button id="del_btn" taborder="2" text="삭제" left="135" top="542" width="100" height="30" onclick="del_btn_onclick" cssclass="btn_del"/>
-        <Button id="check_btn" taborder="3" text="확인" left="8" top="542" width="100" height="30" onclick="check_btn_onclick" cssclass="btn_default"/>
-        <Div id="Div00" taborder="4" text="" left="283" top="14" width="474" height="266" cssclass="div_line">
+        <Div id="Div00" taborder="3" text="" left="283" top="14" width="474" height="266" cssclass="div_line">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="내용" left="18" top="7" width="425" height="25" textAlign="center" cssclass="sta_default"/>
-              <Edit id="Edit00" taborder="1" left="20" top="45" width="424" height="201" cssclass="edt_default"/>
+              <Static id="Static00" taborder="0" text="내가 쓴 내용" left="18" top="7" width="425" height="25" textAlign="center" cssclass="sta_default"/>
+              <Edit id="Edit00" taborder="1" left="20" top="45" width="424" height="201" cssclass="edt_default" oninput="Div00_Edit00_oninput"/>
             </Layout>
           </Layouts>
         </Div>
-        <Div id="Div00_00" taborder="5" text="" left="283" top="290" width="474" height="258" cssclass="div_line">
+        <Div id="Div00_00" taborder="4" text="" left="283" top="290" width="474" height="258" cssclass="div_line">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="답장" left="23" top="14" width="425" height="25" textAlign="center" cssclass="sta_default"/>
-              <Edit id="Edit00" taborder="1" left="26" top="49" width="424" height="201" cssclass="edt_default"/>
+              <Static id="Static00" taborder="0" text="받은 답장" left="23" top="14" width="425" height="25" textAlign="center" cssclass="sta_default"/>
+              <TextArea id="TextArea00" taborder="1" left="26" top="49" width="422" height="200" cssclass="textarea_default"/>
             </Layout>
           </Layouts>
         </Div>
-        <Button id="Button00" taborder="6" text="전송" left="650" top="558" width="100" height="30" onclick="Button00_onclick" cssclass="btn_default"/>
+        <Button id="Button00" taborder="5" text="전송" left="650" top="558" width="100" height="30" onclick="Button00_onclick" cssclass="btn_default"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -88,6 +84,9 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
             ,""
             ,"fn_callback" 
          )
+		 
+	alert("전송 되었습니다.");
+	
 };
 
 this.del_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -111,8 +110,8 @@ this.del_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.alarm_admin_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.transaction(
-			"PMLoad" //id
-			,"/PMLoad.nex"//url
+			"PMReceived" //id
+			,"/PMReceived.nex"//url
 			,""// inData
 			,"admin_alarm=out_ds"// outData
 			,""//strArg
@@ -120,27 +119,17 @@ this.alarm_admin_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		);
 };
 
-this.check_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+
+
+
+this.Div00_Edit00_oninput = function(obj:nexacro.Edit,e:nexacro.InputEventInfo)
 {
-	let arr = this.admin_alarm.extractRows("chk==1");
-	
-	if(arr.length==0 || arr.length== -1){alert("선택된 항목이 없습니다.");return;}
-	
-
-
-		   this.transaction(
-            "PMConfirm"
-            ,"/PMConfirm.nex"
-            ,"in_ds=admin_alarm:U"
-            ,"admin_alarm=out_ds"
-            ,""
-            ,"fn_callback" 
-         )
+	alert("내용은 바꾸실수 없습니다.\n 바뀐 내용은 저장되지 않습니다.");
 };
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="Div00.form.Edit00" propid="value" datasetid="admin_alarm" columnid="contents"/>
-      <BindItem id="item1" compid="Div00_00.form.Edit00" propid="value" datasetid="admin_alarm" columnid="reply"/>
+      <BindItem id="item1" compid="Div00_00.form.TextArea00" propid="value" datasetid="admin_alarm" columnid="reply"/>
     </Bind>
   </Form>
 </FDL>

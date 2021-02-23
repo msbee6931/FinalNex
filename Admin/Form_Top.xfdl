@@ -67,8 +67,8 @@ this.fn_callback_pop= function(){
 this.Form_Top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 			this.transaction(
-			"alarm" //id
-			,"/alarm.nex"//url
+			"alarmAdmin" //id
+			,"/alarmAdmin.nex"//url
 			,""// inData
 			,"admin_alarm=out_ds"// outData
 			,""//strArg
