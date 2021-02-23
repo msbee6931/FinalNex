@@ -7,12 +7,12 @@
         <Static id="Static00_00" taborder="1" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Div id="Div00" taborder="4" text="Div00" left="30" top="38" width="1021" height="452" cssclass="div_line">
+        <Div id="div_schedule" taborder="4" text="Div00" left="30" top="38" width="1021" height="452" cssclass="div_line">
           <Layouts>
             <Layout>
-              <Calendar id="cal_dept" taborder="0" left="29" top="56" width="350" height="350" type="monthonly" ondayclick="Div00_cal_dept_ondayclick"/>
+              <Calendar id="cal_dept" taborder="0" left="29" top="56" width="350" height="350" type="monthonly" ondayclick="Div00_cal_dept_ondayclick" innerdataset="ds_cal" backgroundcolumn="backgroundcolumn" bordercolumn="bordercolumn" datecolumn="datecolumn" textcolorcolumn="textcolorcolumn"/>
               <Button id="btn_insert" taborder="1" text="일정 등록" left="889" top="16" width="100" height="30" onclick="Div00_btn_insert_onclick" cssclass="btn_insert"/>
-              <Grid id="Grid00" taborder="2" left="429" top="56" width="550" height="350" binddataset="colSchedule_ds" autofittype="col" oncelldblclick="Div00_Grid00_oncelldblclick" oncellclick="Div00_Grid00_oncellclick">
+              <Grid id="gr_colSchedule" taborder="2" left="429" top="56" width="550" height="350" binddataset="colSchedule_ds" autofittype="col" oncelldblclick="Div00_Grid00_oncelldblclick" oncellclick="Div00_Grid00_oncellclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -38,14 +38,21 @@
                 </Formats>
               </Grid>
               <Button id="btn_del" taborder="3" text="삭제" left="889" top="416" width="100" height="30" onclick="Div00_btn_del_onclick" cssclass="btn_del"/>
+              <Button id="btnAll" taborder="4" text="전체 일정" left="429" top="16" width="100" height="30" onclick="div_schedule_btnAll_onclick"/>
+              <Button id="btnAfter" taborder="5" text="남은 일정" left="549" top="16" width="100" height="30" onclick="div_schedule_btnAfter_onclick"/>
             </Layout>
           </Layouts>
         </Div>
         <Static id="Static01" taborder="5" text="학사 스케줄" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[this.colSchedule_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
+this.colSchedule_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	if(this.objApp.gds_professor.getRowCount() > 0){
+		this.div_schedule.form.btn_del.set_visible(false);
+		this.div_schedule.form.btn_insert.set_visible(false);
+	}
 	this.transaction(
 		"selectColSchedule",//id
 		"/schedule/selectColSchedule",//url (절대경로)
@@ -54,9 +61,7 @@
 		"",//argument
 		"fn_callback"
 	)
-	
-	
-	
+		
 	//오늘 날짜 계산하기
 	var currDate = new Date();
     var year = currDate.getFullYear().toString().padLeft(4, "0");
@@ -65,52 +70,33 @@
 	
     currDate = year+month+day; // 오늘 날짜
 };
-
+this.fn_callback = function(sId,errCd,errMsg){
+	if (errCd < 0) {
+		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
+	} 
+	if(sId == "selectColSchedule"){
+		this.ds_cal.clearData();
+		for(var i=0; i<this.colSchedule_ds.getRowCount(); i++){
+			var sDate = this.colSchedule_ds.getColumn(i,"sDate");
+			var eDate = this.colSchedule_ds.getColumn(i,"eDate");
+			for(var j=0; j<=parseInt(eDate)-parseInt(sDate); j++){
+				var nRow = this.ds_cal.addRow();
+				this.ds_cal.setColumn(nRow,"backgroundcolumn","skyBlue");
+				this.ds_cal.setColumn(nRow,"bordercolumn","1px solid green");
+				this.ds_cal.setColumn(nRow,"datecolumn",parseInt(sDate)+j);
+			}
+		}
+		var objDate = new Date();
+		this.div_schedule.form.cal_dept.set_value(objDate);
+		var date= this.div_schedule.form.cal_dept.value;
+		this.colSchedule_ds.filter("eDate>='"+date+"'");
+	}
+}
 
 //클릭 시 Grid 에 일정 띄우기
 this.Div00_cal_dept_ondayclick = function(obj:nexacro.Calendar,e:nexacro.CalendarDayClickEventInfo)
 {
-	var clickedDate = e.date; // 클릭한 날짜
-	
-	for(var i=0; i<this.colSchedule_ds.getRowCount();i++)
-	{
-		var fromDate = this.colSchedule_ds.getColumn(i,"sDate");
-		var toDate = this.colSchedule_ds.getColumn(i,"eDate");
-		var seq = this.colSchedule_ds.getColumn(i,"seq");
-		
-		// 날짜간 차이 계산하기하기
-		fromDate = new Date();
-		toDate = new Date();
-		var calDate;
-		var day = 1000*60*60*24;
-		
-		fromDate.setFullYear(this.cal_sDate.getYear());
-		fromDate.setMonth(this.cal_sDate.getMonth()-1);
-		fromDate.setDate(this.cal_sDate.getDay());
-		
-		toDate.setFullYear(this.cal_eDate.getYear());
-		toDate.setMonth(this.cal_eDate.getMonth()-1);
-		toDate.setDate(this.cal_eDate.getDay());
-		
-		calDate = fromDate.getTime() - toDate.getTime();
-		
-		var leng = Math.abs(calDate/day); // 실제 날짜 간 차이
-		
-		
-	}
-	
-	
-	for(var i=0; i<(leng+1);i++){
-		
-		var schDate = (sDate+i);
-		
-		if(clickedDate==schDate)
-		{
-			this.colSchedule_ds.filter("seq=='"+clickedDate+"'");
-		}
-		
-	}
-	
+	this.colSchedule_ds.filter("sDate<='"+e.date+"'&& eDate>='"+e.date+"'");
 };
 
 
@@ -207,6 +193,18 @@ this.Div00_btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
 };
 
 
+this.div_schedule_btnAll_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.colSchedule_ds.filter("");
+};
+
+this.div_schedule_btnAfter_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objDate = new Date();
+	this.div_schedule.form.cal_dept.set_value(objDate);
+	var date= this.div_schedule.form.cal_dept.value;
+	this.colSchedule_ds.filter("eDate>='"+date+"'");
+};
 ]]></Script>
     <Objects>
       <Dataset id="colSchedule_ds">
@@ -217,6 +215,14 @@ this.Div00_btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
           <Column id="eDate" type="STRING" size="256"/>
           <Column id="contents" type="STRING" size="256"/>
           <Column id="writeDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cal">
+        <ColumnInfo>
+          <Column id="backgroundcolumn" type="STRING" size="256"/>
+          <Column id="bordercolumn" type="STRING" size="256"/>
+          <Column id="datecolumn" type="STRING" size="256"/>
+          <Column id="textcolorcolumn" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>

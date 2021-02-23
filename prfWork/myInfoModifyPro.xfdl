@@ -17,7 +17,7 @@
               <Edit id="edt_contact" taborder="3" left="450" top="220" width="150" height="30"/>
               <Edit id="edt_address" taborder="4" left="450" top="255" width="150" height="30"/>
               <Button id="btn_modify" taborder="5" text="수정" left="424" top="356" width="50" height="40" onclick="Div00_btn_modify_onclick"/>
-              <Button id="btn_cancel" taborder="6" text="취소" left="574" top="357" width="50" height="40" onclick="Div00_btn_cancel_onclick"/>
+              <Button id="btn_cancel" taborder="6" text="다시입력" left="574" top="357" width="50" height="40" onclick="Div00_btn_cancel_onclick"/>
               <Static id="Static01_00" taborder="7" text="교수번호" left="350" width="100" height="30" top="80"/>
               <Static id="Static01_00_00" taborder="8" text="이름" left="350" width="100" height="30" top="115"/>
               <Static id="Static01_00_01" taborder="9" text="주민번호" left="350" width="100" height="30" top="150"/>
@@ -151,7 +151,8 @@ this.fn_passcallback = function(id,hash){
 
 this.Div00_btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.close("");
+	this.Div00.form.edt_pw.set_value("");
+	this.myInfoModifyPro_onload();
 };
 ]]></Script>
   </Form>

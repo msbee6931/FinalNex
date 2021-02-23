@@ -1,34 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="insertStudent" width="300" height="550" titletext="New Form">
+  <Form id="insertStudent" width="350" height="550" titletext="New Form">
     <Layouts>
-      <Layout height="550" mobileorientation="landscape" width="300">
-        <Edit id="edt_s_seq" taborder="0" top="20" width="175" height="30" left="85"/>
-        <Static id="Static00" taborder="1" text="학번" top="20" width="50" height="30" left="10"/>
-        <Static id="Static00_00" taborder="2" text="이름" top="55" width="50" height="30" left="10"/>
-        <Static id="Static00_01" taborder="3" text="주민번호" top="90" width="50" height="30" left="10"/>
-        <Static id="Static00_02" taborder="4" text="이메일" top="125" width="50" height="30" left="10"/>
-        <Static id="Static00_03" taborder="5" text="전화번호" top="160" width="50" height="30" left="10"/>
-        <Static id="Static00_04" taborder="6" text="주소" top="195" width="50" height="30" left="10"/>
-        <Static id="Static00_05" taborder="7" text="장학금" top="230" width="50" height="30" left="10"/>
-        <Static id="Static00_06" taborder="8" text="휴학" top="265" width="50" height="30" left="10"/>
-        <Static id="Static00_07" taborder="9" text="성적" top="300" width="50" height="30" left="10"/>
-        <Static id="Static00_09" taborder="10" text="초기비밀번호" top="335" width="75" height="30" onclick="Static00_09_onclick" left="10"/>
-        <Static id="Static00_10" taborder="11" text="성별" top="370" width="50" height="30" left="10"/>
-        <Edit id="edt_name" taborder="12" top="55" width="175" height="30" left="85"/>
-        <Edit id="edt_email" taborder="13" top="125" width="175" height="30" left="85"/>
-        <Edit id="edt_contact" taborder="14" top="160" width="175" height="30" left="85"/>
-        <Edit id="edt_address" taborder="15" top="195" width="175" height="30" left="85"/>
-        <Edit id="edt_scholarship" taborder="16" top="230" width="175" height="30" left="85"/>
-        <Edit id="edt_grade" taborder="17" top="300" width="175" height="30" left="85"/>
-        <Edit id="edt_pw" taborder="18" top="335" width="175" height="30" left="85"/>
-        <Button id="btn_insert" taborder="19" text="입력" top="515" width="50" height="30" left="95" onclick="btn_insert_onclick"/>
-        <Button id="btn_cancel" taborder="20" text="취소" top="515" width="50" height="30" left="210" onclick="btn_cancel_onclick"/>
-        <Static id="Static00_10_00" taborder="21" text="학과분류" top="405" width="50" height="30" left="10"/>
-        <Static id="Static00_10_01" taborder="22" text="학과" top="440" width="50" height="30" left="10"/>
-        <Combo id="com_colCode" taborder="23" left="85" top="405" width="175" height="30" innerdataset="colCode_Copy" codecolumn="code" datacolumn="name"/>
-        <Combo id="com_deptCode" taborder="24" left="85" top="440" width="175" height="30" innerdataset="deptCode_copy" codecolumn="code" datacolumn="name"/>
-        <Combo id="com_rest" taborder="25" left="85" top="265" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+      <Layout height="550" mobileorientation="landscape" width="350">
+        <Static id="Static00" taborder="14" text="학번" top="20" width="50" height="30" left="10"/>
+        <Static id="Static00_00" taborder="15" text="이름" top="55" width="50" height="30" left="10"/>
+        <Static id="Static00_01" taborder="16" text="주민번호" top="90" width="50" height="30" left="10"/>
+        <Static id="Static00_02" taborder="17" text="이메일" top="125" width="50" height="30" left="10"/>
+        <Static id="Static00_03" taborder="18" text="전화번호" top="160" width="50" height="30" left="10"/>
+        <Static id="Static00_04" taborder="19" text="주소" top="195" width="50" height="30" left="10"/>
+        <Static id="Static00_05" taborder="20" text="장학금" top="230" width="50" height="30" left="10"/>
+        <Static id="Static00_06" taborder="21" text="휴학" top="265" width="50" height="30" left="10"/>
+        <Static id="Static00_07" taborder="22" text="성적" top="300" width="50" height="30" left="10"/>
+        <Static id="Static00_09" taborder="23" text="초기비밀번호" top="335" width="75" height="30" onclick="Static00_09_onclick" left="10"/>
+        <Static id="Static00_10" taborder="24" text="성별" top="370" width="50" height="30" left="10"/>
+        <Edit id="edt_name" taborder="1" top="55" width="175" height="30" left="85"/>
+        <Edit id="edt_email" taborder="3" top="125" width="175" height="30" left="85"/>
+        <Edit id="edt_contact" taborder="4" top="160" width="175" height="30" left="85"/>
+        <Edit id="edt_address" taborder="5" top="195" width="175" height="30" left="85"/>
+        <Edit id="edt_scholarship" taborder="6" top="230" width="175" height="30" left="85"/>
+        <Edit id="edt_grade" taborder="8" top="300" width="175" height="30" left="85"/>
+        <Edit id="edt_pw" taborder="9" top="335" width="175" height="30" left="85"/>
+        <Button id="btn_insert" taborder="25" text="입력" top="515" width="50" height="30" left="95" onclick="btn_insert_onclick"/>
+        <Button id="btn_cancel" taborder="26" text="취소" top="515" width="50" height="30" left="210" onclick="btn_cancel_onclick"/>
+        <Static id="Static00_10_00" taborder="27" text="학과분류" top="405" width="50" height="30" left="10"/>
+        <Static id="Static00_10_01" taborder="28" text="학과" top="440" width="50" height="30" left="10"/>
+        <Combo id="com_colCode" taborder="11" left="85" top="405" width="175" height="30" innerdataset="colCode_Copy" codecolumn="code" datacolumn="name"/>
+        <Combo id="com_deptCode" taborder="12" left="85" top="440" width="175" height="30" innerdataset="deptCode_copy" codecolumn="code" datacolumn="name"/>
+        <Combo id="com_rest" taborder="7" left="85" top="265" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -46,7 +45,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="com_gender" taborder="26" left="85" top="370" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="com_gender_onitemchanged">
+        <Combo id="com_gender" taborder="10" left="85" top="370" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="com_gender_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -64,8 +63,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Static id="Static00_10_01_00" taborder="27" text="학년" top="475" width="50" height="30" left="10"/>
-        <Combo id="com_colGrade" taborder="28" left="85" top="475" width="175" height="30" codecolumn="codecolumn" datacolumn="datacolumn" innerdataset="innerdataset">
+        <Static id="Static00_10_01_00" taborder="29" text="학년" top="475" width="50" height="30" left="10"/>
+        <Combo id="com_colGrade" taborder="13" left="85" top="475" width="175" height="30" codecolumn="codecolumn" datacolumn="datacolumn" innerdataset="innerdataset">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -91,7 +90,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <MaskEdit id="mas_secNumber" taborder="29" left="85" top="90" width="175" height="30" format="###### - #{######}" type="string"/>
+        <MaskEdit id="mas_secNumber" taborder="2" left="85" top="90" width="175" height="30" format="###### - #{######}" type="string"/>
+        <MaskEdit id="mas_s_seq" taborder="0" left="85" top="20" width="175" height="30" type="string" format="#########" autoskip="true" tooltiptext="학번은 9자리입니다."/>
       </Layout>
     </Layouts>
     <Objects>
@@ -264,7 +264,7 @@ this.fn_callback = function(id,ErrorCode,ErrorMsg){	//콜백함수
 
 this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var s_seq = this.edt_s_seq.value;
+	var s_seq = this.mas_s_seq.value;
 	var name = this.edt_name.value;
 	var secNumber = this.mas_secNumber.value;
 	var email = this.edt_email.value;
@@ -278,9 +278,14 @@ this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var colCode = this.com_colCode.value;
 	var deptCode = this.com_deptCode.value;
 	var colGrade = this.com_colGrade.text;
+	var rs_seq = this.mas_s_seq.text.length;
 	
-	if(s_seq == null || s_seq == "undefined"){
-		this.alert("학번 입력해주세요");
+	var test = this.mas_s_seq.text.substring(rs_seq,rs_seq-1);
+	trace(test);
+	
+	
+	if(s_seq == null || s_seq == "undefined" || test == '_'){
+		this.alert("학번 입력해주세요(9자리)");
 		return;
 	}else if(name == null || name == "undefined"){
 		this.alert("이름 입력해주세요");

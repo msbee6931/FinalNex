@@ -136,6 +136,12 @@
         </Row>
         <Row>
           <Col id="menu_id">4010</Col>
+          <Col id="menu_name">내 정보 보기</Col>
+          <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::studentInfo.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="menu_id">4020</Col>
           <Col id="menu_name">나의 정보 수정</Col>
           <Col id="menu_level">1</Col>
           <Col id="form_url">stdWork::myInfoModify.xfdl</Col>
@@ -168,6 +174,12 @@
           <Col id="menu_name">교직원 조회</Col>
           <Col id="menu_level">1</Col>
           <Col id="form_url">admWork::faculty.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="menu_id">1020</Col>
+          <Col id="menu_name">학생 조회</Col>
+          <Col id="menu_level">1</Col>
+          <Col id="form_url">prfWork::deptStudent.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">20</Col>
@@ -221,12 +233,18 @@
         </Row>
         <Row>
           <Col id="menu_id">3010</Col>
+          <Col id="menu_name">학사 스케줄</Col>
+          <Col id="menu_level">1</Col>
+          <Col id="form_url">admWork::colSchedule.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="menu_id">3020</Col>
           <Col id="menu_name">학과 스케줄</Col>
           <Col id="menu_level">1</Col>
           <Col id="form_url">prfWork::deptSchedule.xfdl</Col>
         </Row>
         <Row>
-          <Col id="menu_id">3020</Col>
+          <Col id="menu_id">3030</Col>
           <Col id="menu_name">나의 스케줄</Col>
           <Col id="menu_level">1</Col>
           <Col id="form_url">prfWork::schedulerv2.xfdl</Col>
@@ -261,6 +279,12 @@
         </Row>
         <Row>
           <Col id="menu_id">5010</Col>
+          <Col id="menu_name">내 정보 보기</Col>
+          <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::studentInfo.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="menu_id">5020</Col>
           <Col id="menu_name">나의 정보 수정</Col>
           <Col id="menu_level">1</Col>
           <Col id="form_url">prfWork::myInfoModifyPro.xfdl</Col>
