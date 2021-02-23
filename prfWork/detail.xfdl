@@ -110,7 +110,7 @@
                         <MaskEdit id="edt_classSeq" taborder="52" left="469" top="49" width="212" height="39" maskchar="###" textAlign="center" format="+##########"/>
                         <MaskEdit id="mask_attend" taborder="42" left="21" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
                         <MaskEdit id="mask_mid" taborder="44" left="176" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
-                        <Combo id="co_dept" taborder="12" text="" left="469" top="88" width="212" height="39" innerdataset="deptCode" codecolumn="code" datacolumn="name"/>
+                        <Combo id="co_dept" taborder="12" text="" left="469" top="88" width="212" height="39" innerdataset="deptCode" codecolumn="code" datacolumn="name" ondropdown="Div00_classPlanTab_classPlan_co_dept_ondropdown" displayrowcount="5"/>
                         <CheckBox id="chk_pf" taborder="54" text="Pass/Fail" left="894" top="58" width="85" height="20" falsevalue="F" truevalue="P" value="F"/>
                       </Layout>
                     </Layouts>
@@ -370,17 +370,17 @@ this.classPlanTab_classPlan_btnSave_onclick = function(obj:nexacro.Button,e:nexa
 	var grade = classForm.co_grade.text;
 	var classTime = classForm.edt_classTime.text;
 	var classRoom = classForm.edt_classRoom.text;
-// 	if(sum != "100%" || sum2 != "100%"){alert("합계가 100%가 아닙니다")}
-// 	else if(part ==""){alert("이수구분을 선택해주세요");}
-// 	else if(limit==""){alert("인원을 입력해주세요");}
-// 	else if(className==""){alert("교과명을 입력해주세요");}
-// 	else if(classSeq==""){alert("과목코드를 입력해주세요");}//과목 코드는 조합으로만들 예정
-// 	else if(point==""){alert("학점을 선택해주세요");}
-// 	else if(dept==""){alert("학과를 선택해주세요");}
-// 	else if(grade==""){alert("학년을 선택해주세요");}
-// 	else if(classTime==""){alert("강의시간을 선택해주세요");}
-// 	else if(classRoom==""){alert("강의실을 입력해주세요");}
-// 	else{
+	if(sum != "100%" || sum2 != "100%"){alert("합계가 100%가 아닙니다")}
+	else if(part ==""){alert("이수구분을 선택해주세요");}
+	else if(limit==""){alert("인원을 입력해주세요");}
+	else if(className==""){alert("교과명을 입력해주세요");}
+	else if(classSeq==""){alert("과목코드를 입력해주세요");}//과목 코드는 조합으로만들 예정
+	else if(point==""){alert("학점을 선택해주세요");}
+	else if(dept==""){alert("학과를 선택해주세요");}
+	else if(grade==""){alert("학년을 선택해주세요");}
+	else if(classTime==""){alert("강의시간을 선택해주세요");}
+	else if(classRoom==""){alert("강의실을 입력해주세요");}
+	else{
 		//ds_class에 값 넣기
 		var goal = classForm.ta_goal.text;
 		var method = classForm.mask_course.text +"|"+classForm.mask_test.text+"|"+classForm.mask_argue.text;
@@ -469,7 +469,7 @@ this.classPlanTab_classPlan_btnSave_onclick = function(obj:nexacro.Button,e:nexa
 			);
 		}
 		this.close(proCode);
-/*	}*/
+	}
 };
 this.method_canchange = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
 {

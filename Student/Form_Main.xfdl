@@ -220,7 +220,9 @@ this.btnCertification_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 };
 this.btnScholarMg_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	
+	this.objApp.std_menu.filter("menu_id.substring(0,2) == '" + 10 + "'");
+	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
+	this.fn_openForm("3010","재학 증명서","stdWork::enrollment.xfdl"); //form 오픈 함수
 };
 
 this.Form_Work_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
@@ -228,9 +230,7 @@ this.Form_Work_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	var name=  this.objApp.gds_students.getColumn(0,"name");
 	var deptCode = this.objApp.gds_students.getColumn(0,"deptCode");
 	var nRow = this.objApp.deptCode.findRow("code",deptCode);
-	trace("ROW : " + nRow);
 	var dept = this.objApp.deptCode.getColumn(nRow,"name");
-	trace("dept : " + dept);
 	this.div_Info.form.sta_name.set_text(name + "님 환영합니다");
 	this.div_Info.form.sta_dept.set_text(dept)
 	this.transaction(
@@ -283,8 +283,12 @@ this.fn_callback = function(sId,errCd,errMsg){
 this.btnMore_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	/*nexacro.open( strID, strFormURL, objParentFrame, {objArguList}, strOpenStyle, nLeft, nTop [, nWidth, nHeight [, objOpener [, strExtOpenStyle ]]])*/
+	if(this.ds_Notice.getRowCount() > 0 ){
 	var part = this.ds_Notice.getColumn(0,"deptcode")
 	nexacro.open("normal","Student::NoticeLocation.xfdl",this.getOwnerFrame(),{part : part},"showtitlebar=true resizable=true",0, 0, 800, 600, this);
+	}else{
+		alert("공지사항이 없습니다");
+	}	
 };
 
 
