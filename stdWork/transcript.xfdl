@@ -10,8 +10,8 @@
         <Div id="Div00" taborder="4" text="" left="30" top="38" width="1021" height="452" border="1px solid #c1c1c1">
           <Layouts>
             <Layout>
-              <WebBrowser id="WebBrowser00" taborder="0" left="8" top="5" width="1241" height="440"/>
-              <Button id="Button00" taborder="1" text="pdf 저장" left="9" top="4" width="75" height="35" onclick="Div00_Button00_onclick"/>
+              <WebBrowser id="WebBrowser00" taborder="0" left="79" top="1" width="1241" height="440"/>
+              <Button id="Button00" taborder="1" text="pdf 저장" left="2" top="1" width="75" height="35" onclick="Div00_Button00_onclick"/>
             </Layout>
           </Layouts>
         </Div>
