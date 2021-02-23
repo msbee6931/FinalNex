@@ -3,24 +3,25 @@
   <Form id="rest_pop" width="400" height="400" titletext="New Form" onload="rest_pop_onload">
     <Layouts>
       <Layout height="400" width="400">
-        <Static id="Static00_02" taborder="0" text="학 과" left="20" top="57" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Combo id="Combo00" taborder="1" text="Combo00" left="79" top="57" width="120" height="36" readonly="true" innerdataset="deptCode" codecolumn="code" datacolumn="name"/>
-        <Static id="Static00_00_00" taborder="2" text="학 번" left="198" top="57" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Edit id="edt_title00" taborder="3" left="257" top="57" width="120" height="37"/>
-        <Static id="Static00_00_00_00" taborder="4" text="생년월일" left="20" top="93" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Edit id="edt_title00_00" taborder="5" left="79" top="93" width="120" height="37"/>
-        <Static id="Static00_01_01" taborder="6" text="학 년" left="198" top="93" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Edit id="edt_title01" taborder="7" left="257" top="93" width="120" height="37"/>
-        <Static id="Static00_00_01" taborder="8" text="연락처" left="20" top="129" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Edit id="edt_title00_01" taborder="9" left="79" top="129" width="120" height="37"/>
-        <Static id="Static00_00_00_00_00" taborder="10" text="성 명" left="198" top="129" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Edit id="edt_title00_00_00" taborder="11" left="257" top="129" width="120" height="37"/>
-        <Static id="Static00_01_00_00" taborder="12" text="주 소" left="20" top="165" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Edit id="edt_title01_00" taborder="13" left="79" top="165" width="298" height="37"/>
-        <Static id="Static02" taborder="14" text=" 본인은 본교에 복학하고자 하오니 허가하여 주시기 바랍니다." left="20" top="201" width="357" height="93" border="1px solid #c1c1c1"/>
-        <Button id="btn_commit" taborder="15" text="승인" left="157" top="310" width="100" height="25" onclick="Div00_btn_commit_onclick"/>
-        <Button id="btn_ok" taborder="16" text="확인" left="277" top="310" width="100" height="25" onclick="btn_ok_onclick"/>
-        <Static id="Static00" taborder="17" text="복학 신청서" left="23" top="10" width="120" height="30"/>
+        <Static id="Static00_02" taborder="0" text="학 과" left="20" top="57" width="60" height="25" cssclass="sta_default"/>
+        <Combo id="Combo00" taborder="1" text="Combo00" left="79" top="57" width="120" height="25" readonly="true" innerdataset="deptCode" codecolumn="code" datacolumn="name" cssclass="cmb_default"/>
+        <Static id="Static00_00_00" taborder="2" text="학 번" left="198" top="57" width="60" height="25" cssclass="sta_default"/>
+        <Edit id="edt_title00" taborder="3" left="257" top="57" width="120" height="25" cssclass="edt_default"/>
+        <Static id="Static00_00_00_00" taborder="4" text="생년월일" left="20" top="81" width="60" height="25" cssclass="sta_default"/>
+        <Edit id="edt_title00_00" taborder="5" left="79" top="81" width="120" height="25" cssclass="edt_default"/>
+        <Static id="Static00_01_01" taborder="6" text="학 년" left="198" top="81" width="60" height="25" cssclass="sta_default"/>
+        <Edit id="edt_title01" taborder="7" left="257" top="81" width="120" height="25" cssclass="edt_default"/>
+        <Static id="Static00_00_01" taborder="8" text="연락처" left="20" top="105" width="60" height="25" cssclass="sta_default"/>
+        <Edit id="edt_title00_01" taborder="9" left="79" top="129" width="120" height="25" cssclass="edt_default"/>
+        <Static id="Static00_00_00_00_00" taborder="10" text="성 명" left="198" top="129" width="60" height="25" cssclass="sta_default"/>
+        <Edit id="edt_title00_00_00" taborder="11" left="257" top="129" width="120" height="25" cssclass="edt_default"/>
+        <Static id="Static00_01_00_00" taborder="12" text="주 소" left="20" top="129" width="60" height="25" cssclass="sta_default"/>
+        <Edit id="edt_title01_00" taborder="13" left="79" top="105" width="298" height="25" cssclass="edt_default"/>
+        <Static id="Static02" taborder="14" text=" 본인은 본교에 복학하고자 하오니 허가하여 주시기 바랍니다." left="30" top="230" width="357" height="34"/>
+        <Button id="btn_commit" taborder="15" text="승인" left="157" top="350" width="100" height="25" onclick="Div00_btn_commit_onclick" cssclass="btn_default"/>
+        <Button id="btn_ok" taborder="16" text="확인" left="277" top="350" width="100" height="25" onclick="btn_ok_onclick" cssclass="btn_default"/>
+        <Static id="Static00" taborder="17" text="복학 신청서" left="23" top="10" width="120" height="30" cssclass="sta_title"/>
+        <Div id="Div00" taborder="18" left="20" top="153" width="356" height="177" cssclass="div_line" text=""/>
       </Layout>
     </Layouts>
     <Bind>

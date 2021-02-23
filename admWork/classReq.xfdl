@@ -3,7 +3,7 @@
   <Form id="classReq" width="1080" height="520" titletext="New Form" onload="classReq_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
-        <Grid id="gr_classList" taborder="0" left="30" top="49" width="1020" height="401" autofittype="col" binddataset="ds_class" onheadclick="gr_classList_onheadclick" oncellclick="gr_classList_oncellclick" onexpanddown="gr_classList_onexpanddown">
+        <Grid id="gr_classList" taborder="0" left="30" top="49" width="1020" height="401" autofittype="col" binddataset="ds_class" onheadclick="gr_classList_onheadclick" oncellclick="gr_classList_oncellclick" onexpanddown="gr_classList_onexpanddown" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>
@@ -55,8 +55,8 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_ok" taborder="1" text="승인" left="830" top="460" width="100" height="30" onclick="btn_ok_onclick" cssclass="btn_default"/>
-        <Button id="btn_reject" taborder="2" text="거절" left="950" top="460" width="100" height="30" onclick="btn_reject_onclick" cssclass="btn_can"/>
+        <Button id="btn_ok" taborder="1" text="승인" left="830" top="460" width="100" height="25" onclick="btn_ok_onclick" cssclass="btn_default"/>
+        <Button id="btn_reject" taborder="2" text="거절" left="950" top="460" width="100" height="25" onclick="btn_reject_onclick" cssclass="btn_can"/>
         <Static id="Static00_01_00" taborder="3" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="0"/>
         <Static id="Static00" taborder="4" left="0" top="0" visible="false" background="RGBA(236,135,135,0.71)" width="29" bottom="0"/>
         <Static id="Static00_01" taborder="5" left="80" top="0" visible="false" background="RGBA(236,135,135,0.71)" height="10" width="800"/>
