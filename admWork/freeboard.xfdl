@@ -7,10 +7,10 @@
         <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="2" left="1050" top="0" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Div id="Div00" taborder="4" text="Div00" left="30" top="44" width="1020" height="446" cssclass="div_line">
+        <Div id="Div00" taborder="4" text="Div00" left="30" top="44" cssclass="div_line" right="30" bottom="30">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="24" top="55" width="376" height="349" binddataset="free" autofittype="col" oncellposchanged="Div00_Grid00_oncellposchanged">
+              <Grid id="Grid00" taborder="0" left="24" top="55" binddataset="free" autofittype="col" oncellposchanged="Div00_Grid00_oncellposchanged" cssclass="grd_default" right="618" bottom="40">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -41,7 +41,7 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Div id="Div00" taborder="1" text="" left="414" top="13" width="568" height="391" cssclass="div_line">
+              <Div id="Div00" taborder="1" text="" left="414" top="13" cssclass="div_line" right="36" bottom="40">
                 <Layouts>
                   <Layout>
                     <Static id="Static00" taborder="1" text="Contents" left="15" top="7" width="449" height="28" textAlign="center" cssclass="sta_default"/>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="insertStudent" width="350" height="550" titletext="New Form">
+  <Form id="insertStudent" width="350" height="550" titletext="New Form" cssclass="med_default">
     <Layouts>
       <Layout height="550" mobileorientation="landscape" width="350">
         <Static id="Static00" taborder="14" text="학번" top="20" width="50" height="30" left="10"/>
@@ -14,20 +14,20 @@
         <Static id="Static00_07" taborder="22" text="성적" top="300" width="50" height="30" left="10"/>
         <Static id="Static00_09" taborder="23" text="초기비밀번호" top="335" width="75" height="30" onclick="Static00_09_onclick" left="10"/>
         <Static id="Static00_10" taborder="24" text="성별" top="370" width="50" height="30" left="10"/>
-        <Edit id="edt_name" taborder="1" top="55" width="175" height="30" left="85"/>
-        <Edit id="edt_email" taborder="3" top="125" width="175" height="30" left="85"/>
-        <Edit id="edt_contact" taborder="4" top="160" width="175" height="30" left="85"/>
-        <Edit id="edt_address" taborder="5" top="195" width="175" height="30" left="85"/>
-        <Edit id="edt_scholarship" taborder="6" top="230" width="175" height="30" left="85"/>
-        <Edit id="edt_grade" taborder="8" top="300" width="175" height="30" left="85"/>
-        <Edit id="edt_pw" taborder="9" top="335" width="175" height="30" left="85"/>
-        <Button id="btn_insert" taborder="25" text="입력" top="515" width="50" height="30" left="95" onclick="btn_insert_onclick"/>
-        <Button id="btn_cancel" taborder="26" text="취소" top="515" width="50" height="30" left="210" onclick="btn_cancel_onclick"/>
+        <Edit id="edt_name" taborder="1" top="55" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Edit id="edt_email" taborder="3" top="125" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Edit id="edt_contact" taborder="4" top="160" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Edit id="edt_address" taborder="5" top="195" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Edit id="edt_scholarship" taborder="6" top="230" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Edit id="edt_grade" taborder="8" top="300" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Edit id="edt_pw" taborder="9" top="335" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Button id="btn_insert" taborder="25" text="입력" top="515" width="100" height="25" left="75" onclick="btn_insert_onclick" cssclass="btn_default"/>
+        <Button id="btn_cancel" taborder="26" text="취소" top="515" width="100" height="25" left="190" onclick="btn_cancel_onclick" cssclass="btn_default"/>
         <Static id="Static00_10_00" taborder="27" text="학과분류" top="405" width="50" height="30" left="10"/>
         <Static id="Static00_10_01" taborder="28" text="학과" top="440" width="50" height="30" left="10"/>
-        <Combo id="com_colCode" taborder="11" left="85" top="405" width="175" height="30" innerdataset="colCode_Copy" codecolumn="code" datacolumn="name"/>
-        <Combo id="com_deptCode" taborder="12" left="85" top="440" width="175" height="30" innerdataset="deptCode_copy" codecolumn="code" datacolumn="name"/>
-        <Combo id="com_rest" taborder="7" left="85" top="265" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Combo id="com_colCode" taborder="11" left="85" top="405" width="175" height="30" innerdataset="colCode_Copy" codecolumn="code" datacolumn="name" cssclass="cmb_default"/>
+        <Combo id="com_deptCode" taborder="12" left="85" top="440" width="175" height="30" innerdataset="deptCode_copy" codecolumn="code" datacolumn="name" cssclass="cmb_default"/>
+        <Combo id="com_rest" taborder="7" left="85" top="265" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -45,7 +45,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="com_gender" taborder="10" left="85" top="370" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="com_gender_onitemchanged">
+        <Combo id="com_gender" taborder="10" left="85" top="370" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="com_gender_onitemchanged" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -64,7 +64,7 @@
           </Dataset>
         </Combo>
         <Static id="Static00_10_01_00" taborder="29" text="학년" top="475" width="50" height="30" left="10"/>
-        <Combo id="com_colGrade" taborder="13" left="85" top="475" width="175" height="30" codecolumn="codecolumn" datacolumn="datacolumn" innerdataset="innerdataset">
+        <Combo id="com_colGrade" taborder="13" left="85" top="475" width="175" height="30" codecolumn="codecolumn" datacolumn="datacolumn" innerdataset="innerdataset" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -90,8 +90,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <MaskEdit id="mas_secNumber" taborder="2" left="85" top="90" width="175" height="30" format="###### - #{######}" type="string"/>
-        <MaskEdit id="mas_s_seq" taborder="0" left="85" top="20" width="175" height="30" type="string" format="#########" autoskip="true" tooltiptext="학번은 9자리입니다."/>
+        <MaskEdit id="mas_secNumber" taborder="2" left="85" top="90" width="175" height="30" format="###### - #{######}" type="string" cssclass="med_default"/>
+        <MaskEdit id="mas_s_seq" taborder="0" left="85" top="20" width="175" height="30" type="string" format="#########" autoskip="true" tooltiptext="학번은 9자리입니다." cssclass="med_default"/>
       </Layout>
     </Layouts>
     <Objects>
