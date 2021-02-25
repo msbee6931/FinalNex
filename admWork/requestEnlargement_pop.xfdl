@@ -11,7 +11,7 @@ this.requestEnlargement_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEve
 {
 	var seq = this.parent.param1;
 	var login= this.parent.param2;
-	this.WebBrowser00.set_url("http://http://15.165.196.249/request/viewp?seq="+seq+"&login="+login);
+	this.WebBrowser00.set_url("http://15.165.196.249/request/viewp?seq="+seq+"&login="+login);
 };
 ]]></Script>
   </Form>
