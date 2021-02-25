@@ -4,11 +4,11 @@
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
         <Static id="Static00" taborder="0" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="Static01" taborder="1" text="성적 조회" left="30" top="9" width="200" height="30"/>
-        <Div id="Div00" taborder="2" text="Div00" left="30" top="38" width="1021" height="452" border="1px solid #c1c1c1">
+        <Static id="Static01" taborder="1" text="성적 조회" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
+        <Div id="div_line" taborder="2" text="Div00" left="30" top="38" cssclass="div_line" right="29" bottom="30">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="35" top="71" width="950" height="330" binddataset="reset_ds" autofittype="col" cssclass="grd_default">
+              <Grid id="Grid00" taborder="0" left="14" top="71" binddataset="reset_ds" autofittype="col" cssclass="grd_default" right="10" bottom="29">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -57,12 +57,12 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Static id="Static00" taborder="1" text="학년 구분 :" left="40" top="32" width="60" height="25"/>
-              <Combo id="cmb_grade" taborder="2" text="Combo00" left="100" top="32" width="140" height="25" innerdataset="gradeCode_ds" codecolumn="code" datacolumn="name" onitemchanged="Div00_cmb_grade_onitemchanged"/>
+              <Static id="Static00" taborder="1" text="학년 구분 :" left="14" top="32" width="60" height="25"/>
+              <Combo id="cmb_grade" taborder="2" text="Combo00" left="80" top="32" width="140" height="25" innerdataset="gradeCode_ds" codecolumn="code" datacolumn="name" onitemchanged="Div00_cmb_grade_onitemchanged" cssclass="cmb_default"/>
               <Static id="Static00_00" taborder="3" text="이수 구분 :" left="309" top="32" width="60" height="25"/>
-              <Combo id="cmb_part" taborder="4" text="Combo00" left="369" top="32" width="140" height="25" innerdataset="partCode_ds" codecolumn="code" datacolumn="name" onitemchanged="Div00_cmb_part_onitemchanged"/>
-              <Button id="btn_grade" taborder="5" left="247" top="32" width="60" height="25" onclick="Div00_btn_grade_onclick" cssclass="btn_search" text="조회"/>
-              <Button id="btn_part" taborder="6" left="519" top="32" width="25" height="25" onclick="Div00_btn_part_onclick" cssclass="btn_search"/>
+              <Combo id="cmb_part" taborder="4" text="Combo00" left="379" top="32" width="140" height="25" innerdataset="partCode_ds" codecolumn="code" datacolumn="name" onitemchanged="Div00_cmb_part_onitemchanged" cssclass="cmb_default"/>
+              <Button id="btn_grade" taborder="5" left="227" top="32" width="60" height="25" onclick="Div00_btn_grade_onclick" cssclass="btn_search" text="조회"/>
+              <Button id="btn_part" taborder="6" left="529" top="32" width="60" height="25" onclick="Div00_btn_part_onclick" cssclass="btn_search" text="조회"/>
             </Layout>
           </Layouts>
         </Div>

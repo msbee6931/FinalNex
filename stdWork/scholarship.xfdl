@@ -7,12 +7,11 @@
         <Static id="Static00_00" taborder="1" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="140" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="Static01" taborder="4" text="등록금 신청" left="30" top="9" width="200" height="30"/>
-        <Div id="Div00" taborder="5" text="Div00" left="30" top="38" width="1021" height="452" border="1px solid #c1c1c1">
+        <Static id="Static01" taborder="4" text="등록금 신청" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
+        <Div id="Div00" taborder="5" text="Div00" left="30" top="38" cssclass="div_line" async="false" right="29" bottom="30">
           <Layouts>
             <Layout>
-              <Button id="btn_insert" taborder="0" text="작성하기" left="29" top="16" width="80" height="25" onclick="Div00_btn_insert_onclick"/>
-              <Grid id="Grid00" taborder="1" left="30" top="61" width="429" height="360" binddataset="reqScholar_ds" autofittype="col" oncelldblclick="Div00_Grid00_oncelldblclick" oncellclick="Div00_Grid00_oncellclick">
+              <Grid id="Grid00" taborder="1" left="9" top="61" binddataset="reqScholar_ds" autofittype="col" oncelldblclick="Div00_Grid00_oncelldblclick" oncellclick="Div00_Grid00_oncellclick" cssclass="grd_default" right="560" bottom="9">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -34,40 +33,47 @@
                   </Format>
                 </Formats>
               </Grid>
+              <Button id="btn_insert" taborder="0" text="작성하기" left="Grid00:-100" top="26" onclick="Div00_btn_insert_onclick" cssclass="btn_insert" width="100" bottom="Grid00:10"/>
+              <Div id="div_line" taborder="2" text="Div00" width="550" cssclass="div_line" right="5" top="61" bottom="8">
+                <Layouts>
+                  <Layout>
+                    <TextArea id="txt_cotents" taborder="0" left="114" top="173" width="420" height="189" cssclass="txt_default" readonly="true"/>
+                    <Static id="Static00_00_00_00" taborder="1" text="신청사유" left="15" top="174" width="100" height="190" cssclass="sta_default"/>
+                    <Static id="Static00_00_00" taborder="2" text="첨부파일" left="16" top="56" width="100" height="117" cssclass="sta_default"/>
+                    <Grid id="Grid00" taborder="3" left="117" top="57" width="348" height="117" binddataset="schFileList_ds" autofittype="col" onheadclick="Grid00_onheadclick" cssclass="grd_default">
+                      <Formats>
+                        <Format id="default">
+                          <Columns>
+                            <Column size="26"/>
+                            <Column size="239"/>
+                            <Column size="80"/>
+                          </Columns>
+                          <Rows>
+                            <Row size="20" band="head"/>
+                            <Row size="24"/>
+                          </Rows>
+                          <Band id="head">
+                            <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                            <Cell col="1" text="파일이름"/>
+                            <Cell col="2" text="파일크기"/>
+                          </Band>
+                          <Band id="body">
+                            <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
+                            <Cell col="1" text="bind:fileName"/>
+                            <Cell col="2" text="bind:fileSize"/>
+                          </Band>
+                        </Format>
+                      </Formats>
+                    </Grid>
+                    <Button id="btn_down" taborder="4" text="파일&#13;&#10;다운로드" left="465" top="56" width="70" height="117" onclick="btn_down_onclick" cssclass="btn_default"/>
+                    <Edit id="edt_title" taborder="5" left="115" top="26" width="420" height="30" readonly="true" cssclass="edt_default"/>
+                    <Static id="Static00_02" taborder="6" text="제목" left="16" top="26" width="100" height="30" cssclass="sta_default"/>
+                  </Layout>
+                </Layouts>
+              </Div>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static00_02" taborder="6" text="제목" left="511" top="100" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Edit id="Edit00" taborder="7" left="610" top="100" width="420" height="30" readonly="true"/>
-        <Static id="Static00_00_00" taborder="8" text="첨부파일" left="511" top="130" width="100" height="140" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Grid id="Grid00" taborder="9" left="612" top="131" width="348" height="140" binddataset="schFileList_ds" autofittype="col" onheadclick="Grid00_onheadclick">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="26"/>
-                <Column size="239"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row size="20" band="head"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
-                <Cell col="1" text="파일이름"/>
-                <Cell col="2" text="파일크기"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
-                <Cell col="1" text="bind:fileName"/>
-                <Cell col="2" text="bind:fileSize"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
-        <Button id="btn_down" taborder="10" text="파일&#13;&#10;다운로드" left="960" top="130" width="70" height="140" onclick="btn_down_onclick"/>
-        <Static id="Static00_00_00_00" taborder="11" text="신청사유" left="511" top="270" width="100" height="190" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Edit id="Edit01" taborder="12" left="610" top="271" width="420" height="189" readonly="true"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
@@ -105,14 +111,7 @@ this.Div00_btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 
 this.fn_callback_pop_t = function()
 {
-		this.transaction(
-		"selectOneReqScholar.scholarship",//id
-		"/scholarship/selectOneReqScholar.scholarship",//url (절대경로)
-		"",//in_ds:U
-		"reqScholar_ds=out_ds",//()_out_ds
-		"code="+this.code,//argument
-		"fn_callback"
-		)
+		this.reload();
 }
 
 
@@ -266,10 +265,9 @@ this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
       <FileDownTransfer id="FileDownTransfer00"/>
     </Objects>
     <Bind>
-      <BindItem id="item0" compid="Edit00" propid="value" datasetid="reqScholar_ds" columnid="title"/>
-      <BindItem id="item1" compid="Edit01" propid="value" datasetid="reqScholar_ds" columnid="contents"/>
-      <BindItem id="item2" compid="Edit00" propid="accessibilityaction" datasetid="reqScholarCopy_ds" columnid="title"/>
-      <BindItem id="item3" compid="Edit01" propid="accessibilityaction" datasetid="reqScholarCopy_ds" columnid="contents"/>
+      <BindItem id="item0" compid="Div00.form.div_line.form.txt_cotents" propid="value" datasetid="reqScholarCopy_ds" columnid="contents"/>
+      <BindItem id="item1" compid="Div00.form.div_line.form.edt_title" propid="value" datasetid="reqScholar_ds" columnid="title"/>
+      <BindItem id="item2" compid="Div00.form.div_line.form.edt_title" propid="accessibilityaction" datasetid="reqScholarCopy_ds" columnid="title"/>
     </Bind>
   </Form>
 </FDL>

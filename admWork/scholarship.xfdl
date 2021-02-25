@@ -53,7 +53,7 @@
                       <Cell col="3" text="장학금 총 합계"/>
                     </Band>
                     <Band id="body">
-                      <Cell text="bind:std_code" textAlign="center" suppress="1"/>
+                      <Cell text="bind:std_code" textAlign="center" suppress="1" displaytype="text"/>
                       <Cell col="1" text="bind:std_grade" textAlign="center"/>
                       <Cell col="2" text="bind:type" textAlign="center"/>
                       <Cell col="3" text="bind:sSum" textAlign="center"/>
@@ -183,14 +183,7 @@ this.Div00_btn_scholar_onclick = function(obj:nexacro.Button,e:nexacro.ClickEven
 
 this.fn_callback_insertScholar = function()
 {
-	this.transaction(
-		"selectAll.scholarship",//id
-		"/scholarship/selectAll.scholarship",//url (절대경로)
-		"",//in_ds:U
-		"scholorship_ds=out_ds",//()_out_ds
-		"",//argument
-		"fn_callback"
-	)
+	this.reload();
 };
 
 this.Div00_grd_scholar_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
@@ -214,14 +207,7 @@ this.Div00_grd_scholar_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.Grid
 
 this.fn_callback_updateScholar=function()
 {
-	this.transaction(
-		"selectAll.scholarship",//id
-		"/scholarship/selectAll.scholarship",//url (절대경로)
-		"",//in_ds:U
-		"scholorship_ds=out_ds",//()_out_ds
-		"",//argument
-		"fn_callback"
-	)
+	this.reload();
 };
 
 
