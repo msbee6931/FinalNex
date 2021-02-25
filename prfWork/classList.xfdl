@@ -71,7 +71,7 @@
                 <Cell col="1" text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
                 <Cell col="2" text="bind:className" tooltiptext="상세보기" textDecoration="underline" textAlign="center" cursor="pointer" wordWrap="english"/>
                 <Cell col="3" text="bind:grade" textAlign="center"/>
-                <Cell col="4" text="bind:classSeq" textAlign="center" displaytype="mask" maskeditformat="#########"/>
+                <Cell col="4" text="bind:classSeq" textAlign="center" displaytype="text" maskeditformat="#########"/>
                 <Cell col="5" text="bind:classPoint" textAlign="center"/>
                 <Cell col="6" text="bind:proName" textAlign="center"/>
                 <Cell col="7" text="bind:classTime" textAlign="center" wordWrap="english"/>
@@ -117,7 +117,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Button id="btnExport" taborder="6" text="Export" left="959" top="450" width="91" height="40" onclick="btnExport_onclick"/>
+        <Button id="btn_exel" taborder="6" text="Export" left="949" top="450" width="100" height="25" cssclass="btn_exel" onclick="btn_exel_onclick"/>
         <Static id="Static00" taborder="7" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01" taborder="8" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="9" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
@@ -278,8 +278,9 @@ this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 };
 
 
-this.btnExport_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.btn_exel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	
 	if(this.ds_class.getRowCount() > 0){
 		var date = this.ds_class.getColumn(0,"reg_date");
 		var year = date.substring(0,4);
@@ -293,7 +294,7 @@ this.btnExport_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		this.exportObj = new ExcelExportObject("Export00", this);
 		
 		this.exportObj.set_exportfilename(semester + " 개설과목");
-		this.exportObj.set_exporturl("http://http://15.165.196.249//nexacro-xeni/XExportImport");
+		this.exportObj.set_exporturl("http://15.165.196.249/nexacro-xeni/XExportImport");
 		
 		this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.gr_classList, "Sheet1!A1");
 		
@@ -313,7 +314,6 @@ this.Export00_onerror = function(obj:ExcelExportObject, e:nexacro.ExcelExportEve
 {
 	trace("Export00_onerror");
 }
-
 
 
 ]]></Script>

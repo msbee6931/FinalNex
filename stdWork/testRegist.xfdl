@@ -65,7 +65,7 @@
               <Band id="body">
                 <Cell text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
                 <Cell col="1" text="bind:grade" textAlign="center"/>
-                <Cell col="2" text="bind:classSeq" textAlign="center" displaytype="mask" maskeditformat="########"/>
+                <Cell col="2" text="bind:classSeq" textAlign="center" displaytype="text" maskeditformat="########"/>
                 <Cell col="3" text="bind:className" textDecoration="underline" tooltiptext="수업계획서 보기" textAlign="center" cursor="pointer" wordWrap="english"/>
                 <Cell col="4" text="bind:classPoint" textAlign="center"/>
                 <Cell col="5" text="bind:proName" textAlign="center"/>
@@ -111,7 +111,7 @@
                 <Cell displaytype="buttoncontrol" text="취소" cursor="pointer" textAlign="center"/>
                 <Cell col="1" text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
                 <Cell col="2" text="bind:grade" textAlign="center"/>
-                <Cell col="3" text="bind:classSeq" textAlign="center" displaytype="mask" maskeditformat="########"/>
+                <Cell col="3" text="bind:classSeq" textAlign="center" displaytype="text" maskeditformat="########"/>
                 <Cell col="4" text="bind:className" cursor="pointer" textDecoration="underline" textAlign="center" wordWrap="english"/>
                 <Cell col="5" text="bind:classPoint" textAlign="center"/>
                 <Cell col="6" text="bind:proName" textAlign="center"/>
@@ -479,7 +479,7 @@ this.fn_callback = function(sId,errCd,errMsg){
 		var nPoint = 0;
 		for(var i=0; i<this.ds_myBasket.getRowCount(); i++){
 			var classSeq = this.ds_myBasket.getColumn(i,"classSeq");
-			var nRow = this.ds_class.findRowNF("classSeq",classSeq);	
+			var nRow = this.ds_class.findRow("classSeq",classSeq);	
 			this.ds_class.deleteRow(nRow);
 			var point = this.ds_myBasket.getColumn(i,"classPoint");
 			nPoint += parseInt(point);

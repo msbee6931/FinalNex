@@ -191,6 +191,7 @@ this.fn_openForm2 = function(obj, e)
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.form.fn_addTab(sFormId, sMenuNm);	
 }
 
+
 ]]></Script>
   </Form>
 </FDL>
