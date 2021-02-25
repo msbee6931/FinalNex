@@ -53,11 +53,9 @@
                       </Format>
                     </Formats>
                   </Grid>
-                  <Button id="btn_insert" taborder="8" text="파일찾기" left="870" top="284" width="60" height="35" onclick="Tab00_Tabpage1_btn_insert_onclick" enable="false"/>
-                  <Button id="btn_delete" taborder="9" text="파일삭제" left="870" top="318" width="60" height="35" onclick="Tab00_Tabpage1_btn_delete_onclick" enable="false"/>
-                  <Static id="Static02" taborder="10" text="분류" left="439" top="33" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" background="lightgray" textAlign="center"/>
-                  <Combo id="com_list" taborder="11" left="539" top="34" width="200" height="50" text="" value="" index="-1" innerdataset="ds_deptcode" codecolumn="code" datacolumn="name"/>
-                  <Button id="btn_del" taborder="12" text="삭제" left="679" top="-1" width="60" height="35" onclick="Tab00_Tabpage1_btn_del_onclick"/>
+                  <Static id="Static02" taborder="8" text="분류" left="439" top="33" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" background="lightgray" textAlign="center"/>
+                  <Combo id="com_list" taborder="9" left="539" top="34" width="200" height="50" text="" value="" index="-1" innerdataset="ds_deptcode" codecolumn="code" datacolumn="name"/>
+                  <Button id="btn_del" taborder="10" text="삭제" left="679" top="-1" width="60" height="35" onclick="Tab00_Tabpage1_btn_del_onclick"/>
                 </Layout>
               </Layouts>
             </Tabpage>
@@ -243,7 +241,7 @@ this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUpTransfer,e:nexacro.
 	msg += "url :"+e.url+"\n";
 	msg += "datasets[0].saveXML() :"+e.datasets[0].saveXML()+"\n";
 	
-	alert(msg);
+	this.alert("입력성공");
 	
 	//파일정보 초기화
 };

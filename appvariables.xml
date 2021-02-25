@@ -149,12 +149,6 @@
         </Row>
         <Row>
           <Col id="menu_id">1010</Col>
-          <Col id="menu_name">교직원 조회</Col>
-          <Col id="menu_level">1</Col>
-          <Col id="form_url">admWork::faculty.xfdl</Col>
-        </Row>
-        <Row>
-          <Col id="menu_id">1020</Col>
           <Col id="menu_name">학생 조회</Col>
           <Col id="menu_level">1</Col>
           <Col id="form_url">prfWork::deptStudent.xfdl</Col>

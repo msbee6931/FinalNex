@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="students" width="1080" height="570" titletext="New Form">
+  <Form id="students" width="1080" height="570" titletext="New Form" onload="students_onload">
     <Layouts>
       <Layout height="570" mobileorientation="landscape" width="1080">
         <Grid id="Grid00" taborder="0" left="30" top="70" width="1020" height="320" binddataset="ds_students" autofittype="col" onheadclick="Grid00_onheadclick">
@@ -42,11 +42,11 @@
               </Band>
               <Band id="body">
                 <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
-                <Cell col="1" text="bind:s_seq"/>
-                <Cell col="2" text="bind:gender" edittype="combo" combodataset="ds_gender" combocodecol="code" combodatacol="name"/>
-                <Cell col="3" text="bind:colGrade" edittype="combo" combodataset="ds_colGrade" combocodecol="code" combodatacol="name"/>
-                <Cell col="4" text="bind:colCode" edittype="combo" combodataset="colCode" combocodecol="code" combodatacol="name"/>
-                <Cell col="5" text="bind:deptCode" edittype="combo" combodataset="deptCode" combocodecol="code" combodatacol="name"/>
+                <Cell col="1" text="bind:s_seq" displaytype="text"/>
+                <Cell col="2" text="bind:gender" edittype="combo" combodataset="ds_gender" combocodecol="code" combodatacol="name" displaytype="combotext"/>
+                <Cell col="3" text="bind:colGrade" edittype="combo" combodataset="ds_colGrade" combocodecol="code" combodatacol="name" displaytype="normal"/>
+                <Cell col="4" text="bind:colCode" edittype="combo" combodataset="colCode" combocodecol="code" combodatacol="name" displaytype="combotext"/>
+                <Cell col="5" text="bind:deptCode" edittype="combo" combodataset="deptCode_copy" combocodecol="Code" combodatacol="Value" displaytype="combotext"/>
                 <Cell col="6" text="bind:name" edittype="normal"/>
                 <Cell col="7" text="bind:secNumber" displaytype="mask" edittype="mask" maskedittype="string" maskeditformat="###### - #######"/>
                 <Cell col="8" text="bind:email" edittype="normal"/>
@@ -123,7 +123,6 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	if(this.confirm("저장하시겠습니까?")){
 	this.fn_update_students("dsUpdate","/updateStudent.nex");
-	trace(this.ds_students.getColumnInfo("birth"));
 	}
 	
 };
@@ -212,6 +211,20 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		this.ds_students.filter("");
 	}
 };
+
+this.students_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+
+				"ds_retrive" //1. strSvcID
+				,"/studentslist.nex" //2. strURL
+				,"" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
+				,"ds_students=out_ds" //4.strOutDatasets -select Fds=Sds
+				,"" //5.strArgument text값
+				,"fn_callback" //6.strCallbackFunc
+			);
+	this.ds_students.filter("");
+};
 ]]></Script>
     <Objects>
       <Dataset id="ds_students">
@@ -284,6 +297,102 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Row>
             <Col id="code">4</Col>
             <Col id="name">4학년</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="deptCode_copy">
+        <ColumnInfo>
+          <Column id="Code" type="STRING" size="256"/>
+          <Column id="Value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Code">1011</Col>
+            <Col id="Value">국어국문학과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">1012</Col>
+            <Col id="Value">영어영문학과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">1013</Col>
+            <Col id="Value">국사학과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">1014</Col>
+            <Col id="Value">철학과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">2021</Col>
+            <Col id="Value">사회복지학과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">2022</Col>
+            <Col id="Value">경제학부</Col>
+          </Row>
+          <Row>
+            <Col id="Code">2023</Col>
+            <Col id="Value">사회학과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">2024</Col>
+            <Col id="Value">심리학과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">3031</Col>
+            <Col id="Value">통계학과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">3032</Col>
+            <Col id="Value">화학부</Col>
+          </Row>
+          <Row>
+            <Col id="Code">3033</Col>
+            <Col id="Value">생명과학부</Col>
+          </Row>
+          <Row>
+            <Col id="Code">4041</Col>
+            <Col id="Value">간호학부</Col>
+          </Row>
+          <Row>
+            <Col id="Code">5051</Col>
+            <Col id="Value">전기공학부</Col>
+          </Row>
+          <Row>
+            <Col id="Code">5052</Col>
+            <Col id="Value">컴퓨터공학부</Col>
+          </Row>
+          <Row>
+            <Col id="Code">5053</Col>
+            <Col id="Value">화학생물공학부</Col>
+          </Row>
+          <Row>
+            <Col id="Code">5054</Col>
+            <Col id="Value">건축학과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">5055</Col>
+            <Col id="Value">산업공학과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">6061</Col>
+            <Col id="Value">교육학과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">6062</Col>
+            <Col id="Value">국어교육과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">6063</Col>
+            <Col id="Value">영어교육과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">6064</Col>
+            <Col id="Value">수학교육과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">6065</Col>
+            <Col id="Value">체육교육과</Col>
           </Row>
         </Rows>
       </Dataset>

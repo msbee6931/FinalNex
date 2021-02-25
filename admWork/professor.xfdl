@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="professor" width="1080" height="520" titletext="New Form">
+  <Form id="professor" width="1080" height="520" titletext="New Form" onload="professor_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
         <Grid id="Grid00" taborder="0" left="30" top="70" width="1020" height="370" binddataset="ds_professor" autofittype="col" onheadclick="Grid00_onheadclick">
@@ -213,6 +213,19 @@ this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 		}
 	
 	}
-};]]></Script>
+};
+this.professor_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+
+				"ds_retrivepro" //1. strSvcID
+				,"/professorList.nex" //2. strURL
+				,"" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
+				,"ds_professor=out_ds" //4.strOutDatasets -select Fds=Sds
+				,"" //5.strArgument text값
+				,"fn_callback" //6.strCallbackFunc
+			);
+};
+]]></Script>
   </Form>
 </FDL>
