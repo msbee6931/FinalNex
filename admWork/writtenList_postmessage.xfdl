@@ -41,7 +41,7 @@
               <Div id="Div00" taborder="1" text="" left="509" top="26" width="498" height="395" cssclass="div_line">
                 <Layouts>
                   <Layout>
-                    <TextArea id="TextArea00" taborder="0" left="9" top="77" width="479" height="307"/>
+                    <TextArea id="TextArea00" taborder="0" left="9" top="77" width="479" height="307" cssclass="txt_default"/>
                   </Layout>
                 </Layouts>
               </Div>
