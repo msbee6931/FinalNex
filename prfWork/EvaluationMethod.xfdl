@@ -3,29 +3,29 @@
   <Form id="EvaluationMethod" width="680" height="170" titletext="New Form" onload="EvaluationMethod_onload">
     <Layouts>
       <Layout height="170" width="680">
-        <Static id="sta_sum" taborder="0" left="575" top="40" width="100" height="30" border="1px solid gray" textAlign="center"/>
-        <Static id="sum2" taborder="1" text="합계" left="575" top="10" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-        <Static id="label_fin" taborder="2" text="기말고사" left="475" top="10" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-        <Static id="label_task" taborder="3" text="과제" left="375" top="10" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-        <Static id="label_otest" taborder="4" text="수시" left="275" top="10" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-        <Static id="label_mid" taborder="5" text="중간고사" left="175" top="10" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-        <Static id="label_attend" taborder="6" text="출석" left="75" top="10" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-        <MaskEdit id="mask_attend" taborder="7" left="75" top="70" width="100" height="30" maskchar="###" textAlign="center" format="+0" canchange="grade_canchange"/>
-        <MaskEdit id="mask_mid" taborder="8" left="175" top="70" width="100" height="30" maskchar="###" textAlign="center" canchange="grade_canchange" format="+0"/>
-        <MaskEdit id="mask_otest" taborder="9" left="275" top="70" width="100" height="30" maskchar="###" textAlign="center" canchange="grade_canchange" format="+0"/>
-        <MaskEdit id="mask_task" taborder="10" left="375" top="70" width="100" height="30" textAlign="center" canchange="grade_canchange" format="+0"/>
-        <MaskEdit id="mask_fin" taborder="11" left="475" top="70" width="100" height="30" textAlign="center" canchange="grade_canchange" format="+0"/>
-        <Static id="sta_sumAll" taborder="12" left="575" top="70" width="100" height="30" border="1px solid gray" textAlign="center" text="0"/>
-        <Static id="Static02_02" taborder="13" text="기존 방식" left="5" top="40" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
-        <Static id="Static02_02_00" taborder="14" text="변경 방식" left="5" top="70" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
-        <Static id="Static02_02_01" taborder="15" text="" left="5" top="10" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
-        <Static id="sta_fin" taborder="16" left="475" top="40" width="100" height="30" border="1px solid gray" textAlign="center"/>
-        <Static id="sta_task" taborder="17" left="375" top="40" width="100" height="30" border="1px solid gray" textAlign="center"/>
-        <Static id="sta_otest" taborder="18" left="275" top="40" width="100" height="30" border="1px solid gray" textAlign="center"/>
-        <Static id="sta_mid" taborder="19" left="175" top="40" width="100" height="30" border="1px solid gray" textAlign="center"/>
-        <Static id="sta_attend" taborder="20" left="75" top="40" width="100" height="30" border="1px solid gray" textAlign="center"/>
-        <Button id="btnSave" taborder="21" text="저장" left="485" top="115" width="90" height="35" onclick="btnSave_onclick"/>
-        <Button id="btnClose" taborder="22" text="닫기" left="580" top="115" width="90" height="35" onclick="btnClose_onclick"/>
+        <Static id="sta_sum" taborder="0" left="575" top="40" width="100" height="30" textAlign="center" cssclass="sta_line"/>
+        <Static id="sum2" taborder="1" text="합계" left="575" top="10" width="100" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
+        <Static id="label_fin" taborder="2" text="기말고사" left="475" top="10" width="100" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
+        <Static id="label_task" taborder="3" text="과제" left="375" top="10" width="100" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
+        <Static id="label_otest" taborder="4" text="수시" left="275" top="10" width="100" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
+        <Static id="label_mid" taborder="5" text="중간고사" left="175" top="10" width="100" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
+        <Static id="label_attend" taborder="6" text="출석" left="75" top="10" width="100" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
+        <MaskEdit id="mask_attend" taborder="7" left="75" top="70" width="100" height="30" maskchar="###" textAlign="center" format="+0" canchange="grade_canchange" cssclass="med_default"/>
+        <MaskEdit id="mask_mid" taborder="8" left="175" top="70" width="100" height="30" maskchar="###" textAlign="center" canchange="grade_canchange" format="+0" cssclass="med_default"/>
+        <MaskEdit id="mask_otest" taborder="9" left="275" top="70" width="100" height="30" maskchar="###" textAlign="center" canchange="grade_canchange" format="+0" cssclass="med_default"/>
+        <MaskEdit id="mask_task" taborder="10" left="375" top="70" width="100" height="30" textAlign="center" canchange="grade_canchange" format="+0" cssclass="med_default"/>
+        <MaskEdit id="mask_fin" taborder="11" left="475" top="70" width="100" height="30" textAlign="center" canchange="grade_canchange" format="+0" cssclass="med_default"/>
+        <Static id="sta_sumAll" taborder="12" left="575" top="70" width="100" height="30" textAlign="center" text="0" cssclass="sta_line"/>
+        <Static id="Static02_02" taborder="13" text="기존 방식" left="5" top="40" width="70" height="30" padding="0px 0px 0px 5px" textAlign="center" cssclass="sta_default"/>
+        <Static id="Static02_02_00" taborder="14" text="변경 방식" left="5" top="70" width="70" height="30" padding="0px 0px 0px 5px" textAlign="center" cssclass="sta_default"/>
+        <Static id="Static02_02_01" taborder="15" text="" left="5" top="10" width="70" height="30" padding="0px 0px 0px 5px" textAlign="center" cssclass="sta_line"/>
+        <Static id="sta_fin" taborder="16" left="475" top="40" width="100" height="30" textAlign="center" cssclass="sta_line"/>
+        <Static id="sta_task" taborder="17" left="375" top="40" width="100" height="30" textAlign="center" cssclass="sta_line"/>
+        <Static id="sta_otest" taborder="18" left="275" top="40" width="100" height="30" textAlign="center" cssclass="sta_line"/>
+        <Static id="sta_mid" taborder="19" left="175" top="40" width="100" height="30" textAlign="center" cssclass="sta_line"/>
+        <Static id="sta_attend" taborder="20" left="75" top="40" width="100" height="30" textAlign="center" cssclass="sta_line"/>
+        <Button id="btnSave" taborder="21" text="저장" left="465" top="115" width="100" height="25" onclick="btnSave_onclick" cssclass="btn_default"/>
+        <Button id="btnClose" taborder="22" text="닫기" left="575" top="115" width="100" height="25" onclick="btnClose_onclick" cssclass="btn_can"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[

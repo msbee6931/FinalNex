@@ -11,55 +11,55 @@
                   <Tabpage id="classPlan" text="교과목 정보">
                     <Layouts>
                       <Layout>
-                        <MaskEdit id="mask_fin" taborder="43" left="641" top="472" width="155" height="30" textAlign="center" canchange="evaluation_canchange" format="+0"/>
-                        <MaskEdit id="mask_task" taborder="41" left="486" top="472" width="155" height="30" textAlign="center" canchange="evaluation_canchange" format="+0"/>
-                        <MaskEdit id="mask_otest" taborder="40" left="331" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
-                        <MaskEdit id="mask_argue" taborder="32" left="491" top="365" width="235" height="30" format="+990" textAlign="center" canchange="method_canchange"/>
-                        <MaskEdit id="mask_test" taborder="30" left="256" top="365" width="235" height="30" format="+990" textAlign="center" canchange="method_canchange"/>
-                        <Static id="Static00" taborder="0" text=" ▣ 이수구분" left="21" top="10" width="118" height="39" border="1px solid gray" background="lightgray"/>
-                        <Static id="Static00_00" taborder="4" text=" ▣ 과목명" left="21" top="49" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_00_onclick"/>
-                        <Static id="Static00_01" taborder="6" text=" ▣ 과목코드" left="351" top="49" width="118" height="39" border="1px solid gray" background="lightgray"/>
-                        <Static id="Static00_02" taborder="7" text=" ▣ 학점" left="681" top="49" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
-                        <Static id="Static00_02_00" taborder="9" text=" ▣ 담당교수명" left="21" top="88" width="118" height="39" border="1px solid gray" background="lightgray"/>
-                        <Static id="Static00_02_01" taborder="17" text=" ▣ 강의 시간" left="351" top="127" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
-                        <Static id="Static00_02_04" taborder="11" text=" ▣ 소속 학과" left="351" top="88" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
-                        <Combo id="co_part" taborder="1" left="139" top="10" width="212" height="39" codecolumn="id" datacolumn="name" innerdataset="gds_part"/>
-                        <Edit id="edt_className" taborder="5" left="139" top="49" width="212" height="39" textAlign="center"/>
+                        <MaskEdit id="mask_fin" taborder="43" left="641" top="472" width="155" height="30" textAlign="center" canchange="evaluation_canchange" format="+0" cssclass="med_default"/>
+                        <MaskEdit id="mask_task" taborder="41" left="486" top="472" width="155" height="30" textAlign="center" canchange="evaluation_canchange" format="+0" cssclass="med_default"/>
+                        <MaskEdit id="mask_otest" taborder="40" left="331" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0" cssclass="med_default"/>
+                        <MaskEdit id="mask_argue" taborder="32" left="491" top="365" width="235" height="30" format="+990" textAlign="center" canchange="method_canchange" cssclass="med_default"/>
+                        <MaskEdit id="mask_test" taborder="30" left="256" top="365" width="235" height="30" format="+990" textAlign="center" canchange="method_canchange" cssclass="med_default"/>
+                        <Static id="Static00" taborder="0" text=" ▣ 이수구분" left="21" top="10" width="118" height="39" cssclass="sta_default"/>
+                        <Static id="Static00_00" taborder="4" text=" ▣ 과목명" left="21" top="49" width="118" height="39" onclick="Tab00_Tabpage1_Static00_00_onclick" cssclass="sta_default"/>
+                        <Static id="Static00_01" taborder="6" text=" ▣ 과목코드" left="351" top="49" width="118" height="39" cssclass="sta_default"/>
+                        <Static id="Static00_02" taborder="7" text=" ▣ 학점" left="681" top="49" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_default"/>
+                        <Static id="Static00_02_00" taborder="9" text=" ▣ 담당교수명" left="21" top="88" width="118" height="39" cssclass="sta_default"/>
+                        <Static id="Static00_02_01" taborder="17" text=" ▣ 강의 시간" left="351" top="127" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_default"/>
+                        <Static id="Static00_02_04" taborder="11" text=" ▣ 소속 학과" left="351" top="88" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_default"/>
+                        <Combo id="co_part" taborder="1" left="139" top="10" width="212" height="39" codecolumn="id" datacolumn="name" innerdataset="gds_part" cssclass="cmb_default"/>
+                        <Edit id="edt_className" taborder="5" left="139" top="49" width="212" height="39" textAlign="center" cssclass="edt_default"/>
                         <Combo id="co_point" taborder="8" left="799" top="49" width="90" height="39" innerdataset="ds_point" codecolumn="id" datacolumn="name"/>
-                        <Static id="Static00_02_03" taborder="13" text=" ▣ 학년" left="681" top="88" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
-                        <Combo id="co_grade" taborder="14" left="799" top="88" width="150" height="39" innerdataset="ds_grade" codecolumn="id" datacolumn="name"/>
-                        <Static id="Static00_02_02_00" taborder="20" text=" ▣ 교과목 및 목표" left="21" top="176" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
-                        <Static id="Static00_02_02_00_00" taborder="22" text=" ▣ 수업운영 방법(비율)" left="21" top="296" width="138" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
-                        <Static id="Static00_02_02_00_00_00" taborder="23" text=" ▣ 교재 및 참고자료" left="22" top="511" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
-                        <TextArea id="ta_goal" taborder="21" left="21" top="215" width="930" height="75" onchanged="Div00_classPlanTab_classPlan_ta_goal_onchanged"/>
-                        <Button id="btnSave" taborder="24" text="저장" left="759" top="5" width="90" height="39" onclick="classPlanTab_classPlan_btnSave_onclick"/>
-                        <Static id="Static00_02_02_00_00_00_00" taborder="25" text=" ▣ 평가방법(비율)" left="21" top="403" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
-                        <Static id="Static03" taborder="46" text="주교재" left="21" top="550" width="118" height="43" border="1px solid" background="silver"/>
-                        <Static id="Static03_00" taborder="48" text="참고 자료" left="21" top="593" width="118" height="43" border="1px solid" background="silver"/>
-                        <Edit id="edt_mainBook" taborder="47" left="139" top="550" width="812" height="43"/>
-                        <Static id="sta_course" taborder="26" text="강의" left="21" top="335" width="235" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-                        <Static id="sta_test" taborder="27" text="실험/실습" left="256" top="335" width="235" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-                        <Static id="sta_argue" taborder="28" text="발표/토의/토론" left="491" top="335" width="235" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-                        <Static id="sum" taborder="29" text="합계" left="726" top="335" width="235" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-                        <Static id="sta_attend" taborder="34" text="출석" left="21" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-                        <Static id="sta_mid" taborder="35" text="중간고사" left="176" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-                        <Static id="sta_fin" taborder="38" text="기말고사" left="641" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-                        <Static id="sta_task" taborder="37" text="과제" left="486" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-                        <Static id="sta_otest" taborder="36" text="수시" left="331" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-                        <Static id="sum2" taborder="39" text="합계" left="796" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-                        <Static id="sta_sum2" taborder="45" left="796" top="472" width="155" height="30" border="1px solid gray" textAlign="center" text="0%"/>
-                        <Static id="sta_sum" taborder="33" left="726" top="365" width="235" height="30" textAlign="center" border="1px solid gray" text="0%"/>
-                        <Static id="sta_proName" taborder="10" text="" left="139" top="88" width="212" height="39" border="1px solid gray" textAlign="center"/>
-                        <Static id="sta_limit" taborder="2" text=" ▣ 인원" left="351" top="10" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
-                        <MaskEdit id="mask_limit" taborder="3" left="469" top="10" width="212" height="39" maskchar="###" textAlign="center" format="+##########"/>
-                        <Edit id="edt_classTime" taborder="18" left="469" top="127" width="455" height="40" textAlign="center"/>
-                        <Static id="Static00_02_02" taborder="15" text=" ▣ 강의실" left="21" top="127" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
-                        <Edit id="edt_classRoom" taborder="16" left="139" top="127" width="212" height="39" textAlign="center"/>
-                        <Button id="dropBtn" taborder="19" text="" left="924" top="127" width="25" height="40" onclick="Div00_classPlanTab_classPlan_Button00_onclick"/>
+                        <Static id="Static00_02_03" taborder="13" text=" ▣ 학년" left="681" top="88" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_default"/>
+                        <Combo id="co_grade" taborder="14" left="799" top="88" width="150" height="39" innerdataset="ds_grade" codecolumn="id" datacolumn="name" cssclass="cmb_default"/>
+                        <Static id="Static00_02_02_00" taborder="20" text=" ▣ 교과목 및 목표" left="21" top="176" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_default"/>
+                        <Static id="Static00_02_02_00_00" taborder="22" text=" ▣ 수업운영 방법(비율)" left="21" top="296" width="138" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_line"/>
+                        <Static id="Static00_02_02_00_00_00" taborder="23" text=" ▣ 교재 및 참고자료" left="22" top="511" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_line"/>
+                        <TextArea id="ta_goal" taborder="21" left="21" top="215" width="930" height="75" onchanged="Div00_classPlanTab_classPlan_ta_goal_onchanged" cssclass="txt_default"/>
+                        <Button id="btnSave" taborder="24" text="저장" left="759" top="10" width="90" height="25" onclick="classPlanTab_classPlan_btnSave_onclick" cssclass="btn_default"/>
+                        <Static id="Static00_02_02_00_00_00_00" taborder="25" text=" ▣ 평가방법(비율)" left="21" top="403" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_line"/>
+                        <Static id="Static03" taborder="46" text="주교재" left="21" top="550" width="118" height="43" cssclass="sta_default"/>
+                        <Static id="Static03_00" taborder="48" text="참고 자료" left="21" top="593" width="118" height="43" cssclass="sta_default"/>
+                        <Edit id="edt_mainBook" taborder="47" left="139" top="550" width="812" height="43" cssclass="edt_default"/>
+                        <Static id="sta_course" taborder="26" text="강의" left="21" top="335" width="235" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
+                        <Static id="sta_test" taborder="27" text="실험/실습" left="256" top="335" width="235" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
+                        <Static id="sta_argue" taborder="28" text="발표/토의/토론" left="491" top="335" width="235" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
+                        <Static id="sum" taborder="29" text="합계" left="726" top="335" width="235" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
+                        <Static id="sta_attend" taborder="34" text="출석" left="21" top="442" width="155" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
+                        <Static id="sta_mid" taborder="35" text="중간고사" left="176" top="442" width="155" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
+                        <Static id="sta_fin" taborder="38" text="기말고사" left="641" top="442" width="155" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
+                        <Static id="sta_task" taborder="37" text="과제" left="486" top="442" width="155" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
+                        <Static id="sta_otest" taborder="36" text="수시" left="331" top="442" width="155" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
+                        <Static id="sum2" taborder="39" text="합계" left="796" top="442" width="155" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
+                        <Static id="sta_sum2" taborder="45" left="796" top="472" width="155" height="30" textAlign="center" text="0%" cssclass="sta_line"/>
+                        <Static id="sta_sum" taborder="33" left="726" top="365" width="235" height="30" textAlign="center" text="0%" cssclass="sta_line"/>
+                        <Static id="sta_proName" taborder="10" text="" left="139" top="88" width="212" height="39" border="1px solid gray" textAlign="center" cssclass="sta_default"/>
+                        <Static id="sta_limit" taborder="2" text=" ▣ 인원" left="351" top="10" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_default"/>
+                        <MaskEdit id="mask_limit" taborder="3" left="469" top="10" width="212" height="39" maskchar="###" textAlign="center" format="+##########" cssclass="med_default"/>
+                        <Edit id="edt_classTime" taborder="18" left="469" top="127" width="455" height="40" textAlign="center" cssclass="edt_default"/>
+                        <Static id="Static00_02_02" taborder="15" text=" ▣ 강의실" left="21" top="127" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_default"/>
+                        <Edit id="edt_classRoom" taborder="16" left="139" top="127" width="212" height="39" textAlign="center" cssclass="edt_default"/>
+                        <Button id="dropBtn" taborder="19" text="▼" left="924" top="127" width="25" height="40" onclick="Div00_classPlanTab_classPlan_Button00_onclick" cssclass="btn_default"/>
                         <PopupDiv id="classTimeList" visible="false" left="351" top="167" width="382" height="315" oncloseup="Div00_classPlanTab_classPlan_classTimeList_oncloseup">
                           <Layouts>
                             <Layout>
-                              <Grid id="Grid00" taborder="0" left="0" top="0" width="382" height="315" binddataset="ds_classTimeList" onmouseleave="Div00_classPlanTab_classPlan_classTimeList_Grid00_onmouseleave">
+                              <Grid id="Grid00" taborder="0" left="0" top="-4" width="382" height="315" binddataset="ds_classTimeList" onmouseleave="Div00_classPlanTab_classPlan_classTimeList_Grid00_onmouseleave" cssclass="grd_default">
                                 <Formats>
                                   <Format id="default">
                                     <Columns>
@@ -102,16 +102,16 @@
                             </Layout>
                           </Layouts>
                         </PopupDiv>
-                        <Static id="sta_proCode" taborder="53" text="" left="686" top="10" width="65" height="34" border="1px solid black" visible="false"/>
-                        <Button id="btnClose" taborder="50" text="닫기" left="859" top="5" width="90" height="39" onclick="Div00_classPlanTab_classPlan_btnClose_onclick"/>
-                        <Static id="sta_reqState" taborder="51" text="" left="884" top="175" width="65" height="34" border="1px solid black" visible="false"/>
-                        <TextArea id="edt_subBook" taborder="49" left="139" top="593" width="812" height="43"/>
-                        <MaskEdit id="mask_course" taborder="31" left="21" top="365" width="235" height="30" format="+0" textAlign="center" canchange="method_canchange" onchanged="Div00_classPlanTab_classPlan_mask_course_onchanged"/>
-                        <MaskEdit id="edt_classSeq" taborder="52" left="469" top="49" width="212" height="39" maskchar="###" textAlign="center" format="+##########"/>
-                        <MaskEdit id="mask_attend" taborder="42" left="21" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
-                        <MaskEdit id="mask_mid" taborder="44" left="176" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
-                        <Combo id="co_dept" taborder="12" text="" left="469" top="88" width="212" height="39" innerdataset="deptCode" codecolumn="code" datacolumn="name"/>
-                        <CheckBox id="chk_pf" taborder="54" text="Pass/Fail" left="894" top="58" width="85" height="20" falsevalue="F" truevalue="P" value="F"/>
+                        <Static id="sta_proCode" taborder="53" text="" left="686" top="10" width="65" height="34" visible="false" cssclass="sta_line"/>
+                        <Button id="btnClose" taborder="50" text="닫기" left="859" top="10" width="90" height="25" onclick="Div00_classPlanTab_classPlan_btnClose_onclick" cssclass="btn_can"/>
+                        <Static id="sta_reqState" taborder="51" text="" left="884" top="175" width="65" height="34" visible="false" cssclass="sta_line"/>
+                        <TextArea id="txt_subBook" taborder="49" left="139" top="593" width="812" height="43" cssclass="txt_default"/>
+                        <MaskEdit id="mask_course" taborder="31" left="21" top="365" width="235" height="30" format="+0" textAlign="center" canchange="method_canchange" onchanged="Div00_classPlanTab_classPlan_mask_course_onchanged" cssclass="med_default"/>
+                        <MaskEdit id="edt_classSeq" taborder="52" left="469" top="49" width="212" height="39" maskchar="###" textAlign="center" format="+##########" cssclass="edt_default"/>
+                        <MaskEdit id="mask_attend" taborder="42" left="21" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0" cssclass="med_default"/>
+                        <MaskEdit id="mask_mid" taborder="44" left="176" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0" cssclass="med_default"/>
+                        <Combo id="co_dept" taborder="12" text="" left="469" top="88" width="212" height="39" innerdataset="deptCode" codecolumn="code" datacolumn="name" cssclass="cmb_default"/>
+                        <CheckBox id="chk_pf" taborder="54" text="Pass/Fail" left="894" top="58" width="85" height="20" falsevalue="F" truevalue="P" value="F" font="12px/normal &quot;Malgun Gothic&quot;"/>
                       </Layout>
                     </Layouts>
                     <InitValue/>

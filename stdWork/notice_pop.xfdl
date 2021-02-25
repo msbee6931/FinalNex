@@ -3,15 +3,14 @@
   <Form id="notice_pop" width="800" height="600" titletext="New Form" onload="notice_pop_onload">
     <Layouts>
       <Layout height="600" mobileorientation="landscape" width="800">
-        <Static id="label_notice" taborder="0" text="공지(분류)" left="30" top="30" width="120" height="60" border="1px solid black" textAlign="center"/>
-        <Static id="sta_title" taborder="1" text="TItle" left="30" top="100" width="741" height="70" border="1px solid black" textAlign="center"/>
-        <Static id="label_date" taborder="2" text="작성일자" left="110" top="170" width="120" height="60" textAlign="center" border="1px solid black"/>
-        <Static id="label_viewCount" taborder="3" text="조회수" left="460" top="170" width="120" height="60" textAlign="center" border="1px solid black"/>
-        <TextArea id="ta_content" taborder="4" left="30" top="230" width="741" height="230" readonly="true"/>
-        <Static id="sta_file" taborder="5" text="첨부파일" left="30" top="460" width="120" height="75" border="1px solid black" textAlign="center"/>
-        <Button id="btn_close" taborder="6" text="닫기" left="670" top="545" width="100" height="30" onclick="btn_close_onclick"/>
-        <Static id="sta_view_count" taborder="7" text="조회수" left="580" top="170" width="120" height="60" textAlign="center"/>
-        <Grid id="gr_fileList" taborder="8" left="150" top="460" width="520" height="75" binddataset="ds_NoticeFiles" autofittype="col" onheadclick="gr_fileList_onheadclick">
+        <Static id="label_notice" taborder="0" text="공지(분류)" left="30" top="30" width="120" height="60" textAlign="center" cssclass="sta_line"/>
+        <Static id="label_date" taborder="2" text="작성일자" left="30" top="124" width="200" height="25" textAlign="center" cssclass="sta_default"/>
+        <Static id="label_viewCount" taborder="3" text="조회수" left="450" top="124" width="200" height="25" textAlign="center" cssclass="sta_default"/>
+        <TextArea id="ta_content" taborder="4" left="30" top="148" width="741" height="310" readonly="true" cssclass="txt_default"/>
+        <Static id="sta_file" taborder="5" text="첨부파일" left="30" top="457" width="120" height="75" textAlign="center" cssclass="sta_default"/>
+        <Button id="btn_close" taborder="6" text="닫기" left="670" top="545" width="100" height="25" onclick="btn_close_onclick" cssclass="btn_can"/>
+        <Static id="sta_view_count" taborder="7" text="조회수" left="649" top="124" width="120" height="25" textAlign="center" cssclass="sta_line"/>
+        <Grid id="gr_fileList" taborder="8" left="150" top="460" width="520" height="75" binddataset="ds_NoticeFiles" autofittype="col" onheadclick="gr_fileList_onheadclick" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>
@@ -36,8 +35,9 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btnDownload" taborder="9" text="다운로드" left="670" top="460" width="100" height="75" onclick="btnDownload_onclick"/>
-        <Calendar id="cal_date" taborder="10" left="230" top="170" width="170" height="60" dateformat="yyyy-MM-dd"/>
+        <Button id="btnDownload" taborder="9" text="다운로드" left="670" top="460" width="100" height="75" onclick="btnDownload_onclick" cssclass="btn_default"/>
+        <Calendar id="cal_date" taborder="10" left="230" top="124" width="220" height="25" dateformat="yyyy-MM-dd" cssclass="cal_default"/>
+        <Static id="sta_title" taborder="1" text="TItle" left="30" top="100" width="741" height="25" textAlign="center" cssclass="sta_default"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
