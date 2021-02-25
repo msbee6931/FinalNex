@@ -85,6 +85,7 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
             ,"reply="+reply
             ,"fn_callback" 
          )
+		 alert("등록되었습니다.");
 };
 
 this.del_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
