@@ -7,20 +7,20 @@
         <Static id="Static00_00" taborder="1" left="1051" top="0" visible="false" background="RGBA(236,135,135,0.71)" right="0" bottom="0"/>
         <Static id="Static00_01" taborder="2" left="80" top="0" visible="false" background="RGBA(236,135,135,0.71)" height="10" width="800"/>
         <Static id="Static00_01_00" taborder="3" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="0"/>
-        <Static id="Static01" taborder="4" text="장학금 신청 관리" left="30" top="9" width="200" height="30"/>
-        <Div id="Div00" taborder="5" text="Div00" left="30" top="38" border="1px solid #c1c1c1" right="29" bottom="30">
+        <Static id="Static01" taborder="4" text="장학금 신청 관리" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
+        <Div id="Div00" taborder="5" text="Div00" left="30" top="38" right="29" bottom="30" cssclass="div_line">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="24" top="81" binddataset="reqScholar_ds" autofittype="col" onheadclick="Div00_Grid00_onheadclick" oncelldblclick="Div00_Grid00_oncelldblclick" right="25" bottom="59">
+              <Grid id="Grid00" taborder="0" left="24" top="81" binddataset="reqScholar_ds" autofittype="col" onheadclick="Div00_Grid00_onheadclick" oncelldblclick="Div00_Grid00_oncelldblclick" right="25" bottom="59" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
                       <Column size="30"/>
-                      <Column size="49"/>
+                      <Column size="30"/>
                       <Column size="80"/>
-                      <Column size="397"/>
+                      <Column size="140"/>
                       <Column size="80"/>
-                      <Column size="80"/>
+                      <Column size="70"/>
                     </Columns>
                     <Rows>
                       <Row size="24" band="head"/>
@@ -31,23 +31,29 @@
                       <Cell col="1" text="No"/>
                       <Cell col="2" text="학번"/>
                       <Cell col="3" text="제목"/>
-                      <Cell col="4" text="작성날짜" displaytype="normal"/>
+                      <Cell col="4" text="작성날짜"/>
                       <Cell col="5" text="읽음여부"/>
                     </Band>
                     <Band id="body">
                       <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox" textAlign="center"/>
-                      <Cell col="1" text="bind:seq" textAlign="center"/>
-                      <Cell col="2" text="bind:std_code" displaytype="text" textAlign="center"/>
+                      <Cell col="1" text="bind:seq" edittype="none" textAlign="center"/>
+                      <Cell col="2" text="bind:std_code" textAlign="center" displaytype="text"/>
                       <Cell col="3" text="bind:title" textAlign="center"/>
-                      <Cell col="4" text="bind:writeDate" displaytype="date" textAlign="center"/>
+                      <Cell col="4" text="bind:writeDate" textAlign="center" edittype="date"/>
                       <Cell col="5" text="bind:checkRead" textAlign="center"/>
                     </Band>
                   </Format>
                 </Formats>
               </Grid>
-              <Edit id="edt_stdCode" taborder="1" left="27" top="10" width="150" height="25" displaynulltext="학번을 입력하세요"/>
-              <Button id="btn_search" taborder="2" text="" left="187" top="10" width="25" height="25" onclick="Div00_btn_search_onclick"/>
-              <Button id="btn_del" taborder="3" text="삭제" onclick="Div00_btn_del_onclick" right="25" bottom="20" width="103" height="25"/>
+              <Button id="btn_del" taborder="1" text="삭제" onclick="Div00_btn_del_onclick" right="25" bottom="20" width="100" height="25" cssclass="btn_del"/>
+              <Div id="Div00" taborder="2" left="24" top="26" width="420" height="40" cssclass="div_line" text="">
+                <Layouts>
+                  <Layout>
+                    <Edit id="edt_stdCode" taborder="0" left="9" top="7" width="150" height="25" displaynulltext="학번을 입력하세요" cssclass="edt_default"/>
+                    <Button id="btn_search" taborder="1" text="조회" left="169" top="7" width="60" height="25" onclick="Div00_btn_search_onclick" cssclass="btn_search"/>
+                  </Layout>
+                </Layouts>
+              </Div>
             </Layout>
           </Layouts>
         </Div>
@@ -79,10 +85,6 @@ this.requestScholar_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	);
 };
 
-this.fn_callback_selectReq = function(id,ErrorCode,ErrorMsg){
-	
-	
-};
 
 this.Div00_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
@@ -104,19 +106,7 @@ this.Div00_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClick
 };
 
 this.fn_callback_pop_s = function(seq){
-	
-	var nRow = this.reqScholar_ds.findRow( "seq", seq );
-	this.reqScholar_ds.setColumn(nRow,"checkRead","읽음");
-	
-	this.transaction(
-		"checkValue",//id
-		"/scholarship/checkValueReqScholar.scholarship",//url (절대경로)
-		"",//in_ds:U
-		"reqScholar_ds=out_ds",//()_out_ds
-		"seq="+seq,//argument
-		"fn_callback"
-	)
-	
+	this.reload();
 }
 
 //헤더 전체  클릭 적용

@@ -171,15 +171,7 @@ this.Div00_btn_tuit_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 
 this.fn_callback_insertTuition = function()
 {
-
-		this.transaction(
-		"selectAll.tuition",//id
-		"/tuition/selectAll.tuition",//url (절대경로)
-		"",//in_ds:U
-		"tuition_ds=out_ds",//()_out_ds
-		"",//argument
-		"fn_callback"
-		)
+	this.reload();
 }
 
 
@@ -202,14 +194,7 @@ this.Div00_grd_tuition_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.Grid
 
 this.fn_callback_updateTuition=function()
 {
-	this.transaction(
-		"selectAll.tuition",//id
-		"/tuition/selectAll.tuition",//url (절대경로)
-		"",//in_ds:U
-		"tuition_ds=out_ds",//()_out_ds
-		"",//argument
-		"fn_callback"
-		)
+	this.reload();
 }
 
 
@@ -259,10 +244,6 @@ this.Div00_btn_entire_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 	this.tuition_ds.filter("");
 };
 
-this.Static01_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
-{
-	
-};
 ]]></Script>
     <Objects>
       <Dataset id="tuition_ds">

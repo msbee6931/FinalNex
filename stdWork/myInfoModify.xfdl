@@ -8,18 +8,18 @@
         <Static id="Static00_01_00" taborder="2" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="3" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="sta_title" taborder="4" text="나의 정보 수정" left="30" top="9" width="200" height="30"/>
-        <Div id="Div00" taborder="5" text="" left="30" top="38" width="1021" height="452" border="1px solid #c1c1c1">
+        <Div id="Div00" taborder="5" text="" left="30" top="38" width="1021" height="452" cssclass="div_line">
           <Layouts>
             <Layout>
-              <Edit id="edt_s_seq" taborder="0" left="415" top="40" width="150" height="30" readonly="true"/>
-              <Edit id="edt_name" taborder="1" left="415" top="75" width="150" height="30"/>
-              <Edit id="edt_email" taborder="2" left="415" top="145" width="150" height="30"/>
-              <Edit id="edt_contact" taborder="3" left="415" top="180" width="150" height="30"/>
-              <Edit id="edt_address" taborder="4" left="415" top="215" width="150" height="30"/>
-              <Edit id="edt_pw" taborder="5" left="415" top="250" width="150" height="30"/>
-              <Button id="btn_modify" taborder="6" text="수정" left="394" top="351" width="50" height="40" onclick="Div00_btn_modify_onclick"/>
-              <Button id="btn_cancel" taborder="7" text="다시입력" left="544" top="351" width="50" height="40" onclick="Div00_btn_cancel_onclick"/>
-              <MaskEdit id="mas_secNumber" taborder="8" left="415" top="110" width="150" height="30" format="###### - #{######}" type="string"/>
+              <Edit id="edt_s_seq" taborder="0" left="415" top="40" width="150" height="30" readonly="true" cssclass="edt_default"/>
+              <Edit id="edt_name" taborder="1" left="415" top="75" width="150" height="30" cssclass="edt_default"/>
+              <Edit id="edt_email" taborder="2" left="415" top="145" width="150" height="30" cssclass="edt_default"/>
+              <Edit id="edt_contact" taborder="3" left="415" top="180" width="150" height="30" cssclass="edt_default"/>
+              <Edit id="edt_address" taborder="4" left="415" top="215" width="150" height="30" cssclass="edt_default"/>
+              <Edit id="edt_pw" taborder="5" left="415" top="250" width="150" height="30" cssclass="edt_default"/>
+              <Button id="btn_modify" taborder="6" text="수정" left="394" top="351" width="100" height="25" onclick="Div00_btn_modify_onclick" cssclass="btn_default"/>
+              <Button id="btn_cancel" taborder="7" text="다시입력" left="519" top="351" width="100" height="25" onclick="Div00_btn_cancel_onclick" cssclass="btn_default"/>
+              <MaskEdit id="mas_secNumber" taborder="8" left="415" top="110" width="150" height="30" format="###### - #{######}" type="string" cssclass="med_default"/>
             </Layout>
           </Layouts>
         </Div>
