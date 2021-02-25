@@ -3,7 +3,7 @@
   <Form id="Form_Left" width="200" height="550" titletext="New Form">
     <Layouts>
       <Layout height="550" width="200">
-        <Grid id="Grid00" taborder="0" left="0" top="30" width="200" autofittype="col" treeinitstatus="expand,all" treeusecheckbox="false" treeuseimage="false" treeuseline="false" binddataset="std_menu" oncelldblclick="Grid00_oncelldblclick" bottom="0">
+        <Grid id="Grid00" taborder="0" left="0" top="15" width="200" autofittype="col" treeinitstatus="expand,all" treeusecheckbox="false" treeuseimage="false" treeuseline="false" binddataset="std_menu" oncelldblclick="Grid00_oncelldblclick" bottom="0">
           <Formats>
             <Format id="default">
               <Columns>
@@ -18,6 +18,7 @@
             </Format>
           </Formats>
         </Grid>
+        <Static id="sta_bgr" taborder="1" left="0" top="0" width="200" height="15" background="#0044c9"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -190,7 +191,6 @@ this.fn_openForm2 = function(obj, e)
 
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.form.fn_addTab(sFormId, sMenuNm);	
 }
-
 
 ]]></Script>
   </Form>

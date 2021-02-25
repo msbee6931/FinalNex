@@ -6,7 +6,7 @@
         <Div id="Div00" taborder="0" text="Div00" left="30" top="38" cssclass="div_line" right="29" bottom="30">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="13" top="21" binddataset="ds_class" autofittype="col" oncelldblclick="Div00_Grid00_oncelldblclick" cssclass="grd_default" right="11" bottom="39">
+              <Grid id="Grid00" taborder="0" left="13" top="21" binddataset="ds_class" autofittype="col" cssclass="grd_default" right="11" bottom="39" oncelldblclick="Div00_Grid00_oncelldblclick">
                 <Formats>
                   <Format id="default">
                     <Columns>

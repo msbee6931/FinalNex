@@ -2207,7 +2207,6 @@ font : 14px/normal "Malgun Gothic";
 	-nexa-text-align : center;
 	-nexa-text-padding : 4px;
 	background : #0d6efd;
-	-nexa-border : 1px solid #0d6efd;
 }
 .Button.btn_search,
 .Button.btn_search[status=disabled],

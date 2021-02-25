@@ -11,6 +11,7 @@
                   <Tabpage id="classPlan" text="교과목 정보">
                     <Layouts>
                       <Layout>
+
                         <MaskEdit id="mask_fin" taborder="39" left="641" top="472" width="155" height="30" textAlign="center" canchange="evaluation_canchange" format="+0"/>
                         <MaskEdit id="mask_task" taborder="38" left="486" top="472" width="155" height="30" textAlign="center" canchange="evaluation_canchange" format="+0"/>
                         <MaskEdit id="mask_otest" taborder="37" left="331" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
@@ -55,10 +56,11 @@
                         <Edit id="edt_classTime" taborder="16" left="469" top="127" width="455" height="40" textAlign="center"/>
                         <Static id="Static00_02_02" taborder="14" text=" ▣ 강의실" left="21" top="127" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
                         <Button id="dropBtn" taborder="17" text="" left="924" top="127" width="25" height="40" onclick="Div00_classPlanTab_classPlan_Button00_onclick"/>
+
                         <PopupDiv id="classTimeList" visible="false" left="351" top="167" width="382" height="315" oncloseup="Div00_classPlanTab_classPlan_classTimeList_oncloseup">
                           <Layouts>
                             <Layout>
-                              <Grid id="Grid00" taborder="0" left="0" top="0" width="382" height="315" binddataset="ds_classTimeList" onmouseleave="Div00_classPlanTab_classPlan_classTimeList_Grid00_onmouseleave">
+                              <Grid id="Grid00" taborder="0" left="0" top="-4" width="382" height="315" binddataset="ds_classTimeList" onmouseleave="Div00_classPlanTab_classPlan_classTimeList_Grid00_onmouseleave" cssclass="grd_default">
                                 <Formats>
                                   <Format id="default">
                                     <Columns>
@@ -101,6 +103,7 @@
                             </Layout>
                           </Layouts>
                         </PopupDiv>
+
                         <Static id="sta_proCode" taborder="53" text="" left="686" top="10" width="65" height="34" border="1px solid black" visible="false"/>
                         <Button id="btnClose" taborder="50" text="닫기" left="859" top="5" width="90" height="39" onclick="Div00_classPlanTab_classPlan_btnClose_onclick"/>
                         <Static id="sta_reqState" taborder="51" text="" left="884" top="175" width="65" height="34" border="1px solid black" visible="false"/>
@@ -113,6 +116,7 @@
                         <CheckBox id="chk_pf" taborder="54" text="Pass/Fail" left="894" top="58" width="85" height="20" falsevalue="F" truevalue="P" value="F"/>
                         <MaskEdit id="mask_classRoom" taborder="55" left="139" top="126" width="212" height="39" textAlign="center" displaynulltext="ex) 101" type="string" format="###"/>
                         <Button id="btnClassRoom" taborder="55" text="강의실 보기" left="263" top="166" width="86" height="33" onclick="Div00_classPlanTab_classPlan_btnClassRoom_onclick"/>
+
                       </Layout>
                     </Layouts>
                     <InitValue/>
@@ -601,6 +605,7 @@ this.fn_callback=function(sId,errCd,errMsg){
 		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
 	} 
 	if(sId == "classListSeq"){
+
 		//수업 정보 가져와서 띄우기
 		classForm.co_part.set_value(this.ds_class.getColumn(0,"classPart"));
 		classForm.edt_className.set_value(this.ds_class.getColumn(0,"className")); 

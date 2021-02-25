@@ -3,7 +3,9 @@
   <Form id="classList" width="1080" height="520" titletext="New Form" onload="classList_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080" stepcount="0">
+
         <Combo id="co_search" taborder="0" left="660" top="12" width="120" height="28" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" text="전체" value="All" index="0">
+
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -33,9 +35,11 @@
             </Rows>
           </Dataset>
         </Combo>
+
         <Edit id="edt_search" taborder="1" left="785" top="12" width="170" height="28"/>
         <Button id="btnSearch" taborder="2" text="검색" left="960" top="10" width="90" height="33" onclick="btnSearch_onclick"/>
         <Grid id="gr_classList" taborder="3" left="30" top="51" width="1021" height="390" binddataset="ds_class" autofittype="col" oncellclick="gr_classList_oncellclick" onheadclick="gr_classList_onheadclick">
+
           <Formats>
             <Format id="default">
               <Columns>
@@ -81,6 +85,7 @@
             </Format>
           </Formats>
         </Grid>
+
         <Combo id="co_semester" taborder="4" text="" left="530" top="13" width="120" height="28" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
             <ColumnInfo>
@@ -122,6 +127,7 @@
         <Static id="Static00_01" taborder="8" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="9" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="10" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
+
       </Layout>
     </Layouts>
     <Objects>
