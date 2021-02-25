@@ -41,7 +41,7 @@
                 <Cell col="1" text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
                 <Cell col="2" text="bind:grade" textAlign="center"/>
                 <Cell col="3" text="bind:className" textAlign="center" wordWrap="english" tooltiptext="상세보기" textDecoration="underline" cursor="pointer"/>
-                <Cell col="4" text="bind:classSeq" textAlign="center" maskeditformat="#########" displaytype="mask"/>
+                <Cell col="4" text="bind:classSeq" textAlign="center" maskeditformat="#########" displaytype="text"/>
                 <Cell col="5" text="bind:classPoint" textAlign="center"/>
                 <Cell col="6" text="bind:proName" textAlign="center"/>
                 <Cell col="7" text="bind:dept" textAlign="center"/>
