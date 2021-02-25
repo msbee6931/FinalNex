@@ -287,7 +287,7 @@
           <Col id="menu_id">4020</Col>
           <Col id="menu_name">받은 쪽지함</Col>
           <Col id="menu_level">1</Col>
-          <Col id="form_url">admWork::received_postmessage.xfdl</Col>
+          <Col id="form_url">prfWork::received_postmessage.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">4030</Col>
