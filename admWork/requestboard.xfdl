@@ -179,7 +179,7 @@ this.Div00_Div00_enlargement_onclick = function(obj:nexacro.Button,e:nexacro.Cli
 {
 
 	var objCF = new ChildFrame();
-	objCF.init("requestEnlargement_pop",100,100,1000,600);
+	objCF.init("requestEnlargement_pop",100,100,1200,600);
 	objCF.set_titletext("내용 확대");
 	objCF.set_formurl("admWork::requestEnlargement_pop.xfdl");
 	 var objParam = {param1:this.Div00.form.Edit01.value,
