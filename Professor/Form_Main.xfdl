@@ -3,12 +3,14 @@
   <Form id="Form_Main" width="1080" height="520" titletext="New Form" onload="Form_Main_onload">
     <Layouts>
       <Layout height="520" width="1080">
-        <Button id="btnGrade" taborder="0" text="학생 성적 관리" left="50" top="370" width="120" height="50" onclick="btnGrade_onclick" cssclass="btn_default" border="0px none,1px solid #ffffff,1px solid #ffffff,0px none"/>
-        <Button id="btnAttend" taborder="1" text="학생 출석 입력" left="170" top="370" width="120" height="50" onclick="btnAttend_onclick" cssclass="btn_default" border="0px none,0px none,1px solid #ffffff"/>
-        <Button id="btnClassList" taborder="2" text="개설강좌 조회" left="50" top="420" width="120" height="50" onclick="btnClassList_onclick" cssclass="btn_default" border="0px none,1px solid #ffffff,1px solid #ffffff,0px none"/>
-        <Button id="btnProInfo" taborder="3" text="교직원 조회" left="170" top="420" width="120" height="50" onclick="btnProInfo_onclick" cssclass="btn_default" border="0px none,0px none,1px solid #ffffff"/>
-        <Button id="btnMypage" taborder="4" text="개인정보 조회" left="50" top="320" width="120" height="50" onclick="btnMypage_onclick" cssclass="btn_default" border="0px none,1px solid #ffffff,1px solid #ffffff,0px none"/>
-        <Button id="btnDeptSchedule" taborder="5" text="학과 스케줄 " left="170" top="320" width="120" height="50" onclick="btnDeptSchedule_onclick" cssclass="btn_default" border="0px none,0px none,1px solid #ffffff"/>
+
+        <Button id="btnGrade" taborder="0" text="학생 성적 관리" left="50" top="370" width="120" height="50" onclick="btnGrade_onclick"/>
+        <Button id="btnAttend" taborder="1" text="학생 출석 입력" left="170" top="370" width="120" height="50" onclick="btnAttend_onclick"/>
+        <Button id="btnClassList" taborder="2" text="개설강좌 조회" left="50" top="420" width="120" height="50" onclick="btnClassList_onclick"/>
+        <Button id="btnDeptStdList" taborder="3" text="학과 학생 조회" left="170" top="420" width="120" height="50" onclick="btnDeptStdList_onclick"/>
+        <Button id="btnMypage" taborder="4" text="개인정보 조회" left="50" top="320" width="120" height="50" onclick="btnMypage_onclick"/>
+        <Button id="btnDeptSchedule" taborder="5" text="학과 스케줄 " left="170" top="320" width="120" height="50" onclick="btnDeptSchedule_onclick"/>
+
         <Calendar id="cal_schedule" taborder="6" left="750" top="36" width="290" height="224" type="monthonly" innerdataset="ds_cal" backgroundcolumn="backgroundcolumn" bordercolumn="bordercolumn" datecolumn="datecolumn" textcolorcolumn="textcolorcolumn" onspin="cal_schedule_onspin"/>
         <Grid id="gr_schedule" taborder="7" left="750" top="280" width="290" height="210" autofittype="col" oncellclick="gr_schedule_oncellclick" binddataset="ds_Schedule" cssclass="grd_default">
           <Formats>
@@ -213,21 +215,21 @@ this.btnGrade_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.objApp.prf_menu.filter("menu_id.substring(0,2) == '" + 20 + "'");
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
-	this.fn_openForm("203010","학생 성적 관리","prfWork::classGrade.xfdl"); //form 오픈 함수
+	this.fn_openForm("203020","학생 성적 관리","prfWork::classGrade.xfdl"); //form 오픈 함수
 };
 
 this.btnAttend_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.objApp.prf_menu.filter("menu_id.substring(0,2) == '" + 20 + "'");
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
-	this.fn_openForm("20302010","학생 출석 입력","prfWork::attendManage.xfdl"); //form 오픈 함수
+	this.fn_openForm("20303010","학생 출석 입력","prfWork::attendManage.xfdl"); //form 오픈 함수
 };
-this.btnProInfo_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
+this.btnDeptStdList_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
 	this.objApp.prf_menu.filter("menu_id.substring(0,2) == '" + 10 + "'");
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
-	this.fn_openForm("1010","교직원 조회","admWork::faculty.xfdl"); //form 오픈 함수
+	this.fn_openForm("1020","학생 조회","prfWork::deptStudent.xfdl"); //form 오픈 함수
 };
+
 
 this.Form_Main_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -346,8 +348,12 @@ this.fn_callback = function(sId,errCd,errMsg){
 this.btnMore_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	/*nexacro.open( strID, strFormURL, objParentFrame, {objArguList}, strOpenStyle, nLeft, nTop [, nWidth, nHeight [, objOpener [, strExtOpenStyle ]]])*/
-	var part = this.ds_Notice.getColumn(0,"deptcode")
-	nexacro.open("normal","Student::NoticeLocation.xfdl",this.getOwnerFrame(),{part : part},"showtitlebar=true resizable=true",0, 0, 800, 600, this);
+	if(this.ds_Notice.getRowCount() > 0 ){
+		var part = this.ds_Notice.getColumn(0,"deptcode")
+		nexacro.open("normal","Student::NoticeLocation.xfdl",this.getOwnerFrame(),{part : part},"showtitlebar=true resizable=true",0, 0, 800, 600, this);
+	}else{
+		alert("공지사항이 없습니다");
+	}
 };
 
 
@@ -483,6 +489,7 @@ this.div_Info_sta_alarm_onclick = function(obj:nexacro.Static,e:nexacro.ClickEve
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
 	this.fn_openForm("4020","받은 쪽지함","admWork::received_postmessage.xfdl"); //form 오픈 함수
 };
+
 
 ]]></Script>
     <Objects>

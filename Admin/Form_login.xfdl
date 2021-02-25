@@ -18,6 +18,7 @@ this.Form_login_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 			);
 };
 this.fn_callback_login=function(sId,errCd,errMsg){
+	
 	 if (errCd < 0) {
 		trace("Error["+errCd+"]:"+errMsg);
      } 

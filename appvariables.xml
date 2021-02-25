@@ -16,63 +16,62 @@
         </Row>
         <Row>
           <Col id="menu_id">1010</Col>
-          <Col id="menu_name">출결 조회</Col>
+          <Col id="menu_name">일정 관리</Col>
           <Col id="menu_level">1</Col>
-          <Col id="form_url">stdWork::attend.xfdl</Col>
         </Row>
         <Row>
-          <Col id="menu_id">1020</Col>
-          <Col id="menu_name">성적 조회</Col>
-          <Col id="menu_level">1</Col>
-          <Col id="form_url">stdWork::readGrade.xfdl</Col>
+          <Col id="menu_id">101010</Col>
+          <Col id="menu_name">학사 스케줄</Col>
+          <Col id="menu_level">2</Col>
+          <Col id="form_url">admWork::colSchedule.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="menu_id">101020</Col>
+          <Col id="menu_name">학과 스케줄</Col>
+          <Col id="menu_level">2</Col>
+          <Col id="form_url">prfWork::deptSchedule.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">1030</Col>
-          <Col id="menu_name">시간표 조회</Col>
-          <Col id="menu_level">1</Col>
-          <Col id="form_url">stdWork::timeSchedule.xfdl</Col>
-        </Row>
-        <Row>
-          <Col id="menu_id">1040</Col>
           <Col id="menu_name">등록금관리</Col>
           <Col id="menu_level">1</Col>
         </Row>
         <Row>
-          <Col id="menu_id">104010</Col>
+          <Col id="menu_id">103010</Col>
           <Col id="menu_name">등록금 조회</Col>
           <Col id="menu_level">2</Col>
           <Col id="form_url">stdWork::stdReadTuition.xfdl</Col>
         </Row>
         <Row>
-          <Col id="menu_id">1050</Col>
+          <Col id="menu_id">1040</Col>
           <Col id="menu_name">장학금관리</Col>
           <Col id="menu_level">1</Col>
         </Row>
         <Row>
-          <Col id="menu_id">105010</Col>
+          <Col id="menu_id">104010</Col>
           <Col id="menu_name">교내장학금 신청</Col>
           <Col id="menu_level">2</Col>
           <Col id="form_url">stdWork::scholarship.xfdl</Col>
         </Row>
         <Row>
-          <Col id="menu_id">105020</Col>
+          <Col id="menu_id">104020</Col>
           <Col id="menu_name">장학금내역 조회</Col>
           <Col id="menu_level">2</Col>
           <Col id="form_url">stdWork::stdReadScholarship.xfdl</Col>
         </Row>
         <Row>
-          <Col id="menu_id">1060</Col>
+          <Col id="menu_id">1050</Col>
           <Col id="menu_name">휴·복학 신청</Col>
           <Col id="menu_level">1</Col>
         </Row>
         <Row>
-          <Col id="menu_id">106010</Col>
+          <Col id="menu_id">105010</Col>
           <Col id="menu_name">휴학 신청</Col>
           <Col id="menu_level">2</Col>
           <Col id="form_url">stdWork::absence.xfdl</Col>
         </Row>
         <Row>
-          <Col id="menu_id">106020</Col>
+          <Col id="menu_id">105020</Col>
           <Col id="menu_name">복학 신청</Col>
           <Col id="menu_level">2</Col>
           <Col id="form_url">stdWork::stdRest.xfdl</Col>
@@ -105,6 +104,24 @@
           <Col id="menu_name">개설강좌 조회</Col>
           <Col id="menu_level">1</Col>
           <Col id="form_url">prfWork::classList.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="menu_id">2050</Col>
+          <Col id="menu_name">시간표 조회</Col>
+          <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::timeSchedule.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="menu_id">2060</Col>
+          <Col id="menu_name">출결 조회</Col>
+          <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::attend.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="menu_id">2070</Col>
+          <Col id="menu_name">성적 조회</Col>
+          <Col id="menu_level">1</Col>
+          <Col id="form_url">stdWork::readGrade.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">30</Col>
@@ -205,23 +222,29 @@
         </Row>
         <Row>
           <Col id="menu_id">203010</Col>
+          <Col id="menu_name">내 강의 보기</Col>
+          <Col id="menu_level">2</Col>
+          <Col id="form_url">prfWork::myClass.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="menu_id">203020</Col>
           <Col id="menu_name">학생 성적 관리</Col>
           <Col id="menu_level">2</Col>
           <Col id="form_url">prfWork::classGrade.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_name">학생 출결 관리</Col>
-          <Col id="menu_id">203020</Col>
+          <Col id="menu_id">203030</Col>
           <Col id="menu_level">2</Col>
         </Row>
         <Row>
-          <Col id="menu_id">20302010</Col>
+          <Col id="menu_id">20303010</Col>
           <Col id="menu_name">학생 출결 입력</Col>
           <Col id="menu_level">3</Col>
           <Col id="form_url">prfWork::attendManage.xfdl</Col>
         </Row>
         <Row>
-          <Col id="menu_id">20302020</Col>
+          <Col id="menu_id">20303020</Col>
           <Col id="menu_level">3</Col>
           <Col id="menu_name">학생 출결 조회</Col>
           <Col id="form_url">prfWork::prfAttend.xfdl</Col>
@@ -264,7 +287,7 @@
           <Col id="menu_id">4020</Col>
           <Col id="menu_name">받은 쪽지함</Col>
           <Col id="menu_level">1</Col>
-          <Col id="form_url">admWork::received_postmessage.xfdl</Col>
+          <Col id="form_url">prfWork::received_postmessage.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_id">4030</Col>

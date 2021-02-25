@@ -33,7 +33,7 @@
                     </Band>
                     <Band id="body">
                       <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
-                      <Cell col="1" text="bind:writer" edittype="mask" maskeditformat="#########"/>
+                      <Cell col="1" text="bind:writer" maskeditformat="#########" displaytype="text"/>
                       <Cell col="2" text="bind:title"/>
                       <Cell col="3" text="bind:write_date"/>
                       <Cell col="4" text="bind:view_count"/>
@@ -41,7 +41,9 @@
                   </Format>
                 </Formats>
               </Grid>
+
               <Div id="Div00" taborder="1" text="" top="13" cssclass="div_line" width="568" right="36" bottom="40">
+
                 <Layouts>
                   <Layout>
                     <Static id="Static00" taborder="1" text="Contents" left="15" top="7" width="449" height="28" textAlign="center" cssclass="sta_default"/>
@@ -157,7 +159,9 @@ this.Div00_Grid00_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSel
 this.Div00_Div00_enlargement_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var objCF = new ChildFrame();
+
 	objCF.init("freeEnlargement_pop",100,100,1000,600);
+
 	objCF.set_titletext("내용 확대");
 	objCF.set_formurl("admWork::freeEnlargement_pop.xfdl");
 	 var objParam = {param1:this.Div00.form.Edit01.value,

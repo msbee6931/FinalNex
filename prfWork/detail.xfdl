@@ -11,51 +11,52 @@
                   <Tabpage id="classPlan" text="교과목 정보">
                     <Layouts>
                       <Layout>
-                        <MaskEdit id="mask_fin" taborder="43" left="641" top="472" width="155" height="30" textAlign="center" canchange="evaluation_canchange" format="+0" cssclass="med_default"/>
-                        <MaskEdit id="mask_task" taborder="41" left="486" top="472" width="155" height="30" textAlign="center" canchange="evaluation_canchange" format="+0" cssclass="med_default"/>
-                        <MaskEdit id="mask_otest" taborder="40" left="331" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0" cssclass="med_default"/>
-                        <MaskEdit id="mask_argue" taborder="32" left="491" top="365" width="235" height="30" format="+990" textAlign="center" canchange="method_canchange" cssclass="med_default"/>
-                        <MaskEdit id="mask_test" taborder="30" left="256" top="365" width="235" height="30" format="+990" textAlign="center" canchange="method_canchange" cssclass="med_default"/>
-                        <Static id="Static00" taborder="0" text=" ▣ 이수구분" left="21" top="10" width="118" height="39" cssclass="sta_default"/>
-                        <Static id="Static00_00" taborder="4" text=" ▣ 과목명" left="21" top="49" width="118" height="39" onclick="Tab00_Tabpage1_Static00_00_onclick" cssclass="sta_default"/>
-                        <Static id="Static00_01" taborder="6" text=" ▣ 과목코드" left="351" top="49" width="118" height="39" cssclass="sta_default"/>
-                        <Static id="Static00_02" taborder="7" text=" ▣ 학점" left="681" top="49" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_default"/>
-                        <Static id="Static00_02_00" taborder="9" text=" ▣ 담당교수명" left="21" top="88" width="118" height="39" cssclass="sta_default"/>
-                        <Static id="Static00_02_01" taborder="17" text=" ▣ 강의 시간" left="351" top="127" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_default"/>
-                        <Static id="Static00_02_04" taborder="11" text=" ▣ 소속 학과" left="351" top="88" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_default"/>
-                        <Combo id="co_part" taborder="1" left="139" top="10" width="212" height="39" codecolumn="id" datacolumn="name" innerdataset="gds_part" cssclass="cmb_default"/>
-                        <Edit id="edt_className" taborder="5" left="139" top="49" width="212" height="39" textAlign="center" cssclass="edt_default"/>
+
+                        <MaskEdit id="mask_fin" taborder="39" left="641" top="472" width="155" height="30" textAlign="center" canchange="evaluation_canchange" format="+0"/>
+                        <MaskEdit id="mask_task" taborder="38" left="486" top="472" width="155" height="30" textAlign="center" canchange="evaluation_canchange" format="+0"/>
+                        <MaskEdit id="mask_otest" taborder="37" left="331" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
+                        <MaskEdit id="mask_argue" taborder="29" left="491" top="365" width="235" height="30" format="+990" textAlign="center" canchange="method_canchange"/>
+                        <MaskEdit id="mask_test" taborder="28" left="256" top="365" width="235" height="30" format="+990" textAlign="center" canchange="method_canchange"/>
+                        <Static id="Static00" taborder="0" text=" ▣ 이수구분" left="21" top="10" width="118" height="39" border="1px solid gray" background="lightgray"/>
+                        <Static id="Static00_00" taborder="4" text=" ▣ 과목명" left="21" top="49" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_00_onclick"/>
+                        <Static id="Static00_01" taborder="6" text=" ▣ 과목코드" left="351" top="49" width="118" height="39" border="1px solid gray" background="lightgray"/>
+                        <Static id="Static00_02" taborder="7" text=" ▣ 학점" left="681" top="49" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <Static id="Static00_02_00" taborder="9" text=" ▣ 담당교수명" left="21" top="88" width="118" height="39" border="1px solid gray" background="lightgray"/>
+                        <Static id="Static00_02_01" taborder="15" text=" ▣ 강의 시간" left="351" top="127" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <Static id="Static00_02_04" taborder="11" text=" ▣ 소속 학과" left="351" top="88" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <Combo id="co_part" taborder="1" left="139" top="10" width="212" height="39" codecolumn="id" datacolumn="name" innerdataset="gds_part"/>
+                        <Edit id="edt_className" taborder="5" left="139" top="49" width="212" height="39" textAlign="center"/>
                         <Combo id="co_point" taborder="8" left="799" top="49" width="90" height="39" innerdataset="ds_point" codecolumn="id" datacolumn="name"/>
-                        <Static id="Static00_02_03" taborder="13" text=" ▣ 학년" left="681" top="88" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_default"/>
-                        <Combo id="co_grade" taborder="14" left="799" top="88" width="150" height="39" innerdataset="ds_grade" codecolumn="id" datacolumn="name" cssclass="cmb_default"/>
-                        <Static id="Static00_02_02_00" taborder="20" text=" ▣ 교과목 및 목표" left="21" top="176" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_default"/>
-                        <Static id="Static00_02_02_00_00" taborder="22" text=" ▣ 수업운영 방법(비율)" left="21" top="296" width="138" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_line"/>
-                        <Static id="Static00_02_02_00_00_00" taborder="23" text=" ▣ 교재 및 참고자료" left="22" top="511" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_line"/>
-                        <TextArea id="ta_goal" taborder="21" left="21" top="215" width="930" height="75" onchanged="Div00_classPlanTab_classPlan_ta_goal_onchanged" cssclass="txt_default"/>
-                        <Button id="btnSave" taborder="24" text="저장" left="759" top="10" width="90" height="25" onclick="classPlanTab_classPlan_btnSave_onclick" cssclass="btn_default"/>
-                        <Static id="Static00_02_02_00_00_00_00" taborder="25" text=" ▣ 평가방법(비율)" left="21" top="403" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_line"/>
-                        <Static id="Static03" taborder="46" text="주교재" left="21" top="550" width="118" height="43" cssclass="sta_default"/>
-                        <Static id="Static03_00" taborder="48" text="참고 자료" left="21" top="593" width="118" height="43" cssclass="sta_default"/>
-                        <Edit id="edt_mainBook" taborder="47" left="139" top="550" width="812" height="43" cssclass="edt_default"/>
-                        <Static id="sta_course" taborder="26" text="강의" left="21" top="335" width="235" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
-                        <Static id="sta_test" taborder="27" text="실험/실습" left="256" top="335" width="235" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
-                        <Static id="sta_argue" taborder="28" text="발표/토의/토론" left="491" top="335" width="235" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
-                        <Static id="sum" taborder="29" text="합계" left="726" top="335" width="235" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
-                        <Static id="sta_attend" taborder="34" text="출석" left="21" top="442" width="155" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
-                        <Static id="sta_mid" taborder="35" text="중간고사" left="176" top="442" width="155" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
-                        <Static id="sta_fin" taborder="38" text="기말고사" left="641" top="442" width="155" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
-                        <Static id="sta_task" taborder="37" text="과제" left="486" top="442" width="155" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
-                        <Static id="sta_otest" taborder="36" text="수시" left="331" top="442" width="155" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
-                        <Static id="sum2" taborder="39" text="합계" left="796" top="442" width="155" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default"/>
-                        <Static id="sta_sum2" taborder="45" left="796" top="472" width="155" height="30" textAlign="center" text="0%" cssclass="sta_line"/>
-                        <Static id="sta_sum" taborder="33" left="726" top="365" width="235" height="30" textAlign="center" text="0%" cssclass="sta_line"/>
-                        <Static id="sta_proName" taborder="10" text="" left="139" top="88" width="212" height="39" border="1px solid gray" textAlign="center" cssclass="sta_default"/>
-                        <Static id="sta_limit" taborder="2" text=" ▣ 인원" left="351" top="10" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_default"/>
-                        <MaskEdit id="mask_limit" taborder="3" left="469" top="10" width="212" height="39" maskchar="###" textAlign="center" format="+##########" cssclass="med_default"/>
-                        <Edit id="edt_classTime" taborder="18" left="469" top="127" width="455" height="40" textAlign="center" cssclass="edt_default"/>
-                        <Static id="Static00_02_02" taborder="15" text=" ▣ 강의실" left="21" top="127" width="118" height="39" onclick="Tab00_Tabpage1_Static00_02_onclick" cssclass="sta_default"/>
-                        <Edit id="edt_classRoom" taborder="16" left="139" top="127" width="212" height="39" textAlign="center" cssclass="edt_default"/>
-                        <Button id="dropBtn" taborder="19" text="▼" left="924" top="127" width="25" height="40" onclick="Div00_classPlanTab_classPlan_Button00_onclick" cssclass="btn_default"/>
+                        <Static id="Static00_02_03" taborder="12" text=" ▣ 학년" left="681" top="88" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <Combo id="co_grade" taborder="13" left="799" top="88" width="150" height="39" innerdataset="ds_grade" codecolumn="id" datacolumn="name"/>
+                        <Static id="Static00_02_02_00" taborder="18" text=" ▣ 교과목 및 목표" left="21" top="176" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <Static id="Static00_02_02_00_00" taborder="20" text=" ▣ 수업운영 방법(비율)" left="21" top="296" width="138" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <Static id="Static00_02_02_00_00_00" taborder="21" text=" ▣ 교재 및 참고자료" left="22" top="511" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <TextArea id="ta_goal" taborder="19" left="21" top="215" width="930" height="75" onchanged="Div00_classPlanTab_classPlan_ta_goal_onchanged"/>
+                        <Button id="btnSave" taborder="22" text="저장" left="759" top="5" width="90" height="39" onclick="classPlanTab_classPlan_btnSave_onclick"/>
+                        <Static id="Static00_02_02_00_00_00_00" taborder="23" text=" ▣ 평가방법(비율)" left="21" top="403" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <Static id="Static03" taborder="41" text="주교재" left="21" top="550" width="118" height="43" border="1px solid" background="silver"/>
+                        <Static id="Static03_00" taborder="43" text="참고 자료" left="21" top="593" width="118" height="43" border="1px solid" background="silver"/>
+                        <Edit id="edt_mainBook" taborder="42" left="139" top="550" width="812" height="43"/>
+                        <Static id="sta_course" taborder="24" text="강의" left="21" top="335" width="235" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sta_test" taborder="25" text="실험/실습" left="256" top="335" width="235" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sta_argue" taborder="26" text="발표/토의/토론" left="491" top="335" width="235" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sum" taborder="27" text="합계" left="726" top="335" width="235" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sta_attend" taborder="31" text="출석" left="21" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sta_mid" taborder="32" text="중간고사" left="176" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sta_fin" taborder="35" text="기말고사" left="641" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sta_task" taborder="34" text="과제" left="486" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sta_otest" taborder="33" text="수시" left="331" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sum2" taborder="36" text="합계" left="796" top="442" width="155" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
+                        <Static id="sta_sum2" taborder="40" left="796" top="472" width="155" height="30" border="1px solid gray" textAlign="center" text="0%"/>
+                        <Static id="sta_sum" taborder="30" left="726" top="365" width="235" height="30" textAlign="center" border="1px solid gray" text="0%"/>
+                        <Static id="sta_proName" taborder="10" text="" left="139" top="88" width="212" height="39" border="1px solid gray" textAlign="center"/>
+                        <Static id="sta_limit" taborder="2" text=" ▣ 인원" left="351" top="10" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <MaskEdit id="mask_limit" taborder="3" left="469" top="10" width="212" height="39" maskchar="###" textAlign="center" format="+##########"/>
+                        <Edit id="edt_classTime" taborder="16" left="469" top="127" width="455" height="40" textAlign="center"/>
+                        <Static id="Static00_02_02" taborder="14" text=" ▣ 강의실" left="21" top="127" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
+                        <Button id="dropBtn" taborder="17" text="" left="924" top="127" width="25" height="40" onclick="Div00_classPlanTab_classPlan_Button00_onclick"/>
+
                         <PopupDiv id="classTimeList" visible="false" left="351" top="167" width="382" height="315" oncloseup="Div00_classPlanTab_classPlan_classTimeList_oncloseup">
                           <Layouts>
                             <Layout>
@@ -102,16 +103,20 @@
                             </Layout>
                           </Layouts>
                         </PopupDiv>
-                        <Static id="sta_proCode" taborder="53" text="" left="686" top="10" width="65" height="34" visible="false" cssclass="sta_line"/>
-                        <Button id="btnClose" taborder="50" text="닫기" left="859" top="10" width="90" height="25" onclick="Div00_classPlanTab_classPlan_btnClose_onclick" cssclass="btn_can"/>
-                        <Static id="sta_reqState" taborder="51" text="" left="884" top="175" width="65" height="34" visible="false" cssclass="sta_line"/>
-                        <TextArea id="txt_subBook" taborder="49" left="139" top="593" width="812" height="43" cssclass="txt_default"/>
-                        <MaskEdit id="mask_course" taborder="31" left="21" top="365" width="235" height="30" format="+0" textAlign="center" canchange="method_canchange" onchanged="Div00_classPlanTab_classPlan_mask_course_onchanged" cssclass="med_default"/>
-                        <MaskEdit id="edt_classSeq" taborder="52" left="469" top="49" width="212" height="39" maskchar="###" textAlign="center" format="+##########" cssclass="edt_default"/>
-                        <MaskEdit id="mask_attend" taborder="42" left="21" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0" cssclass="med_default"/>
-                        <MaskEdit id="mask_mid" taborder="44" left="176" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0" cssclass="med_default"/>
-                        <Combo id="co_dept" taborder="12" text="" left="469" top="88" width="212" height="39" innerdataset="deptCode" codecolumn="code" datacolumn="name" cssclass="cmb_default"/>
-                        <CheckBox id="chk_pf" taborder="54" text="Pass/Fail" left="894" top="58" width="85" height="20" falsevalue="F" truevalue="P" value="F" font="12px/normal &quot;Malgun Gothic&quot;"/>
+
+                        <Static id="sta_proCode" taborder="53" text="" left="686" top="10" width="65" height="34" border="1px solid black" visible="false"/>
+                        <Button id="btnClose" taborder="50" text="닫기" left="859" top="5" width="90" height="39" onclick="Div00_classPlanTab_classPlan_btnClose_onclick"/>
+                        <Static id="sta_reqState" taborder="51" text="" left="884" top="175" width="65" height="34" border="1px solid black" visible="false"/>
+                        <TextArea id="edt_subBook" taborder="49" left="139" top="593" width="812" height="43"/>
+                        <MaskEdit id="mask_course" taborder="31" left="21" top="365" width="235" height="30" format="+0" textAlign="center" canchange="method_canchange" onchanged="Div00_classPlanTab_classPlan_mask_course_onchanged"/>
+                        <MaskEdit id="edt_classSeq" taborder="52" left="469" top="49" width="212" height="39" maskchar="###" textAlign="center" format="+##########" readonly="true"/>
+                        <MaskEdit id="mask_attend" taborder="42" left="21" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
+                        <MaskEdit id="mask_mid" taborder="44" left="176" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
+                        <Combo id="co_dept" taborder="12" text="" left="469" top="88" width="212" height="39" innerdataset="deptCode" codecolumn="code" datacolumn="name" ondropdown="Div00_classPlanTab_classPlan_co_dept_ondropdown" displayrowcount="5"/>
+                        <CheckBox id="chk_pf" taborder="54" text="Pass/Fail" left="894" top="58" width="85" height="20" falsevalue="F" truevalue="P" value="F"/>
+                        <MaskEdit id="mask_classRoom" taborder="55" left="139" top="126" width="212" height="39" textAlign="center" displaynulltext="ex) 101" type="string" format="###"/>
+                        <Button id="btnClassRoom" taborder="55" text="강의실 보기" left="263" top="166" width="86" height="33" onclick="Div00_classPlanTab_classPlan_btnClassRoom_onclick"/>
+
                       </Layout>
                     </Layouts>
                     <InitValue/>
@@ -349,6 +354,30 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="ds_count">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="classPart" type="STRING" size="256"/>
+          <Column id="className" type="STRING" size="256"/>
+          <Column id="classSeq" type="INT" size="256"/>
+          <Column id="classPoint" type="STRING" size="256"/>
+          <Column id="passFail" type="STRING" size="256"/>
+          <Column id="proCode" type="STRING" size="256"/>
+          <Column id="proName" type="STRING" size="256"/>
+          <Column id="dept" type="STRING" size="256"/>
+          <Column id="classTime" type="STRING" size="256"/>
+          <Column id="classRoom" type="STRING" size="256"/>
+          <Column id="limit" type="STRING" size="256"/>
+          <Column id="basketLimit" type="STRING" size="256"/>
+          <Column id="classGoal" type="STRING" size="256"/>
+          <Column id="classReferences" type="STRING" size="256"/>
+          <Column id="classMethod" type="STRING" size="256"/>
+          <Column id="classEvaluation" type="STRING" size="256"/>
+          <Column id="grade" type="STRING" size="256"/>
+          <Column id="reqState" type="STRING" size="256"/>
+          <Column id="reg_date" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
 var classForm = this.Div00.form.classPlanTab.classPlan.form;
@@ -359,9 +388,10 @@ this.classPlanTab_classPlan_btnSave_onclick = function(obj:nexacro.Button,e:nexa
 	var sum = classForm.sta_sum.text;
 	var sum2 = classForm.sta_sum2.text
 	var part = classForm.co_part.value;
-	var limit = "0/"+classForm.mask_limit.text;
-	var className = classForm.edt_className.text;
+	var person = classForm.mask_limit.text;
+	var limit = "0/"+ person;
 	var classSeq = classForm.edt_classSeq.text;
+	var className = classForm.edt_className.text;
 	var point = classForm.co_point.text;
 	var passFail = classForm.chk_pf.value;
 	var proCode = classForm.sta_proCode.text;
@@ -369,27 +399,33 @@ this.classPlanTab_classPlan_btnSave_onclick = function(obj:nexacro.Button,e:nexa
 	var dept = classForm.co_dept.value;
 	var grade = classForm.co_grade.text;
 	var classTime = classForm.edt_classTime.text;
-	var classRoom = classForm.edt_classRoom.text;
-// 	if(sum != "100%" || sum2 != "100%"){alert("합계가 100%가 아닙니다")}
-// 	else if(part ==""){alert("이수구분을 선택해주세요");}
-// 	else if(limit==""){alert("인원을 입력해주세요");}
-// 	else if(className==""){alert("교과명을 입력해주세요");}
-// 	else if(classSeq==""){alert("과목코드를 입력해주세요");}//과목 코드는 조합으로만들 예정
-// 	else if(point==""){alert("학점을 선택해주세요");}
-// 	else if(dept==""){alert("학과를 선택해주세요");}
-// 	else if(grade==""){alert("학년을 선택해주세요");}
-// 	else if(classTime==""){alert("강의시간을 선택해주세요");}
-// 	else if(classRoom==""){alert("강의실을 입력해주세요");}
-// 	else{
+	var classRoom = classForm.mask_classRoom.text;
+	trace(classRoom)
+	if(sum != "100%" || sum2 != "100%"){alert("합계가 100%가 아닙니다")}
+	else if(part =="" || part == null){alert("이수구분을 선택해주세요");}
+	else if(person =="" || person == null){alert("인원을 입력해주세요");}
+	else if(className=="" || className == null){alert("교과명을 입력해주세요");}
+	else if(point=="" || point == null){alert("학점을 선택해주세요");}
+	else if(dept=="" || dept == null){alert("학과를 선택해주세요");}
+	else if(grade=="" || grade == null){alert("학년을 선택해주세요");}
+	else if(classTime=="" || classTime == null){alert("강의시간을 선택해주세요");}
+	else if(classRoom=="" ||classRoom == null){alert("강의실을 입력해주세요");}
+	else{
 		//ds_class에 값 넣기
 		var goal = classForm.ta_goal.text;
 		var method = classForm.mask_course.text +"|"+classForm.mask_test.text+"|"+classForm.mask_argue.text;
 		var evaluation = classForm.mask_attend.text +"|"+classForm.mask_mid.text+"|"+classForm.mask_fin.text+"|"+classForm.mask_task.text+"|"+classForm.mask_otest.text;
 		var references = classForm.edt_mainBook.text +"|" + classForm.edt_subBook.text;
-		var reqState = classForm.sta_reqState.text;
+		reqState = classForm.sta_reqState.text;
 		if(reqState == ""){
 			var nRow = this.ds_class.addRow();
 			var nRow2 = this.ds_classSchedule.addRow();
+			//학번 조합
+			var col = Math.floor(dept/10,0)+"0"; //대분류
+			var pro = proCode.substring(7,9) //교번 뒤에 2자리
+			var ran = Math.floor(Math.random()*100,2);
+			classSeq = col+dept+pro+ran;
+			classForm.edt_classSeq.set_text(classSeq);	
 		}else{
 			var Row = 0;
 			var Row2 = 0;
@@ -445,18 +481,17 @@ this.classPlanTab_classPlan_btnSave_onclick = function(obj:nexacro.Button,e:nexa
 		this.ds_classSchedule.setColumn(nRow2,"week12",week12);
 		this.ds_classSchedule.setColumn(nRow2,"week13",week13);
 		this.ds_classSchedule.setColumn(nRow2,"week14",week14);
-		this.ds_classSchedule.setColumn(nRow,"week15",week15);
+		this.ds_classSchedule.setColumn(nRow2,"week15",week15);
 		
-		//reqState(요청사항이 없으면) insert
+		
 		if(reqState == ""){
-			//ds_class db에 저장
 			this.transaction(
-				"classInfo_Save"
-				,"/classInfo.nex" 
-				,"in_ds1=ds_class:U in_ds2=ds_classSchedule:U" 
-				,"" 
+				"classSeqCheck" 
+				,"/classSeqCheck.nex"
 				,""
-				,"fn_callback" 
+				,"ds_count=out_ds"
+				,"classSeq="+nexacro.wrapQuote(classSeq)
+				,"fn_callback"
 			);
 		}else{		
 			this.transaction(
@@ -467,9 +502,10 @@ this.classPlanTab_classPlan_btnSave_onclick = function(obj:nexacro.Button,e:nexa
 				,""
 				,"fn_callback" 
 			);
+			this.close()
 		}
-		this.close(proCode);
-/*	}*/
+		
+	}
 };
 this.method_canchange = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
 {
@@ -510,8 +546,9 @@ this.Detail_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 			,"classSeq="+nexacro.wrapQuote(classSeq)
 			,"fn_callback"
 		);
-			classForm.edt_classSeq.set_readonly(true);
+		classForm.edt_classSeq.set_readonly(true);
 		if(view == 'Y'){
+			classForm.btnClassRoom.set_visible(false);
 			classForm.btnSave.set_visible( false );
 		}
 	}else{			
@@ -568,73 +605,118 @@ this.fn_callback=function(sId,errCd,errMsg){
 		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
 	} 
 	if(sId == "classListSeq"){
-	//수업 정보 가져와서 띄우기
-	classForm.co_part.set_value(this.ds_class.getColumn(0,"classPart"));
-	classForm.edt_className.set_value(this.ds_class.getColumn(0,"className")); 
-	classForm.edt_classSeq.set_value(this.ds_class.getColumn(0,"classSeq"));
-	classForm.co_point.set_text(this.ds_class.getColumn(0,"classPoint"));
-	classForm.chk_pf.set_value(this.ds_class.getColumn(0,"passFail"));
-	classForm.sta_proCode.set_text(this.ds_class.getColumn(0,"proCode"));
-	classForm.sta_proName.set_text(this.ds_class.getColumn(0,"proName"));
-	classForm.co_dept.set_value(this.ds_class.getColumn(0,"dept"));
-	classForm.co_grade.set_text(this.ds_class.getColumn(0,"grade"));
-	classForm.edt_classTime.set_value(this.ds_class.getColumn(0,"classTime"));
-	classForm.edt_classRoom.set_value(this.ds_class.getColumn(0,"classRoom"));
-	classForm.ta_goal.set_value(this.ds_class.getColumn(0,"classGoal"));
-	var limit = this.ds_class.getColumn(0,"limit").split("/");
-	classForm.mask_limit.set_value(limit[1]);
-	var classMethod = this.ds_class.getColumn(0,"classMethod").split("|");
-	classForm.mask_course.set_value(classMethod[0]);
-	classForm.mask_test.set_value(classMethod[1]);
-	classForm.mask_argue.set_value(classMethod[2]);
-	classForm.sta_sum.set_text(nexacro.toNumber(classMethod[0])+nexacro.toNumber(classMethod[1])+nexacro.toNumber(classMethod[2])+"%");
-	var classEv = this.ds_class.getColumn(0,"classEvaluation").split("|");
-	classForm.mask_attend.set_value(classEv[0]);
-	classForm.mask_mid.set_value(classEv[1]);
-	classForm.mask_fin.set_value(classEv[2]);
-	classForm.mask_task.set_value(classEv[3]);
-	classForm.mask_otest.set_value(classEv[4]); 
-	classForm.sta_sum2.set_text(nexacro.toNumber(classEv[0])+nexacro.toNumber(classEv[1])+nexacro.toNumber(classEv[2])+nexacro.toNumber(classEv[3])+nexacro.toNumber(classEv[4])+"%");
-	var classRefer = this.ds_class.getColumn(0,"classReferences").split("|");
-	classForm.edt_mainBook.set_value(classRefer[0]); 
-	classForm.edt_subBook.set_value(classRefer[1]);
-	classForm.sta_reqState.set_text(this.ds_class.getColumn(0,"reqState"));
-	//수업 일정 가져와서 띄우기
-	
-	var week1 = this.ds_classSchedule.getColumn(0,"week1").split("|");
-	planForm.edt_subject1.set_value(week1[0]);planForm.ta_content1.set_value(week1[1]);planForm.edt_notice1.set_value(week1[2]);planForm.edt_prepare1.set_value(week1[3]);
-	var week2 = this.ds_classSchedule.getColumn(0,"week2").split("|");
-	planForm.edt_subject2.set_value(week2[0]);planForm.ta_content2.set_value(week2[1]);planForm.edt_notice2.set_value(week2[2]);planForm.edt_prepare2.set_value(week2[3]);
-	var week3 = this.ds_classSchedule.getColumn(0,"week3").split("|");
-	planForm.edt_subject3.set_value(week3[0]);planForm.ta_content3.set_value(week3[1]);planForm.edt_notice3.set_value(week3[2]);planForm.edt_prepare3.set_value(week3[3]);
-	var week4 = this.ds_classSchedule.getColumn(0,"week4").split("|");
-	planForm.edt_subject4.set_value(week4[0]);planForm.ta_content4.set_value(week4[1]);planForm.edt_notice4.set_value(week4[2]);planForm.edt_prepare4.set_value(week4[3]);	
-	var week5 = this.ds_classSchedule.getColumn(0,"week5").split("|");
-	planForm.edt_subject5.set_value(week5[0]);planForm.ta_content5.set_value(week5[1]);planForm.edt_notice5.set_value(week5[2]);planForm.edt_prepare5.set_value(week5[3]);	
-	var week6 = this.ds_classSchedule.getColumn(0,"week6").split("|");
-	planForm.edt_subject6.set_value(week6[0]);planForm.ta_content6.set_value(week6[1]);planForm.edt_notice6.set_value(week6[2]);planForm.edt_prepare6.set_value(week6[3]);	
-	var week7 = this.ds_classSchedule.getColumn(0,"week7").split("|");
-	planForm.edt_subject7.set_value(week7[0]);planForm.ta_content7.set_value(week7[1]);planForm.edt_notice7.set_value(week7[2]);planForm.edt_prepare7.set_value(week7[3]);	
-	var week8 = this.ds_classSchedule.getColumn(0,"week8").split("|");
-	planForm.edt_subject8.set_value(week8[0]);planForm.ta_content8.set_value(week8[1]);planForm.edt_notice8.set_value(week8[2]);planForm.edt_prepare8.set_value(week8[3]);	
-	var week9 = this.ds_classSchedule.getColumn(0,"week9").split("|");
-	planForm.edt_subject9.set_value(week9[0]);planForm.ta_content9.set_value(week9[1]);planForm.edt_notice9.set_value(week9[2]);planForm.edt_prepare9.set_value(week9[3]);	
-	var week10 = this.ds_classSchedule.getColumn(0,"week10").split("|");
-	planForm.edt_subject10.set_value(week10[0]);planForm.ta_content10.set_value(week10[1]);planForm.edt_notice10.set_value(week10[2]);planForm.edt_prepare10.set_value(week10[3]);	
-	var week11 = this.ds_classSchedule.getColumn(0,"week11").split("|");
-	planForm.edt_subject11.set_value(week11[0]);planForm.ta_content11.set_value(week11[1]);planForm.edt_notice11.set_value(week11[2]);planForm.edt_prepare11.set_value(week11[3]);	
-	var week12 = this.ds_classSchedule.getColumn(0,"week12").split("|");
-	planForm.edt_subject12.set_value(week12[0]);planForm.ta_content12.set_value(week12[1]);planForm.edt_notice12.set_value(week12[2]);planForm.edt_prepare12.set_value(week12[3]);	
-	var week13 = this.ds_classSchedule.getColumn(0,"week13").split("|");
-	planForm.edt_subject13.set_value(week13[0]);planForm.ta_content13.set_value(week13[1]);planForm.edt_notice13.set_value(week13[2]);planForm.edt_prepare13.set_value(week13[3]);	
-	var week14 = this.ds_classSchedule.getColumn(0,"week14").split("|");
-	planForm.edt_subject14.set_value(week14[0]);planForm.ta_content14.set_value(week14[1]);planForm.edt_notice14.set_value(week14[2]);planForm.edt_prepare14.set_value(week14[3]);	
-	var week15 = this.ds_classSchedule.getColumn(0,"week15").split("|");
-	planForm.edt_subject15.set_value(week15[0]);planForm.ta_content15.set_value(week15[1]);planForm.edt_notice15.set_value(week15[2]);planForm.edt_prepare15.set_value(week15[3]);		
+
+		//수업 정보 가져와서 띄우기
+		classForm.co_part.set_value(this.ds_class.getColumn(0,"classPart"));
+		classForm.edt_className.set_value(this.ds_class.getColumn(0,"className")); 
+		classForm.edt_classSeq.set_value(this.ds_class.getColumn(0,"classSeq"));
+		classForm.co_point.set_text(this.ds_class.getColumn(0,"classPoint"));
+		classForm.chk_pf.set_value(this.ds_class.getColumn(0,"passFail"));
+		classForm.sta_proCode.set_text(this.ds_class.getColumn(0,"proCode"));
+		classForm.sta_proName.set_text(this.ds_class.getColumn(0,"proName"));
+		classForm.co_dept.set_value(this.ds_class.getColumn(0,"dept"));
+		classForm.co_grade.set_text(this.ds_class.getColumn(0,"grade"));
+		classForm.edt_classTime.set_value(this.ds_class.getColumn(0,"classTime"));
+		classForm.mask_classRoom.set_value(this.ds_class.getColumn(0,"classRoom"));
+		classForm.ta_goal.set_value(this.ds_class.getColumn(0,"classGoal"));
+		var limit = this.ds_class.getColumn(0,"limit").split("/");
+		classForm.mask_limit.set_value(limit[1]);
+		var classMethod = this.ds_class.getColumn(0,"classMethod").split("|");
+		classForm.mask_course.set_value(classMethod[0]);
+		classForm.mask_test.set_value(classMethod[1]);
+		classForm.mask_argue.set_value(classMethod[2]);
+		classForm.sta_sum.set_text(nexacro.toNumber(classMethod[0])+nexacro.toNumber(classMethod[1])+nexacro.toNumber(classMethod[2])+"%");
+		var classEv = this.ds_class.getColumn(0,"classEvaluation").split("|");
+		classForm.mask_attend.set_value(classEv[0]);
+		classForm.mask_mid.set_value(classEv[1]);
+		classForm.mask_fin.set_value(classEv[2]);
+		classForm.mask_task.set_value(classEv[3]);
+		classForm.mask_otest.set_value(classEv[4]); 
+		classForm.sta_sum2.set_text(nexacro.toNumber(classEv[0])+nexacro.toNumber(classEv[1])+nexacro.toNumber(classEv[2])+nexacro.toNumber(classEv[3])+nexacro.toNumber(classEv[4])+"%");
+		var classRefer = this.ds_class.getColumn(0,"classReferences").split("|");
+		classForm.edt_mainBook.set_value(classRefer[0]); 
+		classForm.edt_subBook.set_value(classRefer[1]);
+		classForm.sta_reqState.set_text(this.ds_class.getColumn(0,"reqState"));
+		//수업 일정 가져와서 띄우기
+		trace("week1 : " + this.ds_classSchedule.getColumn(0,"week1"));
+		var week1 = this.ds_classSchedule.getColumn(0,"week1").split("|");
+		planForm.edt_subject1.set_value(week1[0]);planForm.ta_content1.set_value(week1[1]);planForm.edt_notice1.set_value(week1[2]);planForm.edt_prepare1.set_value(week1[3]);
+		var week2 = this.ds_classSchedule.getColumn(0,"week2").split("|");
+		planForm.edt_subject2.set_value(week2[0]);planForm.ta_content2.set_value(week2[1]);planForm.edt_notice2.set_value(week2[2]);planForm.edt_prepare2.set_value(week2[3]);
+		var week3 = this.ds_classSchedule.getColumn(0,"week3").split("|");
+		planForm.edt_subject3.set_value(week3[0]);planForm.ta_content3.set_value(week3[1]);planForm.edt_notice3.set_value(week3[2]);planForm.edt_prepare3.set_value(week3[3]);
+		var week4 = this.ds_classSchedule.getColumn(0,"week4").split("|");
+		planForm.edt_subject4.set_value(week4[0]);planForm.ta_content4.set_value(week4[1]);planForm.edt_notice4.set_value(week4[2]);planForm.edt_prepare4.set_value(week4[3]);	
+		var week5 = this.ds_classSchedule.getColumn(0,"week5").split("|");
+		planForm.edt_subject5.set_value(week5[0]);planForm.ta_content5.set_value(week5[1]);planForm.edt_notice5.set_value(week5[2]);planForm.edt_prepare5.set_value(week5[3]);	
+		var week6 = this.ds_classSchedule.getColumn(0,"week6").split("|");
+		planForm.edt_subject6.set_value(week6[0]);planForm.ta_content6.set_value(week6[1]);planForm.edt_notice6.set_value(week6[2]);planForm.edt_prepare6.set_value(week6[3]);	
+		var week7 = this.ds_classSchedule.getColumn(0,"week7").split("|");
+		planForm.edt_subject7.set_value(week7[0]);planForm.ta_content7.set_value(week7[1]);planForm.edt_notice7.set_value(week7[2]);planForm.edt_prepare7.set_value(week7[3]);	
+		var week8 = this.ds_classSchedule.getColumn(0,"week8").split("|");
+		planForm.edt_subject8.set_value(week8[0]);planForm.ta_content8.set_value(week8[1]);planForm.edt_notice8.set_value(week8[2]);planForm.edt_prepare8.set_value(week8[3]);	
+		var week9 = this.ds_classSchedule.getColumn(0,"week9").split("|");
+		planForm.edt_subject9.set_value(week9[0]);planForm.ta_content9.set_value(week9[1]);planForm.edt_notice9.set_value(week9[2]);planForm.edt_prepare9.set_value(week9[3]);	
+		var week10 = this.ds_classSchedule.getColumn(0,"week10").split("|");
+		planForm.edt_subject10.set_value(week10[0]);planForm.ta_content10.set_value(week10[1]);planForm.edt_notice10.set_value(week10[2]);planForm.edt_prepare10.set_value(week10[3]);	
+		var week11 = this.ds_classSchedule.getColumn(0,"week11").split("|");
+		planForm.edt_subject11.set_value(week11[0]);planForm.ta_content11.set_value(week11[1]);planForm.edt_notice11.set_value(week11[2]);planForm.edt_prepare11.set_value(week11[3]);	
+		var week12 = this.ds_classSchedule.getColumn(0,"week12").split("|");
+		planForm.edt_subject12.set_value(week12[0]);planForm.ta_content12.set_value(week12[1]);planForm.edt_notice12.set_value(week12[2]);planForm.edt_prepare12.set_value(week12[3]);	
+		var week13 = this.ds_classSchedule.getColumn(0,"week13").split("|");
+		planForm.edt_subject13.set_value(week13[0]);planForm.ta_content13.set_value(week13[1]);planForm.edt_notice13.set_value(week13[2]);planForm.edt_prepare13.set_value(week13[3]);	
+		var week14 = this.ds_classSchedule.getColumn(0,"week14").split("|");
+		planForm.edt_subject14.set_value(week14[0]);planForm.ta_content14.set_value(week14[1]);planForm.edt_notice14.set_value(week14[2]);planForm.edt_prepare14.set_value(week14[3]);	
+		var week15 = this.ds_classSchedule.getColumn(0,"week15").split("|");
+		planForm.edt_subject15.set_value(week15[0]);planForm.ta_content15.set_value(week15[1]);planForm.edt_notice15.set_value(week15[2]);planForm.edt_prepare15.set_value(week15[3]);		
+	}else if(sId == "classSeqCheck"){
+		if(this.ds_count.getRowCount() == 0){	
+			//ds_class db에 저장
+			this.transaction(
+				"classInfo_Save"
+				,"/classInfo.nex" 
+				,"in_ds1=ds_class:U in_ds2=ds_classSchedule:U" 
+				,"" 
+				,""
+				,"fn_callback" 
+			);
+		}
+		this.close();
+	}else{
+		var classSeq = classForm.edt_classSeq.text;
+		var nRow = this.ds_class.findRow("classSeq",classSeq);	
+		var nRow2 = this.ds_classSchedule.findRow("classSeq",classSeq);
+		var proCode = classForm.sta_proCode.text;
+		var dept = classForm.co_dept.value;
+		col = Math.floor(dept/10,0)+"0"; //대분류
+		pro = proCode.substring(7,9) //교번 뒤에 2자리
+		var ran = Math.floor(Math.random()*100,2);
+		classSeq = col+dept+pro+ran;	
+		classForm.edt_classSeq.set_text(classSeq);	
+		this.ds_class.setColumn(nRow,"classSeq",classSeq);
+		this.ds_class.setColumn(nRow2,"classSeq",classSeq);
+		this.transaction(
+			"classSeqCheck" 
+			,"/classSeqCheck.nex"
+			,""
+			,"ds_count=out_ds"
+			,"classSeq="+nexacro.wrapQuote(classSeq)
+			,"fn_callback"
+		);
 	}
 }
 
 
+
+this.Div00_classPlanTab_classPlan_btnClassRoom_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+		let x = this.width/2; 
+		let y = this.height/2-225;
+		let objCF = new ChildFrame();
+		objCF.init("popClassRoom",x,y,800,450,0,0,"admWork::classRoomList.xfdl");
+		objCF.set_showtitlebar(false);
+		objCF.showModal(this.getOwnerFrame(),{},this,"fn_pop_callback");
+};
 ]]></Script>
   </Form>
 </FDL>

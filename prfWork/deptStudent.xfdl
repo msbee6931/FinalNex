@@ -33,7 +33,7 @@
                 <Cell col="1" text="bind:name" textAlign="center" cursor="pointer"/>
                 <Cell col="2" text="bind:colGrade" textAlign="center" cursor="pointer"/>
                 <Cell col="3" text="expr:gender=='M'?'남':'여'" textAlign="center" cursor="pointer"/>
-                <Cell col="4" text="bind:rest" textAlign="center" expr="expr:rest=='Y'?'재학':'휴학'" cursor="pointer"/>
+                <Cell col="4" text="bind:rest" textAlign="center" expr="expr:rest=='N'?'재학':'휴학'" cursor="pointer"/>
               </Band>
             </Format>
           </Formats>
