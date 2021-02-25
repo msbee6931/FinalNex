@@ -29,8 +29,8 @@
                     </Band>
                     <Band id="body">
                       <Cell text="bind:chk" edittype="checkbox" displaytype="checkboxcontrol"/>
-                      <Cell col="1" text="bind:sender" textAlign="center" edittype="mask" maskeditformat="#########"/>
-                      <Cell col="2" text="bind:receiver" textAlign="center" edittype="mask" maskeditformat="#########"/>
+                      <Cell col="1" text="bind:sender" textAlign="center" maskeditformat="#########" displaytype="text"/>
+                      <Cell col="2" text="bind:receiver" textAlign="center" maskeditformat="#########" displaytype="text"/>
                     </Band>
                   </Format>
                 </Formats>

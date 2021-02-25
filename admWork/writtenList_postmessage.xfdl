@@ -10,7 +10,7 @@
         <Div id="Div00" taborder="4" text="" left="30" top="39" width="1021" height="451" border="1px solid #c1c1c1">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="28" top="26" width="461" height="364" binddataset="pst" autofittype="col">
+              <Grid id="Grid00" taborder="0" left="28" top="26" width="461" height="364" binddataset="pst" autofittype="col" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -32,8 +32,8 @@
                     <Band id="body">
                       <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
                       <Cell col="1" text="bind:confirm" textAlign="center"/>
-                      <Cell col="2" text="bind:sender" edittype="mask" maskedittype="number" maskeditformat="#########" textAlign="center"/>
-                      <Cell col="3" text="bind:receiver" maskedittype="number" edittype="mask" maskeditformat="#########" textAlign="center"/>
+                      <Cell col="2" text="bind:sender" maskedittype="number" maskeditformat="#########" textAlign="center" displaytype="text"/>
+                      <Cell col="3" text="bind:receiver" maskedittype="number" maskeditformat="#########" textAlign="center" displaytype="text"/>
                     </Band>
                   </Format>
                 </Formats>

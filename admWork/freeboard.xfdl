@@ -33,7 +33,7 @@
                     </Band>
                     <Band id="body">
                       <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
-                      <Cell col="1" text="bind:writer" edittype="mask" maskeditformat="#########"/>
+                      <Cell col="1" text="bind:writer" maskeditformat="#########" displaytype="text"/>
                       <Cell col="2" text="bind:title"/>
                       <Cell col="3" text="bind:write_date"/>
                       <Cell col="4" text="bind:view_count"/>

@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="600" mobileorientation="landscape" width="800">
         <Static id="Static00" taborder="0" text="Post Message" left="26" top="18" width="218" height="46" font="18pt &quot;Arial&quot;"/>
-        <Grid id="Grid00" taborder="1" left="10" top="80" width="230" height="450" binddataset="admin_alarm" autofittype="col" oncellclick="Grid00_oncellclick">
+        <Grid id="Grid00" taborder="1" left="10" top="80" width="230" height="450" binddataset="admin_alarm" autofittype="col" oncellclick="Grid00_oncellclick" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>
@@ -26,8 +26,8 @@
               <Band id="body">
                 <Cell displaytype="checkboxcontrol" edittype="checkbox" text="bind:chk"/>
                 <Cell col="1" text="bind:confirm"/>
-                <Cell col="2" text="bind:sender"/>
-                <Cell col="3" text="bind:receiver"/>
+                <Cell col="2" text="bind:sender" displaytype="text"/>
+                <Cell col="3" text="bind:receiver" displaytype="text"/>
               </Band>
             </Format>
           </Formats>

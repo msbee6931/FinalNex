@@ -10,7 +10,7 @@
         <Div id="Div00" taborder="4" text="Div00" left="30" top="39" width="1021" height="451" cssclass="div_line">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="24" top="45" width="376" height="359" binddataset="reply" autofittype="col" oncellposchanged="Div00_Grid00_oncellposchanged">
+              <Grid id="Grid00" taborder="0" left="24" top="45" width="376" height="359" binddataset="reply" autofittype="col" oncellposchanged="Div00_Grid00_oncellposchanged" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -33,7 +33,7 @@
                     </Band>
                     <Band id="body">
                       <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
-                      <Cell col="1" text="bind:writer" textAlign="center" edittype="mask" maskeditformat="#########"/>
+                      <Cell col="1" text="bind:writer" textAlign="center" maskeditformat="#########" displaytype="text"/>
                       <Cell col="2" text="bind:title" textAlign="center"/>
                       <Cell col="3" text="bind:write_date" textAlign="center"/>
                       <Cell col="4" text="bind:view_count" textAlign="center"/>

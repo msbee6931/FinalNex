@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="600" mobileorientation="landscape" width="800">
         <Static id="Static00" taborder="0" text="Post Message" left="26" top="18" width="218" height="46" cssclass="sta_title"/>
-        <Grid id="Grid00" taborder="1" left="10" top="80" width="230" height="450" binddataset="admin_alarm" autofittype="col">
+        <Grid id="Grid00" taborder="1" left="10" top="80" width="230" height="450" binddataset="admin_alarm" autofittype="col" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>
@@ -23,8 +23,8 @@
               </Band>
               <Band id="body">
                 <Cell displaytype="checkboxcontrol" edittype="checkbox" text="bind:chk"/>
-                <Cell col="1" text="bind:sender" edittype="mask" maskeditformat="#########" textAlign="center"/>
-                <Cell col="2" text="bind:receiver" edittype="mask" maskeditformat="#########" textAlign="center"/>
+                <Cell col="1" text="bind:sender" maskeditformat="#########" textAlign="center" displaytype="text"/>
+                <Cell col="2" text="bind:receiver" maskeditformat="#########" textAlign="center" displaytype="text"/>
               </Band>
             </Format>
           </Formats>

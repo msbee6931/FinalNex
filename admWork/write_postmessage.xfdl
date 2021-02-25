@@ -26,7 +26,7 @@
                 </Layouts>
               </Div>
               <Button id="Button00" taborder="2" text="전송" left="925" top="410" width="92" height="31" onclick="Div00_Button00_onclick" cssclass="btn_default"/>
-              <Grid id="Grid00" taborder="3" left="9" top="22" width="500" height="379" binddataset="professor" autofittype="col">
+              <Grid id="Grid00" taborder="3" left="9" top="22" width="500" height="379" binddataset="professor" autofittype="col" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -40,13 +40,13 @@
                       <Row size="24"/>
                     </Rows>
                     <Band id="head">
-                      <Cell text="p_seq"/>
+                      <Cell text="id"/>
                       <Cell col="1" text="name"/>
                       <Cell col="2" text="email"/>
                       <Cell col="3" text="contact"/>
                     </Band>
                     <Band id="body">
-                      <Cell text="bind:p_seq" textAlign="center"/>
+                      <Cell text="bind:p_seq" textAlign="center" displaytype="text"/>
                       <Cell col="1" text="bind:name" textAlign="center"/>
                       <Cell col="2" text="bind:email" textAlign="center"/>
                       <Cell col="3" text="bind:contact" textAlign="center"/>
