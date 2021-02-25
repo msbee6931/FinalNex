@@ -381,15 +381,7 @@ this.insertStudent_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	
 	this.gfnInitMultiCombo(arrComboList);
 	
-	this.transaction(
-
-				"selects_seq" //1. strSvcID
-				,"/selectS_seq.nex" //2. strURL
-				,"" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
-				,"ds_students_copy=out_ds" //4.strOutDatasets -select Fds=Sds
-				,"" //5.strArgument text값
-				,"fn_s_seqcallback" //6.strCallbackFunc
-			);
+	
 };
 
 this.gfnInitMultiCombo = function(arrComboList)

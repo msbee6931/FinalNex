@@ -162,15 +162,7 @@ this.insertProfessor_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	var arrComboList = [this.com_colCode, this.com_deptCode];
 	
 	this.gfnInitMultiCombo(arrComboList);
-	this.transaction(
-
-				"selectp_seq" //1. strSvcID
-				,"/selectP_seq.nex" //2. strURL
-				,"" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
-				,"ds_professor_copy=out_ds" //4.strOutDatasets -select Fds=Sds
-				,"" //5.strArgument text값
-				,"fn_p_seqcallback" //6.strCallbackFunc
-			);
+	
 };
 this.gfnInitMultiCombo = function(arrComboList)
 {
