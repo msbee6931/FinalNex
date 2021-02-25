@@ -3,27 +3,27 @@
   <Form id="stdRest_pop" width="900" height="600" titletext="New Form" onload="stdRest_pop_onload">
     <Layouts>
       <Layout height="600" width="900">
-        <Div id="Div00" taborder="0" text="Div00" left="30" top="20" width="842" height="560" border="1px solid #c1c1c1">
+        <Div id="Div00" taborder="0" text="Div00" left="30" top="20" width="842" height="560" cssclass="div_line">
           <Layouts>
             <Layout>
-              <Edit id="edt_title00" taborder="2" left="358" top="110" width="191" height="30"/>
-              <Edit id="edt_title00_00" taborder="4" left="619" top="110" width="191" height="30"/>
-              <Edit id="edt_title01" taborder="6" left="98" top="140" width="191" height="30"/>
-              <Edit id="edt_title00_01" taborder="8" left="358" top="140" width="191" height="30"/>
-              <Edit id="edt_title00_00_00" taborder="10" left="619" top="140" width="191" height="30"/>
-              <Edit id="edt_title01_00" taborder="12" left="98" top="170" width="712" height="30"/>
-              <Button id="btn_can" taborder="13" text="닫기" left="710" top="379" width="100" height="30" onclick="Div00_btn_can_onclick"/>
-              <Static id="Static02" taborder="14" text="&#13;&#10;&#13;&#10; 본인은 본교에 복학하고자 하오니 허가하여 주시기 바랍니다." left="28" top="200" width="782" height="122" border="1px solid #c1c1c1"/>
-              <Static id="Static03" taborder="15" text="복학신청서" left="32" top="20" width="172" height="30"/>
-              <Static id="Static00" taborder="0" text="학 과" left="29" top="110" width="70" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_00" taborder="1" text="학 번" left="289" top="110" width="70" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_00_00" taborder="3" text="생년월일" left="550" top="110" width="70" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_01" taborder="5" text="학 년" left="29" top="140" width="70" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_00_01" taborder="7" text="연락처" left="289" top="140" width="70" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_01_00" taborder="11" text="주 소" left="29" top="170" width="70" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_00_00_00" taborder="9" text="성 명" left="550" top="140" width="70" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Combo id="Combo00" taborder="16" text="Combo00" left="102" top="111" width="184" height="31" readonly="true" innerdataset="deptCode" codecolumn="code" datacolumn="name"/>
-              <Button id="btn_ok" taborder="17" text="확인" left="600" top="379" width="100" height="30" onclick="Div00_btn_ok_onclick"/>
+              <Button id="btn_can" taborder="0" text="닫기" left="710" top="499" width="100" height="30" onclick="Div00_btn_can_onclick" cssclass="btn_can"/>
+              <Static id="Static02" taborder="1" text="&#13;&#10;&#13;&#10; 본인은 본교에 복학하고자 하오니 허가하여 주시기 바랍니다." left="28" top="150" width="782" height="329" cssclass="sta_line" textAlign="center"/>
+              <Static id="Static03" taborder="2" text="복학신청서" left="32" top="20" width="172" height="30" cssclass="sta_title"/>
+              <Button id="btn_ok" taborder="3" text="확인" left="600" top="499" width="100" height="30" onclick="Div00_btn_ok_onclick" cssclass="btn_default"/>
+              <Static id="Static00" taborder="4" text="학 과" left="31" top="60" width="70" height="30" cssclass="sta_default"/>
+              <Edit id="edt_dept" taborder="5" left="101" top="60" width="191" height="30" cssclass="edt_default" readonly="true"/>
+              <Static id="Static00_00" taborder="6" text="학 번" left="291" top="60" width="70" height="30" cssclass="sta_default"/>
+              <Edit id="edt_seq" taborder="7" left="360" top="60" width="191" height="30" cssclass="edt_default" readonly="true"/>
+              <Static id="Static00_00_00" taborder="8" text="생년월일" left="552" top="60" width="70" height="30" cssclass="sta_default"/>
+              <Edit id="edt_birth" taborder="9" left="621" top="60" width="191" height="30" cssclass="edt_default" readonly="true"/>
+              <Static id="Static00_01" taborder="10" text="학 년" left="31" top="90" width="70" height="30" cssclass="sta_default"/>
+              <Edit id="edt_grade" taborder="11" left="100" top="90" width="191" height="30" cssclass="edt_default" readonly="true"/>
+              <Static id="Static00_00_01" taborder="12" text="연락처" left="291" top="90" width="70" height="30" cssclass="sta_default"/>
+              <Edit id="edt_contact" taborder="13" left="360" top="90" width="191" height="30" cssclass="edt_default" readonly="true"/>
+              <Static id="Static00_00_00_00" taborder="14" text="성 명" left="552" top="90" width="70" height="30" cssclass="sta_default"/>
+              <Edit id="edt_name" taborder="15" left="621" top="90" width="191" height="30" cssclass="edt_default" readonly="true"/>
+              <Static id="Static00_01_00" taborder="16" text="주 소" left="31" top="120" width="70" height="30" cssclass="sta_default"/>
+              <Edit id="edt_adress" taborder="17" left="100" top="120" width="712" height="30" cssclass="edt_default" readonly="true"/>
             </Layout>
           </Layouts>
         </Div>
@@ -42,36 +42,30 @@
           <Column id="writeDate" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="students_ds">
-        <ColumnInfo>
-          <Column id="s_seq" type="STRING" size="256"/>
-          <Column id="name" type="STRING" size="256"/>
-          <Column id="age" type="STRING" size="256"/>
-          <Column id="email" type="STRING" size="256"/>
-          <Column id="contact" type="STRING" size="256"/>
-          <Column id="adress" type="STRING" size="256"/>
-          <Column id="scholarship" type="STRING" size="256"/>
-          <Column id="rest" type="STRING" size="256"/>
-          <Column id="grade" type="STRING" size="256"/>
-          <Column id="birth" type="STRING" size="256"/>
-          <Column id="pw" type="STRING" size="256"/>
-          <Column id="gender" type="STRING" size="256"/>
-          <Column id="deptCode" type="STRING" size="256"/>
-          <Column id="colCode" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.std_code=this.parent.std_code;
+    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
+this.std_code=this.parent.std_code;
 this.stdRest_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	this.transaction(
-		"selectOneStd.students",//id
-		"/students/selectOneStd.students",//url (절대경로)
-		"",//in_ds:U
-		"students_ds=out_ds",//()_out_ds
-		"sCode="+this.std_code,//argument
-		"fn_callback"
-		)
+	this.std_code=this.objApp.gds_students.getColumn(0,'s_seq');
+	var deptCode = this.objApp.gds_students.getColumn(0,'deptCode');
+	var fRow = this.objApp.deptCode.findRow("code",deptCode);
+	var deptName = this.objApp.deptCode.getColumn(fRow,"name");
+	var birthFull = this.objApp.gds_students.getColumn(0,'secNumber');
+	var birth = birthFull.substr(0,2)+"년"+birthFull.substr(2,2)+"월"+birthFull.substr(4,2)+"일";
+	var grade = this.objApp.gds_students.getColumn(0,'colGrade');
+	var contact = this.objApp.gds_students.getColumn(0,'contact');
+	var name = this.objApp.gds_students.getColumn(0,'name');
+	var address = this.objApp.gds_students.getColumn(0,'address');
+
+
+	this.Div00.form.edt_dept.set_value(deptName);
+	this.Div00.form.edt_seq.set_value(this.std_code);
+	this.Div00.form.edt_birth.set_value(birth);
+	this.Div00.form.edt_grade.set_value(grade);
+	this.Div00.form.edt_contact.set_value(contact);
+	this.Div00.form.edt_name.set_value(name);
+	this.Div00.form.edt_adress.set_value(address);
 };
 
 
@@ -81,7 +75,7 @@ this.Div00_btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo
 	var nRow = this.rlist_ds.addRow();
 	this.rlist_ds.setColumn(nRow,"std_code",this.std_code);
 	this.rlist_ds.setColumn(nRow,"title","복학신청서");
-	
+	alert("셋컬럼")
 	this.transaction(
 		"insertRest.absence",//id
 		"/absence/insertRest.absence",//url (절대경로)
@@ -90,15 +84,21 @@ this.Div00_btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo
 		"",//argument
 		"fn_callback_insert"
 		)
-	
+
 };
 
-this.fn_callback_insert = function()
+this.fn_callback_insert = function(eId,eCode,eMsg)
 {
-	this.close;
+	trace(eId,eCode,eMsg)
+	var check = this.confirm("복학신청 철회 시 행정팀에 문의 주시기 바랍니다. 정말로 신청하시겠습니까?")
+	if(check)
+	{
+		this.close();
+	} else
+	{
+		return;
+	}
 }
-
-
 
 
 
@@ -110,13 +110,13 @@ this.Div00_btn_can_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
 
 ]]></Script>
     <Bind>
-      <BindItem id="item0" compid="Div00.form.Combo00" propid="value" datasetid="students_ds" columnid="deptCode"/>
-      <BindItem id="item1" compid="Div00.form.edt_title00" propid="value" datasetid="students_ds" columnid="s_seq"/>
-      <BindItem id="item2" compid="Div00.form.edt_title00_00" propid="value" datasetid="students_ds" columnid="birth"/>
-      <BindItem id="item3" compid="Div00.form.edt_title01" propid="value" datasetid="students_ds" columnid="grade"/>
-      <BindItem id="item4" compid="Div00.form.edt_title00_01" propid="value" datasetid="students_ds" columnid="contact"/>
-      <BindItem id="item5" compid="Div00.form.edt_title00_00_00" propid="value" datasetid="students_ds" columnid="name"/>
-      <BindItem id="item6" compid="Div00.form.edt_title01_00" propid="value" datasetid="students_ds" columnid="adress"/>
+      <BindItem id="item0" compid="Div00.form.edt_dept" propid="value" datasetid="students_ds" columnid="s_seq"/>
+      <BindItem id="item1" compid="Div00.form.edt_seq" propid="value" datasetid="students_ds" columnid="s_seq"/>
+      <BindItem id="item2" compid="Div00.form.edt_birth" propid="value" datasetid="students_ds" columnid="birth"/>
+      <BindItem id="item3" compid="Div00.form.edt_grade" propid="value" datasetid="students_ds" columnid="grade"/>
+      <BindItem id="item4" compid="Div00.form.edt_contact" propid="value" datasetid="students_ds" columnid="contact"/>
+      <BindItem id="item5" compid="Div00.form.edt_name" propid="value" datasetid="students_ds" columnid="name"/>
+      <BindItem id="item6" compid="Div00.form.edt_adress" propid="value" datasetid="students_ds" columnid="adress"/>
     </Bind>
   </Form>
 </FDL>

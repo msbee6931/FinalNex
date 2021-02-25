@@ -10,16 +10,16 @@
         <Div id="Div00" taborder="4" text="Div00" left="30" top="20" width="842" height="560" border="1px solid #c1c1c1">
           <Layouts>
             <Layout>
-              <Edit id="edt_title00" taborder="2" left="358" top="60" width="191" height="30"/>
-              <Edit id="edt_title00_00" taborder="4" left="619" top="60" width="191" height="30"/>
-              <Edit id="edt_title01" taborder="6" left="98" top="90" width="191" height="30"/>
-              <Edit id="edt_title00_01" taborder="8" left="358" top="90" width="191" height="30"/>
-              <Edit id="edt_title00_00_00" taborder="10" left="619" top="90" width="191" height="30"/>
-              <Edit id="edt_title01_00" taborder="12" left="98" top="120" width="712" height="30"/>
-              <Button id="btn_fine" taborder="16" text="파일찾기" left="709" top="209" width="100" height="39" onclick="Div00_btn_fine_onclick"/>
-              <Button id="btn_del" taborder="17" text="파일 삭제" left="709" top="248" width="100" height="30" onclick="Div00_btn_del_onclick"/>
+              <Edit id="edt_seq" taborder="2" left="358" top="60" width="191" height="30" cssclass="edt_default" readonly="true"/>
+              <Edit id="edt_birth" taborder="4" left="619" top="60" width="191" height="30" cssclass="edt_default" readonly="true"/>
+              <Edit id="edt_grade" taborder="6" left="98" top="90" width="191" height="30" cssclass="edt_default" readonly="true"/>
+              <Edit id="edt_contact" taborder="8" left="358" top="90" width="191" height="30" cssclass="edt_default" readonly="true"/>
+              <Edit id="edt_name" taborder="10" left="619" top="90" width="191" height="30" cssclass="edt_default" readonly="true"/>
+              <Edit id="edt_adress" taborder="12" left="98" top="120" width="712" height="30" cssclass="edt_default" readonly="true"/>
+              <Button id="btn_fine" taborder="16" text="파일찾기" left="709" top="209" width="100" height="39" onclick="Div00_btn_fine_onclick" cssclass="btn_default"/>
+              <Button id="btn_del" taborder="17" text="파일 삭제" left="709" top="248" width="100" height="30" onclick="Div00_btn_del_onclick" cssclass="btn_can"/>
               <Static id="Static01" taborder="18" text="※유의사항&#13;&#10;1. 입대휴학 신청자는 입대 사실을 확인할 수 있는 증명서 1통을 첨부해야 함.&#13;&#10;2. 군입대 후 귀향조취 된 경우에는 즉시 행정팀으로 통보해야함.&#13;&#10;3. 일반휴학기간 중 입대할 경우에는 입대 전에 입영통지서 사본 1통을 첨부하여 휴학연기 신청서를 제출해야 함.&#13;&#10;4. 질병으로 휴학하는 경우에는 종합병원장이 발행하는 4주 이상의 진단서를 첨부해야함.&#13;&#10;5. 휴학기간 만료 후 해당 학기 등록기간 내에 복학하지 않을 경우에는  퇴학처리 됨." left="29" top="410" width="780" height="100"/>
-              <Grid id="Grid00" taborder="19" left="129" top="210" width="575" height="70" binddataset="absFileList_ds" autofittype="col" onheadclick="Div00_Grid00_onheadclick">
+              <Grid id="Grid00" taborder="19" left="129" top="210" width="575" height="70" binddataset="absFileList_ds" autofittype="col" onheadclick="Div00_Grid00_onheadclick" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -44,26 +44,26 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Radio id="Radio00" taborder="20" left="112" top="185" width="707" height="23" innerdataset="absenceCode_ds" codecolumn="code" datacolumn="name" rowcount="1"/>
-              <Button id="btn_ok" taborder="21" text="확인" left="592" top="515" width="100" height="30" onclick="Div00_btn_ok_onclick"/>
-              <Button id="btn_can" taborder="22" text="취소" left="714" top="515" width="100" height="30"/>
-              <Static id="Static02" taborder="23" text="&#13;&#10;&#13;&#10;본인은 보호자의 동의하에 위와 같이 휴학하고자 하오니 허가하여 주시기 바랍니다." left="28" top="280" width="782" height="122" border="1px solid #c1c1c1"/>
-              <Static id="Static03" taborder="24" text="휴학신청서" left="32" top="20" width="172" height="30"/>
-              <Static id="Static00" taborder="0" text="학 과" left="29" top="60" width="70" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_00" taborder="1" text="학 번" left="289" top="60" width="70" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_00_00" taborder="3" text="생년월일" left="550" top="60" width="70" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_01" taborder="5" text="학 년" left="29" top="90" width="70" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_00_01" taborder="7" text="연락처" left="289" top="90" width="70" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_01_00_00_00" taborder="14" text="사 유" left="29" top="180" width="70" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_01_00_00" taborder="13" text="기 간" left="29" top="150" width="70" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_01_00" taborder="11" text="주 소" left="29" top="120" width="70" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_00_00_00" taborder="9" text="성 명" left="550" top="90" width="70" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_00_02" taborder="15" text="첨부파일" left="28" top="209" width="100" height="70" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Radio id="rdo_type" taborder="20" left="112" top="185" width="707" height="23" innerdataset="absenceCode_ds" codecolumn="code" datacolumn="name" rowcount="1"/>
+              <Button id="btn_ok" taborder="21" text="확인" left="592" top="515" width="100" height="25" onclick="Div00_btn_ok_onclick" cssclass="btn_default"/>
+              <Button id="btn_can" taborder="22" text="취소" left="714" top="515" width="100" height="25" cssclass="btn_can" onclick="Div00_btn_can_onclick"/>
+              <Static id="Static02" taborder="23" text="&#13;&#10;&#13;&#10;본인은 보호자의 동의하에 위와 같이 휴학하고자 하오니 허가하여 주시기 바랍니다." left="28" top="280" width="782" height="122" cssclass="sta_line" textAlign="center"/>
+              <Static id="Static03" taborder="24" text="휴학신청서" left="32" top="20" width="172" height="30" cssclass="sta_title"/>
+              <Static id="Static00" taborder="0" text="학 과" left="29" top="60" width="70" height="30" cssclass="sta_default"/>
+              <Static id="Static00_00" taborder="1" text="학 번" left="289" top="60" width="70" height="30" cssclass="sta_default"/>
+              <Static id="Static00_00_00" taborder="3" text="생년월일" left="550" top="60" width="70" height="30" cssclass="sta_default"/>
+              <Static id="Static00_01" taborder="5" text="학 년" left="29" top="90" width="70" height="30" cssclass="sta_default"/>
+              <Static id="Static00_00_01" taborder="7" text="연락처" left="289" top="90" width="70" height="30" cssclass="sta_default"/>
+              <Static id="Static00_01_00_00_00" taborder="14" text="사 유" left="29" top="180" width="70" height="30" cssclass="sta_default"/>
+              <Static id="Static00_01_00_00" taborder="13" text="기 간" left="29" top="150" width="70" height="30" cssclass="sta_default"/>
+              <Static id="Static00_01_00" taborder="11" text="주 소" left="29" top="120" width="70" height="30" cssclass="sta_default"/>
+              <Static id="Static00_00_00_00" taborder="9" text="성 명" left="550" top="90" width="70" height="30" cssclass="sta_default"/>
+              <Static id="Static00_00_02" taborder="15" text="첨부파일" left="28" top="209" width="100" height="70" cssclass="sta_default"/>
               <Static id="Static04" taborder="25" text="" left="98" top="149" width="710" height="30" border="1px solid #c1c1c1"/>
-              <Calendar id="cal_sDate" taborder="26" left="107" top="153" width="150" height="20" onchanged="Div00_Calendar00_onchanged"/>
-              <Calendar id="cal_eDate" taborder="27" left="299" top="153" width="150" height="20" onchanged="Div00_Calendar00_onchanged"/>
+              <Calendar id="cal_sDate" taborder="26" left="107" top="153" width="150" height="20" onchanged="Div00_Calendar00_onchanged" cssclass="cal_default"/>
+              <Calendar id="cal_eDate" taborder="27" left="299" top="153" width="150" height="20" onchanged="Div00_Calendar00_onchanged" cssclass="cal_default"/>
               <Static id="Static05" taborder="28" text="~" left="277" top="154" width="19" height="19"/>
-              <Combo id="Combo00" taborder="29" text="Combo00" left="98" top="60" width="190" height="30" readonly="true" innerdataset="deptCode" codecolumn="code" datacolumn="name"/>
+              <Edit id="edt_dept" taborder="29" left="99" top="60" width="191" height="30" cssclass="edt_default" readonly="true"/>
             </Layout>
           </Layouts>
         </Div>
@@ -121,26 +121,10 @@
         </ColumnInfo>
       </Dataset>
       <FileDialog id="FileDialog00" onclose="FileDialog00_onclose"/>
-      <Dataset id="students_ds">
-        <ColumnInfo>
-          <Column id="s_seq" type="INT" size="256"/>
-          <Column id="name" type="STRING" size="256"/>
-          <Column id="age" type="STRING" size="256"/>
-          <Column id="email" type="STRING" size="256"/>
-          <Column id="contact" type="STRING" size="256"/>
-          <Column id="adress" type="STRING" size="256"/>
-          <Column id="scholarship" type="STRING" size="256"/>
-          <Column id="rest" type="STRING" size="256"/>
-          <Column id="grade" type="STRING" size="256"/>
-          <Column id="birth" type="STRING" size="256"/>
-          <Column id="pw" type="STRING" size="256"/>
-          <Column id="gender" type="STRING" size="256"/>
-          <Column id="deptCode" type="STRING" size="256"/>
-          <Column id="colCode" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[//1.Environment filesecurelevel property all로 변경하기
+    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
+
+//1.Environment filesecurelevel property all로 변경하기
 this.parentSeq="";
 this.std_code=this.parent.std_code; // 로그인 정보
 this.nMaxFileSize = 2000000;  //각 파일 최대사이즈 (2 Mbyte)
@@ -151,14 +135,27 @@ this.fileSize = "";
 //온로드시 학생 정보 받아오기
 this.absence_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	this.transaction(
-		"selectOneStd.students",//id
-		"/students/selectOneStd.students",//url (절대경로)
-		"",//in_ds:U
-		"students_ds=out_ds",//()_out_ds
-		"sCode="+this.std_code,//argument
-		"fn_callback"
-		)
+
+	this.std_code=this.objApp.gds_students.getColumn(0,'s_seq');
+	var deptCode = this.objApp.gds_students.getColumn(0,'deptCode');
+	var fRow = this.objApp.deptCode.findRow("code",deptCode);
+	var deptName = this.objApp.deptCode.getColumn(fRow,"name");
+	var birthFull = this.objApp.gds_students.getColumn(0,'secNumber');
+	var birth = birthFull.substr(0,2)+"년"+birthFull.substr(2,2)+"월"+birthFull.substr(4,2)+"일";
+	var grade = this.objApp.gds_students.getColumn(0,'colGrade');
+	var contact = this.objApp.gds_students.getColumn(0,'contact');
+	var name = this.objApp.gds_students.getColumn(0,'name');
+	var address = this.objApp.gds_students.getColumn(0,'address');
+
+
+	this.Div00.form.edt_dept.set_value(deptName);
+	this.Div00.form.edt_seq.set_value(this.std_code);
+	this.Div00.form.edt_birth.set_value(birth);
+	this.Div00.form.edt_grade.set_value(grade);
+	this.Div00.form.edt_contact.set_value(contact);
+	this.Div00.form.edt_name.set_value(name);
+	this.Div00.form.edt_adress.set_value(address);
+	
 };
 
 
@@ -305,6 +302,21 @@ this.Div00_btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo
 		return;
 	}
 	
+	var type = this.Div00.form.rdo_type.value;
+	var sDate = this.Div00.form.edt_adress.value;
+	var eDate = this.Div00.form.cal_eDate.value;
+	
+	if(type == null || type == "")
+	{alert("휴학 사유를 체크해주세요")
+	return;}
+	else if (sDate == null || sDate ==  "")
+	{alert("날짜를 입력해주세요")
+	return;}
+	else if (eDate == null || eDate == "")
+	{alert("날짜를 입력해주세요")
+	return;}
+	
+	
 	var conValue = this.confirm("확인 버튼 시 내용을 수정할 수 없습니다. 제출하시겠습니까?");
 	
 	if(conValue)
@@ -313,9 +325,8 @@ this.Div00_btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo
  		var nRow = this.absence_ds.addRow();
 		var sDate = this.Div00.form.cal_sDate.value;
 		var eDate = this.Div00.form.cal_eDate.value;
-		var code = this.Div00.form.Radio00.value;
+		var code = this.Div00.form.rdo_type.value;
 
-		alert(this.std_code)
 		this.absence_ds.setColumn(nRow,"std_code",this.std_code);
 		this.absence_ds.setColumn(nRow,"sDate",sDate);
 		this.absence_ds.setColumn(nRow,"eDate",eDate);
@@ -413,13 +424,13 @@ this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
 
 ]]></Script>
     <Bind>
-      <BindItem id="item0" compid="Div00.form.Combo00" propid="value" datasetid="students_ds" columnid="deptCode"/>
-      <BindItem id="item1" compid="Div00.form.edt_title00" propid="value" datasetid="students_ds" columnid="s_seq"/>
-      <BindItem id="item2" compid="Div00.form.edt_title00_00" propid="value" datasetid="students_ds" columnid="birth"/>
-      <BindItem id="item3" compid="Div00.form.edt_title01" propid="value" datasetid="students_ds" columnid="grade"/>
-      <BindItem id="item4" compid="Div00.form.edt_title00_01" propid="value" datasetid="students_ds" columnid="contact"/>
-      <BindItem id="item5" compid="Div00.form.edt_title00_00_00" propid="value" datasetid="students_ds" columnid="name"/>
-      <BindItem id="item6" compid="Div00.form.edt_title01_00" propid="value" datasetid="students_ds" columnid="adress"/>
+      <BindItem id="item1" compid="Div00.form.edt_seq" propid="value" datasetid="students_ds" columnid="s_seq"/>
+      <BindItem id="item2" compid="Div00.form.edt_birth" propid="value" datasetid="students_ds" columnid="birth"/>
+      <BindItem id="item3" compid="Div00.form.edt_grade" propid="value" datasetid="students_ds" columnid="grade"/>
+      <BindItem id="item4" compid="Div00.form.edt_contact" propid="value" datasetid="students_ds" columnid="contact"/>
+      <BindItem id="item5" compid="Div00.form.edt_name" propid="value" datasetid="students_ds" columnid="name"/>
+      <BindItem id="item6" compid="Div00.form.edt_adress" propid="value" datasetid="students_ds" columnid="adress"/>
+      <BindItem id="item0" compid="Div00.form.edt_dept" propid="value" datasetid="students_ds" columnid="s_seq"/>
     </Bind>
   </Form>
 </FDL>

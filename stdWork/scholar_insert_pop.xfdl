@@ -7,14 +7,13 @@
         <Static id="Static00_00" taborder="1" left="0" top="40" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00_00_00" taborder="2" left="160" top="580" width="600" height="20" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00_00_00_00" taborder="3" left="150" top="0" width="600" height="20" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Div id="Div00" taborder="4" text="Div00" left="30" top="20" width="840" height="560" border="1px solid #c1c1c1">
+        <Div id="Div00" taborder="4" text="Div00" left="30" top="20" width="840" height="560" cssclass="div_line">
           <Layouts>
             <Layout>
-              <Edit id="edt_title" taborder="1" left="168" top="83" width="600" height="30"/>
-              <Static id="Static00" taborder="0" text="제목" left="70" top="83" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Edit id="edt_contents" taborder="4" left="170" top="181" width="600" height="138"/>
-              <Button id="btn_add" taborder="3" text="파일찾기" left="668" top="112" width="100" height="39" onclick="Div00_btn_add_onclick"/>
-              <Grid id="Grid00" taborder="5" left="168" top="112" width="501" height="71" binddataset="schFileList_ds" autofittype="col" onheadclick="Div00_Grid00_onheadclick">
+              <Edit id="edt_title" taborder="1" left="168" top="83" width="600" height="30" cssclass="edt_default"/>
+              <Static id="Static00" taborder="0" text="제목" left="70" top="83" width="100" height="30" cssclass="sta_default"/>
+              <Button id="btn_add" taborder="3" text="파일찾기" left="668" top="112" width="100" height="39" onclick="Div00_btn_add_onclick" cssclass="btn_default"/>
+              <Grid id="Grid00" taborder="4" left="168" top="112" width="501" height="71" binddataset="schFileList_ds" autofittype="col" onheadclick="Div00_Grid00_onheadclick" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -39,22 +38,24 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="btn_del" taborder="6" text="파일 삭제" left="668" top="150" width="100" height="30" onclick="Div00_btn_del_onclick"/>
-              <Button id="btn_save" taborder="7" text="저장" left="549" top="484" width="100" height="30" onclick="Div00_btn_save_onclick"/>
-              <Static id="Static00_00" taborder="2" text="첨부파일" left="70" top="112" width="100" height="70" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Button id="btn_can" taborder="8" text="취소" left="668" top="484" width="100" height="30" onclick="Div00_btn_can_onclick"/>
-              <Static id="Static01" taborder="9" text="1. 선행작학금 신청의 경우, 증명할 수 있는 서류를 첨부 부탁드립니다. (ex: 표창장, 선행상 등)&#13;&#10;2. 추천장학금 신청의 경우, 증명할 수 있는 추천서를 첨부 부탁드립니다.&#13;&#10;3. 성적우수장학금 신청의 경우, 성적증명서 첨부 부탁드립니다.&#13;&#10;4. 생활지원 장학금 신청의 경우, 사실을 증명할  수 있는 서류를 첨부 부탁드립니다." left="70" top="319" width="700" height="80" onclick="Div00_Static01_onclick"/>
-              <Static id="Static02" taborder="11" text="" left="169" top="54" width="600" height="30" border="1px  solid #c1c1c1"/>
-              <Radio id="Radio00" taborder="12" left="187" top="60" width="422" height="18" innerdataset="schCode_ds" codecolumn="code" datacolumn="name" rowcount="1" onitemchanged="Div00_Radio00_onitemchanged"/>
-              <Static id="Static00_01" taborder="10" text="분류" left="70" top="54" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_00_00" taborder="13" text="신청사유" left="70" top="181" width="100" height="138" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static03" taborder="14" text="※ 작성 후, 수정·삭제는 관리자로 문의 부탁드립니다." left="502" top="434" width="268" height="35"/>
+              <Button id="btn_del" taborder="5" text="파일 삭제" left="668" top="150" width="100" height="30" onclick="Div00_btn_del_onclick" cssclass="btn_can"/>
+              <Button id="btn_save" taborder="6" text="저장" left="559" top="484" width="100" height="25" onclick="Div00_btn_save_onclick" cssclass="btn_default"/>
+              <Static id="Static00_00" taborder="2" text="첨부파일" left="70" top="112" width="100" height="70" cssclass="sta_default"/>
+              <Button id="btn_can" taborder="7" text="취소" left="668" top="484" width="100" height="25" onclick="Div00_btn_can_onclick" cssclass="btn_can"/>
+              <Static id="Static01" taborder="8" text="1. 선행작학금 신청의 경우, 증명할 수 있는 서류를 첨부 부탁드립니다. (ex: 표창장, 선행상 등)&#13;&#10;2. 추천장학금 신청의 경우, 증명할 수 있는 추천서를 첨부 부탁드립니다.&#13;&#10;3. 성적우수장학금 신청의 경우, 성적증명서 첨부 부탁드립니다.&#13;&#10;4. 생활지원 장학금 신청의 경우, 사실을 증명할  수 있는 서류를 첨부 부탁드립니다." left="70" top="319" width="700" height="80" onclick="Div00_Static01_onclick"/>
+              <Static id="Static02" taborder="10" text="" left="169" top="54" width="600" height="30" cssclass="sta_line"/>
+              <Radio id="Radio00" taborder="11" left="187" top="60" width="422" height="18" innerdataset="schCode_ds" codecolumn="code" datacolumn="name" rowcount="1" onitemchanged="Div00_Radio00_onitemchanged"/>
+              <Static id="Static00_01" taborder="9" text="분류" left="70" top="54" width="100" height="30" cssclass="sta_default"/>
+              <Static id="Static00_00_00" taborder="12" text="신청사유" left="70" top="181" width="100" height="138" cssclass="sta_default"/>
+              <Static id="Static03" taborder="13" text="※ 작성 후, 수정·삭제는 관리자로 문의 부탁드립니다." left="468" top="434" width="302" height="35"/>
+              <TextArea id="TextArea00" taborder="14" left="171" top="181" width="600" height="138" cssclass="txt_default"/>
             </Layout>
           </Layouts>
         </Div>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[//1.Environment filesecurelevel property all로 변경하기
+    <Script type="xscript5.1"><![CDATA[this.std_code=this.parent.code;
+//1.Environment filesecurelevel property all로 변경하기
 this.reqSchSeq="";
 this.parentSeq="";
 
@@ -218,15 +219,13 @@ this.Div00_btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 	if(conValue)
 	{
 		
-		
-		var std_code="201102159" //------------------------------------>> 로그인 학번 입력
 		var nRow = this.reqScholar_ds.addRow();
 		var title = this.Div00.form.edt_title.value;
 		var contents = this.Div00.form.edt_contents.value;
 		
 		this.reqScholar_ds.setColumn(nRow,"title",title);
 		this.reqScholar_ds.setColumn(nRow,"contents",contents);
-		this.reqScholar_ds.setColumn(nRow,"std_code",std_code);
+		this.reqScholar_ds.setColumn(nRow,"std_code",this.std_code);
 		
 		
 		
