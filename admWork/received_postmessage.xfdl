@@ -10,14 +10,13 @@
         <Div id="Div00" taborder="4" text="" left="30" top="39" width="1021" height="451" cssclass="div_line">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="1" left="0" top="25" width="296" height="391" binddataset="pst" autofittype="col">
+              <Grid id="Grid00" taborder="1" left="0" top="25" width="319" height="391" binddataset="pst" autofittype="col" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
                       <Column size="49"/>
-                      <Column size="56"/>
-                      <Column size="90"/>
-                      <Column size="97"/>
+                      <Column size="121"/>
+                      <Column size="127"/>
                     </Columns>
                     <Rows>
                       <Row size="24" band="head"/>
@@ -25,23 +24,21 @@
                     </Rows>
                     <Band id="head">
                       <Cell text="chk"/>
-                      <Cell col="1" text="confirm"/>
-                      <Cell col="2" text="sender"/>
-                      <Cell col="3" text="receiver"/>
+                      <Cell col="1" text="sender"/>
+                      <Cell col="2" text="receiver"/>
                     </Band>
                     <Band id="body">
                       <Cell text="bind:chk" edittype="checkbox" displaytype="checkboxcontrol"/>
-                      <Cell col="1" text="bind:confirm"/>
-                      <Cell col="2" text="bind:sender"/>
-                      <Cell col="3" text="bind:receiver"/>
+                      <Cell col="1" text="bind:sender" textAlign="center" edittype="mask" maskeditformat="#########"/>
+                      <Cell col="2" text="bind:receiver" textAlign="center" edittype="mask" maskeditformat="#########"/>
                     </Band>
                   </Format>
                 </Formats>
               </Grid>
-              <Div id="Div00" taborder="1" text="" left="320" top="240" width="679" height="172" cssclass="div_line">
+              <Div id="Div00" taborder="0" text="" left="320" top="240" width="679" height="172" cssclass="div_line">
                 <Layouts>
                   <Layout>
-                    <Edit id="Edit00" taborder="0" left="8" top="10" width="665" height="152" cssclass="edt_default"/>
+                    <TextArea id="TextArea00" taborder="0" left="8" top="10" width="665" height="154"/>
                   </Layout>
                 </Layouts>
               </Div>
@@ -52,11 +49,10 @@
                   </Layout>
                 </Layouts>
               </Div>
-              <Static id="Static00" taborder="3" text="contents" left="320" top="8" width="152" height="25" textAlign="center" cssclass="sta_default"/>
+              <Static id="Static00" taborder="3" text="My contents" left="320" top="8" width="152" height="25" textAlign="center" cssclass="sta_default"/>
               <Static id="Static00_00" taborder="4" text="reply" left="319" top="209" width="152" height="25" textAlign="center" cssclass="sta_default"/>
-              <Button id="confirm_btn" taborder="5" text="확인" left="93" top="418" width="100" height="28" onclick="Div00_confirm_btn_onclick" cssclass="btn_default"/>
-              <Button id="del_btn" taborder="6" text="삭제" left="198" top="418" width="100" height="28" onclick="Div00_del_btn_onclick" cssclass="btn_del"/>
-              <Button id="send_btn" taborder="7" text="전송" left="889" top="417" width="100" height="30" onclick="Div00_send_btn_onclick" cssclass="btn_default"/>
+              <Button id="del_btn" taborder="5" text="삭제" left="198" top="418" width="100" height="28" onclick="Div00_del_btn_onclick" cssclass="btn_del"/>
+              <Button id="send_btn" taborder="6" text="전송" left="889" top="417" width="100" height="30" onclick="Div00_send_btn_onclick" cssclass="btn_default"/>
             </Layout>
           </Layouts>
         </Div>
@@ -78,31 +74,14 @@
     </Objects>
     <Bind>
       <BindItem id="item0" compid="Div00.form.Div00_00.form.Edit00" propid="value" datasetid="pst" columnid="contents"/>
-      <BindItem id="item1" compid="Div00.form.Div00.form.Edit00" propid="value" datasetid="pst" columnid="reply"/>
+      <BindItem id="item1" compid="Div00.form.Div00.form.TextArea00" propid="value" datasetid="pst" columnid="reply"/>
     </Bind>
     <Script type="xscript5.1"><![CDATA[this.fn_callback = function(id,ErrorCode,ErrorMsg){
 	trace(id);
 	trace(ErrorMsg);
 	trace(ErrorCode);
 }
-this.Div00_confirm_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	let arr = this.pst.extractRows("chk==1");
-	
-	if(arr.length==0 || arr.length== -1){alert("선택된 항목이 없습니다.");return;}
-	
 
-
-		   this.transaction(
-            "PMConfirm"
-            ,"/PMConfirm.nex"
-            ,"in_ds=pst:U"
-            ,"pst=out_ds"
-            ,""
-            ,"fn_callback" 
-         )
-
-};
 
 this.Div00_del_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -120,6 +99,8 @@ this.Div00_del_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
             ,""
             ,"fn_callback" 
          )
+		 
+		 alert("삭제되었습니다.");
 };
 
 this.Div00_send_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -132,13 +113,15 @@ this.Div00_send_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
             ,""
             ,"fn_callback" 
          )
+		 
+		 alert("전송되었습니다");
 };
 
 this.rest_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-		this.transaction(
-			"PMLoad" //id
-			,"/PMLoad.nex"//url
+			this.transaction(
+			"PMReceived" //id
+			,"/PMReceived.nex"//url
 			,""// inData
 			,"pst=out_ds"// outData
 			,""//strArg

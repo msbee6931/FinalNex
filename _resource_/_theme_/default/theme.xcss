@@ -1061,6 +1061,8 @@ font : 14px/normal "Malgun Gothic";
 {
 	-nexa-icon : URL('theme://images/rdo_WF_Radio.png');
 	-nexa-text-padding : 0px 0px 0px 5px;
+	font : 12px "Malgun Gothic";
+	color : #0d6efd;
 }
 
 .Radio .radioitem[userstatus=selected]
@@ -2059,17 +2061,18 @@ font : 14px/normal "Malgun Gothic";
 }
 .Combo.cmb_default
 {
+	-nexa-border : 1px solid #0d6efd;
 }
 .Combo.cmb_default .comboedit
 {
-	-nexa-border : 1px solid #0d6efd;
+
 	background : #ffffff;
 	color : #0d6efd;
-	font : 12px "-윤고딕330";
+	font : 12px/normal "Malgun Gothic";
 }
 .Combo.cmb_default .dropbutton
 {
-	background : #0d6efd;
+	-nexa-icon : url('theme://images/cmb_WF_Drop_O.png');
 
 }
 .Combo.cmb_default .combolist .listboxitem[status=mouseover]
@@ -2165,6 +2168,7 @@ font : 14px/normal "Malgun Gothic";
 	background : #0d6efd;
 	color : #ffffff;
 	font : 12px "Malgun Gothic";
+	-nexa-border : 1px solid #0d6efd;
 	
 }
 .Button.btn_default[status=mouseover][userstatus=pushed],
@@ -2311,5 +2315,51 @@ font : 14px/normal "Malgun Gothic";
 	-nexa-icon : url('theme://images/btn_Cal_N.png');
 	
 
+}
+.Button.btn_can,
+.Button.btn_can[status=disabled],
+.Button.btn_can[status=mouseover],
+.Button.btn_can[status=focused],
+.Button.btn_can[userstatus=pushed],
+.Button.btn_can[userstatus=selected]
+{
+	background : #1c0c7c;
+	color : #ffffff;
+	font : 12px "Malgun Gothic";
+	-nexa-border : 1px solid #1c0c7c;
+}
+.TextArea.txt_default,
+.TextArea.txt_default[status=disabled],
+.TextArea.txt_default[status=mouseover],
+.TextArea.txt_default[status=focused],
+.TextArea.txt_default[status=readonly],
+.TextArea.txt_default[userstatus=nulltext]
+{
+	-nexa-border : 1px solid #0d6efd;
+	font : 12px "Malgun Gothic";
+	color : #383838;
+}
+.MaskEdit.med_default,
+.MaskEdit.med_default[status=disabled],
+.MaskEdit.med_default[status=mouseover],
+.MaskEdit.med_default[status=focused],
+.MaskEdit.med_default[status=readonly],
+.MaskEdit.med_default[userstatus=nulltext],
+.MaskEdit.med_default[userstatus=invalidtext]
+{
+	color : #0d6efd;
+	-nexa-border : 1px solid #0d6efd;
+	font : 12px "Malgun Gothic";
+
+}
+.Combo.cmb_default[status=readonly]
+{
+	-nexa-border : 1px solid #0d6efd;
+	font : 12px "Malgun Gothic";
+	color : #0d6efd;
+	
+}
+.Radio.rdo_default
+{
 }
 ]]></XCSS>

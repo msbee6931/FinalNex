@@ -10,12 +10,12 @@
         <Div id="Div00" taborder="4" text="Div00" left="30" top="20" width="840" height="560" border="1px solid #c1c1c1">
           <Layouts>
             <Layout>
-              <Edit id="Edit00" taborder="1" left="168" top="39" width="600" height="30" readonly="true"/>
-              <Static id="Static00" taborder="0" text="제목" left="69" top="39" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Edit id="Edit01" taborder="4" left="170" top="150" width="600" height="160" readonly="true"/>
-              <Static id="Static00_00" taborder="2" text="첨부파일" left="69" top="69" width="100" height="80" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Button id="btn_down" taborder="3" text="파일 다운로드" left="668" top="69" width="100" height="80" onclick="Div00_btn_down_onclick"/>
-              <Grid id="Grid00" taborder="5" left="170" top="70" width="498" height="80" binddataset="schFileList_ds" autofittype="col" onheadclick="Div00_Grid00_onheadclick">
+              <Edit id="Edit00" taborder="1" left="179" top="39" width="650" height="25" readonly="true" cssclass="edt_default"/>
+              <Static id="Static00" taborder="0" text="제목" left="0" top="39" width="179" height="25" cssclass="sta_default"/>
+              <Edit id="Edit01" taborder="4" left="179" top="192" width="650" height="210" readonly="true" cssclass="edt_default"/>
+              <Static id="Static00_00" taborder="2" text="첨부파일" left="0" top="63" width="179" height="130" cssclass="sta_default"/>
+              <Button id="btn_down" taborder="3" text="파일 다운로드" left="689" top="62" width="140" height="130" onclick="Div00_btn_down_onclick" cssclass="btn_default"/>
+              <Grid id="Grid00" taborder="5" left="179" top="63" width="509" height="130" binddataset="schFileList_ds" autofittype="col" onheadclick="Div00_Grid00_onheadclick" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -40,8 +40,8 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="btn_cancle" taborder="6" text="닫기" left="669" top="354" width="100" height="30" onclick="Div00_btn_cancle_onclick"/>
-              <Static id="Static00_00_00" taborder="7" text="신청사유" left="69" top="149" width="100" height="161" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Button id="btn_cancle" taborder="6" text="닫기" left="699" top="444" width="100" height="30" onclick="Div00_btn_cancle_onclick" cssclass="btn_can"/>
+              <Static id="Static00_00_00" taborder="7" text="신청사유" left="0" top="192" width="179" height="211" cssclass="sta_default"/>
             </Layout>
           </Layouts>
         </Div>

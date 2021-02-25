@@ -3,7 +3,7 @@
   <Form id="classList" width="1080" height="520" titletext="New Form" onload="classList_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
-        <Grid id="gr_classList" taborder="0" left="30" top="60" width="1021" height="390" binddataset="ds_class" autofittype="col" oncellclick="gr_classList_oncellclick" onheadclick="gr_classList_onheadclick">
+        <Grid id="gr_classList" taborder="0" left="30" top="60" width="1021" height="390" binddataset="ds_class" autofittype="col" oncellclick="gr_classList_oncellclick" onheadclick="gr_classList_onheadclick" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>

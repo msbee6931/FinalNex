@@ -6,9 +6,9 @@
         <Static id="Static00" taborder="0" left="0" top="0" width="200" height="50" background="url('theme::default/images/khLogo.png')"/>
         <Static id="Static01" taborder="1" left="200" top="0" height="50" background="##06efd" right="0"/>
         <Button id="btn_logout" taborder="2" text="로그아웃" top="10" height="30" onclick="btn_logout_onclick" cssclass="btn_logout" width="100" right="13"/>
-        <Button id="btn_home" taborder="3" left="212" top="13" width="30" height="30" onclick="btn_home_onclick" cssclass="btn_home"/>
-        <Static id="sta_name" taborder="4" text="Static02" left="264" top="13" width="60" height="25" onclick="sta_name_onclick" color="#ffffff"/>
-        <Static id="Static02_00" taborder="5" text="님 환영합니다." left="324" top="13" width="100" height="25" color="#ffffff"/>
+        <Button id="btn_home" taborder="3" left="212" top="13" width="80" height="25" onclick="btn_home_onclick" cssclass="btn_home" text="HOME"/>
+        <Static id="sta_name" taborder="4" text="Static02" left="314" top="13" width="60" height="25" onclick="sta_name_onclick" color="#ffffff"/>
+        <Static id="Static02_00" taborder="5" text="님 환영합니다." left="374" top="13" width="100" height="25" color="#ffffff"/>
         <Button id="alarm_btn" taborder="6" top="10" width="80" height="30" onclick="alarm_btn_onclick" cssclass="btn_message" text="쪽지" right="122"/>
       </Layout>
     </Layouts>
@@ -67,8 +67,8 @@ this.fn_callback_pop= function(){
 this.Form_Top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 			this.transaction(
-			"alarm" //id
-			,"/alarm.nex"//url
+			"alarmAdmin" //id
+			,"/alarmAdmin.nex"//url
 			,""// inData
 			,"admin_alarm=out_ds"// outData
 			,""//strArg

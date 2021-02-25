@@ -1,17 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="nomalNotice_Info" width="900" height="600" titletext="New Form" onload="nomalNotice_Info_onload">
+  <Form id="nomalNotice_Info" width="1080" height="520" titletext="New Form" onload="nomalNotice_Info_onload">
     <Layouts>
+<<<<<<< HEAD
       <Layout height="600" width="900" stepcount="0">
         <Static id="Static00" taborder="0" left="869" top="43" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)" onclick="Static00_onclick"/>
         <Static id="Static00_00" taborder="1" left="0" top="40" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00_00_00" taborder="2" left="159" top="583" width="600" height="20" visible="false" background="RGBA(236,135,135,0.71)"/>
+=======
+      <Layout height="520" width="1080">
+        <Static id="Static00" taborder="0" left="1050" top="0" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)" onclick="Static00_onclick"/>
+        <Static id="Static00_00" taborder="1" left="0" top="0" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00_00_00" taborder="2" left="159" top="500" width="600" height="20" visible="false" background="RGBA(236,135,135,0.71)"/>
+>>>>>>> f870546068e106603f72d47ff6e7508fcaf8225f
         <Static id="Static00_00_00_00_00" taborder="3" left="150" top="0" width="600" height="20" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Tab id="Tab00" taborder="4" tabindex="0" left="30" top="40" width="840" height="500" onchanged="Tab00_onchanged">
+        <Tab id="Tab00" taborder="4" tabindex="0" left="30" top="40" width="1020" height="500" onchanged="Tab00_onchanged">
           <Tabpages>
             <Tabpage id="Tabpage1" text="공지사항">
               <Layouts>
                 <Layout>
+<<<<<<< HEAD
                   <Static id="Static00" taborder="0" text="제목" left="139" top="33" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" textAlign="center" background="lightgray"/>
                   <Edit id="edt_title" taborder="1" left="239" top="33" width="200" height="50"/>
                   <Static id="Static00_00" taborder="2" text="내용" left="139" top="83" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" textAlign="center" background="lightgray"/>
@@ -20,6 +28,16 @@
                   <Button id="btn_save" taborder="5" text="저장" left="604" top="383" width="60" height="35" onclick="Tab00_Tabpage1_btn_save_onclick"/>
                   <Static id="Static00_00_00" taborder="6" text="첨부파일" left="139" top="283" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" textAlign="center" background="lightgray"/>
                   <Grid id="Grid00" taborder="7" left="239" top="283" width="500" height="100" binddataset="ds_NoticeFiles" autofittype="col" onheadclick="Tab00_Tabpage1_Grid00_onheadclick">
+=======
+                  <Static id="Static00" taborder="0" text="제목" left="0" top="33" width="100" height="25" textAlign="center" cssclass="sta_default"/>
+                  <Edit id="edt_title" taborder="1" left="99" top="33" width="400" height="25" cssclass="edt_default"/>
+                  <Static id="Static00_00" taborder="2" text="내용" left="0" top="57" width="100" height="200" textAlign="center" cssclass="sta_default"/>
+                  <TextArea id="text_contents" taborder="3" left="99" top="57" width="921" height="200" cssclass="txt_default"/>
+                  <Button id="btn_cancel" taborder="4" text="취소" left="520" top="386" width="100" height="25" onclick="Tab00_Tabpage1_btn_cancel_onclick" cssclass="btn_can"/>
+                  <Button id="btn_save" taborder="5" text="저장" left="340" top="386" width="100" height="25" onclick="Tab00_Tabpage1_btn_save_onclick" cssclass="btn_default"/>
+                  <Static id="Static00_00_00" taborder="6" text="첨부파일" left="0" top="256" width="100" height="100" textAlign="center" cssclass="sta_default"/>
+                  <Grid id="Grid00" taborder="7" left="100" top="256" width="860" height="100" binddataset="ds_NoticeFiles" autofittype="col" onheadclick="Tab00_Tabpage1_Grid00_onheadclick" cssclass="grd_default">
+>>>>>>> f870546068e106603f72d47ff6e7508fcaf8225f
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -53,11 +71,19 @@
                       </Format>
                     </Formats>
                   </Grid>
+<<<<<<< HEAD
                   <Static id="Static02" taborder="8" text="분류" left="439" top="33" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" background="lightgray" textAlign="center"/>
                   <Combo id="com_list" taborder="9" left="539" top="34" width="200" height="50" text="" value="" index="-1" innerdataset="ds_deptcode" codecolumn="code" datacolumn="name"/>
                   <Button id="btn_del" taborder="10" text="삭제" left="679" top="-1" width="60" height="35" onclick="Tab00_Tabpage1_btn_del_onclick"/>
                   <Button id="btn_insert" taborder="11" text="파일찾기" left="739" top="283" width="60" height="35" onclick="Tab00_Tabpage1_btn_insert_onclick"/>
                   <Button id="btn_delete" taborder="12" text="파일삭제" left="739" top="327" width="60" height="35" onclick="Tab00_Tabpage1_btn_delete_onclick"/>
+=======
+                  <Button id="btn_insert" taborder="8" text="파일찾기" left="960" top="256" width="60" height="50" onclick="Tab00_Tabpage1_btn_insert_onclick" enable="false" cssclass="btn_default"/>
+                  <Button id="btn_delete" taborder="9" text="파일삭제" left="960" top="305" width="60" height="50" onclick="Tab00_Tabpage1_btn_delete_onclick" enable="false" cssclass="btn_can"/>
+                  <Static id="Static02" taborder="10" text="분류" left="500" top="33" width="110" height="24" textAlign="center" cssclass="sta_default"/>
+                  <Combo id="com_list" taborder="11" left="610" top="33" width="410" height="25" text="" value="" index="-1" innerdataset="ds_deptcode" codecolumn="code" datacolumn="name" cssclass="cmb_default"/>
+                  <Button id="btn_del" taborder="12" text="삭제" left="659" top="-1" width="100" height="25" onclick="Tab00_Tabpage1_btn_del_onclick" cssclass="btn_del"/>
+>>>>>>> f870546068e106603f72d47ff6e7508fcaf8225f
                 </Layout>
               </Layouts>
             </Tabpage>
