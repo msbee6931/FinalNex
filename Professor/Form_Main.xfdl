@@ -213,20 +213,21 @@ this.btnGrade_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.objApp.prf_menu.filter("menu_id.substring(0,2) == '" + 20 + "'");
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
-	this.fn_openForm("203010","학생 성적 관리","prfWork::classGrade.xfdl"); //form 오픈 함수
+	this.fn_openForm("203020","학생 성적 관리","prfWork::classGrade.xfdl"); //form 오픈 함수
 };
 
 this.btnAttend_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.objApp.prf_menu.filter("menu_id.substring(0,2) == '" + 20 + "'");
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
-	this.fn_openForm("20302010","학생 출석 입력","prfWork::attendManage.xfdl"); //form 오픈 함수
+	this.fn_openForm("20303010","학생 출석 입력","prfWork::attendManage.xfdl"); //form 오픈 함수
 };
-this.btnDeptStdList = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
+this.btnDeptStdList_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
 	this.objApp.prf_menu.filter("menu_id.substring(0,2) == '" + 10 + "'");
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
 	this.fn_openForm("1020","학생 조회","prfWork::deptStudent.xfdl"); //form 오픈 함수
 };
+
 
 this.Form_Main_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -486,6 +487,7 @@ this.div_Info_sta_alarm_onclick = function(obj:nexacro.Static,e:nexacro.ClickEve
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
 	this.fn_openForm("4020","받은 쪽지함","admWork::received_postmessage.xfdl"); //form 오픈 함수
 };
+
 
 
 

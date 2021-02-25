@@ -6,10 +6,10 @@
         <Static id="Static00" taborder="0" text="제목" left="10" top="10" width="40" height="20"/>
         <Edit id="edt_title" taborder="1" left="70" top="10" width="320" height="20" cssclass="edt_default"/>
         <Static id="Static00_00" taborder="2" text="일자" left="10" top="40" width="40" height="20"/>
-        <Calendar id="cal_sDate" taborder="3" left="70" top="40" width="130" height="20"/>
+        <Calendar id="cal_sDate" taborder="3" left="70" top="40" width="130" height="20" cssclass="cal_default"/>
         <Static id="Static00_01" taborder="4" text="내용" left="10" top="70" width="40" height="20"/>
         <TextArea id="tea_content" taborder="5" left="10" top="100" height="150" width="380"/>
-        <Calendar id="cal_eDate" taborder="6" left="260" top="40" width="130" height="20"/>
+        <Calendar id="cal_eDate" taborder="6" left="260" top="40" width="130" height="20" cssclass="cal_default"/>
         <Static id="Static00_00_01" taborder="7" text="~" left="225" top="40" width="10" height="20"/>
         <Button id="btn_ok" taborder="8" text="확인" left="100" top="259" width="100" height="30" onclick="btn_ok_onclick" cssclass="btn_default"/>
         <Button id="btn_cancle" taborder="9" text="취소" left="203" top="259" width="100" height="30" onclick="btn_cancle_onclick" cssclass="btn_can"/>
@@ -38,12 +38,19 @@ this.btn_cancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var title = this.edt_title.value;
-	var sDate = nexacro.toNumber(this.cal_sDate.value);
+	var sDate = this.cal_sDate.value;
 	var eDate = this.cal_eDate.value;
 	var contents = this.tea_content.value;
-	alert(title+sDate+eDate+contents)
-	
 
+	if(title == null || title == ""){
+		alert("일정 제목을 입력해주세요");
+	}else if(sDate == null || sDate =="" || eDate == null || eDate == ""){
+		alert("일정을 선택해주세요");
+	}else if(contents == null || contents == ""){
+		alert("일정 내용을 입력해주세요");
+	}else if(parseInt(eDate) < parseInt(sDate)){
+		alert("시작일과 종료일을 확인해주세요");
+	}else{
 	var nRow = this.colSchedule_ds.addRow();
 	this.colSchedule_ds.setColumn(nRow,"title",title);
 	this.colSchedule_ds.setColumn(nRow,"sDate",sDate);
@@ -59,8 +66,9 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		"fn_callback"
 		)
 
-		
-	this.close();		
+		this.close();
+	}
+
 };
 ]]></Script>
   </Form>

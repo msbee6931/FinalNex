@@ -70,6 +70,8 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 		var nRow = this.tuition_ds.addRow();
 		this.tuition_ds.setColumn(nRow,"std_code",this.std_code);
+		var grade=this.students_ds.getColumn(0,"colGrade");
+		this.tuition_ds.setColumn(nRow,"std_grade",grade);
 		this.tuition_ds.setColumn(nRow,"t_enter",inputa);
 		this.tuition_ds.setColumn(nRow,"t_class",inputb);
 		this.tuition_ds.setColumn(nRow,"t_std",inputc);
@@ -125,6 +127,8 @@ this.fn_callback = function(id,ErrorCode,ErrorMsg){
         <ColumnInfo>
           <Column id="seq" type="INT" size="256"/>
           <Column id="std_code" type="INT" size="256"/>
+          <Column id="std_grade" type="STRING" size="256"/>
+          <Column id="type" type="STRING" size="256"/>
           <Column id="t_enter" type="INT" size="256"/>
           <Column id="t_class" type="INT" size="256"/>
           <Column id="t_std" type="INT" size="256"/>
@@ -153,6 +157,7 @@ this.fn_callback = function(id,ErrorCode,ErrorMsg){
           <Column id="gender" type="STRING" size="256"/>
           <Column id="deptCode" type="STRING" size="256"/>
           <Column id="colCode" type="STRING" size="256"/>
+          <Column id="colGrade" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>

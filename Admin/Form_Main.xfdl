@@ -37,7 +37,7 @@
         </Grid>
         <Static id="sta_bookmark" taborder="8" text="즐겨찾기" left="50" top="276" width="100" height="44"/>
         <Static id="Static01" taborder="9" text="공지사항" left="318" top="10" width="92" height="44"/>
-        <Grid id="gr_notice" taborder="10" left="310" top="80" width="420" height="306" binddataset="ds_Notice" autofittype="col" oncellclick="gr_notice_oncellclick">
+        <Grid id="gr_notice" taborder="10" left="310" top="80" width="420" height="306" binddataset="ds_Notice" autofittype="col" oncellclick="gr_notice_oncellclick" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>
@@ -287,6 +287,7 @@ this.btnMore_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}else{
 		alert("공지사항이 없습니다");
 	}
+
 };
 
 

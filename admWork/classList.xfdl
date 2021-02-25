@@ -52,7 +52,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Combo id="co_search" taborder="1" left="720" top="24" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" text="전체" value="All" index="0" onitemchanged="classTab_classList_co_search_onitemchanged" cssclass="cmb_default">
+        <Combo id="co_search" taborder="1" left="690" top="24" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" text="전체" value="All" index="0" onitemchanged="classTab_classList_co_search_onitemchanged" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -82,9 +82,9 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="edt_search" taborder="2" left="845" top="24" width="170" height="25" onchanged="edt_search_onchanged" cssclass="edt_default"/>
-        <Button id="btnSearch" taborder="3" left="1025" top="24" width="25" height="25" onclick="btnSearch_onclick" cssclass="btn_search"/>
-        <Combo id="co_year" taborder="4" text="" left="450" top="24" width="120" height="25" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
+        <Edit id="edt_search" taborder="2" left="815" top="24" width="170" height="25" onchanged="edt_search_onchanged" cssclass="edt_default"/>
+        <Button id="btnSearch" taborder="3" left="995" top="24" width="60" height="25" onclick="btnSearch_onclick" cssclass="btn_search" text="조회"/>
+        <Combo id="co_year" taborder="4" text="" left="420" top="24" width="120" height="25" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -102,7 +102,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="co_semester" taborder="5" text="" left="580" top="24" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
+        <Combo id="co_semester" taborder="5" text="" left="550" top="24" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -120,8 +120,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Button id="btnDel" taborder="6" text="삭제" left="950" top="460" width="100" height="30" onclick="btnDel_onclick" cssclass="btn_del"/>
-        <Button id="btnExport" taborder="7" text="Export" left="830" top="460" width="100" height="30" onclick="btnExport_onclick" cssclass="btn_default"/>
+        <Button id="btnDel" taborder="6" text="삭제" left="940" top="460" width="100" height="25" onclick="btnDel_onclick" cssclass="btn_del"/>
+        <Button id="btnExport" taborder="7" text="엑셀" left="830" top="460" width="100" height="25" onclick="btnExport_onclick" cssclass="btn_exel"/>
         <Static id="Static00" taborder="8" left="0" top="0" visible="false" background="RGBA(236,135,135,0.71)" width="29" bottom="0"/>
         <Static id="Static00_01_00" taborder="9" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="0"/>
         <Static id="Static00_00" taborder="10" left="1051" top="0" visible="false" background="RGBA(236,135,135,0.71)" right="0" bottom="0"/>
@@ -344,7 +344,7 @@ this.btnExport_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.exportObj = new ExcelExportObject("Export00", this);
 	
 	this.exportObj.set_exportfilename(semester + " 개설과목");
-	this.exportObj.set_exporturl("http://localhost/nexacro-xeni/XExportImport");
+	this.exportObj.set_exporturl("http://15.165.196.249/nexacro-xeni/XExportImport");
 	
 	this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.gr_classList, "Sheet1!A1");
 	

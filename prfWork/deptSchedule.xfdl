@@ -46,6 +46,9 @@ this.code=this.objApp.gds_professor.getColumn(0,'p_seq');
 this.writer=this.objApp.gds_professor.getColumn(0,'name');
 this.deptSchedule_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	if(this.objApp.gds_students.getRowCount() > 0 ){
+		this.div_schedule.form.btn_insert.set_visible(false);
+	}
 	this.transaction(
 		"selectDeptSchedule",//id
 		"/schedule/selectDeptSchedule",//url (절대경로)
@@ -139,7 +142,7 @@ this.Div00_cal_dept_ondayclick = function(obj:nexacro.Calendar,e:nexacro.Calenda
 {
 	var clickedDate = e.date; // 클릭한 날짜
 	
-	this.deptSchedule_ds.filter("Date=='"+clickedDate+"'"); // 날짜로 필터
+	this.deptSchedule_ds.filter("sDate<='"+e.date+"'&& eDate>='"+e.date+"'");// 날짜로 필터
 };
 
 

@@ -192,9 +192,9 @@ this.btnMypage_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.btnClassTime_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {	
-	this.objApp.std_menu.filter("menu_id.substring(0,2) == '" + 10 + "'");
+	this.objApp.std_menu.filter("menu_id.substring(0,2) == '" + 20 + "'");
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
-	this.fn_openForm("1030","시간표 조회","stdWork::timeSchedule.xfdl"); //form 오픈 함수
+	this.fn_openForm("2050","시간표 조회","stdWork::timeSchedule.xfdl"); //form 오픈 함수
 };
 
 
@@ -207,9 +207,9 @@ this.btnClassList_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo
 
 this.btnGrade_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.objApp.std_menu.filter("menu_id.substring(0,2) == '" + 10 + "'");
+	this.objApp.std_menu.filter("menu_id.substring(0,2) == '" + 20 + "'");
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
-	this.fn_openForm("1020","성적 조회","stdWork::readGrade.xfdl"); //form 오픈 함수
+	this.fn_openForm("2070","성적 조회","stdWork::readGrade.xfdl"); //form 오픈 함수
 };
 
 this.btnCertification_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -222,7 +222,7 @@ this.btnScholarMg_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo
 {
 	this.objApp.std_menu.filter("menu_id.substring(0,2) == '" + 10 + "'");
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,0,*");
-	this.fn_openForm("3010","재학 증명서","stdWork::enrollment.xfdl"); //form 오픈 함수
+	this.fn_openForm("104020","장학금 내역 조회","stdWork::stdReadScholarship.xfdl"); //form 오픈 함수
 };
 
 this.Form_Work_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
