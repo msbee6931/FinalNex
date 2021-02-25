@@ -1,39 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="ClassRegist" width="1080" height="570" titletext="New Form" onload="ClassRegist_onload">
+  <Form id="ClassRegist" width="1080" height="520" titletext="New Form" onload="ClassRegist_onload">
     <Layouts>
-      <Layout height="570" mobileorientation="landscape" width="1080" stepcount="0">
-        <Div id="div_Info" taborder="0" text="Info" left="0" top="0" width="200" height="570" border="1px solid black">
+      <Layout height="520" mobileorientation="landscape" width="1080" stepcount="0">
+        <Div id="div_Info" taborder="0" text="Info" left="30" top="10" border="1px solid black" bottom="30" width="200">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="학과" left="9" top="69" width="80" height="30" textAlign="center" cssclass="sta_default"/>
-              <Static id="Static00_01" taborder="1" text="학번" left="9" top="99" width="80" height="30" textAlign="center" cssclass="sta_default"/>
-              <Static id="Static00_02" taborder="2" text="성명" left="9" top="129" width="80" height="30" textAlign="center" cssclass="sta_default"/>
-              <Static id="Static00_03" taborder="3" text="수강학년" left="9" top="159" width="80" height="30" textAlign="center" cssclass="sta_default"/>
-              <Static id="Static00_03_00" taborder="4" text="신청가능학점" left="9" top="189" width="80" height="30" textAlign="center" cssclass="sta_default"/>
-              <Static id="Static01" taborder="5" text="● 개설강좌 조회" left="9" top="239" width="120" height="30" onclick="Div00_Static01_onclick"/>
-              <Static id="Static00_04" taborder="6" text="학과" left="9" top="269" width="60" height="30" textAlign="center" cssclass="sta_default"/>
-              <Static id="Static00_04_00" taborder="7" text="이수구분" left="9" top="299" width="60" height="30" textAlign="center" cssclass="sta_default"/>
-              <Static id="Static00_04_00_00" taborder="8" text="과목명" left="9" top="329" width="60" height="30" textAlign="center" cssclass="sta_default"/>
-              <Static id="sta_name" taborder="9" text="" left="89" top="129" width="100" height="30" padding="0px 0px 0px 5px" cssclass="sta_line"/>
-              <Static id="sta_grade" taborder="10" text="" left="89" top="159" width="100" height="30" padding="0px 0px 0px 5px" cssclass="sta_line"/>
-              <Static id="sta_point" taborder="11" text="" left="89" top="189" width="100" height="30" padding="0px 0px 0px 5px" cssclass="sta_line"/>
-              <Static id="sta_sSeq" taborder="12" text="" left="89" top="100" width="100" height="30" padding="0px 0px 0px 5px" cssclass="sta_line"/>
-              <Combo id="co_dept" taborder="13" text="전체" left="69" top="269" width="120" height="30" value="" index="-1" innerdataset="ds_deptCode" codecolumn="code" datacolumn="name" onitemchanged="div_Info_co_dept_onitemchanged" cssclass="cmb_default"/>
-              <Combo id="co_part" taborder="14" left="69" top="299" width="120" height="30" value="" index="0" codecolumn="id" datacolumn="name" cssclass="cmb_default" innerdataset="ds_part" displaynulltext="전체" text="전체"/>
-              <Edit id="edt_className" taborder="15" left="69" top="329" width="120" height="30" onchanged="Div00_Edit00_onchanged"/>
-              <Button id="btnClassSearch" taborder="16" left="164" top="364" width="25" height="25" onclick="div_Info_btnClassSearch_onclick" cssclass="btn_search"/>
-              <Static id="sta_basket" taborder="17" text="장바구니" left="9" top="434" width="110" height="30" textAlign="center" cssclass="sta_line"/>
-              <Static id="sta_timeTable" taborder="18" text="시간표 조회" left="9" top="469" width="110" height="30" textAlign="center" cssclass="sta_line"/>
-              <Button id="basket" taborder="19" text="조회" left="129" top="434" width="60" height="30" onclick="div_Info_basket_onclick" cssclass="btn_default"/>
-              <Button id="classTime" taborder="20" text="조회" left="129" top="469" width="60" height="30" onclick="div_Info_classTime_onclick" cssclass="btn_default"/>
-              <Static id="sta_semester" taborder="21" text="" left="9" top="19" width="180" height="40"/>
-              <Combo id="co_myDept" taborder="22" left="89" top="70" width="100" height="30" innerdataset="deptCode" codecolumn="code" datacolumn="name" readonly="true" cssclass="cmb_dept"/>
+              <Static id="Static00" taborder="0" text="학과" left="9" top="69" width="80" height="25" textAlign="center" cssclass="sta_default"/>
+              <Static id="Static00_01" taborder="1" text="학번" left="9" top="93" width="80" height="25" textAlign="center" cssclass="sta_default"/>
+              <Static id="Static00_02" taborder="2" text="성명" left="9" top="117" width="80" height="25" textAlign="center" cssclass="sta_default"/>
+              <Static id="Static00_03" taborder="3" text="수강학년" left="9" top="141" width="80" height="25" textAlign="center" cssclass="sta_default"/>
+              <Static id="Static00_03_00" taborder="4" text="신청가능학점" left="9" top="165" width="80" height="25" textAlign="center" cssclass="sta_default"/>
+              <Static id="Static01" taborder="5" text="● 개설강좌 조회" left="9" top="209" width="120" height="30" onclick="Div00_Static01_onclick"/>
+              <Static id="Static00_04" taborder="6" text="학과" left="9" top="239" width="60" height="30" textAlign="center" cssclass="sta_default"/>
+              <Static id="Static00_04_00" taborder="7" text="이수구분" left="9" top="269" width="60" height="30" textAlign="center" cssclass="sta_default"/>
+              <Static id="Static00_04_00_00" taborder="8" text="과목명" left="9" top="299" width="60" height="30" textAlign="center" cssclass="sta_default"/>
+              <Static id="sta_name" taborder="9" text="" left="89" top="117" width="100" height="25" padding="0px 0px 0px 5px" cssclass="sta_line"/>
+              <Static id="sta_grade" taborder="10" text="" left="89" top="141" width="100" height="25" padding="0px 0px 0px 5px" cssclass="sta_line"/>
+              <Static id="sta_point" taborder="11" text="" left="89" top="165" width="100" height="25" padding="0px 0px 0px 5px" cssclass="sta_line"/>
+              <Static id="sta_sSeq" taborder="12" text="" left="89" top="93" width="100" height="25" padding="0px 0px 0px 5px" cssclass="sta_line"/>
+              <Combo id="co_dept" taborder="13" text="전체" left="69" top="239" width="120" height="30" value="" index="-1" innerdataset="ds_deptCode" codecolumn="code" datacolumn="name" onitemchanged="div_Info_co_dept_onitemchanged" cssclass="cmb_default"/>
+              <Combo id="co_part" taborder="14" left="69" top="269" width="120" height="30" value="" index="0" codecolumn="id" datacolumn="name" cssclass="cmb_default" innerdataset="ds_part" displaynulltext="전체" text="전체"/>
+              <Edit id="edt_className" taborder="15" left="69" top="299" width="120" height="30" onchanged="Div00_Edit00_onchanged"/>
+              <Button id="btnClassSearch" taborder="16" left="129" top="334" width="60" height="25" onclick="div_Info_btnClassSearch_onclick" cssclass="btn_search" text="조회"/>
+              <Static id="sta_basket" taborder="17" text="장바구니" left="9" top="394" width="110" height="25" textAlign="center" cssclass="sta_line"/>
+              <Static id="sta_timeTable" taborder="18" text="시간표 조회" left="9" top="429" width="110" height="25" textAlign="center" cssclass="sta_line"/>
+              <Button id="basket" taborder="19" text="조회" left="129" top="394" width="60" height="25" onclick="div_Info_basket_onclick" cssclass="btn_search"/>
+              <Button id="classTime" taborder="20" text="조회" left="129" top="429" width="60" height="25" onclick="div_Info_classTime_onclick" cssclass="btn_search"/>
+              <Static id="sta_semester" taborder="21" text="" left="9" top="19" width="180" height="25"/>
+              <Combo id="co_myDept" taborder="22" left="89" top="69" width="100" height="25" innerdataset="deptCode" codecolumn="code" datacolumn="name" readonly="true" cssclass="cmb_dept"/>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static01_00" taborder="1" text="▷ 개설강좌 리스트" left="210" top="10" width="120" height="30" onclick="Div00_Static01_onclick"/>
-        <Grid id="gr_classList" taborder="2" left="210" top="35" width="860" height="260" binddataset="ds_class" oncellclick="gr_classList_oncellclick">
+        <Grid id="gr_classList" taborder="2" left="240" top="35" binddataset="ds_class" oncellclick="gr_classList_oncellclick" autofittype="col" right="50" bottom="285" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>
@@ -79,8 +78,8 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static01_00_00" taborder="3" text="▷ 수강신청내역 리스트" left="210" top="300" width="140" height="30" onclick="Div00_Static01_onclick"/>
-        <Grid id="Grid00_00" taborder="4" left="210" top="325" width="860" height="220" binddataset="ds_myClass" autofittype="col" oncellclick="gr_myClassList_oncellclick">
+        <Static id="Static01_00" taborder="1" text="▷ 개설강좌 리스트" left="250" top="10" onclick="Div00_Static01_onclick" height="30" width="100"/>
+        <Grid id="Grid00_00" taborder="4" left="240" top="255" binddataset="ds_myClass" autofittype="col" oncellclick="gr_myClassList_oncellclick" right="50" bottom="45" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>
@@ -123,6 +122,11 @@
             </Format>
           </Formats>
         </Grid>
+        <Static id="Static01_00_00" taborder="3" text="▷ 수강신청내역 리스트" left="240" top="230" onclick="Div00_Static01_onclick" width="120" height="30"/>
+        <Static id="Static00" taborder="5" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01" taborder="6" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00" taborder="7" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="8" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -157,7 +161,7 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="id"></Col>
+            <Col id="id"/>
             <Col id="name">전체</Col>
           </Row>
           <Row>
@@ -291,7 +295,7 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="code"></Col>
+            <Col id="code"/>
             <Col id="name">전체</Col>
           </Row>
           <Row>
@@ -391,11 +395,11 @@ this.ClassRegist_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	var sCode = this.objApp.gds_students.getColumn(0,"s_seq");
 	var sName = this.objApp.gds_students.getColumn(0,"name");
 	var deptCode = this.objApp.gds_students.getColumn(0,"deptCode");
-	var grade = this.objApp.gds_students.getColumn(0,"grade");
+	var grade = this.objApp.gds_students.getColumn(0,"colGrade");
 	this.div_Info.form.sta_sSeq.set_text(sCode);
 	this.div_Info.form.sta_name.set_text(sName);
 	this.div_Info.form.co_myDept.set_value(deptCode);
-	this.div_Info.form.sta_grade.set_text(grade+"학년");
+	this.div_Info.form.sta_grade.set_text(grade);
 	
 	var objDate= new Date();
 	if(objDate.getMonth()+1 && objDate.getMonth()+1 < 8){

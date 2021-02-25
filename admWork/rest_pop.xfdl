@@ -7,31 +7,31 @@
         <Combo id="Combo00" taborder="1" text="Combo00" left="79" top="57" width="120" height="25" readonly="true" innerdataset="deptCode" codecolumn="code" datacolumn="name" cssclass="cmb_default"/>
         <Static id="Static00_00_00" taborder="2" text="학 번" left="198" top="57" width="60" height="25" cssclass="sta_default"/>
         <Edit id="edt_title00" taborder="3" left="257" top="57" width="120" height="25" cssclass="edt_default"/>
+        <Static id="Static00_01_01" taborder="5" text="학 년" left="198" top="81" width="60" height="25" cssclass="sta_default"/>
+        <Edit id="edt_title01" taborder="6" left="257" top="81" width="120" height="25" cssclass="edt_default"/>
+        <Edit id="edt_title00_01" taborder="8" left="79" top="129" width="297" height="25" cssclass="edt_default"/>
+        <Static id="Static00_00_00_00_00" taborder="9" text="성 명" left="198" top="105" width="60" height="25" cssclass="sta_default"/>
+        <Edit id="edt_title00_00_00" taborder="10" left="257" top="105" width="120" height="25" cssclass="edt_default"/>
+        <Static id="Static00_01_00_00" taborder="11" text="주 소" left="20" top="129" width="60" height="25" cssclass="sta_default"/>
+        <Static id="Static02" taborder="13" text=" 본인은 본교에 복학하고자 하오니 허가하여 주시기 바랍니다." left="30" top="230" width="357" height="34"/>
+        <Button id="btn_commit" taborder="14" text="승인" left="157" top="350" width="100" height="25" onclick="Div00_btn_commit_onclick" cssclass="btn_default"/>
+        <Button id="btn_ok" taborder="15" text="닫기" left="277" top="350" width="100" height="25" onclick="btn_ok_onclick" cssclass="btn_can"/>
+        <Static id="Static00" taborder="16" text="복학 신청서" left="23" top="10" width="120" height="30" cssclass="sta_title"/>
+        <Div id="Div00" taborder="17" left="20" top="153" width="356" height="177" cssclass="div_line" text=""/>
+        <MaskEdit id="med_birth" taborder="18" left="79" top="81" width="120" height="25" cssclass="med_default" type="string" format="@@@@@@"/>
+        <Edit id="edt_contact" taborder="12" left="79" top="105" width="119" height="25" cssclass="edt_default"/>
+        <Static id="Static00_00_01" taborder="7" text="연락처" left="20" top="105" width="60" height="25" cssclass="sta_default"/>
         <Static id="Static00_00_00_00" taborder="4" text="생년월일" left="20" top="81" width="60" height="25" cssclass="sta_default"/>
-        <Edit id="edt_title00_00" taborder="5" left="79" top="81" width="120" height="25" cssclass="edt_default"/>
-        <Static id="Static00_01_01" taborder="6" text="학 년" left="198" top="81" width="60" height="25" cssclass="sta_default"/>
-        <Edit id="edt_title01" taborder="7" left="257" top="81" width="120" height="25" cssclass="edt_default"/>
-        <Static id="Static00_00_01" taborder="8" text="연락처" left="20" top="105" width="60" height="25" cssclass="sta_default"/>
-        <Edit id="edt_title00_01" taborder="9" left="79" top="129" width="120" height="25" cssclass="edt_default"/>
-        <Static id="Static00_00_00_00_00" taborder="10" text="성 명" left="198" top="129" width="60" height="25" cssclass="sta_default"/>
-        <Edit id="edt_title00_00_00" taborder="11" left="257" top="129" width="120" height="25" cssclass="edt_default"/>
-        <Static id="Static00_01_00_00" taborder="12" text="주 소" left="20" top="129" width="60" height="25" cssclass="sta_default"/>
-        <Edit id="edt_title01_00" taborder="13" left="79" top="105" width="298" height="25" cssclass="edt_default"/>
-        <Static id="Static02" taborder="14" text=" 본인은 본교에 복학하고자 하오니 허가하여 주시기 바랍니다." left="30" top="230" width="357" height="34"/>
-        <Button id="btn_commit" taborder="15" text="승인" left="157" top="350" width="100" height="25" onclick="Div00_btn_commit_onclick" cssclass="btn_default"/>
-        <Button id="btn_ok" taborder="16" text="확인" left="277" top="350" width="100" height="25" onclick="btn_ok_onclick" cssclass="btn_default"/>
-        <Static id="Static00" taborder="17" text="복학 신청서" left="23" top="10" width="120" height="30" cssclass="sta_title"/>
-        <Div id="Div00" taborder="18" left="20" top="153" width="356" height="177" cssclass="div_line" text=""/>
       </Layout>
     </Layouts>
     <Bind>
       <BindItem id="item0" compid="Combo00" propid="value" datasetid="students_ds" columnid="deptCode"/>
-      <BindItem id="item1" compid="edt_title00_01" propid="value" datasetid="students_ds" columnid="contact"/>
       <BindItem id="item2" compid="edt_title00" propid="value" datasetid="students_ds" columnid="s_seq"/>
-      <BindItem id="item3" compid="edt_title00_00_00" propid="value" datasetid="students_ds" columnid="name"/>
-      <BindItem id="item4" compid="edt_title00_00" propid="value" datasetid="students_ds" columnid="birth"/>
-      <BindItem id="item5" compid="edt_title01_00" propid="value" datasetid="students_ds" columnid="adress"/>
-      <BindItem id="item6" compid="edt_title01" propid="value" datasetid="students_ds" columnid="grade"/>
+      <BindItem id="item3" compid="med_birth" propid="value" datasetid="students_ds" columnid="secNumber"/>
+      <BindItem id="item4" compid="edt_title01" propid="value" datasetid="students_ds" columnid="colGrade"/>
+      <BindItem id="item5" compid="edt_contact" propid="value" datasetid="students_ds" columnid="contact"/>
+      <BindItem id="item1" compid="edt_title00_01" propid="value" datasetid="students_ds" columnid="address"/>
+      <BindItem id="item6" compid="edt_title00_00_00" propid="value" datasetid="students_ds" columnid="name"/>
     </Bind>
     <Script type="xscript5.1"><![CDATA[this.std_code=this.parent.std_code;
 
@@ -52,16 +52,18 @@ this.rest_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.fn_callback_stdInfo = function()
 {
 	var rest = this.students_ds.getColumn(0,"rest");
-	alert(rest)
 	if(rest=='N')
 	{
-		this.btn_commit.set_text("승인완료");
+		this.btn_commit.set_text("완료");
 	}
 }
 
 //승인 처리
 this.Div00_btn_commit_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	var check = this.confirm("복학을 승인하시겠습니까?");
+	if(check)
+	{
 	this.transaction(
 		"pdateStdRest",//id
 		"/students/updateStdRest.students",//url (절대경로)
@@ -70,11 +72,13 @@ this.Div00_btn_commit_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 		"sCode="+this.std_code,//argument
 		"fn_callback_rest"
 		)
+	} else
+	{return;}
 };
 
 this.fn_callback_rest = function()
 {
-	this.btn_commit.set_text("승인완료");
+	this.btn_commit.set_text("완료");
 }
 
 //그냥 닫기
@@ -93,15 +97,16 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="age" type="STRING" size="256"/>
           <Column id="email" type="STRING" size="256"/>
           <Column id="contact" type="STRING" size="256"/>
-          <Column id="adress" type="STRING" size="256"/>
+          <Column id="address" type="STRING" size="256"/>
           <Column id="scholarship" type="STRING" size="256"/>
           <Column id="rest" type="STRING" size="256"/>
           <Column id="grade" type="STRING" size="256"/>
-          <Column id="birth" type="STRING" size="256"/>
           <Column id="pw" type="STRING" size="256"/>
           <Column id="gender" type="STRING" size="256"/>
           <Column id="deptCode" type="STRING" size="256"/>
           <Column id="colCode" type="STRING" size="256"/>
+          <Column id="colGrade" type="STRING" size="256"/>
+          <Column id="secNumber" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
