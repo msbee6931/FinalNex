@@ -38,17 +38,17 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="btn_del" taborder="5" text="파일 삭제" left="668" top="150" width="100" height="30" onclick="Div00_btn_del_onclick" cssclass="btn_can"/>
+              <Button id="btn_del" taborder="5" text="파일 삭제" left="668" top="150" width="100" height="32" onclick="Div00_btn_del_onclick" cssclass="btn_can"/>
               <Button id="btn_save" taborder="6" text="저장" left="559" top="484" width="100" height="25" onclick="Div00_btn_save_onclick" cssclass="btn_default"/>
               <Static id="Static00_00" taborder="2" text="첨부파일" left="70" top="112" width="100" height="70" cssclass="sta_default"/>
               <Button id="btn_can" taborder="7" text="취소" left="668" top="484" width="100" height="25" onclick="Div00_btn_can_onclick" cssclass="btn_can"/>
               <Static id="Static01" taborder="8" text="1. 선행작학금 신청의 경우, 증명할 수 있는 서류를 첨부 부탁드립니다. (ex: 표창장, 선행상 등)&#13;&#10;2. 추천장학금 신청의 경우, 증명할 수 있는 추천서를 첨부 부탁드립니다.&#13;&#10;3. 성적우수장학금 신청의 경우, 성적증명서 첨부 부탁드립니다.&#13;&#10;4. 생활지원 장학금 신청의 경우, 사실을 증명할  수 있는 서류를 첨부 부탁드립니다." left="70" top="319" width="700" height="80" onclick="Div00_Static01_onclick"/>
-              <Static id="Static02" taborder="10" text="" left="169" top="54" width="600" height="30" cssclass="sta_line"/>
+              <Static id="Static02" taborder="10" text="" left="169" top="54" width="599" height="30" cssclass="sta_line"/>
               <Radio id="Radio00" taborder="11" left="187" top="60" width="422" height="18" innerdataset="schCode_ds" codecolumn="code" datacolumn="name" rowcount="1" onitemchanged="Div00_Radio00_onitemchanged"/>
               <Static id="Static00_01" taborder="9" text="분류" left="70" top="54" width="100" height="30" cssclass="sta_default"/>
               <Static id="Static00_00_00" taborder="12" text="신청사유" left="70" top="181" width="100" height="138" cssclass="sta_default"/>
-              <Static id="Static03" taborder="13" text="※ 작성 후, 수정·삭제는 관리자로 문의 부탁드립니다." left="468" top="434" width="302" height="35"/>
-              <TextArea id="txt_contents" taborder="14" left="171" top="181" width="600" height="138" cssclass="txt_default"/>
+              <Static id="Static03" taborder="13" text="※ 작성 후, 수정·삭제는 관리자로 문의 부탁드립니다." left="468" top="444" width="302" height="35" color="#5537ac" textAlign="right"/>
+              <TextArea id="txt_contents" taborder="14" left="169" top="181" width="599" height="138" cssclass="txt_default"/>
             </Layout>
           </Layouts>
         </Div>

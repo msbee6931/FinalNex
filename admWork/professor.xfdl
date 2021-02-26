@@ -3,7 +3,8 @@
   <Form id="professor" width="1080" height="520" titletext="New Form" onload="professor_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
-        <Grid id="Grid00" taborder="0" left="30" top="70" width="1020" height="370" binddataset="ds_professor" autofittype="col" onheadclick="Grid00_onheadclick" cssclass="grd_default">
+        <Static id="Static01" taborder="12" left="30" top="10" cssclass="sta_line" right="26" bottom="30"/>
+        <Grid id="Grid00" taborder="0" left="35" top="70" binddataset="ds_professor" autofittype="col" onheadclick="Grid00_onheadclick" cssclass="grd_default" right="35" bottom="80">
           <Formats>
             <Format id="default">
               <Columns>
@@ -49,11 +50,11 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_retrive" taborder="1" text="전체조회" left="950" top="28" width="100" height="25" onclick="btn_retrive_onclick" cssclass="btn_default"/>
-        <Button id="btn_save" taborder="2" text="저장" left="950" top="460" width="100" height="30" onclick="btn_save_onclick" cssclass="btn_default"/>
-        <Button id="btn_del" taborder="3" text="삭제" left="840" top="460" width="100" height="30" onclick="btn_del_onclick" cssclass="btn_del"/>
-        <Button id="btn_add" taborder="4" text="입력" left="840" top="28" width="100" height="25" onclick="btn_add_onclick" cssclass="btn_insert"/>
-        <Combo id="cb_search" taborder="5" text="전체" left="30" top="28" width="100" height="25" value="All" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
+        <Button id="btn_retrive" taborder="1" text="전체조회" top="28" width="100" height="25" onclick="btn_retrive_onclick" cssclass="btn_default" right="35"/>
+        <Button id="btn_save" taborder="2" text="저장" width="100" height="25" onclick="btn_save_onclick" cssclass="btn_default" right="35" bottom="35"/>
+        <Button id="btn_del" taborder="3" text="삭제" width="100" height="25" onclick="btn_del_onclick" cssclass="btn_del" right="140" bottom="35"/>
+        <Button id="btn_add" taborder="4" text="입력" top="28" width="100" height="25" onclick="btn_add_onclick" cssclass="btn_insert" right="140"/>
+        <Combo id="cb_search" taborder="5" text="전체" left="35" top="28" width="100" height="25" value="All" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>

@@ -10,7 +10,7 @@
         <Div id="div_line" taborder="4" left="30" top="10" cssclass="div_line" text="" right="30" bottom="30">
           <Layouts>
             <Layout>
-              <Div id="div_com" taborder="0" text="Div00" left="10" top="20" cssclass="div_line" width="395" height="49">
+              <Div id="div_com" taborder="0" text="Div00" left="10" top="20" width="395" height="49">
                 <Layouts>
                   <Layout>
                     <Combo id="co_year" taborder="0" text="" left="10" top="10" width="120" height="25" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
@@ -53,7 +53,7 @@
                   </Layout>
                 </Layouts>
               </Div>
-              <Grid id="gr_classList" taborder="1" left="10" top="89" binddataset="ds_class" autofittype="col" oncellclick="gr_classList_oncellclick" cssclass="grd_default" right="8" bottom="19">
+              <Grid id="gr_classList" taborder="1" left="10" top="65" binddataset="ds_class" autofittype="col" oncellclick="gr_classList_oncellclick" cssclass="grd_default" right="8" bottom="19">
                 <Formats>
                   <Format id="default">
                     <Columns>

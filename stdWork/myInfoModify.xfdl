@@ -7,8 +7,7 @@
         <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="2" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="3" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="sta_title" taborder="4" text="나의 정보 수정" left="30" top="9" width="200" height="30"/>
-        <Div id="Div00" taborder="5" text="" left="30" top="38" cssclass="div_line" right="29" bottom="30">
+        <Div id="Div00" taborder="4" text="" left="30" top="10" cssclass="div_line" right="29" bottom="30">
           <Layouts>
             <Layout>
               <Edit id="edt_s_seq" taborder="0" left="415" top="40" width="150" height="30" readonly="true" cssclass="edt_default"/>
@@ -23,13 +22,13 @@
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static01_00" taborder="6" text="학번" left="350" width="100" height="30" top="80"/>
-        <Static id="Static01_00_00" taborder="7" text="이름" left="350" width="100" height="30" top="115"/>
-        <Static id="Static01_00_01" taborder="8" text="주민번호" left="350" width="100" height="30" top="150"/>
-        <Static id="Static01_00_02" taborder="9" text="이메일" left="350" width="100" height="30" top="185"/>
-        <Static id="Static01_00_03" taborder="10" text="전화번호" left="350" width="100" height="30" top="220"/>
-        <Static id="Static01_00_04" taborder="11" text="주소" left="350" width="100" height="30" top="255"/>
-        <Static id="Static01_00_06" taborder="12" text="수정할비밀번호" left="350" width="100" height="30" top="290"/>
+        <Static id="Static01_00" taborder="5" text="학번" left="350" width="100" height="30" top="80"/>
+        <Static id="Static01_00_00" taborder="6" text="이름" left="350" width="100" height="30" top="115"/>
+        <Static id="Static01_00_01" taborder="7" text="주민번호" left="350" width="100" height="30" top="150"/>
+        <Static id="Static01_00_02" taborder="8" text="이메일" left="350" width="100" height="30" top="185"/>
+        <Static id="Static01_00_03" taborder="9" text="전화번호" left="350" width="100" height="30" top="220"/>
+        <Static id="Static01_00_04" taborder="10" text="주소" left="350" width="100" height="30" top="255"/>
+        <Static id="Static01_00_06" taborder="11" text="수정할비밀번호" left="350" width="100" height="30" top="290"/>
       </Layout>
     </Layouts>
     <Bind>
