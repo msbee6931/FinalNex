@@ -7,7 +7,7 @@
         <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="2" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="3" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="sta_title" taborder="4" text="나의 정보 수정" left="30" top="9" width="200" height="30"/>
+        <Static id="sta_title" taborder="4" text="나의 정보 수정" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
         <Div id="Div00" taborder="5" text="" left="30" top="38" cssclass="div_line" right="29" bottom="30">
           <Layouts>
             <Layout>
@@ -162,6 +162,8 @@ this.myInfoModify_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 				,"fn_callback" //6.strCallbackFunc
 			);
 			this.ds_students_copy.filter("");
+			
+	
 };
 
 ]]></Script>

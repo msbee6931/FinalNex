@@ -7,7 +7,7 @@
         <Static id="Static00_00" taborder="1" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="Static01" taborder="4" text="공지사항 입력" left="30" top="9" width="200" height="30"/>
+        <Static id="Static01" taborder="4" text="공지사항 입력" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
         <Combo id="com_list" taborder="5" left="550" top="101" width="200" height="50" text="" value="" index="-1" innerdataset="ds_deptcode" codecolumn="code" datacolumn="name"/>
         <Static id="Static02" taborder="6" text="분류" left="450" top="101" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" background="lightgray" textAlign="center"/>
         <Static id="Static00_02" taborder="7" text="제목" left="150" top="101" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" textAlign="center" background="lightgray"/>
@@ -71,7 +71,13 @@ this.fn_callback = function(id,ErrorCode,ErrorMsg){
 	trace(id);
 	trace(ErrorCode);
 	trace(ErrorMsg);
-	alert("ErrorCode : "+ErrorCode);
+	if(ErrorCode == 0){
+	alert("성공");
+	this.fn_FileClear();
+	this.edt_title.set_value("");
+	this.com_list.set_value("");
+	this.text_contents.set_value("");
+	}
 };
 this.renotice_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -219,11 +225,6 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		alert("학과구분 입력해주세요");
 		return;
 	}
-	
-	//파일전송
-	if(this.FileUpTransfer00.filelist.length > 0){
-	this.FileUpTransfer00.upload("/uploadNoticeFile.notice"); //file up url
-	}
 	if(list == 'A'){
 	trace(dept);
 	this.ds_Notice.setColumn(nRow,"deptcode",list);
@@ -235,6 +236,12 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}else if(list == 'D'){
 	this.ds_Notice.setColumn(nRow,"deptcode",list);
 	}
+	
+	//파일전송
+	if(this.FileUpTransfer00.filelist.length > 0){
+	this.FileUpTransfer00.upload("/uploadNoticeFile.notice"); //file up url
+	}
+	
 	trace(title);
 	trace(contents);
 	this.ds_Notice.setColumn(nRow,"title",title);

@@ -262,9 +262,7 @@ this.Tab00_Tabpage1_btn_save_onclick = function(obj:nexacro.Button,e:nexacro.Cli
 	var contents = this.Tab00.Tabpage1.form.text_contents.value;
 
 	var nRow = this.ds_Notice.addRow();
-	var rtitle = su
 	trace(title);
-	trace(writedate)
 	trace(contents);
 
 	var list = this.Tab00.Tabpage1.form.com_list.value;
