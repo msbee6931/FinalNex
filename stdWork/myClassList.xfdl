@@ -10,7 +10,7 @@
         <Div id="div_line" taborder="4" left="30" top="10" cssclass="div_line" text="" right="30" bottom="30">
           <Layouts>
             <Layout>
-              <Div id="div_com" taborder="0" text="Div00" left="10" top="20" cssclass="div_line" right="613" bottom="409">
+              <Div id="div_com" taborder="0" text="Div00" left="10" top="20" cssclass="div_line" width="395" height="49">
                 <Layouts>
                   <Layout>
                     <Combo id="co_year" taborder="0" text="" left="10" top="10" width="120" height="25" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
@@ -53,7 +53,7 @@
                   </Layout>
                 </Layouts>
               </Div>
-              <Grid id="Grid00" taborder="1" left="10" top="89" binddataset="ds_class" autofittype="col" oncellclick="Grid00_oncellclick" cssclass="grd_default" right="8" bottom="19">
+              <Grid id="gr_classList" taborder="1" left="10" top="89" binddataset="ds_class" autofittype="col" oncellclick="gr_classList_oncellclick" cssclass="grd_default" right="8" bottom="19">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -126,13 +126,13 @@ this.myClassList_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	var sCode = this.objApp.gds_students.getColumn(0,"s_seq"); // 학번
 	var objDate= new Date();
 	if(objDate.getMonth()+1 && objDate.getMonth()+1 < 8){
-		this.co_year.set_text(objDate.getFullYear()+"년");
-		this.co_semester.set_text("1학기");
+		this.div_line.form.div_com.form.co_year.set_value(objDate.getFullYear())
+		this.div_line.form.div_com.form.co_semester.set_value(1)
 		var startTime = objDate.getFullYear()+"0101";
 		var endTime = objDate.getFullYear()+"0731";
 	}else{
-		this.co_year.set_text(objDate.getFullYear()+"년");
-		this.co_semester.set_text("2학기");
+		this.div_line.form.div_com.form.co_year.set_value(objDate.getFullYear())
+		this.div_line.form.div_com.form.co_semester.set_value(2)
 		var startTime = objDate.getFullYear()+"0801";
 		var endTime = objDate.getFullYear()+"1231";
 	}
@@ -142,11 +142,11 @@ this.myClassList_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		,""
 		,"ds_class=out_ds" 
 		,"sCode="+sCode + " startTime="+startTime+" endTime="+endTime
-		,"fn_callback_myClass" 
+		,"fn_callback" 
 	);
 };
 
-this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.gr_classList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	if(e.col == 2){
 		var classSeq = this.ds_class.getColumn(e.row,"classSeq");
@@ -163,9 +163,9 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var sCode = this.objApp.gds_students.getColumn(0,"s_seq"); //학번
-	var year = this.co_year.text;
-	year = year.substring(0,year.length-1)
-	if(this.co_semester.text == "1학기"){
+	var year = this.div_line.form.div_com.form.co_year.value;
+	var semester = this.div_line.form.div_com.form.co_semester.value;
+	if(semester ==  1){
 		var startTime = year+"0101";
 		var endTime = year+"0731";
 	}else{
@@ -181,6 +181,7 @@ this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		,"fn_callback" 
 	);
 };
+
 
 ]]></Script>
   </Form>
