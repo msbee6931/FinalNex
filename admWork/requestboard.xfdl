@@ -7,10 +7,10 @@
         <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="2" left="1050" top="0" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Div id="Div00" taborder="4" text="Div00" left="49" top="35" width="1021" height="451" border="1px solid #c1c1c1">
+        <Div id="Div00" taborder="4" text="Div00" left="30" top="39" width="1021" height="451" cssclass="div_line">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="24" top="45" width="376" height="359" binddataset="reply" autofittype="col" oncellposchanged="Div00_Grid00_oncellposchanged">
+              <Grid id="Grid00" taborder="0" left="24" top="45" width="376" height="359" binddataset="reply" autofittype="col" oncellposchanged="Div00_Grid00_oncellposchanged" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -33,40 +33,42 @@
                     </Band>
                     <Band id="body">
                       <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
-                      <Cell col="1" text="bind:writer"/>
-                      <Cell col="2" text="bind:title"/>
-                      <Cell col="3" text="bind:write_date"/>
-                      <Cell col="4" text="bind:view_count"/>
+                      <Cell col="1" text="bind:writer" textAlign="center" maskeditformat="#########" displaytype="text"/>
+                      <Cell col="2" text="bind:title" textAlign="center"/>
+                      <Cell col="3" text="bind:write_date" textAlign="center"/>
+                      <Cell col="4" text="bind:view_count" textAlign="center"/>
                     </Band>
                   </Format>
                 </Formats>
               </Grid>
-              <Div id="Div00" taborder="1" text="" left="414" top="13" width="568" height="221" border="1px solid black">
+              <Div id="Div00" taborder="1" text="" left="414" top="13" width="568" height="221" cssclass="div_line">
                 <Layouts>
                   <Layout>
-                    <Static id="Static00" taborder="1" text="Contents" left="15" top="7" width="542" height="28" border="1px solid black" textAlign="center" font="bold 14px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;"/>
+                    <Static id="Static00" taborder="1" text="Contents" left="15" top="7" width="450" height="28" textAlign="center" font="bold 14px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" cssclass="sta_default"/>
                     <WebBrowser id="WebBrowser00" taborder="1" left="16" top="44" width="541" height="167"/>
+                    <Button id="enlargement" taborder="2" text="확대" left="476" top="6" width="80" height="28" onclick="Div00_Div00_enlargement_onclick" cssclass="btn_default"/>
                   </Layout>
                 </Layouts>
               </Div>
-              <Div id="Div01" taborder="2" text="Div01" left="414" top="245" width="570" height="159" border="1px solid black">
+              <Div id="Div01" taborder="2" text="Div01" left="414" top="245" width="570" height="159" cssclass="div_line">
                 <Layouts>
                   <Layout>
-                    <Static id="Static00" taborder="0" text="Reply" left="12" top="5" width="540" height="27" border="1px solid black" textAlign="center" font="bold 16px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;"/>
-                    <Edit id="Edit00" taborder="1" left="13" top="44" width="542" height="107"/>
+                    <Static id="Static00" taborder="0" text="Reply" left="12" top="5" width="540" height="27" textAlign="center" font="bold 16px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" cssclass="sta_default"/>
+                    <TextArea id="TextArea00" taborder="1" left="12" top="39" width="541" height="106" cssclass="txt_default"/>
                   </Layout>
                 </Layouts>
               </Div>
               <Static id="Static00" taborder="3" text="RequestBoard" left="32" top="8" width="348" height="33" font="bold italic 16px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;"/>
-              <Button id="Button00" taborder="4" text="전송" left="874" top="416" width="112" height="29" onclick="Div00_Button00_onclick"/>
-              <Button id="del_btn" taborder="5" text="삭제" left="303" top="408" width="97" height="32" onclick="Div00_del_btn_onclick"/>
-              <Combo id="Combo00" taborder="6" text="Combo00" left="162" top="16" width="66" height="24" innerdataset="search" codecolumn="code" datacolumn="data"/>
-              <Edit id="Edit00" taborder="7" left="240" top="16" width="74" height="24" onchanged="Div00_Edit00_onchanged"/>
-              <Button id="Button01" taborder="8" text="검색" left="328" top="15" width="44" height="25" onclick="Div00_Button01_onclick"/>
+              <Button id="Button00" taborder="4" text="전송" left="874" top="416" width="112" height="29" onclick="Div00_Button00_onclick" cssclass="btn_default"/>
+              <Button id="del_btn" taborder="5" text="삭제" left="303" top="408" width="97" height="32" onclick="Div00_del_btn_onclick" cssclass="btn_del"/>
+              <Combo id="Combo00" taborder="6" text="Combo00" left="162" top="16" width="66" height="24" innerdataset="search" codecolumn="code" datacolumn="data" cssclass="cmb_default"/>
+              <Edit id="Edit00" taborder="7" left="240" top="16" width="74" height="24" onchanged="Div00_Edit00_onchanged" cssclass="edt_default"/>
+              <Edit id="Edit01" taborder="8" left="220" top="407" width="41" height="26" visible="false"/>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static01" taborder="5" text="건의 게시판 관리" left="30" top="9" width="200" height="30" background="#c1c1c1"/>
+        <Static id="Static01" taborder="5" text="건의 게시판 관리" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
+        <Button id="Button00" taborder="6" left="358" top="56" height="25" onclick="Div00_Button00_onclick" cssclass="btn_search" width="25"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -99,10 +101,10 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Bind>
-      <BindItem id="item0" compid="Div00.form.Div01.form.Edit00" propid="value" datasetid="reply" columnid="reply"/>
-    </Bind>
-    <Script type="xscript5.1"><![CDATA[this.fn_callback = function(id,ErrorCode,ErrorMsg){
+    <Script type="xscript5.1"><![CDATA[	this.objApp = nexacro.getApplication();
+	var login =this.objApp.gds_admin.getColumn(0,'a_seq');
+
+this.fn_callback = function(id,ErrorCode,ErrorMsg){
 	trace(id);
 	trace(ErrorMsg);
 	trace(ErrorCode);
@@ -110,14 +112,17 @@
 
 this.Div00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	var reply = nexacro.wrapQuote(this.Div00.form.Div01.form.TextArea00.value);
+
 	 this.transaction(
             "ReplyUpd"
             ,"/ReplyUpd.nex"
             ,"in_ds=reply:U"
             ,"" 
-            ,""
+            ,"reply="+reply
             ,"fn_callback" 
          )
+	alert("등록되었습니다");
 };
 
 this.rest_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
@@ -166,11 +171,31 @@ this.Div00_Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 this.Div00_Grid00_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEventInfo)
 {
 	let seq = this.reply.getColumnNF(e.row,"seq");
-
 	
-	this.Div00.form.Div00.form.WebBrowser00.set_url("http://localhost/request/view?seq="+seq);
+	this.Div00.form.Div00.form.WebBrowser00.set_url("http://15.165.196.249/request/viewp?seq="+seq+"&login="+login);
 
 };
+
+this.Div00_Div00_enlargement_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+
+	var objCF = new ChildFrame();
+	objCF.init("requestEnlargement_pop",100,100,1200,600);
+	objCF.set_titletext("내용 확대");
+	objCF.set_formurl("admWork::requestEnlargement_pop.xfdl");
+	 var objParam = {param1:this.Div00.form.Edit01.value,
+					 param2:login}
+	objCF.showModal(
+		this.getOwnerFrame(),
+		objParam,
+		this,
+		""
+	);
+};
 ]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.Div01.form.TextArea00" propid="value" datasetid="reply" columnid="reply"/>
+      <BindItem id="item1" compid="Div00.form.Edit01" propid="value" datasetid="reply" columnid="seq"/>
+    </Bind>
   </Form>
 </FDL>

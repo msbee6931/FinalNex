@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="insertFaculty" width="300" height="370" titletext="New Form">
+    <Layouts>
+      <Layout height="370" mobileorientation="landscape" width="300">
+        <Static id="Static00" taborder="0" text="교직원번호" top="20" width="75" height="30" left="10"/>
+        <Static id="Static00_00" taborder="1" text="이름" top="55" width="50" height="30" left="10"/>
+        <Static id="Static00_01" taborder="2" text="주민번호" top="90" width="50" height="30" left="10"/>
+        <Static id="Static00_02" taborder="3" text="이메일" top="125" width="50" height="30" left="10"/>
+        <Static id="Static00_03" taborder="4" text="전화번호" top="160" width="50" height="30" left="10"/>
+        <Static id="Static00_04" taborder="5" text="주소" top="195" width="50" height="30" left="10"/>
+        <Static id="Static00_06" taborder="6" text="초기비밀번호" top="230" width="75" height="30" left="10"/>
+        <Edit id="edt_name" taborder="7" top="55" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Edit id="edt_email" taborder="8" top="125" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Edit id="edt_contact" taborder="9" top="160" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Edit id="edt_address" taborder="10" top="195" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Edit id="edt_pw" taborder="11" top="230" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Button id="btn_insert" taborder="12" text="입력" top="340" width="100" height="25" left="55" onclick="btn_insert_onclick" cssclass="btn_default"/>
+        <Button id="btn_cancel" taborder="13" text="취소" top="340" width="100" height="25" left="160" onclick="btn_cancel_onclick" cssclass="btn_default"/>
+        <MaskEdit id="mas_secNumber" taborder="14" left="85" top="90" width="175" height="30" format="###### - #{######}" type="string" cssclass="med_default"/>
+        <Static id="Static00_06_00" taborder="15" text="학과분류" top="265" width="75" height="30" left="10"/>
+        <Combo id="com_colCode" taborder="16" left="85" top="265" width="175" height="30" innerdataset="colCode_Copy" codecolumn="code" datacolumn="name" cssclass="cmb_default"/>
+        <Static id="Static00_06_00_00" taborder="17" text="학과" top="300" width="75" height="30" left="10"/>
+        <Combo id="com_deptCode" taborder="18" left="85" top="300" width="175" height="30" innerdataset="deptCode_copy" codecolumn="code" datacolumn="name" cssclass="cmb_default"/>
+        <MaskEdit id="mas_f_seq" taborder="19" left="85" top="20" width="175" height="30" type="string" format="#########" cssclass="med_default"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_faculty_copy">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="f_seq" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="secNumber" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="contact" type="STRING" size="256"/>
+          <Column id="address" type="STRING" size="256"/>
+          <Column id="pw" type="STRING" size="256"/>
+          <Column id="colCode" type="STRING" size="256"/>
+          <Column id="deptCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="deptCode_copy">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">11</Col>
+            <Col id="name">국어국문학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">12</Col>
+            <Col id="name">영어영문학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">13</Col>
+            <Col id="name">국사학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">14</Col>
+            <Col id="name">철학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">21</Col>
+            <Col id="name">사회복지학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">22</Col>
+            <Col id="name">경제학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">23</Col>
+            <Col id="name">사회학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">24</Col>
+            <Col id="name">심리학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">31</Col>
+            <Col id="name">통계학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">32</Col>
+            <Col id="name">화학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">33</Col>
+            <Col id="name">생명과학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">41</Col>
+            <Col id="name">간호학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">51</Col>
+            <Col id="name">전기공학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">52</Col>
+            <Col id="name">컴퓨터공학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">53</Col>
+            <Col id="name">화학생물공학부</Col>
+          </Row>
+          <Row>
+            <Col id="code">54</Col>
+            <Col id="name">건축학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">55</Col>
+            <Col id="name">산업공학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">61</Col>
+            <Col id="name">교육학과</Col>
+          </Row>
+          <Row>
+            <Col id="code">62</Col>
+            <Col id="name">국어교육과</Col>
+          </Row>
+          <Row>
+            <Col id="code">63</Col>
+            <Col id="name">영어교육과</Col>
+          </Row>
+          <Row>
+            <Col id="code">64</Col>
+            <Col id="name">수학교육과</Col>
+          </Row>
+          <Row>
+            <Col id="code">65</Col>
+            <Col id="name">체육교육과</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="colCode_Copy">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">10</Col>
+            <Col id="name">인문대학</Col>
+          </Row>
+          <Row>
+            <Col id="code">20</Col>
+            <Col id="name">사회과학대학</Col>
+          </Row>
+          <Row>
+            <Col id="code">30</Col>
+            <Col id="name">자연과학대학</Col>
+          </Row>
+          <Row>
+            <Col id="code">40</Col>
+            <Col id="name">간호대학</Col>
+          </Row>
+          <Row>
+            <Col id="code">50</Col>
+            <Col id="name">공과대학</Col>
+          </Row>
+          <Row>
+            <Col id="code">60</Col>
+            <Col id="name">사범대학</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.fn_callback = function(id,ErrorCode,ErrorMsg){	//콜백함수
+	trace(id);
+	trace(ErrorMsg);
+	trace(ErrorCode);
+}
+this.btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var f_seq = this.mas_f_seq.value;
+	var name = this.edt_name.value;
+	var secNumber = this.mas_secNumber.value;
+	var email = this.edt_email.value;
+	var contact = this.edt_contact.value;
+	var address = this.edt_address.value;
+	var pw = this.edt_pw.value;
+	var colCode = this.com_colCode.value;
+	var deptCode = this.com_deptCode.value;
+	if(f_seq == null || f_seq == "undefined"){
+		this.alert("학번 입력해주세요");
+		return;
+	}else if(name == null || name == "undefined"){
+		this.alert("이름 입력해주세요");
+		return;
+	}else if(secNumber == null || secNumber == "undefined"){
+		this.alert("주민번호 입력해주세요.");
+		return;
+	}else if(email == null || email == "undefined"){
+		this.alert("이메일 입력해주세요");
+		return;
+	}else if(contact == null || contact == "undefined"){
+		this.alert("이메일 입력해주세요");
+		return;
+	}else if(address == null || address == "undefined"){
+		this.alert("주소 입력해주세요");
+		return;
+	}else if(pw == null || pw == "undefined"){
+		this.alert("비밀번호 입력해주세요");
+		return;
+	}else if(colCode == null || colCode == "undefined"){
+		this.alert("학과분류 입력해주세요");
+		return;
+	}else if(deptCode == null || deptCode == "undefined"){
+		this.alert("학과 입력해주세요");
+		return;
+	}
+
+	
+	var addRow = this.ds_faculty_copy.addRow();
+	this.ds_faculty_copy.setColumn(addRow,"f_seq",f_seq);
+	this.ds_faculty_copy.setColumn(addRow,"name",name);
+
+	this.ds_faculty_copy.setColumn(addRow,"secNumber",secNumber);
+	this.ds_faculty_copy.setColumn(addRow,"email",email);
+	this.ds_faculty_copy.setColumn(addRow,"contact",contact);
+	this.ds_faculty_copy.setColumn(addRow,"address",address);
+	this.ds_faculty_copy.setColumn(addRow,"pw",pw);
+	this.ds_faculty_copy.setColumn(addRow,"colCode",colCode);
+	this.ds_faculty_copy.setColumn(addRow,"deptCode",deptCode);
+
+	
+	this.transaction(
+
+				"ds_insertFac" //1. strSvcID
+				,"/insertFaculty.nex" //2. strURL
+				,"in_ds=ds_faculty_copy:U" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
+				,"" //4.strOutDatasets -select Fds=Sds
+				,"" //5.strArgument text값
+				,"fn_callback" //6.strCallbackFunc
+			);
+			this.close("");
+};
+
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close("");
+};]]></Script>
+  </Form>
+</FDL>

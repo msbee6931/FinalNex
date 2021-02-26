@@ -1,82 +1,98 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="myClassList" width="1080" height="570" titletext="New Form" onload="myClassList_onload">
+  <Form id="myClassList" width="1080" height="520" titletext="New Form" onload="myClassList_onload">
     <Layouts>
-      <Layout height="570" mobileorientation="landscape" width="1080">
-        <Grid id="Grid00" taborder="0" left="40" top="60" width="970" height="440" binddataset="ds_class" autofittype="col" oncellclick="Grid00_oncellclick">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="80"/>
-                <Column size="104"/>
-                <Column size="233"/>
-                <Column size="90"/>
-                <Column size="151"/>
-              </Columns>
-              <Rows>
-                <Row size="24" band="head"/>
-                <Row size="24"/>
-                <Row size="24" band="summ"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="이수구분"/>
-                <Cell col="1" text="과목코드"/>
-                <Cell col="2" text="과목명"/>
-                <Cell col="3" text="학점"/>
-                <Cell col="4" text="담당교수"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
-                <Cell col="1" text="bind:classSeq" displaytype="mask" maskeditformat="########" textAlign="center"/>
-                <Cell col="2" text="bind:className" textAlign="center" cursor="pointer" textDecoration="underline"/>
-                <Cell col="3" text="bind:classPoint" textAlign="center"/>
-                <Cell col="4" text="bind:proName" textAlign="center"/>
-              </Band>
-              <Band id="summary">
-                <Cell colspan="3" text="신청학점"/>
-                <Cell col="3" text="expr:dataset.getSum('parseInt(classPoint.replace(&quot;학점&quot;,&quot;&quot;))')+&quot;학점&quot;"/>
-                <Cell col="4"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
-        <Combo id="co_year" taborder="1" text="" left="40" top="16" width="120" height="28" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
-          <Dataset id="innerdataset">
-            <ColumnInfo>
-              <Column id="codecolumn" size="256"/>
-              <Column id="datacolumn" size="256"/>
-            </ColumnInfo>
-            <Rows>
-              <Row>
-                <Col id="codecolumn">2020</Col>
-                <Col id="datacolumn">2020년</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2021</Col>
-                <Col id="datacolumn">2021년</Col>
-              </Row>
-            </Rows>
-          </Dataset>
-        </Combo>
-        <Combo id="co_semester" taborder="2" text="" left="170" top="16" width="120" height="28" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
-          <Dataset id="innerdataset">
-            <ColumnInfo>
-              <Column id="codecolumn" size="256"/>
-              <Column id="datacolumn" size="256"/>
-            </ColumnInfo>
-            <Rows>
-              <Row>
-                <Col id="codecolumn">1</Col>
-                <Col id="datacolumn">1학기</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2</Col>
-                <Col id="datacolumn">2학기</Col>
-              </Row>
-            </Rows>
-          </Dataset>
-        </Combo>
-        <Button id="btnSearch" taborder="3" text="검색" left="310" top="14" width="90" height="33" onclick="btnSearch_onclick"/>
+      <Layout height="520" mobileorientation="landscape" width="1080">
+        <Static id="Static00" taborder="0" left="0" top="0" visible="false" background="RGBA(236,135,135,0.71)" width="29" bottom="0"/>
+        <Static id="Static00_01" taborder="1" left="80" top="0" visible="false" background="RGBA(236,135,135,0.71)" height="10" width="800"/>
+        <Static id="Static00_00" taborder="2" left="1051" top="0" visible="false" background="RGBA(236,135,135,0.71)" right="0" bottom="0"/>
+        <Static id="Static00_01_00" taborder="3" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="0"/>
+        <Div id="div_line" taborder="4" left="30" top="10" cssclass="div_line" text="" right="30" bottom="30">
+          <Layouts>
+            <Layout>
+              <Div id="div_com" taborder="0" text="Div00" left="10" top="20" cssclass="div_line" right="613" bottom="409">
+                <Layouts>
+                  <Layout>
+                    <Combo id="co_year" taborder="0" text="" left="10" top="10" width="120" height="25" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
+                      <Dataset id="innerdataset">
+                        <ColumnInfo>
+                          <Column id="codecolumn" size="256"/>
+                          <Column id="datacolumn" size="256"/>
+                        </ColumnInfo>
+                        <Rows>
+                          <Row>
+                            <Col id="codecolumn">2020</Col>
+                            <Col id="datacolumn">2020년</Col>
+                          </Row>
+                          <Row>
+                            <Col id="codecolumn">2021</Col>
+                            <Col id="datacolumn">2021년</Col>
+                          </Row>
+                        </Rows>
+                      </Dataset>
+                    </Combo>
+                    <Combo id="co_semester" taborder="1" text="" left="140" top="10" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
+                      <Dataset id="innerdataset">
+                        <ColumnInfo>
+                          <Column id="codecolumn" size="256"/>
+                          <Column id="datacolumn" size="256"/>
+                        </ColumnInfo>
+                        <Rows>
+                          <Row>
+                            <Col id="codecolumn">1</Col>
+                            <Col id="datacolumn">1학기</Col>
+                          </Row>
+                          <Row>
+                            <Col id="codecolumn">2</Col>
+                            <Col id="datacolumn">2학기</Col>
+                          </Row>
+                        </Rows>
+                      </Dataset>
+                    </Combo>
+                    <Button id="btnSearch" taborder="2" text="조회" left="280" top="10" width="100" height="25" onclick="btnSearch_onclick" cssclass="btn_search"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Grid id="Grid00" taborder="1" left="10" top="89" binddataset="ds_class" autofittype="col" oncellclick="Grid00_oncellclick" cssclass="grd_default" right="8" bottom="19">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="104"/>
+                      <Column size="233"/>
+                      <Column size="90"/>
+                      <Column size="151"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                      <Row size="24" band="summ"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="이수구분"/>
+                      <Cell col="1" text="과목코드"/>
+                      <Cell col="2" text="과목명"/>
+                      <Cell col="3" text="학점"/>
+                      <Cell col="4" text="담당교수"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
+                      <Cell col="1" text="bind:classSeq" displaytype="text" maskeditformat="########" textAlign="center"/>
+                      <Cell col="2" text="bind:className" textAlign="center" cursor="pointer" textDecoration="underline"/>
+                      <Cell col="3" text="bind:classPoint" textAlign="center"/>
+                      <Cell col="4" text="bind:proName" textAlign="center"/>
+                    </Band>
+                    <Band id="summary">
+                      <Cell colspan="3" text="신청학점"/>
+                      <Cell col="3" text="expr:dataset.getSum('parseInt(classPoint.replace(&quot;학점&quot;,&quot;&quot;))')+&quot;학점&quot;"/>
+                      <Cell col="4"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
       </Layout>
     </Layouts>
     <Objects>

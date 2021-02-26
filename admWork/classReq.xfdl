@@ -3,7 +3,7 @@
   <Form id="classReq" width="1080" height="520" titletext="New Form" onload="classReq_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
-        <Grid id="gr_classList" taborder="0" left="30" top="49" width="1020" height="401" autofittype="col" binddataset="ds_class" onheadclick="gr_classList_onheadclick" oncellclick="gr_classList_oncellclick" onexpanddown="gr_classList_onexpanddown">
+        <Grid id="gr_classList" taborder="0" left="30" top="49" width="1020" height="401" autofittype="col" binddataset="ds_class" onheadclick="gr_classList_onheadclick" oncellclick="gr_classList_oncellclick" onexpanddown="gr_classList_onexpanddown" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>
@@ -42,7 +42,7 @@
                 <Cell text="bind:chk" edittype="checkbox" displaytype="checkboxcontrol" textAlign="center"/>
                 <Cell col="1" text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
                 <Cell col="2" text="bind:className" tooltiptext="상세보기" textDecoration="underline" cursor="pointer" textAlign="center" wordWrap="english"/>
-                <Cell col="3" text="bind:classSeq" textAlign="center" displaytype="mask" maskeditmaskchar="########"/>
+                <Cell col="3" text="bind:classSeq" textAlign="center" displaytype="text" maskeditmaskchar="########"/>
                 <Cell col="4" text="bind:classPoint" textAlign="center"/>
                 <Cell col="5" text="bind:proName" textAlign="center"/>
                 <Cell col="6" text="bind:dept" textAlign="center" displaytype="combotext" combodataset="deptCode" combocodecol="code" combodatacol="name"/>
@@ -55,13 +55,14 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_ok" taborder="1" text="승인" left="830" top="460" width="100" height="30" onclick="btn_ok_onclick" cssclass="btn_default"/>
-        <Button id="btn_reject" taborder="2" text="거절" left="950" top="460" width="100" height="30" onclick="btn_reject_onclick" cssclass="btn_can"/>
+        <Button id="btn_ok" taborder="1" text="승인" left="830" top="460" width="100" height="25" onclick="btn_ok_onclick" cssclass="btn_default"/>
+        <Button id="btn_reject" taborder="2" text="거절" left="950" top="460" width="100" height="25" onclick="btn_reject_onclick" cssclass="btn_can"/>
         <Static id="Static00_01_00" taborder="3" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="0"/>
         <Static id="Static00" taborder="4" left="0" top="0" visible="false" background="RGBA(236,135,135,0.71)" width="29" bottom="0"/>
         <Static id="Static00_01" taborder="5" left="80" top="0" visible="false" background="RGBA(236,135,135,0.71)" height="10" width="800"/>
         <Static id="Static01" taborder="6" text="개설강의 요청관리" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
         <Static id="Static00_00" taborder="7" left="1051" top="0" visible="false" background="RGBA(236,135,135,0.71)" right="0" bottom="0"/>
+        <Button id="btnClassRoom" taborder="8" text="강의실 확인" left="940" top="20" width="100" height="25" onclick="btnClassRoom_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -343,6 +344,17 @@ this.gr_classList_onexpanddown = function(obj:nexacro.Grid,e:nexacro.GridMouseEv
 };
 
 
+
+this.btnClassRoom_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+		let x = this.width/2-400; 
+		let y = this.height/2-225;
+		let objCF = new ChildFrame();
+		objCF.init("popClassRoom",x,y,800,450,0,0,"admWork::classRoomList.xfdl");
+		objCF.set_showtitlebar(false);
+		objCF.showModal(this.getOwnerFrame(),{},this,"fn_pop_callback");
+
+};
 ]]></Script>
   </Form>
 </FDL>

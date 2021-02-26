@@ -7,15 +7,15 @@
         <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="2" left="1050" top="0" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Div id="Div00" taborder="4" text="Div00" left="30" top="39" width="1021" height="451" border="1px solid #c1c1c1">
+        <Div id="Div00" taborder="4" text="Div00" left="30" top="39" cssclass="div_line" right="29" bottom="30">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="32" top="68" width="530" height="350" binddataset="rlist_ds" autofittype="col" oncellclick="Div00_Grid00_oncellclick">
+              <Grid id="Grid00" taborder="0" left="9" top="61" binddataset="rlist_ds" autofittype="col" oncellclick="Div00_Grid00_oncellclick" cssclass="grd_default" right="450" bottom="31">
                 <Formats>
                   <Format id="default">
                     <Columns>
-                      <Column size="384"/>
-                      <Column size="80"/>
+                      <Column size="375"/>
+                      <Column size="127"/>
                     </Columns>
                     <Rows>
                       <Row size="24" band="head"/>
@@ -23,50 +23,51 @@
                     </Rows>
                     <Band id="head">
                       <Cell text="제목"/>
-                      <Cell col="1" text="작성날짜"/>
+                      <Cell col="1" text="작성날짜" displaytype="normal"/>
                     </Band>
                     <Band id="body">
                       <Cell text="bind:title" textAlign="center"/>
-                      <Cell col="1" text="bind:writeDate" displaytype="date" textAlign="center"/>
+                      <Cell col="1" text="bind:writeDate" textAlign="center" displaytype="date"/>
                     </Band>
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="btn_insert" taborder="1" text="작성하기" left="886" top="26" width="100" height="25" onclick="Div00_btn_insert_onclick"/>
-              <Static id="Static00" taborder="2" text="" left="577" top="71" width="422" height="346" border="1px solid #c1c1c1"/>
+              <Button id="btn_insert" taborder="1" text="작성하기" left="Grid00:-100" top="26" width="100" height="25" onclick="Div00_btn_insert_onclick" cssclass="btn_insert"/>
+              <Div id="Div00" taborder="2" text="Div00" top="60" width="425" cssclass="div_line" right="15" bottom="34">
+                <Layouts>
+                  <Layout>
+                    <Static id="sta_contetns" taborder="0" text="" left="15" top="123" width="394" height="197" cssclass="sta_line"/>
+                    <Edit id="edt_address" taborder="1" left="72" top="98" width="340" height="25" cssclass="edt_default" readonly="true"/>
+                    <Static id="Static00_01_00_00" taborder="2" text="주 소" left="15" top="98" width="60" height="25" cssclass="sta_default"/>
+                    <Static id="Static00_00_01" taborder="3" text="연락처" left="15" top="74" width="60" height="25" cssclass="sta_default"/>
+                    <Edit id="edt_contact" taborder="4" left="74" top="74" width="140" height="25" cssclass="edt_default" readonly="true"/>
+                    <Edit id="edt_name" taborder="6" left="272" top="74" width="140" height="25" cssclass="edt_default" readonly="true"/>
+                    <Edit id="edt_grade" taborder="7" left="272" top="50" width="140" height="25" cssclass="edt_default" readonly="true"/>
+                    <Static id="Static00_00_00_00" taborder="9" text="생년월일" left="15" top="50" width="60" height="25" cssclass="sta_default"/>
+                    <Static id="Static00_02" taborder="10" text="학 과" left="15" top="26" width="60" height="25" cssclass="sta_default"/>
+                    <Combo id="cmb_dept" taborder="11" text="Combo00" left="74" top="26" width="140" height="25" readonly="true" innerdataset="deptCode" codecolumn="code" datacolumn="name" cssclass="cmb_default"/>
+                    <Edit id="edt_seq" taborder="13" left="272" top="26" width="140" height="25" cssclass="edt_default" readonly="true"/>
+                    <MaskEdit id="med_birth" taborder="14" left="74" top="51" width="140" height="25" type="string" format="@@@@@@" readonly="true" cssclass="med_default"/>
+                    <Static id="Static00_00_00_00_00" taborder="5" text="성 명" left="213" top="74" width="60" height="25" cssclass="sta_default"/>
+                    <Static id="Static00_01_01" taborder="8" text="학 년" left="213" top="50" width="60" height="25" cssclass="sta_default"/>
+                    <Static id="Static00_00_00" taborder="12" text="학 번" left="213" top="26" width="60" height="25" cssclass="sta_default"/>
+                  </Layout>
+                </Layouts>
+              </Div>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static01" taborder="5" text=" 복학 신청서 관리" left="30" top="9" width="200" height="30" background="#c1c1c1"/>
-        <Edit id="edt_title01_00" taborder="9" left="684" top="236" width="326" height="37"/>
-        <Edit id="edt_title01" taborder="10" left="862" top="164" width="150" height="37"/>
-        <Combo id="Combo00" taborder="11" text="Combo00" left="684" top="128" width="150" height="36" readonly="true" innerdataset="deptCode" codecolumn="code" datacolumn="name"/>
-        <Edit id="edt_title00_01" taborder="14" left="684" top="200" width="150" height="37"/>
-        <Edit id="edt_title00" taborder="15" left="862" top="128" width="150" height="37"/>
-        <Edit id="edt_title00_00_00" taborder="18" left="862" top="200" width="150" height="37"/>
-        <Edit id="edt_title00_00" taborder="19" left="684" top="164" width="150" height="37"/>
-        <Static id="Static02" taborder="20" text="" left="625" top="272" width="385" height="150" border="1px solid #c1c1c1"/>
-        <Static id="Static00_02" taborder="6" text="학 과" left="625" top="128" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Static id="Static00_00_01" taborder="13" text="연락처" left="625" top="200" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Static id="Static00_00_00_00" taborder="16" text="생년월일" left="625" top="164" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Static id="Static00_01_01" taborder="7" text="학 년" left="803" top="164" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Static id="Static00_00_00" taborder="12" text="학 번" left="803" top="128" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Static id="Static00_00_00_00_00" taborder="17" text="성 명" left="803" top="200" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
-        <Static id="Static00_01_00_00" taborder="8" text="주 소" left="625" top="236" width="60" height="37" background="#c1c1c1" border="1px solid #c1c1c1"/>
+        <Static id="Static01" taborder="5" text=" 복학 신청서 관리" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
       </Layout>
     </Layouts>
     <Bind>
-      <BindItem id="item1" compid="edt_title01_00" propid="value" datasetid="students_ds" columnid="adress"/>
-      <BindItem id="item2" compid="edt_title01" propid="value" datasetid="students_ds" columnid="grade"/>
-      <BindItem id="item3" compid="Div00.form.edt_title01_00" propid="value" datasetid="students_ds" columnid="adress"/>
-      <BindItem id="item4" compid="Combo00" propid="value" datasetid="students_ds" columnid="deptCode"/>
-      <BindItem id="item5" compid="edt_title00_01" propid="value" datasetid="students_ds" columnid="contact"/>
-      <BindItem id="item6" compid="edt_title00" propid="value" datasetid="students_ds" columnid="s_seq"/>
-      <BindItem id="item7" compid="Div00.form.edt_title00_00" propid="value" datasetid="students_ds" columnid="birth"/>
-      <BindItem id="item8" compid="Div00.form.edt_title00_01" propid="value" datasetid="students_ds" columnid="contact"/>
-      <BindItem id="item9" compid="Div00.form.edt_title00_00_00" propid="value" datasetid="students_ds" columnid="name"/>
-      <BindItem id="item10" compid="edt_title00_00_00" propid="value" datasetid="students_ds" columnid="name"/>
-      <BindItem id="item11" compid="edt_title00_00" propid="value" datasetid="students_ds" columnid="birth"/>
+      <BindItem id="item0" compid="Div00.form.Div00.form.edt_seq" propid="value" datasetid="students_ds" columnid="s_seq"/>
+      <BindItem id="item1" compid="Div00.form.Div00.form.med_birth" propid="value" datasetid="students_ds" columnid="secNumber"/>
+      <BindItem id="item2" compid="Div00.form.Div00.form.edt_grade" propid="value" datasetid="students_ds" columnid="colGrade"/>
+      <BindItem id="item3" compid="Div00.form.Div00.form.edt_contact" propid="value" datasetid="students_ds" columnid="contact"/>
+      <BindItem id="item4" compid="Div00.form.Div00.form.edt_name" propid="value" datasetid="students_ds" columnid="name"/>
+      <BindItem id="item5" compid="Div00.form.Div00.form.edt_address" propid="value" datasetid="students_ds" columnid="address"/>
+      <BindItem id="item6" compid="Div00.form.Div00.form.cmb_dept" propid="value" datasetid="students_ds" columnid="deptCode"/>
     </Bind>
     <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
 this.std_code=this.objApp.gds_students.getColumn(0,'s_seq');
@@ -90,14 +91,7 @@ this.Div00_btn_insert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 
 this.fn_callback_stdRest = function()
 {
-	this.transaction(
-		"selectOneRest",//id
-		"/absence/selectOneRest.absence",//url (절대경로)
-		"",//in_ds:U
-		"rlist_ds=out_ds",//()_out_ds
-		"std_code="+this.std_code,//argument
-		"fn_callback"
-		)
+	this.reload();
 }
 this.stdRest_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -109,6 +103,7 @@ this.stdRest_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		"std_code="+this.std_code,//argument
 		"fn_callback"
 		)
+		
 };
 
 this.Div00_Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
@@ -127,7 +122,7 @@ this.Div00_Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEve
 
 this.fn_callback_std = function()
 {
-	this.Static02.set_text("본인은 본교에 복학하고자 하오니 허가하여 주시기 바랍니다.");
+	this.Div00.form.Div00.form.sta_contetns.set_text("본인은 본교에 복학하고자 하오니 허가하여 주시기 바랍니다.");
 }
 ]]></Script>
     <Objects>
@@ -146,15 +141,16 @@ this.fn_callback_std = function()
           <Column id="age" type="STRING" size="256"/>
           <Column id="email" type="STRING" size="256"/>
           <Column id="contact" type="STRING" size="256"/>
-          <Column id="adress" type="STRING" size="256"/>
+          <Column id="address" type="STRING" size="256"/>
           <Column id="scholarship" type="STRING" size="256"/>
           <Column id="rest" type="STRING" size="256"/>
           <Column id="grade" type="STRING" size="256"/>
-          <Column id="birth" type="STRING" size="256"/>
           <Column id="pw" type="STRING" size="256"/>
           <Column id="gender" type="STRING" size="256"/>
           <Column id="deptCode" type="STRING" size="256"/>
           <Column id="colCode" type="STRING" size="256"/>
+          <Column id="colGrade" type="STRING" size="256"/>
+          <Column id="secNumber" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="rlistCopy_ds">

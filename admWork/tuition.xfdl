@@ -8,9 +8,7 @@
         <Div id="Div00" taborder="2" text="Div00" left="30" top="38" width="1021" height="452" border="1px solid #c1c1c1">
           <Layouts>
             <Layout>
-              <Button id="btn_searchEtc" taborder="0" left="258" top="36" width="25" height="25" background="" onclick="Div00_btn_searchEtc_onclick"/>
-              <Edit id="edt_etcSearch" taborder="1" left="120" top="36" width="130" height="25" displaynulltext="학번 또는 이름 검색"/>
-              <Grid id="grd_std" taborder="2" left="32" top="71" width="377" height="330" binddataset="students_ds" autofittype="col" oncellclick="Div00_grd_std_oncellclick">
+              <Grid id="grd_std" taborder="0" left="9" top="71" width="420" height="330" binddataset="students_ds" autofittype="col" oncellclick="Div00_grd_std_oncellclick" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -35,19 +33,14 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="btn_tuit" taborder="3" text="등록금 입력" left="329" top="36" width="80" height="25" onclick="Div00_btn_tuit_onclick"/>
-              <Grid id="grd_tuition" taborder="4" left="439" top="71" width="550" height="330" binddataset="tuition_ds" autofittype="col" oncelldblclick="Div00_grd_tuition_oncelldblclick" oncellclick="Div00_grd_tuition_oncellclick">
+              <Grid id="grd_tuition" taborder="1" left="439" top="71" width="570" height="330" binddataset="tuition_ds" autofittype="col" oncelldblclick="Div00_grd_tuition_oncelldblclick" oncellclick="Div00_grd_tuition_oncellclick" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
+                      <Column size="100"/>
+                      <Column size="60"/>
+                      <Column size="60"/>
+                      <Column size="100"/>
                     </Columns>
                     <Rows>
                       <Row size="24" band="head"/>
@@ -55,55 +48,56 @@
                     </Rows>
                     <Band id="head">
                       <Cell text="학번"/>
-                      <Cell col="1" text="입학금"/>
-                      <Cell col="2" text="수업료"/>
-                      <Cell col="3" text="학생회비"/>
-                      <Cell col="4" text="졸업앨범비"/>
-                      <Cell col="5" text="오리엔테이션비"/>
-                      <Cell col="6" text="합계"/>
-                      <Cell col="7" text="작성날짜"/>
+                      <Cell col="1" text="학년"/>
+                      <Cell col="2" text="학기"/>
+                      <Cell col="3" text="등록금 총 합계"/>
                     </Band>
                     <Band id="body">
                       <Cell text="bind:std_code" displaytype="text" textAlign="center"/>
-                      <Cell col="1" text="bind:t_enter" textAlign="center"/>
-                      <Cell col="2" text="bind:t_class" textAlign="center"/>
-                      <Cell col="3" text="bind:t_std" textAlign="center"/>
-                      <Cell col="4" text="bind:t_grd" textAlign="center"/>
-                      <Cell col="5" text="bind:t_ore" textAlign="center"/>
-                      <Cell col="6" text="bind:tSum" textAlign="center"/>
-                      <Cell col="7" text="bind:t_date" displaytype="date" textAlign="center"/>
+                      <Cell col="1" text="bind:std_grade" textAlign="center"/>
+                      <Cell col="2" text="bind:type" textAlign="center"/>
+                      <Cell col="3" text="bind:tSum" textAlign="center"/>
                     </Band>
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="btn_del" taborder="5" text="삭제" left="909" top="411" width="80" height="25" onclick="Div00_btn_del_onclick"/>
-              <Button id="btn_entire" taborder="6" text="전체 보기" left="909" top="36" width="80" height="25" onclick="Div00_btn_entire_onclick"/>
-              <Combo id="cmb_cate" taborder="7" text="Combo00" left="30" top="36" width="80" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
-                <Dataset id="innerdataset">
-                  <ColumnInfo>
-                    <Column id="codecolumn" size="256"/>
-                    <Column id="datacolumn" size="256"/>
-                  </ColumnInfo>
-                  <Rows>
-                    <Row>
-                      <Col id="codecolumn">01</Col>
-                      <Col id="datacolumn">전체</Col>
-                    </Row>
-                    <Row>
-                      <Col id="codecolumn">02</Col>
-                      <Col id="datacolumn">학번</Col>
-                    </Row>
-                    <Row>
-                      <Col id="codecolumn">03</Col>
-                      <Col id="datacolumn">이름</Col>
-                    </Row>
-                  </Rows>
-                </Dataset>
-              </Combo>
+              <Button id="btn_del" taborder="2" text="삭제" left="909" top="411" width="100" height="25" onclick="Div00_btn_del_onclick" cssclass="btn_del"/>
+              <Button id="btn_entire" taborder="3" text="전체 보기" left="909" top="29" width="100" height="25" onclick="Div00_btn_entire_onclick" cssclass="btn_default"/>
+              <Div id="Div00" taborder="4" left="8" top="21" width="420" height="40" cssclass="div_line">
+                <Layouts>
+                  <Layout>
+                    <Combo id="cmb_cate" taborder="0" text="Combo00" left="15" top="7" width="80" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
+                      <Dataset id="innerdataset">
+                        <ColumnInfo>
+                          <Column id="codecolumn" size="256"/>
+                          <Column id="datacolumn" size="256"/>
+                        </ColumnInfo>
+                        <Rows>
+                          <Row>
+                            <Col id="codecolumn">01</Col>
+                            <Col id="datacolumn">전체</Col>
+                          </Row>
+                          <Row>
+                            <Col id="codecolumn">02</Col>
+                            <Col id="datacolumn">학번</Col>
+                          </Row>
+                          <Row>
+                            <Col id="codecolumn">03</Col>
+                            <Col id="datacolumn">이름</Col>
+                          </Row>
+                        </Rows>
+                      </Dataset>
+                    </Combo>
+                    <Edit id="edt_etcSearch" taborder="1" left="105" top="7" width="130" height="25" displaynulltext="학번 또는 이름 검색" cssclass="edt_default"/>
+                    <Button id="btn_searchEtc" taborder="2" left="243" top="7" width="60" height="25" background="" onclick="Div00_btn_searchEtc_onclick" cssclass="btn_search" text="조회"/>
+                    <Button id="btn_tuit" taborder="3" text="입력" left="314" top="7" width="80" height="25" onclick="Div00_btn_tuit_onclick" cssclass="btn_insert"/>
+                  </Layout>
+                </Layouts>
+              </Div>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static01" taborder="3" text=" 등록금  관리" left="30" top="9" width="200" height="30"/>
+        <Static id="Static01" taborder="3" text=" 등록금  관리" left="30" top="9" width="200" height="30" onclick="Static01_onclick" cssclass="sta_title"/>
         <Static id="Static00_00" taborder="4" left="1050" top="0" width="30" visible="false" background="RGBA(236,135,135,0.71)" bottom="0"/>
         <Static id="Static00_01_00" taborder="5" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
       </Layout>
@@ -126,9 +120,29 @@
 		"",//in_ds:U
 		"tuition_ds=out_ds",//()_out_ds
 		"",//argument
-		"fn_callback"
+		"fn_callback_tuition"
 		)
 		
+
+		
+};
+
+this.fn_callback_tuition = function()
+{
+		for(var i=0;i<this.tuition_ds.getRowCount();i++)
+	{
+		var sDate =this.tuition_ds.getColumn(i,"t_date");
+		var mon = sDate.substr(5,2);
+		var sMonth = nexacro.toNumber(mon)
+		if(sMonth<8)
+		{
+			this.tuition_ds.setColumn(i,"type","1학기");
+		}
+		else
+		{
+			this.tuition_ds.setColumn(i,"type","2학기");
+		}
+	}
 };
 
 
@@ -157,15 +171,7 @@ this.Div00_btn_tuit_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 
 this.fn_callback_insertTuition = function()
 {
-
-		this.transaction(
-		"selectAll.tuition",//id
-		"/tuition/selectAll.tuition",//url (절대경로)
-		"",//in_ds:U
-		"tuition_ds=out_ds",//()_out_ds
-		"",//argument
-		"fn_callback"
-		)
+	this.reload();
 }
 
 
@@ -188,14 +194,7 @@ this.Div00_grd_tuition_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.Grid
 
 this.fn_callback_updateTuition=function()
 {
-	this.transaction(
-		"selectAll.tuition",//id
-		"/tuition/selectAll.tuition",//url (절대경로)
-		"",//in_ds:U
-		"tuition_ds=out_ds",//()_out_ds
-		"",//argument
-		"fn_callback"
-		)
+	this.reload();
 }
 
 
@@ -244,12 +243,15 @@ this.Div00_btn_entire_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 {
 	this.tuition_ds.filter("");
 };
+
 ]]></Script>
     <Objects>
       <Dataset id="tuition_ds">
         <ColumnInfo>
           <Column id="seq" type="INT" size="256"/>
           <Column id="std_code" type="INT" size="256"/>
+          <Column id="std_grade" type="STRING" size="256"/>
+          <Column id="type" type="STRING" size="256"/>
           <Column id="t_enter" type="INT" size="256"/>
           <Column id="t_class" type="INT" size="256"/>
           <Column id="t_std" type="INT" size="256"/>
@@ -258,40 +260,6 @@ this.Div00_btn_entire_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
           <Column id="tSum" type="INT" size="256"/>
           <Column id="t_date" type="STRING" size="256"/>
         </ColumnInfo>
-      </Dataset>
-      <Dataset id="scholar_ds">
-        <ColumnInfo>
-          <Column id="code" type="STRING" size="256"/>
-          <Column id="name" type="STRING" size="256"/>
-          <Column id="percentage" type="INT" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="code">00</Col>
-            <Col id="name">일반</Col>
-            <Col id="percentage">0</Col>
-          </Row>
-          <Row>
-            <Col id="code">01</Col>
-            <Col id="name">선행</Col>
-            <Col id="percentage">0.3</Col>
-          </Row>
-          <Row>
-            <Col id="code">02</Col>
-            <Col id="name">추천장학</Col>
-            <Col id="percentage">0.5</Col>
-          </Row>
-          <Row>
-            <Col id="code">03</Col>
-            <Col id="name">재정지원</Col>
-            <Col id="percentage">0.8</Col>
-          </Row>
-          <Row>
-            <Col id="code">04</Col>
-            <Col id="name">성적우수</Col>
-            <Col id="percentage">1.0</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="students_ds">
         <ColumnInfo>
@@ -309,17 +277,6 @@ this.Div00_btn_entire_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
           <Column id="gender" type="STRING" size="256"/>
           <Column id="deptCode" type="STRING" size="256"/>
           <Column id="colCode" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
-      <Dataset id="scholorship_ds">
-        <ColumnInfo>
-          <Column id="std_code" type="STRING" size="256"/>
-          <Column id="s_kind" type="STRING" size="256"/>
-          <Column id="s_rec" type="STRING" size="256"/>
-          <Column id="s_smt" type="STRING" size="256"/>
-          <Column id="s_spt" type="STRING" size="256"/>
-          <Column id="s_etc" type="STRING" size="256"/>
-          <Column id="sSum" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>

@@ -10,12 +10,12 @@
         <Div id="Div00" taborder="4" text="Div00" left="30" top="20" width="840" height="560" border="1px solid #c1c1c1">
           <Layouts>
             <Layout>
-              <Edit id="Edit00" taborder="1" left="168" top="39" width="600" height="30" readonly="true"/>
-              <Static id="Static00" taborder="0" text="제목" left="69" top="39" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Edit id="Edit01" taborder="4" left="170" top="150" width="600" height="160" readonly="true"/>
-              <Static id="Static00_00" taborder="2" text="첨부파일" left="69" top="69" width="100" height="80" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Button id="btn_down" taborder="3" text="파일 다운로드" left="668" top="69" width="100" height="80" onclick="Div00_btn_down_onclick"/>
-              <Grid id="Grid00" taborder="5" left="170" top="70" width="498" height="80" binddataset="schFileList_ds" autofittype="col" onheadclick="Div00_Grid00_onheadclick">
+              <Edit id="edt_title" taborder="1" left="119" top="78" width="709" height="25" readonly="true" cssclass="edt_default"/>
+              <Static id="Static00" taborder="0" text="제목" left="0" top="78" width="120" height="25" cssclass="sta_default"/>
+              <Edit id="Edit01" taborder="4" left="120" top="232" width="709" height="210" readonly="true" cssclass="edt_default"/>
+              <Static id="Static00_00" taborder="2" text="첨부파일" left="0" top="103" width="120" height="130" cssclass="sta_default"/>
+              <Button id="btn_down" taborder="3" text="파일 다운로드" left="689" top="102" width="140" height="130" onclick="Div00_btn_down_onclick" cssclass="btn_default"/>
+              <Grid id="Grid00" taborder="5" left="120" top="103" width="569" height="130" binddataset="schFileList_ds" autofittype="col" onheadclick="Div00_Grid00_onheadclick" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -40,8 +40,10 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="btn_cancle" taborder="6" text="닫기" left="669" top="354" width="100" height="30" onclick="Div00_btn_cancle_onclick"/>
-              <Static id="Static00_00_00" taborder="7" text="신청사유" left="69" top="149" width="100" height="161" background="#c1c1c1" border="1px solid #c1c1c1"/>
+              <Button id="btn_cancle" taborder="6" text="닫기" left="729" top="499" width="100" height="30" onclick="Div00_btn_cancle_onclick" cssclass="btn_can"/>
+              <Static id="Static00_00_00" taborder="7" text="신청사유" left="0" top="232" width="120" height="211" cssclass="sta_default"/>
+              <Static id="sta_seq" taborder="8" text="학번" left="0" top="54" width="120" height="25" cssclass="sta_default"/>
+              <Edit id="edt_seq" taborder="9" left="119" top="54" width="709" height="25" readonly="true" cssclass="edt_default"/>
             </Layout>
           </Layouts>
         </Div>
@@ -69,14 +71,13 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.seq="";
-
+    <Script type="xscript5.1"><![CDATA[
+this.seq=this.parent.seq;
+this.sCode=this.parent.std_code;
 //----------------------  온로드
 this.requestScholar_read_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	//부모창에서 받아온 seq 값 - 해당 seq의 내용 가져오기
-	this.seq = this.parent.seq;
-	var std_code = this.parent.std_code; // 학번
+	this.Div00.form.edt_seq.set_value(this.sCode);
 	
 	this.transaction(
 		"selectSeqReqScholar.", // 1. strSvcID
@@ -152,8 +153,21 @@ this.chkValue="";
 // 닫기 버튼
 this.Div00_btn_cancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-		this.close(this.seq);
+		this.transaction(
+			"checkValueReqScholar.scholarship",//id
+			"/scholarship/checkValueReqScholar.scholarship",//url (절대경로)
+			"",//in_ds:U
+			"",//()_out_ds
+			"seq="+this.seq,//argument
+			"fn_callback_check"
+			)
+	
 };
+
+this.fn_callback_check = function()
+{
+		this.close(this.seq);
+}
 
 //헤더 전체  클릭 적용
 this.Div00_Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
@@ -188,8 +202,9 @@ this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
 }
 ]]></Script>
     <Bind>
-      <BindItem id="item0" compid="Div00.form.Edit00" propid="value" datasetid="reqScholar_ds" columnid="title"/>
+      <BindItem id="item0" compid="Div00.form.edt_title" propid="value" datasetid="reqScholar_ds" columnid="title"/>
       <BindItem id="item1" compid="Div00.form.Edit01" propid="value" datasetid="reqScholar_ds" columnid="contents"/>
+      <BindItem id="item2" compid="Div00.form.edt_seq" propid="value" datasetid="reqScholar_ds" columnid="std_code"/>
     </Bind>
   </Form>
 </FDL>

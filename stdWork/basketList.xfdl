@@ -3,7 +3,7 @@
   <Form id="basketList" width="900" height="480" titletext="New Form" onload="basketList_onload">
     <Layouts>
       <Layout height="480" mobileorientation="landscape" width="900" stepcount="0">
-        <Grid id="gr_baksetList" taborder="0" left="20" top="45" width="860" height="370" binddataset="ds_myClass" onheadclick="gr_baksetList_onheadclick" oncellclick="gr_baksetList_oncellclick" autofittype="col">
+        <Grid id="gr_baksetList" taborder="0" left="20" top="45" width="860" height="370" binddataset="ds_myClass" onheadclick="gr_baksetList_onheadclick" oncellclick="gr_baksetList_oncellclick" autofittype="col" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>
@@ -41,7 +41,7 @@
                 <Cell col="1" text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
                 <Cell col="2" text="bind:grade" textAlign="center"/>
                 <Cell col="3" text="bind:className" textAlign="center" wordWrap="english" tooltiptext="상세보기" textDecoration="underline" cursor="pointer"/>
-                <Cell col="4" text="bind:classSeq" textAlign="center" maskeditformat="#########" displaytype="mask"/>
+                <Cell col="4" text="bind:classSeq" textAlign="center" maskeditformat="#########" displaytype="text"/>
                 <Cell col="5" text="bind:classPoint" textAlign="center"/>
                 <Cell col="6" text="bind:proName" textAlign="center"/>
                 <Cell col="7" text="bind:dept" textAlign="center"/>
@@ -58,7 +58,6 @@
         <Button id="btnClose" taborder="4" text="닫기" left="780" top="423" width="100" height="30" onclick="btnClose_onclick" cssclass="btn_can"/>
         <Static id="Static00" taborder="5" text="학점" left="630" top="10" width="30" height="30"/>
         <Static id="sta_point" taborder="6" text="" left="670" top="10" width="40" height="30"/>
-        <Static id="Static00_00_00" taborder="7" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
       </Layout>
     </Layouts>
     <Objects>

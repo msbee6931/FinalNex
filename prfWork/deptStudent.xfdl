@@ -7,7 +7,7 @@
         <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="2" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="3" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Grid id="gr_stdList" taborder="4" left="29" top="60" width="411" height="390" binddataset="ds_students" autofittype="col" onheadclick="gr_stdList_onheadclick" oncellclick="gr_stdList_oncellclick">
+        <Grid id="gr_stdList" taborder="4" left="29" top="60" binddataset="ds_students" autofittype="col" onheadclick="gr_stdList_onheadclick" oncellclick="gr_stdList_oncellclick" cssclass="grd_default" right="640" bottom="70">
           <Formats>
             <Format id="default">
               <Columns>
@@ -33,12 +33,12 @@
                 <Cell col="1" text="bind:name" textAlign="center" cursor="pointer"/>
                 <Cell col="2" text="bind:colGrade" textAlign="center" cursor="pointer"/>
                 <Cell col="3" text="expr:gender=='M'?'남':'여'" textAlign="center" cursor="pointer"/>
-                <Cell col="4" text="bind:rest" textAlign="center" expr="expr:rest=='Y'?'재학':'휴학'" cursor="pointer"/>
+                <Cell col="4" text="bind:rest" textAlign="center" expr="expr:rest=='N'?'재학':'휴학'" cursor="pointer"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Div id="div_Info" taborder="5" text="학생 정보" left="460" top="20" width="580" height="430" cssclass="div_line">
+        <Div id="div_Info" taborder="5" text="학생 정보" left="460" top="20" cssclass="div_line" right="40" bottom="70">
           <Layouts>
             <Layout>
               <Static id="sta_name" taborder="0" text="＊ 성명" left="20" top="70" width="70" height="40"/>
@@ -83,7 +83,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Div id="div_search" taborder="6" left="30" top="20" width="410" height="39" cssclass="div_line">
+        <Div id="div_search" taborder="6" left="30" top="20" cssclass="div_line" right="640" bottom="461">
           <Layouts>
             <Layout>
               <Static id="sta_grade" taborder="0" text="학년" left="5" top="3" width="30" height="30"/>

@@ -3,10 +3,10 @@
   <Form id="prfAttend" width="1080" height="520" titletext="New Form" onload="prfAttend_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
-        <Div id="Div00" taborder="0" text="Div00" left="30" top="38" width="1021" height="452" border="1px solid #c1c1c1">
+        <Div id="Div00" taborder="0" text="Div00" left="30" top="38" cssclass="div_line" right="29" bottom="30">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="74" top="51" width="275" height="240" binddataset="ds_class" autofittype="col" oncellclick="Div00_Grid00_oncellclick">
+              <Grid id="Grid00" taborder="0" left="4" top="51" binddataset="ds_class" autofittype="col" oncellclick="Div00_Grid00_oncellclick" cssclass="grd_default" right="740" bottom="9">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -32,11 +32,11 @@
           </Layouts>
         </Div>
         <Static id="Static00" taborder="1" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="Static01" taborder="2" text="출결조회" left="30" top="9" width="200" height="30"/>
+        <Static id="Static01" taborder="2" text="출결조회" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
         <Static id="Static00_01" taborder="3" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="4" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="5" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Grid id="Grid00" taborder="6" left="420" top="90" width="545" height="290" binddataset="ds_stdClass" autofittype="col" oncelldblclick="Grid00_oncelldblclick">
+        <Grid id="Grid00" taborder="6" left="320" top="90" binddataset="ds_stdClass" autofittype="col" oncelldblclick="Grid00_oncelldblclick" cssclass="grd_default" right="39" bottom="40">
           <Formats>
             <Format id="default">
               <Columns>
@@ -61,9 +61,9 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static00_00_00" taborder="7" text="내 관리 강좌" left="108" top="60" width="112" height="30"/>
+        <Static id="Static00_00_00" taborder="7" text="내 관리 강좌" left="38" top="60" width="112" height="30"/>
         <Static id="sta_title" taborder="8" text="" left="475" top="60" width="140" height="30"/>
-        <Static id="Static00_00_00_00" taborder="9" text="과목명 :" left="430" top="60" width="45" height="30"/>
+        <Static id="Static00_00_00_00" taborder="9" text="과목명 :" left="Div00:-721" top="60" height="30" width="45"/>
       </Layout>
     </Layouts>
     <Objects>

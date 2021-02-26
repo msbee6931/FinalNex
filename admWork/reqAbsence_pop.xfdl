@@ -10,15 +10,14 @@
         <Div id="Div00" taborder="4" text="Div00" left="30" top="20" width="842" height="560" cssclass="div_line">
           <Layouts>
             <Layout>
-              <Edit id="edt_title00" taborder="2" left="358" top="60" width="191" height="30" cssclass="edt_default"/>
-              <Edit id="edt_title00_00" taborder="4" left="619" top="60" width="191" height="30" cssclass="edt_default"/>
-              <Edit id="edt_title01" taborder="6" left="98" top="90" width="191" height="30" cssclass="edt_default"/>
-              <Edit id="edt_title00_01" taborder="8" left="358" top="90" width="191" height="30" cssclass="edt_default"/>
-              <Edit id="edt_title00_00_00" taborder="10" left="619" top="90" width="191" height="30" cssclass="edt_default"/>
-              <Edit id="edt_title01_00" taborder="12" left="98" top="120" width="712" height="30" cssclass="edt_default"/>
-              <Button id="btn_down" taborder="16" text="파일&#13;&#10;다운로드" left="709" top="209" width="100" height="70" onclick="Div00_btn_add_onclick" cssclass="btn_default"/>
-              <Static id="Static01" taborder="17" text="※유의사항&#13;&#10;1. 입대휴학 신청자는 입대 사실을 확인할 수 있는 증명서 1통을 첨부해야 함.&#13;&#10;2. 군입대 후 귀향조취 된 경우에는 즉시 행정팀으로 통보해야함.&#13;&#10;3. 일반휴학기간 중 입대할 경우에는 입대 전에 입영통지서 사본 1통을 첨부하여 휴학연기 신청서를 제출해야 함.&#13;&#10;4. 질병으로 휴학하는 경우에는 종합병원장이 발행하는 4주 이상의 진단서를 첨부해야함.&#13;&#10;5. 휴학기간 만료 후 해당 학기 등록기간 내에 복학하지 않을 경우에는  퇴학처리 됨." left="29" top="410" width="780" height="100"/>
-              <Grid id="Grid00" taborder="18" left="129" top="210" width="575" height="70" binddataset="absFileList_ds" autofittype="col" onheadclick="Div00_Grid00_onheadclick">
+              <Edit id="edt_title00" taborder="2" left="358" top="60" width="191" height="30" cssclass="edt_default" readonly="true"/>
+              <Edit id="edt_title01" taborder="5" left="98" top="90" width="191" height="30" cssclass="edt_default" readonly="true"/>
+              <Edit id="edt_title00_01" taborder="7" left="358" top="90" width="191" height="30" cssclass="edt_default" readonly="true"/>
+              <Edit id="edt_title00_00_00" taborder="9" left="619" top="90" width="191" height="30" cssclass="edt_default" readonly="true"/>
+              <Edit id="edt_title01_00" taborder="11" left="98" top="120" width="712" height="30" cssclass="edt_default" readonly="true"/>
+              <Button id="btn_down" taborder="15" text="파일&#13;&#10;다운로드" left="709" top="209" width="100" height="70" onclick="Div00_btn_add_onclick" cssclass="btn_default"/>
+              <Static id="Static01" taborder="16" text="※유의사항&#13;&#10;1. 입대휴학 신청자는 입대 사실을 확인할 수 있는 증명서 1통을 첨부해야 함.&#13;&#10;2. 군입대 후 귀향조취 된 경우에는 즉시 행정팀으로 통보해야함.&#13;&#10;3. 일반휴학기간 중 입대할 경우에는 입대 전에 입영통지서 사본 1통을 첨부하여 휴학연기 신청서를 제출해야 함.&#13;&#10;4. 질병으로 휴학하는 경우에는 종합병원장이 발행하는 4주 이상의 진단서를 첨부해야함.&#13;&#10;5. 휴학기간 만료 후 해당 학기 등록기간 내에 복학하지 않을 경우에는  퇴학처리 됨." left="29" top="410" width="780" height="100"/>
+              <Grid id="Grid00" taborder="17" left="127" top="205" width="575" height="70" binddataset="absFileList_ds" autofittype="col" onheadclick="Div00_Grid00_onheadclick" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -43,27 +42,28 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="btn_ok" taborder="19" text="닫기" left="710" top="514" width="100" height="30" onclick="Div00_btn_ok_onclick" cssclass="btn_can"/>
-              <Static id="Static02" taborder="20" text="&#13;&#10;&#13;&#10; 본인은 보호자의 동의하에 위와 같이 휴학하고자 하오니 허가하여 주시기 바랍니다." left="28" top="309" width="782" height="40" textAlign="center"/>
-              <Static id="Static03" taborder="21" text="휴학신청서" left="32" top="20" width="172" height="30" cssclass="sta_title"/>
-              <Static id="Static00" taborder="0" text="학 과" left="29" top="60" width="70" height="30" cssclass="sta_default"/>
+              <Button id="btn_ok" taborder="18" text="닫기" left="710" top="514" width="100" height="25" onclick="Div00_btn_ok_onclick" cssclass="btn_can"/>
+              <Static id="Static02" taborder="19" text="&#13;&#10;&#13;&#10; 본인은 보호자의 동의하에 위와 같이 휴학하고자 하오니 허가하여 주시기 바랍니다." left="28" top="309" width="782" height="70" textAlign="center"/>
+              <Static id="Static03" taborder="20" text="휴학신청서" left="32" top="20" width="172" height="30" cssclass="sta_title"/>
+              <Static id="Static00" taborder="0" text="학 과" left="28" top="60" width="70" height="30" cssclass="sta_default"/>
               <Static id="Static00_00" taborder="1" text="학 번" left="289" top="60" width="70" height="30" cssclass="sta_default"/>
               <Static id="Static00_00_00" taborder="3" text="생년월일" left="550" top="60" width="70" height="30" cssclass="sta_default"/>
-              <Static id="Static00_01" taborder="5" text="학 년" left="29" top="90" width="70" height="30" cssclass="sta_default"/>
-              <Static id="Static00_00_01" taborder="7" text="연락처" left="289" top="90" width="70" height="30" cssclass="sta_default"/>
-              <Static id="Static00_01_00_00_00" taborder="14" text="사 유" left="29" top="180" width="70" height="30" cssclass="sta_default"/>
-              <Static id="Static00_01_00_00" taborder="13" text="기 간" left="29" top="150" width="70" height="30" cssclass="sta_default"/>
-              <Static id="Static00_01_00" taborder="11" text="주 소" left="29" top="120" width="70" height="30" cssclass="sta_default"/>
-              <Static id="Static00_00_00_00" taborder="9" text="성 명" left="550" top="90" width="70" height="30" cssclass="sta_default"/>
-              <Static id="Static00_00_02" taborder="15" text="첨부파일" left="28" top="209" width="100" height="70" cssclass="sta_default"/>
-              <Static id="Static04" taborder="22" text="" left="98" top="149" width="710" height="30" border="1px solid #c1c1c1"/>
-              <Calendar id="cal_sDate" taborder="23" left="107" top="153" width="150" height="20" onchanged="Div00_Calendar00_onchanged"/>
-              <Calendar id="cal_eDate" taborder="24" left="299" top="153" width="150" height="20" onchanged="Div00_Calendar00_onchanged"/>
-              <Static id="Static05" taborder="25" text="~" left="277" top="154" width="19" height="19"/>
-              <Radio id="Radio00" taborder="26" left="106" top="186" width="674" height="18" innerdataset="absenceCode_ds" codecolumn="code" datacolumn="name" rowcount="1"/>
-              <Button id="btn_commit" taborder="27" text="승인" left="599" top="514" width="100" height="30" onclick="Div00_btn_commit_onclick" cssclass="btn_default"/>
-              <Combo id="Combo00" taborder="28" text="Combo00" left="102" top="61" width="184" height="31" innerdataset="deptCode" codecolumn="code" datacolumn="name" cssclass="cmb_dept"/>
-              <Static id="Static06" taborder="29" left="30" top="280" width="782" height="131" cssclass="sta_line"/>
+              <Static id="Static00_01" taborder="4" text="학 년" left="28" top="89" width="70" height="30" cssclass="sta_default"/>
+              <Static id="Static00_00_01" taborder="6" text="연락처" left="289" top="90" width="70" height="30" cssclass="sta_default"/>
+              <Static id="Static00_01_00_00_00" taborder="13" text="사 유" left="28" top="176" width="70" height="30" cssclass="sta_default"/>
+              <Static id="Static00_01_00_00" taborder="12" text="기 간" left="28" top="147" width="70" height="30" cssclass="sta_default"/>
+              <Static id="Static00_01_00" taborder="10" text="주 소" left="28" top="118" width="70" height="30" cssclass="sta_default"/>
+              <Static id="Static00_00_00_00" taborder="8" text="성 명" left="550" top="90" width="70" height="30" cssclass="sta_default"/>
+              <Static id="Static00_00_02" taborder="14" text="첨부파일" left="28" top="205" width="100" height="70" cssclass="sta_default"/>
+              <Static id="Static04" taborder="21" text="" left="98" top="149" width="710" height="30" cssclass="sta_line"/>
+              <Calendar id="cal_sDate" taborder="22" left="107" top="153" width="150" height="20" onchanged="Div00_Calendar00_onchanged" cssclass="cal_default" readonly="true"/>
+              <Calendar id="cal_eDate" taborder="23" left="299" top="153" width="150" height="20" onchanged="Div00_Calendar00_onchanged" cssclass="cal_default" readonly="true"/>
+              <Static id="Static05" taborder="24" text="~" left="277" top="154" width="19" height="19"/>
+              <Radio id="Radio00" taborder="25" left="106" top="186" width="674" height="18" innerdataset="absenceCode_ds" codecolumn="code" datacolumn="name" rowcount="1" readonly="true"/>
+              <Button id="btn_commit" taborder="26" text="승인" left="599" top="514" width="100" height="25" onclick="Div00_btn_commit_onclick" cssclass="btn_default"/>
+              <Combo id="Combo00" taborder="27" text="Combo00" left="97" top="61" width="192" height="31" innerdataset="deptCode" codecolumn="code" datacolumn="name" cssclass="cmb_dept" readonly="true"/>
+              <Static id="Static06" taborder="28" left="30" top="280" width="782" height="131" cssclass="sta_line"/>
+              <MaskEdit id="MaskEdit00" taborder="29" left="619" top="62" width="190" height="30" cssclass="med_default" readonly="true" type="string" format="@@@@@@"/>
             </Layout>
           </Layouts>
         </Div>
@@ -126,15 +126,16 @@
           <Column id="age" type="STRING" size="256"/>
           <Column id="email" type="STRING" size="256"/>
           <Column id="contact" type="STRING" size="256"/>
-          <Column id="adress" type="STRING" size="256"/>
+          <Column id="address" type="STRING" size="256"/>
           <Column id="scholarship" type="STRING" size="256"/>
           <Column id="rest" type="STRING" size="256"/>
           <Column id="grade" type="STRING" size="256"/>
-          <Column id="birth" type="STRING" size="256"/>
           <Column id="pw" type="STRING" size="256"/>
           <Column id="gender" type="STRING" size="256"/>
           <Column id="deptCode" type="STRING" size="256"/>
           <Column id="colCode" type="STRING" size="256"/>
+          <Column id="colGrade" type="STRING" size="256"/>
+          <Column id="secNumber" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <FileDownTransfer id="FileDownTransfer00" onerror="FileDownTransfer00_onerror"/>
@@ -247,12 +248,12 @@ this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
 		sheadValue = (sheadValue =="1"? "0":"1");
 		obj.setCellProperty("head",e.cell,"text",sheadValue);
 		
-		this.schFileList_ds.set_enableevent(false);
-		for(var i=0; i< this.schFileList_ds.getRowCount(); i++)
+		this.absFileList_ds.set_enableevent(false);
+		for(var i=0; i< this.absFileList_ds.getRowCount(); i++)
 		{
-			this.schFileList_ds.setColumn(i, "chk",sheadValue);
+			this.absFileList_ds.setColumn(i, "chk",sheadValue);
 		}
-		this.schFileList_ds.set_enableevent(true);
+		this.absFileList_ds.set_enableevent(true);
     }
 	
 }
@@ -261,20 +262,32 @@ this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
 
 this.Div00_btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.close();
+	this.transaction(
+		"updateReadAbs.absence",//id
+		"/absence/updateReadAbs.absence",//url (절대경로)
+		"",//in_ds:U
+		"",//()_out_ds
+		"seq="+this.seq,//argument
+		"fn_callback_read"
+		)
 };
+
+this.fn_callback_read = function()
+{
+	this.close();
+}
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="Div00.form.Combo00" propid="value" datasetid="students_ds" columnid="deptCode"/>
       <BindItem id="item1" compid="Div00.form.edt_title00" propid="value" datasetid="students_ds" columnid="s_seq"/>
-      <BindItem id="item2" compid="Div00.form.edt_title00_00" propid="value" datasetid="students_ds" columnid="birth"/>
-      <BindItem id="item3" compid="Div00.form.edt_title01" propid="value" datasetid="students_ds" columnid="grade"/>
+      <BindItem id="item2" compid="Div00.form.MaskEdit00" propid="value" datasetid="students_ds" columnid="secNumber"/>
+      <BindItem id="item3" compid="Div00.form.edt_title01" propid="value" datasetid="students_ds" columnid="colGrade"/>
       <BindItem id="item4" compid="Div00.form.edt_title00_01" propid="value" datasetid="students_ds" columnid="contact"/>
       <BindItem id="item5" compid="Div00.form.edt_title00_00_00" propid="value" datasetid="students_ds" columnid="name"/>
+      <BindItem id="item6" compid="Div00.form.edt_title01_00" propid="value" datasetid="students_ds" columnid="address"/>
       <BindItem id="item7" compid="Div00.form.cal_sDate" propid="value" datasetid="absence_ds" columnid="sDate"/>
       <BindItem id="item8" compid="Div00.form.cal_eDate" propid="value" datasetid="absence_ds" columnid="eDate"/>
       <BindItem id="item9" compid="Div00.form.Radio00" propid="value" datasetid="absence_ds" columnid="code"/>
-      <BindItem id="item6" compid="Div00.form.edt_title01_00" propid="value" datasetid="students_ds" columnid="adress"/>
     </Bind>
   </Form>
 </FDL>
