@@ -7,18 +7,17 @@
         <Static id="Static00_00" taborder="1" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Div id="Div00" taborder="4" text="" left="30" top="38" cssclass="div_line" right="29" bottom="30">
+        <Div id="Div00" taborder="4" text="" left="30" top="10" cssclass="div_line" right="29" bottom="30">
           <Layouts>
             <Layout>
               <MaskEdit id="MaskEdit00_01" taborder="0" left="379" top="223" width="150" height="37" border="1px solid white"/>
               <MaskEdit id="MaskEdit00_02" taborder="1" left="379" top="181" width="150" height="37" border="1px solid white"/>
               <MaskEdit id="MaskEdit00_03" taborder="2" left="393" top="256" width="150" height="37" border="1px solid white"/>
-              <WebBrowser id="WebBrowser00" taborder="3" left="142" top="1" width="736" height="440"/>
+              <WebBrowser id="WebBrowser00" taborder="3" left="142" top="1" width="736" bottom="37"/>
               <Button id="Button00" taborder="4" text="pdf 저장" left="24" top="19" width="100" height="25" onclick="Div00_Button00_onclick" cssclass="btn_pdf"/>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static01" taborder="5" text="재학 증명서" left="30" top="9" width="200" height="30"/>
       </Layout>
     </Layouts>
     <Objects/>

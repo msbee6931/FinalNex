@@ -76,7 +76,7 @@
         <Static id="Static00_01" taborder="12" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="14" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="16" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Grid id="gt_classList" taborder="3" left="40" top="54" binddataset="ds_class" autofittype="col" oncellclick="gr_classList_oncellclick" onheadclick="gr_classList_onheadclick" cssclass="grd_default" right="40" bottom="70">
+        <Grid id="gt_classList" taborder="3" left="40" top="54" binddataset="ds_class" autofittype="col" oncellclick="gr_classList_oncellclick" onheadclick="gr_classList_onheadclick" cssclass="grd_default" right="40" bottom="80">
           <Formats>
             <Format id="default">
               <Columns>

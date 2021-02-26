@@ -3,7 +3,7 @@
   <Form id="attend" width="1080" height="520" titletext="New Form" onload="attend_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
-        <Div id="Div00" taborder="0" text="Div00" left="30" top="38" cssclass="div_line" right="29" bottom="30">
+        <Div id="Div00" taborder="0" text="Div00" left="30" top="10" cssclass="div_line" right="29" bottom="30">
           <Layouts>
             <Layout>
               <Grid id="Grid00" taborder="0" left="13" top="21" binddataset="ds_class" autofittype="col" cssclass="grd_default" right="11" bottom="39" oncelldblclick="Div00_Grid00_oncelldblclick">
@@ -41,10 +41,9 @@
           </Layouts>
         </Div>
         <Static id="Static00" taborder="1" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="Static01" taborder="2" text="출결조회" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
-        <Static id="Static00_01" taborder="3" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="Static00_00" taborder="4" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="Static00_01_00" taborder="5" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00" taborder="3" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="4" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
       </Layout>
     </Layouts>
     <Objects>

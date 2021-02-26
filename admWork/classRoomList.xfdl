@@ -3,7 +3,7 @@
   <Form id="classRoomList" width="800" height="450" titletext="New Form" onload="classRoomList_onload">
     <Layouts>
       <Layout height="450" mobileorientation="landscape" width="800">
-        <Grid id="gr_classRoom" taborder="0" left="10" top="60" width="780" height="340" binddataset="ds_classRoom" autofittype="col">
+        <Grid id="gr_classRoom" taborder="0" left="10" top="60" width="780" height="340" binddataset="ds_classRoom" autofittype="col" cssclass="grd_default">
           <Formats>
             <Format id="oneFloor">
               <Columns>
@@ -345,7 +345,7 @@
         </Grid>
         <Button id="btnClose" taborder="1" text="닫기" left="690" top="410" width="100" height="25" cssclass="btn_can" onclick="btnClose_onclick"/>
         <Static id="sta_classRoom" taborder="2" text="강의실 확인" left="10" top="10" width="100" height="40" cssclass="sta_default"/>
-        <Combo id="co_floor" taborder="3" left="690" top="10" width="100" height="40" text="1층" value="1" index="0" displayrowcount="4" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="co_floor_onitemchanged">
+        <Combo id="co_floor" taborder="3" left="690" top="10" width="100" height="40" text="1층" value="1" index="0" displayrowcount="4" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="co_floor_onitemchanged" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -387,7 +387,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="co_week" taborder="4" text="월요일" left="580" top="10" width="100" height="40" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="mon" index="0" onitemchanged="co_week_onitemchanged">
+        <Combo id="co_week" taborder="4" text="월요일" left="580" top="10" width="100" height="40" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="mon" index="0" onitemchanged="co_week_onitemchanged" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>

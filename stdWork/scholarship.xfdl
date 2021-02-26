@@ -7,8 +7,7 @@
         <Static id="Static00_00" taborder="1" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="140" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="Static01" taborder="4" text="등록금 신청" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
-        <Div id="Div00" taborder="5" text="Div00" left="30" top="38" cssclass="div_line" async="false" right="29" bottom="30">
+        <Div id="Div00" taborder="4" text="Div00" left="30" top="10" cssclass="div_line" async="false" right="29" bottom="30">
           <Layouts>
             <Layout>
               <Grid id="Grid00" taborder="1" left="9" top="61" binddataset="reqScholar_ds" autofittype="col" oncelldblclick="Div00_Grid00_oncelldblclick" oncellclick="Div00_Grid00_oncellclick" cssclass="grd_default" right="560" bottom="9">
@@ -27,13 +26,13 @@
                       <Cell col="1" text="작성날짜"/>
                     </Band>
                     <Band id="body">
-                      <Cell text="bind:title"/>
+                      <Cell text="bind:title" textAlign="center"/>
                       <Cell col="1" text="bind:writeDate" displaytype="date"/>
                     </Band>
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="btn_insert" taborder="0" text="작성하기" left="Grid00:-100" top="26" onclick="Div00_btn_insert_onclick" cssclass="btn_insert" width="100" bottom="Grid00:10"/>
+              <Button id="btn_insert" taborder="0" text="작성하기" left="9" top="26" onclick="Div00_btn_insert_onclick" cssclass="btn_insert" width="100" height="25"/>
               <Div id="div_line" taborder="2" text="Div00" width="550" cssclass="div_line" right="5" top="61" bottom="8">
                 <Layouts>
                   <Layout>

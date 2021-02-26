@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="professor" width="1080" height="520" titletext="New Form" onload="professor_onload">
+  <Form id="faculty" width="1080" height="520" titletext="New Form">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
         <Static id="Static01" taborder="12" left="30" top="10" cssclass="sta_line" right="26" bottom="30"/>
-        <Grid id="Grid00" taborder="0" left="35" top="70" binddataset="ds_professor" autofittype="col" onheadclick="Grid00_onheadclick" cssclass="grd_default" right="35" bottom="80">
+        <Grid id="Grid00" taborder="0" left="35" top="80" binddataset="ds_faculty" autofittype="col" onheadclick="Grid00_onheadclick" cssclass="grd_default" right="34" bottom="80">
           <Formats>
             <Format id="default">
               <Columns>
@@ -13,8 +13,7 @@
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
-                <Column size="69"/>
-                <Column size="85"/>
+                <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
@@ -25,36 +24,34 @@
               </Rows>
               <Band id="head">
                 <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
-                <Cell col="1" text="교수번호"/>
+                <Cell col="1" text="교직원번호"/>
                 <Cell col="2" text="이름"/>
                 <Cell col="3" text="주민번호"/>
                 <Cell col="4" text="email"/>
-                <Cell col="5" text="학과분류"/>
-                <Cell col="6" text="학과"/>
-                <Cell col="7" text="전화번호" edittype="normal"/>
-                <Cell col="8" text="주소"/>
-                <Cell col="9" text="강사"/>
+                <Cell col="5" text="전화번호"/>
+                <Cell col="6" text="주소"/>
+                <Cell col="7" text="학과분류"/>
+                <Cell col="8" text="학과"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
-                <Cell col="1" text="bind:p_seq"/>
+                <Cell col="1" text="bind:f_seq"/>
                 <Cell col="2" text="bind:name" edittype="normal"/>
                 <Cell col="3" text="bind:secNumber" edittype="mask" displaytype="mask" maskedittype="string" maskeditformat="###### - #######"/>
                 <Cell col="4" text="bind:email" edittype="normal"/>
-                <Cell col="5" text="bind:colCode" edittype="combo" displaytype="normal" combodataset="colCode" combocodecol="code" combodatacol="name"/>
-                <Cell col="6" text="bind:deptCode" combodataset="deptCode" combocodecol="code" combodatacol="name"/>
-                <Cell col="7" text="bind:contact"/>
-                <Cell col="8" text="bind:address" edittype="normal"/>
-                <Cell col="9" text="bind:lecture" edittype="combo" combodataset="ds_YN" combocodecol="code" combodatacol="name"/>
+                <Cell col="5" text="bind:contact" edittype="normal"/>
+                <Cell col="6" text="bind:address" edittype="normal"/>
+                <Cell col="7" text="bind:colCode" edittype="combo" combodataset="colCode" combocodecol="code" combodatacol="name"/>
+                <Cell col="8" text="bind:deptCode" combodataset="deptCode" combocodecol="code" combodatacol="name" edittype="combo"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_retrive" taborder="1" text="전체조회" top="28" width="100" height="25" onclick="btn_retrive_onclick" cssclass="btn_default" right="35"/>
-        <Button id="btn_save" taborder="2" text="저장" width="100" height="25" onclick="btn_save_onclick" cssclass="btn_default" right="35" bottom="35"/>
-        <Button id="btn_del" taborder="3" text="삭제" width="100" height="25" onclick="btn_del_onclick" cssclass="btn_del" right="140" bottom="35"/>
-        <Button id="btn_add" taborder="4" text="입력" top="28" width="100" height="25" onclick="btn_add_onclick" cssclass="btn_insert" right="140"/>
-        <Combo id="cb_search" taborder="5" text="전체" left="35" top="28" width="100" height="25" value="All" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
+        <Button id="btn_retrive" taborder="1" top="40" width="100" height="25" onclick="btn_retrive_onclick" cssclass="btn_default" text="전체조회" right="34"/>
+        <Button id="btn_save" taborder="2" text="저장" width="100" height="25" onclick="btn_save_onclick" cssclass="btn_default" right="140" bottom="45"/>
+        <Button id="btn_del" taborder="3" text="삭제" width="100" height="25" onclick="btn_del_onclick" cssclass="btn_del" right="34" bottom="45"/>
+        <Button id="btn_add" taborder="4" text="입력" top="40" width="100" height="25" onclick="btn_add_onclick" cssclass="btn_insert" right="140"/>
+        <Combo id="cb_search" taborder="5" text="전체" left="35" top="40" width="100" height="25" value="All" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="cb_search_onitemchanged" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -66,31 +63,30 @@
                 <Col id="datacolumn">전체</Col>
               </Row>
               <Row>
-                <Col id="codecolumn">p_seq</Col>
-                <Col id="datacolumn">교수번호</Col>
+                <Col id="codecolumn">f_seq</Col>
+                <Col id="datacolumn">교직원번호</Col>
               </Row>
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="edt_search" taborder="6" left="140" top="28" width="100" height="25" cssclass="edt_default"/>
-        <Button id="btn_search" taborder="7" left="250" top="28" width="60" height="25" onclick="btn_search_onclick" cssclass="btn_search" text="조회"/>
+        <Edit id="edt_search" taborder="6" left="140" top="40" width="150" height="25" cssclass="edt_default"/>
+        <Button id="btn_search" taborder="7" left="295" top="40" width="60" height="25" onclick="btn_search_onclick" cssclass="btn_search" text="조회"/>
         <Static id="Static00" taborder="8" left="0" top="0" visible="false" background="RGBA(236,135,135,0.71)" width="29" bottom="0"/>
         <Static id="Static00_01" taborder="9" left="80" top="0" visible="false" background="RGBA(236,135,135,0.71)" height="10" width="800"/>
-        <Static id="Static00_01_00" taborder="10" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="0"/>
-        <Static id="Static00_00" taborder="11" left="1051" top="0" visible="false" background="RGBA(236,135,135,0.71)" right="0" bottom="0"/>
+        <Static id="Static00_00" taborder="10" left="1051" top="0" visible="false" background="RGBA(236,135,135,0.71)" right="0" bottom="0"/>
+        <Static id="Static00_01_00" taborder="11" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="0"/>
       </Layout>
     </Layouts>
     <Objects>
-      <Dataset id="ds_professor">
+      <Dataset id="ds_faculty">
         <ColumnInfo>
           <Column id="chk" type="STRING" size="256"/>
-          <Column id="p_seq" type="STRING" size="256"/>
+          <Column id="f_seq" type="STRING" size="256"/>
           <Column id="name" type="STRING" size="256"/>
           <Column id="secNumber" type="STRING" size="256"/>
           <Column id="email" type="STRING" size="256"/>
           <Column id="contact" type="STRING" size="256"/>
           <Column id="address" type="STRING" size="256"/>
-          <Column id="lecture" type="STRING" size="256"/>
           <Column id="colCode" type="STRING" size="256"/>
           <Column id="deptCode" type="STRING" size="256"/>
         </ColumnInfo>
@@ -101,11 +97,12 @@
 	trace(ErrorMsg);
 	trace(ErrorCode);
 }
-this.fn_update_professor = function(id,url){	//업데이트 따로 뺀것
+
+this.fn_update_faculty = function(id,url){	//업데이트 따로 뺀것
   this.transaction(
             id 
             ,url 
-            ,"in_ds=ds_professor:U"
+            ,"in_ds=ds_faculty:U"
             ,"" 
             ,""
             ,"fn_callback" 
@@ -113,60 +110,57 @@ this.fn_update_professor = function(id,url){	//업데이트 따로 뺀것
 }
 
 
-
 this.btn_retrive_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.transaction(
 
-				"ds_retrivepro" //1. strSvcID
-				,"/professorList.nex" //2. strURL
+				"ds_facultylist" //1. strSvcID
+				,"/facultylist.nex" //2. strURL
 				,"" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
-				,"ds_professor=out_ds" //4.strOutDatasets -select Fds=Sds
+				,"ds_faculty=out_ds" //4.strOutDatasets -select Fds=Sds
 				,"" //5.strArgument text값
 				,"fn_callback" //6.strCallbackFunc
 			);
+};
+
+this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let arr = this.ds_faculty.extractRows("chk==1");
+	
+	if(arr.length == 0 || arr.length == -1){
+		alert("선택된 항목이 없습니다");return;}
 		
+	if(this.confirm("삭제하시겠습니까?")){
+		this.ds_faculty.deleteMultiRows(arr);
+		this.fn_update_faculty("dsdeleteFac","/deleteFaculty.nex");
+	}
 };
 
 this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	if(this.confirm("저장하시겠습니까?")){
-		this.fn_update_professor('dsUpdatepro','/updateProfessor.nex');
-	}
-	
-};
-
-this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	let arr = this.ds_professor.extractRows("chk==1");
-	
-	if(arr.length == 0 || arr.length == -1){
-		alert("선택한 항목이 없습니다");
-		return;
-	}
-	if(this.confirm("삭제하시겠습니까?")){
-		this.ds_professor.deleteMultiRows(arr);
-		this.fn_update_professor('dsDeletePro','/deleteProfessor.nex');
+		this.fn_update_faculty("dsUpdateFac","/updateFaculty.nex");
 	}
 };
 
 this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let objCF = new ChildFrame();
-	objCF.init("insertpop",0,0,300,350,0,0,"admWork::insertProfessor.xfdl");
+	objCF.init("insertpop",0,0,300,310,0,0,"admWork::insertFaculty.xfdl");
 	objCF.set_showtitlebar(false);
-	objCF.showModal(this.getOwnerFrame(),{},this,"fn_callback");
+	objCF.showModal(this.getOwnerFrame(),{},this,"fn_callback");	
 };
+
 
 this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let cbValue = this.cb_search.value;
-	let edtValue = this.edt_search.text;
+	let edtValue = this.edt_search.value;
 	
-	if(cbValue == "p_seq"){
-		this.ds_professor.filter(cbValue+ "=='"+edtValue+"'");
+	if(cbValue == "f_seq"){
+		this.ds_faculty.filter(cbValue +"=='"+edtValue+"'");
 	}else{
-		this.ds_professor.filter("");
+		this.ds_faculty.filter("");
 	}
 };
 
@@ -176,8 +170,8 @@ this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 	let check = flag==0?1:0;
 	if(e.cell==0){
 		obj.setCellProperty("Head",0,"text",check);
-		for(let i = 0; i<this.ds_professor.rowcount;i++){
-			this.ds_professor.setColumn(i,"chk",check);
+		for(let i = 0; i<this.ds_faculty.rowcount;i++){
+			this.ds_faculty.setColumn(i,"chk",check);
 		}
 	}
 	
@@ -214,19 +208,6 @@ this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 		}
 	
 	}
-};
-this.professor_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
-{
-	this.transaction(
-
-				"ds_retrivepro" //1. strSvcID
-				,"/professorList.nex" //2. strURL
-				,"" //3.strInDatasets - I,U,D Sds=Fds:U 변경된값만보내겟다, :A, :N
-				,"ds_professor=out_ds" //4.strOutDatasets -select Fds=Sds
-				,"" //5.strArgument text값
-				,"fn_callback" //6.strCallbackFunc
-			);
-};
-]]></Script>
+};]]></Script>
   </Form>
 </FDL>
