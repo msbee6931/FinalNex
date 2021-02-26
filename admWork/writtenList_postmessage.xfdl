@@ -7,10 +7,10 @@
         <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="2" left="1050" top="0" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Div id="Div00" taborder="4" text="" left="30" top="39" width="1021" height="451" border="1px solid #c1c1c1">
+        <Div id="Div00" taborder="4" text="" left="30" top="10" cssclass="div_line" right="29" bottom="30">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="28" top="26" width="461" height="364" binddataset="pst" autofittype="col" cssclass="grd_default">
+              <Grid id="Grid00" taborder="0" left="28" top="26" binddataset="pst" autofittype="col" cssclass="grd_default" right="530" bottom="73">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -38,25 +38,24 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Div id="Div00" taborder="1" text="" left="509" top="26" width="498" height="395" cssclass="div_line">
+              <Div id="Div00" taborder="1" text="" top="26" width="498" cssclass="div_line" right="12" bottom="38">
                 <Layouts>
                   <Layout>
-                    <TextArea id="TextArea00" taborder="0" left="9" top="77" width="479" height="307" cssclass="txt_default"/>
+                    <TextArea id="TextArea00" taborder="0" left="9" top="77" width="479" cssclass="txt_default" bottom="28"/>
                   </Layout>
                 </Layouts>
               </Div>
-              <Div id="Div00_00" taborder="2" text="" left="517" top="35" width="482" height="51" cssclass="sta_default">
+              <Div id="Div00_00" taborder="2" text="" top="35" width="482" height="51" cssclass="sta_default" right="20">
                 <Layouts>
                   <Layout>
-                    <Static id="Static00" taborder="0" text="Contents" left="31" top="9" width="431" height="31" textAlign="center" font="bold 26px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" cssclass="sta_default"/>
+                    <Static id="Static00" taborder="0" text="Contents" top="9" width="431" height="31" textAlign="center" font="bold 26px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" cssclass="sta_default" left="31"/>
                   </Layout>
                 </Layouts>
               </Div>
-              <Button id="del_btn" taborder="3" text="삭제" left="380" top="400" width="109" height="33" onclick="Div00_del_btn_onclick" cssclass="btn_del"/>
+              <Button id="del_btn" taborder="3" text="삭제" width="109" height="25" onclick="Div00_del_btn_onclick" cssclass="btn_del" right="530" bottom="38"/>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static01" taborder="5" text="내가쓴 쪽지함" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
       </Layout>
     </Layouts>
     <Objects>

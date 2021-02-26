@@ -3,11 +3,12 @@
   <Form id="deptStudent" width="1080" height="520" titletext="New Form" onload="deptStudent_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
+        <Static id="Static01" taborder="7" text="Static01" left="30" top="10" cssclass="sta_line" right="28" bottom="30"/>
         <Static id="Static00" taborder="0" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="2" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="3" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Grid id="gr_stdList" taborder="4" left="29" top="60" binddataset="ds_students" autofittype="col" onheadclick="gr_stdList_onheadclick" oncellclick="gr_stdList_oncellclick" cssclass="grd_default" right="640" bottom="70">
+        <Grid id="gr_stdList" taborder="4" left="38" top="71" binddataset="ds_students" autofittype="col" onheadclick="gr_stdList_onheadclick" oncellclick="gr_stdList_oncellclick" cssclass="grd_default" right="615" bottom="70">
           <Formats>
             <Format id="default">
               <Columns>
@@ -38,7 +39,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Div id="div_Info" taborder="5" text="학생 정보" left="460" top="20" cssclass="div_line" right="40" bottom="70">
+        <Div id="div_Info" taborder="5" text="학생 정보" top="20" cssclass="div_line" right="36" bottom="70" width="574">
           <Layouts>
             <Layout>
               <Static id="sta_name" taborder="0" text="＊ 성명" left="20" top="70" width="70" height="40"/>
@@ -48,12 +49,12 @@
               <Static id="sta_contact" taborder="4" text="＊ 연락처" left="20" top="270" width="70" height="40"/>
               <Static id="sta_address" taborder="5" text="＊ 주소" left="20" top="310" width="70" height="40"/>
               <Static id="sta_email" taborder="6" text="＊ 이메일" left="271" top="270" width="70" height="40"/>
-              <Edit id="edt_name" taborder="7" left="90" top="78" width="150" height="25" readonly="true"/>
-              <Edit id="edt_enroll" taborder="8" left="90" top="118" width="150" height="25" readonly="true"/>
-              <Edit id="edt_colGrade" taborder="9" left="341" top="78" width="150" height="25" readonly="true"/>
-              <Edit id="edt_email" taborder="10" left="341" top="278" width="150" height="25" readonly="true"/>
-              <Edit id="edt_contact" taborder="11" left="90" top="278" width="150" height="25" readonly="true"/>
-              <Edit id="edt_address" taborder="12" left="90" top="318" width="450" height="25" readonly="true"/>
+              <Edit id="edt_name" taborder="7" left="90" top="78" width="150" height="25" readonly="true" cssclass="edt_default"/>
+              <Edit id="edt_enroll" taborder="8" left="90" top="118" width="150" height="25" readonly="true" cssclass="edt_default"/>
+              <Edit id="edt_colGrade" taborder="9" left="341" top="78" width="150" height="25" readonly="true" cssclass="edt_default"/>
+              <Edit id="edt_email" taborder="10" left="341" top="278" width="150" height="25" readonly="true" cssclass="edt_default"/>
+              <Edit id="edt_contact" taborder="11" left="90" top="278" width="150" height="25" readonly="true" cssclass="edt_default"/>
+              <Edit id="edt_address" taborder="12" left="90" top="318" width="450" height="25" readonly="true" cssclass="edt_default"/>
               <Radio id="rd_gender" taborder="13" left="341" top="105" width="190" height="50" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" direction="vertical">
                 <Dataset id="innerdataset">
                   <ColumnInfo>
@@ -73,21 +74,21 @@
                 </Dataset>
               </Radio>
               <Static id="sta_dept" taborder="14" text="＊ 학과" left="271" top="150" width="70" height="40"/>
-              <Edit id="edt_dept" taborder="15" left="341" top="158" width="150" height="25" readonly="true"/>
+              <Edit id="edt_dept" taborder="15" left="341" top="158" width="150" height="25" readonly="true" cssclass="edt_default"/>
               <Static id="sta_code" taborder="16" text="＊ 학번" left="20" top="30" width="70" height="40" onclick="div_Info_sta_code_onclick"/>
-              <Edit id="edt_code" taborder="17" left="90" top="38" width="150" height="25" readonly="true"/>
+              <Edit id="edt_code" taborder="17" left="90" top="38" width="150" height="25" readonly="true" cssclass="edt_default"/>
               <Static id="sta_col" taborder="18" text="＊ 계열" left="20" top="150" width="70" height="40"/>
-              <Edit id="edt_col" taborder="19" left="89" top="158" width="150" height="25" readonly="true"/>
+              <Edit id="edt_col" taborder="19" left="89" top="158" width="150" height="25" readonly="true" cssclass="edt_default"/>
               <Static id="sta_birth" taborder="20" text="＊ 생년월일" left="271" top="30" width="70" height="40"/>
-              <Edit id="edt_birth" taborder="21" left="341" top="38" width="150" height="25" readonly="true"/>
+              <Edit id="edt_birth" taborder="21" left="341" top="38" width="150" height="25" readonly="true" cssclass="edt_default"/>
             </Layout>
           </Layouts>
         </Div>
-        <Div id="div_search" taborder="6" left="30" top="20" cssclass="div_line" right="640" bottom="461">
+        <Div id="div_search" taborder="6" left="39" top="20" cssclass="div_line" text="" width="426" height="39">
           <Layouts>
             <Layout>
               <Static id="sta_grade" taborder="0" text="학년" left="5" top="3" width="30" height="30"/>
-              <Combo id="co_grade" taborder="1" text="전체" left="34" top="3" width="100" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="&quot;&quot;" index="0" onitemchanged="div_search_co_grade_onitemchanged">
+              <Combo id="co_grade" taborder="1" text="전체" left="34" top="6" width="100" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="&quot;&quot;" index="0" onitemchanged="div_search_co_grade_onitemchanged" cssclass="cmb_default">
                 <Dataset id="innerdataset">
                   <ColumnInfo>
                     <Column id="codecolumn" size="256"/>
@@ -117,7 +118,7 @@
                   </Rows>
                 </Dataset>
               </Combo>
-              <Combo id="co_category" taborder="2" text="학번" left="144" top="3" width="100" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="s_seq" index="0" tooltiptext="학번은 일치할 경우만 검색가능합니다">
+              <Combo id="co_category" taborder="2" text="학번" left="144" top="6" width="76" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="s_seq" index="0" tooltiptext="학번은 일치할 경우만 검색가능합니다" cssclass="cmb_default">
                 <Dataset id="innerdataset">
                   <ColumnInfo>
                     <Column id="codecolumn" size="256"/>
@@ -135,8 +136,8 @@
                   </Rows>
                 </Dataset>
               </Combo>
-              <Edit id="edt_search" taborder="3" left="248" top="3" width="108" height="31"/>
-              <Button id="btnSearch" taborder="4" left="366" top="3" width="30" height="30" cssclass="btn_search" text="" onclick="div_search_btnSearch_onclick"/>
+              <Edit id="edt_search" taborder="3" left="228" top="6" width="108" height="25" cssclass="edt_default"/>
+              <Button id="btnSearch" taborder="4" left="346" top="6" width="60" height="25" cssclass="btn_search" text="조회" onclick="div_search_btnSearch_onclick"/>
             </Layout>
           </Layouts>
         </Div>

@@ -4,31 +4,30 @@
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
         <Static id="Static00" taborder="0" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="Static01" taborder="1" text="등록금 내역 조회" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
-        <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Div id="Div00" taborder="3" text="Div00" left="30" top="38" cssclass="div_line" right="29" bottom="30">
+        <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Div id="Div00" taborder="2" text="Div00" left="30" top="10" cssclass="div_line" right="29" bottom="30">
           <Layouts>
             <Layout>
-              <Div id="Div00" taborder="0" left="36" top="28" cssclass="div_line" right="35" height="66">
+              <Div id="Div00" taborder="0" left="26" top="28" right="45" height="66">
                 <Layouts>
                   <Layout>
-                    <Static id="sta_seq" taborder="0" text="학번" left="30" top="15" width="100" height="30" cssclass="sta_default"/>
-                    <Static id="sta_dept" taborder="1" text="학과" left="248" top="15" width="100" height="30" cssclass="sta_default"/>
-                    <Static id="sta_grade" taborder="2" text="학년" left="466" top="15" width="100" height="30" cssclass="sta_default"/>
-                    <Static id="sta_name" taborder="3" text="이름" left="684" top="15" width="100" height="30" cssclass="sta_default"/>
-                    <Edit id="edt_seq" taborder="4" left="129" top="15" width="120" height="30" readonly="true"/>
-                    <Edit id="edt_dept" taborder="5" left="347" top="15" width="120" height="30" readonly="true"/>
-                    <Edit id="edt_grade" taborder="6" left="565" top="15" width="120" height="30" readonly="true"/>
-                    <Edit id="edt_name" taborder="7" left="783" top="15" width="120" height="30" readonly="true"/>
+                    <Static id="sta_seq" taborder="0" text="학번" left="10" top="15" width="100" height="30" cssclass="sta_default"/>
+                    <Static id="sta_dept" taborder="1" text="학과" left="228" top="15" width="100" height="30" cssclass="sta_default"/>
+                    <Static id="sta_grade" taborder="2" text="학년" left="446" top="15" width="100" height="30" cssclass="sta_default"/>
+                    <Static id="sta_name" taborder="3" text="이름" left="664" top="15" width="100" height="30" cssclass="sta_default"/>
+                    <Edit id="edt_seq" taborder="4" left="109" top="15" width="120" height="30" readonly="true"/>
+                    <Edit id="edt_dept" taborder="5" left="327" top="15" width="120" height="30" readonly="true"/>
+                    <Edit id="edt_grade" taborder="6" left="545" top="15" width="120" height="30" readonly="true"/>
+                    <Edit id="edt_name" taborder="7" left="763" top="15" width="120" height="30" readonly="true"/>
                   </Layout>
                 </Layouts>
               </Div>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static00_00" taborder="4" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="Static00_01_00" taborder="5" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Grid id="Grid00" taborder="6" left="68" top="160" binddataset="tuition_ds" autofittype="col" right="67" bottom="90" cssclass="grd_default">
+        <Static id="Static00_00" taborder="3" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="4" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Grid id="Grid00" taborder="5" left="68" top="93" binddataset="tuition_ds" autofittype="col" cssclass="grd_default" right="67" bottom="77">
           <Formats>
             <Format id="default">
               <Columns>
