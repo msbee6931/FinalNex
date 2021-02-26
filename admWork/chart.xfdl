@@ -7,10 +7,10 @@
         <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="2" left="1050" top="0" width="30" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Div id="Div00" taborder="4" text="Div00" left="30" top="39" width="1021" height="451" cssclass="div_line">
+        <Div id="Div00" taborder="4" text="Div00" left="30" top="10" cssclass="div_line" right="29" bottom="30">
           <Layouts>
             <Layout>
-              <BasicChart id="BasicChart00" taborder="0" left="19" top="20" width="490" height="250" binddataset="colCodeChart_ds" categorycolumn="bind:category">
+              <BasicChart id="BasicChart00" taborder="0" left="19" top="18" binddataset="colCodeChart_ds" categorycolumn="bind:category" right="510" bottom="210">
                 <Contents><![CDATA[{
 	"title": {
 		"id": "title",
@@ -100,11 +100,11 @@
 	]
 }]]></Contents>
               </BasicChart>
-              <PieChart id="PieChart00" taborder="1" left="174" top="280" width="175" height="160" binddataset="genderChart_ds" categorycolumn="bind:category">
+              <PieChart id="PieChart00" taborder="1" left="174" top="289" binddataset="genderChart_ds" categorycolumn="bind:category" right="670" bottom="29">
                 <Contents><![CDATA[{
 	"title": {
 		"id": "title",
-		"text": "학생 성(姓) 수",
+		"text": "학생 남녀 수",
 		"textfont": "bold 14px/normal \"맑은 고딕\"",
 		"padding": "0px 0px 5px"
 	},
@@ -142,7 +142,7 @@
 	]
 }]]></Contents>
               </PieChart>
-              <FloatChart id="FloatChart00" taborder="2" left="559" top="18" width="432" height="393" binddataset="deptCodeChart_ds" categorycolumn="bind:category">
+              <FloatChart id="FloatChart00" taborder="2" left="559" top="18" binddataset="deptCodeChart_ds" categorycolumn="bind:category" right="28" bottom="9">
                 <Contents><![CDATA[{
 	"tooltip": {
 		"id": "tooltip",
@@ -208,7 +208,6 @@
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static01" taborder="5" text="통계 관리" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
       </Layout>
     </Layouts>
     <Bind>

@@ -3,7 +3,7 @@
   <Form id="studentSchedule" width="820" height="500" titletext="New Form" onload="studentSchedule_onload">
     <Layouts>
       <Layout height="500" mobileorientation="landscape" width="820" stepcount="0">
-        <Grid id="Grid00" taborder="1" left="10" top="40" width="800" height="400" autofittype="col" binddataset="ds_stdTimeTable">
+        <Grid id="Grid00" taborder="1" left="10" top="40" width="800" height="400" autofittype="col" binddataset="ds_stdTimeTable" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>
@@ -43,7 +43,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btnCancel" taborder="0" text="닫기" left="710" top="455" width="98" height="30" onclick="btnCancel_onclick"/>
+        <Button id="btnCancel" taborder="0" text="닫기" left="710" top="455" width="100" height="25" onclick="btnCancel_onclick" cssclass="btn_can"/>
         <Static id="sta_title" taborder="2" text="수강 시간표" left="10" top="0" width="210" height="40"/>
       </Layout>
     </Layouts>
