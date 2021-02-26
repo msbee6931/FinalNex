@@ -7,7 +7,7 @@
         <Static id="Static00_00" taborder="1" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Div id="div_schedule" taborder="4" text="Div00" left="30" top="38" right="29" bottom="30" cssclass="div_line">
+        <Div id="div_schedule" taborder="4" text="Div00" left="30" top="10" right="29" bottom="30" cssclass="div_line">
           <Layouts>
             <Layout>
               <Calendar id="cal_dept" taborder="0" left="9" top="76" type="monthonly" ondayclick="Div00_cal_dept_ondayclick" onrbuttonup="Div00_cal_dept_onrbuttonup" innerdataset="ds_cal" backgroundcolumn="backgroundcolumn" bordercolumn="bordercolumn" datecolumn="datecolumn" textcolorcolumn="textcolorcolumn" bottom="24" right="630"/>

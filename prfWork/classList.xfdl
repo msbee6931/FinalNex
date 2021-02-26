@@ -36,7 +36,7 @@
         </Combo>
         <Edit id="edt_search" taborder="1" top="20" width="170" height="25" cssclass="edt_default" right="105"/>
         <Button id="btnSearch" taborder="2" text="검색" top="20" width="60" height="25" onclick="btnSearch_onclick" cssclass="btn_search" right="40"/>
-        <Combo id="co_semester" taborder="5" text="" top="20" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default" left="530">
+        <Combo id="co_semester" taborder="5" text="" top="20" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default" right="410">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -54,7 +54,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="co_year" taborder="7" text="" top="20" width="120" height="25" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default" left="400">
+        <Combo id="co_year" taborder="7" text="" top="20" width="120" height="25" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default" right="540">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -122,7 +122,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_exel" taborder="8" text="Exel" left="940" top="450" width="100" height="25" cssclass="btn_exel" onclick="btn_exel_onclick"/>
+        <Button id="btn_exel" taborder="8" text="Exel" width="100" height="25" cssclass="btn_exel" onclick="btn_exel_onclick" right="40" bottom="45"/>
       </Layout>
     </Layouts>
     <Objects>
