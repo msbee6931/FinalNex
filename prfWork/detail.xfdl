@@ -116,7 +116,6 @@
                         <CheckBox id="chk_pf" taborder="54" text="Pass/Fail" left="894" top="58" width="85" height="20" falsevalue="F" truevalue="P" value="F"/>
                         <MaskEdit id="mask_classRoom" taborder="55" left="139" top="126" width="212" height="39" textAlign="center" displaynulltext="ex) 101" type="string" format="###"/>
                         <Button id="btnClassRoom" taborder="55" text="강의실 보기" left="263" top="166" width="86" height="33" onclick="Div00_classPlanTab_classPlan_btnClassRoom_onclick"/>
-
                       </Layout>
                     </Layouts>
                     <InitValue/>

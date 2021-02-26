@@ -247,7 +247,8 @@
           </Formats>
         </Grid>
 
-        <Button id="btnSave2" taborder="47" text="저장" left="930" top="500" width="100" height="25" positionstep="1" onclick="btnSave2_onclick"/>
+
+        <Button id="btnSave2" taborder="47" text="저장" left="930" top="500" width="100" height="25" positionstep="1" onclick="btnSave2_onclick" cssclass="btn_default"/>
         <Div id="div_rank" taborder="48" text="Div00" left="40" top="325" width="210" height="160" positionstep="1" url="prfWork::rankStandard.xfdl"/>
         <Button id="btn_exel" taborder="49" text="Exel" left="820" top="500" width="100" height="25" positionstep="1" onclick="btn_exel_onclick" cssclass="btn_exel"/>
 

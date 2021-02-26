@@ -2125,7 +2125,9 @@ font : 14px/normal "Malgun Gothic";
 	background : #6c9cff;
 	color : #ffffff;
 }
-.Grid.grd_default .head .row .cell[status=mouseover][userstatus=selected]
+.Grid.grd_default .head .row .cell[status=mouseover][userstatus=selected],
+.Grid.grd_default .head .row .cell[status=mouseover][userstatus=blinked],
+.Grid.grd_default .head .row .cell[status=mouseover][userstatus=invalidtext]
 {
 	font : bold 12px/normal "Malgun Gothic";
 	background : #6c9cff;
@@ -2159,25 +2161,6 @@ font : 14px/normal "Malgun Gothic";
 	
 
 }
-.Button.btn_default,
-.Button.btn_default[status=disabled],
-.Button.btn_default[status=focused],
-.Button.btn_default[userstatus=pushed],
-.Button.btn_default[userstatus=selected]
-{
-	background : #0d6efd;
-	color : #ffffff;
-	font : 12px "Malgun Gothic";
-	-nexa-border : 1px solid #0d6efd;
-	
-}
-.Button.btn_default[status=mouseover][userstatus=pushed],
-.Button.btn_default[status=mouseover][userstatus=selected]
-{
-	background : #6c9cff;
-	color : #ffffff;
-	font : bold 12px/normal "Malgun Gothic";
-}
 .Button.btn_exel,
 .Button.btn_exel[status=disabled],
 .Button.btn_exel[status=mouseover],
@@ -2192,6 +2175,7 @@ font : 14px/normal "Malgun Gothic";
 	-nexa-text-align : center;
 	-nexa-text-padding : 4px;
 	background : #ffffff;
+	cursor : pointer;
 
 }
 .Button.btn_home,
@@ -2207,6 +2191,7 @@ font : 14px/normal "Malgun Gothic";
 	-nexa-text-align : center;
 	-nexa-text-padding : 4px;
 	background : #0d6efd;
+	cursor : pointer;
 }
 .Button.btn_search,
 .Button.btn_search[status=disabled],
@@ -2222,6 +2207,7 @@ font : 14px/normal "Malgun Gothic";
 	-nexa-text-padding : 4px;
 	background : #0d6efd;
 	-nexa-border : 1px solid #0d6efd;
+	cursor : pointer;
 }
 .Button.btn_del,
 .Button.btn_del[status=disabled],
@@ -2237,6 +2223,7 @@ font : 14px/normal "Malgun Gothic";
 	-nexa-text-padding : 4px;
 	background : #1c0c7c;
 	-nexa-border : 1px solid #1c0c7c;
+	cursor : pointer;
 }
 .Button.btn_insert,
 .Button.btn_insert[status=disabled],
@@ -2252,6 +2239,7 @@ font : 14px/normal "Malgun Gothic";
 	-nexa-text-padding : 4px;
 	background : #0d6efd;
 	-nexa-border : 1px solid #0d6efd;
+	cursor : pointer;
 }
 .Button.btn_logout,
 .Button.btn_logout[status=disabled],
@@ -2266,6 +2254,7 @@ font : 14px/normal "Malgun Gothic";
 	-nexa-text-align : center;
 	-nexa-text-padding : 4px;
 	background : #0d6efd;
+	cursor : pointer;
 }
 .Button.btn_message,
 .Button.btn_message[status=disabled],
@@ -2280,6 +2269,7 @@ font : 14px/normal "Malgun Gothic";
 	-nexa-text-align : center;
 	-nexa-text-padding : 4px;
 	background : #0d6efd;
+	cursor : pointer;
 }
 .Calendar.cal_default,
 .Calendar.cal_default[status=disabled],
@@ -2326,6 +2316,7 @@ font : 14px/normal "Malgun Gothic";
 	color : #ffffff;
 	font : 12px "Malgun Gothic";
 	-nexa-border : 1px solid #1c0c7c;
+	cursor : pointer;
 }
 .TextArea.txt_default,
 .TextArea.txt_default[status=disabled],
@@ -2375,5 +2366,54 @@ font : 14px/normal "Malgun Gothic";
 	-nexa-text-padding : 4px;
 	background : #ffffff;
 	-nexa-border : 1px solid #0d6efd;
+	cursor : pointer;
+}
+.Button.btn_default,
+.Button.btn_default[status=disabled],
+.Button.btn_default[status=mouseover],
+.Button.btn_default[status=focused],
+.Button.btn_default[userstatus=pushed],
+.Button.btn_default[userstatus=selected]
+{
+	background : #0d6efd;
+	color : #ffffff;
+	font : 12px "Malgun Gothic";
+	-nexa-border : 1px solid #0d6efd;
+	cursor : pointer;
+}
+.Grid.grd_default .head[status=mouseover],
+.Grid.grd_default .head[status=disabled],
+.Grid.grd_default .head[status=focused],
+.Grid.grd_default .head[status=readonly]
+{
+	font : bold 12px/normal "Malgun Gothic";
+	background : #6c9cff;
+	color : #ffffff;
+}
+.Grid.grd_default .head .row[status=disabled]
+{
+
+}
+.Grid.grd_default .head .row .cell[status=mouseover]
+{
+	font : bold 12px/normal "Malgun Gothic";
+	background : #6c9cff;
+	color : #ffffff;
+}
+.Button.btn_cal,
+.Button.btn_cal[status=disabled],
+.Button.btn_cal[status=mouseover],
+.Button.btn_cal[status=focused],
+.Button.btn_cal[userstatus=pushed],
+.Button.btn_cal[userstatus=selected]
+{
+	color : #ffffff;
+	font : 12px "Malgun Gothic";
+	-nexa-icon : url('theme://images/btn_CalDrop_P.png');
+	-nexa-text-align : center;
+	-nexa-text-padding : 2px;
+	background : #0d6efd;
+	-nexa-border : 1px solid #0d6efd;
+	cursor : pointer;
 }
 ]]></XCSS>

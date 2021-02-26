@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
   <Form id="nomalNotice_Info" width="900" height="600" titletext="New Form" onload="nomalNotice_Info_onload">
     <Layouts>
