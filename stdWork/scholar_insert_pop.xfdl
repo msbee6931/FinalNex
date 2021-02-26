@@ -10,7 +10,7 @@
         <Div id="Div00" taborder="4" text="Div00" left="30" top="20" width="840" height="560" cssclass="div_line">
           <Layouts>
             <Layout>
-              <Edit id="edt_title" taborder="1" left="168" top="83" width="600" height="30" cssclass="edt_default"/>
+              <Edit id="edt_title" taborder="1" left="168" top="83" width="600" height="30" cssclass="edt_default" readonly="true"/>
               <Static id="Static00" taborder="0" text="제목" left="70" top="83" width="100" height="30" cssclass="sta_default"/>
               <Button id="btn_add" taborder="3" text="파일찾기" left="668" top="112" width="100" height="39" onclick="Div00_btn_add_onclick" cssclass="btn_default"/>
               <Grid id="Grid00" taborder="4" left="168" top="112" width="501" height="71" binddataset="schFileList_ds" autofittype="col" onheadclick="Div00_Grid00_onheadclick" cssclass="grd_default">
@@ -48,7 +48,7 @@
               <Static id="Static00_01" taborder="9" text="분류" left="70" top="54" width="100" height="30" cssclass="sta_default"/>
               <Static id="Static00_00_00" taborder="12" text="신청사유" left="70" top="181" width="100" height="138" cssclass="sta_default"/>
               <Static id="Static03" taborder="13" text="※ 작성 후, 수정·삭제는 관리자로 문의 부탁드립니다." left="468" top="434" width="302" height="35"/>
-              <TextArea id="TextArea00" taborder="14" left="171" top="181" width="600" height="138" cssclass="txt_default"/>
+              <TextArea id="txt_contents" taborder="14" left="171" top="181" width="600" height="138" cssclass="txt_default"/>
             </Layout>
           </Layouts>
         </Div>
@@ -209,8 +209,17 @@ this.FileUpTransfer00_onerror = function(obj:nexacro.FileUpTransfer,e:nexacro.Fi
 //파일전송 버튼클릭
 this.Div00_btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+		var nRow = this.reqScholar_ds.addRow();
+		var title = this.Div00.form.edt_title.value;
+		var contents = this.Div00.form.txt_contents.value;
+		
 	if(this.FileUpTransfer00.filelist.length == 0) {
 		alert("첨부한 파일이 없습니다.");
+		return;
+	}
+	else if(contents == null || contents == "")
+	{
+		alert("신청 사유를 입력해 주세요");
 		return;
 	}
 	
@@ -218,11 +227,7 @@ this.Div00_btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 	
 	if(conValue)
 	{
-		
-		var nRow = this.reqScholar_ds.addRow();
-		var title = this.Div00.form.edt_title.value;
-		var contents = this.Div00.form.edt_contents.value;
-		
+
 		this.reqScholar_ds.setColumn(nRow,"title",title);
 		this.reqScholar_ds.setColumn(nRow,"contents",contents);
 		this.reqScholar_ds.setColumn(nRow,"std_code",this.std_code);

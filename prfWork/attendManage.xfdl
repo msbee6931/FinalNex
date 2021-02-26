@@ -1,9 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="attendManage" width="1080" height="570" titletext="New Form" onload="attendManage_onload">
+  <Form id="attendManage" width="1080" height="520" titletext="New Form" onload="attendManage_onload">
     <Layouts>
-      <Layout height="570" mobileorientation="landscape" width="1080" stepcount="0">
-        <Grid id="gr_classList" taborder="0" left="75" top="67" width="930" height="143" binddataset="ds_class" oncellclick="gr_classList_oncellclick" autofittype="col">
+      <Layout height="520" mobileorientation="landscape" width="1080" stepcount="0">
+        <Static id="Static00_00" taborder="10" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01" taborder="11" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00_00" taborder="12" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="13" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static01" taborder="14" left="27" top="10" cssclass="sta_line" text="" right="30" bottom="30"/>
+        <Grid id="gr_classList" taborder="0" left="48" top="57" binddataset="ds_class" oncellclick="gr_classList_oncellclick" autofittype="col" right="47" cssclass="grd_default" height="143">
           <Formats>
             <Format id="default">
               <Columns>
@@ -40,9 +45,9 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static00" taborder="1" text="나의 강좌" left="80" top="20" width="120" height="50"/>
-        <Static id="sta_label" taborder="2" text="학생 리스트" left="455" top="220" width="190" height="50"/>
-        <Combo id="co_year" taborder="3" text="" left="715" top="27" width="120" height="25" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
+        <Static id="Static00" taborder="1" text="나의 강좌" left="48" top="14" width="120" height="50"/>
+        <Static id="sta_label" taborder="2" text="학생 리스트" left="390" top="gr_classList:10" width="190" height="50"/>
+        <Combo id="co_year" taborder="3" text="" top="27" width="120" height="25" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default" right="245">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -60,7 +65,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="co_semester" taborder="4" text="" left="845" top="27" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
+        <Combo id="co_semester" taborder="4" text="" top="27" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default" right="115">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -78,8 +83,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Button id="btnSearch" taborder="5" left="975" top="27" width="25" height="25" onclick="btnSearch_onclick" cssclass="btn_search"/>
-        <Grid id="gr_stdList" taborder="6" left="455" top="260" width="535" height="260" binddataset="ds_attend" autofittype="col" oncellclick="gr_stdList_oncellclick">
+        <Button id="btnSearch" taborder="5" top="27" width="60" height="25" onclick="btnSearch_onclick" cssclass="btn_search" text="조회" right="45"/>
+        <Grid id="gr_stdList" taborder="6" binddataset="ds_attend" autofittype="col" oncellclick="gr_stdList_oncellclick" left="390" right="50" top="250" bottom="70" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>
@@ -110,16 +115,16 @@
             </Format>
           </Formats>
         </Grid>
-        <Calendar id="cal" taborder="7" left="70" top="260" width="300" height="260" type="monthonly" onchanged="cal_onchanged" usetrailingday="true" innerdataset="ds_cal" backgroundcolumn="backgroundcolumn" bordercolumn="bordercolumn" datecolumn="datecolumn" textcolorcolumn="textcolorcolumn"/>
-        <Button id="btnSave" taborder="8" text="저장" left="890" top="525" width="100" height="30" onclick="btnSave_onclick" cssclass="btn_default"/>
+        <Calendar id="cal" taborder="7" left="48" width="322" type="monthonly" onchanged="cal_onchanged" usetrailingday="true" innerdataset="ds_cal" backgroundcolumn="backgroundcolumn" bordercolumn="bordercolumn" datecolumn="datecolumn" textcolorcolumn="textcolorcolumn" bottom="70" top="250"/>
+        <Button id="btnSave" taborder="8" text="저장" width="100" height="25" onclick="btnSave_onclick" cssclass="btn_default" right="50" bottom="40"/>
         <PopupDiv id="pop_reason" text="PopupDiv00" visible="false" left="910" top="310" width="200" height="120" oncloseup="pop_reason_oncloseup">
           <Layouts>
             <Layout>
-              <TextArea id="ta_reason" taborder="0" left="0" top="0" width="200" height="120"/>
+              <TextArea id="ta_reason" taborder="0" left="20" top="0" width="180" height="120"/>
             </Layout>
           </Layouts>
         </PopupDiv>
-        <Button id="btnDel" taborder="9" text="삭제" left="780" top="525" width="100" height="30" onclick="btnDel_onclick" cssclass="btn_del"/>
+        <Button id="btnDel" taborder="9" text="삭제" width="100" height="25" onclick="btnDel_onclick" cssclass="btn_del" right="160" bottom="40"/>
       </Layout>
     </Layouts>
     <Objects>

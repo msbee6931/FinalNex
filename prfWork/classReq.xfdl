@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="classReq" width="1080" height="570" titletext="New Form" onload="classReq_onload">
+  <Form id="classReq" width="1080" height="520" titletext="New Form" onload="classReq_onload">
     <Layouts>
-      <Layout height="570" mobileorientation="landscape" width="1080">
-        <Grid id="gr_classList" taborder="0" left="20" top="6" width="1040" height="425" binddataset="ds_class" autofittype="col" oncellclick="gr_classList_oncellclick" onexpanddown="gr_classList_onexpanddown" onheadclick="gr_classList_onheadclick">
+      <Layout height="520" mobileorientation="landscape" width="1080">
+        <Static id="Static01" taborder="8" left="27" top="10" cssclass="sta_line" right="27" bottom="30"/>
+        <Grid id="gr_classList" taborder="0" left="40" top="40" binddataset="ds_class" autofittype="col" oncellclick="gr_classList_oncellclick" onexpanddown="gr_classList_onexpanddown" onheadclick="gr_classList_onheadclick" cssclass="grd_default" right="39" bottom="89">
           <Formats>
             <Format id="default">
               <Columns>
@@ -55,9 +56,13 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btnWrite" taborder="1" text="작성하기" left="670" top="441" width="120" height="50" onclick="btnWrite_onclick"/>
-        <Button id="btnUpd" taborder="2" text="수정하기" left="800" top="441" width="120" height="50" onclick="classTab_classReq_btnUpd_onclick"/>
-        <Button id="btnDel" taborder="3" text="삭제 및 취소 요청" left="930" top="441" width="120" height="50" onclick="btnDel_onclick"/>
+        <Button id="btnWrite" taborder="1" text="작성하기" width="100" height="25" onclick="btnWrite_onclick" cssclass="btn_insert" right="249" bottom="54"/>
+        <Button id="btnUpd" taborder="2" text="수정하기" width="100" height="25" onclick="classTab_classReq_btnUpd_onclick" cssclass="btn_default" right="144" bottom="54"/>
+        <Button id="btnDel" taborder="3" text="취소 요청" width="100" height="25" onclick="btnDel_onclick" cssclass="btn_can" right="39" bottom="54"/>
+        <Static id="Static00" taborder="4" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01" taborder="5" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00" taborder="6" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="7" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
       </Layout>
     </Layouts>
     <Objects>

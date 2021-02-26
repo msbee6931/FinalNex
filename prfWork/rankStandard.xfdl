@@ -3,14 +3,14 @@
   <Form id="rankStandard" width="210" height="160" titletext="New Form">
     <Layouts>
       <Layout height="160" mobileorientation="landscape" width="210">
-        <Static id="Static03" taborder="0" text="등급(최대 %)" left="0" top="8" width="105" height="35" border="1px solid black" textAlign="center"/>
-        <Static id="Static03_00" taborder="1" text="최대 인원" left="105" top="8" width="105" height="35" border="1px solid black" textAlign="center"/>
-        <Static id="Static03_01" taborder="2" text="A등급(30%)" left="0" top="43" width="105" height="35" border="1px solid black" textAlign="center"/>
-        <Static id="sta_A" taborder="3" text="0" left="105" top="43" width="105" height="35" border="1px solid black" textAlign="center"/>
-        <Static id="Static03_02" taborder="4" text="B등급(40%)" left="0" top="78" width="105" height="35" border="1px solid black" textAlign="center"/>
-        <Static id="sta_B" taborder="5" text="0" left="105" top="78" width="105" height="35" border="1px solid black" textAlign="center" onclick="div_rank_sta_B_onclick"/>
-        <Static id="Static03_03" taborder="6" text="C등급 (30%)" left="0" top="113" width="105" height="35" border="1px solid black" textAlign="center"/>
-        <Static id="sta_C" taborder="7" text="0" left="105" top="113" width="105" height="35" border="1px solid black" textAlign="center"/>
+        <Static id="Static03" taborder="0" text="등급(최대 %)" left="0" top="8" width="105" height="35" textAlign="center" cssclass="sta_line"/>
+        <Static id="Static03_00" taborder="1" text="최대 인원" left="104" top="8" width="105" height="35" textAlign="center" cssclass="sta_line"/>
+        <Static id="Static03_01" taborder="2" text="A등급(30%)" left="0" top="42" width="105" height="35" textAlign="center" cssclass="sta_default"/>
+        <Static id="sta_A" taborder="3" text="0" left="104" top="42" width="105" height="35" textAlign="center" cssclass="sta_line"/>
+        <Static id="Static03_02" taborder="4" text="B등급(40%)" left="0" top="76" width="105" height="35" textAlign="center" cssclass="sta_default"/>
+        <Static id="sta_B" taborder="5" text="0" left="104" top="76" width="105" height="35" textAlign="center" onclick="div_rank_sta_B_onclick" cssclass="sta_line"/>
+        <Static id="Static03_03" taborder="6" text="C등급 (30%)" left="0" top="110" width="105" height="35" textAlign="center" cssclass="sta_default"/>
+        <Static id="sta_C" taborder="7" text="0" left="104" top="110" width="105" height="35" textAlign="center" cssclass="sta_line"/>
       </Layout>
     </Layouts>
   </Form>
