@@ -43,6 +43,12 @@
           <Col id="form_url">stdWork::stdReadTuition.xfdl</Col>
         </Row>
         <Row>
+          <Col id="menu_id">103020</Col>
+          <Col id="menu_name">등록금 고지서 출력</Col>
+          <Col id="menu_level">2</Col>
+          <Col id="form_url">stdWork::reciptt.xfdl</Col>
+        </Row>
+        <Row>
           <Col id="menu_id">1040</Col>
           <Col id="menu_name">장학금관리</Col>
           <Col id="menu_level">1</Col>
