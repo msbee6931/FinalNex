@@ -9,18 +9,18 @@
         <Static id="Static00_03" taborder="3" text="전화번호" top="125" width="50" height="30" left="10"/>
         <Static id="Static00_04" taborder="4" text="주소" top="160" width="50" height="30" left="10"/>
         <Static id="Static00_05" taborder="5" text="성별" top="195" width="50" height="30" left="10"/>
-        <Edit id="edt_name" taborder="6" top="20" width="175" height="30" left="85"/>
-        <Edit id="edt_email" taborder="7" top="90" width="175" height="30" left="85"/>
-        <Edit id="edt_contact" taborder="8" top="125" width="175" height="30" left="85"/>
-        <Edit id="edt_address" taborder="9" top="160" width="175" height="30" left="85"/>
-        <Button id="btn_insert" taborder="10" text="입력" top="320" width="50" height="30" left="85" onclick="btn_insert_onclick"/>
-        <Button id="btn_cancel" taborder="11" text="취소" top="320" width="50" height="30" left="210" onclick="btn_cancel_onclick"/>
+        <Edit id="edt_name" taborder="6" top="20" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Edit id="edt_email" taborder="7" top="90" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Edit id="edt_contact" taborder="8" top="125" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Edit id="edt_address" taborder="9" top="160" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Button id="btn_insert" taborder="10" text="입력" top="320" width="50" height="30" left="85" onclick="btn_insert_onclick" cssclass="btn_default"/>
+        <Button id="btn_cancel" taborder="11" text="취소" top="320" width="50" height="30" left="210" onclick="btn_cancel_onclick" cssclass="btn_default"/>
         <Static id="Static00_06_00" taborder="12" text="학과분류" top="230" width="75" height="30" left="10"/>
         <Static id="Static00_06_00_00" taborder="13" text="학과" top="265" width="75" height="30" left="10"/>
-        <Combo id="com_colCode" taborder="14" left="85" top="230" width="175" height="30" innerdataset="colCode_Copy" codecolumn="Code" datacolumn="Value"/>
-        <Combo id="com_deptCode" taborder="15" left="85" top="265" width="175" height="30" codecolumn="Code" datacolumn="Value" innerdataset="deptCode_copy"/>
-        <MaskEdit id="mas_secNumber" taborder="16" left="85" top="55" width="175" height="30" type="string" format="###### - #{######}" oninput="mas_secNumber_oninput"/>
-        <Combo id="com_gender" taborder="17" left="85" top="195" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" readonly="true">
+        <Combo id="com_colCode" taborder="14" left="85" top="230" width="175" height="30" innerdataset="colCode_Copy" codecolumn="Code" datacolumn="Value" cssclass="cmb_default"/>
+        <Combo id="com_deptCode" taborder="15" left="85" top="265" width="175" height="30" codecolumn="Code" datacolumn="Value" innerdataset="deptCode_copy" cssclass="cmb_default"/>
+        <MaskEdit id="mas_secNumber" taborder="16" left="85" top="55" width="175" height="30" type="string" format="###### - #{######}" oninput="mas_secNumber_oninput" cssclass="med_default"/>
+        <Combo id="com_gender" taborder="17" left="85" top="195" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" readonly="true" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>

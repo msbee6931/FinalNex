@@ -3,17 +3,17 @@
   <Form id="noticeModify" width="1080" height="520" titletext="New Form" onload="noticeModify_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
-        <Static id="Static01" taborder="5" left="30" top="10" cssclass="sta_line" right="26" bottom="30"/>
         <Static id="Static00" taborder="0" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="1" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Tab id="Tab00" taborder="4" tabindex="0" left="40" top="40" onchanged="Tab00_onchanged" right="18" bottom="28">
+        <Static id="Static01" taborder="4" text="공지사항 수정" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
+        <Tab id="Tab00" taborder="5" tabindex="0" left="30" top="40" width="1022" height="452" onchanged="Tab00_onchanged">
           <Tabpages>
             <Tabpage id="Tabpage1" text="일반공지">
               <Layouts>
                 <Layout>
-                  <Grid id="Grid00" taborder="0" left="0" top="0" binddataset="ds_Notice" autofittype="col" oncelldblclick="Tab00_Tabpage1_Grid00_oncelldblclick" onheadclick="Tab00_Tabpage1_Grid00_onheadclick" cssclass="grd_default" right="12" bottom="3">
+                  <Grid id="Grid00" taborder="0" left="0" top="0" width="1020" height="420" binddataset="ds_Notice" autofittype="col" oncelldblclick="Tab00_Tabpage1_Grid00_oncelldblclick" onheadclick="Tab00_Tabpage1_Grid00_onheadclick" cssclass="grd_default">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -28,16 +28,16 @@
                           <Row size="24"/>
                         </Rows>
                         <Band id="head">
-                          <Cell text="n_seq"/>
-                          <Cell col="1" text="title"/>
-                          <Cell col="2" text="writedate"/>
-                          <Cell col="3" text="contents"/>
-                          <Cell col="4" text="deptcode"/>
+                          <Cell text="번호"/>
+                          <Cell col="1" text="제목"/>
+                          <Cell col="2" text="작성일시"/>
+                          <Cell col="3" text="내용"/>
+                          <Cell col="4" text="학과코드"/>
                         </Band>
                         <Band id="body">
                           <Cell text="bind:n_seq" textAlign="center"/>
                           <Cell col="1" text="bind:title" textAlign="center"/>
-                          <Cell col="2" text="bind:writedate" textAlign="center"/>
+                          <Cell col="2" text="bind:writedate" textAlign="center" displaytype="date"/>
                           <Cell col="3" text="bind:contents" textAlign="center"/>
                           <Cell col="4" text="bind:deptcode" textAlign="center"/>
                         </Band>
@@ -51,7 +51,7 @@
               <Layouts>
                 <Layout>
                   <Div id="Div00" taborder="0" text="Div00" left="141" top="1" width="729" height="423"/>
-                  <Grid id="Grid00" taborder="1" left="0" top="0" binddataset="ds_Notice" autofittype="col" oncelldblclick="Tab00_Tabpage2_Grid00_oncelldblclick" onheadclick="Tab00_Tabpage2_Grid00_onheadclick" cssclass="grd_default" right="22" bottom="3">
+                  <Grid id="Grid00" taborder="1" height="420" binddataset="ds_Notice" autofittype="col" oncelldblclick="Tab00_Tabpage2_Grid00_oncelldblclick" onheadclick="Tab00_Tabpage2_Grid00_onheadclick" width="1020" left="0" top="0" cssclass="grd_default">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -62,20 +62,20 @@
                           <Column size="80"/>
                         </Columns>
                         <Rows>
-                          <Row band="head" size="24"/>
+                          <Row size="24" band="head"/>
                           <Row size="24"/>
                         </Rows>
                         <Band id="head">
-                          <Cell text="n_seq"/>
-                          <Cell col="1" text="title"/>
-                          <Cell col="2" text="writedate"/>
-                          <Cell col="3" text="contents"/>
-                          <Cell col="4" text="deptcode"/>
+                          <Cell text="번호"/>
+                          <Cell col="1" text="제목"/>
+                          <Cell col="2" text="작성일시"/>
+                          <Cell col="3" text="내용"/>
+                          <Cell col="4" text="학과코드"/>
                         </Band>
                         <Band id="body">
                           <Cell text="bind:n_seq"/>
                           <Cell col="1" text="bind:title"/>
-                          <Cell col="2" text="bind:writedate"/>
+                          <Cell col="2" text="bind:writedate" displaytype="date"/>
                           <Cell col="3" text="bind:contents"/>
                           <Cell col="4" text="bind:deptcode"/>
                         </Band>
@@ -88,7 +88,7 @@
             <Tabpage id="Tabpage3" text="학사공지">
               <Layouts>
                 <Layout>
-                  <Grid id="Grid00" taborder="0" left="0" top="0" binddataset="ds_Notice" autofittype="col" oncelldblclick="Tab00_Tabpage3_Grid00_oncelldblclick" onheadclick="Tab00_Tabpage3_Grid00_onheadclick" cssclass="grd_default" right="32" bottom="3">
+                  <Grid id="Grid00" taborder="0" left="0" top="0" width="1020" height="420" binddataset="ds_Notice" autofittype="col" oncelldblclick="Tab00_Tabpage3_Grid00_oncelldblclick" onheadclick="Tab00_Tabpage3_Grid00_onheadclick" cssclass="grd_default">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -99,20 +99,20 @@
                           <Column size="80"/>
                         </Columns>
                         <Rows>
-                          <Row band="head" size="24"/>
+                          <Row size="24" band="head"/>
                           <Row size="24"/>
                         </Rows>
                         <Band id="head">
-                          <Cell text="n_seq"/>
-                          <Cell col="1" text="title"/>
-                          <Cell col="2" text="writedate"/>
-                          <Cell col="3" text="contents"/>
-                          <Cell col="4" text="deptcode"/>
+                          <Cell text="번호"/>
+                          <Cell col="1" text="제목"/>
+                          <Cell col="2" text="작성일시"/>
+                          <Cell col="3" text="내용"/>
+                          <Cell col="4" text="학과코드"/>
                         </Band>
                         <Band id="body">
                           <Cell text="bind:n_seq"/>
                           <Cell col="1" text="bind:title"/>
-                          <Cell col="2" text="bind:writedate"/>
+                          <Cell col="2" text="bind:writedate" displaytype="date"/>
                           <Cell col="3" text="bind:contents"/>
                           <Cell col="4" text="bind:deptcode"/>
                         </Band>
@@ -125,7 +125,7 @@
             <Tabpage id="Tabpage4" text="취업공지">
               <Layouts>
                 <Layout>
-                  <Grid id="Grid00" taborder="0" left="0" top="0" binddataset="ds_Notice" autofittype="col" oncelldblclick="Tab00_Tabpage4_Grid00_oncelldblclick" onheadclick="Tab00_Tabpage4_Grid00_onheadclick" cssclass="grd_default" right="22" bottom="3">
+                  <Grid id="Grid00" taborder="0" left="0" top="0" width="1020" height="420" binddataset="ds_Notice" autofittype="col" oncelldblclick="Tab00_Tabpage4_Grid00_oncelldblclick" onheadclick="Tab00_Tabpage4_Grid00_onheadclick" cssclass="grd_default">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -136,20 +136,20 @@
                           <Column size="80"/>
                         </Columns>
                         <Rows>
-                          <Row band="head" size="24"/>
+                          <Row size="24" band="head"/>
                           <Row size="24"/>
                         </Rows>
                         <Band id="head">
-                          <Cell text="n_seq"/>
-                          <Cell col="1" text="title"/>
-                          <Cell col="2" text="writedate"/>
-                          <Cell col="3" text="contents"/>
-                          <Cell col="4" text="deptcode"/>
+                          <Cell text="번호"/>
+                          <Cell col="1" text="제목"/>
+                          <Cell col="2" text="작성일시"/>
+                          <Cell col="3" text="내용"/>
+                          <Cell col="4" text="학과코드"/>
                         </Band>
                         <Band id="body">
                           <Cell text="bind:n_seq"/>
                           <Cell col="1" text="bind:title"/>
-                          <Cell col="2" text="bind:writedate"/>
+                          <Cell col="2" text="bind:writedate" displaytype="date"/>
                           <Cell col="3" text="bind:contents"/>
                           <Cell col="4" text="bind:deptcode"/>
                         </Band>
@@ -172,20 +172,6 @@
           <Column id="contents" type="STRING" size="256"/>
           <Column id="deptcode" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="n_seq">1</Col>
-            <Col id="title">1</Col>
-            <Col id="writedate">1</Col>
-            <Col id="contents">1</Col>
-          </Row>
-          <Row>
-            <Col id="n_seq">2</Col>
-            <Col id="title">2</Col>
-            <Col id="writedate">2</Col>
-            <Col id="contents">2</Col>
-          </Row>
-        </Rows>
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.nMaxFileSize = 2000000;  //각 파일 최대사이즈 (2 Mbyte)
