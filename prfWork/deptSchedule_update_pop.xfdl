@@ -92,6 +92,7 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
       <Dataset id="deptSchedule_ds" onrowsetchanged="deptSchedule_ds_onrowsetchanged">
         <ColumnInfo>
           <Column id="seq" type="STRING" size="256"/>
+          <Column id="deptCode" type="STRING" size="256"/>
           <Column id="writer" type="STRING" size="256"/>
           <Column id="name" type="STRING" size="256"/>
           <Column id="title" type="STRING" size="256"/>

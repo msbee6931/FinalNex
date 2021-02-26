@@ -21,13 +21,12 @@
               <Div id="Div00_00" taborder="1" text="" left="519" top="120" width="500" height="280" cssclass="div_line">
                 <Layouts>
                   <Layout>
-                    <TextArea id="TextArea00" taborder="0" left="12" top="9" width="480" height="252"/>
-
+                    <TextArea id="TextArea00" taborder="0" left="12" top="9" width="480" height="252" cssclass="txt_default"/>
                   </Layout>
                 </Layouts>
               </Div>
               <Button id="Button00" taborder="2" text="전송" left="925" top="410" width="92" height="31" onclick="Div00_Button00_onclick" cssclass="btn_default"/>
-              <Grid id="Grid00" taborder="3" left="9" top="22" width="500" height="379" binddataset="professor" autofittype="col">
+              <Grid id="Grid00" taborder="3" left="9" top="22" width="500" height="379" binddataset="professor" autofittype="col" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -41,13 +40,13 @@
                       <Row size="24"/>
                     </Rows>
                     <Band id="head">
-                      <Cell text="p_seq"/>
+                      <Cell text="id"/>
                       <Cell col="1" text="name"/>
                       <Cell col="2" text="email"/>
                       <Cell col="3" text="contact"/>
                     </Band>
                     <Band id="body">
-                      <Cell text="bind:p_seq" textAlign="center"/>
+                      <Cell text="bind:p_seq" textAlign="center" displaytype="text"/>
                       <Cell col="1" text="bind:name" textAlign="center"/>
                       <Cell col="2" text="bind:email" textAlign="center"/>
                       <Cell col="3" text="bind:contact" textAlign="center"/>
@@ -87,7 +86,7 @@
 this.Div00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 		var receiver = this.Div00.form.Div00.form.Edit00.value;
-		var contents=this.Div00.form.Div00_00.form.TextArea00.value;
+		var contents=nexacro.wrapQuote(this.Div00.form.Div00_00.form.TextArea00.value);
 
 		 this.transaction(
             "PMInsert"
