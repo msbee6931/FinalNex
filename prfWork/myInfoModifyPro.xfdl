@@ -7,8 +7,7 @@
         <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="2" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="3" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="Static01" taborder="4" text="나의 정보 수정" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
-        <Div id="Div00" taborder="5" text="" left="30" top="38" cssclass="div_line" right="29" bottom="30">
+        <Div id="Div00" taborder="4" text="" left="30" top="10" cssclass="div_line" right="29" bottom="30">
           <Layouts>
             <Layout>
               <Edit id="edt_p_seq" taborder="0" left="450" top="80" width="150" height="30" readonly="true" cssclass="edt_default"/>

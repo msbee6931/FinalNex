@@ -4,9 +4,9 @@
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
         <Graphics id="grpScheduler" taborder="0" left="50" top="75" ondblclick="grpScheduler_ondblclick" onclick="grpScheduler_onclick" onsize="grpScheduler_onsize" minwidth="100" maxwidth="" minheight="100" maxheight="" right="49" bottom="30"/>
-        <Static id="stYearMonth" taborder="3" left="442" top="21" textAlign="center" cssclass="sta_title" width="178" bottom="grpScheduler:15"/>
-        <Button id="btnPrev" taborder="1" text="&lt;" left="386" top="30" onclick="btnPrev_onclick" cssclass="btn_default" width="20" bottom="grpScheduler:25"/>
-        <Button id="btnNext" taborder="2" text="&gt;" left="656" top="30" onclick="btnNext_onclick" cssclass="btn_default" bottom="grpScheduler:25" width="20"/>
+        <Static id="stYearMonth" taborder="3" left="472" top="21" textAlign="center" cssclass="sta_title" width="178" bottom="grpScheduler:15"/>
+        <Button id="btnPrev" taborder="1" text="&lt;" left="416" top="30" onclick="btnPrev_onclick" cssclass="btn_default" width="20" bottom="grpScheduler:25"/>
+        <Button id="btnNext" taborder="2" text="&gt;" left="686" top="30" onclick="btnNext_onclick" cssclass="btn_default" bottom="grpScheduler:25" width="20"/>
         <Button id="btnNew" taborder="4" left="grpScheduler:-100" top="31" width="100" height="25" onclick="btnNew_onclick" text="일정등록" cssclass="btn_insert"/>
         <Static id="Static00" taborder="5" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="6" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
@@ -78,7 +78,7 @@ this.scheduler_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 									//요일 배경 속성
 									"graphicsrect" : {
 												"x" : 0, "y" : 0, "width" : 0, "height" : 0,
-												"fillstyle" : "#ffffff",
+												"fillstyle" : "#0d6efd",
 												"strokepen" : "1px solid #000000"
 											 },
 											 
@@ -88,8 +88,8 @@ this.scheduler_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 												"text" : "",
 												"textAlign" : "center",
 												"verticalAlign" : "middle",
-												"font" : 'bold 9pt arial',
-												"color" : "#000000"
+												"font" : 'bold 9pt Malgun Gothic',
+												"color" : "#ffffff"
 											 }
 									
 									
@@ -113,7 +113,7 @@ this.scheduler_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 									"graphicsrect" : {
 												"x" : 0, "y" : 0, "width" : 0, "height" : 0,
 												"fillstyle" : "#ffffff",
-												"strokepen" : "1px solid #000000"
+												"strokepen" : "1px solid #0d6efd"
 											 },
 											 
 									//일자 텍스트 속성
@@ -122,7 +122,7 @@ this.scheduler_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 												"text" : "",
 												"textAlign" : "right",
 												"verticalAlign" : "top",
-												"font" : 'bold 9pt arial',
+												"font" : 'bold 9pt Malgun Gothic',
 												"color" : ""
 											 }
 								},

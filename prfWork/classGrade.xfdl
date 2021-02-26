@@ -3,7 +3,12 @@
   <Form id="classGrade" width="1080" height="520" titletext="New Form" onload="classGrade_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080" stepcount="2">
-        <Combo id="co_year" taborder="0" text="" left="650" top="7" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Static id="Static01" taborder="50" left="27" top="10" cssclass="sta_line" text="" right="30" bottom="30"/>
+        <Static id="Static00_01" taborder="51" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00" taborder="52" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00_00" taborder="53" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="54" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Combo id="co_year" taborder="0" text="" top="14" width="191" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default" right="265">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -21,7 +26,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="co_semester" taborder="1" text="" left="780" top="7" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Combo id="co_semester" taborder="1" text="" top="14" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default" right="140">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -39,8 +44,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Button id="btnSearch" taborder="2" text="검색" left="910" top="4" width="90" height="25" onclick="btnSearch_onclick"/>
-        <Grid id="gr_classList" taborder="3" left="75" top="47" width="930" height="143" binddataset="ds_class" oncellclick="gr_classList_oncellclick" autofittype="col">
+        <Button id="btnSearch" taborder="2" text="검색" top="14" width="90" height="25" onclick="btnSearch_onclick" cssclass="btn_default" right="40"/>
+        <Grid id="gr_classList" taborder="3" left="39" top="42" binddataset="ds_class" oncellclick="gr_classList_oncellclick" autofittype="col" cssclass="grd_default" right="40" bottom="320">
           <Formats>
             <Format id="default">
               <Columns>
@@ -77,8 +82,8 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="label_myClass" taborder="4" text="나의 강좌" left="80" top="0" width="120" height="50"/>
-        <Grid id="gr_stdList" taborder="5" left="75" top="230" width="228" height="285" binddataset="ds_stdClass" autofittype="col" oncellclick="gr_stdList_oncellclick">
+        <Static id="label_myClass" taborder="4" text="나의 강좌" left="39" top="0" width="120" height="50"/>
+        <Grid id="gr_stdList" taborder="5" left="39" binddataset="ds_stdClass" autofittype="col" oncellclick="gr_stdList_oncellclick" cssclass="grd_default" bottom="40" right="760" height="250">
           <Formats>
             <Format id="default">
               <Columns>
@@ -100,31 +105,31 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="label_name" taborder="6" text="이름" left="330" top="230" width="100" height="30" padding="0px 0px 0px 5px" border="1px solid black"/>
-        <Static id="sta_name" taborder="7" text="" left="430" top="230" width="110" height="30" padding="0px 0px 0px 5px" border="1px solid black"/>
-        <Static id="label_code" taborder="8" text="학번" left="560" top="230" width="100" height="30" padding="0px 0px 0px 5px" border="1px solid black"/>
-        <Static id="sta_code" taborder="9" text="" left="660" top="230" width="120" height="30" padding="0px 0px 0px 5px" border="1px solid black"/>
-        <Static id="sta_sum" taborder="10" left="900" top="330" width="100" height="30" border="1px solid gray" textAlign="center"/>
-        <Static id="sum2" taborder="11" text="합계" left="900" top="300" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-        <Static id="label_fin" taborder="12" text="기말고사" left="800" top="300" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-        <Static id="label_task" taborder="13" text="과제" left="700" top="300" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-        <Static id="label_otest" taborder="14" text="수시" left="600" top="300" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-        <Static id="label_mid" taborder="15" text="중간고사" left="500" top="300" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-        <Static id="label_attend" taborder="16" text="출석" left="400" top="300" width="100" height="30" border="1px solid gray" onclick="Tab00_Tabpage1_Static00_02_onclick" background="whitesmoke" textAlign="center"/>
-        <MaskEdit id="mask_attend" taborder="17" left="400" top="360" width="100" height="30" maskchar="###" textAlign="center" format="+0" canchange="grade_canchange" onchanged="mask_attend_onchanged" oninput="mask_attend_oninput"/>
-        <MaskEdit id="mask_mid" taborder="18" left="500" top="360" width="100" height="30" maskchar="###" textAlign="center" canchange="grade_canchange" format="+0" oninput="mask_mid_oninput" onchanged="mask_mid_onchanged"/>
-        <MaskEdit id="mask_otest" taborder="19" left="600" top="360" width="100" height="30" maskchar="###" textAlign="center" canchange="grade_canchange" format="+0" oninput="mask_otest_oninput" onchanged="mask_otest_onchanged"/>
-        <MaskEdit id="mask_task" taborder="20" left="700" top="360" width="100" height="30" textAlign="center" canchange="grade_canchange" format="+0" onchanged="mask_task_onchanged" oninput="mask_task_oninput"/>
-        <MaskEdit id="mask_fin" taborder="21" left="800" top="360" width="100" height="30" textAlign="center" canchange="grade_canchange" format="+0" oninput="mask_fin_oninput" onchanged="mask_fin_onchanged"/>
-        <Static id="sta_sumAll" taborder="22" left="900" top="360" width="100" height="30" border="1px solid gray" textAlign="center" text="0"/>
-        <Static id="labelEval" taborder="23" text="평가방법" left="330" top="330" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
-        <Static id="labelGrade" taborder="24" text="점수" left="330" top="360" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
-        <Static id="sta_bin" taborder="25" text="" left="330" top="300" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
-        <Button id="btnAttend" taborder="26" text="출석현황 보기" left="910" top="260" width="90" height="25" onclick="btnAttend_onclick"/>
-        <Static id="labelTotal" taborder="27" text="총점" left="800" top="430" width="100" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
-        <Static id="sta_total" taborder="28" text="" left="900" top="430" width="100" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
-        <Button id="btnSave" taborder="29" text="저장" left="900" top="470" width="100" height="25" onclick="btnSave_onclick" cssclass="btn_default"/>
-        <Grid id="gr_classList2" taborder="30" left="40" top="12" width="210" height="268" positionstep="1" binddataset="ds_class" autofittype="col" oncellclick="gr_classList2_oncellclick" cssclass="grd_default">
+        <Static id="label_name" taborder="6" text="이름" width="100" height="30" padding="0px 0px 0px 5px" cssclass="sta_default" right="650" bottom="260"/>
+        <Static id="sta_name" taborder="7" text="" width="110" height="30" padding="0px 0px 0px 5px" cssclass="sta_line" right="540" bottom="260"/>
+        <Static id="label_code" taborder="8" text="학번" width="100" height="30" padding="0px 0px 0px 5px" cssclass="sta_default" right="420" bottom="260"/>
+        <Static id="sta_code" taborder="9" text="" width="120" height="30" padding="0px 0px 0px 5px" cssclass="sta_line" right="300" bottom="260"/>
+        <Static id="sta_sum" taborder="10" width="100" height="30" textAlign="center" cssclass="sta_line" right="80" bottom="170"/>
+        <Static id="sum2" taborder="11" text="합계" width="100" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default" right="80" bottom="200"/>
+        <Static id="label_fin" taborder="12" text="기말고사" width="100" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default" right="180" bottom="200"/>
+        <Static id="label_task" taborder="13" text="과제" width="100" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default" right="280" bottom="200"/>
+        <Static id="label_otest" taborder="14" text="수시" width="100" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default" right="380" bottom="200"/>
+        <Static id="label_mid" taborder="15" text="중간고사" width="100" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default" right="480" bottom="200"/>
+        <Static id="label_attend" taborder="16" text="출석" width="100" height="30" onclick="Tab00_Tabpage1_Static00_02_onclick" textAlign="center" cssclass="sta_default" right="580" bottom="200"/>
+        <MaskEdit id="mask_attend" taborder="17" width="100" height="30" maskchar="###" textAlign="center" format="+0" canchange="grade_canchange" onchanged="mask_attend_onchanged" oninput="mask_attend_oninput" cssclass="med_default" right="580" bottom="140"/>
+        <MaskEdit id="mask_mid" taborder="18" width="100" height="30" maskchar="###" textAlign="center" canchange="grade_canchange" format="+0" oninput="mask_mid_oninput" onchanged="mask_mid_onchanged" cssclass="med_default" right="480" bottom="140"/>
+        <MaskEdit id="mask_otest" taborder="19" width="100" height="30" maskchar="###" textAlign="center" canchange="grade_canchange" format="+0" oninput="mask_otest_oninput" onchanged="mask_otest_onchanged" cssclass="med_default" right="380" bottom="140"/>
+        <MaskEdit id="mask_task" taborder="20" width="100" height="30" textAlign="center" canchange="grade_canchange" format="+0" onchanged="mask_task_onchanged" oninput="mask_task_oninput" cssclass="med_default" right="280" bottom="140"/>
+        <MaskEdit id="mask_fin" taborder="21" width="100" height="30" textAlign="center" canchange="grade_canchange" format="+0" oninput="mask_fin_oninput" onchanged="mask_fin_onchanged" cssclass="med_default" right="180" bottom="140"/>
+        <Static id="sta_sumAll" taborder="22" width="100" height="30" border="1px solid gray" textAlign="center" text="0" cssclass="sta_line" right="80" bottom="140"/>
+        <Static id="labelEval" taborder="23" text="평가방법" width="70" height="30" padding="0px 0px 0px 5px" textAlign="center" cssclass="sta_default" right="680" bottom="170"/>
+        <Static id="labelGrade" taborder="24" text="점수" width="70" height="30" padding="0px 0px 0px 5px" textAlign="center" cssclass="sta_default" right="680" bottom="140"/>
+        <Static id="sta_bin" taborder="25" text="" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center" right="680" bottom="200"/>
+        <Button id="btnAttend" taborder="26" text="출석현황 보기" width="90" height="25" onclick="btnAttend_onclick" cssclass="btn_default" right="80" bottom="235"/>
+        <Static id="labelTotal" taborder="27" text="총점" width="100" height="30" padding="0px 0px 0px 5px" textAlign="center" cssclass="sta_default" right="180" bottom="78"/>
+        <Static id="sta_total" taborder="28" text="" width="100" height="30" padding="0px 0px 0px 5px" textAlign="center" cssclass="sta_line" right="80" bottom="78"/>
+        <Button id="btnSave" taborder="29" text="저장" width="100" height="25" onclick="btnSave_onclick" cssclass="btn_insert" right="80" bottom="40"/>
+        <Grid id="gr_classList2" taborder="30" left="40" top="12" width="210" positionstep="1" binddataset="ds_class" autofittype="col" oncellclick="gr_classList2_oncellclick" cssclass="grd_default" bottom="240">
           <Formats>
             <Format id="default">
               <Columns>
@@ -146,22 +151,22 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="sta_fin" taborder="31" left="800" top="330" width="100" height="30" border="1px solid gray" textAlign="center"/>
-        <Static id="sta_task" taborder="32" left="700" top="330" width="100" height="30" border="1px solid gray" textAlign="center"/>
-        <Static id="sta_otest" taborder="33" left="600" top="330" width="100" height="30" border="1px solid gray" textAlign="center"/>
-        <Static id="sta_mid" taborder="34" left="500" top="330" width="100" height="30" border="1px solid gray" textAlign="center"/>
-        <Static id="sta_attend" taborder="35" left="400" top="330" width="100" height="30" border="1px solid gray" textAlign="center"/>
-        <Static id="sta_label" taborder="36" text="학생 리스트" left="75" top="190" width="190" height="50" onclick="sta_label_onclick"/>
-        <Static id="sta_sumR" taborder="37" left="900" top="390" width="100" height="30" border="1px solid gray" textAlign="center" text="0"/>
-        <Static id="labelResult" taborder="38" text="결과" left="330" top="390" width="70" height="30" padding="0px 0px 0px 5px" border="1px solid black" textAlign="center"/>
-        <Static id="sta_finR" taborder="39" left="800" top="390" width="100" height="30" border="1px solid gray" textAlign="center" text="0"/>
-        <Static id="sta_taskR" taborder="40" left="700" top="390" width="100" height="30" border="1px solid gray" textAlign="center" text="0"/>
-        <Static id="sta_otestR" taborder="41" left="600" top="390" width="100" height="30" border="1px solid gray" textAlign="center" text="0"/>
-        <Static id="sta_midR" taborder="42" left="500" top="390" width="100" height="30" border="1px solid gray" textAlign="center" text="0"/>
-        <Static id="sta_attendR" taborder="43" left="400" top="390" width="100" height="30" border="1px solid gray" textAlign="center" text="0"/>
-        <Button id="btnChangeEval" taborder="44" text="평가방법 변경하기" left="790" top="260" width="115" height="25" tooltiptext="평가시작 전에만 가능합니다" onclick="btnChangeEval_onclick"/>
-        <Static id="label_caution" taborder="45" text="-주의 사항- &#13;&#10;&#13;&#10;평가방법은 평가시작 전에만 변경이 가능합니다.&#13;&#10;평가 후 수정을 원하시면 관리자에게 문의해주세요." left="330" top="430" width="320" height="85" onclick="Static01_onclick" padding="0px 0px 0px 5px" background="linen" borderRadius="5px"/>
-        <Grid id="gr_rank" taborder="46" left="270" top="12" width="780" height="438" positionstep="1" binddataset="gds_grade" autofittype="col" onheadclick="gr_rank_onheadclick" cssclass="grd_default">
+        <Static id="sta_fin" taborder="31" width="100" height="30" textAlign="center" cssclass="sta_line" right="180" bottom="170"/>
+        <Static id="sta_task" taborder="32" width="100" height="30" textAlign="center" cssclass="sta_line" right="280" bottom="170"/>
+        <Static id="sta_otest" taborder="33" width="100" height="30" textAlign="center" cssclass="sta_line" right="380" bottom="170"/>
+        <Static id="sta_mid" taborder="34" width="100" height="30" textAlign="center" cssclass="sta_line" right="480" bottom="170"/>
+        <Static id="sta_attend" taborder="35" width="100" height="30" textAlign="center" cssclass="sta_line" right="580" bottom="170"/>
+        <Static id="sta_label" taborder="36" text="학생 리스트" left="39" top="gr_classList:-10" width="190" height="50" onclick="sta_label_onclick"/>
+        <Static id="sta_sumR" taborder="37" width="100" height="30" textAlign="center" text="0" cssclass="sta_line" right="80" bottom="110"/>
+        <Static id="labelResult" taborder="38" text="결과" width="70" height="30" padding="0px 0px 0px 5px" textAlign="center" cssclass="sta_default" right="680" bottom="110"/>
+        <Static id="sta_finR" taborder="39" width="100" height="30" textAlign="center" text="0" cssclass="sta_line" right="180" bottom="110"/>
+        <Static id="sta_taskR" taborder="40" width="100" height="30" textAlign="center" text="0" cssclass="sta_line" right="280" bottom="110"/>
+        <Static id="sta_otestR" taborder="41" width="100" height="30" textAlign="center" text="0" cssclass="sta_line" right="380" bottom="110"/>
+        <Static id="sta_midR" taborder="42" width="100" height="30" textAlign="center" text="0" cssclass="sta_line" right="480" bottom="110"/>
+        <Static id="sta_attendR" taborder="43" width="100" height="30" textAlign="center" text="0" cssclass="sta_line" right="580" bottom="110"/>
+        <Button id="btnChangeEval" taborder="44" text="평가방법 변경하기" width="115" height="25" tooltiptext="평가시작 전에만 가능합니다" onclick="btnChangeEval_onclick" cssclass="btn_default" right="175" bottom="235"/>
+        <Static id="label_caution" taborder="45" text="※평가방법은 평가시작 전에만 변경이 가능합니다. &#13;&#10;평가 후 수정을 원하시면 관리자에게 문의해주세요." width="320" height="50" onclick="Static01_onclick" padding="0px 0px 0px 5px" background="linen" borderRadius="5px" bottom="40" right="430"/>
+        <Grid id="gr_rank" taborder="46" left="270" top="12" positionstep="1" binddataset="gds_grade" autofittype="col" onheadclick="gr_rank_onheadclick" cssclass="grd_default" right="30" bottom="70">
           <Formats>
             <Format id="default">
               <Columns>
@@ -246,12 +251,9 @@
             </Format>
           </Formats>
         </Grid>
-
-
-        <Button id="btnSave2" taborder="47" text="저장" left="930" top="500" width="100" height="25" positionstep="1" onclick="btnSave2_onclick" cssclass="btn_default"/>
-        <Div id="div_rank" taborder="48" text="Div00" left="40" top="325" width="210" height="160" positionstep="1" url="prfWork::rankStandard.xfdl"/>
-        <Button id="btn_exel" taborder="49" text="Exel" left="820" top="500" width="100" height="25" positionstep="1" onclick="btn_exel_onclick" cssclass="btn_exel"/>
-
+        <Button id="btnSave2" taborder="47" text="저장" width="100" height="25" positionstep="1" onclick="btnSave2_onclick" cssclass="btn_default" right="30" bottom="25"/>
+        <Div id="div_rank" taborder="48" text="Div00" left="40" width="210" height="160" positionstep="1" url="prfWork::rankStandard.xfdl" bottom="35"/>
+        <Button id="btn_exel" taborder="49" text="Exel" width="100" height="25" positionstep="1" onclick="btn_exel_onclick" cssclass="btn_exel" right="140" bottom="25"/>
       </Layout>
     </Layouts>
     <Objects>
