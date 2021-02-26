@@ -41,9 +41,7 @@
                   </Format>
                 </Formats>
               </Grid>
-
               <Div id="Div00" taborder="1" text="" top="13" cssclass="div_line" width="568" right="36" bottom="40">
-
                 <Layouts>
                   <Layout>
                     <Static id="Static00" taborder="1" text="Contents" left="15" top="7" width="449" height="28" textAlign="center" cssclass="sta_default"/>
@@ -161,6 +159,7 @@ this.Div00_Div00_enlargement_onclick = function(obj:nexacro.Button,e:nexacro.Cli
 	var objCF = new ChildFrame();
 
 	objCF.init("freeEnlargement_pop",100,100,1000,600);
+
 	objCF.set_titletext("내용 확대");
 	objCF.set_formurl("admWork::freeEnlargement_pop.xfdl");
 	 var objParam = {param1:this.Div00.form.Edit01.value,

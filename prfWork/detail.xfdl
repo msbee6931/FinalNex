@@ -11,6 +11,7 @@
                   <Tabpage id="classPlan" text="교과목 정보">
                     <Layouts>
                       <Layout>
+
                         <MaskEdit id="mask_fin" taborder="39" left="641" top="472" width="155" height="30" textAlign="center" canchange="evaluation_canchange" format="+0"/>
                         <MaskEdit id="mask_task" taborder="38" left="486" top="472" width="155" height="30" textAlign="center" canchange="evaluation_canchange" format="+0"/>
                         <MaskEdit id="mask_otest" taborder="37" left="331" top="472" width="155" height="30" maskchar="###" textAlign="center" canchange="evaluation_canchange" format="+0"/>
@@ -55,6 +56,7 @@
                         <Edit id="edt_classTime" taborder="16" left="469" top="127" width="455" height="40" textAlign="center"/>
                         <Static id="Static00_02_02" taborder="14" text=" ▣ 강의실" left="21" top="127" width="118" height="39" border="1px solid gray" background="lightgray" onclick="Tab00_Tabpage1_Static00_02_onclick"/>
                         <Button id="dropBtn" taborder="17" text="" left="924" top="127" width="25" height="40" onclick="Div00_classPlanTab_classPlan_Button00_onclick"/>
+
                         <PopupDiv id="classTimeList" visible="false" left="351" top="167" width="382" height="315" oncloseup="Div00_classPlanTab_classPlan_classTimeList_oncloseup">
                           <Layouts>
                             <Layout>
@@ -101,6 +103,7 @@
                             </Layout>
                           </Layouts>
                         </PopupDiv>
+
                         <Static id="sta_proCode" taborder="53" text="" left="686" top="10" width="65" height="34" border="1px solid black" visible="false"/>
                         <Button id="btnClose" taborder="50" text="닫기" left="859" top="5" width="90" height="39" onclick="Div00_classPlanTab_classPlan_btnClose_onclick"/>
                         <Static id="sta_reqState" taborder="51" text="" left="884" top="175" width="65" height="34" border="1px solid black" visible="false"/>
@@ -699,7 +702,6 @@ this.fn_callback=function(sId,errCd,errMsg){
 			,"classSeq="+nexacro.wrapQuote(classSeq)
 			,"fn_callback"
 		);
-
 	}
 }
 
