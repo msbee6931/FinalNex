@@ -11,7 +11,7 @@
           <Layouts>
             <Layout>
               <Calendar id="cal_dept" taborder="0" left="9" top="76" type="monthonly" ondayclick="Div00_cal_dept_ondayclick" onrbuttonup="Div00_cal_dept_onrbuttonup" innerdataset="ds_cal" backgroundcolumn="backgroundcolumn" bordercolumn="bordercolumn" datecolumn="datecolumn" textcolorcolumn="textcolorcolumn" bottom="24" right="630"/>
-              <Button id="btn_insert" taborder="1" text="일정 등록" top="46" width="100" height="25" onclick="Div00_btn_insert_onclick" cssclass="btn_insert" right="20"/>
+              <Button id="btn_insert" taborder="1" text="일정 등록" top="46" width="100" height="25" onclick="Div00_btn_insert_onclick" cssclass="btn_insert" right="130"/>
               <Grid id="Grid00" taborder="2" top="76" binddataset="deptSchedule_ds" autofittype="col" oncelldblclick="Div00_Grid00_oncelldblclick" right="20" bottom="24" width="600">
                 <Formats>
                   <Format id="default">
@@ -29,7 +29,7 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Button id="btn_entireSchd" taborder="3" text="전체일정" top="46" width="100" height="25" cssclass="btn_cal" onclick="div_schedule_btn_entireSchd_onclick" right="130"/>
+              <Button id="btn_entireSchd" taborder="3" text="전체일정" top="46" width="100" height="25" cssclass="btn_cal" onclick="div_schedule_btn_entireSchd_onclick" right="20"/>
               <Div id="Div00" taborder="4" text="Div00" top="35" width="257" left="cal_dept:0" height="42">
                 <Layouts>
                   <Layout>
@@ -48,20 +48,27 @@
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
-this.code=this.objApp.gds_professor.getColumn(0,'p_seq');
-this.writer=this.objApp.gds_professor.getColumn(0,'name');
-this.deptCode=this.objApp.gds_professor.getColumn(0,'deptCode');
+this.code="";
 this.deptSchedule_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	var deptCode="";
+	
 	if(this.objApp.gds_students.getRowCount() > 0 ){
 		this.div_schedule.form.btn_insert.set_visible(false);
+		this.code=this.objApp.gds_students.getColumn(0,'s_seq');
+		deptCode=this.objApp.gds_professor.getColumn(0,'deptCode');
+	}
+	else if (this.objApp.professor.getRowCount() > 0 )
+	{
+		this.code=this.objApp.gds_professor.getColumn(0,'p_seq');
+		deptCode=this.objApp.gds_professor.getColumn(0,'deptCode');
 	}
 	this.transaction(
 		"selectDeptSchedule",//id
 		"/schedule/selectDeptSchedule",//url (절대경로)
 		"",//in_ds:U
 		"deptSchedule_ds=out_ds",//()_out_ds
-		"deptCode="+this.deptCode,//argument
+		"deptCode="+deptCode,//argument
 		"fn_callback"
 	)
 	
