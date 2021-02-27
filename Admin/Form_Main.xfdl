@@ -4,9 +4,9 @@
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
         <Button id="btnBoard" taborder="0" text="건의게시판 관리" left="50" top="369" width="120" height="50" onclick="btnBoard_onclick" cssclass="btn_default"/>
-        <Button id="btnReference" taborder="1" text="자료실 관리" left="170" top="369" width="120" height="50" onclick="btnReference_onclick" cssclass="btn_default"/>
+        <Button id="btnReference" taborder="1" text="자료실 관리" left="169" top="369" width="120" height="50" onclick="btnReference_onclick" cssclass="btn_default"/>
         <Button id="btnClassList" taborder="2" text="개설강좌 조회" left="50" top="418" width="120" height="50" onclick="btnClassList_onclick" cssclass="btn_default"/>
-        <Button id="btnScholarMg" taborder="3" text="장학금 신청 관리" left="170" top="418" width="120" height="50" onclick="btnScholarMg_onclick" cssclass="btn_default"/>
+        <Button id="btnScholarMg" taborder="3" text="장학금 신청 관리" left="169" top="418" width="120" height="50" onclick="btnScholarMg_onclick" cssclass="btn_default"/>
         <Button id="btnStudentMg" taborder="4" text="학생 관리" left="50" top="320" width="120" height="50" onclick="btnStudentMg_onclick" cssclass="btn_default"/>
         <Button id="btnNotice" taborder="5" text="공지사항 관리" left="169" top="320" width="120" height="50" onclick="btnNotice_onclick" cssclass="btn_default"/>
         <Calendar id="cal_schedule" taborder="6" left="790" top="36" width="290" height="224" type="monthonly" innerdataset="ds_cal" backgroundcolumn="backgroundcolumn" bordercolumn="bordercolumn" datecolumn="datecolumn" textcolorcolumn="textcolorcolumn" onspin="cal_schedule_onspin"/>

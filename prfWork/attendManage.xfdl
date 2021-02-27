@@ -3,11 +3,11 @@
   <Form id="attendManage" width="1080" height="520" titletext="New Form" onload="attendManage_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080" stepcount="0">
-        <Static id="Static00_00" taborder="10" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="Static00_01" taborder="11" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="Static00_00_00" taborder="12" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="Static00_01_00" taborder="13" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="Static01" taborder="14" left="27" top="10" cssclass="sta_line" text="" right="30" bottom="30"/>
+        <Static id="Static00_00" taborder="9" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01" taborder="10" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_00_00" taborder="11" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static00_01_00" taborder="12" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static01" taborder="13" left="27" top="10" cssclass="sta_line" text="" right="30" bottom="30"/>
         <Grid id="gr_classList" taborder="0" left="48" top="57" binddataset="ds_class" oncellclick="gr_classList_oncellclick" autofittype="col" right="47" cssclass="grd_default" height="143">
           <Formats>
             <Format id="default">
@@ -465,6 +465,7 @@ this.cal_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
 
 this.btnDel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	var attendDay = this.ds_attend.getColumn(0,"attendDay");
 	if(this.confirm("해당 요일을 삭제하시겠습니까?")){
 		if(this.ds_attend.getRowCount() > 0){
 			this.transaction(
@@ -478,6 +479,8 @@ this.btnDel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		}else{
 			alert("수업이 없습니다");
 		}
+		var arr = this.ds_cal.extractRows("datecolumn=='"+attendDay+"'");
+		this.ds_cal.deleteMultiRows(arr)
 		this.ds_attend.deleteAll();
 	}
 };
