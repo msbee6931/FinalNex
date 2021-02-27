@@ -113,7 +113,7 @@
           </Row>
           <Row>
             <Col id="id">A</Col>
-            <Col id="name">승인 중</Col>
+            <Col id="name">승인 완료</Col>
           </Row>
         </Rows>
       </Dataset>

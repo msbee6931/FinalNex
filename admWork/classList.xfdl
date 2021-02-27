@@ -126,6 +126,12 @@
         <Static id="Static00_01_00" taborder="9" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="0"/>
         <Static id="Static00_00" taborder="10" left="1051" top="0" visible="false" background="RGBA(236,135,135,0.71)" right="0" bottom="0"/>
         <Static id="Static00_01" taborder="11" left="80" top="0" visible="false" background="RGBA(236,135,135,0.71)" height="10" width="800"/>
+        <Div id="div_navi" taborder="12" text="Div00" left="146" top="460" width="674" height="30">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Button id="btnAdd" taborder="13" text="Button00" left="170" top="17" width="90" height="38" onclick="btnAdd_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
@@ -366,6 +372,42 @@ this.Export00_onerror = function(obj:ExcelExportObject, e:nexacro.ExcelExportEve
 }
 
 
+
+this.btnAdd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var cut = 15;
+	var num = 1;
+	var nPageCount = Math.ceil(this.ds_class.getRowCount()/cut);
+	var nWidth = "";
+	var objPrev1 = new Button("btnPrev1",0,0, 30, 30, null, null);	
+		this.div_navi.addChild("naviPrev1",objPrev1);
+		objPrev1.set_text("<<");
+		objPrev1.show();
+		
+	var	objPrev2 = new Button("btnPrev2",30,0, 30, 30, null, null);	
+		this.div_navi.addChild("naviPrev2",objPrev2);
+		objPrev2.set_text("<");
+		objPrev2.show();
+
+	for(var i=1; i<=nPageCount; i++){
+		var objButton = new Button("btn'"+i+"'",i*30+30,0, 30, 30, null, null);	
+		this.div_navi.addChild("navi'"+i+"'",objButton);
+		objButton.set_text(i);
+		nWidth = i*30+30;
+		this.objButton.addEventHandler("onclick",this.fn_paging, this)
+		objButton.show();
+	}
+	var objNext1 = new Button("btnNext1",nWidth+30,0, 30, 30, null, null);	
+		this.div_navi.addChild("naviNext1",objNext1);
+		objNext1.set_text(">");
+		objNext1.show();
+		
+	var	objNext2 = new Button("btnNext2",nWidth+60,0, 30, 30, null, null);	
+		this.div_navi.addChild("naviNext2",objNext2);
+		objNext2.set_text(">>");
+		objNext2.show();
+	this.ds_class.filter("currow <= '"+cut*1+"' && currow >= 1");
+};
 ]]></Script>
     <Objects>
       <Dataset id="ds_class">
@@ -390,6 +432,32 @@ this.Export00_onerror = function(obj:ExcelExportObject, e:nexacro.ExcelExportEve
           <Column id="rejectMsg" type="STRING" size="256"/>
           <Column id="reg_date" type="STRING" size="256"/>
         </ColumnInfo>
+        <Rows>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+        </Rows>
       </Dataset>
       <Dataset id="ds_req">
         <ColumnInfo>
