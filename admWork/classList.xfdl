@@ -3,7 +3,8 @@
   <Form id="classList" width="1080" height="520" titletext="New Form" onload="classList_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
-        <Grid id="gr_classList" taborder="0" left="30" top="60" width="1021" height="390" binddataset="ds_class" autofittype="col" oncellclick="gr_classList_oncellclick" onheadclick="gr_classList_onheadclick" cssclass="grd_default">
+        <Static id="Static01" taborder="12" left="30" top="10" cssclass="sta_line" right="26" bottom="30"/>
+        <Grid id="gr_classList" taborder="0" left="35" top="60" binddataset="ds_class" autofittype="col" oncellclick="gr_classList_oncellclick" onheadclick="gr_classList_onheadclick" cssclass="grd_default" right="34" bottom="70">
           <Formats>
             <Format id="default">
               <Columns>
@@ -52,7 +53,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Combo id="co_search" taborder="1" left="690" top="24" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" text="전체" value="All" index="0" onitemchanged="classTab_classList_co_search_onitemchanged" cssclass="cmb_default">
+        <Combo id="co_search" taborder="1" top="24" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" text="전체" value="All" index="0" onitemchanged="classTab_classList_co_search_onitemchanged" cssclass="cmb_default" right="280">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -82,9 +83,9 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="edt_search" taborder="2" left="815" top="24" width="170" height="25" onchanged="edt_search_onchanged" cssclass="edt_default"/>
-        <Button id="btnSearch" taborder="3" left="995" top="24" width="60" height="25" onclick="btnSearch_onclick" cssclass="btn_search" text="조회"/>
-        <Combo id="co_year" taborder="4" text="" left="420" top="24" width="120" height="25" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
+        <Edit id="edt_search" taborder="2" top="24" width="170" height="25" onchanged="edt_search_onchanged" cssclass="edt_default" right="105"/>
+        <Button id="btnSearch" taborder="3" top="24" width="60" height="25" onclick="btnSearch_onclick" cssclass="btn_search" text="조회" right="34"/>
+        <Combo id="co_year" taborder="4" text="" top="24" width="120" height="25" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default" right="540">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -102,7 +103,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="co_semester" taborder="5" text="" left="550" top="24" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default">
+        <Combo id="co_semester" taborder="5" text="" top="24" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default" right="410">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -120,8 +121,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Button id="btnDel" taborder="6" text="삭제" left="940" top="460" width="100" height="25" onclick="btnDel_onclick" cssclass="btn_del"/>
-        <Button id="btnExport" taborder="7" text="Exel" left="830" top="460" width="100" height="25" onclick="btnExport_onclick" cssclass="btn_exel"/>
+        <Button id="btnDel" taborder="6" text="삭제" width="100" height="25" onclick="btnDel_onclick" cssclass="btn_del" right="34" bottom="35"/>
+        <Button id="btnExport" taborder="7" text="Exel" width="100" height="25" onclick="btnExport_onclick" cssclass="btn_exel" right="139" bottom="35"/>
         <Static id="Static00" taborder="8" left="0" top="0" visible="false" background="RGBA(236,135,135,0.71)" width="29" bottom="0"/>
         <Static id="Static00_01_00" taborder="9" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="0"/>
         <Static id="Static00_00" taborder="10" left="1051" top="0" visible="false" background="RGBA(236,135,135,0.71)" right="0" bottom="0"/>

@@ -2062,6 +2062,7 @@ font : 14px/normal "Malgun Gothic";
 .Combo.cmb_default
 {
 	-nexa-border : 1px solid #0d6efd;
+	cursor : pointer;
 }
 .Combo.cmb_default .comboedit
 {

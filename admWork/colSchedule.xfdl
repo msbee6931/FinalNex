@@ -7,7 +7,7 @@
         <Static id="Static00_00" taborder="1" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Div id="div_schedule" taborder="4" text="Div00" left="30" top="38" cssclass="div_line" right="29" bottom="30">
+        <Div id="div_schedule" taborder="4" text="Div00" left="30" top="10" cssclass="div_line" right="29" bottom="30">
           <Layouts>
             <Layout>
               <Calendar id="cal_dept" taborder="0" left="9" top="56" type="monthonly" ondayclick="Div00_cal_dept_ondayclick" innerdataset="ds_cal" backgroundcolumn="backgroundcolumn" bordercolumn="bordercolumn" datecolumn="datecolumn" textcolorcolumn="textcolorcolumn" right="620" bottom="44"/>
@@ -43,7 +43,6 @@
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static01" taborder="5" text="학사 스케줄" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
