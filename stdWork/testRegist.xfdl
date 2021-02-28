@@ -586,11 +586,9 @@ this.gr_classList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEve
 					alert("수강 가능한 학년이 아닙니다");
 					return;
 				}else{
-					if(dept != myDept){
-						if(part == "A" || "B"){
-							alert("다른 학과 전공은 신청이 불가능합니다");
-							return;
-						}
+					if(dept != myDept && dept != "7071" && part != "F"){
+						alert("다른 학과 전공은 신청이 불가능합니다");
+						return;
 					}else{
 						var classTime = this.ds_class.getColumn(nRow,"classTime");
 						var className = this.ds_class.getColumn(nRow,"className")+" (예비)*";

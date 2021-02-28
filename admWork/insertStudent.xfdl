@@ -9,17 +9,17 @@
         <Static id="Static00_03" taborder="12" text="전화번호" top="125" width="50" height="30" left="10"/>
         <Static id="Static00_04" taborder="13" text="주소" top="160" width="50" height="30" left="10"/>
         <Static id="Static00_10" taborder="14" text="성별" top="195" width="50" height="30" left="10"/>
-        <Edit id="edt_name" taborder="0" top="20" width="175" height="30" left="85"/>
-        <Edit id="edt_email" taborder="2" top="90" width="175" height="30" left="85"/>
-        <Edit id="edt_contact" taborder="3" top="125" width="175" height="30" left="85"/>
-        <Edit id="edt_address" taborder="4" top="160" width="175" height="30" left="85"/>
-        <Button id="btn_insert" taborder="15" text="입력" top="345" width="50" height="30" left="95" onclick="btn_insert_onclick"/>
-        <Button id="btn_cancel" taborder="16" text="취소" top="345" width="50" height="30" left="210" onclick="btn_cancel_onclick"/>
+        <Edit id="edt_name" taborder="0" top="20" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Edit id="edt_email" taborder="2" top="90" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Edit id="edt_contact" taborder="3" top="125" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Edit id="edt_address" taborder="4" top="160" width="175" height="30" left="85" cssclass="edt_default"/>
+        <Button id="btn_insert" taborder="15" text="입력" top="345" width="50" height="30" left="95" onclick="btn_insert_onclick" cssclass="btn_default"/>
+        <Button id="btn_cancel" taborder="16" text="취소" top="345" width="50" height="30" left="210" onclick="btn_cancel_onclick" cssclass="btn_default"/>
         <Static id="Static00_10_00" taborder="17" text="학과분류" top="230" width="50" height="30" left="10"/>
         <Static id="Static00_10_01" taborder="18" text="학과" top="265" width="50" height="30" left="10"/>
-        <Combo id="com_colCode" taborder="6" left="85" top="230" width="175" height="30" innerdataset="colCode_Copy" codecolumn="Code" datacolumn="Value"/>
-        <Combo id="com_deptCode" taborder="7" left="85" top="265" width="175" height="30" innerdataset="deptCode_copy" codecolumn="Code" datacolumn="Value" text=""/>
-        <Combo id="com_gender" taborder="5" left="85" top="195" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" text="" readonly="true">
+        <Combo id="com_colCode" taborder="6" left="85" top="230" width="175" height="30" innerdataset="colCode_Copy" codecolumn="Code" datacolumn="Value" cssclass="cmb_default"/>
+        <Combo id="com_deptCode" taborder="7" left="85" top="265" width="175" height="30" innerdataset="deptCode_copy" codecolumn="Code" datacolumn="Value" text="" cssclass="cmb_default"/>
+        <Combo id="com_gender" taborder="5" left="85" top="195" width="175" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" text="" readonly="true" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -38,7 +38,7 @@
           </Dataset>
         </Combo>
         <Static id="Static00_10_01_00" taborder="19" text="학년" top="300" width="50" height="30" left="10"/>
-        <Combo id="com_colGrade" taborder="8" left="85" top="300" width="175" height="30" codecolumn="codecolumn" datacolumn="datacolumn" innerdataset="innerdataset" onitemchanged="com_colGrade_onitemchanged">
+        <Combo id="com_colGrade" taborder="8" left="85" top="300" width="175" height="30" codecolumn="codecolumn" datacolumn="datacolumn" innerdataset="innerdataset" onitemchanged="com_colGrade_onitemchanged" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -64,7 +64,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <MaskEdit id="mas_secNumber" taborder="1" left="85" top="55" width="175" height="30" format="###### - #{######}" type="string" oninput="mas_secNumber_oninput"/>
+        <MaskEdit id="mas_secNumber" taborder="1" left="85" top="55" width="175" height="30" format="###### - #{######}" type="string" oninput="mas_secNumber_oninput" cssclass="med_default"/>
       </Layout>
     </Layouts>
     <Objects>
