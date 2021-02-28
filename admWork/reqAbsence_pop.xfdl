@@ -15,7 +15,7 @@
               <Edit id="edt_title00_01" taborder="7" left="358" top="90" width="191" height="30" cssclass="edt_default" readonly="true"/>
               <Edit id="edt_title00_00_00" taborder="9" left="617" top="90" width="190" height="30" cssclass="edt_default" readonly="true"/>
               <Edit id="edt_title01_00" taborder="11" left="97" top="120" width="710" height="30" cssclass="edt_default" readonly="true"/>
-              <Button id="btn_down" taborder="15" text="파일&#13;&#10;다운로드" left="707" top="205" width="100" height="70" onclick="Div00_btn_add_onclick" cssclass="btn_default"/>
+              <Button id="btn_down" taborder="15" text="파일&#13;&#10;다운로드" left="707" top="205" width="100" height="70" cssclass="btn_default" onclick="Div00_btn_down_onclick"/>
               <Static id="Static01" taborder="16" text="※유의사항&#13;&#10;1. 입대휴학 신청자는 입대 사실을 확인할 수 있는 증명서 1통을 첨부해야 함.&#13;&#10;2. 군입대 후 귀향조취 된 경우에는 즉시 행정팀으로 통보해야함.&#13;&#10;3. 일반휴학기간 중 입대할 경우에는 입대 전에 입영통지서 사본 1통을 첨부하여 휴학연기 신청서를 제출해야 함.&#13;&#10;4. 질병으로 휴학하는 경우에는 종합병원장이 발행하는 4주 이상의 진단서를 첨부해야함.&#13;&#10;5. 휴학기간 만료 후 해당 학기 등록기간 내에 복학하지 않을 경우에는  퇴학처리 됨." left="29" top="410" width="780" height="100"/>
               <Grid id="Grid00" taborder="17" left="127" top="205" width="580" height="70" binddataset="absFileList_ds" autofittype="col" onheadclick="Div00_Grid00_onheadclick" cssclass="grd_default">
                 <Formats>
@@ -138,13 +138,13 @@
           <Column id="secNumber" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <FileDownTransfer id="FileDownTransfer00" onerror="FileDownTransfer00_onerror"/>
+      <FileDownTransfer id="FileDownTransfer00" onerror="FileDownTransfer00_onerror" onsuccess="FileDownTransfer00_onsuccess"/>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.seq = this.parent.seq;
 this.std_code =this.parent.std_code;
 this.reqAbsence_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-
+	
 	
 	this.transaction(
 		"selectOneStd.students",//id
@@ -153,11 +153,16 @@ this.reqAbsence_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		"students_ds=out_ds",//()_out_ds
 		"sCode="+this.std_code,//argument
 		"fn_callback_stdInfo"
-		)
+	)
 };
 
 this.fn_callback_stdInfo = function()
 {
+	var rest = this.students_ds.getColumn(0,"rest");
+	if(rest=='Y')
+	{
+		this.Div00.form.btn_commit.set_text("휴학 처리 완료");
+	}
 	this.transaction(
 		"selectOne.absence",//id
 		"/absence/selectOne.absence",//url (절대경로)
@@ -165,7 +170,7 @@ this.fn_callback_stdInfo = function()
 		"absence_ds=out_ds",//()_out_ds
 		"seq="+this.seq,//argument
 		"fn_callback_absenceOne"
-		)
+	)
 }
 
 this.fn_callback_absenceOne = function()
@@ -177,56 +182,94 @@ this.fn_callback_absenceOne = function()
 		"absFileList_ds=out_ds",//()_out_ds
 		"seq="+this.seq,//argument
 		"fn_callback"
-		)
+	)
 }
-this.Div00_btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+//----다운로드
+this.Div00_btn_down_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var objDs = this.absFileList_ds;
-
+	var arr = objDs.extractRows("chk==1");
+	if(arr.length==0||arr==-1){
+		alert("선택된항목이없습니다.");
+		return;
+	};
+	
 	this.FileDownTransfer00.setPostData("seq",this.seq); // 현재 게시물의seq를 넘김
 	//총 첨부파일 중 체크 된 파일만 이벤트 발생
 	
-
-	for(var i=0; i< objDs.getRowCount(); i++){
 	
-			if(objDs.getColumn(i,"chk") == "1"){
+	for(var i=0; i< objDs.getRowCount(); i++){
+		
+		if(objDs.getColumn(i,"chk") == "1"){
 			// 체크된 파일만 서버로 변수를 보냄
-
+			
 			var savedFileName = objDs.getColumn(i,"savedFileName");
 			this.FileDownTransfer00.setPostData("savedFileName'"+i+"'",savedFileName);
-				
+			
 			var fileName = objDs.getColumn(i,"fileName");
 			this.FileDownTransfer00.setPostData("fileName'"+i+"'",fileName);
-
+			
 		}
 	}
-  
-  //파일다운로드 실행
-  this.FileDownTransfer00.download("/absence/downAbsFile.absence");
-  
-  //검색 후 지정 체크박스 해제
+	
+	//파일다운로드 실행
+	this.FileDownTransfer00.download("/absence/downAbsFile.absence");
+	
+	//검색 후 지정 체크박스 해제
 	this.Div00.form.Grid00.setCellProperty("head",0,"text",0);
-	for(let i =0; i<this.schFileList_ds.getRowCount();i++){
-		if(this.schFileList_ds.getColumn(i,"chk") == 1){
-			this.schFileList_ds.setColumn(i,"chk",0);
+	for(let i =0; i<this.absFileList_ds.getRowCount();i++){
+		if(this.absFileList_ds.getColumn(i,"chk") == 1){
+			this.absFileList_ds.setColumn(i,"chk",0);
 		}
 	}
 };
 
+
+//파일다운로드 성공시 (NRE 에서만 지원)
+this.FileDownTransfer00_onsuccess = function(obj:nexacro.FileDownTransfer,e:nexacro.FileDownTransferEventInfo)
+{
+	var sMsg = e.targetfullpath +"\n"+  e.url;
+	
+	alert(sMsg);
+};
+
+//파일다운로드 실패시 (NRE 에서만 지원)
+this.FileDownTransfer00_onerror = function(obj:nexacro.FileDownTransfer,e:nexacro.FileDownTransferErrorEventInfo)
+{
+	var sMsg = ">>>>>>>>>>>>>>>>>>>>>>>>>>  ERROR >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
+	sMsg += "statuscode: "+e.statuscode+"\n";
+	sMsg += "requesturi: "+e.requesturi+"\n";
+	sMsg += "locationuri: "+e.locationuri+"\n" ;
+	sMsg += "errormsg: "+e.errormsg+"\n";
+	
+	alert(sMsg);
+};
 
 //학생 테이블 휴학 처리 하기
 
 this.Div00_btn_commit_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.transaction(
-		"updateStdAbs.students",//id
-		"/students/updateStdAbs.students",//url (절대경로)
-		"",//in_ds:U
-		"students_ds=out_ds",//()_out_ds
-		"sCode="+this.std_code,//argument
-		"fn_callback"
+	var check = this.confirm("정말로 휴학을 승인하시겠습니까?")
+	if(check)
+	{
+		this.transaction(
+			"updateStdAbs.students",//id
+			"/students/updateStdAbs.students",//url (절대경로)
+			"",//in_ds:U
+			"students_ds=out_ds",//()_out_ds
+			"sCode="+this.std_code,//argument
+			"fn_callback_updAbs"
 		)
+	}
+	else
+	{
+		return;
+	}
 };
+this.fn_callback_updAbs = function()
+{
+	this.Div00.form.btn_commit.set_text("휴학 처리 완료");
+}
 
 this.Div00_Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
@@ -262,20 +305,12 @@ this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
 
 this.Div00_btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.transaction(
-		"updateReadAbs.absence",//id
-		"/absence/updateReadAbs.absence",//url (절대경로)
-		"",//in_ds:U
-		"",//()_out_ds
-		"seq="+this.seq,//argument
-		"fn_callback_read"
-		)
+	this.close();
 };
 
-this.fn_callback_read = function()
-{
-	this.close();
-}
+
+
+
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="Div00.form.Combo00" propid="value" datasetid="students_ds" columnid="deptCode"/>

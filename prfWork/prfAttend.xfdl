@@ -6,7 +6,7 @@
         <Div id="Div00" taborder="0" text="Div00" left="30" top="10" cssclass="div_line" right="29" bottom="30">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="4" top="51" binddataset="ds_class" autofittype="col" oncellclick="Div00_Grid00_oncellclick" cssclass="grd_default" right="740" bottom="9">
+              <Grid id="Grid00" taborder="0" left="4" top="31" binddataset="ds_class" autofittype="col" oncellclick="Div00_Grid00_oncellclick" cssclass="grd_default" width="275" bottom="29">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -35,7 +35,7 @@
         <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="3" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="4" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Grid id="Grid00" taborder="5" left="320" top="90" binddataset="ds_stdClass" autofittype="col" oncelldblclick="Grid00_oncelldblclick" cssclass="grd_default" right="39" bottom="40">
+        <Grid id="Grid00" taborder="5" left="320" top="70" binddataset="ds_stdClass" autofittype="col" oncelldblclick="Grid00_oncelldblclick" cssclass="grd_default" right="39" bottom="60">
           <Formats>
             <Format id="default">
               <Columns>
@@ -60,9 +60,8 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static00_00_00" taborder="6" text="내 관리 강좌" left="38" top="60" width="112" height="30"/>
-        <Static id="sta_title" taborder="7" text="" left="475" top="60" width="140" height="30"/>
-        <Static id="Static00_00_00_00" taborder="8" text="과목명 :" left="Div00:-721" top="60" height="30" width="45"/>
+        <Static id="sta_title" taborder="6" text="" left="385" top="40" width="140" height="30"/>
+        <Static id="Static00_00_00_00" taborder="7" text="과목명 :" left="330" top="40" height="30" width="45"/>
       </Layout>
     </Layouts>
     <Objects>
