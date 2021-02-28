@@ -100,7 +100,7 @@
 	]
 }]]></Contents>
               </BasicChart>
-              <PieChart id="PieChart00" taborder="1" left="174" top="289" binddataset="genderChart_ds" categorycolumn="bind:category" right="670" bottom="29">
+              <PieChart id="PieChart00" taborder="1" left="174" binddataset="genderChart_ds" categorycolumn="bind:category" right="670" bottom="29" height="160">
                 <Contents><![CDATA[{
 	"title": {
 		"id": "title",
@@ -142,7 +142,7 @@
 	]
 }]]></Contents>
               </PieChart>
-              <FloatChart id="FloatChart00" taborder="2" left="559" top="18" binddataset="deptCodeChart_ds" categorycolumn="bind:category" right="28" bottom="9">
+              <FloatChart id="FloatChart00" taborder="2" top="18" binddataset="deptCodeChart_ds" categorycolumn="bind:category" right="28" bottom="9" width="432">
                 <Contents><![CDATA[{
 	"tooltip": {
 		"id": "tooltip",

@@ -45,11 +45,12 @@
                 </Formats>
               </Grid>
               <Button id="btn_del" taborder="1" text="삭제" onclick="Div00_btn_del_onclick" right="25" bottom="20" width="100" height="25" cssclass="btn_del"/>
-              <Div id="Div00" taborder="2" left="24" top="26" width="420" height="40" text="">
+              <Div id="Div00" taborder="2" left="24" top="26" width="355" height="40" text="">
                 <Layouts>
                   <Layout>
-                    <Edit id="edt_stdCode" taborder="0" left="9" top="7" width="150" height="25" displaynulltext="학번을 입력하세요" cssclass="edt_default"/>
-                    <Button id="btn_search" taborder="1" text="조회" left="169" top="7" width="60" height="25" onclick="Div00_btn_search_onclick" cssclass="btn_search"/>
+                    <Edit id="edt_stdCode" taborder="0" left="94" top="7" width="150" height="25" displaynulltext="학번을 입력하세요" cssclass="edt_default" visible="false"/>
+                    <Button id="btn_search" taborder="1" text="조회" left="246" top="7" width="60" height="25" onclick="Div00_btn_search_onclick" cssclass="btn_search" visible="false"/>
+                    <Combo id="Combo00" taborder="2" text="Combo00" left="11" top="7" width="70" height="25" innerdataset="searchType_ds" codecolumn="code" datacolumn="name" cssclass="cmb_default" onitemchanged="Div00_Div00_Combo00_onitemchanged"/>
                   </Layout>
                 </Layouts>
               </Div>
@@ -70,10 +71,28 @@
           <Column id="checkRead" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="searchType_ds">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">-1</Col>
+            <Col id="name">전체</Col>
+          </Row>
+          <Row>
+            <Col id="code">01</Col>
+            <Col id="name">학번</Col>
+          </Row>
+        </Rows>
+      </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[
 this.requestScholar_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+
+	this.Div00.form.Div00.form.Combo00.set_value("-1");
 	this.transaction(
 		"selectReqScholar.", // 1. strSvcID
 		"/scholarship/selectReqScholar.scholarship", // 2. strURL(절대경로로 입력해주어야함. 로컬호스트 뒤에는 이클립스 서버파일에 있는 path값)
@@ -82,6 +101,9 @@ this.requestScholar_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		"", // 5. strArgument
 		"fn_callback_selectReq" // 6. strCallbackFunc
 	);
+	
+	var arrComboList = [this.com_colCode, this.com_deptCode];
+	this.gfnInitMultiCombo(arrComboList);
 };
 
 
@@ -89,6 +111,15 @@ this.Div00_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClick
 {
 	var seq = this.reqScholar_ds.getColumn(e.row, "seq");
 	var std_code = this.reqScholar_ds.getColumn(e.row, "std_code");
+	
+	this.transaction(
+			"checkValueReqScholar.scholarship",//id
+			"/scholarship/checkValueReqScholar.scholarship",//url (절대경로)
+			"",//in_ds:U
+			"",//()_out_ds
+			"seq="+seq,//argument
+			"fn_callback_check"
+			)
 	
 	
 	//내용 확인을 위한 모달 창
@@ -147,7 +178,8 @@ this.gf_setCheckAll = function(obj:Grid, e:GridClickEventInfo)
 
 this.Div00_btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var stdCodeValue = this.Div00.form.edt_stdCode.value;
+
+	var stdCodeValue = this.Div00.form.Div00.form.edt_stdCode.value;
 	this.reqScholar_ds.filter("std_code=='"+stdCodeValue+"'");
 };
 
@@ -155,6 +187,8 @@ this.Div00_btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 
 this.Div00_btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	
+	
 	var arr = this.reqScholar_ds.extractRows("chk==1");
 	if(arr.length==0||arr==-1)
 	{
@@ -179,6 +213,23 @@ this.Div00_btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
 		{
 			return;
 		}
+	}
+	
+};
+
+this.Div00_Div00_Combo00_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	var searchType = this.Div00.form.Div00.form.Combo00.value;
+	if(searchType == '-1')
+	{
+		this.Div00.form.Div00.form.edt_stdCode.set_visible('false');
+		this.Div00.form.Div00.form.btn_search.set_visible('false');
+		this.reqScholar_ds.filter("");
+	}
+	else if (searchType == '01')
+	{
+		this.Div00.form.Div00.form.edt_stdCode.set_visible('true');
+		this.Div00.form.Div00.form.btn_search.set_visible('true');
 	}
 	
 };

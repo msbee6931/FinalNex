@@ -3,29 +3,29 @@
   <Form id="tuition_read_pop" width="400" height="400" titletext="New Form" onload="tuition_read_pop_onload">
     <Layouts>
       <Layout height="400" width="400">
-        <Button id="btn_ok" taborder="0" text="확인" left="86" top="360" width="110" height="30" onclick="btn_ok_onclick"/>
-        <Button id="btn_cancle" taborder="1" text="취소" left="205" top="360" width="110" height="30" onclick="btn_cancle_onclick"/>
-        <Div id="Div00" taborder="2" text="Div00" left="21" top="26" width="358" height="320" border="1px solid #c1c1c1">
+        <Button id="btn_ok" taborder="0" text="확인" left="86" top="360" width="110" height="30" onclick="btn_ok_onclick" cssclass="btn_default"/>
+        <Button id="btn_cancle" taborder="1" text="취소" left="205" top="360" width="110" height="30" onclick="btn_cancle_onclick" cssclass="btn_can"/>
+        <Div id="Div00" taborder="2" text="Div00" left="21" top="26" width="358" height="320" cssclass="div_line">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="입학금" left="18" top="115" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_00" taborder="1" text="수업료" left="18" top="144" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_01" taborder="2" text="학생회비" left="18" top="173" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_01_00" taborder="3" text="졸업앨범비" left="18" top="202" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_01_00_00" taborder="4" text="오리엔테이션비" left="18" top="231" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_01_00_00_00" taborder="5" text="총 합계" left="18" top="260" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <MaskEdit id="medt_a" taborder="6" left="118" top="115" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
-              <MaskEdit id="medt_b" taborder="7" left="118" top="144" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
-              <MaskEdit id="medt_c" taborder="8" left="118" top="173" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
-              <MaskEdit id="medt_d" taborder="9" left="118" top="202" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
-              <MaskEdit id="medt_e" taborder="10" left="118" top="231" width="200" height="30" format="+999,999,999" canchange="fn_tSum"/>
-              <MaskEdit id="medt_sum" taborder="11" left="118" top="260" width="200" height="30" format="+999,999,999" readonly="true"/>
-              <Static id="Static00_02" taborder="12" text="학번" left="18" top="18" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Edit id="edt_code" taborder="13" left="119" top="18" width="199" height="30" readonly="true"/>
-              <Static id="Static00_02_00" taborder="14" text="학과" left="18" top="47" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Static id="Static00_02_00_00" taborder="15" text="이름" left="18" top="76" width="100" height="30" background="#c1c1c1" border="1px solid #c1c1c1"/>
-              <Edit id="edt_code00_00" taborder="16" left="119" top="76" width="199" height="30" readonly="true"/>
-              <Combo id="Combo00" taborder="17" text="Combo00" left="119" top="47" width="199" height="31" innerdataset="deptCode" codecolumn="code" datacolumn="name" readonly="true"/>
+              <Static id="Static00" taborder="0" text="입학금" left="18" top="115" width="100" height="30" cssclass="sta_default"/>
+              <Static id="Static00_00" taborder="1" text="수업료" left="18" top="144" width="100" height="30" cssclass="sta_default"/>
+              <Static id="Static00_01" taborder="2" text="학생회비" left="18" top="173" width="100" height="30" cssclass="sta_default"/>
+              <Static id="Static00_01_00" taborder="3" text="졸업앨범비" left="18" top="202" width="100" height="30" cssclass="sta_default"/>
+              <Static id="Static00_01_00_00" taborder="4" text="오리엔테이션비" left="18" top="231" width="100" height="30" cssclass="sta_default"/>
+              <Static id="Static00_01_00_00_00" taborder="5" text="총 합계" left="18" top="260" width="100" height="30" cssclass="sta_default"/>
+              <MaskEdit id="medt_a" taborder="6" left="118" top="115" width="200" height="30" format="+999,999,999" canchange="fn_tSum" cssclass="med_default"/>
+              <MaskEdit id="medt_b" taborder="7" left="118" top="144" width="200" height="30" format="+999,999,999" canchange="fn_tSum" cssclass="med_default"/>
+              <MaskEdit id="medt_c" taborder="8" left="118" top="173" width="200" height="30" format="+999,999,999" canchange="fn_tSum" cssclass="med_default"/>
+              <MaskEdit id="medt_d" taborder="9" left="118" top="202" width="200" height="30" format="+999,999,999" canchange="fn_tSum" cssclass="med_default"/>
+              <MaskEdit id="medt_e" taborder="10" left="118" top="231" width="200" height="30" format="+999,999,999" canchange="fn_tSum" cssclass="med_default"/>
+              <MaskEdit id="medt_sum" taborder="11" left="118" top="260" width="200" height="30" format="+999,999,999" readonly="true" cssclass="med_default"/>
+              <Static id="Static00_02" taborder="12" text="학번" left="18" top="18" width="100" height="30" cssclass="sta_default"/>
+              <Edit id="edt_code" taborder="13" left="119" top="18" width="199" height="30" readonly="true" cssclass="edt_default"/>
+              <Static id="Static00_02_00" taborder="14" text="학과" left="18" top="47" width="100" height="30" cssclass="sta_default"/>
+              <Static id="Static00_02_00_00" taborder="15" text="이름" left="18" top="76" width="100" height="30" cssclass="sta_default"/>
+              <Edit id="edt_code00_00" taborder="16" left="119" top="76" width="199" height="30" readonly="true" cssclass="edt_default"/>
+              <Combo id="Combo00" taborder="17" text="Combo00" left="119" top="47" width="199" height="31" innerdataset="deptCode" codecolumn="code" datacolumn="name" readonly="true" cssclass="cmb_default"/>
             </Layout>
           </Layouts>
         </Div>
