@@ -9,23 +9,23 @@
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="57"/>
-                <Column size="318"/>
-                <Column size="108"/>
+                <Column size="80"/>
+                <Column size="418"/>
+                <Column size="369"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell text="chk"/>
                 <Cell col="1" text="name"/>
                 <Cell col="2" text="size"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:chk" edittype="checkbox" displaytype="checkboxcontrol"/>
-                <Cell col="1" text="bind:name"/>
-                <Cell col="2" text="bind:size"/>
+                <Cell text="bind:chk" edittype="checkbox"/>
+                <Cell col="1" text="bind:name" textAlign="center"/>
+                <Cell col="2" text="bind:size" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
@@ -49,6 +49,7 @@
           <Column id="chk" type="INT" size="256"/>
           <Column id="name" type="STRING" size="256"/>
           <Column id="size" type="STRING" size="256"/>
+          <Column id="parentSeq" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <FileUpTransfer id="FileUpTransfer00" onprogress="FileUpTransfer00_onprogress" onsuccess="FileUpTransfer00_onsuccess" onerror="FileUpTransfer00_onerror"/>
@@ -58,10 +59,12 @@
           <Column id="title" type="STRING" size="256"/>
           <Column id="contents" type="STRING" size="256"/>
           <Column id="write_date" type="STRING" size="256"/>
+          <Column id="parentSeq" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[this.parentSeq="";
+
 this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.FileDialog00.open('파일선택', FileDialog.MULTILOAD);
@@ -228,22 +231,26 @@ this.Button03_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			"in_ds=reference:U",//in_ds:U
 			"",//()_out_ds
 			"",//argument
-			"fn_callback"
+			"file_callback"
 	)
 
-	//파일전송
-	this.FileUpTransfer00.upload("/reference/uploadFile"); //file up url
-	alert("등록되었습니다.")
-	this.title.set_value("");
-	this.contents.set_value("");
-	this.Dataset00.reset();
-	this.FileUpTransfer00.clearFileList();
-		
 		
 		}
 	
 
 };
-]]></Script>
+this.file_callback = function (tID, eCode, eMag)
+{	
+	trace("parentSeq = "+this.parentSeq);
+	this.FileUpTransfer00.setPostData("parentSeq",this.parentSeq);
+	//파일전송
+	this.FileUpTransfer00.upload("/reference/uploadFile");
+
+	alert("등록되었습니다.")
+	this.title.set_value("");
+	this.contents.set_value("");
+	this.Dataset00.reset();
+	this.FileUpTransfer00.clearFileList();
+}]]></Script>
   </Form>
 </FDL>
