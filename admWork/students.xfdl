@@ -1,25 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="students" width="1080" height="570" titletext="New Form" onload="students_onload">
+  <Form id="students" width="1080" height="520" titletext="New Form" onload="students_onload">
     <Layouts>
-      <Layout height="570" mobileorientation="landscape" width="1080">
-        <Grid id="Grid00" taborder="0" left="30" top="70" width="1020" height="320" binddataset="ds_students" autofittype="col" onheadclick="Grid00_onheadclick" cssclass="grd_default">
+      <Layout height="520" mobileorientation="landscape" width="1080">
+        <Static id="Static00" taborder="0" left="0" top="0" visible="false" background="RGBA(236,135,135,0.71)" width="29" bottom="0"/>
+        <Static id="Static00_01_00" taborder="1" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="0"/>
+        <Static id="Static00_00" taborder="2" left="1051" top="0" visible="false" background="RGBA(236,135,135,0.71)" right="0" bottom="0"/>
+        <Static id="Static00_01" taborder="3" left="80" top="0" visible="false" background="RGBA(236,135,135,0.71)" height="10" width="800"/>
+        <Static id="Static01" taborder="4" text="" left="30" top="10" right="26" bottom="30" cssclass="sta_line"/>
+        <Grid id="Grid00" taborder="5" left="35" top="70" binddataset="ds_students" autofittype="col" onheadclick="Grid00_onheadclick" cssclass="grd_default" right="35" bottom="80">
           <Formats>
             <Format id="default">
               <Columns>
+                <Column size="30"/>
                 <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="77"/>
+                <Column size="50"/>
+                <Column size="60"/>
                 <Column size="84"/>
                 <Column size="80"/>
+                <Column size="70"/>
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
+                <Column size="50"/>
+                <Column size="50"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -44,7 +49,7 @@
                 <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
                 <Cell col="1" text="bind:s_seq" displaytype="text"/>
                 <Cell col="2" text="bind:gender" edittype="combo" combodataset="ds_gender" combocodecol="code" combodatacol="name" displaytype="combotext"/>
-                <Cell col="3" text="bind:colGrade" edittype="combo" combodataset="ds_colGrade" combocodecol="code" combodatacol="name" displaytype="normal"/>
+                <Cell col="3" text="bind:colGrade" edittype="combo" combodataset="ds_colGrade" combocodecol="code" combodatacol="name" displaytype="combotext"/>
                 <Cell col="4" text="bind:colCode" edittype="combo" combodataset="colCode" combocodecol="code" combodatacol="name" displaytype="combotext"/>
                 <Cell col="5" text="bind:deptCode" edittype="combo" combodataset="deptCode_copy" combocodecol="Code" combodatacol="Value" displaytype="combotext"/>
                 <Cell col="6" text="bind:name" edittype="normal"/>
@@ -58,11 +63,11 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_retrive" taborder="1" text="조회" left="950" top="25" width="100" height="30" onclick="btn_retrive_onclick" cssclass="btn_default"/>
-        <Button id="btn_save" taborder="2" text="저장" left="950" top="460" width="100" height="30" onclick="btn_save_onclick" cssclass="btn_default"/>
-        <Button id="btn_del" taborder="3" text="삭제" left="840" top="460" width="100" height="30" onclick="btn_del_onclick" cssclass="btn_del"/>
-        <Button id="btn_add" taborder="4" text="입력" left="840" top="25" width="100" height="30" onclick="btn_add_onclick" cssclass="btn_insert"/>
-        <Combo id="cb_search" taborder="5" text="전체" left="30" top="28" width="100" height="25" value="All" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="cb_search_onitemchanged" cssclass="cmb_default">
+        <Button id="btn_retrive" taborder="6" text="조회" top="28" width="100" height="25" onclick="btn_retrive_onclick" cssclass="btn_default" right="35"/>
+        <Button id="btn_save" taborder="7" text="저장" width="100" height="25" onclick="btn_save_onclick" cssclass="btn_default" right="35" bottom="35"/>
+        <Button id="btn_del" taborder="8" text="삭제" width="100" height="25" onclick="btn_del_onclick" cssclass="btn_del" right="140" bottom="35"/>
+        <Button id="btn_add" taborder="9" text="입력" top="28" width="100" height="25" onclick="btn_add_onclick" cssclass="btn_insert" right="140"/>
+        <Combo id="cb_search" taborder="10" text="전체" left="35" top="28" width="100" height="25" value="All" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="cb_search_onitemchanged" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -80,12 +85,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="edt_search" taborder="6" left="140" top="28" width="100" height="25" cssclass="edt_default"/>
-        <Button id="btn_search" taborder="7" left="250" top="28" width="60" height="25" onclick="btn_search_onclick" cssclass="btn_search" text="조회"/>
-        <Static id="Static00" taborder="8" left="0" top="0" visible="false" background="RGBA(236,135,135,0.71)" width="29" bottom="50"/>
-        <Static id="Static00_01_00" taborder="9" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="50"/>
-        <Static id="Static00_00" taborder="10" left="1051" top="0" visible="false" background="RGBA(236,135,135,0.71)" right="0" bottom="50"/>
-        <Static id="Static00_01" taborder="11" left="80" top="0" visible="false" background="RGBA(236,135,135,0.71)" height="10" width="800"/>
+        <Edit id="edt_search" taborder="11" left="140" top="28" width="100" height="25" cssclass="edt_default"/>
+        <Button id="btn_search" taborder="12" left="250" top="28" width="60" height="25" onclick="btn_search_onclick" cssclass="btn_search" text="조회"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fn_callback = function(id,ErrorCode,ErrorMsg){	//콜백함수
