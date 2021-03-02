@@ -73,11 +73,11 @@
                           <Cell col="4" text="학과코드"/>
                         </Band>
                         <Band id="body">
-                          <Cell text="bind:n_seq"/>
-                          <Cell col="1" text="bind:title"/>
+                          <Cell text="bind:n_seq" displaytype="text"/>
+                          <Cell col="1" text="bind:title" displaytype="text"/>
                           <Cell col="2" text="bind:writedate" displaytype="date"/>
-                          <Cell col="3" text="bind:contents"/>
-                          <Cell col="4" text="bind:deptcode"/>
+                          <Cell col="3" text="bind:contents" displaytype="text"/>
+                          <Cell col="4" text="bind:deptcode" displaytype="text"/>
                         </Band>
                       </Format>
                     </Formats>
@@ -110,11 +110,11 @@
                           <Cell col="4" text="학과코드"/>
                         </Band>
                         <Band id="body">
-                          <Cell text="bind:n_seq"/>
-                          <Cell col="1" text="bind:title"/>
+                          <Cell text="bind:n_seq" displaytype="text"/>
+                          <Cell col="1" text="bind:title" displaytype="text"/>
                           <Cell col="2" text="bind:writedate" displaytype="date"/>
-                          <Cell col="3" text="bind:contents"/>
-                          <Cell col="4" text="bind:deptcode"/>
+                          <Cell col="3" text="bind:contents" displaytype="text"/>
+                          <Cell col="4" text="bind:deptcode" displaytype="text"/>
                         </Band>
                       </Format>
                     </Formats>
@@ -147,11 +147,11 @@
                           <Cell col="4" text="학과코드"/>
                         </Band>
                         <Band id="body">
-                          <Cell text="bind:n_seq"/>
-                          <Cell col="1" text="bind:title"/>
+                          <Cell text="bind:n_seq" displaytype="text"/>
+                          <Cell col="1" text="bind:title" displaytype="text"/>
                           <Cell col="2" text="bind:writedate" displaytype="date"/>
-                          <Cell col="3" text="bind:contents"/>
-                          <Cell col="4" text="bind:deptcode"/>
+                          <Cell col="3" text="bind:contents" displaytype="text"/>
+                          <Cell col="4" text="bind:deptcode" displaytype="text"/>
                         </Band>
                       </Format>
                     </Formats>
