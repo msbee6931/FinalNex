@@ -2417,4 +2417,20 @@ font : 14px/normal "Malgun Gothic";
 	-nexa-border : 1px solid #0d6efd;
 	cursor : pointer;
 }
+.ProgressBar.pgb_default,
+.ProgressBar.pgb_default[status=disabled],
+.ProgressBar.pgb_default[status=mouseover],
+.ProgressBar.pgb_default[status=focused]
+{
+}
+.ProgressBar.pgb_default .progressbartext
+{
+	color : #1c0c7c;
+	font : bold 11px/normal "Malgun Gothic";
+
+}
+.ProgressBar.pgb_default .progressbaritem
+{
+	background : #6c9cff;
+}
 ]]></XCSS>

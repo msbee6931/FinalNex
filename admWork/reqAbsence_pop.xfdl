@@ -61,9 +61,10 @@
               <Radio id="Radio00" taborder="25" left="106" top="186" width="674" height="18" innerdataset="absenceCode_ds" codecolumn="code" datacolumn="name" rowcount="1" readonly="true"/>
               <Button id="btn_commit" taborder="26" text="승인" left="599" top="514" width="100" height="25" onclick="Div00_btn_commit_onclick" cssclass="btn_default"/>
               <Combo id="Combo00" taborder="27" text="Combo00" left="97" top="61" width="192" height="31" innerdataset="deptCode" codecolumn="code" datacolumn="name" cssclass="cmb_dept" readonly="true"/>
-              <Static id="Static06" taborder="28" left="8" top="275" width="799" height="136" cssclass="sta_line"/>
+              <Static id="Static06" taborder="28" left="28" top="275" width="779" height="136" cssclass="sta_line"/>
               <MaskEdit id="MaskEdit00" taborder="29" left="617" top="62" width="190" height="30" cssclass="med_default" readonly="true" type="string" format="@@@@@@"/>
               <Static id="Static00_01_00" taborder="10" text="주 소" left="28" top="118" width="70" height="30" cssclass="sta_default"/>
+              <Button id="btn_complite" taborder="30" text="휴학 처리 완료" left="599" top="514" width="100" height="25" onclick="Div00_btn_commit_onclick" cssclass="btn_default" visible="false"/>
             </Layout>
           </Layouts>
         </Div>
@@ -161,7 +162,8 @@ this.fn_callback_stdInfo = function()
 	var rest = this.students_ds.getColumn(0,"rest");
 	if(rest=='Y')
 	{
-		this.Div00.form.btn_commit.set_text("휴학 처리 완료");
+		this.Div00.form.btn_commit.set_visible(false);
+		this.Div00.form.btn_complite.set_visible(true);
 	}
 	this.transaction(
 		"selectOne.absence",//id
@@ -268,7 +270,8 @@ this.Div00_btn_commit_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 };
 this.fn_callback_updAbs = function()
 {
-	this.Div00.form.btn_commit.set_text("휴학 처리 완료");
+	this.Div00.form.btn_commit.set_visible(false);
+	this.Div00.form.btn_complite.set_visible(true);
 }
 
 this.Div00_Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)

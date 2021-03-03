@@ -12,19 +12,24 @@
             <Layout>
               <Calendar id="cal_dept" taborder="0" left="9" top="76" type="monthonly" ondayclick="Div00_cal_dept_ondayclick" onrbuttonup="Div00_cal_dept_onrbuttonup" innerdataset="ds_cal" backgroundcolumn="backgroundcolumn" bordercolumn="bordercolumn" datecolumn="datecolumn" textcolorcolumn="textcolorcolumn" bottom="24" right="630"/>
               <Button id="btn_insert" taborder="1" text="일정 등록" top="46" width="100" height="25" onclick="Div00_btn_insert_onclick" cssclass="btn_insert" right="130"/>
-              <Grid id="Grid00" taborder="2" top="76" binddataset="deptSchedule_ds" autofittype="col" oncelldblclick="Div00_Grid00_oncelldblclick" right="20" bottom="24" width="600">
+              <Grid id="Grid00" taborder="2" top="76" binddataset="deptSchedule_ds" autofittype="col" oncelldblclick="Div00_Grid00_oncelldblclick" right="20" bottom="24" width="600" cssclass="grd_default">
                 <Formats>
                   <Format id="default">
                     <Columns>
                       <Column size="80"/>
-                      <Column size="295"/>
+                      <Column size="324"/>
                     </Columns>
                     <Rows>
-                      <Row size="30"/>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
                     </Rows>
+                    <Band id="head">
+                      <Cell text="분류"/>
+                      <Cell col="1" text="일정 명"/>
+                    </Band>
                     <Band id="body">
-                      <Cell text="bind:code" cssclass="expr:code=='01'?'Expr_red':code=='02'?'Expr_blue':'Expr_yellow'" displaytype="combotext" combocodecol="code" combodatacol="name" textAlign="center" combodataset="ScheduleCode_ds"/>
-                      <Cell col="1" text="bind:title" cssclass="expr:code=='01'?'Expr_red':code=='02'?'Expr_blue':'Expr_yellow'" textAlign="center"/>
+                      <Cell text="bind:code" textAlign="center" displaytype="combotext" combodataset="ScheduleCode_ds" combocodecol="code" combodatacol="name" cssclass="expr:code=='01'?'Expr_red':code=='02'?'Expr_blue':'Expr_yellow'"/>
+                      <Cell col="1" text="bind:title" textAlign="center" cssclass="expr:code=='01'?'Expr_red':code=='02'?'Expr_blue':'Expr_yellow'"/>
                     </Band>
                   </Format>
                 </Formats>
