@@ -230,7 +230,19 @@
           <Col id="menu_id">203020</Col>
           <Col id="menu_name">학생 성적 관리</Col>
           <Col id="menu_level">2</Col>
+          <Col id="form_url"/>
+        </Row>
+        <Row>
+          <Col id="menu_id">20302010</Col>
+          <Col id="menu_name">학생 성적 입력</Col>
+          <Col id="menu_level">3</Col>
           <Col id="form_url">prfWork::classGrade.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="menu_id">20302020</Col>
+          <Col id="menu_name">성적 등급 입력</Col>
+          <Col id="menu_level">3</Col>
+          <Col id="form_url">prfWork::gradeRank.xfdl</Col>
         </Row>
         <Row>
           <Col id="menu_name">학생 출결 관리</Col>
@@ -322,21 +334,6 @@
         <Column id="form_url" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
-    <Dataset id="gds_grade">
-      <ColumnInfo>
-        <Column id="sCode" type="INT" size="256"/>
-        <Column id="sName" type="STRING" size="256"/>
-        <Column id="classCode" type="INT" size="256"/>
-        <Column id="attend" type="INT" size="256"/>
-        <Column id="mid" type="INT" size="256"/>
-        <Column id="otest" type="INT" size="256"/>
-        <Column id="task" type="INT" size="256"/>
-        <Column id="fin" type="INT" size="256"/>
-        <Column id="total" type="INT" size="256"/>
-        <Column id="rank" type="STRING" size="256"/>
-        <Column id="grade" type="STRING" size="256"/>
-      </ColumnInfo>
-    </Dataset>
     <Dataset id="gds_students">
       <ColumnInfo>
         <Column id="s_seq" type="INT" size="256"/>
@@ -373,6 +370,8 @@
       <ColumnInfo>
         <Column id="a_seq" type="STRING" size="256"/>
         <Column id="pw" type="STRING" size="256"/>
+        <Column id="regist" type="STRING" size="256"/>
+        <Column id="test" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
     <Dataset id="deptCode">

@@ -19,7 +19,7 @@
               <Static id="sta_grade" taborder="10" text="" left="89" top="141" width="100" height="25" padding="0px 0px 0px 5px" cssclass="sta_line"/>
               <Static id="sta_point" taborder="11" text="" left="89" top="165" width="100" height="25" padding="0px 0px 0px 5px" cssclass="sta_line"/>
               <Static id="sta_sSeq" taborder="12" text="" left="89" top="93" width="100" height="25" padding="0px 0px 0px 5px" cssclass="sta_line"/>
-              <Combo id="co_dept" taborder="13" text="전체" left="69" top="239" width="120" height="30" value="" index="-1" innerdataset="ds_deptCode" codecolumn="code" datacolumn="name" onitemchanged="div_Info_co_dept_onitemchanged" cssclass="cmb_default"/>
+              <Combo id="co_dept" taborder="13" text="" left="69" top="239" width="120" height="30" value="" index="-1" innerdataset="ds_deptCode" codecolumn="code" datacolumn="name" onitemchanged="div_Info_co_dept_onitemchanged" cssclass="cmb_default"/>
               <Combo id="co_part" taborder="14" left="69" top="269" width="120" height="30" value="" index="0" codecolumn="id" datacolumn="name" cssclass="cmb_default" innerdataset="ds_part" displaynulltext="전체" text="전체"/>
               <Edit id="edt_className" taborder="15" left="69" top="299" width="120" height="30" onchanged="Div00_Edit00_onchanged"/>
               <Button id="btnClassSearch" taborder="16" left="129" top="334" width="60" height="25" onclick="div_Info_btnClassSearch_onclick" cssclass="btn_search" text="조회"/>
@@ -29,6 +29,7 @@
               <Button id="classTime" taborder="20" text="조회" left="129" top="429" width="60" height="25" onclick="div_Info_classTime_onclick" cssclass="btn_search"/>
               <Static id="sta_semester" taborder="21" text="" left="9" top="19" width="180" height="25"/>
               <Combo id="co_myDept" taborder="22" left="89" top="69" width="100" height="25" innerdataset="deptCode" codecolumn="code" datacolumn="name" readonly="true" cssclass="cmb_dept"/>
+              <Button id="btnRetrieve" taborder="23" text="갱신" left="64" top="334" width="60" height="25" cssclass="btn_default" onclick="div_Info_btnRetrieve_onclick"/>
             </Layout>
           </Layouts>
         </Div>
@@ -79,7 +80,7 @@
           </Formats>
         </Grid>
         <Static id="Static01_00" taborder="1" text="▷ 개설강좌 리스트" left="240" top="14" onclick="Div00_Static01_onclick" height="25" width="130"/>
-        <Grid id="Grid00_00" taborder="4" left="240" binddataset="ds_myClass" autofittype="col" oncellclick="gr_myClassList_oncellclick" right="30" cssclass="grd_default" bottom="29" height="220">
+        <Grid id="gr_myClassList" taborder="4" left="240" binddataset="ds_myClass" autofittype="col" oncellclick="gr_myClassList_oncellclick" right="30" cssclass="grd_default" bottom="29" height="220">
           <Formats>
             <Format id="default">
               <Columns>
@@ -178,7 +179,7 @@
           </Row>
           <Row>
             <Col id="id">D</Col>
-            <Col id="name">지정교양</Col>
+            <Col id="name">교양선택</Col>
           </Row>
           <Row>
             <Col id="id">E</Col>
@@ -393,7 +394,8 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
+    <Script type="xscript5.1"><![CDATA[include "lib::Common.xjs"
+this.objApp = nexacro.getApplication();
 this.ClassRegist_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	var sCode = this.objApp.gds_students.getColumn(0,"s_seq");
@@ -403,9 +405,9 @@ this.ClassRegist_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	this.div_Info.form.sta_sSeq.set_text(sCode);
 	this.div_Info.form.sta_name.set_text(sName);
 	this.div_Info.form.co_myDept.set_value(deptCode);
-	this.div_Info.form.sta_grade.set_text(grade);
-	
+	this.div_Info.form.sta_grade.set_text(grade+"학년");
 	var objDate= new Date();
+
 	if(objDate.getMonth()+1 && objDate.getMonth()+1 < 8){
 		this.div_Info.form.sta_semester.set_text(objDate.getFullYear()+"년 1학기");	
 		var startTime = objDate.getFullYear()+"0101";
@@ -452,7 +454,7 @@ this.fn_callback = function(sId,errCd,errMsg){
 	}
 	if(sId == "myClassList"){
 		var nPoint = 0;
-		for(var i=0; i<this.ds_myClass.getRowCountNF(); i++){
+		for(var i=0; i<this.ds_myClass.getRowCount(); i++){
 			var classSeq = this.ds_myClass.getColumn(i,"classSeq");
 			var nRow = this.ds_class.findRow("classSeq",classSeq);
 			this.ds_class.deleteRow(nRow)
@@ -512,10 +514,28 @@ this.div_Info_btnClassSearch_onclick = function(obj:nexacro.Button,e:nexacro.Cli
 	var part = this.div_Info.form.co_part.value;
 	var className = this.div_Info.form.edt_className.text;
 	this.ds_class.filter("dept.indexOf('"+dept+"')>=0 && classPart.indexOf('"+part+"')>=0 && className.indexOf('"+className+"')>=0");
+	for(var i = 0; i< this.ds_myClass.getRowCount(); i++){
+		if(this.ds_myClass.getRowCount() > 0 ){
+			var classSeq = this.ds_myClass.getColumn(i,"classSeq");
+			var nRow = this.ds_class.findRow("classSeq",classSeq);
+			if(nRow != -1){
+				this.ds_class.deleteRow(nRow);
+			}
+		}
+	}
 };
 this.div_Info_co_dept_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
 {
 	this.ds_class.filter("dept.indexOf('"+e.postvalue+"')>=0");
+	for(var i = 0; i< this.ds_myClass.getRowCount(); i++){
+		if(this.ds_myClass.getRowCount() > 0 ){
+			var classSeq = this.ds_myClass.getColumn(i,"classSeq");
+			var nRow = this.ds_class.findRow("classSeq",classSeq);
+			if(nRow != -1){
+				this.ds_class.deleteRow(nRow);
+			}
+		}
+	}
 };
 
 this.gr_classList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
@@ -547,12 +567,12 @@ this.gr_classList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEve
 				alert("학점이 부족합니다");
 				return;
 			}else{
-				if(grade != myGrade){
-					alert("수강 가능한 학년이 아닙니다");
-					return;
-				}else{
-					if(dept != myDept && dept != "7071" && part != "F"){
+				if(dept != myDept && dept != "7071" && part != "F"){
 						alert("다른 학과 전공은 신청이 불가능합니다");
+						return;
+				}else{
+					if(grade != myGrade && dept != "7071"){
+						alert("수강 가능한 학년이 아닙니다");
 						return;
 					}else{
 						var classTime = this.ds_class.getColumn(nRow,"classTime");
@@ -665,7 +685,7 @@ this.gr_classList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEve
 this.row= "";
 this.count = "";
 this.count2 = "";
-this.msg ="";
+this.msg =""; //인원 초과했을 경우 지표
 this.fn_callback_stdClass=function(sId,errCd,errMsg){
 	if (errCd < 0) {
 		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
@@ -686,7 +706,7 @@ this.fn_callback_stdClass=function(sId,errCd,errMsg){
 			);
 			this.ds_class.deleteRow(this.row);
 		}else{
-			alert("인원수를 초과했습니다");
+			alert("인원수를 초과했습니다"); //인원 초과됐을 경우 마지막 row를 삭제하고 시간표에서도 삭제
 			this.ds_myClass.deleteRow(this.ds_myClass.getRowCount()-1);
 			var className= this.ds_class.getColumn(this.row,"className");
 			for(var i=0; i<this.ds_stdTimeTable.getRowCount();i++){
@@ -740,30 +760,6 @@ this.fn_callback_stdClass=function(sId,errCd,errMsg){
 			,"fn_callback"
 		);
 		this.ds_class.deleteRow(this.row);
-	}else if(sId == "stdBasketDelete"){
-		var basketLimit = this.ds_class.getColumnNF(this.row,"basketLimit").split("/");
-		this.ds_class.setColumnNF(this.row,"basketLimit",this.count2+"/"+basketLimit[1]);
-		basketLimit = this.ds_class.getColumnNF(this.row,"basketLimit")
-		var classSeq = this.ds_class.getColumnNF(this.row,"classSeq");
-		this.transaction(
-			"/limitUpdBasket"
-			,"/limitBasketUpd.nex" 
-			,""
-			,""
-			,"limit="+basketLimit +" classSeq="+classSeq
-			,"fn_callback"
-		);	
-		var limit = this.ds_class.getColumnNF(this.row,"limit").split("/");
-		this.ds_class.setColumnNF(this.row,"limit",this.count+"/"+limit[1]);
-		limit = this.ds_class.getColumnNF(this.row,"limit")
-		this.transaction(
-			"/limitUpd"
-			,"/limitUpd.nex" 
-			,""
-			,""
-			,"limit="+limit +" classSeq="+classSeq
-			,"fn_callback"
-		);
 	}
 }
 this.gr_myClassList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
@@ -775,6 +771,11 @@ this.gr_myClassList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickE
 		var sCode = this.div_Info.form.sta_sSeq.text;
 		var myPoint = this.div_Info.form.sta_point.text;
 		var point = this.ds_myClass.getColumn(nRow,"classPoint").replace("학점","");
+		//filter 과정에서 신청한 내역의 과목이 전체 과목 내역에 보일 경우 삭제
+		var findRow = this.ds_class.findRow("classSeq",classCode);
+		if(findRow != -1){
+			this.ds_class.deleteRow(findRow);
+		}
 		//학점 갱신
 		this.div_Info.form.sta_point.set_text(nexacro.toNumber(myPoint)+nexacro.toNumber(point));
 		//DB에서 해당 시간표 삭제 
@@ -801,10 +802,10 @@ this.gr_myClassList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickE
 	if(e.col==4){
 		var classSeq = this.ds_myClass.getColumn(e.row,"classSeq");
 		var proCode = this.ds_myClass.getColumn(e.row,"proCode");
-		var x = this.width/2-500; 
-		var y = this.height/2-340;
+		var xWidth = this.width/2-500; 
+		var yHeight = this.height/2-340;
 		var objCF = new ChildFrame();
-		objCF.init("popAdd",x,y,1000,680,0,0,"prfWork::detail.xfdl");
+		objCF.init("popAdd",xWidth,yHeight,1000,680,0,0,"prfWork::detail.xfdl");
 		objCF.set_showtitlebar(false);
 		objCF.showModal(this.getOwnerFrame(),{classSeq:classSeq, proCode : proCode, view : 'Y'},this,"fn_pop_callback");
 	}
@@ -813,10 +814,10 @@ this.gr_myClassList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickE
 this.div_Info_classTime_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {	
 	var sCode = this.div_Info.form.sta_sSeq.text;
-	var x = this.width/2-410; 
-	var y = this.height/2-220;
+	var xWidth = this.width/2-410; 
+	var yHeight = this.height/2-220;
 	var objCF = new ChildFrame();
-	objCF.init("popTimeTable",x,y,820,440,0,0,"stdWork::studentSchedule.xfdl");
+	objCF.init("popTimeTable",xWidth,yHeight,820,440,0,0,"stdWork::studentSchedule.xfdl");
 	objCF.set_showtitlebar(false);
 	
 	objCF.showModal(this.getOwnerFrame(),{sCode:sCode},this,"fn_pop_callback");
@@ -848,6 +849,22 @@ this.fn_pop_callback=function(sId,code){
 
 
 
+
+this.gr_classList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.cfn_GridSort(obj,e);
+};
+
+
+this.gr_myClassList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.cfn_GridSort(obj,e);
+};
+
+this.div_Info_btnRetrieve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.reload();
+};
 ]]></Script>
   </Form>
 </FDL>

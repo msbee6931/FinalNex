@@ -8,7 +8,7 @@
         <Static id="Static00_00_00" taborder="11" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="12" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static01" taborder="13" left="27" top="10" cssclass="sta_line" text="" right="30" bottom="30"/>
-        <Grid id="gr_classList" taborder="0" left="48" top="57" binddataset="ds_class" oncellclick="gr_classList_oncellclick" autofittype="col" right="47" cssclass="grd_default" height="143">
+        <Grid id="gr_classList" taborder="0" left="48" top="57" binddataset="ds_class" oncellclick="gr_classList_oncellclick" autofittype="col" right="47" cssclass="grd_default" height="143" onheadclick="gr_classList_onheadclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -209,7 +209,8 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
+    <Script type="xscript5.1"><![CDATA[include "lib::Common.xjs"
+this.objApp = nexacro.getApplication();
 this.attendManage_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	var objDate= new Date();
@@ -510,6 +511,11 @@ this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 
 
+
+this.gr_classList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.cfn_GridSort(obj,e);
+};
 ]]></Script>
   </Form>
 </FDL>

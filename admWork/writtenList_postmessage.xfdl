@@ -10,7 +10,7 @@
         <Div id="Div00" taborder="4" text="" left="30" top="10" cssclass="div_line" right="29" bottom="30">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="28" top="26" binddataset="pst" autofittype="col" cssclass="grd_default" right="530" bottom="73">
+              <Grid id="Grid00" taborder="0" left="28" top="26" binddataset="pst" autofittype="col" cssclass="grd_default" right="530" bottom="73" onheadclick="Div00_Grid00_onheadclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -24,10 +24,10 @@
                       <Row size="24"/>
                     </Rows>
                     <Band id="head">
-                      <Cell text="chk"/>
-                      <Cell col="1" text="confirm"/>
-                      <Cell col="2" text="sender"/>
-                      <Cell col="3" text="receiver"/>
+                      <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="1" text="확인"/>
+                      <Cell col="2" text="보낸이"/>
+                      <Cell col="3" text="받는이"/>
                     </Band>
                     <Band id="body">
                       <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
@@ -38,18 +38,19 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Div id="Div00" taborder="1" text="" top="26" width="498" cssclass="div_line" right="12" bottom="38">
+              <Div id="Div00" taborder="1" text="" top="26" width="498" cssclass="div_line" right="12" bottom="73">
                 <Layouts>
                   <Layout>
-                    <TextArea id="TextArea00" taborder="0" left="9" top="77" width="479" cssclass="txt_default" bottom="28"/>
+                    <TextArea id="TextArea00" taborder="0" left="19" top="59" width="465" cssclass="txt_default" bottom="185"/>
+                    <Static id="Static00" taborder="1" text="보낸 내용" top="9" width="431" height="31" textAlign="center" font="bold 26px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" cssclass="sta_default" left="27"/>
+                    <Static id="Static01" taborder="2" text="받은 답장" left="29" top="206" width="439" height="36" cssclass="sta_default" font="bold 26px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;"/>
+                    <TextArea id="TextArea01" taborder="3" left="23" top="252" width="461" height="114" cssclass="txt_default"/>
                   </Layout>
                 </Layouts>
               </Div>
-              <Div id="Div00_00" taborder="2" text="" top="35" width="482" height="51" cssclass="sta_default" right="20">
+              <Div id="Div00_00" taborder="2" text="" top="244" width="482" height="51" cssclass="sta_default" right="12" font="bold 26px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;">
                 <Layouts>
-                  <Layout>
-                    <Static id="Static00" taborder="0" text="Contents" top="9" width="431" height="31" textAlign="center" font="bold 26px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" cssclass="sta_default" left="31"/>
-                  </Layout>
+                  <Layout/>
                 </Layouts>
               </Div>
               <Button id="del_btn" taborder="3" text="삭제" width="109" height="25" onclick="Div00_del_btn_onclick" cssclass="btn_del" right="530" bottom="38"/>
@@ -67,6 +68,7 @@
           <Column id="receiver" type="STRING" size="256"/>
           <Column id="contents" type="STRING" size="256"/>
           <Column id="seq" type="STRING" size="256"/>
+          <Column id="reply" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -106,9 +108,27 @@ this.Div00_del_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
          )
 	alert("삭제되었습니다");
 };
+
+this.Div00_Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+		let flag = obj.getCellProperty("Head",0,"text");
+	let check = flag==0?1:0;
+	if(e.cell==0){
+		obj.setCellProperty("Head",0,"text",check);
+		for(let i = 0;i<this.pst.getRowCount();i++){
+			this.pst.setColumn(i,"chk",check);
+		}
+	}
+};
+
+this.Div00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="Div00.form.Div00.form.TextArea00" propid="value" datasetid="pst" columnid="contents"/>
+      <BindItem id="item1" compid="Div00.form.Div00.form.TextArea01" propid="value" datasetid="pst" columnid="reply"/>
     </Bind>
   </Form>
 </FDL>
