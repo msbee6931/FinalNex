@@ -33,7 +33,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="gr_classList" taborder="2" left="240" top="43" binddataset="ds_class" oncellclick="gr_classList_oncellclick" autofittype="col" right="29" bottom="282" cssclass="grd_default" onheadclick="gr_classList_onheadclick">
+        <Grid id="gr_classList" taborder="2" left="240" top="43" binddataset="ds_class" oncellclick="gr_classList_oncellclick" autofittype="col" right="29" cssclass="grd_default" bottom="282">
           <Formats>
             <Format id="default">
               <Columns>
@@ -80,7 +80,7 @@
           </Formats>
         </Grid>
         <Static id="Static01_00" taborder="1" text="▷ 개설강좌 리스트" left="240" top="14" onclick="Div00_Static01_onclick" height="25" width="130"/>
-        <Grid id="gr_myClassList" taborder="4" left="240" top="271" binddataset="ds_myClass" autofittype="col" oncellclick="gr_myClassList_oncellclick" right="30" bottom="29" cssclass="grd_default" onheadclick="gr_myClassList_onheadclick">
+        <Grid id="gr_myClassList" taborder="4" left="240" binddataset="ds_myClass" autofittype="col" oncellclick="gr_myClassList_oncellclick" right="30" cssclass="grd_default" bottom="29" height="220">
           <Formats>
             <Format id="default">
               <Columns>
@@ -123,7 +123,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static01_00_00" taborder="3" text="▷ 수강신청내역 리스트" left="240" top="242" onclick="Div00_Static01_onclick" width="150" height="25"/>
+        <Static id="Static01_00_00" taborder="3" text="▷ 수강신청내역 리스트" left="240" top="gr_classList:4" onclick="Div00_Static01_onclick" width="150" bottom="253"/>
         <Static id="Static00" taborder="5" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01" taborder="6" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="7" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>

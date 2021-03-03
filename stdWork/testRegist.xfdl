@@ -78,8 +78,10 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static01_00_00" taborder="3" text="▷ 장바구니 리스트" left="240" top="242" width="140" height="25" onclick="Div00_Static01_onclick"/>
-        <Grid id="gr_basketList" taborder="4" left="240" top="271" binddataset="ds_myBasket" autofittype="col" oncellclick="gr_basketList_oncellclick" cssclass="grd_default" right="29" bottom="30" onheadclick="gr_basketList_onheadclick">
+
+        <Static id="Static01_00_00" taborder="3" text="▷ 장바구니 리스트" left="240" top="gr_classList:4" width="140" height="25" onclick="Div00_Static01_onclick"/>
+        <Grid id="gr_basketList" taborder="4" left="240" binddataset="ds_myBasket" autofittype="col" oncellclick="gr_basketList_oncellclick" cssclass="grd_default" right="29" height="219" bottom="30">
+
           <Formats>
             <Format id="default">
               <Columns>
