@@ -145,7 +145,8 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
+    <Script type="xscript5.1"><![CDATA[include "lib::Common.xjs"
+this.objApp = nexacro.getApplication();
 this.classReq_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	var objDate= new Date();
@@ -171,7 +172,7 @@ this.classReq_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.fn_callback = function(sId,errCd,errMsg){
 	if (errCd < 0) {
 		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
-	} 
+	}
 }
 //작성
 this.btnWrite_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -202,6 +203,8 @@ this.gr_classList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEve
 		for(let i = 0;i<this.ds_class.getRowCount();i++){
 			this.ds_class.setColumn(i,"chk",check);
 		}
+	}else{
+		this.cfn_GridSort(obj,e);
 	}
 };
 

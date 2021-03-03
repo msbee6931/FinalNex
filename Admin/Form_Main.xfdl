@@ -3,14 +3,14 @@
   <Form id="Form_Work" width="1080" height="520" titletext="New Form" onload="Form_Work_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
-        <Button id="btnBoard" taborder="0" text="건의게시판 관리" left="50" top="369" width="120" height="50" onclick="btnBoard_onclick" cssclass="btn_default"/>
-        <Button id="btnReference" taborder="1" text="자료실 관리" left="169" top="369" width="120" height="50" onclick="btnReference_onclick" cssclass="btn_default"/>
-        <Button id="btnClassList" taborder="2" text="개설강좌 조회" left="50" top="418" width="120" height="50" onclick="btnClassList_onclick" cssclass="btn_default"/>
-        <Button id="btnScholarMg" taborder="3" text="장학금 신청 관리" left="169" top="418" width="120" height="50" onclick="btnScholarMg_onclick" cssclass="btn_default"/>
-        <Button id="btnStudentMg" taborder="4" text="학생 관리" left="50" top="320" width="120" height="50" onclick="btnStudentMg_onclick" cssclass="btn_default"/>
-        <Button id="btnNotice" taborder="5" text="공지사항 관리" left="169" top="320" width="120" height="50" onclick="btnNotice_onclick" cssclass="btn_default"/>
-        <Calendar id="cal_schedule" taborder="6" left="790" top="36" width="290" height="224" type="monthonly" innerdataset="ds_cal" backgroundcolumn="backgroundcolumn" bordercolumn="bordercolumn" datecolumn="datecolumn" textcolorcolumn="textcolorcolumn" onspin="cal_schedule_onspin"/>
-        <Grid id="gr_schedule" taborder="7" left="790" top="280" width="290" height="210" binddataset="ds_colSchedule" autofittype="col" oncellclick="gr_schedule_oncellclick" cssclass="grd_default">
+        <Button id="btnBoard" taborder="0" text="건의게시판 관리" left="40" top="370" width="125" height="50" onclick="btnBoard_onclick" cssclass="btn_default"/>
+        <Button id="btnReference" taborder="1" text="자료실 관리" left="166" top="370" width="125" height="50" onclick="btnReference_onclick" cssclass="btn_default"/>
+        <Button id="btnClassList" taborder="2" text="개설강좌 조회" left="40" top="421" width="125" height="50" onclick="btnClassList_onclick" cssclass="btn_default"/>
+        <Button id="btnScholarMg" taborder="3" text="장학금 신청 관리" left="166" top="421" width="125" height="50" onclick="btnScholarMg_onclick" cssclass="btn_default"/>
+        <Button id="btnStudentMg" taborder="4" text="학생 관리" left="40" top="319" width="125" height="50" onclick="btnStudentMg_onclick" cssclass="btn_default"/>
+        <Button id="btnNotice" taborder="5" text="공지사항 관리" left="166" top="319" width="125" height="50" onclick="btnNotice_onclick" cssclass="btn_default"/>
+        <Calendar id="cal_schedule" taborder="6" left="750" top="50" width="330" height="210" type="monthonly" innerdataset="ds_cal" backgroundcolumn="backgroundcolumn" bordercolumn="bordercolumn" datecolumn="datecolumn" textcolorcolumn="textcolorcolumn" onspin="cal_schedule_onspin"/>
+        <Grid id="gr_schedule" taborder="7" left="750" top="280" width="330" height="191" binddataset="ds_colSchedule" autofittype="col" oncellclick="gr_schedule_oncellclick" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>
@@ -35,9 +35,8 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="sta_bookmark" taborder="8" text="즐겨찾기" left="50" top="276" width="100" height="44"/>
-        <Static id="Static01" taborder="9" text="공지사항" left="348" top="10" width="92" height="44"/>
-        <Grid id="gr_notice" taborder="10" left="340" top="80" width="420" height="306" binddataset="ds_Notice" autofittype="col" oncellclick="gr_notice_oncellclick" cssclass="grd_default">
+        <Static id="sta_bookmark" taborder="8" text="즐겨찾기" left="40" top="286" width="100" height="44"/>
+        <Grid id="gr_notice" taborder="9" left="310" top="80" width="420" height="306" binddataset="ds_Notice" autofittype="col" oncellclick="gr_notice_oncellclick" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>
@@ -58,13 +57,13 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btnAll" taborder="11" text="전체" left="340" top="51" width="60" height="30" onclick="btnAll_onclick" cssclass="btn_default"/>
-        <Button id="btnNormal" taborder="12" text="일반" left="400" top="51" width="60" height="30" onclick="btnNormal_onclick" cssclass="btn_default"/>
-        <Button id="btnAcademic" taborder="13" text="학사" left="460" top="51" width="60" height="30" onclick="btnAcademic_onclick" cssclass="btn_default"/>
-        <Button id="btnScholar" taborder="14" text="장학" left="520" top="51" width="60" height="30" onclick="btnScholar_onclick" cssclass="btn_default"/>
-        <Button id="btnEmployment" taborder="15" text="취업" left="580" top="51" width="60" height="30" onclick="btnEmployment_onclick" cssclass="btn_default"/>
-        <Button id="btnMore" taborder="16" text="more+" left="700" top="50" width="60" height="30" visible="false" onclick="btnMore_onclick" cssclass="btn_default"/>
-        <Combo id="co_month" taborder="17" left="950" top="260" width="130" height="20" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" canitemchange="co_month_canitemchange" cssclass="cmb_default">
+        <Button id="btnAll" taborder="10" text="전체" left="310" top="51" width="60" height="30" onclick="btnAll_onclick" cssclass="btn_default"/>
+        <Button id="btnNormal" taborder="11" text="일반" left="370" top="51" width="60" height="30" onclick="btnNormal_onclick" cssclass="btn_default"/>
+        <Button id="btnAcademic" taborder="12" text="학사" left="430" top="51" width="60" height="30" onclick="btnAcademic_onclick" cssclass="btn_default"/>
+        <Button id="btnScholar" taborder="13" text="장학" left="490" top="51" width="60" height="30" onclick="btnScholar_onclick" cssclass="btn_default"/>
+        <Button id="btnEmployment" taborder="14" text="취업" left="550" top="51" width="60" height="30" onclick="btnEmployment_onclick" cssclass="btn_default"/>
+        <Button id="btnMore" taborder="15" text="more+" left="670" top="50" width="60" height="30" visible="false" onclick="btnMore_onclick" cssclass="btn_default"/>
+        <Combo id="co_month" taborder="16" left="950" top="260" width="130" height="20" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" canitemchange="co_month_canitemchange" cssclass="cmb_default">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -122,8 +121,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Static id="sta_schedule" taborder="18" text="남은 일정" left="790" top="260" width="91" height="20"/>
-        <Div id="div_Info" taborder="19" text="Div00" left="50" top="51" width="250" height="229" cssclass="div_line">
+        <Static id="sta_schedule" taborder="17" text="남은 일정" left="750" top="260" width="91" height="20"/>
+        <Div id="div_Info" taborder="18" text="Div00" left="40" top="51" width="251" height="229" cssclass="div_line">
           <Layouts>
             <Layout>
               <Static id="sta_name" taborder="0" text="관리자님 환영합니다" left="5" top="14" width="230" height="46" font="20px/normal &quot;-윤고딕330&quot;"/>
@@ -132,6 +131,12 @@
             </Layout>
           </Layouts>
         </Div>
+        <Button id="btnStartRegist" taborder="19" text="수강신청 열기" left="310" top="420" width="100" height="50" cssclass="btn_default" onclick="btnStartRegist_onclick"/>
+        <Button id="btnCloseRegist" taborder="20" text="수강신청 닫기" left="415" top="420" width="100" height="50" cssclass="btn_default" onclick="btnCloseRegist_onclick"/>
+        <Button id="btnStartTest" taborder="21" text="예비수강 열기" left="525" top="420" width="100" height="50" cssclass="btn_default" onclick="btnStartTest_onclick"/>
+        <Button id="btnCloseTest" taborder="22" text="예비수강 닫기" left="630" top="420" width="100" height="50" cssclass="btn_default" onclick="btnCloseTest_onclick"/>
+        <Static id="staRegist" taborder="23" text="" left="310" top="392" width="205" height="23" cssclass="sta_line" padding="0px 0px 0px 10px"/>
+        <Static id="staTest" taborder="24" text="" left="525" top="392" width="205" height="23" cssclass="sta_line" padding="0px 0px 0px 10px"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
@@ -236,6 +241,20 @@ this.Form_Work_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		,""
 		,"fn_callback"
 	);
+	if(this.objApp.gds_admin.getRowCount() > 0){
+		var regist = this.objApp.gds_admin.getColumn(0,"regist");
+		var test = this.objApp.gds_admin.getColumn(0,"test");
+		if(regist == 'open'){
+			this.staRegist.set_text("수강신청 진행중");
+		}else{
+			this.staRegist.set_text("수강신청 끝남");
+		}
+		if(test == 'open'){
+			this.staTest.set_text("예비 수강신청 진행중");
+		}else{
+			this.staTest.set_text("예비 수강신청 끝남");
+		}
+	}
 };
 
 this.count =""; // 읽지 않은 알람 개수
@@ -287,7 +306,6 @@ this.btnMore_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}else{
 		alert("공지사항이 없습니다");
 	}
-
 };
 
 
@@ -411,10 +429,65 @@ this.div_Info_sta_alarm_onclick = function(obj:nexacro.Static,e:nexacro.ClickEve
 };
 
 
+this.btnStartRegist_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("수강신청을 시작합니다");
+	this.objApp.gds_admin.setColumn(0,"regist","open");
+	this.staRegist.set_text("수강신청 진행중");
+	this.transaction(
+				"registUpd"
+				,"/registUpd.log"
+				,"in_ds=gds_admin" 
+				,"" 
+				,""
+				,"fn_callback"
+			);
+};
 
+this.btnCloseRegist_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("수강신청이 끝났습니다");
+	this.objApp.gds_admin.setColumn(0,"regist","close");
+	this.staRegist.set_text("수강신청 끝남");
+	this.transaction(
+				"registUpd"
+				,"/registUpd.log"
+				,"in_ds=gds_admin" 
+				,"" 
+				,""
+				,"fn_callback"
+			);
+};
 
+this.btnStartTest_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("예비 수강신청을 시작합니다");
+	this.objApp.gds_admin.setColumn(0,"test","open");
+	this.staTest.set_text("예비 수강신청 진행중");
+	this.transaction(
+				"testUpd"
+				,"/testUpd.log"
+				,"in_ds=gds_admin" 
+				,"" 
+				,""
+				,"fn_callback"
+			);
+};
 
-
+this.btnCloseTest_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("예비 수강신청이 끝났습니다");
+	this.objApp.gds_admin.setColumn(0,"test","close");
+	this.staTest.set_text("예비 수강신청 끝남");
+	this.transaction(
+				"testUpd"
+				,"/testUpd.log"
+				,"in_ds=gds_admin" 
+				,"" 
+				,""
+				,"fn_callback"
+			);
+};
 ]]></Script>
     <Objects>
       <Dataset id="ds_Notice">

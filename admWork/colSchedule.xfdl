@@ -30,9 +30,9 @@
                       <Cell col="2" text="종료날짜"/>
                     </Band>
                     <Band id="body">
-                      <Cell text="bind:title" textAlign="center"/>
-                      <Cell col="1" text="bind:sDate" displaytype="date" textAlign="center"/>
-                      <Cell col="2" text="bind:eDate" displaytype="date" textAlign="center"/>
+                      <Cell text="bind:title" textAlign="center" cursor="pointer"/>
+                      <Cell col="1" text="bind:sDate" displaytype="date" textAlign="center" cursor="pointer"/>
+                      <Cell col="2" text="bind:eDate" displaytype="date" textAlign="center" cursor="pointer"/>
                     </Band>
                   </Format>
                 </Formats>

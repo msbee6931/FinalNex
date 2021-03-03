@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="600" mobileorientation="landscape" width="800">
         <Static id="Static00" taborder="0" text="Post Message" left="26" top="18" width="218" height="46" font="18pt &quot;Arial&quot;"/>
-        <Grid id="Grid00" taborder="1" left="10" top="80" width="230" height="450" binddataset="admin_alarm" autofittype="col" oncellclick="Grid00_oncellclick" cssclass="grd_default">
+        <Grid id="Grid00" taborder="1" left="10" top="80" width="230" height="450" binddataset="admin_alarm" autofittype="col" oncellclick="Grid00_oncellclick" cssclass="grd_default" onheadclick="Grid00_onheadclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -18,7 +18,7 @@
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell/>
+                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
                 <Cell col="1" text="확인"/>
                 <Cell col="2" text="보낸이"/>
                 <Cell col="3" text="받는이"/>
@@ -81,7 +81,7 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
             "PMUpd"
             ,"/PMUpd.nex"
             ,"in_ds=admin_alarm:U"
-            ,"" 
+            ,"admin_alarm=out_ds" 
             ,"reply="+reply
             ,"fn_callback" 
          )
@@ -136,6 +136,18 @@ this.check_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
          )
 };
 
+
+this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+			let flag = obj.getCellProperty("Head",0,"text");
+	let check = flag==0?1:0;
+	if(e.cell==0){
+		obj.setCellProperty("Head",0,"text",check);
+		for(let i = 0;i<this.admin_alarm.getRowCount();i++){
+			this.admin_alarm.setColumn(i,"chk",check);
+		}
+	}
+};
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="Div00.form.TextArea00" propid="value" datasetid="admin_alarm" columnid="contents"/>

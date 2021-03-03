@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Form_Left" width="200" height="550" titletext="New Form">
+  <Form id="Form_Left" width="200" height="550" titletext="New Form" onload="Form_Left_onload">
     <Layouts>
-      <Layout height="550" width="200">
+      <Layout height="550" width="200" stepcount="0">
         <Grid id="Grid00" taborder="0" left="0" top="15" width="200" autofittype="col" treeinitstatus="expand,all" treeusecheckbox="false" treeuseimage="false" treeuseline="false" binddataset="std_menu" oncelldblclick="Grid00_oncelldblclick" bottom="0">
           <Formats>
             <Format id="default">
@@ -137,9 +137,26 @@ this.fn_openForm2 = function(obj, e)
 	sTrPath = nexacro.replaceAll(sTrPath, ".", ">");
 
 	var rest = this.objApp.gds_students.getColumn(0,"rest");
-	if(sMenuId == '2020' || sMenuId == '2010'){
+	var regist = this.objApp.gds_admin.getColumn(0,"regist");
+	var test = this.objApp.gds_admin.getColumn(0,"test");
+	if(sMenuId == '2010' || sMenuId == '2020'){
 		if(rest == 'Y'){
 			alert("휴학 중인 상태입니다.\n수강신청이 불가능합니다");
+			if(this.objApp.std_openForm.getRowCount() == 0){
+				this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,*,0");
+			}
+			return;
+		}else if(sMenuId == '2010' && regist !='open'){
+			alert("수강신청 기간이 아닙니다. 관리자에게 문의해주세요");
+			if(this.objApp.std_openForm.getRowCount() == 0){
+				this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,*,0");
+			}
+			return;
+		}else if(sMenuId == '2020'&& test !='open'){
+			alert("예비 수강신청 기간이 아닙니다. 관리자에게 문의해주세요");
+			if(this.objApp.std_openForm.getRowCount() == 0){
+				this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.set_separatesize("30,*,0");
+			}
 			return;
 		}
 	}
@@ -192,6 +209,22 @@ this.fn_openForm2 = function(obj, e)
 	this.objApp.mainframe.VFrameSet00.HFrameSet00.VFrameSet00.ChildFrame00.form.fn_addTab(sFormId, sMenuNm);	
 }
 
-]]></Script>
+
+this.Form_Left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+				"admList"
+				,"/admList.log"
+				,"" 
+				,"gds_admin=adm_ds" 
+				,""
+				,"fn_callback"
+			);
+};
+this.fn_callback = function(sId,errCd,errMsg){
+	if (errCd < 0) {
+		trace("sId["+sId+"]: Error["+errCd+"]:"+errMsg);
+	}
+}]]></Script>
   </Form>
 </FDL>
