@@ -37,7 +37,7 @@
               </Band>
               <Band id="body">
                 <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
-                <Cell col="1" text="bind:p_seq" displaytype="text" edittype="normal"/>
+                <Cell col="1" text="bind:p_seq" displaytype="text" edittype="none"/>
                 <Cell col="2" text="bind:name" edittype="normal"/>
                 <Cell col="3" displaytype="combotext" edittype="combo" text="bind:gender" combodataset="ds_gender" combocodecol="code" combodatacol="name"/>
                 <Cell col="4" text="bind:secNumber" edittype="mask" displaytype="mask" maskedittype="string" maskeditformat="###### - #######"/>
@@ -66,8 +66,8 @@
                 <Col id="datacolumn">전체</Col>
               </Row>
               <Row>
-                <Col id="codecolumn">p_seq</Col>
-                <Col id="datacolumn">교수번호</Col>
+                <Col id="codecolumn">name</Col>
+                <Col id="datacolumn">이름</Col>
               </Row>
             </Rows>
           </Dataset>
@@ -179,8 +179,8 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	let cbValue = this.cb_search.value;
 	let edtValue = this.edt_search.text;
 	
-	if(cbValue == "p_seq"){
-		this.ds_professor.filter(cbValue+ "=='"+edtValue+"'");
+	if(cbValue == "name"){
+		this.ds_professor.filter(cbValue+".indexOf('"+edtValue+"')>=0");
 	}else{
 		this.ds_professor.filter("");
 	}
