@@ -24,7 +24,6 @@
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="50"/>
-                <Column size="50"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -42,8 +41,7 @@
                 <Cell col="8" text="email"/>
                 <Cell col="9" text="전화번호"/>
                 <Cell col="10" text="주소"/>
-                <Cell col="11" text="장학금"/>
-                <Cell col="12" text="휴학여부"/>
+                <Cell col="11" text="휴학여부"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
@@ -57,8 +55,7 @@
                 <Cell col="8" text="bind:email" edittype="normal"/>
                 <Cell col="9" text="bind:contact" edittype="normal"/>
                 <Cell col="10" text="bind:address" edittype="normal"/>
-                <Cell col="11" text="bind:scholarship" edittype="normal"/>
-                <Cell col="12" text="bind:rest" edittype="combo" combodataset="ds_rest" combocodecol="code" combodatacol="name"/>
+                <Cell col="11" text="bind:rest" edittype="combo" combodataset="ds_rest" combocodecol="code" combodatacol="name"/>
               </Band>
             </Format>
           </Formats>
@@ -79,8 +76,8 @@
                 <Col id="datacolumn">전체</Col>
               </Row>
               <Row>
-                <Col id="codecolumn">s_seq</Col>
-                <Col id="datacolumn">학번</Col>
+                <Col id="codecolumn">name</Col>
+                <Col id="datacolumn">이름</Col>
               </Row>
             </Rows>
           </Dataset>
@@ -200,14 +197,9 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let cbValue = this.cb_search.value;
 	let edtValue = this.edt_search.text;
-	trace(this.cb_search.value);
-	trace(cbValue);
-	trace(this.edt_search.text);
-	trace(edtValue);
 	
-	if(cbValue == "s_seq"){
-		this.ds_students.filter(cbValue +"=='"+edtValue+"'");
-		trace(this.ds_students);
+	if(cbValue == "name"){
+		this.ds_students.filter(cbValue+".indexOf('"+edtValue+"')>=0");
 	}else{
 		this.ds_students.filter("");
 	}
@@ -241,7 +233,6 @@ this.students_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
           <Column id="email" type="STRING" size="256"/>
           <Column id="contact" type="STRING" size="256"/>
           <Column id="address" type="STRING" size="256"/>
-          <Column id="scholarship" type="STRING" size="256"/>
           <Column id="rest" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
