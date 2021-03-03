@@ -9,7 +9,6 @@
             <Format id="default">
               <Columns>
                 <Column size="33"/>
-                <Column size="41"/>
                 <Column size="73"/>
                 <Column size="193"/>
                 <Column size="48"/>
@@ -26,44 +25,38 @@
               </Rows>
               <Band id="head">
                 <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
-                <Cell col="1" text="번호"/>
-                <Cell col="2" text="이수구분"/>
-                <Cell col="3" text="과목명"/>
-                <Cell col="4" text="학년"/>
-                <Cell col="5" text="과목코드"/>
-                <Cell col="6" text="학점"/>
-                <Cell col="7" text="담당교수"/>
-                <Cell col="8" text="강의시간"/>
-                <Cell col="9" text="강의실"/>
-                <Cell col="10" text="인원수"/>
+                <Cell col="1" text="이수구분"/>
+                <Cell col="2" text="과목명"/>
+                <Cell col="3" text="학년"/>
+                <Cell col="4" text="과목코드"/>
+                <Cell col="5" text="학점"/>
+                <Cell col="6" text="담당교수"/>
+                <Cell col="7" text="강의시간"/>
+                <Cell col="8" text="강의실"/>
+                <Cell col="9" text="인원수"/>
               </Band>
               <Band id="body">
                 <Cell displaytype="checkboxcontrol" edittype="checkbox" text="bind:chk"/>
-                <Cell col="1" text="expr:currow+1" textAlign="center"/>
-                <Cell col="2" text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
-                <Cell col="3" text="bind:className" displaytype="normal" textDecoration="underline" cursor="pointer" textAlign="center" wordWrap="english"/>
-                <Cell col="4" text="bind:grade" textAlign="center"/>
-                <Cell col="5" text="bind:classSeq" textAlign="center" displaytype="text" maskeditmaskchar="########"/>
-                <Cell col="6" text="bind:classPoint" textAlign="center"/>
-                <Cell col="7" text="bind:proName" textAlign="center"/>
-                <Cell col="8" text="bind:classTime" textAlign="center" wordWrap="english"/>
-                <Cell col="9" text="bind:classRoom" textAlign="center"/>
-                <Cell col="10" text="bind:limit" textAlign="center"/>
+                <Cell col="1" text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
+                <Cell col="2" text="bind:className" displaytype="normal" textDecoration="underline" cursor="pointer" textAlign="center" wordWrap="english"/>
+                <Cell col="3" text="bind:grade" textAlign="center"/>
+                <Cell col="4" text="bind:classSeq" textAlign="center" displaytype="text" maskeditmaskchar="########"/>
+                <Cell col="5" text="bind:classPoint" textAlign="center"/>
+                <Cell col="6" text="bind:proName" textAlign="center"/>
+                <Cell col="7" text="bind:classTime" textAlign="center" wordWrap="english"/>
+                <Cell col="8" text="bind:classRoom" textAlign="center"/>
+                <Cell col="9" text="bind:limit" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Combo id="co_search" taborder="1" top="24" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" text="전체" value="All" index="0" onitemchanged="classTab_classList_co_search_onitemchanged" cssclass="cmb_default" right="280">
+        <Combo id="co_search" taborder="1" top="24" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" text="전체" value="All" index="0" onitemchanged="classTab_classList_co_search_onitemchanged" cssclass="cmb_default" right="340">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
               <Column id="datacolumn" size="256"/>
             </ColumnInfo>
             <Rows>
-              <Row>
-                <Col id="codecolumn">All</Col>
-                <Col id="datacolumn">전체</Col>
-              </Row>
               <Row>
                 <Col id="codecolumn">className</Col>
                 <Col id="datacolumn">과목명</Col>
@@ -83,9 +76,9 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="edt_search" taborder="2" top="24" width="170" height="25" onchanged="edt_search_onchanged" cssclass="edt_default" right="105"/>
-        <Button id="btnSearch" taborder="3" top="24" width="60" height="25" onclick="btnSearch_onclick" cssclass="btn_search" text="조회" right="34"/>
-        <Combo id="co_year" taborder="4" text="" top="24" width="120" height="25" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default" right="540">
+        <Edit id="edt_search" taborder="2" top="24" width="170" height="25" onchanged="edt_search_onchanged" cssclass="edt_default" right="165"/>
+        <Button id="btnSearch" taborder="3" top="24" width="60" height="25" onclick="btnSearch_onclick" cssclass="btn_search" text="조회" right="100"/>
+        <Combo id="co_year" taborder="4" text="" top="24" width="120" height="25" onitemchanged="Combo01_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default" right="590">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -103,7 +96,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="co_semester" taborder="5" text="" top="24" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default" right="410">
+        <Combo id="co_semester" taborder="5" text="" top="24" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" cssclass="cmb_default" right="465">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -127,15 +120,15 @@
         <Static id="Static00_01_00" taborder="9" left="140" top="490" visible="false" background="RGBA(236,135,135,0.71)" right="140" bottom="0"/>
         <Static id="Static00_00" taborder="10" left="1051" top="0" visible="false" background="RGBA(236,135,135,0.71)" right="0" bottom="0"/>
         <Static id="Static00_01" taborder="11" left="80" top="0" visible="false" background="RGBA(236,135,135,0.71)" height="10" width="800"/>
-        <Div id="div_navi" taborder="12" text="Div00" left="146" top="460" width="674" height="30">
+        <Div id="div_navi" taborder="13" text="" top="gr_classList:5" width="674" height="30" right="250">
           <Layouts>
             <Layout/>
           </Layouts>
         </Div>
-        <Button id="btnAdd" taborder="13" text="Button00" left="170" top="17" width="90" height="38" onclick="btnAdd_onclick"/>
+        <Button id="btnRetrieve" taborder="14" top="24" width="60" height="25" cssclass="btn_default" text="초기화" right="35" onclick="btnRetrieve_onclick"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[include "lib::Common.xjs"
 this.classList_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	var objDate= new Date();
@@ -154,6 +147,7 @@ this.classList_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		,""
 		,"fn_callback" 
 	);
+
 };
 this.fn_callback=function(sId,errCd,errMsg){
 	if (errCd < 0) {
@@ -176,6 +170,9 @@ this.fn_callback=function(sId,errCd,errMsg){
 			this.ds_class.filter("reg_date >='"+startDate+"'&& reg_date < '"+mDate+"'");
 		}else{
 			this.ds_class.filter("reg_date >='"+mDate+"'&& reg_date <= '"+endDate+"'")
+		}
+		if(this.ds_class.getRowCount() > 0 ){
+			this.gfn_navi(15,this.ds_class,"init");
 		}
 	}
 }
@@ -225,9 +222,10 @@ this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			this.ds_class.filter("reg_date >='"+mDate+"'&& reg_date <= '"+endDate+"'");
 		}
 	}
+	this.div_navi.set_visible(false);
 };
 
-//개설강좌 정렬
+
 this.gr_classList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	let flag = obj.getCellProperty("Head",0,"text");
@@ -237,39 +235,10 @@ this.gr_classList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEve
 		for(let i = 0;i<this.ds_class.getRowCount();i++){
 			this.ds_class.setColumn(i,"chk",check);
 		}
+	}else{
+		this.cfn_GridSort(obj,e);
 	}
-	var objDs = this.objects[obj.binddataset];          
-	for (var i = 1; i < obj.getCellCount("head"); i++)
-	{ 
-		var sHeadText = obj.getCellText(-1, i); //Head영역은 index가 -1
-		var nLen   = sHeadText.length - 1;    //텍스트 길이
-		if (i == e.cell)
-		{	
-			var sColId = (obj.getCellProperty("body", e.col,"text")).toString().split(":"); //Text값이 bind:형태로 나오기 떄문에
-			if (sHeadText.substr(nLen) == "▲") 
-			{
-				obj.setCellProperty( "head", i, "text", sHeadText.substr(0, nLen)+ "▼");
-				objDs.set_keystring("S:-" + sColId[1]);
-			}
-			else if (sHeadText.substr(nLen) == "▼") 
-			{
-				obj.setCellProperty( "head", i, "text", sHeadText.substr(0, nLen)+ "▲"); 
-				objDs.set_keystring("S:+" + sColId[1]);
-			}
-			else 
-			{
-				obj.setCellProperty( "head", i, "text", sHeadText+"▲"); //없을 경우 기호 붙힘
-				objDs.set_keystring("S:+" + sColId[1]);
-			}
-		}
-		else //선택된 Head 제외하고 모두 기호 삭제
-		{
-			if (sHeadText.substr(nLen) == "▲" || sHeadText.substr(nLen) == "▼")  
-			{
-				obj.setCellProperty( "head", i, "text", sHeadText.substr(0, nLen));
-			}
-		}
-	} 
+	
 };
 
 
@@ -374,40 +343,10 @@ this.Export00_onerror = function(obj:ExcelExportObject, e:nexacro.ExcelExportEve
 
 
 
-this.btnAdd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	var cut = 15;
-	var num = 1;
-	var nPageCount = Math.ceil(this.ds_class.getRowCount()/cut);
-	var nWidth = "";
-	var objPrev1 = new Button("btnPrev1",0,0, 30, 30, null, null);	
-		this.div_navi.addChild("naviPrev1",objPrev1);
-		objPrev1.set_text("<<");
-		objPrev1.show();
-		
-	var	objPrev2 = new Button("btnPrev2",30,0, 30, 30, null, null);	
-		this.div_navi.addChild("naviPrev2",objPrev2);
-		objPrev2.set_text("<");
-		objPrev2.show();
 
-	for(var i=1; i<=nPageCount; i++){
-		var objButton = new Button("btn'"+i+"'",i*30+30,0, 30, 30, null, null);	
-		this.div_navi.addChild("navi'"+i+"'",objButton);
-		objButton.set_text(i);
-		nWidth = i*30+30;
-		this.objButton.addEventHandler("onclick",this.fn_paging, this)
-		objButton.show();
-	}
-	var objNext1 = new Button("btnNext1",nWidth+30,0, 30, 30, null, null);	
-		this.div_navi.addChild("naviNext1",objNext1);
-		objNext1.set_text(">");
-		objNext1.show();
-		
-	var	objNext2 = new Button("btnNext2",nWidth+60,0, 30, 30, null, null);	
-		this.div_navi.addChild("naviNext2",objNext2);
-		objNext2.set_text(">>");
-		objNext2.show();
-	this.ds_class.filter("currow <= '"+cut*1+"' && currow >= 1");
+this.btnRetrieve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.reload();
 };
 ]]></Script>
     <Objects>
@@ -433,32 +372,6 @@ this.btnAdd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="rejectMsg" type="STRING" size="256"/>
           <Column id="reg_date" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-          <Row/>
-        </Rows>
       </Dataset>
       <Dataset id="ds_req">
         <ColumnInfo>

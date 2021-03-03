@@ -53,7 +53,7 @@
                   </Layout>
                 </Layouts>
               </Div>
-              <Grid id="gr_classList" taborder="1" left="10" top="65" binddataset="ds_class" autofittype="col" oncellclick="gr_classList_oncellclick" cssclass="grd_default" right="8" bottom="19">
+              <Grid id="gr_classList" taborder="1" left="10" top="65" binddataset="ds_class" autofittype="col" oncellclick="gr_classList_oncellclick" cssclass="grd_default" right="8" bottom="19" onheadclick="div_line_gr_classList_onheadclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -120,7 +120,8 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
+    <Script type="xscript5.1"><![CDATA[include "lib::Common.xjs"
+this.objApp = nexacro.getApplication();
 this.myClassList_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	var sCode = this.objApp.gds_students.getColumn(0,"s_seq"); // 학번
@@ -183,6 +184,11 @@ this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 };
 
 
+
+this.div_line_gr_classList_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.cfn_GridSort(obj,e);
+};
 ]]></Script>
   </Form>
 </FDL>
