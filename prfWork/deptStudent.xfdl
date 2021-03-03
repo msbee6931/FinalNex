@@ -3,8 +3,8 @@
   <Form id="deptStudent" width="1080" height="520" titletext="New Form" onload="deptStudent_onload">
     <Layouts>
       <Layout height="520" mobileorientation="landscape" width="1080">
-        <Static id="Static01" taborder="7" text="Static01" left="30" top="10" cssclass="sta_line" right="28" bottom="30"/>
-        <Static id="Static00" taborder="0" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
+        <Static id="Static01" taborder="7" text="" left="30" top="10" cssclass="sta_line" right="28" bottom="30"/>
+        <Static id="Static00" taborder="0" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)" text=""/>
         <Static id="Static00_01" taborder="1" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="2" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="3" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
@@ -87,8 +87,8 @@
         <Div id="div_search" taborder="6" left="39" top="20" cssclass="div_line" text="" width="426" height="39">
           <Layouts>
             <Layout>
-              <Static id="sta_grade" taborder="0" text="학년" left="5" top="3" width="30" height="30"/>
-              <Combo id="co_grade" taborder="1" text="전체" left="34" top="6" width="100" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="&quot;&quot;" index="0" onitemchanged="div_search_co_grade_onitemchanged" cssclass="cmb_default">
+              <Static id="sta_grade" taborder="0" text="학년" left="15" top="3" width="30" height="30"/>
+              <Combo id="co_grade" taborder="1" text="전체" left="47" top="6" width="100" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="&quot;&quot;" index="0" onitemchanged="div_search_co_grade_onitemchanged" cssclass="cmb_default">
                 <Dataset id="innerdataset">
                   <ColumnInfo>
                     <Column id="codecolumn" size="256"/>
@@ -118,29 +118,13 @@
                   </Rows>
                 </Dataset>
               </Combo>
-              <Combo id="co_category" taborder="2" text="학번" left="144" top="6" width="76" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="s_seq" index="0" tooltiptext="학번은 일치할 경우만 검색가능합니다" cssclass="cmb_default">
-                <Dataset id="innerdataset">
-                  <ColumnInfo>
-                    <Column id="codecolumn" size="256"/>
-                    <Column id="datacolumn" size="256"/>
-                  </ColumnInfo>
-                  <Rows>
-                    <Row>
-                      <Col id="codecolumn">s_seq</Col>
-                      <Col id="datacolumn">학번</Col>
-                    </Row>
-                    <Row>
-                      <Col id="codecolumn">name</Col>
-                      <Col id="datacolumn">이름</Col>
-                    </Row>
-                  </Rows>
-                </Dataset>
-              </Combo>
-              <Edit id="edt_search" taborder="3" left="228" top="6" width="108" height="25" cssclass="edt_default"/>
-              <Button id="btnSearch" taborder="4" left="346" top="6" width="60" height="25" cssclass="btn_search" text="조회" onclick="div_search_btnSearch_onclick"/>
+              <Edit id="edt_search" taborder="2" left="181" top="6" width="108" height="25" cssclass="edt_default"/>
+              <Button id="btnSearch" taborder="3" left="291" top="6" width="60" height="25" cssclass="btn_search" text="조회" onclick="div_search_btnSearch_onclick"/>
+              <Button id="btnRetrieve" taborder="4" left="353" top="6" width="60" height="25" cssclass="btn_default" text="초기화" onclick="div_search_btnRetrieve_onclick"/>
             </Layout>
           </Layouts>
         </Div>
+        <Static id="sta_name" taborder="8" text="이름" left="189" top="24" width="30" height="30"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -261,13 +245,13 @@ this.div_search_co_grade_onitemchanged = function(obj:nexacro.Combo,e:nexacro.It
 this.div_search_btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var colGrade = this.div_search.form.co_grade.value;
-	var category = this.div_search.form.co_category.value;
 	var text = this.div_search.form.edt_search.text;
-	if(category =="s_seq"){
-		this.ds_students.filter("s_seq=='"+text+"' && colGrade.indexOf('"+colGrade+"')>=0");
-	}else{
-		this.ds_students.filter("name.indexOf('"+text+"')>=0 && colGrade.indexOf('"+colGrade+"')>=0");
-	}
+	this.ds_students.filter("name.indexOf('"+text+"')>=0 && colGrade.indexOf('"+colGrade+"')>=0");
+};
+
+this.div_search_btnRetrieve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_students.filter("");
 };
 ]]></Script>
   </Form>
