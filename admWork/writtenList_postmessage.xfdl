@@ -41,10 +41,10 @@
               <Div id="Div00" taborder="1" text="" top="26" width="498" cssclass="div_line" right="12" bottom="73">
                 <Layouts>
                   <Layout>
-                    <TextArea id="TextArea00" taborder="0" left="19" top="59" width="465" cssclass="txt_default" bottom="185"/>
+                    <TextArea id="TextArea00" taborder="0" left="19" top="59" width="465" cssclass="txt_default" height="133"/>
                     <Static id="Static00" taborder="1" text="보낸 내용" top="9" width="431" height="31" textAlign="center" font="bold 26px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" cssclass="sta_default" left="27"/>
                     <Static id="Static01" taborder="2" text="받은 답장" left="29" top="206" width="439" height="36" cssclass="sta_default" font="bold 26px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;"/>
-                    <TextArea id="TextArea01" taborder="3" left="23" top="252" width="461" height="114" cssclass="txt_default"/>
+                    <TextArea id="TextArea01" taborder="3" left="23" top="252" width="461" cssclass="txt_default" bottom="11"/>
                   </Layout>
                 </Layouts>
               </Div>

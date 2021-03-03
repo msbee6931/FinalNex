@@ -48,7 +48,7 @@
               <Div id="Div00_00" taborder="2" text="" left="320" top="40" cssclass="div_line" right="10" bottom="275">
                 <Layouts>
                   <Layout>
-                    <TextArea id="TextArea00" taborder="0" left="13" top="12" width="669" height="140" cssclass="txt_default"/>
+                    <TextArea id="TextArea00" taborder="0" left="13" top="12" cssclass="txt_default" right="5" bottom="9"/>
                   </Layout>
                 </Layouts>
               </Div>
@@ -56,7 +56,7 @@
               <Static id="Static00_00" taborder="4" text="reply" left="319" top="Div00_00:6" width="152" height="25" textAlign="center" cssclass="sta_default"/>
               <Button id="del_btn" taborder="5" text="삭제" width="100" height="25" onclick="Div00_del_btn_onclick" cssclass="btn_del" bottom="13" left="219"/>
               <Button id="send_btn" taborder="6" text="전송" width="100" height="25" onclick="Div00_send_btn_onclick" cssclass="btn_default" right="10" bottom="14"/>
-              <Button id="Button00" taborder="7" text="확인" left="99" top="440" width="93" height="25" onclick="Div00_Button00_onclick" cssclass="btn_default"/>
+              <Button id="Button00" taborder="7" text="확인" left="99" width="93" height="25" onclick="Div00_Button00_onclick" cssclass="btn_default" bottom="13"/>
             </Layout>
           </Layouts>
         </Div>
