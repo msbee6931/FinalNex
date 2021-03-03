@@ -5,7 +5,7 @@
       <Layout height="520" width="1080" stepcount="0">
         <Static id="Static00" taborder="2" text="Drop Files Here" left="610" top="115" width="366" height="150" visible="true" background="aliceblue" color="dodgerblue" font="normal 30pt/normal &quot;Arial&quot;" textAlign="center" verticalAlign="middle"/>
         <Button id="Button00" taborder="0" text="파일찾기" left="815" top="85" width="100" height="30" onclick="Button00_onclick" cssclass="btn_default"/>
-        <Grid id="Grid00" taborder="1" left="600" top="115" width="430" height="125" binddataset="Dataset00" ondragenter="Grid00_ondragenter" ondragleave="Grid00_ondragleave" ondrop="Grid00_ondrop" autofittype="col" onheadclick="Grid00_onheadclick">
+        <Grid id="Grid00" taborder="1" left="600" top="115" width="430" height="125" binddataset="Dataset00" ondragenter="Grid00_ondragenter" ondragleave="Grid00_ondragleave" ondrop="Grid00_ondrop" autofittype="col" onheadclick="Grid00_onheadclick" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>
@@ -35,7 +35,7 @@
         <Static id="Static01" taborder="5" text="Title : " left="600" top="36" width="72" height="36" cssclass="sta_title"/>
         <Edit id="title" taborder="6" left="660" top="42" width="360" height="28" cssclass="edt_default"/>
         <Static id="Static01_00" taborder="7" text="File :" left="600" top="72" width="72" height="36" cssclass="sta_title"/>
-        <Grid id="Grid01" taborder="8" left="32" top="80" width="536" height="390" binddataset="reference" autofittype="col" oncellclick="Grid01_oncellclick" oncellposchanged="Grid01_oncellposchanged">
+        <Grid id="Grid01" taborder="8" left="32" top="80" width="536" height="390" binddataset="reference" autofittype="col" oncellclick="Grid01_oncellclick" oncellposchanged="Grid01_oncellposchanged" cssclass="grd_default" onheadclick="Grid01_onheadclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -50,9 +50,9 @@
               </Rows>
               <Band id="head">
                 <Cell edittype="checkbox" displaytype="checkboxcontrol"/>
-                <Cell col="1" text="seq"/>
-                <Cell col="2" text="title"/>
-                <Cell col="3" text="write_date"/>
+                <Cell col="1" text="번호"/>
+                <Cell col="2" text="제목"/>
+                <Cell col="3" text="작성일"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
@@ -349,6 +349,18 @@ this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			,"fn_callback"//callback
 		);
 		
+};
+
+this.Grid01_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	let flag = obj.getCellProperty("Head",0,"text");
+	let check = flag==0?1:0;
+	if(e.cell==0){
+		obj.setCellProperty("Head",0,"text",check);
+		for(let i = 0;i<this.reference.getRowCount();i++){
+			this.reference.setColumn(i,"chk",check);
+		}
+	}
 };
 ]]></Script>
     <Bind>

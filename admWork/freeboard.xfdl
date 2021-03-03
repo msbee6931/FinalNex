@@ -10,7 +10,7 @@
         <Div id="Div00" taborder="4" text="Div00" left="30" top="10" cssclass="div_line" right="30" bottom="30">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="24" top="49" binddataset="free" autofittype="col" oncellposchanged="Div00_Grid00_oncellposchanged" cssclass="grd_default" right="618" bottom="40">
+              <Grid id="Grid00" taborder="0" left="24" top="49" binddataset="free" autofittype="col" oncellposchanged="Div00_Grid00_oncellposchanged" cssclass="grd_default" right="618" bottom="40" onheadclick="Div00_Grid00_onheadclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -25,7 +25,7 @@
                       <Row size="24"/>
                     </Rows>
                     <Band id="head">
-                      <Cell text="확인"/>
+                      <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
                       <Cell col="1" text="작성자"/>
                       <Cell col="2" text="제목"/>
                       <Cell col="3" text="작성일"/>
@@ -33,10 +33,10 @@
                     </Band>
                     <Band id="body">
                       <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
-                      <Cell col="1" text="bind:writer" maskeditformat="#########" displaytype="text"/>
-                      <Cell col="2" text="bind:title"/>
-                      <Cell col="3" text="bind:write_date"/>
-                      <Cell col="4" text="bind:view_count"/>
+                      <Cell col="1" text="bind:writer" maskeditformat="#########" displaytype="text" textAlign="center"/>
+                      <Cell col="2" text="bind:title" textAlign="center"/>
+                      <Cell col="3" text="bind:write_date" textAlign="center"/>
+                      <Cell col="4" text="bind:view_count" textAlign="center"/>
                     </Band>
                   </Format>
                 </Formats>
@@ -45,20 +45,20 @@
                 <Layouts>
                   <Layout>
                     <Static id="Static00" taborder="1" text="Contents" left="15" top="7" width="449" height="28" textAlign="center" cssclass="sta_default"/>
-                    <WebBrowser id="WebBrowser00" taborder="1" left="14" top="45" width="543" height="335"/>
+                    <WebBrowser id="WebBrowser00" taborder="1" left="14" top="45" width="543" height="364"/>
                     <Button id="enlargement" taborder="2" text="확대" left="476" top="6" width="80" height="28" onclick="Div00_Div00_enlargement_onclick" cssclass="btn_default"/>
                   </Layout>
                 </Layouts>
               </Div>
               <Static id="Static00" taborder="2" text="FreeBoard" left="32" top="9" width="87" height="33"/>
               <Button id="del_btn" taborder="3" text="삭제" width="100" height="30" onclick="Div00_del_btn_onclick" cssclass="btn_del" right="36" bottom="4"/>
-              <Combo id="Combo00" taborder="4" text="Combo00" left="99" top="13" width="107" height="25" innerdataset="search" codecolumn="id" datacolumn="column" cssclass="cmb_default"/>
-              <Edit id="Edit00" taborder="5" left="216" top="13" width="115" height="25" cssclass="edt_default"/>
-              <Button id="Button00" taborder="6" left="340" top="13" width="60" height="25" onclick="Div00_Button00_onclick" cssclass="btn_search" text="조회"/>
-              <Edit id="Edit01" taborder="7" left="341" top="413" width="15" height="10" visible="false"/>
+              <Edit id="Edit00" taborder="4" left="216" top="13" width="115" height="25" cssclass="edt_default"/>
+              <Button id="Button00" taborder="5" left="340" top="13" width="60" height="25" onclick="Div00_Button00_onclick" cssclass="btn_search" text="조회"/>
+              <Edit id="Edit01" taborder="6" left="341" top="413" width="15" height="10" visible="false"/>
             </Layout>
           </Layouts>
         </Div>
+        <Combo id="Combo00" taborder="5" text="Combo00" left="134" top="24" width="93" height="24" innerdataset="search" codecolumn="code" datacolumn="data" cssclass="cmb_default"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -72,6 +72,16 @@
           <Column id="write_date" type="STRING" size="256"/>
           <Column id="view_count" type="STRING" size="256"/>
         </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="writer">aa</Col>
+            <Col id="title">cc</Col>
+          </Row>
+          <Row>
+            <Col id="writer">bb</Col>
+            <Col id="title">dd</Col>
+          </Row>
+        </Rows>
       </Dataset>
       <Dataset id="search">
         <ColumnInfo>
@@ -80,12 +90,12 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="code">title</Col>
-            <Col id="data">title</Col>
+            <Col id="code">seq</Col>
+            <Col id="data">전체</Col>
           </Row>
           <Row>
-            <Col id="code">writer</Col>
-            <Col id="data">writer</Col>
+            <Col id="code">title</Col>
+            <Col id="data">제목</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -138,11 +148,18 @@ this.Div00_del_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
 
 this.Div00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	let type = this.Div00.form.Combo00.value;
-	let value=this.Div00.form.Edit00.value;
-	let filter = type+"='"+value+"'";
-	this.free.filter(filter);
+	
+	var cmb = this.Combo00.value;
+	var edit = this.Div00.form.Edit00.value;
+	if(cmb == 'title')
+	{
+		this.free.filter(cmb+".indexOf('"+edit+"')>=0");
+	}else if(cmb=='seq'){
+		this.free.filter("");
+	}
+	this.Div00.form.Edit00.set_value("");
 };
+
 
 this.Div00_Grid00_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEventInfo)
 {
@@ -170,9 +187,19 @@ this.Div00_Div00_enlargement_onclick = function(obj:nexacro.Button,e:nexacro.Cli
 		""
 	);
 };
+
+
+this.Div00_Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	let flag = obj.getCellProperty("Head",0,"text");
+	let check = flag==0?1:0;
+	if(e.cell==0){
+		obj.setCellProperty("Head",0,"text",check);
+		for(let i = 0;i<this.free.getRowCount();i++){
+			this.free.setColumn(i,"chk",check);
+		}
+	}
+};
 ]]></Script>
-    <Bind>
-      <BindItem id="item0" compid="Div00.form.Edit01" propid="value" datasetid="free" columnid="seq"/>
-    </Bind>
   </Form>
 </FDL>
