@@ -3,21 +3,14 @@
   <Form id="renotice" width="1080" height="520" titletext="New Form" onload="renotice_onload">
     <Layouts>
       <Layout height="520" width="1080">
+        <Static id="sta_line" taborder="4" left="30" top="10" cssclass="sta_line" right="29" bottom="29"/>
         <Static id="Static00" taborder="0" left="0" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_00" taborder="1" left="1051" top="0" width="29" height="520" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01" taborder="2" left="80" top="0" width="800" height="10" visible="false" background="RGBA(236,135,135,0.71)"/>
         <Static id="Static00_01_00" taborder="3" left="100" top="490" width="800" height="30" visible="false" background="RGBA(236,135,135,0.71)"/>
-        <Static id="Static01" taborder="4" text="공지사항 입력" left="30" top="9" width="200" height="30" cssclass="sta_title"/>
-        <Combo id="com_list" taborder="5" left="550" top="101" width="200" height="50" text="" value="" index="-1" innerdataset="ds_deptcode" codecolumn="code" datacolumn="name"/>
-        <Static id="Static02" taborder="6" text="분류" left="450" top="101" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" background="lightgray" textAlign="center"/>
-        <Static id="Static00_02" taborder="7" text="제목" left="150" top="101" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" textAlign="center" background="lightgray"/>
-        <Edit id="edt_title" taborder="8" left="250" top="101" width="200" height="50"/>
-        <Static id="Static00_00_00" taborder="9" text="내용" left="150" top="151" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" textAlign="center" background="lightgray"/>
-        <TextArea id="text_contents" taborder="10" left="250" top="151" width="500" height="200"/>
-        <Button id="btn_cancel" taborder="11" text="취소" left="690" top="451" width="60" height="35" onclick="btn_cancel_onclick" cssclass="btn_default"/>
-        <Button id="btn_save" taborder="12" text="저장" left="605" top="451" width="60" height="35" onclick="btn_save_onclick" cssclass="btn_default"/>
-        <Static id="Static00_00_00_00" taborder="13" text="첨부파일" left="150" top="351" width="100" height="50" font="18px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" textAlign="center" background="lightgray"/>
-        <Grid id="Grid00" taborder="14" left="250" top="351" width="500" height="100" binddataset="ds_NoticeFiles" autofittype="col" onheadclick="Tab00_Tabpage1_Grid00_onheadclick">
+        <Button id="btn_cancel" taborder="5" text="취소" width="100" height="25" onclick="btn_cancel_onclick" cssclass="btn_can" right="60" bottom="43"/>
+        <Button id="btn_save" taborder="6" text="작성하기" width="100" height="25" onclick="btn_save_onclick" cssclass="btn_insert" right="170" bottom="43"/>
+        <Grid id="Grid00" taborder="7" left="199" top="342" binddataset="ds_NoticeFiles" autofittype="col" onheadclick="Tab00_Tabpage1_Grid00_onheadclick" cssclass="grd_default" right="161" bottom="78">
           <Formats>
             <Format id="default">
               <Columns>
@@ -42,8 +35,15 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_insert" taborder="15" text="파일찾기" left="750" top="351" width="60" height="35" onclick="btn_insert_onclick" cssclass="btn_default"/>
-        <Button id="btn_delete" taborder="16" text="파일삭제" left="750" top="385" width="60" height="35" onclick="btn_delete_onclick" cssclass="btn_default"/>
+        <Static id="Static00_00_00_00" taborder="8" text="첨부파일" left="60" top="342" width="140" textAlign="center" cssclass="sta_default" bottom="78"/>
+        <TextArea id="text_contents" taborder="11" left="199" top="104" height="240" cssclass="txt_default" right="60"/>
+        <Static id="Static00_00_00" taborder="12" text="내용" left="60" top="103" width="140" height="240" textAlign="center" cssclass="sta_default" border="0px none,0px none,1px solid #c1c1c1"/>
+        <Static id="Static00_02" taborder="13" text="제목" left="60" top="79" width="140" height="25" textAlign="center" cssclass="sta_default" border="0px none,0px none,1px solid #c1c1c1"/>
+        <Edit id="edt_title" taborder="14" left="199" top="80" height="25" cssclass="edt_default" right="60"/>
+        <Static id="Static02" taborder="15" text="분류" left="60" top="55" width="140" height="25" textAlign="center" cssclass="sta_default" border="0px none,0px none,1px solid #c1c1c1"/>
+        <Combo id="com_list" taborder="16" left="199" top="55" height="25" text="" value="" index="-1" innerdataset="ds_deptcode" codecolumn="code" datacolumn="name" cssclass="cmb_default" right="60"/>
+        <Button id="btn_insert" taborder="9" text="파일찾기" top="343" width="101" onclick="btn_insert_onclick" cssclass="btn_default" right="60" bottom="110"/>
+        <Button id="btn_delete" taborder="10" text="파일삭제" width="101" onclick="btn_delete_onclick" cssclass="btn_del" right="60" height="35" bottom="78"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.nMaxFileSize = 2000000;  //각 파일 최대사이즈 (2 Mbyte)

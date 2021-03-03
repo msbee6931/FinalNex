@@ -28,7 +28,7 @@
                       <Cell col="4" text="담당교수"/>
                     </Band>
                     <Band id="body">
-                      <Cell text="bind:classPart" textAlign="center"/>
+                      <Cell text="bind:classPart" textAlign="center" displaytype="combocontrol" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
                       <Cell col="1" text="bind:classSeq" displaytype="mask" maskeditformat="########" textAlign="center"/>
                       <Cell col="2" text="bind:className" textAlign="center"/>
                       <Cell col="3" text="bind:classPoint" textAlign="center"/>
@@ -96,7 +96,6 @@ this.attend_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 };
 
 this.fn_callback_myClass=function(){
-alert("성공!")
 };
 
 
