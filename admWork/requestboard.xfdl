@@ -10,7 +10,7 @@
         <Div id="Div00" taborder="4" text="Div00" left="30" top="10" cssclass="div_line" right="29" bottom="30">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="24" top="45" width="376" binddataset="reply" autofittype="col" oncellposchanged="Div00_Grid00_oncellposchanged" cssclass="grd_default" bottom="51">
+              <Grid id="Grid00" taborder="0" left="24" top="45" width="376" binddataset="reply" autofittype="col" oncellposchanged="Div00_Grid00_oncellposchanged" cssclass="grd_default" bottom="51" onheadclick="Div00_Grid00_onheadclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -25,7 +25,7 @@
                       <Row size="24"/>
                     </Rows>
                     <Band id="head">
-                      <Cell text="확인"/>
+                      <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
                       <Cell col="1" text="작성자"/>
                       <Cell col="2" text="제목"/>
                       <Cell col="3" text="작성일"/>
@@ -63,11 +63,11 @@
               <Button id="del_btn" taborder="5" text="삭제" left="303" width="100" height="25" onclick="Div00_del_btn_onclick" cssclass="btn_del" bottom="15"/>
               <Combo id="Combo00" taborder="6" text="Combo00" left="162" top="16" width="66" height="24" innerdataset="search" codecolumn="code" datacolumn="data" cssclass="cmb_default"/>
               <Edit id="Edit00" taborder="7" left="240" top="16" width="89" height="24" onchanged="Div00_Edit00_onchanged" cssclass="edt_default"/>
-              <Edit id="Edit01" taborder="8" width="41" height="26" visible="false" bottom="15" left="220"/>
+              <Edit id="Edit01" taborder="8" width="41" height="26" bottom="15" left="220" visible="false"/>
             </Layout>
           </Layouts>
         </Div>
-        <Button id="Button00" taborder="5" left="370" top="27" height="25" onclick="Div00_Button00_onclick" cssclass="btn_search" width="60" text="조회"/>
+        <Button id="find" taborder="5" left="370" top="27" height="25" cssclass="btn_search" width="60" text="조회" onclick="find_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -90,12 +90,12 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="code">title</Col>
-            <Col id="data">title</Col>
+            <Col id="code">seq</Col>
+            <Col id="data">전체</Col>
           </Row>
           <Row>
-            <Col id="code">writer</Col>
-            <Col id="data">writer</Col>
+            <Col id="code">title</Col>
+            <Col id="data">제목</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -159,13 +159,6 @@ this.Div00_del_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
 
 
 
-this.Div00_Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	let type = this.Div00.form.Combo00.value
-	let value=this.Div00.form.Edit00.value;
-	let filter = type+"='"+value+"'";
-	this.reply.filter(filter);
-};
 
 this.Div00_Grid00_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEventInfo)
 {
@@ -190,6 +183,32 @@ this.Div00_Div00_enlargement_onclick = function(obj:nexacro.Button,e:nexacro.Cli
 		this,
 		""
 	);
+};
+
+this.find_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var cmb = this.Div00.form.Combo00.value;
+	var edit = this.Div00.form.Edit00.value;
+
+	if(cmb == 'title')
+	{
+		this.reply.filter(cmb+".indexOf('"+edit+"')>=0");
+	}else if(cmb=='seq'){
+		this.reply.filter("");
+	}
+	this.Div00.form.Edit00.set_value("");
+};
+
+this.Div00_Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+		let flag = obj.getCellProperty("Head",0,"text");
+	let check = flag==0?1:0;
+	if(e.cell==0){
+		obj.setCellProperty("Head",0,"text",check);
+		for(let i = 0;i<this.reply.getRowCount();i++){
+			this.reply.setColumn(i,"chk",check);
+		}
+	}
 };
 ]]></Script>
     <Bind>

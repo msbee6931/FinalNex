@@ -3,9 +3,8 @@
   <Form id="tuition_read_pop" width="400" height="400" titletext="New Form" onload="tuition_read_pop_onload">
     <Layouts>
       <Layout height="400" width="400">
-        <Button id="btn_ok" taborder="0" text="확인" left="86" top="360" width="110" height="30" onclick="btn_ok_onclick" cssclass="btn_default"/>
-        <Button id="btn_cancle" taborder="1" text="취소" left="205" top="360" width="110" height="30" onclick="btn_cancle_onclick" cssclass="btn_can"/>
-        <Div id="Div00" taborder="2" text="Div00" left="21" top="26" width="358" height="320" cssclass="div_line">
+        <Button id="btn_ok" taborder="0" text="확인" left="145" top="360" width="110" height="30" onclick="btn_ok_onclick" cssclass="btn_default"/>
+        <Div id="Div00" taborder="1" text="Div00" left="21" top="26" width="358" height="320" cssclass="div_line">
           <Layouts>
             <Layout>
               <Static id="Static00" taborder="0" text="입학금" left="18" top="115" width="100" height="30" cssclass="sta_default"/>
@@ -32,6 +31,7 @@
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.seq = this.parent.seq;
+this.std_code="";
 
 //모달창 온로드
 this.tuition_read_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
@@ -49,13 +49,13 @@ this.tuition_read_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo
 };
 this.fn_callback_tuition= function()
 {
-	var std_code=this.tuition_ds.getColumn(0,"std_code");
+	this.std_code=this.tuition_ds.getColumn(0,"std_code");
 	this.transaction(
 		"selectOneStd.students",//id
 		"/students/selectOneStd.students",//url (절대경로)
 		"",//in_ds:U
 		"students_ds=out_ds",//()_out_ds
-		"sCode="+std_code,//argument
+		"sCode="+this.std_code,//argument
 		"fn_callback_stdInfo"
 		)
 }
@@ -92,15 +92,10 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		)
 
 	//확인
-	this.close();
+	this.close(this.std_code);
 	
 };
 
-//닫기 버튼
-this.btn_cancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	this.close();
-};
 
 //자동으로 최종 합계 구하는 함수
 this.fn_tSum = function()
@@ -129,6 +124,7 @@ this.fn_callback = function(id,ErrorCode,ErrorMsg){
     <Objects>
       <Dataset id="tuition_ds">
         <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
           <Column id="std_code" type="INT" size="256"/>
           <Column id="t_enter" type="INT" size="256"/>
           <Column id="t_class" type="INT" size="256"/>

@@ -14,23 +14,26 @@
                 <Formats>
                   <Format id="default">
                     <Columns>
-                      <Column size="49"/>
-                      <Column size="121"/>
-                      <Column size="127"/>
+                      <Column size="42"/>
+                      <Column size="54"/>
+                      <Column size="105"/>
+                      <Column size="118"/>
                     </Columns>
                     <Rows>
                       <Row size="24" band="head"/>
                       <Row size="24"/>
                     </Rows>
                     <Band id="head">
-                      <Cell text="chk"/>
-                      <Cell col="1" text="sender"/>
-                      <Cell col="2" text="receiver"/>
+                      <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="1" text="확인"/>
+                      <Cell col="2" text="보낸이"/>
+                      <Cell col="3" text="받는이" textAlign="center"/>
                     </Band>
                     <Band id="body">
                       <Cell text="bind:chk" edittype="checkbox" displaytype="checkboxcontrol"/>
-                      <Cell col="1" text="bind:sender" textAlign="center" maskeditformat="#########" displaytype="text"/>
-                      <Cell col="2" text="bind:receiver" textAlign="center" maskeditformat="#########" displaytype="text"/>
+                      <Cell col="1" text="bind:confirm" textAlign="center"/>
+                      <Cell col="2" text="bind:sender" textAlign="center" displaytype="text"/>
+                      <Cell col="3" text="bind:receiver" textAlign="center" displaytype="text"/>
                     </Band>
                   </Format>
                 </Formats>
@@ -38,14 +41,14 @@
               <Div id="Div00" taborder="0" text="" left="320" height="197" cssclass="div_line" bottom="41" right="10">
                 <Layouts>
                   <Layout>
-                    <TextArea id="TextArea00" taborder="0" left="8" height="178" bottom="7" right="14"/>
+                    <TextArea id="TextArea00" taborder="0" left="8" height="178" bottom="7" right="14" cssclass="txt_default"/>
                   </Layout>
                 </Layouts>
               </Div>
               <Div id="Div00_00" taborder="2" text="" left="320" top="40" cssclass="div_line" right="10" bottom="275">
                 <Layouts>
                   <Layout>
-                    <Edit id="Edit00" taborder="0" left="6" top="8" cssclass="edt_default" right="13" bottom="6"/>
+                    <TextArea id="TextArea00" taborder="0" left="13" top="12" cssclass="txt_default" right="5" bottom="9"/>
                   </Layout>
                 </Layouts>
               </Div>
@@ -53,6 +56,7 @@
               <Static id="Static00_00" taborder="4" text="reply" left="319" top="Div00_00:6" width="152" height="25" textAlign="center" cssclass="sta_default"/>
               <Button id="del_btn" taborder="5" text="삭제" width="100" height="25" onclick="Div00_del_btn_onclick" cssclass="btn_del" bottom="13" left="219"/>
               <Button id="send_btn" taborder="6" text="전송" width="100" height="25" onclick="Div00_send_btn_onclick" cssclass="btn_default" right="10" bottom="14"/>
+              <Button id="Button00" taborder="7" text="확인" left="99" width="93" height="25" onclick="Div00_Button00_onclick" cssclass="btn_default" bottom="13"/>
             </Layout>
           </Layouts>
         </Div>
@@ -72,8 +76,8 @@
       </Dataset>
     </Objects>
     <Bind>
-      <BindItem id="item0" compid="Div00.form.Div00_00.form.Edit00" propid="value" datasetid="pst" columnid="contents"/>
       <BindItem id="item1" compid="Div00.form.Div00.form.TextArea00" propid="value" datasetid="pst" columnid="reply"/>
+      <BindItem id="item0" compid="Div00.form.Div00_00.form.TextArea00" propid="value" datasetid="pst" columnid="contents"/>
     </Bind>
     <Script type="xscript5.1"><![CDATA[this.fn_callback = function(id,ErrorCode,ErrorMsg){
 	trace(id);
@@ -88,7 +92,7 @@ this.Div00_del_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
 	
 	if(arr.length==0 || arr.length== -1){alert("선택된 항목이 없습니다.");return;}
 	
-	this.admin_alarm.deleteMultiRows(arr);
+	this.pst.deleteMultiRows(arr);
 
 		   this.transaction(
             "PMDel"
@@ -104,16 +108,16 @@ this.Div00_del_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
 
 this.Div00_send_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	var reply = nexacro.wrapQuote(this.Div00.form.Div00.form.TextArea00.value);
 		   this.transaction(
             "PMUpd"
             ,"/PMUpd.nex"
             ,"in_ds=pst:U"
-            ,"" 
-            ,""
+            ,"pst=out_ds" 
+            ,"reply="+reply
             ,"fn_callback" 
          )
-		 
-		 alert("전송되었습니다");
+		 alert("등록되었습니다.");
 };
 
 this.rest_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
@@ -126,6 +130,26 @@ this.rest_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 			,""//strArg
 			,"fn_callback"//callback
 		);
+};
+
+
+
+this.Div00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let arr = this.pst.extractRows("chk==1");
+	
+	if(arr.length==0 || arr.length== -1){alert("선택된 항목이 없습니다.");return;}
+	
+
+
+		   this.transaction(
+            "PMConfirm"
+            ,"/PMConfirm.nex"
+            ,"in_ds=admin_alarm:U"
+            ,"pst=out_ds"
+            ,""
+            ,"fn_callback" 
+         )
 };
 ]]></Script>
   </Form>

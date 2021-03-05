@@ -4,32 +4,35 @@
     <Layouts>
       <Layout height="600" mobileorientation="landscape" width="800">
         <Static id="Static00" taborder="0" text="Post Message" left="26" top="18" width="218" height="46" cssclass="sta_title"/>
-        <Grid id="Grid00" taborder="1" left="10" top="80" width="230" height="450" binddataset="admin_alarm" autofittype="col" cssclass="grd_default">
+        <Grid id="Grid00" taborder="1" left="10" top="80" width="260" height="450" binddataset="admin_alarm" autofittype="col" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="41"/>
-                <Column size="92"/>
-                <Column size="99"/>
+                <Column size="38"/>
+                <Column size="45"/>
+                <Column size="89"/>
+                <Column size="89"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell/>
-                <Cell col="1" text="보낸이"/>
-                <Cell col="2" text="받는이"/>
+                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="확인"/>
+                <Cell col="2" text="보낸이"/>
+                <Cell col="3" text="받는이"/>
               </Band>
               <Band id="body">
-                <Cell displaytype="checkboxcontrol" edittype="checkbox" text="bind:chk"/>
-                <Cell col="1" text="bind:sender" maskeditformat="#########" textAlign="center" displaytype="text"/>
-                <Cell col="2" text="bind:receiver" maskeditformat="#########" textAlign="center" displaytype="text"/>
+                <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="bind:confirm"/>
+                <Cell col="2" text="bind:sender" edittype="text"/>
+                <Cell col="3" text="bind:receiver" edittype="text"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="del_btn" taborder="2" text="삭제" left="135" top="542" width="100" height="30" onclick="del_btn_onclick" cssclass="btn_del"/>
+        <Button id="del_btn" taborder="2" text="삭제" left="170" top="540" width="100" height="30" onclick="del_btn_onclick" cssclass="btn_del"/>
         <Div id="Div00" taborder="3" text="" left="283" top="14" width="474" height="266" cssclass="div_line">
           <Layouts>
             <Layout>
@@ -105,6 +108,24 @@ this.alarm_admin_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.Div00_Edit00_oninput = function(obj:nexacro.Edit,e:nexacro.InputEventInfo)
 {
 	alert("내용은 바꾸실수 없습니다.\n 바뀐 내용은 저장되지 않습니다.");
+};
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let arr = this.admin_alarm.extractRows("chk==1");
+	
+	if(arr.length==0 || arr.length== -1){alert("선택된 항목이 없습니다.");return;}
+	
+
+
+		   this.transaction(
+            "PMConfirm"
+            ,"/PMConfirm.nex"
+            ,"in_ds=admin_alarm:U"
+            ,"admin_alarm=out_ds"
+            ,""
+            ,"fn_callback" 
+         )
 };
 ]]></Script>
     <Bind>
