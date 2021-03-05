@@ -19,7 +19,7 @@
               <Static id="sta_grade" taborder="10" text="" left="89" top="141" width="100" height="25" padding="0px 0px 0px 5px" cssclass="sta_line"/>
               <Static id="sta_point" taborder="11" text="" left="89" top="165" width="100" height="25" padding="0px 0px 0px 5px" cssclass="sta_line"/>
               <Static id="sta_sSeq" taborder="12" text="" left="89" top="93" width="100" height="25" padding="0px 0px 0px 5px" cssclass="sta_line"/>
-              <Combo id="co_dept" taborder="13" text="" left="69" top="239" width="120" height="30" value="" index="-1" innerdataset="ds_deptCode" codecolumn="code" datacolumn="name" onitemchanged="div_Info_co_dept_onitemchanged" cssclass="cmb_default"/>
+              <Combo id="co_dept" taborder="13" text="" left="69" top="239" width="120" height="30" value="" index="-1" innerdataset="ds_deptCode" codecolumn="code" datacolumn="name" onitemchanged="div_Info_co_dept_onitemchanged" cssclass="cmb_default" displayrowcount="5"/>
               <Combo id="co_part" taborder="14" left="69" top="269" width="120" height="30" value="" index="0" codecolumn="id" datacolumn="name" cssclass="cmb_default" innerdataset="ds_part" displaynulltext="전체" text="전체"/>
               <Edit id="edt_className" taborder="15" left="69" top="299" width="120" height="30" onchanged="Div00_Edit00_onchanged"/>
               <Button id="btnClassSearch" taborder="16" left="129" top="334" width="60" height="25" onclick="div_Info_btnClassSearch_onclick" cssclass="btn_search" text="조회"/>
