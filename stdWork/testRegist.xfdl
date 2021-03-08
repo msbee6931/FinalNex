@@ -592,7 +592,7 @@ this.gr_classList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEve
 		var part = this.ds_class.getColumn(nRow,"classPart");
 		var dept = this.ds_class.getColumn(nRow,"dept");
 		var myDept = this.div_Info.form.co_myDept.value;
-		if(person[0] < person[1]){
+		if(parseInt(person[0]) < parseInt(person[1])){
 			if(nexacro.toNumber(myPoint)-nexacro.toNumber(point) < 0){
 				alert("학점이 부족합니다");
 				return;
