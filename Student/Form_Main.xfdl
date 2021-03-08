@@ -14,9 +14,7 @@
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="129"/>
-                <Column size="80"/>
-                <Column size="80"/>
+                <Column size="293"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -24,13 +22,9 @@
               </Rows>
               <Band id="head">
                 <Cell text="일정"/>
-                <Cell col="1" text="시작일"/>
-                <Cell col="2" text="종료일"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:title" cursor="pointer"/>
-                <Cell col="1" text="bind:sDate" displaytype="date"/>
-                <Cell col="2" text="bind:eDate" displaytype="date"/>
               </Band>
             </Format>
           </Formats>
@@ -276,7 +270,6 @@ this.fn_callback = function(sId,errCd,errMsg){
 		if(month < 10){
 			month = "0"+month;
 		}
-		trace(month);
 		this.ds_colSchedule.filter("sDate.substring(4,6) >='"+month+"'");
 	}	
 }
@@ -404,6 +397,8 @@ this.gr_schedule_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEven
 	
 	}
 };
+
+
 
 
 ]]></Script>
