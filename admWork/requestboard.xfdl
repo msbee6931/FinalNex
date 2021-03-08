@@ -53,7 +53,7 @@
               <Div id="Div01" taborder="2" text="Div01" left="414" top="245" cssclass="div_line" right="10" bottom="51">
                 <Layouts>
                   <Layout>
-                    <Static id="Static00" taborder="0" text="Reply" left="12" top="5" textAlign="center" font="bold 16px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" cssclass="sta_default" right="19" bottom="147"/>
+                    <Static id="Static00" taborder="0" text="Reply" left="12" top="5" textAlign="center" font="bold 16px/normal &quot;Arial&quot;,&quot;-윤고딕320&quot;" cssclass="sta_default" right="19" height="28"/>
                     <TextArea id="TextArea00" taborder="1" left="12" top="39" cssclass="txt_default" right="19" bottom="35"/>
                   </Layout>
                 </Layouts>

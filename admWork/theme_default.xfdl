@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="theme_default" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Button id="Button00" taborder="0" text="확인" left="25" top="50" width="100" height="25" cssclass="btn_default"/>
+        <Button id="Button00_00" taborder="1" text="취소" left="185" top="50" width="100" height="25" cssclass="btn_can"/>
+        <Button id="Button00_01" taborder="2" text="입력" left="345" top="50" width="100" height="25" cssclass="btn_insert"/>
+        <Button id="Button00_02" taborder="3" text="삭제" left="505" top="50" width="100" height="25" cssclass="btn_del"/>
+        <Button id="Button00_03" taborder="4" text="HOME" left="665" top="50" width="100" height="25" cssclass="btn_home"/>
+        <Button id="Button00_04" taborder="5" text="로그아웃" left="825" top="50" width="100" height="25" cssclass="btn_logout"/>
+        <Button id="Button00_05" taborder="6" text="Exel" left="985" top="50" width="100" height="25" cssclass="btn_exel"/>
+        <Button id="Button00_05_00" taborder="7" text="PDF" left="1145" top="50" width="100" height="25" cssclass="btn_pdf"/>
+        <Edit id="Edit00" taborder="8" left="345" top="136" width="100" height="25" cssclass="edt_default"/>
+        <MaskEdit id="MaskEdit00" taborder="9" left="345" top="185" width="100" height="25" cssclass="med_default"/>
+        <Combo id="Combo00" taborder="10" text="Combo00" left="345" top="234" width="100" height="25" cssclass="cmb_default"/>
+        <TextArea id="TextArea00" taborder="11" left="25" top="136" width="262" height="124" cssclass="txt_default"/>
+        <Static id="Static00" taborder="12" text="default" left="665" top="132" width="100" height="25" textAlign="center" cssclass="sta_default"/>
+        <Static id="Static00_00" taborder="13" text="line" left="670" top="186" width="100" height="25" textAlign="center" cssclass="sta_line"/>
+        <Div id="Div00" taborder="14" text="Div00" left="987" top="131" width="257" height="90" cssclass="div_line"/>
+        <Grid id="Grid00" taborder="15" left="30" top="301" width="420" height="134" binddataset="Dataset00" autofittype="col" cssclass="grd_default">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="ID"/>
+                <Cell col="1" text="VALUE"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ID"/>
+                <Cell col="1" text="bind:VALUE"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01" taborder="16" text="btn_default" left="26" top="91" width="99" height="29"/>
+        <Static id="Static01_00" taborder="17" text="btn_can" left="185" top="90" width="99" height="29"/>
+        <Static id="Static01_00_00" taborder="18" text="btn_insert" left="345" top="90" width="99" height="29"/>
+        <Static id="Static01_00_00_00" taborder="19" text="btn_del" left="505" top="90" width="99" height="29"/>
+        <Static id="Static01_00_00_00_00" taborder="20" text="btn_home" left="665" top="90" width="99" height="29"/>
+        <Static id="Static01_00_00_00_00_00" taborder="21" text="btn_logout" left="825" top="90" width="99" height="29"/>
+        <Static id="Static01_00_00_00_00_00_00" taborder="22" text="btn_exel" left="985" top="96" width="99" height="29"/>
+        <Static id="Static01_00_00_00_00_00_00_00" taborder="23" text="btn_pdf" left="1145" top="91" width="99" height="29"/>
+        <Static id="Static01_00_00_01" taborder="24" text="txt_default" left="26" top="266" width="99" height="29"/>
+        <Static id="Static01_00_00_00_01" taborder="25" text="edt_default" left="471" top="136" width="99" height="29"/>
+        <Static id="Static01_00_00_00_01_00" taborder="26" text="med_default" left="471" top="183" width="99" height="29"/>
+        <Static id="Static01_00_00_00_01_00_00" taborder="27" text="cmb_default" left="480" top="232" width="99" height="29"/>
+        <Static id="Static01_00_00_00_01_00_00_00" taborder="28" text="sta_default" left="800" top="131" width="99" height="29"/>
+        <Static id="Static01_00_00_00_01_00_00_00_00" taborder="29" text="sta_line" left="801" top="182" width="99" height="29"/>
+        <Static id="Static01_00_00_00_01_00_00_00_00_00" taborder="30" text="div_line" left="987" top="231" width="99" height="29"/>
+        <Static id="Static01_00_00_00_01_00_00_00_00_00_00" taborder="31" text="grd_default" left="481" top="406" width="99" height="29"/>
+        <Static id="Static02" taborder="32" text="CSSID" left="24" top="10" width="118" height="30" font="bold 14px/normal &quot;Malgun Gothic&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="ID" type="STRING" size="256"/>
+          <Column id="VALUE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="ID">1001</Col>
+            <Col id="VALUE">NONE</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

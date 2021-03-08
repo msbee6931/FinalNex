@@ -38,7 +38,7 @@
                     <Band id="body">
                       <Cell text="bind:grade" textAlign="center"/>
                       <Cell col="1" text="bind:term" textAlign="center"/>
-                      <Cell col="2" text="bind:classPart" textAlign="center"/>
+                      <Cell col="2" text="bind:classPart" textAlign="center" displaytype="combotext" combodataset="gds_part" combocodecol="id" combodatacol="name"/>
                       <Cell col="3" text="bind:classSeq" textAlign="center" displaytype="text"/>
                       <Cell col="4" text="bind:className" textAlign="center"/>
                       <Cell col="5" text="bind:classPoint" textAlign="center"/>

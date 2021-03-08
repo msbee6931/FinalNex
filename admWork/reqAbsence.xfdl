@@ -37,7 +37,7 @@
                       <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox" textAlign="center"/>
                       <Cell col="1" text="bind:seq" textAlign="center"/>
                       <Cell col="2" text="bind:std_code" textAlign="center" displaytype="text"/>
-                      <Cell col="3" text="bind:code" textAlign="center"/>
+                      <Cell col="3" text="bind:code" textAlign="center" displaytype="combotext" combodataset="absenceCode_ds" combocodecol="code" combodatacol="name"/>
                       <Cell col="4" text="bind:writeDate" textAlign="center" displaytype="date"/>
                       <Cell col="5" text="bind:checkValue" textAlign="center"/>
                     </Band>
