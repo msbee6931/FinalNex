@@ -144,7 +144,7 @@ this.addFileList = function(filelist)
 
 this.Tab00_Tabpage1_btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.nomalNotice_Info_onload();
+	this.close();
 };
 //업로드용 Virtual 파일 onsuccess 이벤트
 this.Upload_VirtualFile_onsuccess = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileEventInfo)
