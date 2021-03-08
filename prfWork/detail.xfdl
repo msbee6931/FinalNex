@@ -43,7 +43,7 @@
                         <Static id="sta_sum" taborder="30" left="726" top="365" width="235" height="30" textAlign="center" text="0%" cssclass="sta_line"/>
                         <Static id="sta_proName" taborder="10" text="" left="139" top="86" width="212" height="39" textAlign="center" cssclass="sta_line"/>
                         <MaskEdit id="mask_limit" taborder="3" left="468" top="10" width="212" height="39" maskchar="###" textAlign="center" format="+##########" cssclass="med_default"/>
-                        <Edit id="edt_classTime" taborder="16" left="468" top="124" width="455" height="40" textAlign="center" cssclass="edt_default"/>
+                        <Edit id="edt_classTime" taborder="16" left="468" top="124" width="455" height="40" textAlign="center" cssclass="edt_default" readonly="true" onchanged="Div00_classPlanTab_classPlan_edt_classTime_onchanged"/>
                         <Button id="dropBtn" taborder="17" text="▼" left="921" top="124" width="25" height="40" onclick="Div00_classPlanTab_classPlan_Button00_onclick" cssclass="btn_default"/>
                         <PopupDiv id="classTimeList" visible="false" left="351" top="163" width="382" height="315" oncloseup="Div00_classPlanTab_classPlan_classTimeList_oncloseup">
                           <Layouts>
@@ -721,6 +721,7 @@ this.Div00_classPlanTab_classPlan_co_part_onitemchanged = function(obj:nexacro.C
 		classForm.co_dept.set_readonly(false);
 	}
 };
+
 ]]></Script>
   </Form>
 </FDL>
