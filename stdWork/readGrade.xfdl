@@ -240,10 +240,10 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.sCode="";
+    <Script type="xscript5.1"><![CDATA[this.objApp = nexacro.getApplication();
+this.std_code=this.objApp.gds_students.getColumn(0,'s_seq');
 this.readGrade_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
-{
-	this.sCode = "12345"; // 학번 로그인 후 받아올 예정
+{ // 학번 로그인 후 받아올 예정
 		
 	var objDate = new Date();
 	if(objDate.getMonth()+1 && objDate.getMonth()+1 < 8){
@@ -259,7 +259,7 @@ this.readGrade_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		,"/myClassList.nex" 
 		,""
 		,"ds_class=out_ds" 
-		,"sCode="+this.sCode + " startTime="+startTime+" endTime="+endTime
+		,"sCode="+this.std_code + " startTime="+startTime+" endTime="+endTime
 		,"fn_callback_myClass" 
 	);
 };
@@ -273,7 +273,7 @@ this.fn_callback_myClass = function()
 		,"/stdGradeOneList.nex" 
 		,""
 		,"ds_grade=out_ds" 
-		,"sCode="+this.sCode
+		,"sCode="+this.std_code
 		,"fn_callback_grade" 
 	);
 }

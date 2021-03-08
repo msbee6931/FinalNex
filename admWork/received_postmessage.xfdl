@@ -38,28 +38,28 @@
                   </Format>
                 </Formats>
               </Grid>
-              <Div id="Div00" taborder="0" text="" left="320" cssclass="div_line" right="10" bottom="49" height="189">
+              <Div id="Div00" taborder="0" text="" left="330" cssclass="div_line" right="10" bottom="49" height="189">
                 <Layouts>
                   <Layout>
                     <TextArea id="TextArea00" taborder="0" left="8" right="9" bottom="9" height="168" cssclass="txt_default"/>
                   </Layout>
                 </Layouts>
               </Div>
-              <Div id="Div00_00" taborder="2" text="" left="320" top="40" cssclass="div_line" right="10" bottom="275">
+              <Div id="Div00_00" taborder="2" text="" left="330" top="40" cssclass="div_line" right="10" bottom="275">
                 <Layouts>
                   <Layout>
-                    <TextArea id="TextArea00" taborder="0" left="8" top="8" width="672" height="144" cssclass="txt_default"/>
+                    <TextArea id="TextArea00" taborder="0" left="8" top="8" cssclass="txt_default" right="7" bottom="9"/>
                   </Layout>
                 </Layouts>
               </Div>
-              <Static id="Static00" taborder="3" text="받은 메세지" left="320" top="9" width="152" height="25" textAlign="center" cssclass="sta_default"/>
-              <Static id="Static00_00" taborder="4" text="답장 쓰기" left="319" top="Div00_00:6" width="152" height="25" textAlign="center" cssclass="sta_default"/>
-              <Button id="del_btn" taborder="5" text="삭제" width="100" height="25" onclick="Div00_del_btn_onclick" cssclass="btn_del" right="700" bottom="13"/>
-              <Button id="send_btn" taborder="6" text="전송" width="100" height="25" onclick="Div00_send_btn_onclick" cssclass="btn_default" right="25" bottom="14"/>
+              <Static id="Static00" taborder="3" text="받은 메세지" left="330" top="9" width="152" height="25" textAlign="center" cssclass="sta_default"/>
+              <Static id="Static00_00" taborder="4" text="답장 쓰기" left="329" top="Div00_00:6" width="152" height="25" textAlign="center" cssclass="sta_default"/>
+              <Button id="del_btn" taborder="5" text="삭제" width="100" height="25" onclick="Div00_del_btn_onclick" cssclass="btn_del" bottom="13" left="219"/>
+              <Button id="send_btn" taborder="6" text="전송" width="100" height="25" onclick="Div00_send_btn_onclick" cssclass="btn_default" right="10" bottom="14"/>
             </Layout>
           </Layouts>
         </Div>
-        <Button id="Button00" taborder="5" text="확인" left="153" top="451" width="87" height="25" cssclass="btn_default" onclick="Button00_onclick"/>
+        <Button id="Button00" taborder="5" text="확인" left="153" width="87" height="25" cssclass="btn_default" onclick="Button00_onclick" bottom="44"/>
       </Layout>
     </Layouts>
     <Objects>

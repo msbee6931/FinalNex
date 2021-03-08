@@ -19,7 +19,7 @@
               <Static id="sta_grade" taborder="10" text="" left="89" top="131" width="100" height="25" padding="0px 0px 0px 5px" cssclass="sta_line"/>
               <Static id="sta_point" taborder="11" text="" left="89" top="155" width="100" height="25" padding="0px 0px 0px 5px" cssclass="sta_line"/>
               <Static id="sta_sSeq" taborder="12" text="" left="89" top="83" width="100" height="25" padding="0px 0px 0px 5px" cssclass="sta_line"/>
-              <Combo id="co_dept" taborder="13" text="전체" left="69" top="219" width="120" height="30" value="" index="-1" codecolumn="code" datacolumn="name" onitemchanged="div_Info_co_dept_onitemchanged" innerdataset="ds_deptCode" cssclass="cmb_default"/>
+              <Combo id="co_dept" taborder="13" text="전체" left="69" top="219" width="120" height="30" value="" index="-1" codecolumn="code" datacolumn="name" onitemchanged="div_Info_co_dept_onitemchanged" innerdataset="ds_deptCode" cssclass="cmb_default" displayrowcount="5"/>
               <Combo id="co_part" taborder="14" left="69" top="249" width="120" height="30" value="" index="0" innerdataset="ds_part" codecolumn="id" datacolumn="name" displaynulltext="전체" text="전체" cssclass="cmb_default"/>
               <Edit id="edt_className" taborder="15" left="69" top="279" width="120" height="30" cssclass="gg1123412"/>
               <Button id="btnClassSearch" taborder="16" text="조회" left="129" top="314" width="60" height="25" onclick="div_Info_btnClassSearch_onclick" cssclass="btn_search"/>
@@ -78,10 +78,8 @@
             </Format>
           </Formats>
         </Grid>
-
         <Static id="Static01_00_00" taborder="3" text="▷ 장바구니 리스트" left="240" top="gr_classList:4" width="140" height="25" onclick="Div00_Static01_onclick"/>
         <Grid id="gr_basketList" taborder="4" left="240" binddataset="ds_myBasket" autofittype="col" oncellclick="gr_basketList_oncellclick" cssclass="grd_default" right="29" height="219" bottom="30">
-
           <Formats>
             <Format id="default">
               <Columns>

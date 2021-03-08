@@ -54,7 +54,7 @@
               <Button id="del_btn" taborder="3" text="삭제" width="100" height="30" onclick="Div00_del_btn_onclick" cssclass="btn_del" right="36" bottom="4"/>
               <Edit id="Edit00" taborder="4" left="216" top="13" width="115" height="25" cssclass="edt_default"/>
               <Button id="Button00" taborder="5" left="340" top="13" width="60" height="25" onclick="Div00_Button00_onclick" cssclass="btn_search" text="조회"/>
-              <Edit id="Edit01" taborder="6" left="341" top="413" width="15" height="10" visible="false"/>
+              <Edit id="Edit01" taborder="6" left="350" top="444" width="38" height="25" onchanged="Div00_Edit01_onchanged" visible="false"/>
             </Layout>
           </Layouts>
         </Div>
@@ -72,16 +72,6 @@
           <Column id="write_date" type="STRING" size="256"/>
           <Column id="view_count" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="writer">aa</Col>
-            <Col id="title">cc</Col>
-          </Row>
-          <Row>
-            <Col id="writer">bb</Col>
-            <Col id="title">dd</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="search">
         <ColumnInfo>
@@ -201,5 +191,8 @@ this.Div00_Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEve
 	}
 };
 ]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.Edit01" propid="value" datasetid="free" columnid="seq"/>
+    </Bind>
   </Form>
 </FDL>

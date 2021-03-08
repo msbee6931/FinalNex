@@ -3,9 +3,8 @@
   <Form id="scholar_read_pop" width="400" height="400" titletext="New Form" onload="scholar_read_pop_onload">
     <Layouts>
       <Layout height="400" width="400">
-        <Button id="btn_ok" taborder="0" text="확인" left="86" top="365" width="110" height="25" onclick="btn_ok_onclick" cssclass="btn_default"/>
-        <Button id="btn_cancle" taborder="1" text="취소" left="205" top="365" width="110" height="25" onclick="btn_cancle_onclick" cssclass="btn_can"/>
-        <Div id="Div00" taborder="2" text="Div00" left="21" top="20" width="358" height="325" cssclass="div_line">
+        <Button id="btn_ok" taborder="0" text="확인" left="145" top="365" width="110" height="25" onclick="btn_ok_onclick" cssclass="btn_default"/>
+        <Div id="Div00" taborder="1" text="Div00" left="21" top="20" width="358" height="325" cssclass="div_line">
           <Layouts>
             <Layout>
               <Static id="Static00" taborder="0" text="선행" left="28" top="125" width="100" height="30" cssclass="sta_default"/>
@@ -34,6 +33,7 @@
     <Objects>
       <Dataset id="scholar_ds">
         <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
           <Column id="std_code" type="STRING" size="256"/>
           <Column id="s_kind" type="INT" size="256"/>
           <Column id="s_rec" type="INT" size="256"/>
@@ -64,7 +64,7 @@
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.seq = this.parent.seq;
-
+this.std_code="";
 this.scholar_read_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 
@@ -128,14 +128,10 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 	
 	//확인
-	this.close();
+	this.close(this.std_code);
 };
 
-//닫기 버튼
-this.btn_cancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	this.close();
-};
+
 
 //자동으로 최종 합계 구하는 함수
 this.fn_tSum = function()
